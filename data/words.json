@@ -1,0 +1,94 @@
+{
+  "words": [
+    {
+      "word": "Trepidation",
+      "pronunciation": "trep-ih-DAY-shun",
+      "definition": "A shaky, nervous feeling that something scary is about to happen.",
+      "sentence_usage": "As he pushed open the creaking door of the abandoned mansion, a wave of cold trepidation washed over him.",
+      "synonyms": ["Fear", "Anxiety", "Apprehension"],
+      "antonyms": ["Confidence", "Bravery", "Calm"],
+      "usefulness_rating": 5
+    },
+    {
+      "word": "Melancholy",
+      "pronunciation": "MEL-an-kol-ee",
+      "definition": "A quiet, heavy sadness that lasts a long time.",
+      "sentence_usage": "The constant, drumming rain matched the melancholy mood that hung heavily over the deserted town.",
+      "synonyms": ["Sorrow", "Sadness", "Gloom"],
+      "antonyms": ["Joy", "Cheerfulness", "Exuberance"],
+      "usefulness_rating": 4
+    },
+    {
+      "word": "Cacophony",
+      "pronunciation": "ka-KOF-oh-nee",
+      "definition": "A horrible, loud mix of messy noises.",
+      "sentence_usage": "The peaceful morning was shattered by a sudden cacophony of screeching tires, blaring horns, and shouting voices.",
+      "synonyms": ["Din", "Racket", "Noise"],
+      "antonyms": ["Silence", "Harmony", "Peace"],
+      "usefulness_rating": 5
+    },
+    {
+      "word": "Ephemeral",
+      "pronunciation": "eh-FEM-er-al",
+      "definition": "Something beautiful that lasts for only a very short time, like a bubble.",
+      "sentence_usage": "The beautiful sunset was an ephemeral masterpiece, fading into darkness almost as quickly as it had appeared.",
+      "synonyms": ["Fleeting", "Temporary", "Brief"],
+      "antonyms": ["Permanent", "Eternal", "Lasting"],
+      "usefulness_rating": 3
+    },
+    {
+      "word": "Ubiquitous",
+      "pronunciation": "yoo-BIK-wih-tus",
+      "definition": "Something that seems to be everywhere you look.",
+      "sentence_usage": "In the futuristic city, glowing neon signs were ubiquitous, illuminating every dark alley and towering skyscraper.",
+      "synonyms": ["Everywhere", "Omnipresent", "Universal"],
+      "antonyms": ["Rare", "Scarce", "Uncommon"],
+      "usefulness_rating": 4
+    },
+    {
+      "word": "Luminous",
+      "pronunciation": "LOO-mih-nus",
+      "definition": "Glowing brightly in the dark.",
+      "sentence_usage": "The cave was bathed in a luminous, ethereal glow emanating from the strange crystals on the ceiling.",
+      "synonyms": ["Radiant", "Shining", "Glowing"],
+      "antonyms": ["Dark", "Dull", "Gloomy"],
+      "usefulness_rating": 5
+    },
+    {
+      "word": "Serpentine",
+      "pronunciation": "SER-pen-tyne",
+      "definition": "Twisting and turning like a moving snake.",
+      "sentence_usage": "The river carved a serpentine path through the dense, unforgiving jungle.",
+      "synonyms": ["Winding", "Twisting", "Snake-like"],
+      "antonyms": ["Straight", "Direct"],
+      "usefulness_rating": 4
+    },
+    {
+      "word": "Petrified",
+      "pronunciation": "PET-rih-fyd",
+      "definition": "So incredibly scared that you freeze up like a stone statue.",
+      "sentence_usage": "Rooted to the spot, the young boy stood entirely petrified as the shadow detached itself from the wall.",
+      "synonyms": ["Terrified", "Paralyzed", "Frozen"],
+      "antonyms": ["Fearless", "Relaxed", "Unbothered"],
+      "usefulness_rating": 5
+    },
+    {
+      "word": "Dilapidated",
+      "pronunciation": "dih-LAP-ih-day-tid",
+      "definition": "Old, broken, and falling apart from being ignored for a long time.",
+      "sentence_usage": "At the end of the lane sat a dilapidated cottage, its roof caved in and windows shattered by time.",
+      "synonyms": ["Ruined", "Decaying", "Crumbling"],
+      "antonyms": ["Pristine", "Immaculate", "Restored"],
+      "usefulness_rating": 5
+    },
+    {
+      "word": "Voracious",
+      "pronunciation": "voh-RAY-shus",
+      "definition": "Super hungry, like you could eat absolutely everything in sight.",
+      "sentence_usage": "After wandering in the wilderness for three days, the survivor ate the berries with a voracious appetite.",
+      "synonyms": ["Ravenous", "Insatiable", "Greedy"],
+      "antonyms": ["Satisfied", "Full", "Quenched"],
+      "usefulness_rating": 4
+    }
+  ]
+}

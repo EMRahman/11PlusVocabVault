@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11+ Vocab Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="header-text">
+        <h1>11+ Vocab Builder</h1>
+        <p class="tagline">Master the words that make writing shine</p>
+      </div>
+      <div class="word-count" id="word-count"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="search-wrap">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Search words…"
+          aria-label="Search vocabulary words"
+          autocomplete="off"
+        />
+      </div>
+      <div class="filter-wrap" role="group" aria-label="Filter by usefulness rating">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-rating="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-rating="5" aria-pressed="false">★★★★★</button>
+        <button class="filter-btn" data-rating="4" aria-pressed="false">★★★★</button>
+        <button class="filter-btn" data-rating="3" aria-pressed="false">★★★</button>
+        <button class="filter-btn" data-rating="2" aria-pressed="false">★★</button>
+        <button class="filter-btn" data-rating="1" aria-pressed="false">★</button>
+      </div>
+    </section>
+
+    <section class="word-grid" id="word-grid" aria-label="Vocabulary word cards"></section>
+  </main>
+
+  <!-- Modal overlay -->
+  <div id="modal-overlay" class="modal-overlay hidden" aria-hidden="true">
+    <div
+      class="modal-card"
+      id="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-word-title"
+    >
+      <button class="close-btn" id="modal-close" aria-label="Close word detail">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-header">
+        <h2 class="modal-word" id="modal-word-title"></h2>
+        <p class="modal-pronunciation" id="modal-pronunciation"></p>
+        <div class="modal-stars" id="modal-stars" aria-label="Usefulness rating"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3 class="modal-section-title">Definition</h3>
+          <p class="modal-definition" id="modal-definition"></p>
+        </div>
+        <div class="modal-section">
+          <h3 class="modal-section-title">Example Sentence</h3>
+          <p class="modal-sentence" id="modal-sentence"></p>
+        </div>
+        <div class="modal-row">
+          <div class="modal-section">
+            <h3 class="modal-section-title">Synonyms</h3>
+            <ul class="modal-tags" id="modal-synonyms"></ul>
+          </div>
+          <div class="modal-section">
+            <h3 class="modal-section-title">Antonyms</h3>
+            <ul class="modal-tags antonym-tags" id="modal-antonyms"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Word card template -->
+  <template id="word-card-template">
+    <article class="word-card" tabindex="0" role="button" aria-label="">
+      <div class="card-header">
+        <h2 class="card-word"></h2>
+        <div class="card-stars"></div>
+      </div>
+      <p class="card-definition"></p>
+    </article>
+  </template>
+
+  <footer>
+    <p>Built for 11+ exam prep &mdash; <span id="total-words"></span> words and counting</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
