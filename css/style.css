@@ -265,6 +265,14 @@ main {
   overflow: hidden;
 }
 
+.card-view-count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
 /* Stars */
 .star {
   font-size: 0.9rem;
@@ -452,6 +460,16 @@ main {
 .antonym-tags li {
   background: #FEF3C7;
   color: #92400E;
+}
+
+.modal-view-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  opacity: 0.7;
+  text-align: right;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
 }
 
 /* ===========================

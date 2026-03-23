@@ -5,6 +5,30 @@
   let allWords = [];
   let lastFocusedCard = null;
 
+  // ── View counts (persisted in localStorage) ────────────────────────────────
+  var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
+  var viewCounts = {};
+
+  function loadViewCounts() {
+    try {
+      var stored = localStorage.getItem(VIEW_COUNTS_KEY);
+      viewCounts = stored ? JSON.parse(stored) : {};
+    } catch (e) {
+      viewCounts = {};
+    }
+  }
+
+  function saveViewCounts() {
+    try {
+      localStorage.setItem(VIEW_COUNTS_KEY, JSON.stringify(viewCounts));
+    } catch (e) {}
+  }
+
+  function incrementViewCount(word) {
+    viewCounts[word] = (viewCounts[word] || 0) + 1;
+    saveViewCounts();
+  }
+
   const state = {
     query: '',
     ratingFilter: null, // null = all, 1-5 = exact match
@@ -23,8 +47,9 @@
   const modalDef      = document.getElementById('modal-definition');
   const modalSentence = document.getElementById('modal-sentence');
   const modalSynonyms = document.getElementById('modal-synonyms');
-  const modalAntonyms = document.getElementById('modal-antonyms');
-  const wordCountEl   = document.getElementById('word-count');
+  const modalAntonyms   = document.getElementById('modal-antonyms');
+  const modalViewCount  = document.getElementById('modal-view-count');
+  const wordCountEl     = document.getElementById('word-count');
   const totalWordsEl  = document.getElementById('total-words');
   const cardTemplate  = document.getElementById('word-card-template');
 
@@ -3435,6 +3460,7 @@
 
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
+    loadViewCounts();
     allWords = WORDS;
     updateWordCountDisplay(allWords.length);
     renderCards(allWords);
@@ -3462,11 +3488,20 @@
     const article = clone.querySelector('.word-card');
 
     article.dataset.wordIndex = index;
+    article.dataset.wordName = word.word;
     article.setAttribute('aria-label', 'View details for ' + word.word);
 
     clone.querySelector('.card-word').textContent = word.word;
     clone.querySelector('.card-definition').textContent = word.definition;
     clone.querySelector('.card-stars').appendChild(buildStars(word.usefulness_rating));
+
+    var count = viewCounts[word.word] || 0;
+    if (count > 0) {
+      var countEl = document.createElement('p');
+      countEl.className = 'card-view-count';
+      countEl.textContent = 'Viewed ' + count + (count === 1 ? ' time' : ' times');
+      article.appendChild(countEl);
+    }
 
     return clone;
   }
@@ -3522,6 +3557,24 @@
 
   // ── Modal ──────────────────────────────────────────────────────────────────
   function openModal(wordObj) {
+    incrementViewCount(wordObj.word);
+
+    // Update the count badge on the card without re-rendering
+    var card = wordGrid.querySelector('[data-word-name="' + wordObj.word + '"]');
+    if (card) {
+      var count = viewCounts[wordObj.word];
+      var text = 'Viewed ' + count + (count === 1 ? ' time' : ' times');
+      var existing = card.querySelector('.card-view-count');
+      if (existing) {
+        existing.textContent = text;
+      } else {
+        var countEl = document.createElement('p');
+        countEl.className = 'card-view-count';
+        countEl.textContent = text;
+        card.appendChild(countEl);
+      }
+    }
+
     modalTitle.textContent = wordObj.word;
     modalPronunciation.textContent = wordObj.pronunciation || '';
 
@@ -3545,6 +3598,11 @@
       li.textContent = a;
       modalAntonyms.appendChild(li);
     });
+
+    if (modalViewCount) {
+      var count = viewCounts[wordObj.word];
+      modalViewCount.textContent = 'Viewed ' + count + (count === 1 ? ' time' : ' times');
+    }
 
     modalOverlay.classList.remove('hidden');
     modalOverlay.setAttribute('aria-hidden', 'false');
