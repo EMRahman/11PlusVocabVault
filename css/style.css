@@ -462,6 +462,38 @@ main {
   color: #92400E;
 }
 
+.modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border: 2px solid transparent;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.modal-link:hover {
+  background: #fff;
+  border-color: var(--color-primary);
+}
+
+.modal-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
 .modal-view-count {
   font-size: 0.8rem;
   font-weight: 700;

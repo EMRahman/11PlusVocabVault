@@ -48,6 +48,8 @@
   const modalSentence = document.getElementById('modal-sentence');
   const modalSynonyms = document.getElementById('modal-synonyms');
   const modalAntonyms   = document.getElementById('modal-antonyms');
+  const linkDefine      = document.getElementById('link-define');
+  const linkExamples    = document.getElementById('link-examples');
   const modalViewCount  = document.getElementById('modal-view-count');
   const wordCountEl     = document.getElementById('word-count');
   const totalWordsEl  = document.getElementById('total-words');
@@ -3577,6 +3579,10 @@
 
     modalTitle.textContent = wordObj.word;
     modalPronunciation.textContent = wordObj.pronunciation || '';
+
+    var encoded = encodeURIComponent(wordObj.word);
+    linkDefine.href    = 'https://www.google.com/search?q=define+' + encoded;
+    linkExamples.href  = 'https://www.google.com/search?q=' + encoded + '+example+sentences';
 
     modalStars.innerHTML = '';
     modalStars.appendChild(buildStars(wordObj.usefulness_rating));
