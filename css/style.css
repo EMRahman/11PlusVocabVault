@@ -34,8 +34,11 @@ html {
 }
 
 body {
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
   font-family: var(--font-family);
+  background-color: #F7F6FF;
   background-color: var(--color-bg);
+  color: #1A1A2E;
   color: var(--color-text);
   min-height: 100vh;
   display: flex;
@@ -59,6 +62,8 @@ button {
    Header
    =========================== */
 header {
+  background: #6C63FF;
+  background: linear-gradient(135deg, #6C63FF 0%, #8B83FF 100%);
   background: linear-gradient(135deg, var(--color-primary) 0%, #8B83FF 100%);
   color: #fff;
   padding: 2rem 1.5rem;
@@ -132,6 +137,7 @@ main {
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
+  color: #6B7280;
   color: var(--color-text-secondary);
   pointer-events: none;
 }
@@ -139,11 +145,14 @@ main {
 .search-input {
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 2.75rem;
+  border: 2px solid #E5E7EB;
   border: 2px solid var(--color-border);
   border-radius: 50px;
   font-family: inherit;
   font-size: 1rem;
+  color: #1A1A2E;
   color: var(--color-text);
+  background: #FFFFFF;
   background: var(--color-card);
   transition: border-color var(--transition), box-shadow var(--transition);
   outline: none;
@@ -155,6 +164,7 @@ main {
 }
 
 .search-input::placeholder {
+  color: #6B7280;
   color: var(--color-text-secondary);
 }
 
@@ -169,6 +179,7 @@ main {
 .filter-label {
   font-size: 0.875rem;
   font-weight: 700;
+  color: #6B7280;
   color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -178,10 +189,13 @@ main {
 .filter-btn {
   padding: 0.5rem 0.9rem;
   border-radius: 50px;
+  border: 2px solid #E5E7EB;
   border: 2px solid var(--color-border);
   font-size: 0.85rem;
   font-weight: 700;
+  color: #6B7280;
   color: var(--color-text-secondary);
+  background: #FFFFFF;
   background: var(--color-card);
   transition: all var(--transition);
   min-height: 44px;
@@ -195,7 +209,9 @@ main {
 }
 
 .filter-btn.active {
+  background: #6C63FF;
   background: var(--color-primary);
+  border-color: #6C63FF;
   border-color: var(--color-primary);
   color: #fff;
 }
@@ -213,7 +229,9 @@ main {
    Word Cards
    =========================== */
 .word-card {
+  background: #FFFFFF;
   background: var(--color-card);
+  border-radius: 14px;
   border-radius: var(--radius-card);
   padding: 1.25rem 1.5rem;
   cursor: pointer;
@@ -244,6 +262,7 @@ main {
 .card-word {
   font-size: 1.25rem;
   font-weight: 800;
+  color: #1A1A2E;
   color: var(--color-text);
   line-height: 1.2;
 }
@@ -257,6 +276,7 @@ main {
 
 .card-definition {
   font-size: 0.9rem;
+  color: #6B7280;
   color: var(--color-text-secondary);
   line-height: 1.5;
   display: -webkit-box;
@@ -268,6 +288,7 @@ main {
 .card-view-count {
   font-size: 0.75rem;
   font-weight: 700;
+  color: #6C63FF;
   color: var(--color-primary);
   opacity: 0.7;
   margin-top: 0.25rem;
@@ -279,8 +300,8 @@ main {
   line-height: 1;
 }
 
-.star--filled { color: var(--color-star-filled); }
-.star--empty  { color: var(--color-star-empty); }
+.star--filled { color: #F59E0B; color: var(--color-star-filled); }
+.star--empty  { color: #D1D5DB; color: var(--color-star-empty); }
 
 /* ===========================
    Empty State
@@ -289,6 +310,7 @@ main {
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 1rem;
+  color: #6B7280;
   color: var(--color-text-secondary);
 }
 
@@ -302,6 +324,7 @@ main {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  color: #1A1A2E;
   color: var(--color-text);
 }
 
@@ -331,7 +354,9 @@ main {
 }
 
 .modal-card {
+  background: #FFFFFF;
   background: var(--color-card);
+  border-radius: 20px;
   border-radius: var(--radius-modal);
   width: 100%;
   max-width: 560px;
@@ -354,10 +379,12 @@ main {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  background: #F7F6FF;
   background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #6B7280;
   color: var(--color-text-secondary);
   transition: background var(--transition), color var(--transition);
   z-index: 1;
@@ -374,6 +401,8 @@ main {
 }
 
 .modal-header {
+  background: #6C63FF;
+  background: linear-gradient(135deg, #6C63FF 0%, #8B83FF 100%);
   background: linear-gradient(135deg, var(--color-primary) 0%, #8B83FF 100%);
   color: #fff;
   padding: 2rem 1.75rem 1.5rem;
@@ -416,6 +445,7 @@ main {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: #6C63FF;
   color: var(--color-primary);
   margin-bottom: 0.4rem;
 }
@@ -423,15 +453,18 @@ main {
 .modal-definition {
   font-size: 1.15rem;
   font-weight: 600;
+  color: #1A1A2E;
   color: var(--color-text);
   line-height: 1.6;
 }
 
 .modal-sentence {
   font-size: 1rem;
+  color: #6B7280;
   color: var(--color-text-secondary);
   line-height: 1.7;
   font-style: italic;
+  border-left: 3px solid #EEF0FF;
   border-left: 3px solid var(--color-primary-light);
   padding-left: 1rem;
 }
@@ -449,7 +482,9 @@ main {
 }
 
 .modal-tags li {
+  background: #EEF0FF;
   background: var(--color-primary-light);
+  color: #4B44CC;
   color: var(--color-primary-dark);
   border-radius: 50px;
   padding: 0.3rem 0.8rem;
@@ -477,7 +512,9 @@ main {
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
+  background: #EEF0FF;
   background: var(--color-primary-light);
+  color: #4B44CC;
   color: var(--color-primary-dark);
   border: 2px solid transparent;
   transition: background var(--transition), border-color var(--transition);
@@ -497,6 +534,7 @@ main {
 .modal-view-count {
   font-size: 0.8rem;
   font-weight: 700;
+  color: #6C63FF;
   color: var(--color-primary);
   opacity: 0.7;
   text-align: right;
@@ -511,7 +549,9 @@ footer {
   text-align: center;
   padding: 1.5rem;
   font-size: 0.875rem;
+  color: #6B7280;
   color: var(--color-text-secondary);
+  border-top: 1px solid #E5E7EB;
   border-top: 1px solid var(--color-border);
 }
 
@@ -589,6 +629,7 @@ footer {
   align-items: center;
   gap: 0.45rem;
   padding: 0.6rem 1.2rem;
+  background: #6C63FF;
   background: var(--color-primary);
   color: #fff;
   border-radius: 50px;
@@ -629,7 +670,9 @@ footer {
 }
 
 .quiz-panel {
+  background: #FFFFFF;
   background: var(--color-card);
+  border-radius: 20px;
   border-radius: var(--radius-modal);
   width: 100%;
   max-width: 540px;
@@ -662,12 +705,14 @@ footer {
 .quiz-setup-title {
   font-size: clamp(1.6rem, 5vw, 2rem);
   font-weight: 800;
+  color: #1A1A2E;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
 
 .quiz-setup-subtitle {
   font-size: 1rem;
+  color: #6B7280;
   color: var(--color-text-secondary);
   font-weight: 600;
 }
@@ -684,6 +729,7 @@ footer {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  color: #6B7280;
   color: var(--color-text-secondary);
   margin-bottom: 0.2rem;
 }
@@ -691,10 +737,13 @@ footer {
 .quiz-scope-btn {
   padding: 0.65rem 1.2rem;
   border-radius: 50px;
+  border: 2px solid #E5E7EB;
   border: 2px solid var(--color-border);
   font-size: 0.95rem;
   font-weight: 700;
+  color: #6B7280;
   color: var(--color-text-secondary);
+  background: #FFFFFF;
   background: var(--color-card);
   transition: all var(--transition);
   min-height: 44px;
@@ -707,7 +756,9 @@ footer {
 }
 
 .quiz-scope-btn.active {
+  background: #6C63FF;
   background: var(--color-primary);
+  border-color: #6C63FF;
   border-color: var(--color-primary);
   color: #fff;
 }
@@ -715,7 +766,9 @@ footer {
 .quiz-personal-best {
   font-size: 0.9rem;
   font-weight: 700;
+  color: #6C63FF;
   color: var(--color-primary);
+  background: #EEF0FF;
   background: var(--color-primary-light);
   border-radius: 50px;
   padding: 0.4rem 1.2rem;
@@ -725,6 +778,7 @@ footer {
   display: block;
   width: 100%;
   padding: 0.85rem 1.5rem;
+  background: #6C63FF;
   background: var(--color-primary);
   color: #fff;
   border-radius: 50px;
@@ -746,6 +800,8 @@ footer {
    Quiz Question Screen
    =========================== */
 .quiz-header {
+  background: #6C63FF;
+  background: linear-gradient(135deg, #6C63FF 0%, #8B83FF 100%);
   background: linear-gradient(135deg, var(--color-primary) 0%, #8B83FF 100%);
   padding: 1.25rem 1.5rem 1rem;
   border-radius: var(--radius-modal) var(--radius-modal) 0 0;
@@ -805,12 +861,14 @@ footer {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  color: #6C63FF;
   color: var(--color-primary);
 }
 
 .quiz-question-text {
   font-size: clamp(1.05rem, 3.5vw, 1.3rem);
   font-weight: 700;
+  color: #1A1A2E;
   color: var(--color-text);
   line-height: 1.5;
 }
@@ -827,11 +885,15 @@ footer {
 
 .quiz-answer-btn {
   padding: 0.85rem 1rem;
+  border-radius: 14px;
   border-radius: var(--radius-card);
+  border: 2px solid #E5E7EB;
   border: 2px solid var(--color-border);
+  background: #FFFFFF;
   background: var(--color-card);
   font-size: 0.9rem;
   font-weight: 700;
+  color: #1A1A2E;
   color: var(--color-text);
   text-align: left;
   line-height: 1.4;
@@ -908,6 +970,7 @@ footer {
 .quiz-end-title {
   font-size: clamp(1.4rem, 5vw, 1.8rem);
   font-weight: 800;
+  color: #1A1A2E;
   color: var(--color-text);
   letter-spacing: -0.02em;
 }
@@ -915,12 +978,14 @@ footer {
 .quiz-end-score {
   font-size: 1.4rem;
   font-weight: 800;
+  color: #6C63FF;
   color: var(--color-primary);
 }
 
 .quiz-end-best {
   font-size: 0.9rem;
   font-weight: 700;
+  color: #6B7280;
   color: var(--color-text-secondary);
   min-height: 1.4em;
 }
@@ -938,10 +1003,12 @@ footer {
   width: 100%;
   padding: 0.7rem 1.5rem;
   background: transparent;
+  color: #6B7280;
   color: var(--color-text-secondary);
   border-radius: 50px;
   font-size: 1rem;
   font-weight: 700;
+  border: 2px solid #E5E7EB;
   border: 2px solid var(--color-border);
   transition: border-color var(--transition), color var(--transition);
   min-height: 48px;
