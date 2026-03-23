@@ -1,10 +1,10 @@
 # 11+ Vocab Builder
 
-A lightweight, static web app that helps students aged 8–11 prepare for 11+ entrance exams by exploring a curated set of 200 sophisticated vocabulary words for creative writing.
+A lightweight, static web app that helps students aged 8–11 prepare for 11+ entrance exams by exploring a curated set of 210 sophisticated vocabulary words for creative writing.
 
 ## Features
 
-- **200 curated words** — chosen specifically to elevate 11+ creative writing
+- **210 curated words** — chosen specifically to elevate 11+ creative writing
 - **Word detail cards** — click any word to see its definition, example sentence, synonyms, antonyms, and usefulness rating
 - **Pronunciation guide** — phonetic spelling for every word
 - **Search** — filter words by name in real time

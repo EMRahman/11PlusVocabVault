@@ -3457,6 +3457,176 @@
       "Drenched"
     ],
     "usefulness_rating": 4
+  },
+  {
+    "word": "Volatile",
+    "pronunciation": "VOL-uh-tyle",
+    "definition": "Likely to change suddenly and become dangerous or violent very quickly.",
+    "sentence_usage": "The border region remained volatile after the ceasefire, with every rumour threatening to spark fresh clashes.",
+    "synonyms": [
+      "Unstable",
+      "Explosive",
+      "Unpredictable"
+    ],
+    "antonyms": [
+      "Stable",
+      "Steady",
+      "Peaceful"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Belligerent",
+    "pronunciation": "buh-LIJ-er-uhnt",
+    "definition": "Aggressive and ready to argue or fight.",
+    "sentence_usage": "The belligerent leader delivered a fiery speech that made the crowded chamber fall into an uneasy silence.",
+    "synonyms": [
+      "Hostile",
+      "Aggressive",
+      "Combative"
+    ],
+    "antonyms": [
+      "Peaceful",
+      "Friendly",
+      "Calm"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Contentious",
+    "pronunciation": "kun-TEN-shus",
+    "definition": "Likely to cause strong disagreement or argument.",
+    "sentence_usage": "The contentious debate over the new law split the council and filled the town hall with angry voices.",
+    "synonyms": [
+      "Disputed",
+      "Divisive",
+      "Argumentative"
+    ],
+    "antonyms": [
+      "Agreed",
+      "Peaceful",
+      "Harmonious"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Fractious",
+    "pronunciation": "FRAK-shus",
+    "definition": "Bad-tempered and difficult to keep under control.",
+    "sentence_usage": "As shortages worsened, the normally orderly crowd became fractious and impossible to soothe.",
+    "synonyms": [
+      "Unruly",
+      "Irritable",
+      "Troublesome"
+    ],
+    "antonyms": [
+      "Cooperative",
+      "Docile",
+      "Peaceful"
+    ],
+    "usefulness_rating": 4
+  },
+  {
+    "word": "Inflammatory",
+    "pronunciation": "in-FLAM-uh-tor-ee",
+    "definition": "Designed to stir up anger or strong feelings.",
+    "sentence_usage": "One inflammatory remark was enough to send the already tense meeting into chaos.",
+    "synonyms": [
+      "Provocative",
+      "Inciting",
+      "Agitating"
+    ],
+    "antonyms": [
+      "Soothing",
+      "Calming",
+      "Moderate"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Precarious",
+    "pronunciation": "prih-KAIR-ee-us",
+    "definition": "Unsteady or unsafe because it could suddenly get worse.",
+    "sentence_usage": "Peace remained precarious, with both sides watching each other from behind the shattered barricades.",
+    "synonyms": [
+      "Unstable",
+      "Uncertain",
+      "Risky"
+    ],
+    "antonyms": [
+      "Secure",
+      "Stable",
+      "Safe"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Tumultuous",
+    "pronunciation": "too-MUL-choo-us",
+    "definition": "Very noisy, disorderly, and full of wild confusion.",
+    "sentence_usage": "The tumultuous protest surged through the square, with banners snapping above the roaring crowd.",
+    "synonyms": [
+      "Chaotic",
+      "Turbulent",
+      "Disorderly"
+    ],
+    "antonyms": [
+      "Orderly",
+      "Calm",
+      "Peaceful"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Fragile",
+    "pronunciation": "FRAJ-yle",
+    "definition": "Easily broken or likely to fail if not handled carefully.",
+    "sentence_usage": "The negotiators knew the fragile agreement could collapse with a single careless decision.",
+    "synonyms": [
+      "Delicate",
+      "Weak",
+      "Breakable"
+    ],
+    "antonyms": [
+      "Strong",
+      "Solid",
+      "Secure"
+    ],
+    "usefulness_rating": 4
+  },
+  {
+    "word": "Fraught",
+    "pronunciation": "frawt",
+    "definition": "Filled with stress, danger, or difficulty.",
+    "sentence_usage": "Their fraught journey through the besieged city was slowed by fear, rubble, and warning sirens.",
+    "synonyms": [
+      "Tense",
+      "Troubled",
+      "Risky"
+    ],
+    "antonyms": [
+      "Easy",
+      "Calm",
+      "Safe"
+    ],
+    "usefulness_rating": 5
+  },
+  {
+    "word": "Hostile",
+    "pronunciation": "HOS-tyle",
+    "definition": "Unfriendly and ready to oppose or attack.",
+    "sentence_usage": "The hostile exchange between the rival groups made the square feel dangerous and unstable.",
+    "synonyms": [
+      "Aggressive",
+      "Antagonistic",
+      "Unfriendly"
+    ],
+    "antonyms": [
+      "Friendly",
+      "Welcoming",
+      "Peaceful"
+    ],
+    "usefulness_rating": 5
   }
 ];
 
