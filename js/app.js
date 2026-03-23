@@ -3944,6 +3944,7 @@
   var quizLaunchBtn      = document.getElementById('quiz-launch-btn');
 
   var quizQuestionScreen = document.getElementById('quiz-question-screen');
+  var quizExitBtn        = document.getElementById('quiz-exit-btn');
   var quizProgressFill   = document.getElementById('quiz-progress-fill');
   var quizProgressWrap   = document.getElementById('quiz-progress-bar-wrap');
   var quizCounter        = document.getElementById('quiz-counter');
@@ -3961,6 +3962,7 @@
   var quizEndBest        = document.getElementById('quiz-end-best');
   var quizPlayAgainBtn   = document.getElementById('quiz-play-again-btn');
   var quizBackBtn        = document.getElementById('quiz-back-btn');
+  var quizAdvanceTimeout = null;
 
   // ── Persistence ────────────────────────────────────────────────────────────
   function loadQuizBest() {
@@ -3988,6 +3990,7 @@
   }
 
   function openQuizOverlay() {
+    clearQuizAdvanceTimeout();
     updatePersonalBestDisplay();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
@@ -3997,10 +4000,18 @@
   }
 
   function closeQuizOverlay() {
+    clearQuizAdvanceTimeout();
     quizOverlay.classList.add('hidden');
     quizOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     quizLaunchBtn.focus();
+  }
+
+  function clearQuizAdvanceTimeout() {
+    if (quizAdvanceTimeout !== null) {
+      clearTimeout(quizAdvanceTimeout);
+      quizAdvanceTimeout = null;
+    }
   }
 
   function updatePersonalBestDisplay() {
@@ -4125,7 +4136,11 @@
     }
 
     // Advance after pause
-    setTimeout(function () { advanceQuiz(); }, 1400);
+    clearQuizAdvanceTimeout();
+    quizAdvanceTimeout = setTimeout(function () {
+      quizAdvanceTimeout = null;
+      advanceQuiz();
+    }, 1400);
   }
 
   function advanceQuiz() {
@@ -4164,12 +4179,14 @@
 
   // ── Start quiz ─────────────────────────────────────────────────────────────
   function startQuiz() {
+    clearQuizAdvanceTimeout();
     quizState.currentIndex = 0;
     quizState.score        = 0;
     quizState.streak       = 0;
     quizState.questions    = buildQuizSession();
     showQuizScreen(quizQuestionScreen);
     renderQuestion(0);
+    quizExitBtn.focus();
   }
 
   // ── Event listeners ────────────────────────────────────────────────────────
@@ -4178,6 +4195,7 @@
 
     quizLaunchBtn.addEventListener('click', openQuizOverlay);
     quizSetupClose.addEventListener('click', closeQuizOverlay);
+    quizExitBtn.addEventListener('click', closeQuizOverlay);
     quizBackBtn.addEventListener('click', closeQuizOverlay);
 
     forEachNode(quizScopeBtns, function (btn) {

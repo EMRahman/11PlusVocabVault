@@ -689,6 +689,38 @@ footer {
   flex-direction: column;
 }
 
+.quiz-screen-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1rem 0;
+}
+
+.quiz-exit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 2px solid var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.quiz-exit-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.quiz-exit-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* ===========================
    Quiz Setup Screen
    =========================== */
@@ -808,7 +840,7 @@ footer {
   background: linear-gradient(135deg, #6C63FF 0%, #8B83FF 100%);
   background: linear-gradient(135deg, var(--color-primary) 0%, #8B83FF 100%);
   padding: 1.25rem 1.5rem 1rem;
-  border-radius: var(--radius-modal) var(--radius-modal) 0 0;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -1027,6 +1059,10 @@ footer {
    Quiz Responsive
    =========================== */
 @media (max-width: 480px) {
+  .quiz-screen-actions {
+    padding: 0.85rem 0.85rem 0;
+  }
+
   .quiz-answers-grid {
     grid-template-columns: 1fr;
     padding: 0.5rem 1.25rem 1rem;
