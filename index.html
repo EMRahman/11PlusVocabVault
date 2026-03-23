@@ -45,12 +45,20 @@
         <button class="filter-btn" data-rating="2" aria-pressed="false">★★</button>
         <button class="filter-btn" data-rating="1" aria-pressed="false">★</button>
       </div>
+      <button class="quiz-launch-btn" id="quiz-launch-btn" aria-label="Start vocabulary quiz">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        Quiz me!
+      </button>
     </section>
 
     <section class="word-grid" id="word-grid" aria-label="Vocabulary word cards"></section>
   </main>
 
-  <!-- Modal overlay -->
+  <!-- Word detail modal overlay -->
   <div id="modal-overlay" class="modal-overlay hidden" aria-hidden="true">
     <div
       class="modal-card"
@@ -104,6 +112,66 @@
         <p class="modal-view-count" id="modal-view-count"></p>
       </div>
     </div>
+  </div>
+
+  <!-- Quiz overlay -->
+  <div id="quiz-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="quiz-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="quiz-setup-title">
+      <button class="close-btn" id="quiz-setup-close" aria-label="Close quiz">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🧠</span>
+        <h2 id="quiz-setup-title" class="quiz-setup-title">Vocab Quiz</h2>
+        <p class="quiz-setup-subtitle">10 questions &middot; Mix of both question types</p>
+        <div class="quiz-scope-group" role="group" aria-labelledby="quiz-scope-label">
+          <p id="quiz-scope-label" class="quiz-scope-label">Which words?</p>
+          <button class="quiz-scope-btn active" data-scope="all" aria-pressed="true">All 200 words</button>
+          <button class="quiz-scope-btn" data-scope="5star" aria-pressed="false">&#9733;&#9733;&#9733;&#9733;&#9733; Five-star only</button>
+        </div>
+        <div id="quiz-personal-best" class="quiz-personal-best hidden"></div>
+        <button class="quiz-start-btn" id="quiz-start-btn">Start Quiz</button>
+      </div>
+    </div>
+
+    <!-- Question screen -->
+    <div id="quiz-question-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-question-text">
+      <div class="quiz-header">
+        <div class="quiz-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="quiz-progress-bar-wrap">
+          <div class="quiz-progress-bar-fill" id="quiz-progress-fill"></div>
+        </div>
+        <div class="quiz-meta">
+          <span class="quiz-counter" id="quiz-counter">Q 1 of 10</span>
+          <span class="quiz-score-display" id="quiz-score-display">Score: 0</span>
+          <span class="quiz-streak" id="quiz-streak" aria-live="polite"></span>
+        </div>
+      </div>
+      <div class="quiz-question-card">
+        <p class="quiz-question-label" id="quiz-question-label"></p>
+        <p class="quiz-question-text" id="quiz-question-text"></p>
+      </div>
+      <div class="quiz-answers-grid" id="quiz-answers-grid" role="group" aria-label="Answer choices"></div>
+      <div class="quiz-feedback" id="quiz-feedback" aria-live="assertive" aria-atomic="true"></div>
+    </div>
+
+    <!-- End screen -->
+    <div id="quiz-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="quiz-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="quiz-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="quiz-end-title"></h2>
+        <p class="quiz-end-score" id="quiz-end-score"></p>
+        <p class="quiz-end-best" id="quiz-end-best"></p>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="quiz-play-again-btn">Play again</button>
+          <button class="quiz-back-btn" id="quiz-back-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Word card template -->
