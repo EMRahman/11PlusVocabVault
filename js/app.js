@@ -3467,6 +3467,7 @@
     updateWordCountDisplay(allWords.length);
     renderCards(allWords);
     attachEventListeners();
+    initQuiz();
   }
 
   // ── Rendering ──────────────────────────────────────────────────────────────
@@ -3708,4 +3709,298 @@
 
   // ── Boot ───────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', init);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // QUIZ MODE
+  // Completely isolated from browse/filter logic. Reads WORDS array (read-only).
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var QUIZ_BEST_KEY  = 'vocabVault_quizBest';
+  var QUIZ_LENGTH    = 10;
+
+  var quizState = {
+    questions    : [],
+    currentIndex : 0,
+    score        : 0,
+    streak       : 0,
+    scope        : 'all',
+    personalBest : 0
+  };
+
+  // ── Quiz DOM refs ──────────────────────────────────────────────────────────
+  var quizOverlay        = document.getElementById('quiz-overlay');
+  var quizSetupEl        = document.getElementById('quiz-setup');
+  var quizSetupClose     = document.getElementById('quiz-setup-close');
+  var quizStartBtn       = document.getElementById('quiz-start-btn');
+  var quizScopeBtns      = document.querySelectorAll('.quiz-scope-btn');
+  var quizPersonalBestEl = document.getElementById('quiz-personal-best');
+  var quizLaunchBtn      = document.getElementById('quiz-launch-btn');
+
+  var quizQuestionScreen = document.getElementById('quiz-question-screen');
+  var quizProgressFill   = document.getElementById('quiz-progress-fill');
+  var quizProgressWrap   = document.getElementById('quiz-progress-bar-wrap');
+  var quizCounter        = document.getElementById('quiz-counter');
+  var quizScoreDisplay   = document.getElementById('quiz-score-display');
+  var quizStreakEl        = document.getElementById('quiz-streak');
+  var quizQuestionLabel  = document.getElementById('quiz-question-label');
+  var quizQuestionText   = document.getElementById('quiz-question-text');
+  var quizAnswersGrid    = document.getElementById('quiz-answers-grid');
+  var quizFeedback       = document.getElementById('quiz-feedback');
+
+  var quizEndScreen      = document.getElementById('quiz-end-screen');
+  var quizEndEmoji       = document.getElementById('quiz-end-emoji');
+  var quizEndTitle       = document.getElementById('quiz-end-title');
+  var quizEndScore       = document.getElementById('quiz-end-score');
+  var quizEndBest        = document.getElementById('quiz-end-best');
+  var quizPlayAgainBtn   = document.getElementById('quiz-play-again-btn');
+  var quizBackBtn        = document.getElementById('quiz-back-btn');
+
+  // ── Persistence ────────────────────────────────────────────────────────────
+  function loadQuizBest() {
+    try {
+      var stored = localStorage.getItem(QUIZ_BEST_KEY);
+      quizState.personalBest = stored ? parseInt(stored, 10) : 0;
+    } catch (e) {
+      quizState.personalBest = 0;
+    }
+  }
+
+  function saveQuizBest(score) {
+    if (score > quizState.personalBest) {
+      quizState.personalBest = score;
+      try { localStorage.setItem(QUIZ_BEST_KEY, score); } catch (e) {}
+    }
+  }
+
+  // ── Screen management ──────────────────────────────────────────────────────
+  function showQuizScreen(screenEl) {
+    [quizSetupEl, quizQuestionScreen, quizEndScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openQuizOverlay() {
+    updatePersonalBestDisplay();
+    quizOverlay.classList.remove('hidden');
+    quizOverlay.setAttribute('aria-hidden', 'false');
+    showQuizScreen(quizSetupEl);
+    document.body.style.overflow = 'hidden';
+    quizSetupClose.focus();
+  }
+
+  function closeQuizOverlay() {
+    quizOverlay.classList.add('hidden');
+    quizOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    quizLaunchBtn.focus();
+  }
+
+  function updatePersonalBestDisplay() {
+    if (quizState.personalBest > 0) {
+      quizPersonalBestEl.textContent = 'Personal best: ' + quizState.personalBest + ' / ' + QUIZ_LENGTH;
+      quizPersonalBestEl.classList.remove('hidden');
+    } else {
+      quizPersonalBestEl.classList.add('hidden');
+    }
+  }
+
+  // ── Question generation ────────────────────────────────────────────────────
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function pickDistractors(correctWord, pool, count) {
+    var candidates = pool.filter(function (w) { return w.word !== correctWord.word; });
+    return shuffle(candidates).slice(0, count);
+  }
+
+  function buildQuestion(wordObj, type, pool) {
+    var distractors = pickDistractors(wordObj, pool, 3);
+    var choices = shuffle([wordObj].concat(distractors));
+    return {
+      type         : type,
+      questionWord : wordObj,
+      choices      : choices,
+      correctIndex : choices.indexOf(wordObj)
+    };
+  }
+
+  function buildQuizSession() {
+    var pool = quizState.scope === '5star'
+      ? WORDS.filter(function (w) { return w.usefulness_rating === 5; })
+      : WORDS;
+    var count = Math.min(QUIZ_LENGTH, pool.length);
+    var picked = shuffle(pool).slice(0, count);
+    return picked.map(function (word) {
+      var type = Math.random() < 0.5 ? 'definition' : 'word';
+      return buildQuestion(word, type, pool);
+    });
+  }
+
+  // ── Rendering ──────────────────────────────────────────────────────────────
+  function renderQuestion(index) {
+    var q = quizState.questions[index];
+    var total = quizState.questions.length;
+
+    // Progress
+    var pct = (index / total) * 100;
+    quizProgressFill.style.width = pct + '%';
+    quizProgressWrap.setAttribute('aria-valuenow', index);
+
+    // Meta
+    quizCounter.textContent      = 'Q ' + (index + 1) + ' of ' + total;
+    quizScoreDisplay.textContent = 'Score: ' + quizState.score;
+    quizStreakEl.textContent     = quizState.streak >= 2 ? '🔥 ' + quizState.streak : '';
+
+    // Question
+    if (q.type === 'definition') {
+      quizQuestionLabel.textContent = 'What word means this?';
+      quizQuestionText.textContent  = q.questionWord.definition;
+    } else {
+      quizQuestionLabel.textContent = 'What does this word mean?';
+      quizQuestionText.textContent  = q.questionWord.word;
+    }
+
+    // Answer buttons
+    quizAnswersGrid.innerHTML = '';
+    q.choices.forEach(function (choice, i) {
+      var btn = document.createElement('button');
+      btn.className    = 'quiz-answer-btn';
+      btn.dataset.idx  = i;
+      btn.textContent  = q.type === 'definition' ? choice.word : choice.definition;
+      quizAnswersGrid.appendChild(btn);
+    });
+
+    // Clear feedback
+    quizFeedback.className = 'quiz-feedback';
+    quizFeedback.textContent = '';
+  }
+
+  // ── Answer handling ────────────────────────────────────────────────────────
+  var CORRECT_PHRASES = ['✓ Brilliant!', '✓ Spot on!', '✓ Nice work!', '✓ Excellent!'];
+
+  function handleAnswer(chosenIndex) {
+    var q = quizState.questions[quizState.currentIndex];
+    var buttons = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
+    var isCorrect = chosenIndex === q.correctIndex;
+
+    // Disable all buttons immediately
+    buttons.forEach(function (b) { b.disabled = true; });
+
+    // Apply colour feedback
+    buttons[q.correctIndex].classList.add('correct');
+    if (!isCorrect) {
+      buttons[chosenIndex].classList.add('wrong');
+    }
+
+    // Update score / streak
+    if (isCorrect) {
+      quizState.score++;
+      quizState.streak++;
+    } else {
+      quizState.streak = 0;
+    }
+
+    // Feedback strip
+    quizFeedback.className = 'quiz-feedback visible ' +
+      (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+    if (isCorrect) {
+      quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
+    } else {
+      var correctText = q.type === 'definition' ? q.questionWord.word : q.questionWord.definition;
+      quizFeedback.textContent = '✗ The answer was: ' + correctText;
+    }
+
+    // Advance after pause
+    setTimeout(function () { advanceQuiz(); }, 1400);
+  }
+
+  function advanceQuiz() {
+    quizState.currentIndex++;
+    if (quizState.currentIndex >= quizState.questions.length) {
+      showEndScreen();
+    } else {
+      renderQuestion(quizState.currentIndex);
+    }
+  }
+
+  // ── End screen ─────────────────────────────────────────────────────────────
+  function showEndScreen() {
+    quizProgressFill.style.width = '100%';
+    var score = quizState.score;
+    var total = quizState.questions.length;
+    var isNewBest = score > quizState.personalBest;
+    saveQuizBest(score);
+
+    var tier;
+    if (score === total)       tier = { emoji: '🏆', title: 'Perfect score!' };
+    else if (score >= total * 0.7) tier = { emoji: '⭐', title: 'Star performance!' };
+    else if (score >= total * 0.4) tier = { emoji: '👍', title: 'Good effort!' };
+    else                           tier = { emoji: '💪', title: 'Keep practising!' };
+
+    quizEndEmoji.textContent = tier.emoji;
+    quizEndTitle.textContent = tier.title;
+    quizEndScore.textContent = score + ' / ' + total + ' correct';
+    quizEndBest.textContent  = isNewBest
+      ? 'New personal best! 🎉'
+      : (quizState.personalBest > 0 ? 'Personal best: ' + quizState.personalBest + ' / ' + total : '');
+
+    showQuizScreen(quizEndScreen);
+    quizPlayAgainBtn.focus();
+  }
+
+  // ── Start quiz ─────────────────────────────────────────────────────────────
+  function startQuiz() {
+    quizState.currentIndex = 0;
+    quizState.score        = 0;
+    quizState.streak       = 0;
+    quizState.questions    = buildQuizSession();
+    showQuizScreen(quizQuestionScreen);
+    renderQuestion(0);
+  }
+
+  // ── Event listeners ────────────────────────────────────────────────────────
+  function initQuiz() {
+    loadQuizBest();
+
+    quizLaunchBtn.addEventListener('click', openQuizOverlay);
+    quizSetupClose.addEventListener('click', closeQuizOverlay);
+    quizBackBtn.addEventListener('click', closeQuizOverlay);
+
+    quizScopeBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        quizScopeBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        quizState.scope = this.dataset.scope;
+      });
+    });
+
+    quizStartBtn.addEventListener('click', startQuiz);
+    quizPlayAgainBtn.addEventListener('click', startQuiz);
+
+    // Answer click delegation
+    quizAnswersGrid.addEventListener('click', function (e) {
+      var btn = e.target.closest('.quiz-answer-btn');
+      if (!btn || btn.disabled) return;
+      handleAnswer(parseInt(btn.dataset.idx, 10));
+    });
+
+    // Escape closes quiz overlay (separate guard from word-detail modal)
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !quizOverlay.classList.contains('hidden')) {
+        closeQuizOverlay();
+      }
+    });
+  }
+
 })();
