@@ -2,8 +2,8 @@
   'use strict';
 
   // ── State ──────────────────────────────────────────────────────────────────
-  let allWords = [];
-  let lastFocusedCard = null;
+  var allWords = [];
+  var lastFocusedCard = null;
 
   // ── View counts (persisted in localStorage) ────────────────────────────────
   var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
@@ -29,31 +29,53 @@
     saveViewCounts();
   }
 
-  const state = {
+  var state = {
     query: '',
     ratingFilter: null, // null = all, 1-5 = exact match
   };
 
   // ── DOM refs ───────────────────────────────────────────────────────────────
-  const wordGrid      = document.getElementById('word-grid');
-  const searchInput   = document.getElementById('search-input');
-  const filterBtns    = document.querySelectorAll('.filter-btn');
-  const modalOverlay  = document.getElementById('modal-overlay');
-  const modalCard     = document.getElementById('modal-card');
-  const modalClose    = document.getElementById('modal-close');
-  const modalTitle         = document.getElementById('modal-word-title');
-  const modalPronunciation = document.getElementById('modal-pronunciation');
-  const modalStars         = document.getElementById('modal-stars');
-  const modalDef      = document.getElementById('modal-definition');
-  const modalSentence = document.getElementById('modal-sentence');
-  const modalSynonyms = document.getElementById('modal-synonyms');
-  const modalAntonyms   = document.getElementById('modal-antonyms');
-  const linkDefine      = document.getElementById('link-define');
-  const linkExamples    = document.getElementById('link-examples');
-  const modalViewCount  = document.getElementById('modal-view-count');
-  const wordCountEl     = document.getElementById('word-count');
-  const totalWordsEl  = document.getElementById('total-words');
-  const cardTemplate  = document.getElementById('word-card-template');
+  var wordGrid      = document.getElementById('word-grid');
+  var searchInput   = document.getElementById('search-input');
+  var filterBtns    = document.querySelectorAll('.filter-btn');
+  var modalOverlay  = document.getElementById('modal-overlay');
+  var modalCard     = document.getElementById('modal-card');
+  var modalClose    = document.getElementById('modal-close');
+  var modalTitle         = document.getElementById('modal-word-title');
+  var modalPronunciation = document.getElementById('modal-pronunciation');
+  var modalStars         = document.getElementById('modal-stars');
+  var modalDef      = document.getElementById('modal-definition');
+  var modalSentence = document.getElementById('modal-sentence');
+  var modalSynonyms = document.getElementById('modal-synonyms');
+  var modalAntonyms   = document.getElementById('modal-antonyms');
+  var linkDefine      = document.getElementById('link-define');
+  var linkExamples    = document.getElementById('link-examples');
+  var modalViewCount  = document.getElementById('modal-view-count');
+  var wordCountEl     = document.getElementById('word-count');
+  var totalWordsEl  = document.getElementById('total-words');
+
+  function forEachNode(list, callback) {
+    Array.prototype.forEach.call(list, callback);
+  }
+
+  function closestByClass(element, className) {
+    while (element && element !== document) {
+      if (element.classList && element.classList.contains(className)) {
+        return element;
+      }
+      element = element.parentNode;
+    }
+    return null;
+  }
+
+  function findWordByName(name) {
+    for (var i = 0; i < allWords.length; i++) {
+      if (allWords[i].word === name) {
+        return allWords[i];
+      }
+    }
+    return null;
+  }
 
   // ── Embedded word data ────────────────────────────────────────────────────
   // Data is embedded directly so the app works when opened as a local file
@@ -3649,7 +3671,7 @@
       return;
     }
 
-    const fragment = document.createDocumentFragment();
+    var fragment = document.createDocumentFragment();
     words.forEach(function (word, index) {
       fragment.appendChild(buildCard(word, index));
     });
@@ -3657,16 +3679,31 @@
   }
 
   function buildCard(word, index) {
-    const clone = cardTemplate.content.cloneNode(true);
-    const article = clone.querySelector('.word-card');
+    var article = document.createElement('article');
+    var header = document.createElement('div');
+    var title = document.createElement('h2');
+    var stars = document.createElement('div');
+    var definition = document.createElement('p');
 
+    article.className = 'word-card';
+    article.tabIndex = 0;
+    article.setAttribute('role', 'button');
     article.dataset.wordIndex = index;
     article.dataset.wordName = word.word;
     article.setAttribute('aria-label', 'View details for ' + word.word);
 
-    clone.querySelector('.card-word').textContent = word.word;
-    clone.querySelector('.card-definition').textContent = word.definition;
-    clone.querySelector('.card-stars').appendChild(buildStars(word.usefulness_rating));
+    header.className = 'card-header';
+    title.className = 'card-word';
+    title.textContent = word.word;
+    stars.className = 'card-stars';
+    stars.appendChild(buildStars(word.usefulness_rating));
+    definition.className = 'card-definition';
+    definition.textContent = word.definition;
+
+    header.appendChild(title);
+    header.appendChild(stars);
+    article.appendChild(header);
+    article.appendChild(definition);
 
     var count = viewCounts[word.word] || 0;
     if (count > 0) {
@@ -3676,14 +3713,14 @@
       article.appendChild(countEl);
     }
 
-    return clone;
+    return article;
   }
 
   function buildStars(rating, total) {
     total = total || 5;
-    const frag = document.createDocumentFragment();
-    for (let i = 1; i <= total; i++) {
-      const span = document.createElement('span');
+    var frag = document.createDocumentFragment();
+    for (var i = 1; i <= total; i++) {
+      var span = document.createElement('span');
       span.className = 'star ' + (i <= rating ? 'star--filled' : 'star--empty');
       span.setAttribute('aria-hidden', 'true');
       span.textContent = '★';
@@ -3693,7 +3730,7 @@
   }
 
   function buildEmptyState() {
-    const div = document.createElement('div');
+    var div = document.createElement('div');
     div.className = 'empty-state';
     div.innerHTML =
       '<span class="empty-state-emoji">🔍</span>' +
@@ -3709,17 +3746,17 @@
 
   // ── Filtering ──────────────────────────────────────────────────────────────
   function applyFilters() {
-    let results = allWords;
+    var results = allWords;
 
     if (state.query) {
-      const q = state.query;
+      var q = state.query;
       results = results.filter(function (w) {
-        return w.word.toLowerCase().includes(q);
+        return w.word.toLowerCase().indexOf(q) !== -1;
       });
     }
 
     if (state.ratingFilter !== null) {
-      const r = state.ratingFilter;
+      var r = state.ratingFilter;
       results = results.filter(function (w) {
         return w.usefulness_rating === r;
       });
@@ -3764,14 +3801,14 @@
 
     modalSynonyms.innerHTML = '';
     wordObj.synonyms.forEach(function (s) {
-      const li = document.createElement('li');
+      var li = document.createElement('li');
       li.textContent = s;
       modalSynonyms.appendChild(li);
     });
 
     modalAntonyms.innerHTML = '';
     wordObj.antonyms.forEach(function (a) {
-      const li = document.createElement('li');
+      var li = document.createElement('li');
       li.textContent = a;
       modalAntonyms.appendChild(li);
     });
@@ -3806,11 +3843,11 @@
     });
 
     // Rating filter buttons
-    filterBtns.forEach(function (btn) {
+    forEachNode(filterBtns, function (btn) {
       btn.addEventListener('click', function () {
-        const rating = this.dataset.rating;
+        var rating = this.dataset.rating;
 
-        filterBtns.forEach(function (b) {
+        forEachNode(filterBtns, function (b) {
           b.classList.remove('active');
           b.setAttribute('aria-pressed', 'false');
         });
@@ -3818,7 +3855,7 @@
         if (rating === 'all') {
           state.ratingFilter = null;
         } else {
-          const parsed = parseInt(rating, 10);
+          var parsed = parseInt(rating, 10);
           // Toggle: clicking the already-active filter clears it
           if (state.ratingFilter === parsed) {
             state.ratingFilter = null;
@@ -3839,15 +3876,15 @@
 
     // Card clicks — event delegation on the grid
     wordGrid.addEventListener('click', function (e) {
-      const card = e.target.closest('.word-card');
+      var card = closestByClass(e.target, 'word-card');
       if (!card) return;
-      const index = parseInt(card.dataset.wordIndex, 10);
+      var index = parseInt(card.dataset.wordIndex, 10);
       if (isNaN(index)) return;
 
       // Find the word from the currently displayed filtered set by matching
       // the word text, since indices in the filtered list may differ
-      const wordName = card.querySelector('.card-word').textContent;
-      const wordObj = allWords.find(function (w) { return w.word === wordName; });
+      var wordName = card.querySelector('.card-word').textContent;
+      var wordObj = findWordByName(wordName);
       if (!wordObj) return;
 
       lastFocusedCard = card;
@@ -3857,7 +3894,7 @@
     // Card keyboard activation (Enter / Space)
     wordGrid.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter' && e.key !== ' ') return;
-      const card = e.target.closest('.word-card');
+      var card = closestByClass(e.target, 'word-card');
       if (!card) return;
       e.preventDefault();
       card.click();
@@ -4061,7 +4098,7 @@
     var isCorrect = chosenIndex === q.correctIndex;
 
     // Disable all buttons immediately
-    buttons.forEach(function (b) { b.disabled = true; });
+    forEachNode(buttons, function (b) { b.disabled = true; });
 
     // Apply colour feedback
     buttons[q.correctIndex].classList.add('correct');
@@ -4143,9 +4180,9 @@
     quizSetupClose.addEventListener('click', closeQuizOverlay);
     quizBackBtn.addEventListener('click', closeQuizOverlay);
 
-    quizScopeBtns.forEach(function (btn) {
+    forEachNode(quizScopeBtns, function (btn) {
       btn.addEventListener('click', function () {
-        quizScopeBtns.forEach(function (b) {
+        forEachNode(quizScopeBtns, function (b) {
           b.classList.remove('active');
           b.setAttribute('aria-pressed', 'false');
         });
@@ -4160,7 +4197,7 @@
 
     // Answer click delegation
     quizAnswersGrid.addEventListener('click', function (e) {
-      var btn = e.target.closest('.quiz-answer-btn');
+      var btn = closestByClass(e.target, 'quiz-answer-btn');
       if (!btn || btn.disabled) return;
       handleAnswer(parseInt(btn.dataset.idx, 10));
     });
