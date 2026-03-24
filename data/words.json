@@ -3,12 +3,20 @@
     {
       "word": "abdomen",
       "pronunciation": "",
-      "definition": "A vocabulary word: abdomen.",
-      "sentence_usage": "We used 'abdomen' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The part of the body between the chest and the pelvis.",
+      "sentence_usage": "He felt a sharp pain in his abdomen after running.",
+      "synonyms": [
+        "Belly",
+        "Stomach",
+        "Midriff"
+      ],
+      "antonyms": [
+        "Back",
+        "Spine",
+        "Dorsum"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Abundant",
@@ -31,32 +39,56 @@
     {
       "word": "abuse",
       "pronunciation": "",
-      "definition": "A vocabulary word: abuse.",
-      "sentence_usage": "We used 'abuse' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To use something wrongly or to treat someone cruelly.",
+      "sentence_usage": "You should not abuse your privileges at school.",
+      "synonyms": [
+        "Mistreat",
+        "Misuse",
+        "Maltreat"
+      ],
+      "antonyms": [
+        "Protect",
+        "Respect",
+        "Care"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "acknowledge",
       "pronunciation": "",
-      "definition": "A vocabulary word: acknowledge.",
-      "sentence_usage": "We used 'acknowledge' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To accept or admit that something is true or exists.",
+      "sentence_usage": "She paused to acknowledge the help from her team.",
+      "synonyms": [
+        "Admit",
+        "Recognize",
+        "Confirm"
+      ],
+      "antonyms": [
+        "Deny",
+        "Ignore",
+        "Reject"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "acronym",
       "pronunciation": "",
-      "definition": "A vocabulary word: acronym.",
-      "sentence_usage": "We used 'acronym' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A word formed from the first letters of a phrase.",
+      "sentence_usage": "NASA is an acronym for the National Aeronautics and Space Administration.",
+      "synonyms": [
+        "Abbreviation",
+        "Initialism",
+        "Short form"
+      ],
+      "antonyms": [
+        "Expansion",
+        "Full form",
+        "Longhand"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Agitated",
@@ -79,32 +111,56 @@
     {
       "word": "airway",
       "pronunciation": "",
-      "definition": "A vocabulary word: airway.",
-      "sentence_usage": "We used 'airway' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A passage through which air enters and leaves the lungs.",
+      "sentence_usage": "The first aider checked that the patient’s airway was clear.",
+      "synonyms": [
+        "Breathing passage",
+        "Windpipe",
+        "Respiratory tract"
+      ],
+      "antonyms": [
+        "Blockage",
+        "Obstruction",
+        "Closure"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "allege",
       "pronunciation": "",
-      "definition": "A vocabulary word: allege.",
-      "sentence_usage": "We used 'allege' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To claim something without proving it yet.",
+      "sentence_usage": "Witnesses allege that the contract was signed under pressure.",
+      "synonyms": [
+        "Claim",
+        "Assert",
+        "Accuse"
+      ],
+      "antonyms": [
+        "Disprove",
+        "Refute",
+        "Retract"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "allocate",
       "pronunciation": "",
-      "definition": "A vocabulary word: allocate.",
-      "sentence_usage": "We used 'allocate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To give something to someone for a particular purpose.",
+      "sentence_usage": "The council will allocate extra funds to the library.",
+      "synonyms": [
+        "Assign",
+        "Allot",
+        "Distribute"
+      ],
+      "antonyms": [
+        "Withhold",
+        "Keep",
+        "Deny"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Aloft",
@@ -127,22 +183,38 @@
     {
       "word": "altar",
       "pronunciation": "",
-      "definition": "A vocabulary word: altar.",
-      "sentence_usage": "We used 'altar' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A table or raised place used in religious ceremonies.",
+      "sentence_usage": "Flowers were placed beside the altar before the service.",
+      "synonyms": [
+        "Sanctuary table",
+        "Shrine",
+        "Chancel table"
+      ],
+      "antonyms": [
+        "Aisle",
+        "Pew",
+        "Nave"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "amateur",
       "pronunciation": "",
-      "definition": "A vocabulary word: amateur.",
-      "sentence_usage": "We used 'amateur' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A person who does something for enjoyment rather than as a profession.",
+      "sentence_usage": "Although an amateur, she played the violin beautifully.",
+      "synonyms": [
+        "Beginner",
+        "Novice",
+        "Nonprofessional"
+      ],
+      "antonyms": [
+        "Professional",
+        "Expert",
+        "Specialist"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Amiable",
@@ -165,22 +237,38 @@
     {
       "word": "amplify",
       "pronunciation": "",
-      "definition": "A vocabulary word: amplify.",
-      "sentence_usage": "We used 'amplify' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To make something louder, stronger, or greater.",
+      "sentence_usage": "The microphone will amplify your voice in the hall.",
+      "synonyms": [
+        "Increase",
+        "Boost",
+        "Magnify"
+      ],
+      "antonyms": [
+        "Reduce",
+        "Diminish",
+        "Soften"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "analogy",
       "pronunciation": "",
-      "definition": "A vocabulary word: analogy.",
-      "sentence_usage": "We used 'analogy' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A comparison that explains one thing by showing how it is like another.",
+      "sentence_usage": "The teacher used an analogy about traffic to explain blood flow.",
+      "synonyms": [
+        "Comparison",
+        "Parallel",
+        "Likeness"
+      ],
+      "antonyms": [
+        "Contrast",
+        "Difference",
+        "Opposition"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Ancient",
@@ -203,12 +291,20 @@
     {
       "word": "annotate",
       "pronunciation": "",
-      "definition": "A vocabulary word: annotate.",
-      "sentence_usage": "We used 'annotate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To add notes or comments to a text or diagram.",
+      "sentence_usage": "Please annotate the poem with your ideas in the margin.",
+      "synonyms": [
+        "Comment",
+        "Note",
+        "Explain"
+      ],
+      "antonyms": [
+        "Erase",
+        "Omit",
+        "Ignore"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Anticipation",
@@ -231,42 +327,74 @@
     {
       "word": "Apex",
       "pronunciation": "",
-      "definition": "A vocabulary word: apex.",
-      "sentence_usage": "We used 'Apex' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The highest point or tip of something.",
+      "sentence_usage": "The climbers reached the apex of the ridge at noon.",
+      "synonyms": [
+        "Peak",
+        "Summit",
+        "Top"
+      ],
+      "antonyms": [
+        "Base",
+        "Bottom",
+        "Nadir"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "arduous",
       "pronunciation": "",
-      "definition": "A vocabulary word: arduous.",
-      "sentence_usage": "We used 'arduous' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Very difficult and requiring a lot of effort.",
+      "sentence_usage": "Training for the marathon was an arduous process.",
+      "synonyms": [
+        "Demanding",
+        "Strenuous",
+        "Tough"
+      ],
+      "antonyms": [
+        "Easy",
+        "Effortless",
+        "Simple"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "artefact",
       "pronunciation": "",
-      "definition": "A vocabulary word: artefact.",
-      "sentence_usage": "We used 'artefact' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An object made by humans, especially one of historical interest.",
+      "sentence_usage": "The museum displayed an ancient artefact from Egypt.",
+      "synonyms": [
+        "Relic",
+        "Object",
+        "Antiquity"
+      ],
+      "antonyms": [
+        "Natural object",
+        "Raw material",
+        "Formation"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "assign",
       "pronunciation": "",
-      "definition": "A vocabulary word: assign.",
-      "sentence_usage": "We used 'assign' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To give a task or role to someone.",
+      "sentence_usage": "The coach will assign each player a position.",
+      "synonyms": [
+        "Allocate",
+        "Appoint",
+        "Designate"
+      ],
+      "antonyms": [
+        "Remove",
+        "Withdraw",
+        "Unassign"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Astonished",
@@ -289,62 +417,110 @@
     {
       "word": "atrium",
       "pronunciation": "",
-      "definition": "A vocabulary word: atrium.",
-      "sentence_usage": "We used 'atrium' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A large open space inside a building, often with a glass roof.",
+      "sentence_usage": "Sunlight filled the hotel atrium.",
+      "synonyms": [
+        "Central hall",
+        "Court",
+        "Lobby"
+      ],
+      "antonyms": [
+        "Cellar",
+        "Basement",
+        "Corridor"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "avail",
       "pronunciation": "",
-      "definition": "A vocabulary word: avail.",
-      "sentence_usage": "We used 'avail' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To help or be of use.",
+      "sentence_usage": "All our planning will avail little without teamwork.",
+      "synonyms": [
+        "Help",
+        "Benefit",
+        "Assist"
+      ],
+      "antonyms": [
+        "Hinder",
+        "Obstruct",
+        "Harm"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "avatar",
       "pronunciation": "",
-      "definition": "A vocabulary word: avatar.",
-      "sentence_usage": "We used 'avatar' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A digital image or character representing a user online.",
+      "sentence_usage": "He designed a dragon avatar for the game.",
+      "synonyms": [
+        "Icon",
+        "Persona",
+        "Profile image"
+      ],
+      "antonyms": [
+        "Real self",
+        "Offline identity",
+        "Original"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "bacterium",
       "pronunciation": "",
-      "definition": "A vocabulary word: bacterium.",
-      "sentence_usage": "We used 'bacterium' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A tiny single-celled organism, some of which can cause disease.",
+      "sentence_usage": "This bacterium grows quickly in warm conditions.",
+      "synonyms": [
+        "Microbe",
+        "Germ",
+        "Microorganism"
+      ],
+      "antonyms": [
+        "Sterility",
+        "Cleanliness",
+        "Antiseptic"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "barrage",
       "pronunciation": "",
-      "definition": "A vocabulary word: barrage.",
-      "sentence_usage": "We used 'barrage' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A concentrated outpouring, such as of criticism or gunfire.",
+      "sentence_usage": "The minister faced a barrage of questions from reporters.",
+      "synonyms": [
+        "Onslaught",
+        "Flood",
+        "Volley"
+      ],
+      "antonyms": [
+        "Lull",
+        "Pause",
+        "Calm"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "barricade",
       "pronunciation": "",
-      "definition": "A vocabulary word: barricade.",
-      "sentence_usage": "We used 'barricade' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A barrier built to block movement or protect an area.",
+      "sentence_usage": "Workers set up a barricade around the unsafe stairs.",
+      "synonyms": [
+        "Barrier",
+        "Blockade",
+        "Obstruction"
+      ],
+      "antonyms": [
+        "Opening",
+        "Passage",
+        "Gap"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Belligerent",
@@ -385,12 +561,20 @@
     {
       "word": "Beto",
       "pronunciation": "",
-      "definition": "A vocabulary word: beto.",
-      "sentence_usage": "We used 'Beto' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A given name used for people, often as a nickname.",
+      "sentence_usage": "Beto presented his science project to the class.",
+      "synonyms": [
+        "Name",
+        "Nickname",
+        "Forename"
+      ],
+      "antonyms": [
+        "Anonymous",
+        "Nameless",
+        "Unknown"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Proper noun"
     },
     {
       "word": "Bewildered",
@@ -413,12 +597,20 @@
     {
       "word": "bias",
       "pronunciation": "",
-      "definition": "A vocabulary word: bias.",
-      "sentence_usage": "We used 'bias' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An unfair preference for or against something.",
+      "sentence_usage": "Good research tries to remove personal bias.",
+      "synonyms": [
+        "Prejudice",
+        "Partiality",
+        "Favoritism"
+      ],
+      "antonyms": [
+        "Fairness",
+        "Neutrality",
+        "Impartiality"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Bleak",
@@ -441,22 +633,38 @@
     {
       "word": "bleed",
       "pronunciation": "",
-      "definition": "A vocabulary word: bleed.",
-      "sentence_usage": "We used 'bleed' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To lose blood from a wound.",
+      "sentence_usage": "Apply pressure if the cut starts to bleed.",
+      "synonyms": [
+        "Hemorrhage",
+        "Seep",
+        "Drip"
+      ],
+      "antonyms": [
+        "Clot",
+        "Coagulate",
+        "Heal"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "blockbuster",
       "pronunciation": "",
-      "definition": "A vocabulary word: blockbuster.",
-      "sentence_usage": "We used 'blockbuster' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A very successful film, book, or product.",
+      "sentence_usage": "The studio released a summer blockbuster.",
+      "synonyms": [
+        "Hit",
+        "Smash",
+        "Best-seller"
+      ],
+      "antonyms": [
+        "Flop",
+        "Failure",
+        "Bomb"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Blossom",
@@ -497,12 +705,20 @@
     {
       "word": "budge",
       "pronunciation": "",
-      "definition": "A vocabulary word: budge.",
-      "sentence_usage": "We used 'budge' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To move slightly or to change an opinion.",
+      "sentence_usage": "The heavy sofa would not budge.",
+      "synonyms": [
+        "Move",
+        "Shift",
+        "Yield"
+      ],
+      "antonyms": [
+        "Stay",
+        "Remain",
+        "Resist"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Bustling",
@@ -561,22 +777,38 @@
     {
       "word": "calcium",
       "pronunciation": "",
-      "definition": "A vocabulary word: calcium.",
-      "sentence_usage": "We used 'calcium' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A mineral needed for strong bones and teeth.",
+      "sentence_usage": "Milk is a common source of calcium.",
+      "synonyms": [
+        "Mineral",
+        "Nutrient",
+        "Element"
+      ],
+      "antonyms": [
+        "Deficiency",
+        "Depletion",
+        "Lack"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "canyon",
       "pronunciation": "",
-      "definition": "A vocabulary word: canyon.",
-      "sentence_usage": "We used 'canyon' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A deep valley with steep sides, often carved by a river.",
+      "sentence_usage": "They looked down into the vast canyon below.",
+      "synonyms": [
+        "Gorge",
+        "Ravine",
+        "Chasm"
+      ],
+      "antonyms": [
+        "Plain",
+        "Plateau",
+        "Flatland"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Captivating",
@@ -599,12 +831,20 @@
     {
       "word": "cardiac",
       "pronunciation": "",
-      "definition": "A vocabulary word: cardiac.",
-      "sentence_usage": "We used 'cardiac' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Related to the heart.",
+      "sentence_usage": "The patient was moved to the cardiac unit.",
+      "synonyms": [
+        "Heart-related",
+        "Coronary",
+        "Cardio"
+      ],
+      "antonyms": [
+        "Noncardiac",
+        "Pulmonary",
+        "Peripheral"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Cautious",
@@ -645,22 +885,38 @@
     {
       "word": "cemetery",
       "pronunciation": "",
-      "definition": "A vocabulary word: cemetery.",
-      "sentence_usage": "We used 'cemetery' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A place where people are buried.",
+      "sentence_usage": "The old cemetery is beside the church.",
+      "synonyms": [
+        "Graveyard",
+        "Burial ground",
+        "Necropolis"
+      ],
+      "antonyms": [
+        "Playground",
+        "Market",
+        "Mall"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "census",
       "pronunciation": "",
-      "definition": "A vocabulary word: census.",
-      "sentence_usage": "We used 'census' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An official count of a population.",
+      "sentence_usage": "The national census is completed every ten years.",
+      "synonyms": [
+        "Count",
+        "Survey",
+        "Enumeration"
+      ],
+      "antonyms": [
+        "Estimate",
+        "Guess",
+        "Assumption"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Chaotic",
@@ -683,32 +939,56 @@
     {
       "word": "circulate",
       "pronunciation": "",
-      "definition": "A vocabulary word: circulate.",
-      "sentence_usage": "We used 'circulate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To move around continuously in a system or area.",
+      "sentence_usage": "Fresh air must circulate through the classroom.",
+      "synonyms": [
+        "Flow",
+        "Move",
+        "Spread"
+      ],
+      "antonyms": [
+        "Stagnate",
+        "Stop",
+        "Settle"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "circumference",
       "pronunciation": "",
-      "definition": "A vocabulary word: circumference.",
-      "sentence_usage": "We used 'circumference' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The distance all the way around a circle.",
+      "sentence_usage": "We measured the tree trunk’s circumference.",
+      "synonyms": [
+        "Perimeter",
+        "Boundary length",
+        "Girth"
+      ],
+      "antonyms": [
+        "Diameter",
+        "Radius",
+        "Center"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "circumstance",
       "pronunciation": "",
-      "definition": "A vocabulary word: circumstance.",
-      "sentence_usage": "We used 'circumstance' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A condition or fact connected with an event.",
+      "sentence_usage": "Under these circumstances, we should wait.",
+      "synonyms": [
+        "Situation",
+        "Condition",
+        "Context"
+      ],
+      "antonyms": [
+        "Certainty",
+        "Constant",
+        "Normality"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Clambered",
@@ -749,32 +1029,56 @@
     {
       "word": "client",
       "pronunciation": "",
-      "definition": "A vocabulary word: client.",
-      "sentence_usage": "We used 'client' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A person or organization that uses professional services.",
+      "sentence_usage": "The lawyer met her client before court.",
+      "synonyms": [
+        "Customer",
+        "Patron",
+        "Account holder"
+      ],
+      "antonyms": [
+        "Provider",
+        "Seller",
+        "Consultant"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "clinic",
       "pronunciation": "",
-      "definition": "A vocabulary word: clinic.",
-      "sentence_usage": "We used 'clinic' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A medical facility for diagnosis and treatment.",
+      "sentence_usage": "She visited the clinic for a check-up.",
+      "synonyms": [
+        "Health center",
+        "Medical office",
+        "Infirmary"
+      ],
+      "antonyms": [
+        "Home",
+        "Street",
+        "Field"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "clone",
       "pronunciation": "",
-      "definition": "A vocabulary word: clone.",
-      "sentence_usage": "We used 'clone' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An exact copy of a living thing or digital system.",
+      "sentence_usage": "Scientists produced a clone of the plant.",
+      "synonyms": [
+        "Duplicate",
+        "Replica",
+        "Copy"
+      ],
+      "antonyms": [
+        "Original",
+        "Prototype",
+        "Unique"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Collapse",
@@ -797,22 +1101,38 @@
     {
       "word": "collective",
       "pronunciation": "",
-      "definition": "A vocabulary word: collective.",
-      "sentence_usage": "We used 'collective' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Shared or done by a group together.",
+      "sentence_usage": "The team made a collective decision.",
+      "synonyms": [
+        "Joint",
+        "Shared",
+        "Common"
+      ],
+      "antonyms": [
+        "Individual",
+        "Personal",
+        "Separate"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "collision",
       "pronunciation": "",
-      "definition": "A vocabulary word: collision.",
-      "sentence_usage": "We used 'collision' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An impact between moving objects.",
+      "sentence_usage": "Two bikes were damaged in the collision.",
+      "synonyms": [
+        "Crash",
+        "Impact",
+        "Smash"
+      ],
+      "antonyms": [
+        "Avoidance",
+        "Separation",
+        "Evasion"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Commotion",
@@ -853,32 +1173,56 @@
     {
       "word": "compel",
       "pronunciation": "",
-      "definition": "A vocabulary word: compel.",
-      "sentence_usage": "We used 'compel' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To force or strongly persuade someone to do something.",
+      "sentence_usage": "Evidence may compel the committee to act.",
+      "synonyms": [
+        "Force",
+        "Oblige",
+        "Drive"
+      ],
+      "antonyms": [
+        "Deter",
+        "Discourage",
+        "Prevent"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "compensate",
       "pronunciation": "",
-      "definition": "A vocabulary word: compensate.",
-      "sentence_usage": "We used 'compensate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To make up for loss, damage, or extra effort.",
+      "sentence_usage": "The company will compensate workers for overtime.",
+      "synonyms": [
+        "Repay",
+        "Reimburse",
+        "Offset"
+      ],
+      "antonyms": [
+        "Deprive",
+        "Withhold",
+        "Penalty"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "concave",
       "pronunciation": "",
-      "definition": "A vocabulary word: concave.",
-      "sentence_usage": "We used 'concave' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Curving inward like the inside of a bowl.",
+      "sentence_usage": "A spoon has a concave surface.",
+      "synonyms": [
+        "Hollow",
+        "Inward-curving",
+        "Cupped"
+      ],
+      "antonyms": [
+        "Convex",
+        "Bulging",
+        "Outward"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Concealed",
@@ -901,42 +1245,74 @@
     {
       "word": "conference",
       "pronunciation": "",
-      "definition": "A vocabulary word: conference.",
-      "sentence_usage": "We used 'conference' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A formal meeting for discussion or learning.",
+      "sentence_usage": "She spoke at a science conference in London.",
+      "synonyms": [
+        "Convention",
+        "Summit",
+        "Forum"
+      ],
+      "antonyms": [
+        "Break",
+        "Recess",
+        "Adjournment"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "consensus",
       "pronunciation": "",
-      "definition": "A vocabulary word: consensus.",
-      "sentence_usage": "We used 'consensus' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "General agreement among a group.",
+      "sentence_usage": "The panel reached a consensus after debate.",
+      "synonyms": [
+        "Agreement",
+        "Accord",
+        "Unity"
+      ],
+      "antonyms": [
+        "Disagreement",
+        "Conflict",
+        "Division"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "consumerism",
       "pronunciation": "",
-      "definition": "A vocabulary word: consumerism.",
-      "sentence_usage": "We used 'consumerism' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A focus on buying goods and services in large amounts.",
+      "sentence_usage": "The documentary criticized modern consumerism.",
+      "synonyms": [
+        "Materialism",
+        "Commercialism",
+        "Consumption culture"
+      ],
+      "antonyms": [
+        "Frugality",
+        "Minimalism",
+        "Simplicity"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "contemplate",
       "pronunciation": "",
-      "definition": "A vocabulary word: contemplate.",
-      "sentence_usage": "We used 'contemplate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To think deeply about something.",
+      "sentence_usage": "He sat quietly to contemplate his options.",
+      "synonyms": [
+        "Consider",
+        "Reflect",
+        "Ponder"
+      ],
+      "antonyms": [
+        "Ignore",
+        "Dismiss",
+        "Overlook"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Contented",
@@ -977,52 +1353,92 @@
     {
       "word": "context",
       "pronunciation": "",
-      "definition": "A vocabulary word: context.",
-      "sentence_usage": "We used 'context' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The circumstances that help explain meaning.",
+      "sentence_usage": "Without context, the quote seems misleading.",
+      "synonyms": [
+        "Background",
+        "Setting",
+        "Framework"
+      ],
+      "antonyms": [
+        "Isolation",
+        "Disconnect",
+        "Irrelevance"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "convention",
       "pronunciation": "",
-      "definition": "A vocabulary word: convention.",
-      "sentence_usage": "We used 'convention' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A widely accepted way of doing something or a large meeting.",
+      "sentence_usage": "By convention, we start the meeting at nine.",
+      "synonyms": [
+        "Custom",
+        "Practice",
+        "Tradition"
+      ],
+      "antonyms": [
+        "Innovation",
+        "Novelty",
+        "Deviation"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "convex",
       "pronunciation": "",
-      "definition": "A vocabulary word: convex.",
-      "sentence_usage": "We used 'convex' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Curving outward like the outside of a sphere.",
+      "sentence_usage": "A magnifying lens is usually convex.",
+      "synonyms": [
+        "Bulging",
+        "Outward-curving",
+        "Rounded"
+      ],
+      "antonyms": [
+        "Concave",
+        "Hollow",
+        "Indented"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "conviction",
       "pronunciation": "",
-      "definition": "A vocabulary word: conviction.",
-      "sentence_usage": "We used 'conviction' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A strong belief or a formal declaration of guilt in court.",
+      "sentence_usage": "She spoke with conviction about climate action.",
+      "synonyms": [
+        "Belief",
+        "Certainty",
+        "Sentence"
+      ],
+      "antonyms": [
+        "Doubt",
+        "Uncertainty",
+        "Acquittal"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "cosmetic",
       "pronunciation": "",
-      "definition": "A vocabulary word: cosmetic.",
-      "sentence_usage": "We used 'cosmetic' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Related to beauty treatment or superficial appearance.",
+      "sentence_usage": "The damage was cosmetic and did not affect safety.",
+      "synonyms": [
+        "Aesthetic",
+        "Surface",
+        "Decorative"
+      ],
+      "antonyms": [
+        "Functional",
+        "Essential",
+        "Structural"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Courageous",
@@ -1045,12 +1461,20 @@
     {
       "word": "Cove",
       "pronunciation": "",
-      "definition": "A vocabulary word: cove.",
-      "sentence_usage": "We used 'Cove' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A small sheltered bay or coastal inlet.",
+      "sentence_usage": "They anchored the boat in a quiet cove.",
+      "synonyms": [
+        "Inlet",
+        "Bay",
+        "Harbour"
+      ],
+      "antonyms": [
+        "Open sea",
+        "Ocean",
+        "Headland"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Crimson",
@@ -1091,12 +1515,20 @@
     {
       "word": "daunt",
       "pronunciation": "",
-      "definition": "A vocabulary word: daunt.",
-      "sentence_usage": "We used 'daunt' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To make someone feel intimidated or discouraged.",
+      "sentence_usage": "The steep climb did not daunt the hikers.",
+      "synonyms": [
+        "Intimidate",
+        "Deter",
+        "Discourage"
+      ],
+      "antonyms": [
+        "Encourage",
+        "Inspire",
+        "Embolden"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Dazzling",
@@ -1119,22 +1551,38 @@
     {
       "word": "debit",
       "pronunciation": "",
-      "definition": "A vocabulary word: debit.",
-      "sentence_usage": "We used 'debit' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "An entry recording money taken from an account.",
+      "sentence_usage": "The bank showed a debit for the online purchase.",
+      "synonyms": [
+        "Withdrawal",
+        "Charge",
+        "Deduction"
+      ],
+      "antonyms": [
+        "Credit",
+        "Deposit",
+        "Addition"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "defend",
       "pronunciation": "",
-      "definition": "A vocabulary word: defend.",
-      "sentence_usage": "We used 'defend' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To protect from attack or criticism.",
+      "sentence_usage": "Lawyers defend clients in court.",
+      "synonyms": [
+        "Protect",
+        "Guard",
+        "Justify"
+      ],
+      "antonyms": [
+        "Attack",
+        "Accuse",
+        "Abandon"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Defiant",
@@ -1175,22 +1623,38 @@
     {
       "word": "delusion",
       "pronunciation": "",
-      "definition": "A vocabulary word: delusion.",
-      "sentence_usage": "We used 'delusion' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A false belief held despite strong evidence against it.",
+      "sentence_usage": "The doctor treated his delusion with care.",
+      "synonyms": [
+        "Misbelief",
+        "Fantasy",
+        "Illusion"
+      ],
+      "antonyms": [
+        "Reality",
+        "Truth",
+        "Clarity"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "denote",
       "pronunciation": "",
-      "definition": "A vocabulary word: denote.",
-      "sentence_usage": "We used 'denote' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To be a sign of or to indicate clearly.",
+      "sentence_usage": "A red circle may denote danger.",
+      "synonyms": [
+        "Indicate",
+        "Signify",
+        "Mean"
+      ],
+      "antonyms": [
+        "Conceal",
+        "Obscure",
+        "Mislead"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Desolate",
@@ -1213,12 +1677,20 @@
     {
       "word": "detention",
       "pronunciation": "",
-      "definition": "A vocabulary word: detention.",
-      "sentence_usage": "We used 'detention' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A punishment where a student must stay after school.",
+      "sentence_usage": "He received detention for repeated lateness.",
+      "synonyms": [
+        "Punishment",
+        "Custody",
+        "Confinement"
+      ],
+      "antonyms": [
+        "Freedom",
+        "Release",
+        "Liberty"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Determined",
@@ -1241,32 +1713,56 @@
     {
       "word": "deterrent",
       "pronunciation": "",
-      "definition": "A vocabulary word: deterrent.",
-      "sentence_usage": "We used 'deterrent' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Something that discourages a particular action.",
+      "sentence_usage": "Visible cameras act as a deterrent to theft.",
+      "synonyms": [
+        "Discouragement",
+        "Check",
+        "Obstacle"
+      ],
+      "antonyms": [
+        "Incentive",
+        "Encouragement",
+        "Attraction"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "devout",
       "pronunciation": "",
-      "definition": "A vocabulary word: devout.",
-      "sentence_usage": "We used 'devout' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Deeply committed to a faith or belief.",
+      "sentence_usage": "Her devout grandfather attended daily prayers.",
+      "synonyms": [
+        "Pious",
+        "Religious",
+        "Faithful"
+      ],
+      "antonyms": [
+        "Irreligious",
+        "Skeptical",
+        "Secular"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "dialect",
       "pronunciation": "",
-      "definition": "A vocabulary word: dialect.",
-      "sentence_usage": "We used 'dialect' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A regional or social variety of a language.",
+      "sentence_usage": "His dialect includes words unique to the area.",
+      "synonyms": [
+        "Vernacular",
+        "Speech variety",
+        "Regional speech"
+      ],
+      "antonyms": [
+        "Standard language",
+        "Formal speech",
+        "Uniform language"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Dilapidated",
@@ -1307,22 +1803,38 @@
     {
       "word": "disconnect",
       "pronunciation": "",
-      "definition": "A vocabulary word: disconnect.",
-      "sentence_usage": "We used 'disconnect' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To separate or break a connection.",
+      "sentence_usage": "Please disconnect the charger when the battery is full.",
+      "synonyms": [
+        "Unplug",
+        "Detach",
+        "Sever"
+      ],
+      "antonyms": [
+        "Connect",
+        "Attach",
+        "Link"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "discriminate",
       "pronunciation": "",
-      "definition": "A vocabulary word: discriminate.",
-      "sentence_usage": "We used 'discriminate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To treat people unfairly based on group differences.",
+      "sentence_usage": "It is illegal to discriminate in hiring.",
+      "synonyms": [
+        "Differentiate unfairly",
+        "Prejudge",
+        "Bias against"
+      ],
+      "antonyms": [
+        "Treat equally",
+        "Include",
+        "Respect"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Disperse",
@@ -1345,32 +1857,56 @@
     {
       "word": "divert",
       "pronunciation": "",
-      "definition": "A vocabulary word: divert.",
-      "sentence_usage": "We used 'divert' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To change direction away from the usual course.",
+      "sentence_usage": "Police diverted traffic after the accident.",
+      "synonyms": [
+        "Redirect",
+        "Reroute",
+        "Deflect"
+      ],
+      "antonyms": [
+        "Continue",
+        "Maintain",
+        "Keep"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "domestic",
       "pronunciation": "",
-      "definition": "A vocabulary word: domestic.",
-      "sentence_usage": "We used 'domestic' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Related to the home or to one’s own country.",
+      "sentence_usage": "Domestic flights are usually shorter than international ones.",
+      "synonyms": [
+        "Household",
+        "Internal",
+        "National"
+      ],
+      "antonyms": [
+        "Foreign",
+        "International",
+        "External"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "drastic",
       "pronunciation": "",
-      "definition": "A vocabulary word: drastic.",
-      "sentence_usage": "We used 'drastic' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Extreme and likely to have a strong effect.",
+      "sentence_usage": "The team made drastic changes to improve results.",
+      "synonyms": [
+        "Severe",
+        "Extreme",
+        "Radical"
+      ],
+      "antonyms": [
+        "Mild",
+        "Moderate",
+        "Gentle"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Dreary",
@@ -1411,22 +1947,38 @@
     {
       "word": "duly",
       "pronunciation": "",
-      "definition": "A vocabulary word: duly.",
-      "sentence_usage": "We used 'duly' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "In the proper way or at the expected time.",
+      "sentence_usage": "The form was duly signed and submitted.",
+      "synonyms": [
+        "Properly",
+        "Appropriately",
+        "Punctually"
+      ],
+      "antonyms": [
+        "Improperly",
+        "Late",
+        "Negligently"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adverb"
     },
     {
       "word": "duration",
       "pronunciation": "",
-      "definition": "A vocabulary word: duration.",
-      "sentence_usage": "We used 'duration' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The length of time something lasts.",
+      "sentence_usage": "The exam duration is ninety minutes.",
+      "synonyms": [
+        "Length",
+        "Span",
+        "Period"
+      ],
+      "antonyms": [
+        "Instant",
+        "Moment",
+        "Briefness"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Eager",
@@ -1449,12 +2001,20 @@
     {
       "word": "earthly",
       "pronunciation": "",
-      "definition": "A vocabulary word: earthly.",
-      "sentence_usage": "We used 'earthly' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Related to life on Earth rather than spiritual matters.",
+      "sentence_usage": "He worried about earthly problems instead of ideals.",
+      "synonyms": [
+        "Worldly",
+        "Material",
+        "Temporal"
+      ],
+      "antonyms": [
+        "Spiritual",
+        "Heavenly",
+        "Ethereal"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Eerie",
@@ -1495,12 +2055,20 @@
     {
       "word": "electrocute",
       "pronunciation": "",
-      "definition": "A vocabulary word: electrocute.",
-      "sentence_usage": "We used 'electrocute' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To injure or kill with an electric shock.",
+      "sentence_usage": "Never touch exposed wires; they can electrocute you.",
+      "synonyms": [
+        "Shock",
+        "Zap",
+        "Execute electrically"
+      ],
+      "antonyms": [
+        "Insulate",
+        "Protect",
+        "Shield"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Elegant",
@@ -1541,12 +2109,20 @@
     {
       "word": "Encapsulate",
       "pronunciation": "",
-      "definition": "A vocabulary word: encapsulate.",
-      "sentence_usage": "We used 'Encapsulate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To express the main idea briefly or to enclose something.",
+      "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
+      "synonyms": [
+        "Summarize",
+        "Enclose",
+        "Capture"
+      ],
+      "antonyms": [
+        "Expand",
+        "Expose",
+        "Unpack"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Enormous",
@@ -1605,52 +2181,92 @@
     {
       "word": "epidemic",
       "pronunciation": "",
-      "definition": "A vocabulary word: epidemic.",
-      "sentence_usage": "We used 'epidemic' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A widespread outbreak of disease in a community or region.",
+      "sentence_usage": "Health officials acted quickly to control the epidemic.",
+      "synonyms": [
+        "Outbreak",
+        "Plague",
+        "Wave"
+      ],
+      "antonyms": [
+        "Containment",
+        "Recovery",
+        "Health"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "espionage",
       "pronunciation": "",
-      "definition": "A vocabulary word: espionage.",
-      "sentence_usage": "We used 'espionage' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The practice of spying to obtain secret information.",
+      "sentence_usage": "The novel follows a network involved in espionage.",
+      "synonyms": [
+        "Spying",
+        "Intelligence work",
+        "Surveillance"
+      ],
+      "antonyms": [
+        "Openness",
+        "Transparency",
+        "Disclosure"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "evasive",
       "pronunciation": "",
-      "definition": "A vocabulary word: evasive.",
-      "sentence_usage": "We used 'evasive' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Avoiding clear answers or action.",
+      "sentence_usage": "His evasive reply made everyone suspicious.",
+      "synonyms": [
+        "Vague",
+        "Elusive",
+        "Dodging"
+      ],
+      "antonyms": [
+        "Direct",
+        "Open",
+        "Straightforward"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "excerpt",
       "pronunciation": "",
-      "definition": "A vocabulary word: excerpt.",
-      "sentence_usage": "We used 'excerpt' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A short passage taken from a longer text.",
+      "sentence_usage": "We read an excerpt from the novel in class.",
+      "synonyms": [
+        "Extract",
+        "Passage",
+        "Selection"
+      ],
+      "antonyms": [
+        "Whole text",
+        "Complete work",
+        "Full version"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "exemplify",
       "pronunciation": "",
-      "definition": "A vocabulary word: exemplify.",
-      "sentence_usage": "We used 'exemplify' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To be a typical example of something.",
+      "sentence_usage": "Her patience exemplifies good leadership.",
+      "synonyms": [
+        "Demonstrate",
+        "Illustrate",
+        "Represent"
+      ],
+      "antonyms": [
+        "Contradict",
+        "Misrepresent",
+        "Disprove"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Exhausted",
@@ -1673,22 +2289,38 @@
     {
       "word": "expertise",
       "pronunciation": "",
-      "definition": "A vocabulary word: expertise.",
-      "sentence_usage": "We used 'expertise' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Special skill or deep knowledge in a subject.",
+      "sentence_usage": "We asked for her expertise in data security.",
+      "synonyms": [
+        "Skill",
+        "Mastery",
+        "Know-how"
+      ],
+      "antonyms": [
+        "Inexperience",
+        "Ignorance",
+        "Ineptitude"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "export",
       "pronunciation": "",
-      "definition": "A vocabulary word: export.",
-      "sentence_usage": "We used 'export' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To send goods to another country for sale.",
+      "sentence_usage": "The company plans to export tea to Europe.",
+      "synonyms": [
+        "Ship",
+        "Trade",
+        "Sell abroad"
+      ],
+      "antonyms": [
+        "Import",
+        "Bring in",
+        "Purchase"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Exquisite",
@@ -1711,12 +2343,20 @@
     {
       "word": "extravagant",
       "pronunciation": "",
-      "definition": "A vocabulary word: extravagant.",
-      "sentence_usage": "We used 'extravagant' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Costing too much or more than reasonable.",
+      "sentence_usage": "The hotel looked beautiful but extravagant.",
+      "synonyms": [
+        "Lavish",
+        "Excessive",
+        "Over-the-top"
+      ],
+      "antonyms": [
+        "Modest",
+        "Frugal",
+        "Simple"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Faded",
@@ -1775,22 +2415,38 @@
     {
       "word": "figurehead",
       "pronunciation": "",
-      "definition": "A vocabulary word: figurehead.",
-      "sentence_usage": "We used 'figurehead' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A person who holds a title but little real power.",
+      "sentence_usage": "The chairperson became a figurehead after the merger.",
+      "synonyms": [
+        "Nominal leader",
+        "Front",
+        "Symbol"
+      ],
+      "antonyms": [
+        "Decision-maker",
+        "Authority",
+        "Power holder"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "finite",
       "pronunciation": "",
-      "definition": "A vocabulary word: finite.",
-      "sentence_usage": "We used 'finite' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Having limits; not endless.",
+      "sentence_usage": "Our time in the lab is finite, so work carefully.",
+      "synonyms": [
+        "Limited",
+        "Bounded",
+        "Restricted"
+      ],
+      "antonyms": [
+        "Infinite",
+        "Endless",
+        "Unbounded"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Flickered",
@@ -1831,22 +2487,38 @@
     {
       "word": "forearm",
       "pronunciation": "",
-      "definition": "A vocabulary word: forearm.",
-      "sentence_usage": "We used 'forearm' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The part of the arm between the elbow and wrist.",
+      "sentence_usage": "He wore a bandage on his forearm.",
+      "synonyms": [
+        "Lower arm",
+        "Antebrachium",
+        "Arm segment"
+      ],
+      "antonyms": [
+        "Upper arm",
+        "Shoulder",
+        "Elbow"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "forfeit",
       "pronunciation": "",
-      "definition": "A vocabulary word: forfeit.",
-      "sentence_usage": "We used 'forfeit' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To lose or give up something as a penalty.",
+      "sentence_usage": "The team may forfeit the match if they arrive late.",
+      "synonyms": [
+        "Surrender",
+        "Relinquish",
+        "Lose"
+      ],
+      "antonyms": [
+        "Keep",
+        "Retain",
+        "Win"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Forlorn",
@@ -1869,12 +2541,20 @@
     {
       "word": "forsake",
       "pronunciation": "",
-      "definition": "A vocabulary word: forsake.",
-      "sentence_usage": "We used 'forsake' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To abandon or leave someone or something behind.",
+      "sentence_usage": "He chose not to forsake his old friends.",
+      "synonyms": [
+        "Abandon",
+        "Desert",
+        "Renounce"
+      ],
+      "antonyms": [
+        "Keep",
+        "Support",
+        "Remain"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Fractious",
@@ -1969,12 +2649,20 @@
     {
       "word": "furnish",
       "pronunciation": "",
-      "definition": "A vocabulary word: furnish.",
-      "sentence_usage": "We used 'furnish' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To provide furniture or to supply what is needed.",
+      "sentence_usage": "They will furnish the flat before renting it.",
+      "synonyms": [
+        "Provide",
+        "Equip",
+        "Supply"
+      ],
+      "antonyms": [
+        "Strip",
+        "Remove",
+        "Withhold"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Gargantuan",
@@ -1997,22 +2685,38 @@
     {
       "word": "gene",
       "pronunciation": "",
-      "definition": "A vocabulary word: gene.",
-      "sentence_usage": "We used 'gene' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A unit of heredity passed from parents to children.",
+      "sentence_usage": "Eye colour is influenced by more than one gene.",
+      "synonyms": [
+        "DNA segment",
+        "Hereditary unit",
+        "Genetic factor"
+      ],
+      "antonyms": [
+        "Environment",
+        "Nurture",
+        "Acquired trait"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "geology",
       "pronunciation": "",
-      "definition": "A vocabulary word: geology.",
-      "sentence_usage": "We used 'geology' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "The scientific study of Earth’s rocks and structure.",
+      "sentence_usage": "She studies geology and volcanoes at university.",
+      "synonyms": [
+        "Earth science",
+        "Geoscience",
+        "Rock science"
+      ],
+      "antonyms": [
+        "Astrology",
+        "Mythology",
+        "Alchemy"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Glimmer",
@@ -2143,22 +2847,38 @@
     {
       "word": "hack",
       "pronunciation": "",
-      "definition": "A vocabulary word: hack.",
-      "sentence_usage": "We used 'hack' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To gain unauthorized access to a computer system.",
+      "sentence_usage": "Criminals tried to hack the school database.",
+      "synonyms": [
+        "Break into",
+        "Crack",
+        "Compromise"
+      ],
+      "antonyms": [
+        "Secure",
+        "Protect",
+        "Safeguard"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "haste",
       "pronunciation": "",
-      "definition": "A vocabulary word: haste.",
-      "sentence_usage": "We used 'haste' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Excessive speed that can cause mistakes.",
+      "sentence_usage": "In her haste, she left her keys on the bus.",
+      "synonyms": [
+        "Rush",
+        "Urgency",
+        "Hurriedness"
+      ],
+      "antonyms": [
+        "Care",
+        "Leisure",
+        "Deliberation"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Haunted",
@@ -2199,12 +2919,20 @@
     {
       "word": "hereditary",
       "pronunciation": "",
-      "definition": "A vocabulary word: hereditary.",
-      "sentence_usage": "We used 'hereditary' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Passed from parent to child through genes.",
+      "sentence_usage": "Some hereditary conditions can be screened early.",
+      "synonyms": [
+        "Genetic",
+        "Inherited",
+        "Familial"
+      ],
+      "antonyms": [
+        "Acquired",
+        "Learned",
+        "Nonhereditary"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Hesitant",
@@ -2227,22 +2955,38 @@
     {
       "word": "hierarchy",
       "pronunciation": "",
-      "definition": "A vocabulary word: hierarchy.",
-      "sentence_usage": "We used 'hierarchy' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A system where people or things are ranked in levels.",
+      "sentence_usage": "The company hierarchy has clear reporting lines.",
+      "synonyms": [
+        "Ranking",
+        "Order",
+        "Pecking order"
+      ],
+      "antonyms": [
+        "Equality",
+        "Parity",
+        "Flat structure"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "hieroglyph",
       "pronunciation": "",
-      "definition": "A vocabulary word: hieroglyph.",
-      "sentence_usage": "We used 'hieroglyph' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A picture-based symbol used in ancient Egyptian writing.",
+      "sentence_usage": "The wall was covered with carved hieroglyphs.",
+      "synonyms": [
+        "Symbol",
+        "Glyph",
+        "Pictogram"
+      ],
+      "antonyms": [
+        "Alphabet letter",
+        "Plain text",
+        "Phoneme"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Hollow",
@@ -2265,12 +3009,20 @@
     {
       "word": "hospitality",
       "pronunciation": "",
-      "definition": "A vocabulary word: hospitality.",
-      "sentence_usage": "We used 'hospitality' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Friendly and generous treatment of guests.",
+      "sentence_usage": "We appreciated the family’s warm hospitality.",
+      "synonyms": [
+        "Warmth",
+        "Welcome",
+        "Generosity"
+      ],
+      "antonyms": [
+        "Hostility",
+        "Coldness",
+        "Rudeness"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Hostile",
@@ -2311,12 +3063,20 @@
     {
       "word": "humid",
       "pronunciation": "",
-      "definition": "A vocabulary word: humid.",
-      "sentence_usage": "We used 'humid' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Having a lot of moisture in the air.",
+      "sentence_usage": "It felt hot and humid before the storm.",
+      "synonyms": [
+        "Damp",
+        "Muggy",
+        "Moist"
+      ],
+      "antonyms": [
+        "Dry",
+        "Arid",
+        "Parched"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Hypothesis",
@@ -2341,12 +3101,20 @@
     {
       "word": "illicit",
       "pronunciation": "",
-      "definition": "A vocabulary word: illicit.",
-      "sentence_usage": "We used 'illicit' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Forbidden by law or accepted rules.",
+      "sentence_usage": "Police uncovered an illicit trade in stolen phones.",
+      "synonyms": [
+        "Illegal",
+        "Unlawful",
+        "Banned"
+      ],
+      "antonyms": [
+        "Legal",
+        "Lawful",
+        "Permitted"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Illuminated",
@@ -5404,12 +6172,20 @@
     {
       "word": "Vibrate",
       "pronunciation": "",
-      "definition": "A vocabulary word: vibrate.",
-      "sentence_usage": "We used 'Vibrate' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "To shake or move rapidly back and forth.",
+      "sentence_usage": "The phone began to vibrate on the desk during assembly.",
+      "synonyms": [
+        "Tremble",
+        "Quiver",
+        "Oscillate"
+      ],
+      "antonyms": [
+        "Steady",
+        "Calm",
+        "Stabilize"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Verb"
     },
     {
       "word": "Vicious",
@@ -5468,12 +6244,20 @@
     {
       "word": "virtuous",
       "pronunciation": "",
-      "definition": "A vocabulary word: virtuous.",
-      "sentence_usage": "We used 'virtuous' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "Having high moral standards; righteous.",
+      "sentence_usage": "The judge was known for making virtuous and fair decisions.",
+      "synonyms": [
+        "Moral",
+        "Upright",
+        "Ethical"
+      ],
+      "antonyms": [
+        "Corrupt",
+        "Immoral",
+        "Wicked"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Adjective"
     },
     {
       "word": "Vivid",
@@ -5622,12 +6406,20 @@
     {
       "word": "wilderness",
       "pronunciation": "",
-      "definition": "A vocabulary word: wilderness.",
-      "sentence_usage": "We used 'wilderness' in our vocabulary lesson.",
-      "synonyms": [],
-      "antonyms": [],
+      "definition": "A wild, natural area not changed much by humans.",
+      "sentence_usage": "They hiked for miles through the mountain wilderness.",
+      "synonyms": [
+        "Wilds",
+        "Outback",
+        "Backcountry"
+      ],
+      "antonyms": [
+        "City",
+        "Civilization",
+        "Suburb"
+      ],
       "usefulness_rating": 4,
-      "word_type": "Word"
+      "word_type": "Noun"
     },
     {
       "word": "Wistful",
