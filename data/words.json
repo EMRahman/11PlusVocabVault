@@ -2,7 +2,7 @@
   "words": [
     {
       "word": "abdomen",
-      "pronunciation": "",
+      "pronunciation": "AB-doh-men",
       "definition": "The part of the body between the chest and the pelvis.",
       "sentence_usage": "He felt a sharp pain in his abdomen after running.",
       "synonyms": [
@@ -38,7 +38,7 @@
     },
     {
       "word": "abuse",
-      "pronunciation": "",
+      "pronunciation": "uh-BYOOZ",
       "definition": "To use something wrongly or to treat someone cruelly.",
       "sentence_usage": "You should not abuse your privileges at school.",
       "synonyms": [
@@ -56,7 +56,7 @@
     },
     {
       "word": "acknowledge",
-      "pronunciation": "",
+      "pronunciation": "ak-NOL-ij",
       "definition": "To accept or admit that something is true or exists.",
       "sentence_usage": "She paused to acknowledge the help from her team.",
       "synonyms": [
@@ -74,7 +74,7 @@
     },
     {
       "word": "acronym",
-      "pronunciation": "",
+      "pronunciation": "AK-roh-nim",
       "definition": "A word formed from the first letters of a phrase.",
       "sentence_usage": "NASA is an acronym for the National Aeronautics and Space Administration.",
       "synonyms": [
@@ -110,9 +110,9 @@
     },
     {
       "word": "airway",
-      "pronunciation": "",
+      "pronunciation": "AIR-way",
       "definition": "A passage through which air enters and leaves the lungs.",
-      "sentence_usage": "The first aider checked that the patient’s airway was clear.",
+      "sentence_usage": "The first aider checked that the patient\u2019s airway was clear.",
       "synonyms": [
         "Breathing passage",
         "Windpipe",
@@ -128,7 +128,7 @@
     },
     {
       "word": "allege",
-      "pronunciation": "",
+      "pronunciation": "uh-LEJ",
       "definition": "To claim something without proving it yet.",
       "sentence_usage": "Witnesses allege that the contract was signed under pressure.",
       "synonyms": [
@@ -146,7 +146,7 @@
     },
     {
       "word": "allocate",
-      "pronunciation": "",
+      "pronunciation": "AL-oh-kayt",
       "definition": "To give something to someone for a particular purpose.",
       "sentence_usage": "The council will allocate extra funds to the library.",
       "synonyms": [
@@ -182,7 +182,7 @@
     },
     {
       "word": "altar",
-      "pronunciation": "",
+      "pronunciation": "AWL-ter",
       "definition": "A table or raised place used in religious ceremonies.",
       "sentence_usage": "Flowers were placed beside the altar before the service.",
       "synonyms": [
@@ -200,7 +200,7 @@
     },
     {
       "word": "amateur",
-      "pronunciation": "",
+      "pronunciation": "AM-uh-ter",
       "definition": "A person who does something for enjoyment rather than as a profession.",
       "sentence_usage": "Although an amateur, she played the violin beautifully.",
       "synonyms": [
@@ -236,7 +236,7 @@
     },
     {
       "word": "amplify",
-      "pronunciation": "",
+      "pronunciation": "AM-plih-fy",
       "definition": "To make something louder, stronger, or greater.",
       "sentence_usage": "The microphone will amplify your voice in the hall.",
       "synonyms": [
@@ -254,7 +254,7 @@
     },
     {
       "word": "analogy",
-      "pronunciation": "",
+      "pronunciation": "uh-NAL-oh-jee",
       "definition": "A comparison that explains one thing by showing how it is like another.",
       "sentence_usage": "The teacher used an analogy about traffic to explain blood flow.",
       "synonyms": [
@@ -290,7 +290,7 @@
     },
     {
       "word": "annotate",
-      "pronunciation": "",
+      "pronunciation": "AN-oh-tayt",
       "definition": "To add notes or comments to a text or diagram.",
       "sentence_usage": "Please annotate the poem with your ideas in the margin.",
       "synonyms": [
@@ -326,7 +326,7 @@
     },
     {
       "word": "Apex",
-      "pronunciation": "",
+      "pronunciation": "AY-peks",
       "definition": "The highest point or tip of something.",
       "sentence_usage": "The climbers reached the apex of the ridge at noon.",
       "synonyms": [
@@ -344,7 +344,7 @@
     },
     {
       "word": "arduous",
-      "pronunciation": "",
+      "pronunciation": "AR-joo-us",
       "definition": "Very difficult and requiring a lot of effort.",
       "sentence_usage": "Training for the marathon was an arduous process.",
       "synonyms": [
@@ -362,7 +362,7 @@
     },
     {
       "word": "artefact",
-      "pronunciation": "",
+      "pronunciation": "AR-tih-fakt",
       "definition": "An object made by humans, especially one of historical interest.",
       "sentence_usage": "The museum displayed an ancient artefact from Egypt.",
       "synonyms": [
@@ -380,7 +380,7 @@
     },
     {
       "word": "assign",
-      "pronunciation": "",
+      "pronunciation": "uh-SYN",
       "definition": "To give a task or role to someone.",
       "sentence_usage": "The coach will assign each player a position.",
       "synonyms": [
@@ -416,7 +416,7 @@
     },
     {
       "word": "atrium",
-      "pronunciation": "",
+      "pronunciation": "AY-tree-um",
       "definition": "A large open space inside a building, often with a glass roof.",
       "sentence_usage": "Sunlight filled the hotel atrium.",
       "synonyms": [
@@ -434,7 +434,7 @@
     },
     {
       "word": "avail",
-      "pronunciation": "",
+      "pronunciation": "uh-VAYL",
       "definition": "To help or be of use.",
       "sentence_usage": "All our planning will avail little without teamwork.",
       "synonyms": [
@@ -452,7 +452,7 @@
     },
     {
       "word": "avatar",
-      "pronunciation": "",
+      "pronunciation": "AV-uh-tar",
       "definition": "A digital image or character representing a user online.",
       "sentence_usage": "He designed a dragon avatar for the game.",
       "synonyms": [
@@ -470,7 +470,7 @@
     },
     {
       "word": "bacterium",
-      "pronunciation": "",
+      "pronunciation": "bak-TEER-ee-um",
       "definition": "A tiny single-celled organism, some of which can cause disease.",
       "sentence_usage": "This bacterium grows quickly in warm conditions.",
       "synonyms": [
@@ -488,7 +488,7 @@
     },
     {
       "word": "barrage",
-      "pronunciation": "",
+      "pronunciation": "buh-RAHZH",
       "definition": "A concentrated outpouring, such as of criticism or gunfire.",
       "sentence_usage": "The minister faced a barrage of questions from reporters.",
       "synonyms": [
@@ -506,7 +506,7 @@
     },
     {
       "word": "barricade",
-      "pronunciation": "",
+      "pronunciation": "BAIR-ih-kayd",
       "definition": "A barrier built to block movement or protect an area.",
       "sentence_usage": "Workers set up a barricade around the unsafe stairs.",
       "synonyms": [
@@ -560,7 +560,7 @@
     },
     {
       "word": "Beto",
-      "pronunciation": "",
+      "pronunciation": "BAY-toh",
       "definition": "A given name used for people, often as a nickname.",
       "sentence_usage": "Beto presented his science project to the class.",
       "synonyms": [
@@ -596,7 +596,7 @@
     },
     {
       "word": "bias",
-      "pronunciation": "",
+      "pronunciation": "BY-us",
       "definition": "An unfair preference for or against something.",
       "sentence_usage": "Good research tries to remove personal bias.",
       "synonyms": [
@@ -632,7 +632,7 @@
     },
     {
       "word": "bleed",
-      "pronunciation": "",
+      "pronunciation": "BLEED",
       "definition": "To lose blood from a wound.",
       "sentence_usage": "Apply pressure if the cut starts to bleed.",
       "synonyms": [
@@ -650,7 +650,7 @@
     },
     {
       "word": "blockbuster",
-      "pronunciation": "",
+      "pronunciation": "BLOK-bus-ter",
       "definition": "A very successful film, book, or product.",
       "sentence_usage": "The studio released a summer blockbuster.",
       "synonyms": [
@@ -704,7 +704,7 @@
     },
     {
       "word": "budge",
-      "pronunciation": "",
+      "pronunciation": "BUJ",
       "definition": "To move slightly or to change an opinion.",
       "sentence_usage": "The heavy sofa would not budge.",
       "synonyms": [
@@ -776,7 +776,7 @@
     },
     {
       "word": "calcium",
-      "pronunciation": "",
+      "pronunciation": "KAL-see-um",
       "definition": "A mineral needed for strong bones and teeth.",
       "sentence_usage": "Milk is a common source of calcium.",
       "synonyms": [
@@ -794,7 +794,7 @@
     },
     {
       "word": "canyon",
-      "pronunciation": "",
+      "pronunciation": "KAN-yun",
       "definition": "A deep valley with steep sides, often carved by a river.",
       "sentence_usage": "They looked down into the vast canyon below.",
       "synonyms": [
@@ -830,7 +830,7 @@
     },
     {
       "word": "cardiac",
-      "pronunciation": "",
+      "pronunciation": "KAR-dee-ak",
       "definition": "Related to the heart.",
       "sentence_usage": "The patient was moved to the cardiac unit.",
       "synonyms": [
@@ -884,7 +884,7 @@
     },
     {
       "word": "cemetery",
-      "pronunciation": "",
+      "pronunciation": "SEM-ih-tair-ee",
       "definition": "A place where people are buried.",
       "sentence_usage": "The old cemetery is beside the church.",
       "synonyms": [
@@ -902,7 +902,7 @@
     },
     {
       "word": "census",
-      "pronunciation": "",
+      "pronunciation": "SEN-sus",
       "definition": "An official count of a population.",
       "sentence_usage": "The national census is completed every ten years.",
       "synonyms": [
@@ -938,7 +938,7 @@
     },
     {
       "word": "circulate",
-      "pronunciation": "",
+      "pronunciation": "SER-kyoo-layt",
       "definition": "To move around continuously in a system or area.",
       "sentence_usage": "Fresh air must circulate through the classroom.",
       "synonyms": [
@@ -956,9 +956,9 @@
     },
     {
       "word": "circumference",
-      "pronunciation": "",
+      "pronunciation": "ser-KUM-fer-ents",
       "definition": "The distance all the way around a circle.",
-      "sentence_usage": "We measured the tree trunk’s circumference.",
+      "sentence_usage": "We measured the tree trunk\u2019s circumference.",
       "synonyms": [
         "Perimeter",
         "Boundary length",
@@ -974,7 +974,7 @@
     },
     {
       "word": "circumstance",
-      "pronunciation": "",
+      "pronunciation": "SER-kum-stans",
       "definition": "A condition or fact connected with an event.",
       "sentence_usage": "Under these circumstances, we should wait.",
       "synonyms": [
@@ -1028,7 +1028,7 @@
     },
     {
       "word": "client",
-      "pronunciation": "",
+      "pronunciation": "KLY-ent",
       "definition": "A person or organization that uses professional services.",
       "sentence_usage": "The lawyer met her client before court.",
       "synonyms": [
@@ -1046,7 +1046,7 @@
     },
     {
       "word": "clinic",
-      "pronunciation": "",
+      "pronunciation": "KLIN-ik",
       "definition": "A medical facility for diagnosis and treatment.",
       "sentence_usage": "She visited the clinic for a check-up.",
       "synonyms": [
@@ -1064,7 +1064,7 @@
     },
     {
       "word": "clone",
-      "pronunciation": "",
+      "pronunciation": "KLOHN",
       "definition": "An exact copy of a living thing or digital system.",
       "sentence_usage": "Scientists produced a clone of the plant.",
       "synonyms": [
@@ -1100,7 +1100,7 @@
     },
     {
       "word": "collective",
-      "pronunciation": "",
+      "pronunciation": "kuh-LEK-tiv",
       "definition": "Shared or done by a group together.",
       "sentence_usage": "The team made a collective decision.",
       "synonyms": [
@@ -1118,7 +1118,7 @@
     },
     {
       "word": "collision",
-      "pronunciation": "",
+      "pronunciation": "kuh-LIZH-un",
       "definition": "An impact between moving objects.",
       "sentence_usage": "Two bikes were damaged in the collision.",
       "synonyms": [
@@ -1172,7 +1172,7 @@
     },
     {
       "word": "compel",
-      "pronunciation": "",
+      "pronunciation": "kum-PEL",
       "definition": "To force or strongly persuade someone to do something.",
       "sentence_usage": "Evidence may compel the committee to act.",
       "synonyms": [
@@ -1190,7 +1190,7 @@
     },
     {
       "word": "compensate",
-      "pronunciation": "",
+      "pronunciation": "KOM-pen-sayt",
       "definition": "To make up for loss, damage, or extra effort.",
       "sentence_usage": "The company will compensate workers for overtime.",
       "synonyms": [
@@ -1208,7 +1208,7 @@
     },
     {
       "word": "concave",
-      "pronunciation": "",
+      "pronunciation": "KON-kayv",
       "definition": "Curving inward like the inside of a bowl.",
       "sentence_usage": "A spoon has a concave surface.",
       "synonyms": [
@@ -1244,7 +1244,7 @@
     },
     {
       "word": "conference",
-      "pronunciation": "",
+      "pronunciation": "KON-fer-ents",
       "definition": "A formal meeting for discussion or learning.",
       "sentence_usage": "She spoke at a science conference in London.",
       "synonyms": [
@@ -1262,7 +1262,7 @@
     },
     {
       "word": "consensus",
-      "pronunciation": "",
+      "pronunciation": "kun-SEN-sus",
       "definition": "General agreement among a group.",
       "sentence_usage": "The panel reached a consensus after debate.",
       "synonyms": [
@@ -1280,7 +1280,7 @@
     },
     {
       "word": "consumerism",
-      "pronunciation": "",
+      "pronunciation": "kun-SYOO-mer-iz-um",
       "definition": "A focus on buying goods and services in large amounts.",
       "sentence_usage": "The documentary criticized modern consumerism.",
       "synonyms": [
@@ -1298,7 +1298,7 @@
     },
     {
       "word": "contemplate",
-      "pronunciation": "",
+      "pronunciation": "KON-tem-playt",
       "definition": "To think deeply about something.",
       "sentence_usage": "He sat quietly to contemplate his options.",
       "synonyms": [
@@ -1352,7 +1352,7 @@
     },
     {
       "word": "context",
-      "pronunciation": "",
+      "pronunciation": "KON-tekst",
       "definition": "The circumstances that help explain meaning.",
       "sentence_usage": "Without context, the quote seems misleading.",
       "synonyms": [
@@ -1370,7 +1370,7 @@
     },
     {
       "word": "convention",
-      "pronunciation": "",
+      "pronunciation": "kun-VEN-shun",
       "definition": "A widely accepted way of doing something or a large meeting.",
       "sentence_usage": "By convention, we start the meeting at nine.",
       "synonyms": [
@@ -1388,7 +1388,7 @@
     },
     {
       "word": "convex",
-      "pronunciation": "",
+      "pronunciation": "KON-veks",
       "definition": "Curving outward like the outside of a sphere.",
       "sentence_usage": "A magnifying lens is usually convex.",
       "synonyms": [
@@ -1406,7 +1406,7 @@
     },
     {
       "word": "conviction",
-      "pronunciation": "",
+      "pronunciation": "kun-VIK-shun",
       "definition": "A strong belief or a formal declaration of guilt in court.",
       "sentence_usage": "She spoke with conviction about climate action.",
       "synonyms": [
@@ -1424,7 +1424,7 @@
     },
     {
       "word": "cosmetic",
-      "pronunciation": "",
+      "pronunciation": "koz-MET-ik",
       "definition": "Related to beauty treatment or superficial appearance.",
       "sentence_usage": "The damage was cosmetic and did not affect safety.",
       "synonyms": [
@@ -1460,7 +1460,7 @@
     },
     {
       "word": "Cove",
-      "pronunciation": "",
+      "pronunciation": "KOHV",
       "definition": "A small sheltered bay or coastal inlet.",
       "sentence_usage": "They anchored the boat in a quiet cove.",
       "synonyms": [
@@ -1514,7 +1514,7 @@
     },
     {
       "word": "daunt",
-      "pronunciation": "",
+      "pronunciation": "DAWNT",
       "definition": "To make someone feel intimidated or discouraged.",
       "sentence_usage": "The steep climb did not daunt the hikers.",
       "synonyms": [
@@ -1550,7 +1550,7 @@
     },
     {
       "word": "debit",
-      "pronunciation": "",
+      "pronunciation": "DEB-it",
       "definition": "An entry recording money taken from an account.",
       "sentence_usage": "The bank showed a debit for the online purchase.",
       "synonyms": [
@@ -1568,7 +1568,7 @@
     },
     {
       "word": "defend",
-      "pronunciation": "",
+      "pronunciation": "dih-FEND",
       "definition": "To protect from attack or criticism.",
       "sentence_usage": "Lawyers defend clients in court.",
       "synonyms": [
@@ -1622,7 +1622,7 @@
     },
     {
       "word": "delusion",
-      "pronunciation": "",
+      "pronunciation": "dih-LOO-zhun",
       "definition": "A false belief held despite strong evidence against it.",
       "sentence_usage": "The doctor treated his delusion with care.",
       "synonyms": [
@@ -1640,7 +1640,7 @@
     },
     {
       "word": "denote",
-      "pronunciation": "",
+      "pronunciation": "dih-NOHT",
       "definition": "To be a sign of or to indicate clearly.",
       "sentence_usage": "A red circle may denote danger.",
       "synonyms": [
@@ -1676,7 +1676,7 @@
     },
     {
       "word": "detention",
-      "pronunciation": "",
+      "pronunciation": "dih-TEN-shun",
       "definition": "A punishment where a student must stay after school.",
       "sentence_usage": "He received detention for repeated lateness.",
       "synonyms": [
@@ -1712,7 +1712,7 @@
     },
     {
       "word": "deterrent",
-      "pronunciation": "",
+      "pronunciation": "dih-TER-ent",
       "definition": "Something that discourages a particular action.",
       "sentence_usage": "Visible cameras act as a deterrent to theft.",
       "synonyms": [
@@ -1730,7 +1730,7 @@
     },
     {
       "word": "devout",
-      "pronunciation": "",
+      "pronunciation": "dih-VOWT",
       "definition": "Deeply committed to a faith or belief.",
       "sentence_usage": "Her devout grandfather attended daily prayers.",
       "synonyms": [
@@ -1748,7 +1748,7 @@
     },
     {
       "word": "dialect",
-      "pronunciation": "",
+      "pronunciation": "DY-uh-lekt",
       "definition": "A regional or social variety of a language.",
       "sentence_usage": "His dialect includes words unique to the area.",
       "synonyms": [
@@ -1802,7 +1802,7 @@
     },
     {
       "word": "disconnect",
-      "pronunciation": "",
+      "pronunciation": "dis-kuh-NEKT",
       "definition": "To separate or break a connection.",
       "sentence_usage": "Please disconnect the charger when the battery is full.",
       "synonyms": [
@@ -1820,7 +1820,7 @@
     },
     {
       "word": "discriminate",
-      "pronunciation": "",
+      "pronunciation": "dis-KRIM-ih-nayt",
       "definition": "To treat people unfairly based on group differences.",
       "sentence_usage": "It is illegal to discriminate in hiring.",
       "synonyms": [
@@ -1856,7 +1856,7 @@
     },
     {
       "word": "divert",
-      "pronunciation": "",
+      "pronunciation": "dy-VERT",
       "definition": "To change direction away from the usual course.",
       "sentence_usage": "Police diverted traffic after the accident.",
       "synonyms": [
@@ -1874,8 +1874,8 @@
     },
     {
       "word": "domestic",
-      "pronunciation": "",
-      "definition": "Related to the home or to one’s own country.",
+      "pronunciation": "duh-MES-tik",
+      "definition": "Related to the home or to one\u2019s own country.",
       "sentence_usage": "Domestic flights are usually shorter than international ones.",
       "synonyms": [
         "Household",
@@ -1892,7 +1892,7 @@
     },
     {
       "word": "drastic",
-      "pronunciation": "",
+      "pronunciation": "DRAS-tik",
       "definition": "Extreme and likely to have a strong effect.",
       "sentence_usage": "The team made drastic changes to improve results.",
       "synonyms": [
@@ -1946,7 +1946,7 @@
     },
     {
       "word": "duly",
-      "pronunciation": "",
+      "pronunciation": "DYOO-lee",
       "definition": "In the proper way or at the expected time.",
       "sentence_usage": "The form was duly signed and submitted.",
       "synonyms": [
@@ -1964,7 +1964,7 @@
     },
     {
       "word": "duration",
-      "pronunciation": "",
+      "pronunciation": "dyoo-RAY-shun",
       "definition": "The length of time something lasts.",
       "sentence_usage": "The exam duration is ninety minutes.",
       "synonyms": [
@@ -2000,7 +2000,7 @@
     },
     {
       "word": "earthly",
-      "pronunciation": "",
+      "pronunciation": "ERTH-lee",
       "definition": "Related to life on Earth rather than spiritual matters.",
       "sentence_usage": "He worried about earthly problems instead of ideals.",
       "synonyms": [
@@ -2054,7 +2054,7 @@
     },
     {
       "word": "electrocute",
-      "pronunciation": "",
+      "pronunciation": "ih-LEK-troh-kyoot",
       "definition": "To injure or kill with an electric shock.",
       "sentence_usage": "Never touch exposed wires; they can electrocute you.",
       "synonyms": [
@@ -2108,7 +2108,7 @@
     },
     {
       "word": "Encapsulate",
-      "pronunciation": "",
+      "pronunciation": "en-KAP-syoo-layt",
       "definition": "To express the main idea briefly or to enclose something.",
       "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
       "synonyms": [
@@ -2180,7 +2180,7 @@
     },
     {
       "word": "epidemic",
-      "pronunciation": "",
+      "pronunciation": "ep-ih-DEM-ik",
       "definition": "A widespread outbreak of disease in a community or region.",
       "sentence_usage": "Health officials acted quickly to control the epidemic.",
       "synonyms": [
@@ -2198,7 +2198,7 @@
     },
     {
       "word": "espionage",
-      "pronunciation": "",
+      "pronunciation": "ES-pee-uh-nahzh",
       "definition": "The practice of spying to obtain secret information.",
       "sentence_usage": "The novel follows a network involved in espionage.",
       "synonyms": [
@@ -2216,7 +2216,7 @@
     },
     {
       "word": "evasive",
-      "pronunciation": "",
+      "pronunciation": "ih-VAY-siv",
       "definition": "Avoiding clear answers or action.",
       "sentence_usage": "His evasive reply made everyone suspicious.",
       "synonyms": [
@@ -2234,7 +2234,7 @@
     },
     {
       "word": "excerpt",
-      "pronunciation": "",
+      "pronunciation": "EK-serpt",
       "definition": "A short passage taken from a longer text.",
       "sentence_usage": "We read an excerpt from the novel in class.",
       "synonyms": [
@@ -2252,7 +2252,7 @@
     },
     {
       "word": "exemplify",
-      "pronunciation": "",
+      "pronunciation": "ig-ZEM-plih-fy",
       "definition": "To be a typical example of something.",
       "sentence_usage": "Her patience exemplifies good leadership.",
       "synonyms": [
@@ -2288,7 +2288,7 @@
     },
     {
       "word": "expertise",
-      "pronunciation": "",
+      "pronunciation": "ek-sper-TEEZ",
       "definition": "Special skill or deep knowledge in a subject.",
       "sentence_usage": "We asked for her expertise in data security.",
       "synonyms": [
@@ -2306,7 +2306,7 @@
     },
     {
       "word": "export",
-      "pronunciation": "",
+      "pronunciation": "EK-sport",
       "definition": "To send goods to another country for sale.",
       "sentence_usage": "The company plans to export tea to Europe.",
       "synonyms": [
@@ -2342,7 +2342,7 @@
     },
     {
       "word": "extravagant",
-      "pronunciation": "",
+      "pronunciation": "ik-STRAV-uh-gunt",
       "definition": "Costing too much or more than reasonable.",
       "sentence_usage": "The hotel looked beautiful but extravagant.",
       "synonyms": [
@@ -2414,7 +2414,7 @@
     },
     {
       "word": "figurehead",
-      "pronunciation": "",
+      "pronunciation": "FIG-yer-hed",
       "definition": "A person who holds a title but little real power.",
       "sentence_usage": "The chairperson became a figurehead after the merger.",
       "synonyms": [
@@ -2432,7 +2432,7 @@
     },
     {
       "word": "finite",
-      "pronunciation": "",
+      "pronunciation": "FY-nyt",
       "definition": "Having limits; not endless.",
       "sentence_usage": "Our time in the lab is finite, so work carefully.",
       "synonyms": [
@@ -2486,7 +2486,7 @@
     },
     {
       "word": "forearm",
-      "pronunciation": "",
+      "pronunciation": "FOR-arm",
       "definition": "The part of the arm between the elbow and wrist.",
       "sentence_usage": "He wore a bandage on his forearm.",
       "synonyms": [
@@ -2504,7 +2504,7 @@
     },
     {
       "word": "forfeit",
-      "pronunciation": "",
+      "pronunciation": "FOR-fit",
       "definition": "To lose or give up something as a penalty.",
       "sentence_usage": "The team may forfeit the match if they arrive late.",
       "synonyms": [
@@ -2540,7 +2540,7 @@
     },
     {
       "word": "forsake",
-      "pronunciation": "",
+      "pronunciation": "for-SAYK",
       "definition": "To abandon or leave someone or something behind.",
       "sentence_usage": "He chose not to forsake his old friends.",
       "synonyms": [
@@ -2648,7 +2648,7 @@
     },
     {
       "word": "furnish",
-      "pronunciation": "",
+      "pronunciation": "FER-nish",
       "definition": "To provide furniture or to supply what is needed.",
       "sentence_usage": "They will furnish the flat before renting it.",
       "synonyms": [
@@ -2684,7 +2684,7 @@
     },
     {
       "word": "gene",
-      "pronunciation": "",
+      "pronunciation": "JEEN",
       "definition": "A unit of heredity passed from parents to children.",
       "sentence_usage": "Eye colour is influenced by more than one gene.",
       "synonyms": [
@@ -2702,8 +2702,8 @@
     },
     {
       "word": "geology",
-      "pronunciation": "",
-      "definition": "The scientific study of Earth’s rocks and structure.",
+      "pronunciation": "jee-OL-oh-jee",
+      "definition": "The scientific study of Earth\u2019s rocks and structure.",
       "sentence_usage": "She studies geology and volcanoes at university.",
       "synonyms": [
         "Earth science",
@@ -2846,7 +2846,7 @@
     },
     {
       "word": "hack",
-      "pronunciation": "",
+      "pronunciation": "HAK",
       "definition": "To gain unauthorized access to a computer system.",
       "sentence_usage": "Criminals tried to hack the school database.",
       "synonyms": [
@@ -2864,7 +2864,7 @@
     },
     {
       "word": "haste",
-      "pronunciation": "",
+      "pronunciation": "HAYST",
       "definition": "Excessive speed that can cause mistakes.",
       "sentence_usage": "In her haste, she left her keys on the bus.",
       "synonyms": [
@@ -2918,7 +2918,7 @@
     },
     {
       "word": "hereditary",
-      "pronunciation": "",
+      "pronunciation": "huh-RED-ih-tair-ee",
       "definition": "Passed from parent to child through genes.",
       "sentence_usage": "Some hereditary conditions can be screened early.",
       "synonyms": [
@@ -2954,7 +2954,7 @@
     },
     {
       "word": "hierarchy",
-      "pronunciation": "",
+      "pronunciation": "HY-er-ar-kee",
       "definition": "A system where people or things are ranked in levels.",
       "sentence_usage": "The company hierarchy has clear reporting lines.",
       "synonyms": [
@@ -2972,7 +2972,7 @@
     },
     {
       "word": "hieroglyph",
-      "pronunciation": "",
+      "pronunciation": "HY-er-oh-glif",
       "definition": "A picture-based symbol used in ancient Egyptian writing.",
       "sentence_usage": "The wall was covered with carved hieroglyphs.",
       "synonyms": [
@@ -3008,9 +3008,9 @@
     },
     {
       "word": "hospitality",
-      "pronunciation": "",
+      "pronunciation": "hos-pih-TAL-ih-tee",
       "definition": "Friendly and generous treatment of guests.",
-      "sentence_usage": "We appreciated the family’s warm hospitality.",
+      "sentence_usage": "We appreciated the family\u2019s warm hospitality.",
       "synonyms": [
         "Warmth",
         "Welcome",
@@ -3062,7 +3062,7 @@
     },
     {
       "word": "humid",
-      "pronunciation": "",
+      "pronunciation": "HYOO-mid",
       "definition": "Having a lot of moisture in the air.",
       "sentence_usage": "It felt hot and humid before the storm.",
       "synonyms": [
@@ -3080,7 +3080,7 @@
     },
     {
       "word": "Hypothesis",
-      "pronunciation": "",
+      "pronunciation": "hy-POTH-uh-sis",
       "definition": "A proposed explanation for something that can be tested.",
       "sentence_usage": "The scientist formed a hypothesis before beginning her experiment.",
       "synonyms": [
@@ -3098,7 +3098,7 @@
     },
     {
       "word": "Illegible",
-      "pronunciation": "",
+      "pronunciation": "ih-LEJ-ih-bul",
       "definition": "Impossible or very difficult to read.",
       "sentence_usage": "His handwriting was so messy it was almost illegible.",
       "synonyms": [
@@ -3116,7 +3116,7 @@
     },
     {
       "word": "illicit",
-      "pronunciation": "",
+      "pronunciation": "ih-LIS-it",
       "definition": "Forbidden by law or accepted rules.",
       "sentence_usage": "Police uncovered an illicit trade in stolen phones.",
       "synonyms": [
@@ -3170,7 +3170,7 @@
     },
     {
       "word": "Immortal",
-      "pronunciation": "",
+      "pronunciation": "ih-MOR-tul",
       "definition": "Living or lasting forever; never dying.",
       "sentence_usage": "The ancient Greeks believed their gods were immortal.",
       "synonyms": [
@@ -3206,7 +3206,7 @@
     },
     {
       "word": "Impermeable",
-      "pronunciation": "",
+      "pronunciation": "im-PER-mee-uh-bul",
       "definition": "Not allowing liquid or gas to pass through.",
       "sentence_usage": "The impermeable membrane kept the water from seeping through.",
       "synonyms": [
@@ -3242,7 +3242,7 @@
     },
     {
       "word": "Imprison",
-      "pronunciation": "",
+      "pronunciation": "im-PRIZ-un",
       "definition": "To put or keep someone in prison.",
       "sentence_usage": "The judge decided to imprison the thief for two years.",
       "synonyms": [
@@ -3278,7 +3278,7 @@
     },
     {
       "word": "Incompatible",
-      "pronunciation": "",
+      "pronunciation": "in-kum-PAT-ih-bul",
       "definition": "Unable to exist or work together in harmony.",
       "sentence_usage": "Their personalities were completely incompatible, so they argued constantly.",
       "synonyms": [
@@ -3296,7 +3296,7 @@
     },
     {
       "word": "Inconsistent",
-      "pronunciation": "",
+      "pronunciation": "in-kun-SIS-tent",
       "definition": "Not staying the same; changing or varying.",
       "sentence_usage": "His inconsistent effort meant his grades kept going up and down.",
       "synonyms": [
@@ -3314,7 +3314,7 @@
     },
     {
       "word": "Indescribable",
-      "pronunciation": "",
+      "pronunciation": "in-dih-SKRY-buh-bul",
       "definition": "Too unusual or extreme to be described in words.",
       "sentence_usage": "The view from the summit was indescribable in its beauty.",
       "synonyms": [
@@ -3332,7 +3332,7 @@
     },
     {
       "word": "Inedible",
-      "pronunciation": "",
+      "pronunciation": "in-ED-ih-bul",
       "definition": "Not fit or safe to be eaten.",
       "sentence_usage": "The mushrooms turned out to be inedible and were thrown away.",
       "synonyms": [
@@ -3368,7 +3368,7 @@
     },
     {
       "word": "Inflection",
-      "pronunciation": "",
+      "pronunciation": "in-FLEK-shun",
       "definition": "A change in the tone or pitch of the voice; also a change in word form.",
       "sentence_usage": "She used different inflections to show whether she was asking a question or making a statement.",
       "synonyms": [
@@ -3386,7 +3386,7 @@
     },
     {
       "word": "Infuse",
-      "pronunciation": "",
+      "pronunciation": "in-FYOOZ",
       "definition": "To fill something with a quality or to soak a substance to extract its flavour.",
       "sentence_usage": "She left the herbs to infuse in hot water to make a soothing tea.",
       "synonyms": [
@@ -3422,7 +3422,7 @@
     },
     {
       "word": "Inscription",
-      "pronunciation": "",
+      "pronunciation": "in-SKRIP-shun",
       "definition": "Words carved, printed, or written on a surface.",
       "sentence_usage": "There was a Latin inscription carved into the stone arch of the cathedral.",
       "synonyms": [
@@ -3440,7 +3440,7 @@
     },
     {
       "word": "Insight",
-      "pronunciation": "",
+      "pronunciation": "IN-syt",
       "definition": "A clear and deep understanding of something.",
       "sentence_usage": "Reading widely gave her great insight into human nature.",
       "synonyms": [
@@ -3458,7 +3458,7 @@
     },
     {
       "word": "Install",
-      "pronunciation": "",
+      "pronunciation": "in-STAWL",
       "definition": "To put something in place so it is ready to use.",
       "sentence_usage": "The engineer came to install the new heating system.",
       "synonyms": [
@@ -3476,7 +3476,7 @@
     },
     {
       "word": "Interfere",
-      "pronunciation": "",
+      "pronunciation": "in-ter-FEER",
       "definition": "To become involved in something when you are not wanted.",
       "sentence_usage": "He always tried to interfere in his sister's affairs, which annoyed her greatly.",
       "synonyms": [
@@ -3494,7 +3494,7 @@
     },
     {
       "word": "Invoice",
-      "pronunciation": "",
+      "pronunciation": "IN-voys",
       "definition": "A written list of goods or services provided with the amount owed.",
       "sentence_usage": "The plumber sent an invoice for the repair work he had completed.",
       "synonyms": [
@@ -3548,7 +3548,7 @@
     },
     {
       "word": "Kiln",
-      "pronunciation": "",
+      "pronunciation": "KIL",
       "definition": "A large oven used for baking or drying materials such as clay or bricks.",
       "sentence_usage": "The potter placed the clay pots in the kiln to harden them.",
       "synonyms": [
@@ -3620,7 +3620,7 @@
     },
     {
       "word": "Lapse",
-      "pronunciation": "",
+      "pronunciation": "LAPS",
       "definition": "A temporary failure or a period of time passing.",
       "sentence_usage": "A momentary lapse in concentration caused him to make the mistake.",
       "synonyms": [
@@ -3656,7 +3656,7 @@
     },
     {
       "word": "Lawful",
-      "pronunciation": "",
+      "pronunciation": "LAW-ful",
       "definition": "Allowed by the law; legal.",
       "sentence_usage": "It is not lawful to drive without a valid licence.",
       "synonyms": [
@@ -3674,7 +3674,7 @@
     },
     {
       "word": "Legacy",
-      "pronunciation": "",
+      "pronunciation": "LEG-uh-see",
       "definition": "Something left behind by a person, such as money or an achievement.",
       "sentence_usage": "The scientist's greatest legacy was her discovery of a cure for the disease.",
       "synonyms": [
@@ -3710,7 +3710,7 @@
     },
     {
       "word": "Livelihood",
-      "pronunciation": "",
+      "pronunciation": "LYV-lee-hood",
       "definition": "A means of earning money in order to live.",
       "sentence_usage": "Farming was his family's main livelihood for generations.",
       "synonyms": [
@@ -3800,7 +3800,7 @@
     },
     {
       "word": "Mandate",
-      "pronunciation": "",
+      "pronunciation": "MAN-dayt",
       "definition": "An official order or authority to do something.",
       "sentence_usage": "The government was given a mandate by voters to reform the health service.",
       "synonyms": [
@@ -3818,7 +3818,7 @@
     },
     {
       "word": "Mantra",
-      "pronunciation": "",
+      "pronunciation": "MAN-truh",
       "definition": "A word or phrase repeated often, especially in meditation or as a belief.",
       "sentence_usage": "Her personal mantra was to never give up, no matter the challenge.",
       "synonyms": [
@@ -3836,7 +3836,7 @@
     },
     {
       "word": "Matrix",
-      "pronunciation": "",
+      "pronunciation": "MAY-triks",
       "definition": "An environment or framework in which something develops; also a grid of numbers.",
       "sentence_usage": "The city's road network formed a complex matrix of routes.",
       "synonyms": [
@@ -3890,7 +3890,7 @@
     },
     {
       "word": "Memorial",
-      "pronunciation": "",
+      "pronunciation": "muh-MOR-ee-ul",
       "definition": "Something built or done to honour the memory of a person or event.",
       "sentence_usage": "A stone memorial was erected in the town square to remember those lost in the war.",
       "synonyms": [
@@ -3926,7 +3926,7 @@
     },
     {
       "word": "Microchip",
-      "pronunciation": "",
+      "pronunciation": "MY-kroh-chip",
       "definition": "A tiny piece of silicon used in electronic devices to process information.",
       "sentence_usage": "The dog was fitted with a microchip so it could be identified if lost.",
       "synonyms": [
@@ -3980,7 +3980,7 @@
     },
     {
       "word": "Misinterpret",
-      "pronunciation": "",
+      "pronunciation": "mis-in-TER-prit",
       "definition": "To understand or explain something incorrectly.",
       "sentence_usage": "She misinterpreted his silence as rudeness when he was simply thinking.",
       "synonyms": [
@@ -4070,7 +4070,7 @@
     },
     {
       "word": "Neglect",
-      "pronunciation": "",
+      "pronunciation": "nuh-GLEKT",
       "definition": "To fail to care for someone or something properly.",
       "sentence_usage": "If you neglect your plants and forget to water them, they will wilt.",
       "synonyms": [
@@ -4088,7 +4088,7 @@
     },
     {
       "word": "Nervous",
-      "pronunciation": "",
+      "pronunciation": "NER-vus",
       "definition": "Feeling worried or anxious about something.",
       "sentence_usage": "She felt nervous before going on stage for the first time.",
       "synonyms": [
@@ -4196,7 +4196,7 @@
     },
     {
       "word": "Nutrition",
-      "pronunciation": "",
+      "pronunciation": "nyoo-TRISH-un",
       "definition": "The process of eating the right foods to stay healthy; the study of food and health.",
       "sentence_usage": "Good nutrition is essential for children's growth and development.",
       "synonyms": [
@@ -4250,7 +4250,7 @@
     },
     {
       "word": "Obsession",
-      "pronunciation": "",
+      "pronunciation": "ob-SESH-un",
       "definition": "An idea or feeling that occupies the mind too much.",
       "sentence_usage": "His obsession with football meant he thought of little else.",
       "synonyms": [
@@ -4286,7 +4286,7 @@
     },
     {
       "word": "Opportune",
-      "pronunciation": "",
+      "pronunciation": "op-er-TYOON",
       "definition": "Happening at a particularly suitable or favourable time.",
       "sentence_usage": "Her arrival at an opportune moment helped solve the problem quickly.",
       "synonyms": [
@@ -4358,7 +4358,7 @@
     },
     {
       "word": "Palm",
-      "pronunciation": "",
+      "pronunciation": "PAHM",
       "definition": "The inner surface of the hand; also a tropical tree.",
       "sentence_usage": "She held the small bird gently in the palm of her hand.",
       "synonyms": [
@@ -4376,7 +4376,7 @@
     },
     {
       "word": "Panorama",
-      "pronunciation": "",
+      "pronunciation": "pan-uh-RAH-muh",
       "definition": "A wide, unbroken view of a large area.",
       "sentence_usage": "From the hilltop, there was a breathtaking panorama of the valley below.",
       "synonyms": [
@@ -4394,7 +4394,7 @@
     },
     {
       "word": "Paraphrase",
-      "pronunciation": "",
+      "pronunciation": "PAIR-uh-frayz",
       "definition": "To express the meaning of something using different words.",
       "sentence_usage": "The teacher asked the pupils to paraphrase the poem in their own words.",
       "synonyms": [
@@ -4412,7 +4412,7 @@
     },
     {
       "word": "Passive",
-      "pronunciation": "",
+      "pronunciation": "PAS-iv",
       "definition": "Accepting what happens without taking action; not active.",
       "sentence_usage": "He took a passive role in the discussion, letting others make the decisions.",
       "synonyms": [
@@ -4430,7 +4430,7 @@
     },
     {
       "word": "Pattern",
-      "pronunciation": "",
+      "pronunciation": "PAT-ern",
       "definition": "A repeated design or sequence of things.",
       "sentence_usage": "The tiles on the floor formed a beautiful geometric pattern.",
       "synonyms": [
@@ -4466,7 +4466,7 @@
     },
     {
       "word": "Perception",
-      "pronunciation": "",
+      "pronunciation": "per-SEP-shun",
       "definition": "The way in which something is understood or interpreted by the senses or mind.",
       "sentence_usage": "His perception of the situation was different from everyone else's.",
       "synonyms": [
@@ -4592,7 +4592,7 @@
     },
     {
       "word": "Plagiarise",
-      "pronunciation": "",
+      "pronunciation": "PLAY-juh-ryz",
       "definition": "To use someone else's work or ideas and present them as your own.",
       "sentence_usage": "It is dishonest to plagiarise another author's writing.",
       "synonyms": [
@@ -4610,7 +4610,7 @@
     },
     {
       "word": "Plateau",
-      "pronunciation": "",
+      "pronunciation": "PLAT-oh",
       "definition": "A flat area of high land; also a period when there is no progress.",
       "sentence_usage": "The explorers reached a wide plateau after climbing the steep slope.",
       "synonyms": [
@@ -4628,7 +4628,7 @@
     },
     {
       "word": "Pneumatic",
-      "pronunciation": "",
+      "pronunciation": "nyoo-MAT-ik",
       "definition": "Operated by or filled with compressed air.",
       "sentence_usage": "The mechanic used a pneumatic drill to loosen the bolts.",
       "synonyms": [
@@ -4700,7 +4700,7 @@
     },
     {
       "word": "Preservation",
-      "pronunciation": "",
+      "pronunciation": "prez-er-VAY-shun",
       "definition": "The act of keeping something safe from harm or decay.",
       "sentence_usage": "The preservation of ancient buildings is important for future generations.",
       "synonyms": [
@@ -4736,7 +4736,7 @@
     },
     {
       "word": "Progressive",
-      "pronunciation": "",
+      "pronunciation": "pruh-GRES-iv",
       "definition": "Happening or developing gradually over time; favouring new ideas.",
       "sentence_usage": "The school took a progressive approach to teaching, using technology in every lesson.",
       "synonyms": [
@@ -4754,7 +4754,7 @@
     },
     {
       "word": "Prominent",
-      "pronunciation": "",
+      "pronunciation": "PROM-ih-nent",
       "definition": "Important, well known, or easily seen.",
       "sentence_usage": "The cathedral was the most prominent building in the city skyline.",
       "synonyms": [
@@ -4790,7 +4790,7 @@
     },
     {
       "word": "Provision",
-      "pronunciation": "",
+      "pronunciation": "pruh-VIZH-un",
       "definition": "The action of supplying something; also a condition in an agreement.",
       "sentence_usage": "The charity focused on the provision of food to those in need.",
       "synonyms": [
@@ -4808,7 +4808,7 @@
     },
     {
       "word": "Proximity",
-      "pronunciation": "",
+      "pronunciation": "prok-SIM-ih-tee",
       "definition": "Nearness in space, time, or relationship.",
       "sentence_usage": "The school was chosen because of its proximity to their home.",
       "synonyms": [
@@ -4826,7 +4826,7 @@
     },
     {
       "word": "Publication",
-      "pronunciation": "",
+      "pronunciation": "pub-lih-KAY-shun",
       "definition": "A book, magazine, or other printed work; the act of publishing.",
       "sentence_usage": "The publication of her first novel was a proud moment.",
       "synonyms": [
@@ -4862,7 +4862,7 @@
     },
     {
       "word": "Putrid",
-      "pronunciation": "",
+      "pronunciation": "PYOO-trid",
       "definition": "Decaying and having a foul smell.",
       "sentence_usage": "The putrid smell from the bin told them it needed emptying urgently.",
       "synonyms": [
@@ -4898,7 +4898,7 @@
     },
     {
       "word": "Questionnaire",
-      "pronunciation": "",
+      "pronunciation": "kwes-chun-AIR",
       "definition": "A set of printed questions used to collect information.",
       "sentence_usage": "Each student filled in a questionnaire about their favourite subjects.",
       "synonyms": [
@@ -4952,7 +4952,7 @@
     },
     {
       "word": "Radioactive",
-      "pronunciation": "",
+      "pronunciation": "ray-dee-oh-AK-tiv",
       "definition": "Emitting harmful radiation from the nuclei of atoms.",
       "sentence_usage": "The scientists handled the radioactive material with great care.",
       "synonyms": [
@@ -4988,7 +4988,7 @@
     },
     {
       "word": "Rational",
-      "pronunciation": "",
+      "pronunciation": "RASH-un-ul",
       "definition": "Based on reason and clear thinking, rather than emotion.",
       "sentence_usage": "He tried to remain rational despite feeling upset about the decision.",
       "synonyms": [
@@ -5024,7 +5024,7 @@
     },
     {
       "word": "Reactivate",
-      "pronunciation": "",
+      "pronunciation": "ree-AK-tih-vayt",
       "definition": "To make something active or operational again.",
       "sentence_usage": "The engineers worked overnight to reactivate the broken power system.",
       "synonyms": [
@@ -5042,7 +5042,7 @@
     },
     {
       "word": "Reactive",
-      "pronunciation": "",
+      "pronunciation": "ree-AK-tiv",
       "definition": "Responding to events rather than creating or controlling them; also chemically responsive.",
       "sentence_usage": "A reactive approach to problems means you wait for things to go wrong before acting.",
       "synonyms": [
@@ -5060,7 +5060,7 @@
     },
     {
       "word": "Realm",
-      "pronunciation": "",
+      "pronunciation": "RELM",
       "definition": "A kingdom or a field of activity or knowledge.",
       "sentence_usage": "The wizard was the most powerful sorcerer in the realm.",
       "synonyms": [
@@ -5096,7 +5096,7 @@
     },
     {
       "word": "Rebuke",
-      "pronunciation": "",
+      "pronunciation": "rih-BYOOK",
       "definition": "To speak severely to someone because they have done something wrong.",
       "sentence_usage": "The teacher had to rebuke the pupils for talking during the exam.",
       "synonyms": [
@@ -5132,7 +5132,7 @@
     },
     {
       "word": "Rectify",
-      "pronunciation": "",
+      "pronunciation": "REK-tih-fy",
       "definition": "To put something right; to correct a mistake.",
       "sentence_usage": "The company promised to rectify the error in the bill as soon as possible.",
       "synonyms": [
@@ -5150,7 +5150,7 @@
     },
     {
       "word": "Regime",
-      "pronunciation": "",
+      "pronunciation": "ruh-ZHEEM",
       "definition": "A system of government; also a set of rules or a routine.",
       "sentence_usage": "The country suffered under a harsh military regime for many years.",
       "synonyms": [
@@ -5168,7 +5168,7 @@
     },
     {
       "word": "Rehabilitate",
-      "pronunciation": "",
+      "pronunciation": "ree-huh-BIL-ih-tayt",
       "definition": "To restore someone to good health or a normal life; to restore something to good condition.",
       "sentence_usage": "The charity worked to rehabilitate injured birds before releasing them into the wild.",
       "synonyms": [
@@ -5204,7 +5204,7 @@
     },
     {
       "word": "Rephrase",
-      "pronunciation": "",
+      "pronunciation": "ree-FRAYZ",
       "definition": "To express something in a different way, often more clearly.",
       "sentence_usage": "The teacher asked him to rephrase his answer so it made more sense.",
       "synonyms": [
@@ -5258,7 +5258,7 @@
     },
     {
       "word": "Resolution",
-      "pronunciation": "",
+      "pronunciation": "rez-uh-LOO-shun",
       "definition": "A firm decision to do or not to do something; the quality of being determined.",
       "sentence_usage": "She made a New Year's resolution to read one book every month.",
       "synonyms": [
@@ -5294,7 +5294,7 @@
     },
     {
       "word": "Rigour",
-      "pronunciation": "",
+      "pronunciation": "RIG-er",
       "definition": "The quality of being thorough and careful; also harsh conditions.",
       "sentence_usage": "The rigour of the training programme prepared the athletes for competition.",
       "synonyms": [
@@ -5330,7 +5330,7 @@
     },
     {
       "word": "Rite",
-      "pronunciation": "",
+      "pronunciation": "RYT",
       "definition": "A religious or solemn ceremony or act.",
       "sentence_usage": "Lighting candles was an important rite in their religious tradition.",
       "synonyms": [
@@ -5384,7 +5384,7 @@
     },
     {
       "word": "Saga",
-      "pronunciation": "",
+      "pronunciation": "SAH-guh",
       "definition": "A long story of adventure or a series of events.",
       "sentence_usage": "The film series told the saga of a family across three generations.",
       "synonyms": [
@@ -5438,7 +5438,7 @@
     },
     {
       "word": "Scout",
-      "pronunciation": "",
+      "pronunciation": "SKOWT",
       "definition": "To search an area for information; a person sent to gather information.",
       "sentence_usage": "She was sent to scout the area ahead before the rest of the team moved forward.",
       "synonyms": [
@@ -5456,7 +5456,7 @@
     },
     {
       "word": "Scrutinise",
-      "pronunciation": "",
+      "pronunciation": "SKROO-tih-nyz",
       "definition": "To examine something very carefully.",
       "sentence_usage": "The inspector began to scrutinise every document in the file.",
       "synonyms": [
@@ -5492,7 +5492,7 @@
     },
     {
       "word": "Secrete",
-      "pronunciation": "",
+      "pronunciation": "sih-KREET",
       "definition": "To produce and release a substance; also to hide something.",
       "sentence_usage": "Certain glands secrete hormones that regulate the body's functions.",
       "synonyms": [
@@ -5510,7 +5510,7 @@
     },
     {
       "word": "Sector",
-      "pronunciation": "",
+      "pronunciation": "SEK-ter",
       "definition": "A distinct part or branch of something, such as an economy or area.",
       "sentence_usage": "The technology sector has grown rapidly over the past decade.",
       "synonyms": [
@@ -5528,7 +5528,7 @@
     },
     {
       "word": "Sediment",
-      "pronunciation": "",
+      "pronunciation": "SED-ih-ment",
       "definition": "Matter that settles to the bottom of a liquid; also material deposited by water or wind.",
       "sentence_usage": "Layers of sediment at the bottom of the river revealed centuries of geological history.",
       "synonyms": [
@@ -5546,7 +5546,7 @@
     },
     {
       "word": "Sentiment",
-      "pronunciation": "",
+      "pronunciation": "SEN-tih-ment",
       "definition": "A feeling or opinion about something; emotion rather than reason.",
       "sentence_usage": "There was a strong public sentiment against the new development.",
       "synonyms": [
@@ -5635,7 +5635,7 @@
     },
     {
       "word": "Shrivel",
-      "pronunciation": "",
+      "pronunciation": "SHRIV-ul",
       "definition": "To become wrinkled and small through dryness or cold.",
       "sentence_usage": "Without water, the flowers began to shrivel in the heat.",
       "synonyms": [
@@ -5671,7 +5671,7 @@
     },
     {
       "word": "Simultaneous",
-      "pronunciation": "",
+      "pronunciation": "sim-ul-TAY-nee-us",
       "definition": "Happening or done at the same time.",
       "sentence_usage": "There were simultaneous events taking place in different parts of the city.",
       "synonyms": [
@@ -5725,7 +5725,7 @@
     },
     {
       "word": "Smother",
-      "pronunciation": "",
+      "pronunciation": "SMUTH-er",
       "definition": "To suffocate; to cover thickly; to suppress.",
       "sentence_usage": "She tried to smother the flames with a damp cloth before they spread.",
       "synonyms": [
@@ -5761,7 +5761,7 @@
     },
     {
       "word": "Sociable",
-      "pronunciation": "",
+      "pronunciation": "SOH-shuh-bul",
       "definition": "Enjoying the company of others; friendly.",
       "sentence_usage": "She was a very sociable person who made friends wherever she went.",
       "synonyms": [
@@ -5815,7 +5815,7 @@
     },
     {
       "word": "Spatial",
-      "pronunciation": "",
+      "pronunciation": "SPAY-shul",
       "definition": "Relating to space and the arrangement of things within it.",
       "sentence_usage": "Architects need strong spatial awareness to design buildings effectively.",
       "synonyms": [
@@ -5833,7 +5833,7 @@
     },
     {
       "word": "Specimen",
-      "pronunciation": "",
+      "pronunciation": "SPES-ih-men",
       "definition": "A sample taken for examination; an example of something.",
       "sentence_usage": "The scientist collected a specimen of the rare plant for analysis.",
       "synonyms": [
@@ -5977,7 +5977,7 @@
     },
     {
       "word": "Stimulate",
-      "pronunciation": "",
+      "pronunciation": "STIM-yoo-layt",
       "definition": "To encourage something to happen or develop.",
       "sentence_usage": "The exciting lesson helped to stimulate the pupils' interest in science.",
       "synonyms": [
@@ -6049,9 +6049,9 @@
     },
     {
       "word": "Subjective",
-      "pronunciation": "",
+      "pronunciation": "sub-JEK-tiv",
       "definition": "Based on personal feelings or opinions rather than facts.",
-      "sentence_usage": "Art appreciation is largely subjective — what one person loves another may dislike.",
+      "sentence_usage": "Art appreciation is largely subjective \u2014 what one person loves another may dislike.",
       "synonyms": [
         "Personal",
         "Biased",
@@ -6067,7 +6067,7 @@
     },
     {
       "word": "Substitute",
-      "pronunciation": "",
+      "pronunciation": "SUB-stih-tyoot",
       "definition": "A person or thing that takes the place of another.",
       "sentence_usage": "When the striker was injured, the manager brought on a substitute.",
       "synonyms": [
@@ -6103,7 +6103,7 @@
     },
     {
       "word": "Successive",
-      "pronunciation": "",
+      "pronunciation": "suk-SES-iv",
       "definition": "Following one after another in sequence.",
       "sentence_usage": "The team won three successive championships without a defeat.",
       "synonyms": [
@@ -6121,7 +6121,7 @@
     },
     {
       "word": "Sufficient",
-      "pronunciation": "",
+      "pronunciation": "suh-FISH-ent",
       "definition": "Enough for a particular purpose.",
       "sentence_usage": "She had sufficient time to complete the exam before the bell rang.",
       "synonyms": [
@@ -6157,7 +6157,7 @@
     },
     {
       "word": "Supple",
-      "pronunciation": "",
+      "pronunciation": "SUP-ul",
       "definition": "Flexible and able to bend easily without breaking.",
       "sentence_usage": "Years of yoga kept her body supple and strong.",
       "synonyms": [
@@ -6247,7 +6247,7 @@
     },
     {
       "word": "Technician",
-      "pronunciation": "",
+      "pronunciation": "tek-NISH-un",
       "definition": "A person skilled in practical or mechanical work in a specific field.",
       "sentence_usage": "The sound technician checked all the microphones before the concert.",
       "synonyms": [
@@ -6283,7 +6283,7 @@
     },
     {
       "word": "Temperate",
-      "pronunciation": "",
+      "pronunciation": "TEM-per-ut",
       "definition": "Mild and moderate, not extreme; also showing self-restraint.",
       "sentence_usage": "Britain has a temperate climate, with warm summers and mild winters.",
       "synonyms": [
@@ -6427,7 +6427,7 @@
     },
     {
       "word": "Tolerant",
-      "pronunciation": "",
+      "pronunciation": "TOL-er-unt",
       "definition": "Willing to accept behaviour or opinions different from one's own.",
       "sentence_usage": "A good teacher is tolerant of different learning styles and abilities.",
       "synonyms": [
@@ -6481,7 +6481,7 @@
     },
     {
       "word": "Transmission",
-      "pronunciation": "",
+      "pronunciation": "tranz-MIZH-un",
       "definition": "The act of passing something on; a broadcast signal.",
       "sentence_usage": "The transmission of the disease was slowed by handwashing.",
       "synonyms": [
@@ -6499,7 +6499,7 @@
     },
     {
       "word": "Transparent",
-      "pronunciation": "",
+      "pronunciation": "tranz-PAIR-ent",
       "definition": "Allowing light to pass through; also easy to see through or understand.",
       "sentence_usage": "The glass was completely transparent, giving a clear view of the garden.",
       "synonyms": [
@@ -6553,7 +6553,7 @@
     },
     {
       "word": "Tribute",
-      "pronunciation": "",
+      "pronunciation": "TRIB-yoot",
       "definition": "Something said, done, or given to show respect or admiration.",
       "sentence_usage": "The performance was a tribute to the famous composer on his hundredth birthday.",
       "synonyms": [
@@ -6679,7 +6679,7 @@
     },
     {
       "word": "Underline",
-      "pronunciation": "",
+      "pronunciation": "UN-der-lyn",
       "definition": "To draw a line under a word; to emphasise something.",
       "sentence_usage": "The teacher asked pupils to underline key words in the passage.",
       "synonyms": [
@@ -6715,7 +6715,7 @@
     },
     {
       "word": "Unidentified",
-      "pronunciation": "",
+      "pronunciation": "un-eye-DEN-tih-fyd",
       "definition": "Not recognised or known.",
       "sentence_usage": "An unidentified object was found near the school gates.",
       "synonyms": [
@@ -6733,7 +6733,7 @@
     },
     {
       "word": "University",
-      "pronunciation": "",
+      "pronunciation": "yoo-nih-VER-sih-tee",
       "definition": "A place of higher education offering degrees and research.",
       "sentence_usage": "She hoped to study medicine at university after finishing her A-levels.",
       "synonyms": [
@@ -6769,7 +6769,7 @@
     },
     {
       "word": "Upgrade",
-      "pronunciation": "",
+      "pronunciation": "UP-grayd",
       "definition": "To raise to a higher standard or quality.",
       "sentence_usage": "The school decided to upgrade its computer equipment for the new term.",
       "synonyms": [
@@ -6787,7 +6787,7 @@
     },
     {
       "word": "Usage",
-      "pronunciation": "",
+      "pronunciation": "YOOS-ij",
       "definition": "The way in which something is used; the practice of using something.",
       "sentence_usage": "The usage of formal language is expected in professional letters.",
       "synonyms": [
@@ -6841,7 +6841,7 @@
     },
     {
       "word": "Variant",
-      "pronunciation": "",
+      "pronunciation": "VAIR-ee-unt",
       "definition": "A form or version of something that differs slightly from others.",
       "sentence_usage": "This dialect is a regional variant of standard English.",
       "synonyms": [
@@ -6877,7 +6877,7 @@
     },
     {
       "word": "Vault",
-      "pronunciation": "",
+      "pronunciation": "VAWLT",
       "definition": "An arched roof or ceiling; a secure room for valuables; to jump over something.",
       "sentence_usage": "The athlete vaulted over the bar with ease.",
       "synonyms": [
@@ -6895,7 +6895,7 @@
     },
     {
       "word": "Verge",
-      "pronunciation": "",
+      "pronunciation": "VERJ",
       "definition": "The edge or border of something; to be on the point of.",
       "sentence_usage": "She was on the verge of tears as she read the sad letter.",
       "synonyms": [
@@ -6931,7 +6931,7 @@
     },
     {
       "word": "Vibrate",
-      "pronunciation": "",
+      "pronunciation": "vy-BRAYT",
       "definition": "To shake or move rapidly back and forth.",
       "sentence_usage": "The phone began to vibrate on the desk during assembly.",
       "synonyms": [
@@ -7003,7 +7003,7 @@
     },
     {
       "word": "virtuous",
-      "pronunciation": "",
+      "pronunciation": "VER-choo-us",
       "definition": "Having high moral standards; righteous.",
       "sentence_usage": "The judge was known for making virtuous and fair decisions.",
       "synonyms": [
@@ -7165,7 +7165,7 @@
     },
     {
       "word": "wilderness",
-      "pronunciation": "",
+      "pronunciation": "WIL-der-nes",
       "definition": "A wild, natural area not changed much by humans.",
       "sentence_usage": "They hiked for miles through the mountain wilderness.",
       "synonyms": [
