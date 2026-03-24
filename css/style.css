@@ -259,12 +259,31 @@ main {
   gap: 0.5rem;
 }
 
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .card-word {
   font-size: 1.25rem;
   font-weight: 800;
   color: #1A1A2E;
   color: var(--color-text);
   line-height: 1.2;
+}
+
+.card-type {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
 }
 
 .card-stars {
@@ -417,7 +436,16 @@ main {
   font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.modal-type {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.92;
+  margin-bottom: 0.45rem;
 }
 
 .modal-pronunciation {
