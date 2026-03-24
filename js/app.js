@@ -42,6 +42,7 @@
   var modalCard     = document.getElementById('modal-card');
   var modalClose    = document.getElementById('modal-close');
   var modalTitle         = document.getElementById('modal-word-title');
+  var modalWordType      = document.getElementById('modal-word-type');
   var modalPronunciation = document.getElementById('modal-pronunciation');
   var modalStars         = document.getElementById('modal-stars');
   var modalDef      = document.getElementById('modal-definition');
@@ -96,7 +97,8 @@
       "Bravery",
       "Calm"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Noun"
   },
   {
     "word": "Melancholy",
@@ -113,7 +115,8 @@
       "Cheerfulness",
       "Exuberance"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Noun"
   },
   {
     "word": "Cacophony",
@@ -130,7 +133,8 @@
       "Harmony",
       "Peace"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Noun"
   },
   {
     "word": "Ephemeral",
@@ -147,7 +151,8 @@
       "Eternal",
       "Lasting"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Ubiquitous",
@@ -164,7 +169,8 @@
       "Scarce",
       "Uncommon"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Luminous",
@@ -181,7 +187,8 @@
       "Dull",
       "Gloomy"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Serpentine",
@@ -197,7 +204,8 @@
       "Straight",
       "Direct"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Petrified",
@@ -214,7 +222,8 @@
       "Relaxed",
       "Unbothered"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Dilapidated",
@@ -231,7 +240,8 @@
       "Immaculate",
       "Restored"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Voracious",
@@ -248,7 +258,8 @@
       "Full",
       "Quenched"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Abundant",
@@ -265,7 +276,8 @@
       "Rare",
       "Meagre"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Agitated",
@@ -282,7 +294,8 @@
       "Peaceful",
       "Settled"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Amiable",
@@ -299,7 +312,8 @@
       "Hostile",
       "Unkind"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ancient",
@@ -316,7 +330,8 @@
       "New",
       "Recent"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Anticipation",
@@ -333,7 +348,8 @@
       "Surprise",
       "Disappointment"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Noun"
   },
   {
     "word": "Astonished",
@@ -350,7 +366,8 @@
       "Bored",
       "Expectant"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Bewildered",
@@ -367,7 +384,8 @@
       "Clear-headed",
       "Sure"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Bleak",
@@ -384,7 +402,8 @@
       "Bright",
       "Welcoming"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Blossom",
@@ -401,7 +420,8 @@
       "Fade",
       "Wilt"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Verb"
   },
   {
     "word": "Brisk",
@@ -418,7 +438,8 @@
       "Lazy",
       "Sluggish"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Bustling",
@@ -435,7 +456,8 @@
       "Still",
       "Empty"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Calamity",
@@ -452,7 +474,8 @@
       "Success",
       "Triumph"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Noun"
   },
   {
     "word": "Captivating",
@@ -469,7 +492,8 @@
       "Boring",
       "Uninteresting"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Cautious",
@@ -486,7 +510,8 @@
       "Careless",
       "Bold"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ceaseless",
@@ -503,7 +528,8 @@
       "Stopped",
       "Rare"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Chaotic",
@@ -520,7 +546,8 @@
       "Calm",
       "Neat"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Clambered",
@@ -537,7 +564,8 @@
       "Dropped",
       "Slid"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Clandestine",
@@ -554,7 +582,8 @@
       "Public",
       "Obvious"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Collapse",
@@ -571,7 +600,8 @@
       "Rise",
       "Remain"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Verb"
   },
   {
     "word": "Commotion",
@@ -588,7 +618,8 @@
       "Peace",
       "Order"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Noun"
   },
   {
     "word": "Compassion",
@@ -605,7 +636,8 @@
       "Meanness",
       "Harshness"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Noun"
   },
   {
     "word": "Concealed",
@@ -622,7 +654,8 @@
       "Exposed",
       "Obvious"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Contented",
@@ -639,7 +672,8 @@
       "Restless",
       "Dissatisfied"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Courageous",
@@ -656,7 +690,8 @@
       "Timid",
       "Afraid"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Crisp",
@@ -673,7 +708,8 @@
       "Damp",
       "Soft"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Dazzling",
@@ -690,7 +726,8 @@
       "Dim",
       "Drab"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Defiant",
@@ -707,7 +744,8 @@
       "Submissive",
       "Compliant"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Delicate",
@@ -724,7 +762,8 @@
       "Tough",
       "Sturdy"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Desolate",
@@ -741,7 +780,8 @@
       "Cheerful",
       "Lively"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Determined",
@@ -758,7 +798,8 @@
       "Lazy",
       "Wavering"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Diligent",
@@ -775,7 +816,8 @@
       "Careless",
       "Idle"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Disperse",
@@ -792,7 +834,8 @@
       "Collect",
       "Assemble"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Verb"
   },
   {
     "word": "Dreary",
@@ -809,7 +852,8 @@
       "Cheerful",
       "Sunny"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Eager",
@@ -826,7 +870,8 @@
       "Unwilling",
       "Lazy"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Eerie",
@@ -843,7 +888,8 @@
       "Familiar",
       "Cheerful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Elated",
@@ -860,7 +906,8 @@
       "Downcast",
       "Sad"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Elegant",
@@ -877,7 +924,8 @@
       "Awkward",
       "Plain"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Emerald",
@@ -894,7 +942,8 @@
       "Dull",
       "Grey"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Noun"
   },
   {
     "word": "Enormous",
@@ -911,7 +960,8 @@
       "Small",
       "Little"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Enraged",
@@ -928,7 +978,8 @@
       "Pleased",
       "Peaceful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Exhausted",
@@ -945,7 +996,8 @@
       "Rested",
       "Lively"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Exquisite",
@@ -962,7 +1014,8 @@
       "Rough",
       "Plain"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Faded",
@@ -979,7 +1032,8 @@
       "Fresh",
       "Vivid"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Faltered",
@@ -996,7 +1050,8 @@
       "Steadied",
       "Persisted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ferocious",
@@ -1013,7 +1068,8 @@
       "Mild",
       "Tame"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Flourish",
@@ -1030,7 +1086,8 @@
       "Decline",
       "Wither"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Verb"
   },
   {
     "word": "Forlorn",
@@ -1047,7 +1104,8 @@
       "Happy",
       "Comforted"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Fragrant",
@@ -1064,7 +1122,8 @@
       "Stinky",
       "Foul"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Frantic",
@@ -1081,7 +1140,8 @@
       "Controlled",
       "Relaxed"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Gargantuan",
@@ -1098,7 +1158,8 @@
       "Miniature",
       "Small"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Glimmer",
@@ -1115,7 +1176,8 @@
       "Blackness",
       "Shadow"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Noun"
   },
   {
     "word": "Gloomy",
@@ -1132,7 +1194,8 @@
       "Bright",
       "Sunny"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Glorious",
@@ -1149,7 +1212,8 @@
       "Terrible",
       "Dreadful"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Graceful",
@@ -1166,7 +1230,8 @@
       "Awkward",
       "Ungainly"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Grim",
@@ -1183,7 +1248,8 @@
       "Bright",
       "Hopeful"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Glistening",
@@ -1200,7 +1266,8 @@
       "Matte",
       "Dim"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Gnarled",
@@ -1217,7 +1284,8 @@
       "Straight",
       "Even"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Haunted",
@@ -1234,7 +1302,8 @@
       "Welcoming",
       "Safe"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Hearty",
@@ -1251,7 +1320,8 @@
       "Faint",
       "Cold"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Hesitant",
@@ -1268,7 +1338,8 @@
       "Decisive",
       "Bold"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Huddled",
@@ -1285,7 +1356,8 @@
       "Separated",
       "Scattered"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Illuminated",
@@ -1302,7 +1374,8 @@
       "Shadowed",
       "Dimmed"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Immense",
@@ -1319,7 +1392,8 @@
       "Little",
       "Small"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Impatient",
@@ -1336,7 +1410,8 @@
       "Calm",
       "Relaxed"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Impressive",
@@ -1353,7 +1428,8 @@
       "Plain",
       "Unremarkable"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Incandescent",
@@ -1370,7 +1446,8 @@
       "Dull",
       "Dim"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Ingenious",
@@ -1387,7 +1464,8 @@
       "Simple",
       "Clumsy"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Jovial",
@@ -1404,7 +1482,8 @@
       "Sour",
       "Miserable"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Jubilant",
@@ -1421,7 +1500,8 @@
       "Mournful",
       "Disappointed"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Knackered",
@@ -1438,7 +1518,8 @@
       "Fresh",
       "Rested"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Labyrinthine",
@@ -1455,7 +1536,8 @@
       "Straight",
       "Clear"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Lament",
@@ -1472,7 +1554,8 @@
       "Rejoice",
       "Praise"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Verb"
   },
   {
     "word": "Lavish",
@@ -1489,7 +1572,8 @@
       "Simple",
       "Meagre"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Lingered",
@@ -1506,7 +1590,8 @@
       "Vanished",
       "Departed"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Looming",
@@ -1523,7 +1608,8 @@
       "Tiny",
       "Receding"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Lurched",
@@ -1540,7 +1626,8 @@
       "Balanced",
       "Steadied"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Majestic",
@@ -1557,7 +1644,8 @@
       "Plain",
       "Small"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Meandered",
@@ -1574,7 +1662,8 @@
       "Shot",
       "Streamed"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Menacing",
@@ -1591,7 +1680,8 @@
       "Safe",
       "Comforting"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Mischievous",
@@ -1608,7 +1698,8 @@
       "Serious",
       "Obedient"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Miserable",
@@ -1625,7 +1716,8 @@
       "Comfortable",
       "Delighted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Misty",
@@ -1642,7 +1734,8 @@
       "Bright",
       "Sharp"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Muttered",
@@ -1659,7 +1752,8 @@
       "Declared",
       "Announced"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Mysterious",
@@ -1676,7 +1770,8 @@
       "Obvious",
       "Plain"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Nimble",
@@ -1693,7 +1788,8 @@
       "Slow",
       "Awkward"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Nocturnal",
@@ -1710,7 +1806,8 @@
       "Diurnal",
       "Sunlit"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Nostalgic",
@@ -1727,7 +1824,8 @@
       "Unmoved",
       "Future-looking"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Notorious",
@@ -1744,7 +1842,8 @@
       "Honourable",
       "Praised"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Noxious",
@@ -1761,7 +1860,8 @@
       "Safe",
       "Pleasant"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Obedient",
@@ -1778,7 +1878,8 @@
       "Rebellious",
       "Disobedient"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Obscure",
@@ -1795,7 +1896,8 @@
       "Obvious",
       "Famous"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ominous",
@@ -1812,7 +1914,8 @@
       "Hopeful",
       "Promising"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Opulent",
@@ -1829,7 +1932,8 @@
       "Simple",
       "Plain"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ornate",
@@ -1846,7 +1950,8 @@
       "Simple",
       "Bare"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Overjoyed",
@@ -1863,7 +1968,8 @@
       "Sad",
       "Miserable"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Peculiar",
@@ -1880,7 +1986,8 @@
       "Ordinary",
       "Typical"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Perilous",
@@ -1897,7 +2004,8 @@
       "Secure",
       "Protected"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Perplexed",
@@ -1914,7 +2022,8 @@
       "Sure",
       "Enlightened"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Persistent",
@@ -1931,7 +2040,8 @@
       "Fickle",
       "Yielding"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Piercing",
@@ -1948,7 +2058,8 @@
       "Gentle",
       "Muffled"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Placid",
@@ -1965,7 +2076,8 @@
       "Wild",
       "Rough"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Poised",
@@ -1982,7 +2094,8 @@
       "Unsteady",
       "Flustered"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Precious",
@@ -1999,7 +2112,8 @@
       "Unwanted",
       "Cheap"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Prickly",
@@ -2016,7 +2130,8 @@
       "Soft",
       "Gentle"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adverb"
   },
   {
     "word": "Proud",
@@ -2033,7 +2148,8 @@
       "Embarrassed",
       "Humble"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Puny",
@@ -2050,7 +2166,8 @@
       "Strong",
       "Huge"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Quaint",
@@ -2067,7 +2184,8 @@
       "Plain",
       "Unattractive"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Quivered",
@@ -2084,7 +2202,8 @@
       "Stilled",
       "Settled"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Radiant",
@@ -2101,7 +2220,8 @@
       "Gloomy",
       "Dark"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Ragged",
@@ -2118,7 +2238,8 @@
       "Smooth",
       "Tidy"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Ravenous",
@@ -2135,7 +2256,8 @@
       "Satisfied",
       "Stuffed"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Reassuring",
@@ -2152,7 +2274,8 @@
       "Threatening",
       "Scary"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Reckless",
@@ -2169,7 +2292,8 @@
       "Cautious",
       "Sensible"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Reluctant",
@@ -2186,7 +2310,8 @@
       "Willing",
       "Ready"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Resilient",
@@ -2203,7 +2328,8 @@
       "Weak",
       "Delicate"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Resolute",
@@ -2220,7 +2346,8 @@
       "Wavering",
       "Weak"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Rickety",
@@ -2237,7 +2364,8 @@
       "Solid",
       "Sturdy"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Rippling",
@@ -2254,7 +2382,8 @@
       "Flat",
       "Motionless"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Robust",
@@ -2271,7 +2400,8 @@
       "Weak",
       "Flimsy"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Rustling",
@@ -2288,7 +2418,8 @@
       "Stillness",
       "Quiet"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Savage",
@@ -2305,7 +2436,8 @@
       "Tame",
       "Mild"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Scarlet",
@@ -2322,7 +2454,8 @@
       "Colourless",
       "White"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Noun"
   },
   {
     "word": "Scurried",
@@ -2339,7 +2472,8 @@
       "Lingered",
       "Paused"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Serene",
@@ -2356,7 +2490,8 @@
       "Noisy",
       "Agitated"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Shimmering",
@@ -2373,7 +2508,8 @@
       "Matte",
       "Dim"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Shrieked",
@@ -2390,7 +2526,8 @@
       "Murmured",
       "Muttered"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Shrouded",
@@ -2407,7 +2544,8 @@
       "Exposed",
       "Visible"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Sinuous",
@@ -2424,7 +2562,8 @@
       "Rigid",
       "Direct"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Skeletal",
@@ -2441,7 +2580,8 @@
       "Leafy",
       "Full"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Solemn",
@@ -2458,7 +2598,8 @@
       "Cheerful",
       "Light-hearted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Sparse",
@@ -2475,7 +2616,8 @@
       "Dense",
       "Abundant"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Spectacular",
@@ -2492,7 +2634,8 @@
       "Dull",
       "Plain"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Spirited",
@@ -2509,7 +2652,8 @@
       "Dull",
       "Tired"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Splendid",
@@ -2526,7 +2670,8 @@
       "Terrible",
       "Poor"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Sprightly",
@@ -2543,7 +2688,8 @@
       "Tired",
       "Slow"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adverb"
   },
   {
     "word": "Staggered",
@@ -2560,7 +2706,8 @@
       "Balanced",
       "Strode"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Stealthy",
@@ -2577,7 +2724,8 @@
       "Clumsy",
       "Obvious"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Stifling",
@@ -2594,7 +2742,8 @@
       "Cool",
       "Breezy"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Stout",
@@ -2611,7 +2760,8 @@
       "Weak",
       "Flimsy"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Stubborn",
@@ -2628,7 +2778,8 @@
       "Agreeable",
       "Yielding"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Stupendous",
@@ -2645,7 +2796,8 @@
       "Ordinary",
       "Unimpressive"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Subtle",
@@ -2662,7 +2814,8 @@
       "Strong",
       "Blatant"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Sulky",
@@ -2679,7 +2832,8 @@
       "Pleasant",
       "Jolly"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Surged",
@@ -2696,7 +2850,8 @@
       "Ebbed",
       "Paused"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Suspicious",
@@ -2713,7 +2868,8 @@
       "Certain",
       "Confident"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Swift",
@@ -2730,7 +2886,8 @@
       "Sluggish",
       "Leisurely"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Tangled",
@@ -2747,7 +2904,8 @@
       "Straight",
       "Untangled"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Teeming",
@@ -2764,7 +2922,8 @@
       "Bare",
       "Deserted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Tempestuous",
@@ -2781,7 +2940,8 @@
       "Gentle",
       "Peaceful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Tender",
@@ -2798,7 +2958,8 @@
       "Rough",
       "Cruel"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Tense",
@@ -2815,7 +2976,8 @@
       "Calm",
       "Loose"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Thrifty",
@@ -2832,7 +2994,8 @@
       "Extravagant",
       "Careless"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Thrilled",
@@ -2849,7 +3012,8 @@
       "Disappointed",
       "Miserable"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Thunderous",
@@ -2866,7 +3030,8 @@
       "Soft",
       "Muted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Timid",
@@ -2883,7 +3048,8 @@
       "Confident",
       "Brave"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Towering",
@@ -2900,7 +3066,8 @@
       "Low",
       "Short"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Tranquil",
@@ -2917,7 +3084,8 @@
       "Chaotic",
       "Agitated"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Tremulous",
@@ -2934,7 +3102,8 @@
       "Firm",
       "Confident"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Triumphant",
@@ -2951,7 +3120,8 @@
       "Beaten",
       "Downcast"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Turbulent",
@@ -2968,7 +3138,8 @@
       "Calm",
       "Still"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Twilight",
@@ -2985,7 +3156,8 @@
       "Noon",
       "Sunrise"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Uncanny",
@@ -3002,7 +3174,8 @@
       "Ordinary",
       "Natural"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Uneasy",
@@ -3019,7 +3192,8 @@
       "Comfortable",
       "Assured"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Unruly",
@@ -3036,7 +3210,8 @@
       "Controlled",
       "Orderly"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adverb"
   },
   {
     "word": "Vague",
@@ -3053,7 +3228,8 @@
       "Exact",
       "Specific"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Valiant",
@@ -3070,7 +3246,8 @@
       "Timid",
       "Fearful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Vast",
@@ -3087,7 +3264,8 @@
       "Narrow",
       "Small"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Vibrant",
@@ -3104,7 +3282,8 @@
       "Muted",
       "Drab"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Vicious",
@@ -3121,7 +3300,8 @@
       "Gentle",
       "Mild"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Vigilant",
@@ -3138,7 +3318,8 @@
       "Sleepy",
       "Unaware"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Vigorous",
@@ -3155,7 +3336,8 @@
       "Feeble",
       "Lethargic"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Vivid",
@@ -3172,7 +3354,8 @@
       "Faded",
       "Blurred"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Wandered",
@@ -3189,7 +3372,8 @@
       "Settled",
       "Remained"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Warily",
@@ -3206,7 +3390,8 @@
       "Trustingly",
       "Carelessly"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adverb"
   },
   {
     "word": "Weary",
@@ -3223,7 +3408,8 @@
       "Energetic",
       "Rested"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Whimsical",
@@ -3240,7 +3426,8 @@
       "Ordinary",
       "Practical"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Whirling",
@@ -3257,7 +3444,8 @@
       "Motionless",
       "Stationary"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Wistful",
@@ -3274,7 +3462,8 @@
       "Satisfied",
       "Cheerful"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Withered",
@@ -3291,7 +3480,8 @@
       "Blooming",
       "Healthy"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Wretched",
@@ -3308,7 +3498,8 @@
       "Comfortable",
       "Delighted"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Yearned",
@@ -3325,7 +3516,8 @@
       "Rejected",
       "Ignored"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Zealous",
@@ -3342,7 +3534,8 @@
       "Lazy",
       "Indifferent"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Aloft",
@@ -3359,7 +3552,8 @@
       "Low",
       "Down"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Bellowed",
@@ -3376,7 +3570,8 @@
       "Murmured",
       "Hushed"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Crimson",
@@ -3393,7 +3588,8 @@
       "White",
       "Colourless"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Noun"
   },
   {
     "word": "Drifted",
@@ -3410,7 +3606,8 @@
       "Plunged",
       "Raced"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Flickered",
@@ -3427,7 +3624,8 @@
       "Stayed still",
       "Shone firmly"
     ],
-    "usefulness_rating": 3
+    "usefulness_rating": 3,
+    "word_type": "Adjective"
   },
   {
     "word": "Hollow",
@@ -3444,7 +3642,8 @@
       "Full",
       "Filled"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Murky",
@@ -3461,7 +3660,8 @@
       "Bright",
       "Transparent"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Smouldering",
@@ -3478,7 +3678,8 @@
       "Cold",
       "Drenched"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Volatile",
@@ -3495,7 +3696,8 @@
       "Steady",
       "Peaceful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Belligerent",
@@ -3512,7 +3714,8 @@
       "Friendly",
       "Calm"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Contentious",
@@ -3529,7 +3732,8 @@
       "Peaceful",
       "Harmonious"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Fractious",
@@ -3546,7 +3750,8 @@
       "Docile",
       "Peaceful"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Inflammatory",
@@ -3563,7 +3768,8 @@
       "Calming",
       "Moderate"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Precarious",
@@ -3580,7 +3786,8 @@
       "Stable",
       "Safe"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Tumultuous",
@@ -3597,7 +3804,8 @@
       "Calm",
       "Peaceful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Fragile",
@@ -3614,7 +3822,8 @@
       "Solid",
       "Secure"
     ],
-    "usefulness_rating": 4
+    "usefulness_rating": 4,
+    "word_type": "Adjective"
   },
   {
     "word": "Fraught",
@@ -3631,7 +3840,8 @@
       "Calm",
       "Safe"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   },
   {
     "word": "Hostile",
@@ -3648,7 +3858,8 @@
       "Welcoming",
       "Peaceful"
     ],
-    "usefulness_rating": 5
+    "usefulness_rating": 5,
+    "word_type": "Adjective"
   }
 ];
 
@@ -3681,26 +3892,34 @@
   function buildCard(word, index) {
     var article = document.createElement('article');
     var header = document.createElement('div');
+    var meta = document.createElement('div');
     var title = document.createElement('h2');
+    var typeBadge = document.createElement('span');
     var stars = document.createElement('div');
     var definition = document.createElement('p');
+    var wordType = getWordType(word);
 
     article.className = 'word-card';
     article.tabIndex = 0;
     article.setAttribute('role', 'button');
     article.dataset.wordIndex = index;
     article.dataset.wordName = word.word;
-    article.setAttribute('aria-label', 'View details for ' + word.word);
+    article.setAttribute('aria-label', 'View details for ' + word.word + ', ' + wordType);
 
     header.className = 'card-header';
+    meta.className = 'card-meta';
     title.className = 'card-word';
     title.textContent = word.word;
+    typeBadge.className = 'card-type';
+    typeBadge.textContent = wordType;
     stars.className = 'card-stars';
     stars.appendChild(buildStars(word.usefulness_rating));
     definition.className = 'card-definition';
     definition.textContent = word.definition;
 
-    header.appendChild(title);
+    meta.appendChild(title);
+    meta.appendChild(typeBadge);
+    header.appendChild(meta);
     header.appendChild(stars);
     article.appendChild(header);
     article.appendChild(definition);
@@ -3727,6 +3946,13 @@
       frag.appendChild(span);
     }
     return frag;
+  }
+
+  function getWordType(wordObj) {
+    if (wordObj.word_type) {
+      return wordObj.word_type;
+    }
+    return 'Word';
   }
 
   function buildEmptyState() {
@@ -3786,6 +4012,9 @@
     }
 
     modalTitle.textContent = wordObj.word;
+    if (modalWordType) {
+      modalWordType.textContent = getWordType(wordObj);
+    }
     modalPronunciation.textContent = wordObj.pronunciation || '';
 
     var encoded = encodeURIComponent(wordObj.word);
