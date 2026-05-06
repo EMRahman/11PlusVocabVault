@@ -519,6 +519,12 @@
     var q = quizState.questions[index];
     var total = quizState.questions.length;
 
+    // Ensure no answer button remains visually/keyboard selected between questions
+    var activeEl = document.activeElement;
+    if (activeEl && closestByClass(activeEl, 'quiz-answers-grid')) {
+      activeEl.blur();
+    }
+
     // Progress
     var pct = (index / total) * 100;
     quizProgressFill.style.width = pct + '%';
@@ -544,6 +550,7 @@
       var btn = document.createElement('button');
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
+      btn.setAttribute('aria-pressed', 'false');
       btn.textContent  = q.type === 'definition' ? choice.word : choice.definition;
       quizAnswersGrid.appendChild(btn);
     });
@@ -566,6 +573,7 @@
 
     // Apply colour feedback
     buttons[q.correctIndex].classList.add('correct');
+    buttons[chosenIndex].setAttribute('aria-pressed', 'true');
     if (!isCorrect) {
       buttons[chosenIndex].classList.add('wrong');
     }
