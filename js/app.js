@@ -515,15 +515,18 @@
   }
 
   // ── Rendering ──────────────────────────────────────────────────────────────
+  function resetQuizAnswerFocus() {
+    if (document.activeElement && quizAnswersGrid.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+  }
+
   function renderQuestion(index) {
     var q = quizState.questions[index];
     var total = quizState.questions.length;
 
-    // Ensure no answer button remains visually/keyboard selected between questions
-    var activeEl = document.activeElement;
-    if (activeEl && closestByClass(activeEl, 'quiz-answers-grid')) {
-      activeEl.blur();
-    }
+    // Ensure no answer button remains visually/keyboard selected between questions.
+    resetQuizAnswerFocus();
 
     // Progress
     var pct = (index / total) * 100;
@@ -558,6 +561,13 @@
     // Clear feedback
     quizFeedback.className = 'quiz-feedback';
     quizFeedback.textContent = '';
+
+    // Move focus away from the answer grid after each re-render so the
+    // previously chosen answer position does not look preselected.
+    if (quizQuestionScreen) {
+      quizQuestionScreen.setAttribute('tabindex', '-1');
+      quizQuestionScreen.focus({ preventScroll: true });
+    }
   }
 
   // ── Answer handling ────────────────────────────────────────────────────────
