@@ -50,6 +50,13 @@
         <button class="view-filter-btn active" data-view-filter="all" aria-pressed="true">Any</button>
         <button class="view-filter-btn" data-view-filter="unviewed" aria-pressed="false">Not viewed</button>
       </div>
+      <div class="filter-wrap" role="group" aria-label="Filter by mastery">
+        <span class="filter-label">Mastery:</span>
+        <button class="mastery-filter-btn active" data-mastery-filter="all" aria-pressed="true">All</button>
+        <button class="mastery-filter-btn" data-mastery-filter="new" aria-pressed="false">New</button>
+        <button class="mastery-filter-btn" data-mastery-filter="learning" aria-pressed="false">Learning</button>
+        <button class="mastery-filter-btn" data-mastery-filter="mastered" aria-pressed="false">Mastered</button>
+      </div>
       <button class="quiz-launch-btn" id="quiz-launch-btn" aria-label="Start vocabulary quiz">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
@@ -80,7 +87,16 @@
       <div class="modal-header">
         <h2 class="modal-word" id="modal-word-title"></h2>
         <p class="modal-type" id="modal-word-type"></p>
-        <p class="modal-pronunciation" id="modal-pronunciation"></p>
+        <div class="modal-pronunciation-row">
+          <p class="modal-pronunciation" id="modal-pronunciation"></p>
+          <button class="speak-btn" id="modal-speak-btn" type="button" aria-label="Hear this word out loud">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
+        </div>
         <div class="modal-stars" id="modal-stars" aria-label="Usefulness rating"></div>
       </div>
       <div class="modal-body">
@@ -148,12 +164,15 @@
             <button class="quiz-option-btn" data-mode="definition" aria-pressed="false">Definition → word</button>
             <button class="quiz-option-btn" data-mode="word" aria-pressed="false">Word → meaning</button>
             <button class="quiz-option-btn" data-mode="sentence" aria-pressed="false">Sentence blank</button>
+            <button class="quiz-option-btn" data-mode="synonym" aria-pressed="false">Synonym match</button>
+            <button class="quiz-option-btn" data-mode="antonym" aria-pressed="false">Antonym match</button>
           </div>
         </div>
         <div class="quiz-scope-group" role="group" aria-labelledby="quiz-scope-label">
           <p id="quiz-scope-label" class="quiz-scope-label">Which words?</p>
           <button class="quiz-scope-btn active" data-scope="all" aria-pressed="true" id="quiz-scope-all-btn">All words</button>
           <button class="quiz-scope-btn" data-scope="5star" aria-pressed="false">&#9733;&#9733;&#9733;&#9733;&#9733; Five-star only</button>
+          <button class="quiz-scope-btn" data-scope="weakest" aria-pressed="false" id="quiz-scope-weakest-btn">Weakest words</button>
         </div>
         <div id="quiz-personal-best" class="quiz-personal-best hidden"></div>
         <div class="quiz-start-callout" id="quiz-start-callout">
