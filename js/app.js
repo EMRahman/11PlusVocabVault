@@ -795,7 +795,15 @@
     var pad = shuffle(basePool.filter(function (w) {
       return !seen[w.word] && getMasteryStatus(w.word) !== 'mastered';
     }));
-    return withMisses.concat(pad);
+    var combined = withMisses.concat(pad);
+
+    // If everything is mastered (or basePool empty), fall back to a shuffled
+    // copy of basePool so the user can keep practising rather than seeing the
+    // overlay crash with no questions to render.
+    if (combined.length === 0) {
+      return shuffle(basePool);
+    }
+    return combined;
   }
 
   function buildQuizSession() {
