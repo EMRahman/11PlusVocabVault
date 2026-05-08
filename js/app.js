@@ -32,12 +32,14 @@
   var state = {
     query: '',
     ratingFilter: null, // null = all, 1-5 = exact match
+    unviewedOnly: false,
   };
 
   // ── DOM refs ───────────────────────────────────────────────────────────────
   var wordGrid      = document.getElementById('word-grid');
   var searchInput   = document.getElementById('search-input');
   var filterBtns    = document.querySelectorAll('.filter-btn');
+  var viewFilterBtns = document.querySelectorAll('.view-filter-btn');
   var modalOverlay  = document.getElementById('modal-overlay');
   var modalCard     = document.getElementById('modal-card');
   var modalClose    = document.getElementById('modal-close');
@@ -185,7 +187,7 @@
     div.innerHTML =
       '<span class="empty-state-emoji">🔍</span>' +
       '<h3>No words found</h3>' +
-      '<p>Try a different search or change the star filter.</p>';
+      '<p>Try a different search or change the star/viewed filters.</p>';
     return div;
   }
 
@@ -212,6 +214,12 @@
       });
     }
 
+    if (state.unviewedOnly) {
+      results = results.filter(function (w) {
+        return (viewCounts[w.word] || 0) === 0;
+      });
+    }
+
     renderCards(results);
   }
 
@@ -233,6 +241,10 @@
         countEl.textContent = text;
         card.appendChild(countEl);
       }
+    }
+
+    if (state.unviewedOnly) {
+      applyFilters();
     }
 
     modalTitle.textContent = wordObj.word;
@@ -281,10 +293,12 @@
     modalOverlay.classList.add('hidden');
     modalOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (lastFocusedCard) {
+    if (lastFocusedCard && lastFocusedCard.isConnected) {
       lastFocusedCard.focus();
-      lastFocusedCard = null;
+    } else if (searchInput) {
+      searchInput.focus();
     }
+    lastFocusedCard = null;
   }
 
   // ── Event listeners ────────────────────────────────────────────────────────
@@ -321,6 +335,23 @@
           state.ratingFilter = parsed;
         }
 
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        applyFilters();
+      });
+    });
+
+    // Viewed status filter buttons
+    forEachNode(viewFilterBtns, function (btn) {
+      btn.addEventListener('click', function () {
+        var viewFilter = this.dataset.viewFilter;
+
+        forEachNode(viewFilterBtns, function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+
+        state.unviewedOnly = viewFilter === 'unviewed';
         this.classList.add('active');
         this.setAttribute('aria-pressed', 'true');
         applyFilters();
