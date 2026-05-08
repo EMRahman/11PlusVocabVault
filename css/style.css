@@ -989,11 +989,13 @@ footer {
               color var(--transition), transform var(--transition);
 }
 
-.quiz-answer-btn:hover:not(:disabled) {
-  border-color: var(--color-primary);
-  background: var(--color-primary-light);
-  color: var(--color-primary-dark);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .quiz-answer-btn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
 }
 
 .quiz-answer-btn:focus-visible {
