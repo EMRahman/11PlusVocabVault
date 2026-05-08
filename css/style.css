@@ -781,6 +781,22 @@ footer {
   font-weight: 600;
 }
 
+.quiz-setup-helper {
+  max-width: 34rem;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.quiz-option-group,
 .quiz-scope-group {
   display: flex;
   flex-direction: column;
@@ -798,7 +814,8 @@ footer {
   margin-bottom: 0.2rem;
 }
 
-.quiz-scope-btn {
+.quiz-scope-btn,
+.quiz-option-btn {
   padding: 0.65rem 1.2rem;
   border-radius: 50px;
   border: 2px solid #E5E7EB;
@@ -814,12 +831,14 @@ footer {
   width: 100%;
 }
 
-.quiz-scope-btn:hover {
+.quiz-scope-btn:hover,
+.quiz-option-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
-.quiz-scope-btn.active {
+.quiz-scope-btn.active,
+.quiz-option-btn.active {
   background: #6C63FF;
   background: var(--color-primary);
   border-color: #6C63FF;
@@ -1054,6 +1073,49 @@ footer {
   min-height: 1.4em;
 }
 
+.quiz-review {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: #F9FAFB;
+  text-align: left;
+}
+
+.quiz-review-title {
+  margin-bottom: 0.7rem;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.quiz-review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+}
+
+.quiz-review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.quiz-review-item strong {
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+}
+
+.quiz-review-item small {
+  color: #991B1B;
+  font-weight: 700;
+}
+
 .quiz-end-actions {
   display: flex;
   flex-direction: column;
@@ -1089,6 +1151,10 @@ footer {
 @media (max-width: 480px) {
   .quiz-screen-actions {
     padding: 0.85rem 0.85rem 0;
+  }
+
+  .quiz-options-grid {
+    grid-template-columns: 1fr;
   }
 
   .quiz-answers-grid {
