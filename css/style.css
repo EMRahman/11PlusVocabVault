@@ -187,7 +187,8 @@ main {
 }
 
 .filter-btn,
-.view-filter-btn {
+.view-filter-btn,
+.mastery-filter-btn {
   padding: 0.5rem 0.9rem;
   border-radius: 50px;
   border: 2px solid #E5E7EB;
@@ -205,13 +206,15 @@ main {
 }
 
 .filter-btn:hover,
-.view-filter-btn:hover {
+.view-filter-btn:hover,
+.mastery-filter-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
 .filter-btn.active,
-.view-filter-btn.active {
+.view-filter-btn.active,
+.mastery-filter-btn.active {
   background: #6C63FF;
   background: var(--color-primary);
   border-color: #6C63FF;
@@ -307,13 +310,40 @@ main {
   overflow: hidden;
 }
 
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
 .card-view-count {
   font-size: 0.75rem;
   font-weight: 700;
   color: #6C63FF;
   color: var(--color-primary);
   opacity: 0.7;
-  margin-top: 0.25rem;
+}
+
+.mastery-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.mastery-badge.mastery-mastered {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+.mastery-badge.mastery-learning {
+  background: #FEF3C7;
+  color: #92400E;
 }
 
 /* Stars */
@@ -456,7 +486,42 @@ main {
   opacity: 0.8;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.modal-pronunciation-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-bottom: 0.5rem;
+}
+
+.speak-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: background var(--transition), transform var(--transition), border-color var(--transition);
+}
+
+.speak-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: #fff;
+  transform: scale(1.05);
+}
+
+.speak-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.speak-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .modal-stars {
@@ -622,7 +687,8 @@ footer {
   }
 
   .filter-btn,
-  .view-filter-btn {
+  .view-filter-btn,
+  .mastery-filter-btn {
     padding: 0.5rem 0.7rem;
     font-size: 0.8rem;
   }

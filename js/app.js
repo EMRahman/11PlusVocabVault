@@ -29,10 +29,61 @@
     saveViewCounts();
   }
 
+  // ── Mastery (persisted in localStorage) ────────────────────────────────────
+  // For each word: { correct: n, incorrect: n, lastWrong: timestamp }
+  var MASTERY_KEY = 'vocabVault_mastery';
+  var mastery = {};
+
+  function loadMastery() {
+    try {
+      var stored = localStorage.getItem(MASTERY_KEY);
+      mastery = stored ? JSON.parse(stored) : {};
+    } catch (e) {
+      mastery = {};
+    }
+  }
+
+  function saveMastery() {
+    try { localStorage.setItem(MASTERY_KEY, JSON.stringify(mastery)); } catch (e) {}
+  }
+
+  function getMasteryStatus(wordName) {
+    var m = mastery[wordName];
+    if (!m || (m.correct === 0 && m.incorrect === 0)) return 'new';
+    if (m.correct >= 3 && (m.correct - m.incorrect) >= 2) return 'mastered';
+    return 'learning';
+  }
+
+  function recordAnswer(wordName, isCorrect) {
+    var m = mastery[wordName] || { correct: 0, incorrect: 0, lastWrong: 0 };
+    if (isCorrect) {
+      m.correct++;
+    } else {
+      m.incorrect++;
+      m.lastWrong = Date.now();
+    }
+    mastery[wordName] = m;
+    saveMastery();
+  }
+
+  // ── Audio pronunciation ────────────────────────────────────────────────────
+  function speakWord(word) {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      var utter = new SpeechSynthesisUtterance(word);
+      utter.lang = 'en-GB';
+      utter.rate = 0.9;
+      utter.pitch = 1;
+      window.speechSynthesis.speak(utter);
+    } catch (e) {}
+  }
+
   var state = {
     query: '',
     ratingFilter: null, // null = all, 1-5 = exact match
     unviewedOnly: false,
+    masteryFilter: 'all', // 'all' | 'new' | 'learning' | 'mastered'
   };
 
   // ── DOM refs ───────────────────────────────────────────────────────────────
@@ -40,6 +91,7 @@
   var searchInput   = document.getElementById('search-input');
   var filterBtns    = document.querySelectorAll('.filter-btn');
   var viewFilterBtns = document.querySelectorAll('.view-filter-btn');
+  var masteryFilterBtns = document.querySelectorAll('.mastery-filter-btn');
   var modalOverlay  = document.getElementById('modal-overlay');
   var modalCard     = document.getElementById('modal-card');
   var modalClose    = document.getElementById('modal-close');
@@ -53,6 +105,7 @@
   var modalAntonyms   = document.getElementById('modal-antonyms');
   var linkDefine      = document.getElementById('link-define');
   var linkExamples    = document.getElementById('link-examples');
+  var modalSpeakBtn   = document.getElementById('modal-speak-btn');
   var modalViewCount  = document.getElementById('modal-view-count');
   var wordCountEl     = document.getElementById('word-count');
   var totalWordsEl  = document.getElementById('total-words');
@@ -84,6 +137,7 @@
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
     loadViewCounts();
+    loadMastery();
     fetch('data/words.json')
       .then(function (res) { return res.json(); })
       .then(function (data) {
@@ -151,11 +205,27 @@
     article.appendChild(definition);
 
     var count = viewCounts[word.word] || 0;
+    var masteryStatus = getMasteryStatus(word.word);
+
+    var footer = document.createElement('div');
+    footer.className = 'card-footer';
+
+    if (masteryStatus !== 'new') {
+      var badge = document.createElement('span');
+      badge.className = 'mastery-badge mastery-' + masteryStatus;
+      badge.textContent = masteryStatus === 'mastered' ? '✓ Mastered' : '📘 Learning';
+      footer.appendChild(badge);
+    }
+
     if (count > 0) {
-      var countEl = document.createElement('p');
+      var countEl = document.createElement('span');
       countEl.className = 'card-view-count';
       countEl.textContent = 'Viewed ' + count + (count === 1 ? ' time' : ' times');
-      article.appendChild(countEl);
+      footer.appendChild(countEl);
+    }
+
+    if (footer.childNodes.length > 0) {
+      article.appendChild(footer);
     }
 
     return article;
@@ -220,6 +290,12 @@
       });
     }
 
+    if (state.masteryFilter !== 'all') {
+      results = results.filter(function (w) {
+        return getMasteryStatus(w.word) === state.masteryFilter;
+      });
+    }
+
     renderCards(results);
   }
 
@@ -232,14 +308,20 @@
     if (card) {
       var count = viewCounts[wordObj.word];
       var text = 'Viewed ' + count + (count === 1 ? ' time' : ' times');
-      var existing = card.querySelector('.card-view-count');
+      var footer = card.querySelector('.card-footer');
+      if (!footer) {
+        footer = document.createElement('div');
+        footer.className = 'card-footer';
+        card.appendChild(footer);
+      }
+      var existing = footer.querySelector('.card-view-count');
       if (existing) {
         existing.textContent = text;
       } else {
-        var countEl = document.createElement('p');
+        var countEl = document.createElement('span');
         countEl.className = 'card-view-count';
         countEl.textContent = text;
-        card.appendChild(countEl);
+        footer.appendChild(countEl);
       }
     }
 
@@ -290,6 +372,9 @@
   }
 
   function closeModal() {
+    if ('speechSynthesis' in window) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
     modalOverlay.classList.add('hidden');
     modalOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -357,6 +442,28 @@
         applyFilters();
       });
     });
+
+    // Mastery filter buttons
+    forEachNode(masteryFilterBtns, function (btn) {
+      btn.addEventListener('click', function () {
+        forEachNode(masteryFilterBtns, function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        state.masteryFilter = this.dataset.masteryFilter || 'all';
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        applyFilters();
+      });
+    });
+
+    // Speak button (audio pronunciation in modal)
+    if (modalSpeakBtn) {
+      modalSpeakBtn.addEventListener('click', function () {
+        var word = modalTitle.textContent;
+        if (word) speakWord(word);
+      });
+    }
 
     // Card clicks — event delegation on the grid
     wordGrid.addEventListener('click', function (e) {
@@ -515,6 +622,8 @@
     quizOverlay.classList.add('hidden');
     quizOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    // Re-render the grid so mastery badges reflect any quiz progress.
+    applyFilters();
     quizLaunchBtn.focus();
   }
 
@@ -559,7 +668,21 @@
 
   function pickDistractors(correctWord, pool, count) {
     var candidates = pool.filter(function (w) { return w.word !== correctWord.word; });
-    return shuffle(candidates).slice(0, count);
+    var sameType = correctWord.word_type
+      ? candidates.filter(function (w) { return w.word_type === correctWord.word_type; })
+      : [];
+
+    var picks = [];
+    shuffle(sameType).forEach(function (w) {
+      if (picks.length < count) picks.push(w);
+    });
+    if (picks.length < count) {
+      var others = candidates.filter(function (w) { return picks.indexOf(w) === -1; });
+      shuffle(others).forEach(function (w) {
+        if (picks.length < count) picks.push(w);
+      });
+    }
+    return picks;
   }
 
   function getSentenceBlank(wordObj) {
@@ -579,42 +702,145 @@
     if (getSentenceBlank(wordObj)) {
       types.push('sentence');
     }
+    if (wordObj.synonyms && wordObj.synonyms.length) {
+      types.push('synonym');
+    }
+    if (wordObj.antonyms && wordObj.antonyms.length) {
+      types.push('antonym');
+    }
     return types;
   }
 
-  function getAnswerText(question, choice) {
-    return question.type === 'word' ? choice.definition : choice.word;
+  function caseInsensitiveSet(items) {
+    var set = {};
+    items.forEach(function (s) { if (s) set[s.toLowerCase()] = true; });
+    return set;
+  }
+
+  function buildRelationQuestion(wordObj, pool, kind) {
+    var positives = (kind === 'synonym' ? wordObj.synonyms : wordObj.antonyms) || [];
+    var negatives = (kind === 'synonym' ? wordObj.antonyms : wordObj.synonyms) || [];
+    if (!positives.length) return null;
+
+    var correct = positives[Math.floor(Math.random() * positives.length)];
+    var blocked = caseInsensitiveSet(positives.concat([wordObj.word]));
+
+    var distractorPool = [];
+    negatives.forEach(function (n) {
+      if (!blocked[n.toLowerCase()]) distractorPool.push(n);
+    });
+
+    shuffle(pool).forEach(function (w) {
+      if (distractorPool.length >= 12) return;
+      var name = w.word;
+      if (!blocked[name.toLowerCase()] && distractorPool.indexOf(name) === -1) {
+        distractorPool.push(name);
+      }
+    });
+
+    var distractors = shuffle(distractorPool).slice(0, 3);
+    if (distractors.length < 3) return null;
+
+    var choices = shuffle([correct].concat(distractors));
+    return {
+      type         : kind,
+      questionWord : wordObj,
+      sentenceBlank: null,
+      choices      : choices,
+      correctIndex : choices.indexOf(correct)
+    };
   }
 
   function buildQuestion(wordObj, type, pool) {
+    if (type === 'synonym' || type === 'antonym') {
+      return buildRelationQuestion(wordObj, pool, type);
+    }
+
     var distractors = pickDistractors(wordObj, pool, 3);
-    var choices = shuffle([wordObj].concat(distractors));
+    var ordered = shuffle([wordObj].concat(distractors));
+    var correctIndex = ordered.indexOf(wordObj);
+    var choices = ordered.map(function (c) {
+      return type === 'word' ? c.definition : c.word;
+    });
     return {
       type         : type,
       questionWord : wordObj,
       sentenceBlank: type === 'sentence' ? getSentenceBlank(wordObj) : null,
       choices      : choices,
-      correctIndex : choices.indexOf(wordObj)
+      correctIndex : correctIndex
     };
   }
 
+  function buildWeakestPool(basePool) {
+    // Words that have at least one wrong answer, sorted by miss-margin desc
+    // then most recent miss. Falls back to filling with random words from base.
+    var withMisses = basePool.filter(function (w) {
+      var m = mastery[w.word];
+      return m && m.incorrect > 0 && (m.incorrect - m.correct) >= 0;
+    });
+    withMisses.sort(function (a, b) {
+      var ma = mastery[a.word];
+      var mb = mastery[b.word];
+      var diffA = ma.incorrect - ma.correct;
+      var diffB = mb.incorrect - mb.correct;
+      if (diffB !== diffA) return diffB - diffA;
+      return (mb.lastWrong || 0) - (ma.lastWrong || 0);
+    });
+
+    if (withMisses.length >= quizState.length) return withMisses;
+
+    // Pad with non-mastered words so the quiz can run.
+    var seen = {};
+    withMisses.forEach(function (w) { seen[w.word] = true; });
+    var pad = shuffle(basePool.filter(function (w) {
+      return !seen[w.word] && getMasteryStatus(w.word) !== 'mastered';
+    }));
+    var combined = withMisses.concat(pad);
+
+    // If everything is mastered (or basePool empty), fall back to a shuffled
+    // copy of basePool so the user can keep practising rather than seeing the
+    // overlay crash with no questions to render.
+    if (combined.length === 0) {
+      return shuffle(basePool);
+    }
+    return combined;
+  }
+
   function buildQuizSession() {
-    var pool = quizState.scope === '5star'
+    var basePool = quizState.scope === '5star'
       ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
       : allWords;
-    var questionPool = quizState.mode === 'sentence'
-      ? pool.filter(function (w) { return getSentenceBlank(w); })
-      : pool;
-    var count = Math.min(quizState.length, questionPool.length);
-    var picked = shuffle(questionPool).slice(0, count);
 
-    return picked.map(function (word) {
+    var pool = quizState.scope === 'weakest'
+      ? buildWeakestPool(allWords)
+      : basePool;
+
+    var distractorPool = quizState.scope === 'weakest' ? allWords : basePool;
+
+    var questionPool = pool;
+    if (quizState.mode === 'sentence') {
+      questionPool = pool.filter(function (w) { return getSentenceBlank(w); });
+    } else if (quizState.mode === 'synonym') {
+      questionPool = pool.filter(function (w) { return w.synonyms && w.synonyms.length; });
+    } else if (quizState.mode === 'antonym') {
+      questionPool = pool.filter(function (w) { return w.antonyms && w.antonyms.length; });
+    }
+
+    var count = Math.min(quizState.length, questionPool.length);
+    var ordered = quizState.scope === 'weakest'
+      ? questionPool.slice(0, count)
+      : shuffle(questionPool).slice(0, count);
+
+    var questions = [];
+    ordered.forEach(function (word) {
       var availableTypes = getQuestionTypesForWord(word);
       var type = quizState.mode === 'mixed'
         ? shuffle(availableTypes)[0]
         : quizState.mode;
-      return buildQuestion(word, type, pool);
+      var q = buildQuestion(word, type, distractorPool);
+      if (q) questions.push(q);
     });
+    return questions;
   }
 
   // ── Rendering ──────────────────────────────────────────────────────────────
@@ -648,6 +874,12 @@
     } else if (q.type === 'sentence') {
       quizQuestionLabel.textContent = 'Which word best completes this sentence?';
       quizQuestionText.textContent  = q.sentenceBlank;
+    } else if (q.type === 'synonym') {
+      quizQuestionLabel.textContent = 'Which word means almost the SAME as this?';
+      quizQuestionText.textContent  = q.questionWord.word;
+    } else if (q.type === 'antonym') {
+      quizQuestionLabel.textContent = 'Which word means the OPPOSITE of this?';
+      quizQuestionText.textContent  = q.questionWord.word;
     } else {
       quizQuestionLabel.textContent = 'What does this word mean?';
       quizQuestionText.textContent  = q.questionWord.word;
@@ -660,7 +892,7 @@
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
       btn.setAttribute('aria-pressed', 'false');
-      btn.textContent  = getAnswerText(q, choice);
+      btn.textContent  = choice;
       quizAnswersGrid.appendChild(btn);
     });
 
@@ -683,7 +915,7 @@
     var q = quizState.questions[quizState.currentIndex];
     var buttons = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
     var isCorrect = chosenIndex === q.correctIndex;
-    var chosenChoice = q.choices[chosenIndex];
+    var chosenText = q.choices[chosenIndex];
 
     // Disable all buttons immediately
     forEachNode(buttons, function (b) { b.disabled = true; });
@@ -695,6 +927,9 @@
       buttons[chosenIndex].classList.add('wrong');
     }
 
+    // Persist mastery for this word
+    recordAnswer(q.questionWord.word, isCorrect);
+
     // Update score / streak
     if (isCorrect) {
       quizState.score++;
@@ -704,7 +939,7 @@
       quizState.misses.push({
         word: q.questionWord.word,
         definition: q.questionWord.definition,
-        chosen: getAnswerText(q, chosenChoice)
+        chosen: chosenText
       });
     }
 
@@ -714,8 +949,7 @@
     if (isCorrect) {
       quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
     } else {
-      var correctText = getAnswerText(q, q.questionWord);
-      quizFeedback.textContent = '✗ The answer was: ' + correctText;
+      quizFeedback.textContent = '✗ The answer was: ' + q.choices[q.correctIndex];
     }
 
     // Advance after pause
