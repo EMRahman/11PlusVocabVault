@@ -128,7 +128,23 @@
       <div class="quiz-setup-inner">
         <span class="quiz-setup-emoji" aria-hidden="true">🧠</span>
         <h2 id="quiz-setup-title" class="quiz-setup-title">Vocab Quiz</h2>
-        <p class="quiz-setup-subtitle">10 questions &middot; Mix of both question types</p>
+        <p class="quiz-setup-subtitle" id="quiz-setup-subtitle">5 questions &middot; Mix of both question types</p>
+        <p class="quiz-setup-helper">Choose a quick warm-up, a full practice round, or focus on one question style — including sentence blanks.</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="quiz-length-label">
+            <p id="quiz-length-label" class="quiz-scope-label">How many?</p>
+            <button class="quiz-option-btn active" data-length="5" aria-pressed="true">5 quick</button>
+            <button class="quiz-option-btn" data-length="10" aria-pressed="false">10 standard</button>
+            <button class="quiz-option-btn" data-length="15" aria-pressed="false">15 challenge</button>
+          </div>
+          <div class="quiz-option-group" role="group" aria-labelledby="quiz-type-label">
+            <p id="quiz-type-label" class="quiz-scope-label">Question type</p>
+            <button class="quiz-option-btn active" data-mode="mixed" aria-pressed="true">Mixed</button>
+            <button class="quiz-option-btn" data-mode="definition" aria-pressed="false">Definition → word</button>
+            <button class="quiz-option-btn" data-mode="word" aria-pressed="false">Word → meaning</button>
+            <button class="quiz-option-btn" data-mode="sentence" aria-pressed="false">Sentence blank</button>
+          </div>
+        </div>
         <div class="quiz-scope-group" role="group" aria-labelledby="quiz-scope-label">
           <p id="quiz-scope-label" class="quiz-scope-label">Which words?</p>
           <button class="quiz-scope-btn active" data-scope="all" aria-pressed="true" id="quiz-scope-all-btn">All words</button>
@@ -147,11 +163,11 @@
         </button>
       </div>
       <div class="quiz-header">
-        <div class="quiz-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="quiz-progress-bar-wrap">
+        <div class="quiz-progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" id="quiz-progress-bar-wrap">
           <div class="quiz-progress-bar-fill" id="quiz-progress-fill"></div>
         </div>
         <div class="quiz-meta">
-          <span class="quiz-counter" id="quiz-counter">Q 1 of 10</span>
+          <span class="quiz-counter" id="quiz-counter">Q 1 of 5</span>
           <span class="quiz-score-display" id="quiz-score-display">Score: 0</span>
           <span class="quiz-streak" id="quiz-streak" aria-live="polite"></span>
         </div>
@@ -171,6 +187,10 @@
         <h2 class="quiz-end-title" id="quiz-end-title"></h2>
         <p class="quiz-end-score" id="quiz-end-score"></p>
         <p class="quiz-end-best" id="quiz-end-best"></p>
+        <div class="quiz-review hidden" id="quiz-review">
+          <h3 class="quiz-review-title">Review your misses</h3>
+          <ul class="quiz-review-list" id="quiz-review-list"></ul>
+        </div>
         <div class="quiz-end-actions">
           <button class="quiz-start-btn" id="quiz-play-again-btn">Play again</button>
           <button class="quiz-back-btn" id="quiz-back-btn">Back to words</button>

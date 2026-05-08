@@ -375,8 +375,9 @@
   // Completely isolated from browse/filter logic. Reads allWords array (read-only).
   // ═══════════════════════════════════════════════════════════════════════════
 
-  var QUIZ_BEST_KEY  = 'vocabVault_quizBest';
-  var QUIZ_LENGTH    = 10;
+  var QUIZ_BEST_KEY   = 'vocabVault_quizBest';
+  var QUIZ_BESTS_KEY  = 'vocabVault_quizBests';
+  var DEFAULT_QUIZ_LENGTH = 5;
 
   var quizState = {
     questions    : [],
@@ -384,7 +385,11 @@
     score        : 0,
     streak       : 0,
     scope        : 'all',
-    personalBest : 0
+    length       : DEFAULT_QUIZ_LENGTH,
+    mode         : 'mixed',
+    misses       : [],
+    personalBest : 0,
+    personalBests: {}
   };
 
   // ── Quiz DOM refs ──────────────────────────────────────────────────────────
@@ -392,7 +397,10 @@
   var quizSetupEl        = document.getElementById('quiz-setup');
   var quizSetupClose     = document.getElementById('quiz-setup-close');
   var quizStartBtn       = document.getElementById('quiz-start-btn');
+  var quizSetupSubtitle  = document.getElementById('quiz-setup-subtitle');
   var quizScopeBtns      = document.querySelectorAll('.quiz-scope-btn');
+  var quizLengthBtns     = document.querySelectorAll('[data-length]');
+  var quizModeBtns       = document.querySelectorAll('[data-mode]');
   var quizPersonalBestEl = document.getElementById('quiz-personal-best');
   var quizLaunchBtn      = document.getElementById('quiz-launch-btn');
 
@@ -413,24 +421,43 @@
   var quizEndTitle       = document.getElementById('quiz-end-title');
   var quizEndScore       = document.getElementById('quiz-end-score');
   var quizEndBest        = document.getElementById('quiz-end-best');
+  var quizReview         = document.getElementById('quiz-review');
+  var quizReviewList     = document.getElementById('quiz-review-list');
   var quizPlayAgainBtn   = document.getElementById('quiz-play-again-btn');
   var quizBackBtn        = document.getElementById('quiz-back-btn');
   var quizAdvanceTimeout = null;
 
   // ── Persistence ────────────────────────────────────────────────────────────
+  function getQuizBestKey() {
+    return [quizState.scope, quizState.length, quizState.mode].join(':');
+  }
+
+  function getQuizBest() {
+    return quizState.personalBests[getQuizBestKey()] || 0;
+  }
+
   function loadQuizBest() {
     try {
-      var stored = localStorage.getItem(QUIZ_BEST_KEY);
-      quizState.personalBest = stored ? parseInt(stored, 10) : 0;
+      var storedMap = localStorage.getItem(QUIZ_BESTS_KEY);
+      quizState.personalBests = storedMap ? JSON.parse(storedMap) : {};
+
+      // Carry forward an older single best score for the original default quiz.
+      var legacyBest = localStorage.getItem(QUIZ_BEST_KEY);
+      if (legacyBest && !quizState.personalBests['all:10:mixed']) {
+        quizState.personalBests['all:10:mixed'] = parseInt(legacyBest, 10) || 0;
+      }
     } catch (e) {
-      quizState.personalBest = 0;
+      quizState.personalBests = {};
     }
+    quizState.personalBest = getQuizBest();
   }
 
   function saveQuizBest(score) {
-    if (score > quizState.personalBest) {
+    var key = getQuizBestKey();
+    if (score > getQuizBest()) {
+      quizState.personalBests[key] = score;
       quizState.personalBest = score;
-      try { localStorage.setItem(QUIZ_BEST_KEY, score); } catch (e) {}
+      try { localStorage.setItem(QUIZ_BESTS_KEY, JSON.stringify(quizState.personalBests)); } catch (e) {}
     }
   }
 
@@ -444,7 +471,7 @@
 
   function openQuizOverlay() {
     clearQuizAdvanceTimeout();
-    updatePersonalBestDisplay();
+    updateQuizSetupSummary();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
     showQuizScreen(quizSetupEl);
@@ -467,9 +494,22 @@
     }
   }
 
+  function getQuizModeLabel() {
+    if (quizState.mode === 'definition') return 'Definition → word';
+    if (quizState.mode === 'word') return 'Word → meaning';
+    if (quizState.mode === 'sentence') return 'Sentence blank';
+    return 'Mixed question types';
+  }
+
+  function updateQuizSetupSummary() {
+    quizState.personalBest = getQuizBest();
+    quizSetupSubtitle.textContent = quizState.length + ' questions · ' + getQuizModeLabel();
+    updatePersonalBestDisplay();
+  }
+
   function updatePersonalBestDisplay() {
     if (quizState.personalBest > 0) {
-      quizPersonalBestEl.textContent = 'Personal best: ' + quizState.personalBest + ' / ' + QUIZ_LENGTH;
+      quizPersonalBestEl.textContent = 'Personal best for these options: ' + quizState.personalBest + ' / ' + quizState.length;
       quizPersonalBestEl.classList.remove('hidden');
     } else {
       quizPersonalBestEl.classList.add('hidden');
@@ -491,12 +531,37 @@
     return shuffle(candidates).slice(0, count);
   }
 
+  function getSentenceBlank(wordObj) {
+    var sentence = wordObj.sentence_usage || '';
+    var escapedWord = wordObj.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var wordPattern = new RegExp('\\b' + escapedWord + '\\b', 'i');
+
+    if (!wordPattern.test(sentence)) {
+      return null;
+    }
+
+    return sentence.replace(wordPattern, '_____');
+  }
+
+  function getQuestionTypesForWord(wordObj) {
+    var types = ['definition', 'word'];
+    if (getSentenceBlank(wordObj)) {
+      types.push('sentence');
+    }
+    return types;
+  }
+
+  function getAnswerText(question, choice) {
+    return question.type === 'word' ? choice.definition : choice.word;
+  }
+
   function buildQuestion(wordObj, type, pool) {
     var distractors = pickDistractors(wordObj, pool, 3);
     var choices = shuffle([wordObj].concat(distractors));
     return {
       type         : type,
       questionWord : wordObj,
+      sentenceBlank: type === 'sentence' ? getSentenceBlank(wordObj) : null,
       choices      : choices,
       correctIndex : choices.indexOf(wordObj)
     };
@@ -506,10 +571,17 @@
     var pool = quizState.scope === '5star'
       ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
       : allWords;
-    var count = Math.min(QUIZ_LENGTH, pool.length);
-    var picked = shuffle(pool).slice(0, count);
+    var questionPool = quizState.mode === 'sentence'
+      ? pool.filter(function (w) { return getSentenceBlank(w); })
+      : pool;
+    var count = Math.min(quizState.length, questionPool.length);
+    var picked = shuffle(questionPool).slice(0, count);
+
     return picked.map(function (word) {
-      var type = Math.random() < 0.5 ? 'definition' : 'word';
+      var availableTypes = getQuestionTypesForWord(word);
+      var type = quizState.mode === 'mixed'
+        ? shuffle(availableTypes)[0]
+        : quizState.mode;
       return buildQuestion(word, type, pool);
     });
   }
@@ -542,6 +614,9 @@
     if (q.type === 'definition') {
       quizQuestionLabel.textContent = 'What word means this?';
       quizQuestionText.textContent  = q.questionWord.definition;
+    } else if (q.type === 'sentence') {
+      quizQuestionLabel.textContent = 'Which word best completes this sentence?';
+      quizQuestionText.textContent  = q.sentenceBlank;
     } else {
       quizQuestionLabel.textContent = 'What does this word mean?';
       quizQuestionText.textContent  = q.questionWord.word;
@@ -554,7 +629,7 @@
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
       btn.setAttribute('aria-pressed', 'false');
-      btn.textContent  = q.type === 'definition' ? choice.word : choice.definition;
+      btn.textContent  = getAnswerText(q, choice);
       quizAnswersGrid.appendChild(btn);
     });
 
@@ -577,6 +652,7 @@
     var q = quizState.questions[quizState.currentIndex];
     var buttons = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
     var isCorrect = chosenIndex === q.correctIndex;
+    var chosenChoice = q.choices[chosenIndex];
 
     // Disable all buttons immediately
     forEachNode(buttons, function (b) { b.disabled = true; });
@@ -594,6 +670,11 @@
       quizState.streak++;
     } else {
       quizState.streak = 0;
+      quizState.misses.push({
+        word: q.questionWord.word,
+        definition: q.questionWord.definition,
+        chosen: getAnswerText(q, chosenChoice)
+      });
     }
 
     // Feedback strip
@@ -602,7 +683,7 @@
     if (isCorrect) {
       quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
     } else {
-      var correctText = q.type === 'definition' ? q.questionWord.word : q.questionWord.definition;
+      var correctText = getAnswerText(q, q.questionWord);
       quizFeedback.textContent = '✗ The answer was: ' + correctText;
     }
 
@@ -628,7 +709,8 @@
     quizProgressFill.style.width = '100%';
     var score = quizState.score;
     var total = quizState.questions.length;
-    var isNewBest = score > quizState.personalBest;
+    var previousBest = getQuizBest();
+    var isNewBest = score > previousBest;
     saveQuizBest(score);
 
     var tier;
@@ -642,10 +724,40 @@
     quizEndScore.textContent = score + ' / ' + total + ' correct';
     quizEndBest.textContent  = isNewBest
       ? 'New personal best! 🎉'
-      : (quizState.personalBest > 0 ? 'Personal best: ' + quizState.personalBest + ' / ' + total : '');
+      : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
 
+    renderQuizReview();
     showQuizScreen(quizEndScreen);
     quizPlayAgainBtn.focus();
+  }
+
+  function renderQuizReview() {
+    quizReviewList.innerHTML = '';
+    if (quizState.misses.length === 0) {
+      quizReview.classList.add('hidden');
+      return;
+    }
+
+    quizState.misses.forEach(function (miss) {
+      var item = document.createElement('li');
+      item.className = 'quiz-review-item';
+
+      var word = document.createElement('strong');
+      word.textContent = miss.word;
+
+      var definition = document.createElement('span');
+      definition.textContent = miss.definition;
+
+      var chosen = document.createElement('small');
+      chosen.textContent = 'You chose: ' + miss.chosen;
+
+      item.appendChild(word);
+      item.appendChild(definition);
+      item.appendChild(chosen);
+      quizReviewList.appendChild(item);
+    });
+
+    quizReview.classList.remove('hidden');
   }
 
   // ── Start quiz ─────────────────────────────────────────────────────────────
@@ -654,7 +766,9 @@
     quizState.currentIndex = 0;
     quizState.score        = 0;
     quizState.streak       = 0;
+    quizState.misses       = [];
     quizState.questions    = buildQuizSession();
+    quizProgressWrap.setAttribute('aria-valuemax', quizState.questions.length);
     showQuizScreen(quizQuestionScreen);
     renderQuestion(0);
     quizExitBtn.focus();
@@ -678,8 +792,37 @@
         this.classList.add('active');
         this.setAttribute('aria-pressed', 'true');
         quizState.scope = this.dataset.scope;
+        updateQuizSetupSummary();
       });
     });
+
+    forEachNode(quizLengthBtns, function (btn) {
+      btn.addEventListener('click', function () {
+        forEachNode(quizLengthBtns, function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        quizState.length = parseInt(this.dataset.length, 10);
+        updateQuizSetupSummary();
+      });
+    });
+
+    forEachNode(quizModeBtns, function (btn) {
+      btn.addEventListener('click', function () {
+        forEachNode(quizModeBtns, function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        quizState.mode = this.dataset.mode;
+        updateQuizSetupSummary();
+      });
+    });
+
+    updateQuizSetupSummary();
 
     quizStartBtn.addEventListener('click', startQuiz);
     quizPlayAgainBtn.addEventListener('click', startQuiz);
