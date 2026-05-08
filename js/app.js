@@ -497,6 +497,7 @@
   function getQuizModeLabel() {
     if (quizState.mode === 'definition') return 'Definition → word';
     if (quizState.mode === 'word') return 'Word → meaning';
+    if (quizState.mode === 'sentence') return 'Sentence blank';
     return 'Mixed question types';
   }
 
@@ -530,12 +531,37 @@
     return shuffle(candidates).slice(0, count);
   }
 
+  function getSentenceBlank(wordObj) {
+    var sentence = wordObj.sentence_usage || '';
+    var escapedWord = wordObj.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var wordPattern = new RegExp('\\b' + escapedWord + '\\b', 'i');
+
+    if (!wordPattern.test(sentence)) {
+      return null;
+    }
+
+    return sentence.replace(wordPattern, '_____');
+  }
+
+  function getQuestionTypesForWord(wordObj) {
+    var types = ['definition', 'word'];
+    if (getSentenceBlank(wordObj)) {
+      types.push('sentence');
+    }
+    return types;
+  }
+
+  function getAnswerText(question, choice) {
+    return question.type === 'word' ? choice.definition : choice.word;
+  }
+
   function buildQuestion(wordObj, type, pool) {
     var distractors = pickDistractors(wordObj, pool, 3);
     var choices = shuffle([wordObj].concat(distractors));
     return {
       type         : type,
       questionWord : wordObj,
+      sentenceBlank: type === 'sentence' ? getSentenceBlank(wordObj) : null,
       choices      : choices,
       correctIndex : choices.indexOf(wordObj)
     };
@@ -545,11 +571,16 @@
     var pool = quizState.scope === '5star'
       ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
       : allWords;
-    var count = Math.min(quizState.length, pool.length);
-    var picked = shuffle(pool).slice(0, count);
+    var questionPool = quizState.mode === 'sentence'
+      ? pool.filter(function (w) { return getSentenceBlank(w); })
+      : pool;
+    var count = Math.min(quizState.length, questionPool.length);
+    var picked = shuffle(questionPool).slice(0, count);
+
     return picked.map(function (word) {
+      var availableTypes = getQuestionTypesForWord(word);
       var type = quizState.mode === 'mixed'
-        ? (Math.random() < 0.5 ? 'definition' : 'word')
+        ? shuffle(availableTypes)[0]
         : quizState.mode;
       return buildQuestion(word, type, pool);
     });
@@ -580,6 +611,9 @@
     if (q.type === 'definition') {
       quizQuestionLabel.textContent = 'What word means this?';
       quizQuestionText.textContent  = q.questionWord.definition;
+    } else if (q.type === 'sentence') {
+      quizQuestionLabel.textContent = 'Which word best completes this sentence?';
+      quizQuestionText.textContent  = q.sentenceBlank;
     } else {
       quizQuestionLabel.textContent = 'What does this word mean?';
       quizQuestionText.textContent  = q.questionWord.word;
@@ -592,7 +626,7 @@
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
       btn.setAttribute('aria-pressed', 'false');
-      btn.textContent  = q.type === 'definition' ? choice.word : choice.definition;
+      btn.textContent  = getAnswerText(q, choice);
       quizAnswersGrid.appendChild(btn);
     });
 
@@ -629,7 +663,7 @@
       quizState.misses.push({
         word: q.questionWord.word,
         definition: q.questionWord.definition,
-        chosen: q.type === 'definition' ? chosenChoice.word : chosenChoice.definition
+        chosen: getAnswerText(q, chosenChoice)
       });
     }
 
@@ -639,7 +673,7 @@
     if (isCorrect) {
       quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
     } else {
-      var correctText = q.type === 'definition' ? q.questionWord.word : q.questionWord.definition;
+      var correctText = getAnswerText(q, q.questionWord);
       quizFeedback.textContent = '✗ The answer was: ' + correctText;
     }
 
