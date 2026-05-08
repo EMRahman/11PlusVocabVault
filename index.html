@@ -151,7 +151,14 @@
           <button class="quiz-scope-btn" data-scope="5star" aria-pressed="false">&#9733;&#9733;&#9733;&#9733;&#9733; Five-star only</button>
         </div>
         <div id="quiz-personal-best" class="quiz-personal-best hidden"></div>
-        <button class="quiz-start-btn" id="quiz-start-btn">Start Quiz</button>
+        <div class="quiz-start-callout" id="quiz-start-callout">
+          <span class="quiz-start-callout-arrow">↓</span>
+          <span>Ready? Press the Start Quiz button below to begin.</span>
+        </div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="quiz-start-btn" aria-describedby="quiz-start-callout">
+          Start Quiz
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
       </div>
     </div>
 
