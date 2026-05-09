@@ -878,14 +878,20 @@ footer {
   width: 100%;
 }
 
+.quiz-scope-group {
+  margin-top: 0.4rem;
+}
+
 .quiz-scope-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #6B7280;
-  color: var(--color-text-secondary);
-  margin-bottom: 0.2rem;
+  letter-spacing: 0.1em;
+  color: #6C63FF;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+  padding-left: 0.55rem;
+  border-left: 3px solid var(--color-primary);
 }
 
 .quiz-scope-btn,
