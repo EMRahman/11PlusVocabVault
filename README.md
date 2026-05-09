@@ -1,5 +1,7 @@
 # 11+ Vocab Builder
 
+**Live app: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)**
+
 A lightweight, static web app that helps students aged 8–11 prepare for 11+ entrance exams by exploring a curated set of 210 sophisticated vocabulary words for creative writing.
 
 ## Features
@@ -20,7 +22,9 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 
 ## Getting Started
 
-Clone the repo and open `index.html` in any browser — no installation needed.
+**Use it now** — no sign-up, no install: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)
+
+Or run it locally by cloning the repo and opening `index.html` in any browser:
 
 ```bash
 git clone https://github.com/EMRahman/11PlusVocabVault.git
