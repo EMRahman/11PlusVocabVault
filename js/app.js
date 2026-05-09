@@ -81,7 +81,7 @@
 
   var state = {
     query: '',
-    ratingFilter: null, // null = all, 1-5 = exact match
+    ratingFilter: null, // null = all, 3-5 = exact match
     unviewedOnly: false,
     masteryFilter: 'all', // 'all' | 'new' | 'learning' | 'mastered'
   };
@@ -257,7 +257,7 @@
     div.innerHTML =
       '<span class="empty-state-emoji">🔍</span>' +
       '<h3>No words found</h3>' +
-      '<p>Try a different search or change the star/viewed filters.</p>';
+      '<p>Try a different search, change the viewed filter, or choose a 3-, 4-, or 5-star rating.</p>';
     return div;
   }
 
