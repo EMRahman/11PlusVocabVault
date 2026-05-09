@@ -1,32 +1,60 @@
 # 11+ Vocab Builder
 
-A lightweight, static web app that helps students aged 8–11 prepare for 11+ entrance exams by exploring a curated set of 210 sophisticated vocabulary words for creative writing.
+**Live app: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)**
+
+A lightweight, static web app that helps students aged 8–11 prepare for 11+ entrance exams by exploring and quizzing themselves on a curated set of vocabulary words for creative writing.
 
 ## Features
 
-- **210 curated words** — chosen specifically to elevate 11+ creative writing
-- **Word detail cards** — click any word to see its definition, example sentence, synonyms, antonyms, and usefulness rating
-- **Pronunciation guide** — phonetic spelling for every word
+### Word browsing
+- **351 curated words** — chosen specifically to elevate 11+ creative writing
+- **Word detail cards** — click any word to see its definition, part of speech, example sentence, synonyms, antonyms, and usefulness rating
+- **Phonetic pronunciation** — shown in every word card and detail view
+- **Audio pronunciation** — tap the speaker button to hear the word read aloud (British English)
+- **Research links** — one-click links to Google definition and in-context example sentences
+
+### Filtering & search
 - **Search** — filter words by name in real time
-- **Rating filter** — narrow the list to words with an available usefulness rating (3–5 stars)
-- **No server required** — works when opened directly as a local HTML file
-- **Responsive** — works on desktop, tablet, and mobile
+- **Star filter** — narrow to words with a usefulness rating of 3, 4, or 5 stars
+- **Viewed filter** — hide words you've already opened so you can focus on unfamiliar ones
+- **Mastery filter** — show only New, Learning, or Mastered words
+
+### Progress tracking (saved in browser)
+- **View counts** — each word card records how many times you've opened it
+- **Mastery levels** — words progress from New → Learning → Mastered based on quiz performance, stored in `localStorage`
+
+### Quiz mode
+- Launch with the **Quiz me!** button
+- **6 question types**: Mixed, Definition → word, Word → meaning, Sentence blank, Synonym match, Antonym match
+- **3 lengths**: 5 quick, 10 standard, 15 challenge
+- **3 word scopes**: All words, 5-star only, Weakest words (those you've got wrong most)
+- **Streak counter** and **personal best** tracking
+- **Miss review** at the end — see every question you got wrong with the correct answer
+
+### Responsive & accessible
+- Works on desktop, tablet, and mobile
+- Keyboard navigable, ARIA-labelled throughout
 
 ## Tech Stack
 
 - Vanilla HTML, CSS, and JavaScript (no frameworks, no build step)
-- Word data embedded directly in `js/app.js` for zero-dependency usage
+- Word data loaded from `data/words.json` at runtime
+- Progress and mastery data persisted in `localStorage`
 - Hosted on GitHub Pages
 
 ## Getting Started
 
-Clone the repo and open `index.html` in any browser — no installation needed.
+**Use it now** — no sign-up, no install: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)
+
+Or run it locally with any static file server (required because word data is loaded via `fetch`):
 
 ```bash
 git clone https://github.com/EMRahman/11PlusVocabVault.git
 cd 11PlusVocabVault
-open index.html
+npx serve .        # or: python3 -m http.server 8080
 ```
+
+Then open `http://localhost:3000` (or whichever port the server reports).
 
 ## Project Structure
 
@@ -35,19 +63,20 @@ open index.html
 ├── css/
 │   └── style.css     # All styling
 ├── js/
-│   └── app.js        # App logic + embedded word data
+│   └── app.js        # App logic
 ├── data/
-│   └── words.json    # Word dataset (reference copy)
+│   └── words.json    # Word dataset
 └── SPEC.md           # Original product specification
 ```
 
 ## Word Data Format
 
-Each word entry follows this schema:
+Each entry in `data/words.json` follows this schema:
 
 | Field              | Type              | Description                                      |
 |--------------------|-------------------|--------------------------------------------------|
 | `word`             | string            | The vocabulary word                              |
+| `word_type`        | string            | Part of speech (e.g. adjective, noun, verb)      |
 | `pronunciation`    | string            | Phonetic spelling                                |
 | `definition`       | string            | Plain-English definition accessible to an 8-year-old |
 | `sentence_usage`   | string            | Example sentence for 11+ creative writing        |
@@ -57,4 +86,4 @@ Each word entry follows this schema:
 
 ## Adding Words
 
-Extend the `WORDS` array in `js/app.js` following the schema above. Update `data/words.json` to keep the reference copy in sync.
+Add entries to the `words` array in `data/words.json` following the schema above.
