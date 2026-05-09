@@ -8,7 +8,7 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 - **Word detail cards** — click any word to see its definition, example sentence, synonyms, antonyms, and usefulness rating
 - **Pronunciation guide** — phonetic spelling for every word
 - **Search** — filter words by name in real time
-- **Rating filter** — narrow the list to words with a specific usefulness rating (1–5 stars)
+- **Rating filter** — narrow the list to words with an available usefulness rating (3–5 stars)
 - **No server required** — works when opened directly as a local HTML file
 - **Responsive** — works on desktop, tablet, and mobile
 
