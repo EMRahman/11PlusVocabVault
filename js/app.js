@@ -787,8 +787,9 @@
   }
 
   // Resolve (and memoise) the fixed quest theme for a word. Picks the theme
-  // with the most keyword hits in the word's definition + sentence; a tie or
-  // no hits falls back to a stable hash so every word always has one theme.
+  // with the most keyword hits in the word's definition + sentence; ties are
+  // broken by a stable hash among the top scorers, and a word with no hits
+  // falls back to a stable hash across all themes.
   function getWordTheme(wordObj) {
     var key = wordObj.word;
     if (wordThemeCache[key]) return wordThemeCache[key];
@@ -812,8 +813,8 @@
       }
     });
 
-    var theme = (bestScore > 0 && leaders.length === 1)
-      ? leaders[0]
+    var theme = bestScore > 0
+      ? leaders[hashString(key) % leaders.length]
       : questState.worlds[hashString(key) % questState.worlds.length];
 
     wordThemeCache[key] = theme;
