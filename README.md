@@ -33,7 +33,7 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 
 ### Story Mode
 - Launch with the **Story Mode** button
-- A library of hand-written short stories that use vocabulary words naturally in context
+- A library of **35 hand-written short stories** that together cover the full word list — every vocabulary word appears in a story, with around 10 words per story
 - Featured words are **highlighted** in the prose — tap any one for an instant definition
 - Finish a story and tap **Quiz me on this story** for a quiz scoped to just that story's words
 - Best score per story is saved so you can re-read and improve
