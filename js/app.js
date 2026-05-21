@@ -534,13 +534,13 @@
 
   var questState = {
     worlds: [
-      { id: 'forest', name: 'Forest of Clues', emoji: '🌲', theme: 'Forest', modes: ['sentence', 'definition', 'word', 'synonym', 'antonym'] },
-      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰', theme: 'Castle', modes: ['synonym', 'definition', 'word', 'sentence', 'antonym'] },
-      { id: 'dragon', name: 'Dragon Mountain', emoji: '🐉', theme: 'Dragon', modes: ['antonym', 'word', 'definition', 'sentence', 'synonym'] },
-      { id: 'fairies', name: 'Fairy Glen', emoji: '🧚', theme: 'Fairies', modes: ['word', 'definition', 'sentence', 'synonym', 'antonym'] },
-      { id: 'army-battle', name: 'Army Battle Fields', emoji: '🛡️', theme: 'Army Battle', modes: ['definition', 'antonym', 'word', 'sentence', 'synonym'] },
-      { id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵', theme: 'Sea Journey', modes: ['sentence', 'word', 'definition', 'antonym', 'synonym'] },
-      { id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙', theme: 'Wizard School', modes: ['synonym', 'word', 'definition', 'sentence', 'antonym'] }
+      { id: 'forest', name: 'Forest of Clues', emoji: '🌲', theme: 'Forest' },
+      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰', theme: 'Castle' },
+      { id: 'dragon', name: 'Dragon Mountain', emoji: '🐉', theme: 'Dragon' },
+      { id: 'fairies', name: 'Fairy Glen', emoji: '🧚', theme: 'Fairies' },
+      { id: 'army-battle', name: 'Army Battle Fields', emoji: '🛡️', theme: 'Army Battle' },
+      { id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵', theme: 'Sea Journey' },
+      { id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙', theme: 'Wizard School' }
     ],
     progress: { worldIndex: 0, levelsWonInWorld: 0, xp: 0, coins: 0 }
   };
@@ -699,7 +699,7 @@
       var completed = idx < p.worldIndex ? 5 : (idx === p.worldIndex ? p.levelsWonInWorld : 0);
       card.innerHTML =
         '<h3>' + world.emoji + ' ' + world.name + '</h3>' +
-        '<p class="quest-world-meta">' + completed + '/5 quest rounds won · Theme: ' + world.theme + '</p>';
+        '<p class="quest-world-meta">' + completed + '/5 quest rounds won · Mixed themes &amp; question types</p>';
       var btn = document.createElement('button');
       btn.className = 'quiz-start-btn';
       btn.textContent = idx === p.worldIndex ? 'Start world' : 'Switch to theme';
@@ -709,59 +709,122 @@
     });
   }
 
-  function getQuestPromptPrefix(world, type) {
-    var map = {
-      forest: {
-        definition: 'In the whispering forest, decode this clue:',
-        sentence: 'Along the forest trail, complete this line:',
-        synonym: 'The forest guide asks for a matching word:',
-        antonym: 'To open the forest gate, choose the opposite:',
-        word: 'A woodland riddle asks:'
-      },
-      castle: {
-        definition: 'Inside the castle archives, solve this clue:',
-        sentence: 'In the castle hall, complete this proclamation:',
-        synonym: 'A royal scholar requests a near-meaning word:',
-        antonym: 'To lower the drawbridge, pick the opposite:',
-        word: 'A castle challenge asks:'
-      },
-      dragon: {
-        definition: 'At dragon mountain, interpret this ancient clue:',
-        sentence: 'Before the dragon cave, complete this warning:',
-        synonym: 'The dragon keeper asks for a kindred word:',
-        antonym: 'To calm the dragon, choose the opposite:',
-        word: 'A dragon trial asks:'
-      },
-      fairies: {
-        definition: 'In fairy glen, decipher this glowing clue:',
-        sentence: 'At the fairy ring, complete this spell-line:',
-        synonym: 'A fairy asks for a similar word:',
-        antonym: 'To unlock the moonflower, pick the opposite:',
-        word: 'A fairy puzzle asks:'
-      },
-      'army-battle': {
-        definition: 'On the army field, decode this command clue:',
-        sentence: 'In the battle plan, complete this briefing:',
-        synonym: 'The captain asks for a matching word:',
-        antonym: 'To outmaneuver the rival unit, choose the opposite:',
-        word: 'A strategy drill asks:'
-      },
-      'sea-journey': {
-        definition: 'On the sea voyage, interpret this sailor clue:',
-        sentence: 'From the ship log, complete this entry:',
-        synonym: 'The navigator requests a similar word:',
-        antonym: 'To steer through fog, pick the opposite:',
-        word: 'A sea challenge asks:'
-      },
-      'wizard-school': {
-        definition: 'At wizard school, solve this lesson clue:',
-        sentence: 'In spell class, complete this line:',
-        synonym: 'The head wizard asks for a like-meaning word:',
-        antonym: 'To seal the portal, choose the opposite:',
-        word: 'A wizard exam asks:'
+  // Keywords scanned in a word's definition + example sentence to pick the
+  // theme its quest question is wrapped in. Whole-word matches only.
+  var THEME_KEYWORDS = {
+    forest: ['forest', 'forests', 'tree', 'trees', 'wood', 'woods', 'wooden', 'leaf', 'leaves', 'branch', 'branches', 'nature', 'natural', 'plant', 'plants', 'garden', 'flower', 'flowers', 'root', 'roots', 'grow', 'grew', 'growth', 'hedge', 'meadow', 'vine', 'moss', 'soil', 'seed', 'seeds', 'blossom', 'bloom', 'countryside', 'lane', 'orchard', 'grove'],
+    castle: ['castle', 'castles', 'king', 'queen', 'royal', 'crown', 'knight', 'knights', 'throne', 'noble', 'palace', 'lord', 'lady', 'kingdom', 'banquet', 'fortress', 'realm', 'regal', 'majesty', 'prince', 'princess', 'court', 'courtier'],
+    dragon: ['dragon', 'dragons', 'fire', 'fiery', 'flame', 'flames', 'mountain', 'mountains', 'cave', 'caves', 'beast', 'beasts', 'scale', 'scales', 'roar', 'roared', 'treasure', 'hoard', 'smoke', 'ash', 'claw', 'claws', 'lair', 'monster', 'blaze', 'ember', 'embers'],
+    fairies: ['fairy', 'fairies', 'magic', 'magical', 'glow', 'glowing', 'sparkle', 'sparkling', 'shimmer', 'wing', 'wings', 'glen', 'moon', 'moonlight', 'wish', 'wishes', 'tiny', 'delicate', 'glitter', 'enchant', 'enchanted', 'pixie', 'dew', 'petal', 'petals', 'graceful'],
+    'army-battle': ['battle', 'fight', 'fighting', 'fought', 'war', 'wars', 'army', 'soldier', 'soldiers', 'weapon', 'weapons', 'attack', 'attacked', 'enemy', 'enemies', 'conquer', 'defend', 'defence', 'defense', 'aggressive', 'hostile', 'combat', 'troop', 'troops', 'march', 'marched', 'victory', 'defeat', 'charge', 'siege', 'brave', 'courage', 'bold', 'command', 'commander', 'captain', 'general', 'fierce'],
+    'sea-journey': ['sea', 'seas', 'ship', 'ships', 'sail', 'sailed', 'sailing', 'ocean', 'oceans', 'wave', 'waves', 'water', 'voyage', 'sailor', 'sailors', 'tide', 'tides', 'harbour', 'harbor', 'fish', 'boat', 'boats', 'shore', 'coast', 'island', 'deck', 'anchor', 'current', 'storm', 'splash', 'marine', 'port', 'crew'],
+    'wizard-school': ['wizard', 'wizards', 'spell', 'spells', 'study', 'studied', 'learn', 'learned', 'learning', 'book', 'books', 'school', 'knowledge', 'potion', 'potions', 'lesson', 'lessons', 'scholar', 'wise', 'wisdom', 'clever', 'intelligent', 'teach', 'taught', 'pupil', 'exam', 'library', 'scroll', 'scrolls']
+  };
+
+  // Themed mini-scenario per theme + question type. {word} is filled in only
+  // for types where the word is already shown to the player (word/synonym/
+  // antonym); definition/sentence stay word-free so the answer is never given.
+  var themeNarratives = {
+    forest: {
+      definition: 'Deep in the Forest of Clues, a wise old owl ruffles its feathers and hoots a riddle. Name the word that means:',
+      word: 'A squirrel scampers down with the word “{word}” tucked in its paws. Tell the forest what it means:',
+      sentence: 'Along the mossy forest trail you find a torn page. Help the woodland scouts finish the line:',
+      synonym: 'The forest guide points to the word “{word}” carved in bark and asks for one that means almost the same:',
+      antonym: 'To open the tangled forest gate, the gatekeeper needs the opposite of “{word}”:'
+    },
+    castle: {
+      definition: 'Inside the dusty castle library, a royal scholar unrolls an old scroll. Which word does this clue describe?',
+      word: 'The herald raises a banner stitched with the word “{word}”. Announce to the court what it means:',
+      sentence: 'A royal proclamation has lost a word on its way to the throne room. Complete it for the king:',
+      synonym: 'A castle knight guards the word “{word}” and will only step aside for one that means nearly the same:',
+      antonym: 'To lower the heavy drawbridge, the guard demands the opposite of “{word}”:'
+    },
+    dragon: {
+      definition: 'High on Dragon Mountain, a sleepy dragon mumbles a clue between puffs of smoke. Which word fits?',
+      word: 'The dragon flicks a glowing ember shaped like the word “{word}”. Tell it what the word means:',
+      sentence: 'Carved above the dragon’s cave is an ancient warning with one word burned away. Finish it:',
+      synonym: 'The dragon keeper circles the word “{word}” and rasps for one that burns with the same meaning:',
+      antonym: 'To calm the roaring dragon, you must speak the opposite of “{word}”:'
+    },
+    fairies: {
+      definition: 'In the glittering Fairy Glen, a tiny fairy spins a clue from moonlight. Which word does it mean?',
+      word: 'A fairy lands on a glowing toadstool holding the word “{word}”. Whisper back what it means:',
+      sentence: 'At the fairy ring, a spell-line shimmers with one missing word. Complete the magic:',
+      synonym: 'A fairy flutters around the word “{word}” and giggles for one that means almost the same:',
+      antonym: 'To unlock the silver moonflower, the fairies need the opposite of “{word}”:'
+    },
+    'army-battle': {
+      definition: 'On the army battlefield, a brave captain hands you a coded clue. Which word does it command?',
+      word: 'A soldier raises a shield painted with the word “{word}”. Report to the captain what it means:',
+      sentence: 'The battle plan has a gap where one word should be. Complete the briefing before the march:',
+      synonym: 'The captain studies the word “{word}” and orders you to find one that means almost the same:',
+      antonym: 'To outsmart the rival army, the general needs the opposite of “{word}”:'
+    },
+    'sea-journey': {
+      definition: 'On the rolling Sea Journey, a salty sailor calls a clue down from the crow’s nest. Which word is it?',
+      word: 'A sailor hauls up a bottle with the word “{word}” inside. Tell the crew what it means:',
+      sentence: 'A page of the ship’s log was splashed by a wave, washing one word away. Finish the entry:',
+      synonym: 'The ship’s navigator points to the word “{word}” on the chart and asks for one that means nearly the same:',
+      antonym: 'To steer the ship safely through the fog, the captain needs the opposite of “{word}”:'
+    },
+    'wizard-school': {
+      definition: 'At Wizard School, your spell teacher chalks a clue on the floating blackboard. Which word does it mean?',
+      word: 'A wizard pupil levitates a spellbook open to the word “{word}”. Explain what it means:',
+      sentence: 'A spell in your textbook has one word vanished by a tricky charm. Complete the line:',
+      synonym: 'The head wizard taps the word “{word}” with a wand and asks for one that means almost the same:',
+      antonym: 'To seal the swirling portal, you must cast the opposite of “{word}”:'
+    }
+  };
+
+  var wordThemeCache = {};
+
+  function hashString(str) {
+    var h = 0;
+    for (var i = 0; i < str.length; i++) {
+      h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+    }
+    return Math.abs(h);
+  }
+
+  // Resolve (and memoise) the fixed quest theme for a word. Picks the theme
+  // with the most keyword hits in the word's definition + sentence; ties are
+  // broken by a stable hash among the top scorers, and a word with no hits
+  // falls back to a stable hash across all themes.
+  function getWordTheme(wordObj) {
+    var key = wordObj.word;
+    if (wordThemeCache[key]) return wordThemeCache[key];
+
+    var haystack = ((wordObj.definition || '') + ' ' + (wordObj.sentence_usage || '')).toLowerCase();
+    var tokens = {};
+    haystack.split(/[^a-z]+/).forEach(function (t) { if (t) tokens[t] = true; });
+
+    var bestScore = 0;
+    var leaders = [];
+    questState.worlds.forEach(function (world) {
+      var score = 0;
+      (THEME_KEYWORDS[world.id] || []).forEach(function (kw) {
+        if (tokens[kw]) score++;
+      });
+      if (score > bestScore) {
+        bestScore = score;
+        leaders = [world];
+      } else if (score === bestScore) {
+        leaders.push(world);
       }
-    };
-    return (map[world.id] && map[world.id][type]) || 'Quest challenge:';
+    });
+
+    var theme = bestScore > 0
+      ? leaders[hashString(key) % leaders.length]
+      : questState.worlds[hashString(key) % questState.worlds.length];
+
+    wordThemeCache[key] = theme;
+    return theme;
+  }
+
+  function getThemedQuestionIntro(theme, type, wordObj) {
+    var narratives = themeNarratives[theme.id] || themeNarratives.forest;
+    var template = narratives[type] || narratives.definition;
+    return template.replace('{word}', wordObj.word);
   }
 
   function clearQuizAdvanceTimeout() {
@@ -990,7 +1053,6 @@
   function renderQuestion(index) {
     var q = quizState.questions[index];
     var total = quizState.questions.length;
-    var world = questState.worlds[questState.progress.worldIndex];
 
     // Ensure no answer button remains visually/keyboard selected between questions.
     resetQuizAnswerFocus();
@@ -1005,23 +1067,39 @@
     quizScoreDisplay.textContent = 'Score: ' + quizState.score;
     quizStreakEl.textContent     = quizState.streak >= 2 ? '🔥 ' + quizState.streak : '';
 
-    // Question
+    // Question — in quest mode each question is themed to its own word.
+    var theme = quizState.isQuestMode ? getWordTheme(q.questionWord) : null;
+    var labelTask, payloadText;
     if (q.type === 'definition') {
-      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What word means this?';
-      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.definition;
+      labelTask   = ': What word means this?';
+      payloadText = q.questionWord.definition;
     } else if (q.type === 'sentence') {
-      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word best completes this sentence?';
-      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.sentenceBlank;
+      labelTask   = ': Which word best completes this sentence?';
+      payloadText = q.sentenceBlank;
     } else if (q.type === 'synonym') {
-      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means almost the SAME as this?';
-      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
+      labelTask   = ': Which word means almost the SAME as this?';
+      payloadText = q.questionWord.word;
     } else if (q.type === 'antonym') {
-      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means the OPPOSITE of this?';
-      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
+      labelTask   = ': Which word means the OPPOSITE of this?';
+      payloadText = q.questionWord.word;
     } else {
-      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What does this word mean?';
-      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
+      labelTask   = ': What does this word mean?';
+      payloadText = q.questionWord.word;
     }
+
+    quizQuestionLabel.textContent = (theme ? theme.emoji + ' ' + theme.theme + ' Quest' : 'Quiz') + labelTask;
+
+    quizQuestionText.innerHTML = '';
+    if (theme) {
+      var scenarioEl = document.createElement('span');
+      scenarioEl.className = 'quest-scenario';
+      scenarioEl.textContent = getThemedQuestionIntro(theme, q.type, q.questionWord);
+      quizQuestionText.appendChild(scenarioEl);
+    }
+    var coreEl = document.createElement('span');
+    coreEl.className = 'quiz-question-core';
+    coreEl.textContent = payloadText;
+    quizQuestionText.appendChild(coreEl);
 
     // Answer buttons
     quizAnswersGrid.innerHTML = '';
@@ -1181,12 +1259,10 @@
   }
 
   function startQuestWorld(worldIndex) {
-    var world = questState.worlds[worldIndex];
-    var modeIndex = questState.progress.levelsWonInWorld % world.modes.length;
     questState.progress.worldIndex = worldIndex;
     quizState.scope = 'all';
     quizState.length = 5;
-    quizState.mode = world.modes[modeIndex];
+    quizState.mode = 'mixed';
     quizState.isQuestMode = true;
     closeQuestOverlay();
     openQuizOverlay();
