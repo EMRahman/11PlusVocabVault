@@ -652,9 +652,19 @@
     screenEl.classList.remove('hidden');
   }
 
+  // The setup screen's option buttons are the source of truth for a normal
+  // quiz, so re-read them in case a quest or scoped quiz changed quizState.
+  function syncQuizStateFromSetup() {
+    var activeScope  = document.querySelector('.quiz-scope-btn.active');
+    var activeLength = document.querySelector('[data-length].active');
+    var activeMode   = document.querySelector('[data-mode].active');
+    if (activeScope)  quizState.scope  = activeScope.dataset.scope;
+    if (activeLength) quizState.length = parseInt(activeLength.dataset.length, 10);
+    if (activeMode)   quizState.mode   = activeMode.dataset.mode;
+  }
+
   function openQuizOverlay() {
     clearQuizAdvanceTimeout();
-    updateQuizSetupSummary();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -664,6 +674,8 @@
       startQuiz();
       return;
     }
+    syncQuizStateFromSetup();
+    updateQuizSetupSummary();
     showQuizScreen(quizSetupEl);
     quizSetupClose.focus();
   }
@@ -1817,6 +1829,17 @@
     return dayKey(d);
   }
 
+  // The stored streak is only "live" when the last completed day was today or
+  // yesterday; once a day is missed the run has lapsed and reads as zero.
+  function effectiveStreak() {
+    if (newsData.streak > 0 &&
+        (newsData.lastCompletedDate === todayKey() ||
+         newsData.lastCompletedDate === yesterdayKey())) {
+      return newsData.streak;
+    }
+    return 0;
+  }
+
   function loadNewsData() {
     try {
       var raw = localStorage.getItem(NEWS_KEY);
@@ -1906,8 +1929,9 @@
     newsDateLabel.textContent = now.toLocaleDateString('en-GB', {
       weekday: 'long', day: 'numeric', month: 'long'
     });
-    newsStreakEl.textContent = newsData.streak > 0
-      ? '🔥 ' + newsData.streak + '-day streak'
+    var streak = effectiveStreak();
+    newsStreakEl.textContent = streak > 0
+      ? '🔥 ' + streak + '-day streak'
       : 'Finish today\'s news quiz to start a streak!';
 
     forEachNode(newsCountBtns, function (b) {
