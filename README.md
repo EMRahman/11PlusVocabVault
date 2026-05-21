@@ -31,6 +31,21 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 - **Streak counter** and **personal best** tracking
 - **Miss review** at the end — see every question you got wrong with the correct answer
 
+### Story Mode
+- Launch with the **Story Mode** button
+- A library of hand-written short stories that use vocabulary words naturally in context
+- Featured words are **highlighted** in the prose — tap any one for an instant definition
+- Finish a story and tap **Quiz me on this story** for a quiz scoped to just that story's words
+- Best score per story is saved so you can re-read and improve
+
+### Daily News
+- Launch with the **Daily News** button — a quick daily reading-and-quiz routine
+- Each day the app picks **10, 15, or 20 words**, favouring new and not-yet-mastered words
+- Copy the generated prompt into any AI chat (Gemini, ChatGPT, or Claude), then paste the
+  kid-friendly news article it writes back into the app — no API key needed
+- The day's words are highlighted in the article for tap-to-define reading
+- A **morning quiz** on the day's words builds a daily **streak**
+
 ### Responsive & accessible
 - Works on desktop, tablet, and mobile
 - Keyboard navigable, ARIA-labelled throughout
@@ -65,7 +80,8 @@ Then open `http://localhost:3000` (or whichever port the server reports).
 ├── js/
 │   └── app.js        # App logic
 ├── data/
-│   └── words.json    # Word dataset
+│   ├── words.json    # Word dataset
+│   └── stories.json  # Story Mode story library
 └── SPEC.md           # Original product specification
 ```
 
