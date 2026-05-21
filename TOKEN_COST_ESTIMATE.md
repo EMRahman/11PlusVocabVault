@@ -33,6 +33,10 @@ scopes for "the word fits the theme":
 - **Scope B — themed sentence for each word's *assigned* theme only:** **351
   sentences**. Each word already resolves to exactly one theme via
   `getWordTheme()`, so this is the minimum that removes the static sentence.
+- **Scope D — themed text per (question type × word's assigned theme):** 5 ×
+  351 = **1,755 short texts**. Scope C narrowed to the single theme each word
+  resolves to via `getWordTheme()`. This is the scope that was implemented —
+  see §6.
 
 ## 3. Per-item token model
 
@@ -122,3 +126,42 @@ weak). With that overhead:
   recommended Scope A is roughly **$0.55–$1.60** (≈ $0.66–$1.92 with retries),
   and even the full five-type permutation (Scope C) stays under **$7**. The real
   cost is authoring/validating the generation prompt, not the tokens.
+
+## 6. Implementation
+
+Scope D was generated with **Claude Haiku** and written into `data/words.json`.
+Each word gains a `themed_quest` object — its assigned `theme` plus one text per
+quiz type:
+
+| Field        | Used by quiz type | Form |
+|--------------|-------------------|------|
+| `definition` | Definition → word | Themed clue that shows the meaning *without* naming the word |
+| `word`       | Word → meaning    | Themed example sentence using the word |
+| `sentence`   | Sentence blank    | Themed sentence with the word replaced by `_____` |
+| `synonym`    | Synonym match     | Themed example sentence using the word |
+| `antonym`    | Antonym match     | Themed example sentence using the word |
+
+### Pipeline (`scripts/`)
+
+1. `build-batches.js` — assigns each word its theme (mirrors `getWordTheme()`)
+   and splits the 351 words into batch files under `scripts/batches/`.
+2. A Haiku pass writes one `*.out.json` per batch with the themed texts.
+3. `merge-themed.js` — validates every text (word present/absent as required,
+   single cloze blank, no leaked synonym/antonym answer, length) and merges the
+   passing fields into `words.json` as `themed_quest`.
+4. `build-corrections.js` / `build-plain-batches.js` — retry passes that
+   re-batch only the fields that failed validation; their Haiku output is
+   merged the same way and overrides the originals.
+
+`themes-lib.js` holds the shared theme keywords, descriptors and assignment
+logic. Intermediate batch files are disposable and git-ignored.
+
+### Result
+
+1,744 of 1,755 fields (99.4%) passed validation across the generation and two
+retry rounds; the 11 unfilled fields are synonym/antonym example sentences
+whose only natural wording collided with a forbidden answer word, and the app
+simply falls back (no example line) for those. `words.json` grew from ~163 KB
+to ~352 KB. The quiz stays a static client-side app with zero runtime API cost.
+`js/app.js` reads `themed_quest` only in Story Quest mode; the plain quiz and
+all other screens are unchanged.

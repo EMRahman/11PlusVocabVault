@@ -903,9 +903,25 @@
     return sentence.replace(wordPattern, '_____');
   }
 
+  // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
+  function getThemedQuest(wordObj) {
+    return wordObj && wordObj.themed_quest ? wordObj.themed_quest : null;
+  }
+
+  // In Story Quest the cloze sentence is pre-themed and pre-blanked in the
+  // word data; elsewhere fall back to blanking the static example sentence.
+  function getQuestSentenceBlank(wordObj) {
+    var themed = getThemedQuest(wordObj);
+    if (themed && themed.sentence) return themed.sentence;
+    return getSentenceBlank(wordObj);
+  }
+
   function getQuestionTypesForWord(wordObj) {
     var types = ['definition', 'word'];
-    if (getSentenceBlank(wordObj)) {
+    var sentenceBlank = quizState.isQuestMode
+      ? getQuestSentenceBlank(wordObj)
+      : getSentenceBlank(wordObj);
+    if (sentenceBlank) {
       types.push('sentence');
     }
     if (wordObj.synonyms && wordObj.synonyms.length) {
@@ -971,7 +987,9 @@
     return {
       type         : type,
       questionWord : wordObj,
-      sentenceBlank: type === 'sentence' ? getSentenceBlank(wordObj) : null,
+      sentenceBlank: type === 'sentence'
+        ? (quizState.isQuestMode ? getQuestSentenceBlank(wordObj) : getSentenceBlank(wordObj))
+        : null,
       choices      : choices,
       correctIndex : correctIndex
     };
@@ -1079,6 +1097,10 @@
     if (q.type === 'definition') {
       labelTask   = ': What word means this?';
       payloadText = q.questionWord.definition;
+      if (theme) {
+        var themedClue = getThemedQuest(q.questionWord);
+        if (themedClue && themedClue.definition) payloadText = themedClue.definition;
+      }
     } else if (q.type === 'sentence') {
       labelTask   = ': Which word best completes this sentence?';
       payloadText = q.sentenceBlank;
@@ -1106,6 +1128,19 @@
     coreEl.className = 'quiz-question-core';
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
+
+    // Story Quest shows a themed example sentence under word/synonym/antonym
+    // prompts so the word is practised inside its world, not just named.
+    if (theme && (q.type === 'word' || q.type === 'synonym' || q.type === 'antonym')) {
+      var themedQuest = getThemedQuest(q.questionWord);
+      var exampleText = themedQuest && themedQuest[q.type];
+      if (exampleText) {
+        var exampleEl = document.createElement('span');
+        exampleEl.className = 'quest-example';
+        exampleEl.textContent = exampleText;
+        quizQuestionText.appendChild(exampleEl);
+      }
+    }
 
     // Answer buttons
     quizAnswersGrid.innerHTML = '';
