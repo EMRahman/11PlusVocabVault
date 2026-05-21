@@ -138,8 +138,14 @@ quiz type:
 | `definition` | Definition → word | Themed clue that shows the meaning *without* naming the word |
 | `word`       | Word → meaning    | Themed example sentence using the word |
 | `sentence`   | Sentence blank    | Themed sentence with the word replaced by `_____` |
-| `synonym`    | Synonym match     | Themed example sentence using the word |
-| `antonym`    | Antonym match     | Themed example sentence using the word |
+| `synonym`    | Synonym match     | `{ cloze, answer }` — themed fill-in-the-blank completed by a synonym |
+| `antonym`    | Antonym match     | `{ cloze, answer }` — themed fill-in-the-blank completed by an antonym |
+
+`definition`, `word` and `sentence` are strings. `synonym` and `antonym` are
+`{ cloze, answer }` objects: `cloze` is a themed sentence with one `_____`
+blank, `answer` is the synonym/antonym (drawn from the word's own list) that
+completes it — so the synonym/antonym question is itself a themed cloze whose
+answer is one of the on-screen choices.
 
 ### Pipeline (`scripts/`)
 
@@ -149,19 +155,21 @@ quiz type:
 3. `merge-themed.js` — validates every text (word present/absent as required,
    single cloze blank, no leaked synonym/antonym answer, length) and merges the
    passing fields into `words.json` as `themed_quest`.
-4. `build-corrections.js` / `build-plain-batches.js` — retry passes that
-   re-batch only the fields that failed validation; their Haiku output is
-   merged the same way and overrides the originals.
+4. `build-corrections.js` — retry pass that re-batches only the fields that
+   failed validation; its Haiku output merges last and overrides the originals.
 
-`themes-lib.js` holds the shared theme keywords, descriptors and assignment
-logic. Intermediate batch files are disposable and git-ignored.
+`merge-themed.js` is update-in-place: it only touches fields present in the
+generation output, so `synonym`/`antonym` can be regenerated without disturbing
+`definition`/`word`/`sentence`. `themes-lib.js` holds the shared theme keywords,
+descriptors and assignment logic. Intermediate batch files are git-ignored.
 
 ### Result
 
-1,744 of 1,755 fields (99.4%) passed validation across the generation and two
-retry rounds; the 11 unfilled fields are synonym/antonym example sentences
-whose only natural wording collided with a forbidden answer word, and the app
-simply falls back (no example line) for those. `words.json` grew from ~163 KB
-to ~352 KB. The quiz stays a static client-side app with zero runtime API cost.
-`js/app.js` reads `themed_quest` only in Story Quest mode; the plain quiz and
-all other screens are unchanged.
+The `definition`/`word`/`sentence` text passed validation for all 351 words.
+The `synonym`/`antonym` clozes passed for 697 of 700 slots (99.6%) across the
+generation and two retry rounds; the few unfilled slots are words whose every
+natural sentence collided with a forbidden word (e.g. *Palm* cannot be described
+without "hand"), and the synonym/antonym question falls back to its plain
+bare-word form for those. The quiz stays a static client-side app with zero
+runtime API cost. `js/app.js` reads `themed_quest` only in Story Quest mode; the
+plain quiz and all other screens are unchanged.

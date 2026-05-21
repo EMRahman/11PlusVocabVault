@@ -1213,6 +1213,17 @@ footer {
   color: var(--color-text-secondary);
 }
 
+/* Themed fill-in-the-blank line for synonym/antonym Story Quest questions. */
+.quest-cloze {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #1A1A2E;
+  color: var(--color-text);
+}
+
 /* ===========================
    Answer Buttons
    =========================== */

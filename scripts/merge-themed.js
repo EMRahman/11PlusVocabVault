@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 
-// Validates the Haiku-generated themed sentences from scripts/batches/*.out.json
-// and merges them into data/words.json as a `themed_quest` field on each word.
+// Validates the Haiku-generated themed text from scripts/batches/*.out.json and
+// merges it into data/words.json as a `themed_quest` field on each word.
+//
+// Merge is update-in-place: only fields present in the generation output are
+// touched, so synonym/antonym clozes can be regenerated without disturbing the
+// definition/word/sentence text. definition/word/sentence are strings; synonym
+// and antonym are { cloze, answer } objects (a themed fill-in-the-blank whose
+// answer is a synonym/antonym of the word).
 
 const fs = require('fs');
 const path = require('path');
@@ -33,30 +39,63 @@ function wordCount(text) {
   return text ? text.trim().split(/\s+/).length : 0;
 }
 
-// Returns the valid fields for one word, plus the list of rejected types.
+// A synonym/antonym slot is a themed cloze whose blank is completed by a
+// synonym (resp. antonym) of the word. Returns { cloze, answer } or null.
+function validateRelationCloze(value, src, type) {
+  if (!value || typeof value !== 'object') return null;
+  const cloze = String(value.cloze || '').trim().replace(/_{3,}/g, '_____');
+  const rawAnswer = String(value.answer || '').trim();
+  const list = (type === 'synonym' ? src.synonyms : src.antonyms) || [];
+  const related = (src.synonyms || []).concat(src.antonyms || []);
+
+  // answer must match an entry of the matching list (kept in the list's case)
+  const answer = list.filter(function (s) {
+    return s.toLowerCase() === rawAnswer.toLowerCase();
+  })[0];
+  if (!answer) return null;
+
+  if ((cloze.match(/_____/g) || []).length !== 1) return null;
+  const wc = wordCount(cloze);
+  if (wc < 6 || wc > 32) return null;
+  // the cloze must not give anything away: not the word, not any of its
+  // synonyms/antonyms (the answer is the blank; others would be ambiguous).
+  if (containsWord(cloze, src.word)) return null;
+  if (related.some(function (r) { return containsWord(cloze, r); })) return null;
+
+  return { cloze: cloze, answer: answer };
+}
+
+// Returns the valid generated fields for one word, plus the rejected ones.
+// Fields absent from the generation output are left out of both lists so the
+// caller can leave them untouched.
 function validateEntry(generated, src) {
   const out = {};
   const rejected = [];
   TYPES.forEach(function (type) {
-    let text = ((generated && generated[type]) || '').trim();
+    if (!generated || generated[type] === undefined || generated[type] === null) return;
+
+    if (type === 'synonym' || type === 'antonym') {
+      const cloze = validateRelationCloze(generated[type], src, type);
+      if (cloze) out[type] = cloze;
+      else rejected.push(type);
+      return;
+    }
+
+    // definition / word / sentence are plain strings.
+    let text = String(generated[type] || '').trim();
     const wc = wordCount(text);
     let ok = !!text && wc >= 6 && wc <= 32;
 
     if (ok && type === 'definition') {
-      // A clue for the answer: must demonstrate the meaning without naming it.
+      // A clue for the answer: demonstrate the meaning without naming it.
       if (namesWord(text, src.word)) ok = false;
     } else if (ok && type === 'sentence') {
       // A fill-in-the-gap cloze: exactly one blank, the word itself removed.
       text = text.replace(/_{3,}/g, '_____');
       if ((text.match(/_____/g) || []).length !== 1 || containsWord(text, src.word)) ok = false;
     } else if (ok) {
-      // word / synonym / antonym example sentences must use the exact word...
+      // The word slot is a plain example sentence using the word.
       if (!containsWord(text, src.word)) ok = false;
-      // ...and must not hand the player a synonym/antonym answer choice.
-      if (ok && (type === 'synonym' || type === 'antonym')) {
-        const related = (src.synonyms || []).concat(src.antonyms || []);
-        if (related.some(function (r) { return containsWord(text, r); })) ok = false;
-      }
     }
 
     if (ok) out[type] = text;
@@ -65,79 +104,71 @@ function validateEntry(generated, src) {
   return { out: out, rejected: rejected };
 }
 
-function main() {
-  const data = JSON.parse(fs.readFileSync(WORDS_PATH, 'utf8'));
-
-  // Collect every generated entry across all output files. Sorting puts the
-  // base "batch-*" files first and "correction-*" retry files after, so a
-  // regenerated field overrides the original while untouched fields survive.
-  const generated = {};
-  const outFiles = fs.existsSync(BATCH_DIR)
-    ? fs.readdirSync(BATCH_DIR).filter(function (f) { return /\.out\.json$/.test(f); }).sort()
+// Layers every *.out.json generation file into one word -> fields map. Base
+// "batch-*"/"syn-*" files are applied first and retry files (e.g.
+// "correction-*") after, so a regenerated field always overrides the original.
+function loadGenerated() {
+  const allOut = fs.existsSync(BATCH_DIR)
+    ? fs.readdirSync(BATCH_DIR).filter(function (f) { return /\.out\.json$/.test(f); })
     : [];
-  if (!outFiles.length) {
-    console.error('No *.out.json files in ' + BATCH_DIR + ' - run the generation step first.');
-    process.exit(1);
-  }
+  const isBase = function (f) { return /^(batch|syn)-\d+\.out\.json$/.test(f); };
+  const outFiles = allOut.filter(isBase).sort()
+    .concat(allOut.filter(function (f) { return !isBase(f); }).sort());
+  const generated = {};
   outFiles.forEach(function (f) {
-    const parsed = JSON.parse(fs.readFileSync(path.join(BATCH_DIR, f), 'utf8'));
-    const results = parsed.results || {};
+    const results = JSON.parse(fs.readFileSync(path.join(BATCH_DIR, f), 'utf8')).results || {};
     Object.keys(results).forEach(function (word) {
       generated[word] = Object.assign(generated[word] || {}, results[word]);
     });
   });
+  return { generated: generated, fileCount: outFiles.length };
+}
 
-  // Plain-sentence retry round: each plain-NN.raw.json holds a label-free array
-  // of sentences per word; the matching plain-NN.json input gives the slot
-  // order, so array[i] is mapped onto slots[i]. Applied last, so it overrides.
-  fs.readdirSync(BATCH_DIR)
-    .filter(function (f) { return /^plain-\d+\.json$/.test(f); })
-    .sort()
-    .forEach(function (f) {
-      const rawPath = path.join(BATCH_DIR, f.replace(/\.json$/, '.raw.json'));
-      if (!fs.existsSync(rawPath)) return;
-      const input = JSON.parse(fs.readFileSync(path.join(BATCH_DIR, f), 'utf8'));
-      const raw = JSON.parse(fs.readFileSync(rawPath, 'utf8')).results || {};
-      input.words.forEach(function (item) {
-        const arr = raw[item.word];
-        if (!Array.isArray(arr)) return;
-        const entry = generated[item.word] || (generated[item.word] = {});
-        item.slots.forEach(function (slot, i) {
-          if (typeof arr[i] === 'string') entry[slot] = arr[i];
-        });
-      });
-    });
+function main() {
+  const data = JSON.parse(fs.readFileSync(WORDS_PATH, 'utf8'));
 
-  let wordsWithThemed = 0;
+  const loaded = loadGenerated();
+  if (!loaded.fileCount) {
+    console.error('No *.out.json files in ' + BATCH_DIR + ' - run the generation step first.');
+    process.exit(1);
+  }
+  const generated = loaded.generated;
+
+  let wordsUpdated = 0;
   let fieldsKept = 0;
   let fieldsRejected = 0;
-  const missing = [];
 
   data.words.forEach(function (w) {
     const gen = generated[w.word];
-    if (!gen) { missing.push(w.word); return; }
+    if (!gen) return;
     const result = validateEntry(gen, w);
+    if (!Object.keys(result.out).length && !result.rejected.length) return;
+
+    const tq = w.themed_quest || (w.themed_quest = {});
+    if (!tq.theme) tq.theme = themes.getWordTheme(w).id;
+    Object.assign(tq, result.out);
+    result.rejected.forEach(function (field) { delete tq[field]; });
+
+    // synonym/antonym must be a { cloze, answer } object or absent — drop any
+    // stale value (e.g. an earlier plain-sentence string) of the wrong shape.
+    ['synonym', 'antonym'].forEach(function (rel) {
+      if (tq[rel] && (typeof tq[rel] !== 'object' || typeof tq[rel].cloze !== 'string')) {
+        delete tq[rel];
+      }
+    });
+
     fieldsKept += Object.keys(result.out).length;
     fieldsRejected += result.rejected.length;
-    if (Object.keys(result.out).length === 0) {
-      delete w.themed_quest;
-      return;
-    }
-    w.themed_quest = Object.assign({ theme: themes.getWordTheme(w).id }, result.out);
-    wordsWithThemed++;
+    wordsUpdated++;
   });
 
   fs.writeFileSync(WORDS_PATH, JSON.stringify(data, null, 2) + '\n');
 
-  console.log('Words with themed_quest : ' + wordsWithThemed + ' / ' + data.words.length);
-  console.log('Themed fields kept      : ' + fieldsKept + ' / ' + (fieldsKept + fieldsRejected));
-  console.log('Fields rejected         : ' + fieldsRejected);
-  if (missing.length) {
-    console.log('Words with no output    : ' + missing.length);
-    console.log('  ' + missing.join(', '));
-  }
+  console.log('Words updated      : ' + wordsUpdated + ' / ' + data.words.length);
+  console.log('Themed fields kept : ' + fieldsKept + ' / ' + (fieldsKept + fieldsRejected));
+  console.log('Fields rejected    : ' + fieldsRejected);
 }
 
-module.exports = { validateEntry: validateEntry, TYPES: TYPES };
+module.exports = { validateEntry: validateEntry, loadGenerated: loadGenerated, TYPES: TYPES };
 
 if (require.main === module) main();

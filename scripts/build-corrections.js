@@ -20,18 +20,7 @@ const CORRECTION_BATCH_SIZE = 38;
 
 function main() {
   const data = JSON.parse(fs.readFileSync(WORDS_PATH, 'utf8'));
-
-  // Layer every output file (sorted so retry files override base batches).
-  const generated = {};
-  fs.readdirSync(BATCH_DIR)
-    .filter(function (f) { return /\.out\.json$/.test(f); })
-    .sort()
-    .forEach(function (f) {
-      const results = JSON.parse(fs.readFileSync(path.join(BATCH_DIR, f), 'utf8')).results || {};
-      Object.keys(results).forEach(function (w) {
-        generated[w] = Object.assign(generated[w] || {}, results[w]);
-      });
-    });
+  const generated = merge.loadGenerated().generated;
 
   const words = [];
   data.words.forEach(function (w) {

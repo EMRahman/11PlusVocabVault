@@ -939,12 +939,35 @@
     return set;
   }
 
+  // In Story Quest, a synonym/antonym question is a themed fill-in-the-blank:
+  // returns { cloze, answer } when the word has a valid themed relation cloze.
+  function getThemedRelation(wordObj, kind) {
+    var themed = getThemedQuest(wordObj);
+    var relation = themed && themed[kind];
+    if (relation && typeof relation.cloze === 'string' && relation.answer) {
+      return relation;
+    }
+    return null;
+  }
+
   function buildRelationQuestion(wordObj, pool, kind) {
     var positives = (kind === 'synonym' ? wordObj.synonyms : wordObj.antonyms) || [];
     var negatives = (kind === 'synonym' ? wordObj.antonyms : wordObj.synonyms) || [];
     if (!positives.length) return null;
 
-    var correct = positives[Math.floor(Math.random() * positives.length)];
+    // Quest mode: the themed cloze fixes which synonym/antonym is the answer.
+    var cloze = null;
+    var correct = null;
+    if (quizState.isQuestMode) {
+      var relation = getThemedRelation(wordObj, kind);
+      if (relation && positives.indexOf(relation.answer) !== -1) {
+        correct = relation.answer;
+        cloze = relation.cloze;
+      }
+    }
+    if (correct === null) {
+      correct = positives[Math.floor(Math.random() * positives.length)];
+    }
     var blocked = caseInsensitiveSet(positives.concat([wordObj.word]));
 
     var distractorPool = [];
@@ -967,7 +990,7 @@
     return {
       type         : kind,
       questionWord : wordObj,
-      sentenceBlank: null,
+      sentenceBlank: cloze,
       choices      : choices,
       correctIndex : choices.indexOf(correct)
     };
@@ -1129,16 +1152,24 @@
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
 
-    // Story Quest shows a themed example sentence under word/synonym/antonym
-    // prompts so the word is practised inside its world, not just named.
-    if (theme && (q.type === 'word' || q.type === 'synonym' || q.type === 'antonym')) {
-      var themedQuest = getThemedQuest(q.questionWord);
-      var exampleText = themedQuest && themedQuest[q.type];
-      if (exampleText) {
-        var exampleEl = document.createElement('span');
-        exampleEl.className = 'quest-example';
-        exampleEl.textContent = exampleText;
-        quizQuestionText.appendChild(exampleEl);
+    // Story Quest shows a themed sentence under word/synonym/antonym prompts:
+    // a plain example for "word", a fill-in-the-blank cloze for synonym/antonym
+    // (the blank is completed by the correct answer choice).
+    if (theme) {
+      var lineText = null;
+      var lineClass = 'quest-example';
+      if (q.type === 'word') {
+        var themedQuest = getThemedQuest(q.questionWord);
+        if (themedQuest && typeof themedQuest.word === 'string') lineText = themedQuest.word;
+      } else if (q.type === 'synonym' || q.type === 'antonym') {
+        lineText = q.sentenceBlank;
+        lineClass = 'quest-cloze';
+      }
+      if (lineText) {
+        var lineEl = document.createElement('span');
+        lineEl.className = lineClass;
+        lineEl.textContent = lineText;
+        quizQuestionText.appendChild(lineEl);
       }
     }
 
