@@ -67,6 +67,14 @@
         <span aria-hidden="true">🗺️</span>
         Story Quest
       </button>
+      <button class="quiz-launch-btn story-launch-btn" id="story-launch-btn" aria-label="Open story mode">
+        <span aria-hidden="true">📖</span>
+        Story Mode
+      </button>
+      <button class="quiz-launch-btn news-launch-btn" id="news-launch-btn" aria-label="Open daily news mode">
+        <span aria-hidden="true">📰</span>
+        Daily News
+      </button>
     </section>
 
     <section class="word-grid" id="word-grid" aria-label="Vocabulary word cards"></section>
@@ -255,6 +263,118 @@
           <button class="quiz-start-btn" id="quiz-play-again-btn">Play again</button>
           <button class="quiz-back-btn" id="quiz-back-btn">Back to words</button>
         </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Story Mode overlay -->
+  <div id="story-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Library screen -->
+    <div id="story-library-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="story-library-title">
+      <button class="close-btn" id="story-close-btn" aria-label="Close story mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">📖</span>
+        <h2 id="story-library-title" class="quiz-setup-title">Story Mode</h2>
+        <p class="quiz-setup-subtitle">Read a story, meet the words in action, then quiz yourself on them.</p>
+        <div id="story-list" class="story-list"></div>
+      </div>
+    </div>
+
+    <!-- Reading screen -->
+    <div id="story-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="story-reading-title">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="story-back-btn" type="button" aria-label="Back to story library">← Library</button>
+      </div>
+      <div class="story-reading-inner">
+        <div class="story-reading-header">
+          <span class="story-reading-emoji" id="story-reading-emoji" aria-hidden="true"></span>
+          <h2 class="story-reading-title" id="story-reading-title"></h2>
+        </div>
+        <div class="story-reading-body" id="story-reading-body"></div>
+        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="story-quiz-btn">
+          Quiz me on this story
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Daily News overlay -->
+  <div id="news-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Generate screen -->
+    <div id="news-generate-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="news-generate-title">
+      <button class="close-btn" id="news-close-btn" aria-label="Close daily news">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">📰</span>
+        <h2 id="news-generate-title" class="quiz-setup-title">Daily News</h2>
+        <p class="quiz-setup-subtitle" id="news-date-label"></p>
+        <div id="news-streak" class="news-streak"></div>
+
+        <div class="quiz-option-group" role="group" aria-label="How many words today">
+          <p class="quiz-scope-label">How many words today?</p>
+          <div class="news-count-row">
+            <button class="quiz-option-btn" data-news-count="10" aria-pressed="false">10</button>
+            <button class="quiz-option-btn" data-news-count="15" aria-pressed="false">15</button>
+            <button class="quiz-option-btn" data-news-count="20" aria-pressed="false">20</button>
+          </div>
+        </div>
+
+        <div class="news-step">
+          <p class="news-step-title">1. Today's words</p>
+          <div id="news-word-chips" class="news-word-chips"></div>
+        </div>
+
+        <div class="news-step">
+          <p class="news-step-title">2. Copy this prompt into an AI helper</p>
+          <textarea id="news-prompt" class="news-textarea" readonly rows="6" aria-label="Generated AI prompt"></textarea>
+          <button class="quiz-start-btn news-copy-btn" id="news-copy-btn" type="button">Copy prompt</button>
+          <div class="news-provider-links">
+            <a class="modal-link" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">Open Gemini</a>
+            <a class="modal-link" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">Open ChatGPT</a>
+            <a class="modal-link" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Open Claude</a>
+          </div>
+        </div>
+
+        <div class="news-step">
+          <p class="news-step-title">3. Paste the news the AI wrote</p>
+          <textarea id="news-paste" class="news-textarea" rows="6" placeholder="Paste the AI's news article here…" aria-label="Paste the AI news"></textarea>
+          <button class="quiz-start-btn quiz-primary-start-btn" id="news-show-btn" disabled>
+            Show my news
+            <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reading screen -->
+    <div id="news-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="news-reading-title">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="news-edit-btn" type="button" aria-label="Back to news setup">← Edit</button>
+      </div>
+      <div class="story-reading-inner">
+        <div class="story-reading-header">
+          <span class="story-reading-emoji" aria-hidden="true">📰</span>
+          <h2 class="story-reading-title" id="news-reading-title">Today's News</h2>
+        </div>
+        <div class="story-reading-body" id="news-reading-body"></div>
+        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="news-quiz-btn">
+          Done reading — quiz me!
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
       </div>
     </div>
 

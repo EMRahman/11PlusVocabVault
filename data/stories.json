@@ -1,0 +1,74 @@
+{
+  "stories": [
+    {
+      "id": "lighthouse-storm",
+      "title": "The Lighthouse in the Storm",
+      "emoji": "🗼",
+      "blurb": "A young keeper must guard the light alone on the wildest night of the year.",
+      "words": ["Tempestuous", "Ferocious", "Savage", "Perilous", "Looming", "Grim", "Cove", "Surged", "Staggered", "Resolute", "Murky", "Faded"],
+      "paragraphs": [
+        "Maya had never seen the sea look so tempestuous. From the window of the lighthouse, the waves were a ferocious grey wall, crashing against the rocks of the little cove below. Her grandfather, the keeper, was away on the mainland, and the storm had arrived early. Tonight, the lighthouse was hers to guard.",
+        "The wind was savage. It rattled the old windows and screamed down the stairwell like a living thing. Far out in the murky water, Maya could just make out the faded shape of a fishing boat, tossed about like a toy. Without the lighthouse beam, the perilous rocks would tear it apart.",
+        "She climbed the spiral steps two at a time. The great lamp had gone dark, because the storm had knocked something loose. A grim thought surged through her mind: if she could not fix it, the boat would be lost. Her hands trembled, but she stayed resolute. Grandfather had shown her how the mechanism worked a hundred times.",
+        "Maya staggered as the tower shuddered, then steadied herself and reached for the heavy switch. She pulled. For a heart-stopping moment, nothing happened. Then, with a deep hum, the lamp blazed back to life. A golden beam swept across the water, cutting through the looming darkness.",
+        "Below, the little boat turned toward the light and crept safely into the shelter of the cove. Maya let out a long breath. The storm still howled, but she was no longer afraid of it. She had kept the light burning, and that was all that mattered."
+      ]
+    },
+    {
+      "id": "library-mystery",
+      "title": "The Clue in the Library",
+      "emoji": "🔍",
+      "blurb": "A blank book hidden behind the shelves leads Theo to a hundred-year-old secret.",
+      "words": ["Mysterious", "Clandestine", "Concealed", "Suspicious", "Scrutinise", "Obscure", "Stealthy", "Bewildered", "Inscription", "Evasive", "Espionage", "Uncanny"],
+      "paragraphs": [
+        "The old town library had a reputation for being mysterious, and Theo loved it for exactly that reason. Tucked between the dusty shelves was a reading room nobody seemed to use. One rainy afternoon, Theo noticed something strange: a book that had been concealed behind the others, its cover completely blank.",
+        "He opened it carefully. Inside the front page was an inscription in faded ink, a single sentence in a language he did not recognise. It felt like the start of some clandestine adventure, the kind he had only read about in stories of spies and espionage.",
+        "Theo decided to scrutinise every page. Most were ordinary, but one obscure paragraph near the back had tiny pencil marks under certain letters. He copied them down, growing more suspicious with every word. The marks slowly spelled out a riddle.",
+        "He showed it to Mrs Ableton, the librarian, but she became oddly evasive, changing the subject and hurrying away. That only made Theo more curious. Moving in a stealthy, careful way, he followed the riddle's directions to a corner shelf and pressed a loose wooden panel.",
+        "It swung open with an uncanny creak. Behind it was a small box of old letters: the lost history of the town, hidden for a hundred years. Theo stood there, completely bewildered and utterly delighted. The mysterious library had been keeping a secret all along, and he had been the one to find it."
+      ]
+    },
+    {
+      "id": "wilderness-night",
+      "title": "The Night Walk",
+      "emoji": "🦊",
+      "blurb": "When the sun sets over the wilderness, a whole hidden world wakes up.",
+      "words": ["Nocturnal", "Nimble", "Wilderness", "Teeming", "Majestic", "Cautious", "Timid", "Ravenous", "Clambered", "Graceful", "Abundant", "Scurried"],
+      "paragraphs": [
+        "Ranger Pia took us into the wilderness just as the sun was setting. 'The daytime forest is only half the story,' she said. 'Once it grows dark, a whole nocturnal world wakes up.' We switched on our dim red torches and waited, quiet and cautious.",
+        "At first the woods seemed empty. Then, slowly, they came alive. The trees were teeming with sound: the rustle of leaves, the hoot of an owl, the patter of tiny feet. A timid mouse scurried across the path and vanished into the abundant ferns.",
+        "A fox appeared on the ridge above us, nimble and silent. It moved in a graceful curve along the rocks, pausing now and then to sniff the cool night air. Pia whispered that it was probably ravenous after a long day of sleep, hunting now that the night belonged to it.",
+        "Higher up, something larger clambered over a fallen log. We froze. It was a deer, majestic against the moonlit sky, its antlers like pale branches of their own. It studied us for a long moment, decided we were harmless, and stepped away into the shadows.",
+        "By the time we left, I understood what Pia had meant. The wilderness was never truly asleep. It simply changed shifts, and the nocturnal animals were every bit as wonderful as the ones I already knew by day."
+      ]
+    },
+    {
+      "id": "glass-mountain",
+      "title": "The Realm of the Glass Mountain",
+      "emoji": "🐉",
+      "blurb": "Elina climbs a mountain of glass to ask a dragon for the light her village needs.",
+      "words": ["Realm", "Valiant", "Enraged", "Luminous", "Labyrinthine", "Immense", "Astonished", "Courageous", "Ominous", "Petrified", "Incandescent", "Triumphant"],
+      "paragraphs": [
+        "Far beyond the last village lay the realm of the Glass Mountain, where a dragon was said to guard a luminous jewel. Many had tried to reach it. None had returned. Yet Elina, the valiant daughter of the village blacksmith, decided she would be the one to try.",
+        "The path up the mountain was labyrinthine, twisting back on itself again and again. Immense walls of glass rose on either side, and her own reflection followed her like a hundred silent companions. An ominous wind moaned through the narrow passages, warning her to turn back.",
+        "At last she reached the dragon's cave. The creature was enraged to see a visitor and reared up, incandescent flames already glowing deep in its throat. For one terrible moment Elina stood petrified, unable to move a single step.",
+        "But she remembered why she had come. Her village needed the jewel's light to survive the long, dark winter. Drawing one courageous breath, she did not run. Instead she spoke gently to the dragon, telling it of the children who would freeze without its help.",
+        "The dragon was astonished. Nobody had ever spoken to it kindly before. Slowly, its flames softened to a warm glow. It lowered its great head and let Elina lift the luminous jewel from the rock. She walked home triumphant, and the Glass Mountain let her pass in peace."
+      ]
+    },
+    {
+      "id": "maths-test-day",
+      "title": "The Big Maths Test",
+      "emoji": "🎒",
+      "blurb": "Sam has revised all term, but the hardest part of the test is calming his nerves.",
+      "words": ["Diligent", "Eager", "Impatient", "Anticipation", "Commotion", "Hesitant", "Reluctant", "Elated", "Determined", "Mischievous", "Jovial", "Amiable"],
+      "paragraphs": [
+        "The whole class buzzed with anticipation. Today was the big maths test, and Sam had been a diligent student all term, revising every evening at the kitchen table. Still, walking through the school gates that morning, he felt far more hesitant than eager.",
+        "In the cloakroom there was the usual commotion: bags swinging, doors banging, and voices everywhere at once. Sam's friend Leo, always mischievous, hid someone's shoe behind the radiator and grinned widely. Sam laughed, and felt a tiny bit calmer.",
+        "Their teacher, Mr Okafor, was a jovial man with an amiable smile that put everyone at ease. 'Remember,' he said warmly, 'this test only shows what you know today. Do your best, and that is enough.' Sam took a slow breath and felt his worry begin to fade.",
+        "At first Sam was reluctant to even pick up his pencil. The first question looked impossible. But he stayed determined and read it again, slowly. Suddenly it made sense. Then the next one did too. He grew impatient now, not with fear, but with the eagerness to keep going.",
+        "When Mr Okafor finally collected the papers, Sam knew he had done well. He felt absolutely elated, almost floating as he walked out to the playground. All those diligent evenings had been worth it after all."
+      ]
+    }
+  ]
+}

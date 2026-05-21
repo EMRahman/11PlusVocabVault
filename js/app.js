@@ -145,6 +145,9 @@
         updateWordCountDisplay(allWords.length);
         renderCards(allWords);
         attachEventListeners();
+        initGloss();
+        initStoryMode();
+        initDailyNews();
         initQuiz();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
@@ -529,7 +532,10 @@
     misses       : [],
     personalBest : 0,
     personalBests: {},
-    isQuestMode  : false
+    isQuestMode  : false,
+    customPool   : null,
+    returnTo     : null,
+    onComplete   : null
   };
 
   var questState = {
@@ -652,9 +658,9 @@
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    // Story Quest always plays mixed question types across all words, so skip
-    // the setup screen and drop the player straight into the quiz.
-    if (quizState.isQuestMode) {
+    // Story Quest and scoped (story/news) quizzes always play mixed question
+    // types on a fixed word set, so skip the setup screen.
+    if (quizState.isQuestMode || quizState.customPool) {
       startQuiz();
       return;
     }
@@ -670,7 +676,17 @@
     // Re-render the grid so mastery badges reflect any quiz progress.
     applyFilters();
     quizState.isQuestMode = false;
-    quizLaunchBtn.focus();
+    var returnTo = quizState.returnTo;
+    quizState.customPool = null;
+    quizState.returnTo = null;
+    quizState.onComplete = null;
+    if (returnTo === 'story') {
+      reopenStoryReading();
+    } else if (returnTo === 'news') {
+      reopenNewsReading();
+    } else {
+      quizLaunchBtn.focus();
+    }
   }
 
   function openQuestOverlay() {
@@ -1013,15 +1029,23 @@
   }
 
   function buildQuizSession() {
-    var basePool = quizState.scope === '5star'
-      ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
-      : allWords;
+    var basePool;
+    var distractorPool;
+    if (quizState.customPool) {
+      // Scoped quiz (story / daily news): questions come from a fixed word set,
+      // but distractors are drawn from every word so there are always enough.
+      basePool = quizState.customPool;
+      distractorPool = allWords;
+    } else {
+      basePool = quizState.scope === '5star'
+        ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
+        : allWords;
+      distractorPool = quizState.scope === 'weakest' ? allWords : basePool;
+    }
 
     var pool = quizState.scope === 'weakest'
       ? buildWeakestPool(allWords)
       : basePool;
-
-    var distractorPool = quizState.scope === 'weakest' ? allWords : basePool;
 
     var questionPool = pool;
     if (quizState.mode === 'sentence') {
@@ -1196,9 +1220,6 @@
     quizProgressFill.style.width = '100%';
     var score = quizState.score;
     var total = quizState.questions.length;
-    var previousBest = getQuizBest();
-    var isNewBest = score > previousBest;
-    saveQuizBest(score);
 
     var tier;
     if (score === total)       tier = { emoji: '🏆', title: 'Perfect score!' };
@@ -1209,12 +1230,24 @@
     quizEndEmoji.textContent = tier.emoji;
     quizEndTitle.textContent = tier.title;
     quizEndScore.textContent = score + ' / ' + total + ' correct';
-    if (quizState.isQuestMode) {
-      applyQuestRewards(score, total);
+
+    if (quizState.customPool) {
+      // Scoped quizzes keep their own progress, so they bypass the generic
+      // per-options personal best to avoid colliding keys.
+      var bestText = quizState.onComplete ? quizState.onComplete(score, total) : '';
+      quizEndBest.textContent = bestText || '';
+    } else {
+      var previousBest = getQuizBest();
+      var isNewBest = score > previousBest;
+      saveQuizBest(score);
+      quizEndBest.textContent = isNewBest
+        ? 'New personal best! 🎉'
+        : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
+      // applyQuestRewards appends to the line above, so it must run after it.
+      if (quizState.isQuestMode) {
+        applyQuestRewards(score, total);
+      }
     }
-    quizEndBest.textContent  = isNewBest
-      ? 'New personal best! 🎉'
-      : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
 
     renderQuizReview();
     showQuizScreen(quizEndScreen);
@@ -1362,6 +1395,697 @@
       if (e.key === 'Escape' && !questOverlay.classList.contains('hidden')) {
         closeQuestOverlay();
       }
+    });
+  }
+
+  // ── Scoped quiz launcher (shared by Story Mode & Daily News) ───────────────
+  function startScopedQuiz(words, opts) {
+    opts = opts || {};
+    quizState.scope       = 'all';
+    quizState.length      = words.length;
+    quizState.mode        = 'mixed';
+    quizState.isQuestMode = false;
+    quizState.customPool  = words;
+    quizState.returnTo    = opts.returnTo || null;
+    quizState.onComplete  = opts.onComplete || null;
+    openQuizOverlay();
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // READING HIGHLIGHTS & INLINE GLOSS
+  // Shared by Story Mode and Daily News reading views.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var glossEl = null;
+
+  // Common inflections so a featured word is still highlighted when the prose
+  // uses a plural or a different tense.
+  function wordVariants(word) {
+    var w = word.toLowerCase();
+    var set = {};
+    set[w] = true;
+    set[w + 's'] = true;
+    set[w + 'es'] = true;
+    if (/[^aeiou]y$/.test(w)) set[w.slice(0, -1) + 'ies'] = true;
+    if (w.charAt(w.length - 1) === 'e') {
+      set[w + 'd'] = true;
+      set[w.slice(0, -1) + 'ing'] = true;
+    } else {
+      set[w + 'ed'] = true;
+      set[w + 'ing'] = true;
+    }
+    return Object.keys(set);
+  }
+
+  function buildHighlightMatcher(featuredWords) {
+    var map = {};
+    featuredWords.forEach(function (wObj) {
+      wordVariants(wObj.word).forEach(function (v) {
+        if (!map[v]) map[v] = wObj;
+      });
+    });
+    var variants = Object.keys(map);
+    if (!variants.length) return null;
+    variants.sort(function (a, b) { return b.length - a.length; });
+    var escaped = variants.map(function (v) {
+      return v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    });
+    return { regex: new RegExp('\\b(' + escaped.join('|') + ')\\b', 'gi'), map: map };
+  }
+
+  function fillParagraph(pEl, text, matcher) {
+    if (!matcher) { pEl.textContent = text; return; }
+    matcher.regex.lastIndex = 0;
+    var lastIndex = 0;
+    var m;
+    while ((m = matcher.regex.exec(text)) !== null) {
+      if (m.index > lastIndex) {
+        pEl.appendChild(document.createTextNode(text.slice(lastIndex, m.index)));
+      }
+      var wObj = matcher.map[m[0].toLowerCase()];
+      if (wObj) {
+        var span = document.createElement('span');
+        span.className = 'vocab-highlight';
+        span.textContent = m[0];
+        span.tabIndex = 0;
+        span.setAttribute('role', 'button');
+        span.setAttribute('aria-label', m[0] + ' — tap for the meaning');
+        span.dataset.glossWord = wObj.word;
+        pEl.appendChild(span);
+      } else {
+        pEl.appendChild(document.createTextNode(m[0]));
+      }
+      lastIndex = m.index + m[0].length;
+    }
+    if (lastIndex < text.length) {
+      pEl.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+  }
+
+  function renderReadingBody(containerEl, paragraphs, featuredWords) {
+    containerEl.innerHTML = '';
+    var matcher = buildHighlightMatcher(featuredWords);
+    paragraphs.forEach(function (text) {
+      var p = document.createElement('p');
+      fillParagraph(p, text, matcher);
+      containerEl.appendChild(p);
+    });
+  }
+
+  function ensureGloss() {
+    if (glossEl) return glossEl;
+    glossEl = document.createElement('div');
+    glossEl.className = 'vocab-gloss hidden';
+    glossEl.setAttribute('role', 'tooltip');
+    document.body.appendChild(glossEl);
+    return glossEl;
+  }
+
+  function showGloss(spanEl, wordObj) {
+    var g = ensureGloss();
+    g.innerHTML = '';
+    var word = document.createElement('div');
+    word.className = 'vocab-gloss-word';
+    word.textContent = wordObj.word;
+    var type = document.createElement('div');
+    type.className = 'vocab-gloss-type';
+    type.textContent = getWordType(wordObj);
+    var def = document.createElement('div');
+    def.className = 'vocab-gloss-def';
+    def.textContent = wordObj.definition;
+    g.appendChild(word);
+    g.appendChild(type);
+    g.appendChild(def);
+
+    g.classList.remove('hidden');
+    var rect = spanEl.getBoundingClientRect();
+    var gRect = g.getBoundingClientRect();
+    var top = rect.bottom + 8;
+    if (top + gRect.height > window.innerHeight - 8) {
+      top = Math.max(8, rect.top - gRect.height - 8);
+    }
+    var left = rect.left;
+    if (left + gRect.width > window.innerWidth - 8) {
+      left = window.innerWidth - gRect.width - 8;
+    }
+    if (left < 8) left = 8;
+    g.style.top = top + 'px';
+    g.style.left = left + 'px';
+  }
+
+  function hideGloss() {
+    if (glossEl) glossEl.classList.add('hidden');
+  }
+
+  function glossIsOpen() {
+    return glossEl && !glossEl.classList.contains('hidden');
+  }
+
+  function initGloss() {
+    document.addEventListener('click', function (e) {
+      var span = closestByClass(e.target, 'vocab-highlight');
+      if (span) {
+        var wObj = findWordByName(span.dataset.glossWord);
+        if (wObj) showGloss(span, wObj);
+        return;
+      }
+      if (glossIsOpen() && !closestByClass(e.target, 'vocab-gloss')) {
+        hideGloss();
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var span = closestByClass(e.target, 'vocab-highlight');
+      if (!span) return;
+      e.preventDefault();
+      var wObj = findWordByName(span.dataset.glossWord);
+      if (wObj) showGloss(span, wObj);
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // STORY MODE
+  // A library of hand-written stories that use vocabulary words in context,
+  // followed by a quiz scoped to that story's words.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var STORY_PROGRESS_KEY = 'vocabVault_storyProgress';
+  var stories = [];
+  var storyProgress = {};
+  var currentStory = null;
+
+  var storyLaunchBtn     = document.getElementById('story-launch-btn');
+  var storyOverlay       = document.getElementById('story-overlay');
+  var storyLibraryScreen = document.getElementById('story-library-screen');
+  var storyReadingScreen = document.getElementById('story-reading-screen');
+  var storyCloseBtn      = document.getElementById('story-close-btn');
+  var storyBackBtn       = document.getElementById('story-back-btn');
+  var storyList          = document.getElementById('story-list');
+  var storyReadingEmoji  = document.getElementById('story-reading-emoji');
+  var storyReadingTitle  = document.getElementById('story-reading-title');
+  var storyReadingBody   = document.getElementById('story-reading-body');
+  var storyQuizBtn       = document.getElementById('story-quiz-btn');
+
+  function loadStoryProgress() {
+    try {
+      var raw = localStorage.getItem(STORY_PROGRESS_KEY);
+      storyProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      storyProgress = {};
+    }
+  }
+
+  function saveStoryProgress() {
+    try { localStorage.setItem(STORY_PROGRESS_KEY, JSON.stringify(storyProgress)); } catch (e) {}
+  }
+
+  function storyWordObjects(story) {
+    var out = [];
+    (story.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderStoryLibrary() {
+    storyList.innerHTML = '';
+    if (!stories.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'Stories are still loading — try again in a moment.';
+      storyList.appendChild(empty);
+      return;
+    }
+    stories.forEach(function (story) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = story.emoji + ' ' + story.title;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = story.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = storyWordObjects(story).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = storyProgress[story.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openStory(story); });
+      storyList.appendChild(card);
+    });
+  }
+
+  function showStoryScreen(screenEl) {
+    [storyLibraryScreen, storyReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openStory(story) {
+    currentStory = story;
+    var prog = storyProgress[story.id] || {};
+    prog.read = true;
+    storyProgress[story.id] = prog;
+    saveStoryProgress();
+
+    storyReadingEmoji.textContent = story.emoji;
+    storyReadingTitle.textContent = story.title;
+    renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story));
+    showStoryScreen(storyReadingScreen);
+    storyReadingScreen.scrollTop = 0;
+    storyBackBtn.focus();
+  }
+
+  function openStoryOverlay() {
+    renderStoryLibrary();
+    showStoryScreen(storyLibraryScreen);
+    storyOverlay.classList.remove('hidden');
+    storyOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    storyCloseBtn.focus();
+  }
+
+  function closeStoryOverlay() {
+    hideGloss();
+    storyOverlay.classList.add('hidden');
+    storyOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentStory = null;
+    storyLaunchBtn.focus();
+  }
+
+  // Re-show the story reading view after a story quiz closes.
+  function reopenStoryReading() {
+    if (!currentStory) { closeStoryOverlay(); return; }
+    storyOverlay.classList.remove('hidden');
+    storyOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showStoryScreen(storyReadingScreen);
+    storyQuizBtn.focus();
+  }
+
+  function recordStoryResult(story, score, total) {
+    var prog = storyProgress[story.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    storyProgress[story.id] = prog;
+    saveStoryProgress();
+    if (score === total) return 'Story complete — perfect score! 🎉';
+    return 'Best for this story: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initStoryMode() {
+    loadStoryProgress();
+
+    storyLaunchBtn.addEventListener('click', openStoryOverlay);
+    storyCloseBtn.addEventListener('click', closeStoryOverlay);
+
+    storyBackBtn.addEventListener('click', function () {
+      hideGloss();
+      renderStoryLibrary();
+      showStoryScreen(storyLibraryScreen);
+      storyCloseBtn.focus();
+    });
+
+    storyQuizBtn.addEventListener('click', function () {
+      if (!currentStory) return;
+      var words = storyWordObjects(currentStory);
+      if (!words.length) return;
+      var story = currentStory;
+      hideGloss();
+      storyOverlay.classList.add('hidden');
+      storyOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'story',
+        onComplete: function (score, total) {
+          return recordStoryResult(story, score, total);
+        }
+      });
+    });
+
+    storyOverlay.addEventListener('click', function (e) {
+      if (e.target === storyOverlay) closeStoryOverlay();
+    });
+
+    storyReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (storyOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeStoryOverlay();
+    });
+
+    fetch('data/stories.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        stories = (data && data.stories) || [];
+        if (!storyOverlay.classList.contains('hidden') &&
+            !storyLibraryScreen.classList.contains('hidden')) {
+          renderStoryLibrary();
+        }
+      })
+      .catch(function () { stories = []; });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // DAILY NEWS MODE
+  // The app picks a daily word set, builds a prompt the parent runs in an AI
+  // chat, then highlights the pasted-back news and quizzes on the same words.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var NEWS_KEY = 'vocabVault_dailyNews';
+  var newsData = { wordCount: 10, streak: 0, lastCompletedDate: null, edition: null };
+  var newsWords = [];
+
+  var newsLaunchBtn      = document.getElementById('news-launch-btn');
+  var newsOverlay        = document.getElementById('news-overlay');
+  var newsGenerateScreen = document.getElementById('news-generate-screen');
+  var newsReadingScreen  = document.getElementById('news-reading-screen');
+  var newsCloseBtn       = document.getElementById('news-close-btn');
+  var newsEditBtn        = document.getElementById('news-edit-btn');
+  var newsDateLabel      = document.getElementById('news-date-label');
+  var newsStreakEl       = document.getElementById('news-streak');
+  var newsCountBtns      = document.querySelectorAll('[data-news-count]');
+  var newsWordChips      = document.getElementById('news-word-chips');
+  var newsPromptEl       = document.getElementById('news-prompt');
+  var newsCopyBtn        = document.getElementById('news-copy-btn');
+  var newsPasteEl        = document.getElementById('news-paste');
+  var newsShowBtn        = document.getElementById('news-show-btn');
+  var newsReadingBody    = document.getElementById('news-reading-body');
+  var newsQuizBtn        = document.getElementById('news-quiz-btn');
+
+  function dayKey(date) {
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+  }
+
+  function todayKey() {
+    return dayKey(new Date());
+  }
+
+  function yesterdayKey() {
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    return dayKey(d);
+  }
+
+  function loadNewsData() {
+    try {
+      var raw = localStorage.getItem(NEWS_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          newsData.wordCount = parsed.wordCount || 10;
+          newsData.streak = parsed.streak || 0;
+          newsData.lastCompletedDate = parsed.lastCompletedDate || null;
+          newsData.edition = parsed.edition || null;
+        }
+      }
+    } catch (e) {}
+    if ([10, 15, 20].indexOf(newsData.wordCount) === -1) newsData.wordCount = 10;
+  }
+
+  function saveNewsData() {
+    try { localStorage.setItem(NEWS_KEY, JSON.stringify(newsData)); } catch (e) {}
+  }
+
+  // Deterministic 0..1 generator (LCG) so the daily word set is stable within
+  // a calendar day but rotates from one day to the next.
+  function seededRandom(seed) {
+    var s = seed >>> 0;
+    return function () {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      return s / 4294967296;
+    };
+  }
+
+  function pickDailyWords(n) {
+    var rng = seededRandom(hashString(todayKey()));
+    var tier = { 'new': 3, learning: 2, mastered: 1 };
+    var scored = allWords.map(function (w) {
+      return { word: w, score: (tier[getMasteryStatus(w.word)] || 1) + rng() };
+    });
+    scored.sort(function (a, b) { return b.score - a.score; });
+    return scored.slice(0, Math.min(n, scored.length)).map(function (x) { return x.word; });
+  }
+
+  // Returns today's word objects, caching the chosen set in the edition so the
+  // selection does not shift as mastery changes during the day.
+  function resolveDailyWords() {
+    var ed = newsData.edition;
+    if (ed && ed.date === todayKey() && ed.wordCount === newsData.wordCount &&
+        ed.words && ed.words.length) {
+      var objs = [];
+      ed.words.forEach(function (name) {
+        var w = findWordByName(name);
+        if (w) objs.push(w);
+      });
+      if (objs.length) return objs;
+    }
+    var picked = pickDailyWords(newsData.wordCount);
+    newsData.edition = {
+      date: todayKey(),
+      wordCount: newsData.wordCount,
+      words: picked.map(function (w) { return w.word; }),
+      text: (ed && ed.date === todayKey()) ? (ed.text || '') : ''
+    };
+    saveNewsData();
+    return picked;
+  }
+
+  function buildNewsPrompt(words) {
+    var list = words.map(function (w) { return w.word; }).join(', ');
+    return 'You are helping a 10 to 11 year old child who is preparing for the 11+ exam to build their vocabulary.\n\n' +
+      'Please write a short, fun and upbeat "daily news" roundup for them to read at breakfast. ' +
+      'Write 3 or 4 very short news-style snippets, about 300 to 450 words in total, each with a cheerful headline.\n\n' +
+      'The news must naturally include EVERY one of these vocabulary words, each used at least once, ' +
+      'in a way that makes the meaning easy to guess from the sentence:\n' + list + '\n\n' +
+      'Rules:\n' +
+      '- Keep the tone cheerful, kind and age-appropriate. No scary, violent or upsetting topics.\n' +
+      '- Use British English spelling.\n' +
+      '- Pick light, interesting topics: everyday events, animals, science, space, sport or school.\n' +
+      '- Use each vocabulary word in clear context so its meaning is obvious.\n' +
+      '- Put each vocabulary word in bold the first time it appears.\n\n' +
+      'Give me just the news text, with a short headline for each snippet.';
+  }
+
+  function updateNewsShowBtn() {
+    newsShowBtn.disabled = newsPasteEl.value.trim().length === 0;
+  }
+
+  function renderNewsGenerateScreen() {
+    var now = new Date();
+    newsDateLabel.textContent = now.toLocaleDateString('en-GB', {
+      weekday: 'long', day: 'numeric', month: 'long'
+    });
+    newsStreakEl.textContent = newsData.streak > 0
+      ? '🔥 ' + newsData.streak + '-day streak'
+      : 'Finish today\'s news quiz to start a streak!';
+
+    forEachNode(newsCountBtns, function (b) {
+      var active = parseInt(b.dataset.newsCount, 10) === newsData.wordCount;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    newsWords = resolveDailyWords();
+
+    newsWordChips.innerHTML = '';
+    newsWords.forEach(function (w) {
+      var chip = document.createElement('span');
+      chip.className = 'news-chip';
+      chip.textContent = w.word;
+      newsWordChips.appendChild(chip);
+    });
+
+    newsPromptEl.value = buildNewsPrompt(newsWords);
+
+    var ed = newsData.edition;
+    newsPasteEl.value = (ed && ed.date === todayKey() && ed.text) ? ed.text : '';
+    updateNewsShowBtn();
+  }
+
+  function stripMarkdown(text) {
+    return text
+      .replace(/^\s*#+\s*/, '')
+      .replace(/(\*\*|__|\*|`)/g, '');
+  }
+
+  function renderNewsReading() {
+    var text = (newsData.edition && newsData.edition.text) || newsPasteEl.value || '';
+    var paragraphs = text.split(/\n+/)
+      .map(function (p) { return stripMarkdown(p).trim(); })
+      .filter(function (p) { return p.length; });
+    if (!paragraphs.length) paragraphs = [stripMarkdown(text)];
+    renderReadingBody(newsReadingBody, paragraphs, newsWords);
+  }
+
+  function showNewsScreen(screenEl) {
+    [newsGenerateScreen, newsReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openNewsOverlay() {
+    renderNewsGenerateScreen();
+    showNewsScreen(newsGenerateScreen);
+    newsOverlay.classList.remove('hidden');
+    newsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    newsCloseBtn.focus();
+  }
+
+  function closeNewsOverlay() {
+    hideGloss();
+    newsOverlay.classList.add('hidden');
+    newsOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    newsLaunchBtn.focus();
+  }
+
+  // Re-show the news reading view after a news quiz closes.
+  function reopenNewsReading() {
+    newsOverlay.classList.remove('hidden');
+    newsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    renderNewsGenerateScreen();
+    renderNewsReading();
+    showNewsScreen(newsReadingScreen);
+    newsQuizBtn.focus();
+  }
+
+  function recordNewsResult(score, total) {
+    var today = todayKey();
+    if (newsData.lastCompletedDate !== today) {
+      newsData.streak = (newsData.lastCompletedDate === yesterdayKey())
+        ? (newsData.streak || 0) + 1
+        : 1;
+      newsData.lastCompletedDate = today;
+    }
+    if (newsData.edition) newsData.edition.quizDone = true;
+    saveNewsData();
+    var streakMsg = '🔥 ' + newsData.streak + '-day streak!';
+    if (score === total) return 'Perfect score! ' + streakMsg;
+    return 'Daily news done — ' + streakMsg;
+  }
+
+  function initDailyNews() {
+    loadNewsData();
+
+    newsLaunchBtn.addEventListener('click', openNewsOverlay);
+    newsCloseBtn.addEventListener('click', closeNewsOverlay);
+
+    forEachNode(newsCountBtns, function (btn) {
+      btn.addEventListener('click', function () {
+        var n = parseInt(this.dataset.newsCount, 10);
+        if (newsData.wordCount === n) return;
+        newsData.wordCount = n;
+        saveNewsData();
+        renderNewsGenerateScreen();
+      });
+    });
+
+    newsCopyBtn.addEventListener('click', function () {
+      var text = newsPromptEl.value;
+      function showCopied() {
+        newsCopyBtn.textContent = '✓ Copied!';
+        newsCopyBtn.classList.add('copied');
+        setTimeout(function () {
+          newsCopyBtn.textContent = 'Copy prompt';
+          newsCopyBtn.classList.remove('copied');
+        }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied, function () {
+          newsPromptEl.focus();
+          newsPromptEl.select();
+          showCopied();
+        });
+      } else {
+        newsPromptEl.focus();
+        newsPromptEl.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        showCopied();
+      }
+    });
+
+    newsPasteEl.addEventListener('input', updateNewsShowBtn);
+
+    newsShowBtn.addEventListener('click', function () {
+      if (newsPasteEl.value.trim().length === 0) return;
+      if (!newsData.edition || newsData.edition.date !== todayKey()) {
+        resolveDailyWords();
+      }
+      newsData.edition.text = newsPasteEl.value;
+      newsData.edition.wordCount = newsData.wordCount;
+      newsData.edition.words = newsWords.map(function (w) { return w.word; });
+      saveNewsData();
+      renderNewsReading();
+      showNewsScreen(newsReadingScreen);
+      newsReadingScreen.scrollTop = 0;
+      newsEditBtn.focus();
+    });
+
+    newsEditBtn.addEventListener('click', function () {
+      hideGloss();
+      renderNewsGenerateScreen();
+      showNewsScreen(newsGenerateScreen);
+      newsCloseBtn.focus();
+    });
+
+    newsQuizBtn.addEventListener('click', function () {
+      if (!newsWords.length) return;
+      hideGloss();
+      newsOverlay.classList.add('hidden');
+      newsOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(newsWords, {
+        returnTo: 'news',
+        onComplete: function (score, total) {
+          return recordNewsResult(score, total);
+        }
+      });
+    });
+
+    newsOverlay.addEventListener('click', function (e) {
+      if (e.target === newsOverlay) closeNewsOverlay();
+    });
+
+    newsReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (newsOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeNewsOverlay();
     });
   }
 
