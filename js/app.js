@@ -651,8 +651,14 @@
     updateQuizSetupSummary();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
-    showQuizScreen(quizSetupEl);
     document.body.style.overflow = 'hidden';
+    // Story Quest always plays mixed question types across all words, so skip
+    // the setup screen and drop the player straight into the quiz.
+    if (quizState.isQuestMode) {
+      startQuiz();
+      return;
+    }
+    showQuizScreen(quizSetupEl);
     quizSetupClose.focus();
   }
 
