@@ -903,9 +903,25 @@
     return sentence.replace(wordPattern, '_____');
   }
 
+  // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
+  function getThemedQuest(wordObj) {
+    return wordObj && wordObj.themed_quest ? wordObj.themed_quest : null;
+  }
+
+  // In Story Quest the cloze sentence is pre-themed and pre-blanked in the
+  // word data; elsewhere fall back to blanking the static example sentence.
+  function getQuestSentenceBlank(wordObj) {
+    var themed = getThemedQuest(wordObj);
+    if (themed && themed.sentence) return themed.sentence;
+    return getSentenceBlank(wordObj);
+  }
+
   function getQuestionTypesForWord(wordObj) {
     var types = ['definition', 'word'];
-    if (getSentenceBlank(wordObj)) {
+    var sentenceBlank = quizState.isQuestMode
+      ? getQuestSentenceBlank(wordObj)
+      : getSentenceBlank(wordObj);
+    if (sentenceBlank) {
       types.push('sentence');
     }
     if (wordObj.synonyms && wordObj.synonyms.length) {
@@ -923,12 +939,35 @@
     return set;
   }
 
+  // In Story Quest, a synonym/antonym question is a themed fill-in-the-blank:
+  // returns { cloze, answer } when the word has a valid themed relation cloze.
+  function getThemedRelation(wordObj, kind) {
+    var themed = getThemedQuest(wordObj);
+    var relation = themed && themed[kind];
+    if (relation && typeof relation.cloze === 'string' && relation.answer) {
+      return relation;
+    }
+    return null;
+  }
+
   function buildRelationQuestion(wordObj, pool, kind) {
     var positives = (kind === 'synonym' ? wordObj.synonyms : wordObj.antonyms) || [];
     var negatives = (kind === 'synonym' ? wordObj.antonyms : wordObj.synonyms) || [];
     if (!positives.length) return null;
 
-    var correct = positives[Math.floor(Math.random() * positives.length)];
+    // Quest mode: the themed cloze fixes which synonym/antonym is the answer.
+    var cloze = null;
+    var correct = null;
+    if (quizState.isQuestMode) {
+      var relation = getThemedRelation(wordObj, kind);
+      if (relation && positives.indexOf(relation.answer) !== -1) {
+        correct = relation.answer;
+        cloze = relation.cloze;
+      }
+    }
+    if (correct === null) {
+      correct = positives[Math.floor(Math.random() * positives.length)];
+    }
     var blocked = caseInsensitiveSet(positives.concat([wordObj.word]));
 
     var distractorPool = [];
@@ -951,7 +990,7 @@
     return {
       type         : kind,
       questionWord : wordObj,
-      sentenceBlank: null,
+      sentenceBlank: cloze,
       choices      : choices,
       correctIndex : choices.indexOf(correct)
     };
@@ -971,7 +1010,9 @@
     return {
       type         : type,
       questionWord : wordObj,
-      sentenceBlank: type === 'sentence' ? getSentenceBlank(wordObj) : null,
+      sentenceBlank: type === 'sentence'
+        ? (quizState.isQuestMode ? getQuestSentenceBlank(wordObj) : getSentenceBlank(wordObj))
+        : null,
       choices      : choices,
       correctIndex : correctIndex
     };
@@ -1079,6 +1120,10 @@
     if (q.type === 'definition') {
       labelTask   = ': What word means this?';
       payloadText = q.questionWord.definition;
+      if (theme) {
+        var themedClue = getThemedQuest(q.questionWord);
+        if (themedClue && themedClue.definition) payloadText = themedClue.definition;
+      }
     } else if (q.type === 'sentence') {
       labelTask   = ': Which word best completes this sentence?';
       payloadText = q.sentenceBlank;
@@ -1106,6 +1151,27 @@
     coreEl.className = 'quiz-question-core';
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
+
+    // Story Quest shows a themed sentence under word/synonym/antonym prompts:
+    // a plain example for "word", a fill-in-the-blank cloze for synonym/antonym
+    // (the blank is completed by the correct answer choice).
+    if (theme) {
+      var lineText = null;
+      var lineClass = 'quest-example';
+      if (q.type === 'word') {
+        var themedQuest = getThemedQuest(q.questionWord);
+        if (themedQuest && typeof themedQuest.word === 'string') lineText = themedQuest.word;
+      } else if (q.type === 'synonym' || q.type === 'antonym') {
+        lineText = q.sentenceBlank;
+        lineClass = 'quest-cloze';
+      }
+      if (lineText) {
+        var lineEl = document.createElement('span');
+        lineEl.className = lineClass;
+        lineEl.textContent = lineText;
+        quizQuestionText.appendChild(lineEl);
+      }
+    }
 
     // Answer buttons
     quizAnswersGrid.innerHTML = '';

@@ -1,0 +1,3 @@
+# Intermediate generation artifacts for the themed-sentence pipeline.
+# The pipeline regenerates these; the final data lives in data/words.json.
+scripts/batches/
