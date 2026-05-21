@@ -1627,6 +1627,12 @@ footer {
   color: var(--color-primary);
 }
 
+.news-step-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: -0.2rem;
+}
+
 .news-word-chips {
   display: flex;
   flex-wrap: wrap;

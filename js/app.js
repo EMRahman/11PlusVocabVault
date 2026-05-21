@@ -1878,15 +1878,26 @@
 
   function buildNewsPrompt(words) {
     var list = words.map(function (w) { return w.word; }).join(', ');
-    return 'You are helping a 10 to 11 year old child who is preparing for the 11+ exam to build their vocabulary.\n\n' +
-      'Please write a short, fun and upbeat "daily news" roundup for them to read at breakfast. ' +
-      'Write 3 or 4 very short news-style snippets, about 300 to 450 words in total, each with a cheerful headline.\n\n' +
-      'The news must naturally include EVERY one of these vocabulary words, each used at least once, ' +
+    var today = new Date().toLocaleDateString('en-GB', {
+      weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+    return 'You are helping a UK 10 to 11 year old child who is preparing for the 11+ exam to build their vocabulary.\n\n' +
+      'Today is ' + today + '. Please write them a "Daily News" roundup of what is genuinely happening ' +
+      'in the news right now, based on real stories from the past few days (this past week). ' +
+      'If you can search the web, do so, so the stories are accurate and up to date. Do not invent news.\n\n' +
+      'Explain everything in the style of BBC Newsround (https://www.bbc.co.uk/newsround), the ' +
+      'children\'s news programme. That means:\n' +
+      '- Cover the genuine top stories of the week, including important serious ones such as world ' +
+      'events, politics or nature, not only light topics. The goal is to keep the child informed about the real world.\n' +
+      '- Explain serious stories calmly, clearly and sensitively, with reassurance, so they are never frightening or upsetting.\n' +
+      '- Balance the serious stories with lighter, positive ones: science, space, sport, animals, the environment or amazing achievements.\n' +
+      '- Assume the child knows little background, so explain who and what simply.\n\n' +
+      'Write 3 or 4 short news snippets, about 300 to 450 words in total, each with a clear headline.\n\n' +
+      'The roundup must naturally include EVERY one of these vocabulary words, each used at least once, ' +
       'in a way that makes the meaning easy to guess from the sentence:\n' + list + '\n\n' +
       'Rules:\n' +
-      '- Keep the tone cheerful, kind and age-appropriate. No scary, violent or upsetting topics.\n' +
       '- Use British English spelling.\n' +
-      '- Pick light, interesting topics: everyday events, animals, science, space, sport or school.\n' +
+      '- Keep the tone calm, kind, clear and age-appropriate, just like Newsround.\n' +
       '- Use each vocabulary word in clear context so its meaning is obvious.\n' +
       '- Put each vocabulary word in bold the first time it appears.\n\n' +
       'Give me just the news text, with a short headline for each snippet.';

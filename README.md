@@ -41,8 +41,8 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 ### Daily News
 - Launch with the **Daily News** button — a quick daily reading-and-quiz routine
 - Each day the app picks **10, 15, or 20 words**, favouring new and not-yet-mastered words
-- Copy the generated prompt into any AI chat (Gemini, ChatGPT, or Claude), then paste the
-  kid-friendly news article it writes back into the app — no API key needed
+- Copy the generated prompt into any web-enabled AI chat (Gemini, ChatGPT, or Claude), then
+  paste back the **Newsround-style roundup of real, current news** it writes — no API key needed
 - The day's words are highlighted in the article for tap-to-define reading
 - A **morning quiz** on the day's words builds a daily **streak**
 
