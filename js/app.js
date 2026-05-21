@@ -715,122 +715,15 @@
     });
   }
 
-  // Keywords scanned in a word's definition + example sentence to pick the
-  // theme its quest question is wrapped in. Whole-word matches only.
-  var THEME_KEYWORDS = {
-    forest: ['forest', 'forests', 'tree', 'trees', 'wood', 'woods', 'wooden', 'leaf', 'leaves', 'branch', 'branches', 'nature', 'natural', 'plant', 'plants', 'garden', 'flower', 'flowers', 'root', 'roots', 'grow', 'grew', 'growth', 'hedge', 'meadow', 'vine', 'moss', 'soil', 'seed', 'seeds', 'blossom', 'bloom', 'countryside', 'lane', 'orchard', 'grove'],
-    castle: ['castle', 'castles', 'king', 'queen', 'royal', 'crown', 'knight', 'knights', 'throne', 'noble', 'palace', 'lord', 'lady', 'kingdom', 'banquet', 'fortress', 'realm', 'regal', 'majesty', 'prince', 'princess', 'court', 'courtier'],
-    dragon: ['dragon', 'dragons', 'fire', 'fiery', 'flame', 'flames', 'mountain', 'mountains', 'cave', 'caves', 'beast', 'beasts', 'scale', 'scales', 'roar', 'roared', 'treasure', 'hoard', 'smoke', 'ash', 'claw', 'claws', 'lair', 'monster', 'blaze', 'ember', 'embers'],
-    fairies: ['fairy', 'fairies', 'magic', 'magical', 'glow', 'glowing', 'sparkle', 'sparkling', 'shimmer', 'wing', 'wings', 'glen', 'moon', 'moonlight', 'wish', 'wishes', 'tiny', 'delicate', 'glitter', 'enchant', 'enchanted', 'pixie', 'dew', 'petal', 'petals', 'graceful'],
-    'army-battle': ['battle', 'fight', 'fighting', 'fought', 'war', 'wars', 'army', 'soldier', 'soldiers', 'weapon', 'weapons', 'attack', 'attacked', 'enemy', 'enemies', 'conquer', 'defend', 'defence', 'defense', 'aggressive', 'hostile', 'combat', 'troop', 'troops', 'march', 'marched', 'victory', 'defeat', 'charge', 'siege', 'brave', 'courage', 'bold', 'command', 'commander', 'captain', 'general', 'fierce'],
-    'sea-journey': ['sea', 'seas', 'ship', 'ships', 'sail', 'sailed', 'sailing', 'ocean', 'oceans', 'wave', 'waves', 'water', 'voyage', 'sailor', 'sailors', 'tide', 'tides', 'harbour', 'harbor', 'fish', 'boat', 'boats', 'shore', 'coast', 'island', 'deck', 'anchor', 'current', 'storm', 'splash', 'marine', 'port', 'crew'],
-    'wizard-school': ['wizard', 'wizards', 'spell', 'spells', 'study', 'studied', 'learn', 'learned', 'learning', 'book', 'books', 'school', 'knowledge', 'potion', 'potions', 'lesson', 'lessons', 'scholar', 'wise', 'wisdom', 'clever', 'intelligent', 'teach', 'taught', 'pupil', 'exam', 'library', 'scroll', 'scrolls']
-  };
-
-  // Themed mini-scenario per theme + question type. {word} is filled in only
-  // for types where the word is already shown to the player (word/synonym/
-  // antonym); definition/sentence stay word-free so the answer is never given.
-  var themeNarratives = {
-    forest: {
-      definition: 'Deep in the Forest of Clues, a wise old owl ruffles its feathers and hoots a riddle. Name the word that means:',
-      word: 'A squirrel scampers down with the word “{word}” tucked in its paws. Tell the forest what it means:',
-      sentence: 'Along the mossy forest trail you find a torn page. Help the woodland scouts finish the line:',
-      synonym: 'The forest guide points to the word “{word}” carved in bark and asks for one that means almost the same:',
-      antonym: 'To open the tangled forest gate, the gatekeeper needs the opposite of “{word}”:'
-    },
-    castle: {
-      definition: 'Inside the dusty castle library, a royal scholar unrolls an old scroll. Which word does this clue describe?',
-      word: 'The herald raises a banner stitched with the word “{word}”. Announce to the court what it means:',
-      sentence: 'A royal proclamation has lost a word on its way to the throne room. Complete it for the king:',
-      synonym: 'A castle knight guards the word “{word}” and will only step aside for one that means nearly the same:',
-      antonym: 'To lower the heavy drawbridge, the guard demands the opposite of “{word}”:'
-    },
-    dragon: {
-      definition: 'High on Dragon Mountain, a sleepy dragon mumbles a clue between puffs of smoke. Which word fits?',
-      word: 'The dragon flicks a glowing ember shaped like the word “{word}”. Tell it what the word means:',
-      sentence: 'Carved above the dragon’s cave is an ancient warning with one word burned away. Finish it:',
-      synonym: 'The dragon keeper circles the word “{word}” and rasps for one that burns with the same meaning:',
-      antonym: 'To calm the roaring dragon, you must speak the opposite of “{word}”:'
-    },
-    fairies: {
-      definition: 'In the glittering Fairy Glen, a tiny fairy spins a clue from moonlight. Which word does it mean?',
-      word: 'A fairy lands on a glowing toadstool holding the word “{word}”. Whisper back what it means:',
-      sentence: 'At the fairy ring, a spell-line shimmers with one missing word. Complete the magic:',
-      synonym: 'A fairy flutters around the word “{word}” and giggles for one that means almost the same:',
-      antonym: 'To unlock the silver moonflower, the fairies need the opposite of “{word}”:'
-    },
-    'army-battle': {
-      definition: 'On the army battlefield, a brave captain hands you a coded clue. Which word does it command?',
-      word: 'A soldier raises a shield painted with the word “{word}”. Report to the captain what it means:',
-      sentence: 'The battle plan has a gap where one word should be. Complete the briefing before the march:',
-      synonym: 'The captain studies the word “{word}” and orders you to find one that means almost the same:',
-      antonym: 'To outsmart the rival army, the general needs the opposite of “{word}”:'
-    },
-    'sea-journey': {
-      definition: 'On the rolling Sea Journey, a salty sailor calls a clue down from the crow’s nest. Which word is it?',
-      word: 'A sailor hauls up a bottle with the word “{word}” inside. Tell the crew what it means:',
-      sentence: 'A page of the ship’s log was splashed by a wave, washing one word away. Finish the entry:',
-      synonym: 'The ship’s navigator points to the word “{word}” on the chart and asks for one that means nearly the same:',
-      antonym: 'To steer the ship safely through the fog, the captain needs the opposite of “{word}”:'
-    },
-    'wizard-school': {
-      definition: 'At Wizard School, your spell teacher chalks a clue on the floating blackboard. Which word does it mean?',
-      word: 'A wizard pupil levitates a spellbook open to the word “{word}”. Explain what it means:',
-      sentence: 'A spell in your textbook has one word vanished by a tricky charm. Complete the line:',
-      synonym: 'The head wizard taps the word “{word}” with a wand and asks for one that means almost the same:',
-      antonym: 'To seal the swirling portal, you must cast the opposite of “{word}”:'
+  // Resolve the quest theme for a word from its pre-generated themed_quest
+  // data, so the world label always matches the themed sentence shown.
+  function getQuestTheme(wordObj) {
+    var themed = getThemedQuest(wordObj);
+    var themeId = themed && themed.theme;
+    for (var i = 0; i < questState.worlds.length; i++) {
+      if (questState.worlds[i].id === themeId) return questState.worlds[i];
     }
-  };
-
-  var wordThemeCache = {};
-
-  function hashString(str) {
-    var h = 0;
-    for (var i = 0; i < str.length; i++) {
-      h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-    }
-    return Math.abs(h);
-  }
-
-  // Resolve (and memoise) the fixed quest theme for a word. Picks the theme
-  // with the most keyword hits in the word's definition + sentence; ties are
-  // broken by a stable hash among the top scorers, and a word with no hits
-  // falls back to a stable hash across all themes.
-  function getWordTheme(wordObj) {
-    var key = wordObj.word;
-    if (wordThemeCache[key]) return wordThemeCache[key];
-
-    var haystack = ((wordObj.definition || '') + ' ' + (wordObj.sentence_usage || '')).toLowerCase();
-    var tokens = {};
-    haystack.split(/[^a-z]+/).forEach(function (t) { if (t) tokens[t] = true; });
-
-    var bestScore = 0;
-    var leaders = [];
-    questState.worlds.forEach(function (world) {
-      var score = 0;
-      (THEME_KEYWORDS[world.id] || []).forEach(function (kw) {
-        if (tokens[kw]) score++;
-      });
-      if (score > bestScore) {
-        bestScore = score;
-        leaders = [world];
-      } else if (score === bestScore) {
-        leaders.push(world);
-      }
-    });
-
-    var theme = bestScore > 0
-      ? leaders[hashString(key) % leaders.length]
-      : questState.worlds[hashString(key) % questState.worlds.length];
-
-    wordThemeCache[key] = theme;
-    return theme;
-  }
-
-  function getThemedQuestionIntro(theme, type, wordObj) {
-    var narratives = themeNarratives[theme.id] || themeNarratives.forest;
-    var template = narratives[type] || narratives.definition;
-    return template.replace('{word}', wordObj.word);
+    return questState.worlds[0];
   }
 
   function clearQuizAdvanceTimeout() {
@@ -917,11 +810,18 @@
   }
 
   function getQuestionTypesForWord(wordObj) {
+    // Story Quest plays only themed fill-in-the-blank clozes: the word, one of
+    // its synonyms, or one of its antonyms completing a themed sentence.
+    if (quizState.isQuestMode) {
+      var questTypes = [];
+      if (getQuestSentenceBlank(wordObj)) questTypes.push('sentence');
+      if (hasUsableThemedRelation(wordObj, 'synonym')) questTypes.push('synonym');
+      if (hasUsableThemedRelation(wordObj, 'antonym')) questTypes.push('antonym');
+      return questTypes.length ? questTypes : ['sentence'];
+    }
+
     var types = ['definition', 'word'];
-    var sentenceBlank = quizState.isQuestMode
-      ? getQuestSentenceBlank(wordObj)
-      : getSentenceBlank(wordObj);
-    if (sentenceBlank) {
+    if (getSentenceBlank(wordObj)) {
       types.push('sentence');
     }
     if (wordObj.synonyms && wordObj.synonyms.length) {
@@ -948,6 +848,16 @@
       return relation;
     }
     return null;
+  }
+
+  // True when a word's themed synonym/antonym cloze is usable as a quest
+  // question: its answer must be one of the word's own synonyms/antonyms,
+  // matching the gate buildRelationQuestion applies.
+  function hasUsableThemedRelation(wordObj, kind) {
+    var relation = getThemedRelation(wordObj, kind);
+    if (!relation) return false;
+    var positives = (kind === 'synonym' ? wordObj.synonyms : wordObj.antonyms) || [];
+    return positives.indexOf(relation.answer) !== -1;
   }
 
   function buildRelationQuestion(wordObj, pool, kind) {
@@ -1115,15 +1025,11 @@
     quizStreakEl.textContent     = quizState.streak >= 2 ? '🔥 ' + quizState.streak : '';
 
     // Question — in quest mode each question is themed to its own word.
-    var theme = quizState.isQuestMode ? getWordTheme(q.questionWord) : null;
+    var theme = quizState.isQuestMode ? getQuestTheme(q.questionWord) : null;
     var labelTask, payloadText;
     if (q.type === 'definition') {
       labelTask   = ': What word means this?';
       payloadText = q.questionWord.definition;
-      if (theme) {
-        var themedClue = getThemedQuest(q.questionWord);
-        if (themedClue && themedClue.definition) payloadText = themedClue.definition;
-      }
     } else if (q.type === 'sentence') {
       labelTask   = ': Which word best completes this sentence?';
       payloadText = q.sentenceBlank;
@@ -1138,40 +1044,21 @@
       payloadText = q.questionWord.word;
     }
 
-    quizQuestionLabel.textContent = (theme ? theme.emoji + ' ' + theme.theme + ' Quest' : 'Quiz') + labelTask;
+    // Story Quest: every question is a themed fill-in-the-blank sentence — the
+    // word, a synonym or an antonym completes the story line.
+    if (theme) {
+      payloadText = q.sentenceBlank;
+      quizQuestionLabel.textContent =
+        theme.emoji + ' ' + theme.theme + ' Quest: Complete the themed sentence';
+    } else {
+      quizQuestionLabel.textContent = 'Quiz' + labelTask;
+    }
 
     quizQuestionText.innerHTML = '';
-    if (theme) {
-      var scenarioEl = document.createElement('span');
-      scenarioEl.className = 'quest-scenario';
-      scenarioEl.textContent = getThemedQuestionIntro(theme, q.type, q.questionWord);
-      quizQuestionText.appendChild(scenarioEl);
-    }
     var coreEl = document.createElement('span');
     coreEl.className = 'quiz-question-core';
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
-
-    // Story Quest shows a themed sentence under word/synonym/antonym prompts:
-    // a plain example for "word", a fill-in-the-blank cloze for synonym/antonym
-    // (the blank is completed by the correct answer choice).
-    if (theme) {
-      var lineText = null;
-      var lineClass = 'quest-example';
-      if (q.type === 'word') {
-        var themedQuest = getThemedQuest(q.questionWord);
-        if (themedQuest && typeof themedQuest.word === 'string') lineText = themedQuest.word;
-      } else if (q.type === 'synonym' || q.type === 'antonym') {
-        lineText = q.sentenceBlank;
-        lineClass = 'quest-cloze';
-      }
-      if (lineText) {
-        var lineEl = document.createElement('span');
-        lineEl.className = lineClass;
-        lineEl.textContent = lineText;
-        quizQuestionText.appendChild(lineEl);
-      }
-    }
 
     // Answer buttons
     quizAnswersGrid.innerHTML = '';
