@@ -515,6 +515,7 @@
 
   var QUIZ_BEST_KEY   = 'vocabVault_quizBest';
   var QUIZ_BESTS_KEY  = 'vocabVault_quizBests';
+  var QUEST_PROGRESS_KEY = 'vocabVault_questProgress';
   var DEFAULT_QUIZ_LENGTH = 5;
 
   var quizState = {
@@ -527,7 +528,17 @@
     mode         : 'mixed',
     misses       : [],
     personalBest : 0,
-    personalBests: {}
+    personalBests: {},
+    isQuestMode  : false
+  };
+
+  var questState = {
+    worlds: [
+      { id: 'forest', name: 'Forest of Clues', emoji: '🌲' },
+      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰' },
+      { id: 'cave', name: 'Dragon Cave', emoji: '🐉' }
+    ],
+    progress: { worldIndex: 0, levelsWonInWorld: 0, xp: 0, coins: 0 }
   };
 
   // ── Quiz DOM refs ──────────────────────────────────────────────────────────
@@ -541,6 +552,12 @@
   var quizModeBtns       = document.querySelectorAll('[data-mode]');
   var quizPersonalBestEl = document.getElementById('quiz-personal-best');
   var quizLaunchBtn      = document.getElementById('quiz-launch-btn');
+  var questLaunchBtn     = document.getElementById('quest-launch-btn');
+  var questOverlay       = document.getElementById('quest-overlay');
+  var questMapScreen     = document.getElementById('quest-map-screen');
+  var questCloseBtn      = document.getElementById('quest-close-btn');
+  var questWorldList     = document.getElementById('quest-world-list');
+  var questWallet        = document.getElementById('quest-wallet');
 
   var quizQuestionScreen = document.getElementById('quiz-question-screen');
   var quizExitBtn        = document.getElementById('quiz-exit-btn');
@@ -599,6 +616,21 @@
     }
   }
 
+  function loadQuestProgress() {
+    try {
+      var raw = localStorage.getItem(QUEST_PROGRESS_KEY);
+      if (!raw) return;
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed.worldIndex === 'number') {
+        questState.progress = parsed;
+      }
+    } catch (e) {}
+  }
+
+  function saveQuestProgress() {
+    try { localStorage.setItem(QUEST_PROGRESS_KEY, JSON.stringify(questState.progress)); } catch (e) {}
+  }
+
   // ── Screen management ──────────────────────────────────────────────────────
   function showQuizScreen(screenEl) {
     [quizSetupEl, quizQuestionScreen, quizEndScreen].forEach(function (s) {
@@ -624,7 +656,45 @@
     document.body.style.overflow = '';
     // Re-render the grid so mastery badges reflect any quiz progress.
     applyFilters();
+    quizState.isQuestMode = false;
     quizLaunchBtn.focus();
+  }
+
+  function openQuestOverlay() {
+    renderQuestMap();
+    questOverlay.classList.remove('hidden');
+    questOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    questCloseBtn.focus();
+  }
+
+  function closeQuestOverlay() {
+    questOverlay.classList.add('hidden');
+    questOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    questLaunchBtn.focus();
+  }
+
+  function renderQuestMap() {
+    var p = questState.progress;
+    questWallet.textContent = 'XP: ' + p.xp + ' · Coins: ' + p.coins + ' · Current world: ' + (p.worldIndex + 1) + '/' + questState.worlds.length;
+    questWorldList.innerHTML = '';
+
+    questState.worlds.forEach(function (world, idx) {
+      var card = document.createElement('div');
+      card.className = 'quest-world-card' + (idx > p.worldIndex ? ' locked' : '');
+      var completed = idx < p.worldIndex ? 5 : (idx === p.worldIndex ? p.levelsWonInWorld : 0);
+      card.innerHTML =
+        '<h3>' + world.emoji + ' ' + world.name + '</h3>' +
+        '<p class="quest-world-meta">' + completed + '/5 battles won</p>';
+      var btn = document.createElement('button');
+      btn.className = 'quiz-start-btn';
+      btn.textContent = idx > p.worldIndex ? 'Locked' : 'Start world';
+      btn.disabled = idx > p.worldIndex;
+      btn.addEventListener('click', function () { startQuestWorld(idx); });
+      card.appendChild(btn);
+      questWorldList.appendChild(card);
+    });
   }
 
   function clearQuizAdvanceTimeout() {
@@ -987,6 +1057,9 @@
     quizEndEmoji.textContent = tier.emoji;
     quizEndTitle.textContent = tier.title;
     quizEndScore.textContent = score + ' / ' + total + ' correct';
+    if (quizState.isQuestMode) {
+      applyQuestRewards(score, total);
+    }
     quizEndBest.textContent  = isNewBest
       ? 'New personal best! 🎉'
       : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
@@ -1039,11 +1112,42 @@
     quizExitBtn.focus();
   }
 
+  function startQuestWorld(worldIndex) {
+    var worldModes = ['sentence', 'synonym', 'mixed'];
+    questState.progress.worldIndex = worldIndex;
+    quizState.scope = 'all';
+    quizState.length = 5;
+    quizState.mode = worldModes[Math.min(worldIndex, worldModes.length - 1)];
+    quizState.isQuestMode = true;
+    closeQuestOverlay();
+    openQuizOverlay();
+  }
+
+  function applyQuestRewards(score, total) {
+    var passed = score >= Math.ceil(total * 0.7);
+    var bonusCoins = passed ? 30 : 10;
+    var gainedXp = score * 8;
+    questState.progress.coins += bonusCoins;
+    questState.progress.xp += gainedXp;
+    if (passed) {
+      questState.progress.levelsWonInWorld += 1;
+      if (questState.progress.levelsWonInWorld >= 5 && questState.progress.worldIndex < questState.worlds.length - 1) {
+        questState.progress.worldIndex += 1;
+        questState.progress.levelsWonInWorld = 0;
+      }
+    }
+    saveQuestProgress();
+    quizEndBest.textContent += ' · Quest rewards: +' + gainedXp + ' XP, +' + bonusCoins + ' coins';
+  }
+
   // ── Event listeners ────────────────────────────────────────────────────────
   function initQuiz() {
     loadQuizBest();
+    loadQuestProgress();
 
     quizLaunchBtn.addEventListener('click', openQuizOverlay);
+    questLaunchBtn.addEventListener('click', openQuestOverlay);
+    questCloseBtn.addEventListener('click', closeQuestOverlay);
     quizSetupClose.addEventListener('click', closeQuizOverlay);
     quizExitBtn.addEventListener('click', closeQuizOverlay);
     quizBackBtn.addEventListener('click', closeQuizOverlay);
@@ -1103,6 +1207,9 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !quizOverlay.classList.contains('hidden')) {
         closeQuizOverlay();
+      }
+      if (e.key === 'Escape' && !questOverlay.classList.contains('hidden')) {
+        closeQuestOverlay();
       }
     });
   }
