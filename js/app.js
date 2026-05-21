@@ -1883,16 +1883,21 @@
     });
     return 'You are helping a UK 10 to 11 year old child who is preparing for the 11+ exam to build their vocabulary.\n\n' +
       'Today is ' + today + '. Please write them a "Daily News" roundup of what is genuinely happening ' +
-      'in the news right now, based on real stories from the past few days (this past week). ' +
+      'in the news right now. Start from the real top stories that adults are reading and talking about this ' +
+      'week — the main front-page headlines — based on stories from the past few days. ' +
       'If you can search the web, do so, so the stories are accurate and up to date. Do not invent news.\n\n' +
-      'Explain everything in the style of BBC Newsround (https://www.bbc.co.uk/newsround), the ' +
-      'children\'s news programme. That means:\n' +
-      '- Cover the genuine top stories of the week, including important serious ones such as world ' +
-      'events, politics or nature, not only light topics. The goal is to keep the child informed about the real world.\n' +
+      'Your job is to take those big grown-up news stories and rewrite them for children in the style of ' +
+      'BBC Newsround (https://www.bbc.co.uk/newsround), the children\'s news programme. That means:\n' +
+      '- Cover the genuine top stories of the week, including important serious ones such as world events, ' +
+      'politics, conflicts, the economy or nature, not only light topics. The goal is to keep the child genuinely ' +
+      'informed about what is happening in the real world.\n' +
+      '- For each big story, explain not just what happened but why it matters and how it can affect ' +
+      'everyday life in the UK — for example, how tensions between countries can change the price of petrol, ' +
+      'food or energy that families pay at home.\n' +
       '- Explain serious stories calmly, clearly and sensitively, with reassurance, so they are never frightening or upsetting.\n' +
-      '- Balance the serious stories with lighter, positive ones: science, space, sport, animals, the environment or amazing achievements.\n' +
-      '- Assume the child knows little background, so explain who and what simply.\n\n' +
-      'Write 3 or 4 short news snippets, about 300 to 450 words in total, each with a clear headline.\n\n' +
+      '- Balance the serious stories with at least one lighter, positive one: science, space, sport, animals, the environment or an amazing achievement.\n' +
+      '- Assume the child knows little background, so explain who, what and where simply, including any countries or people mentioned.\n\n' +
+      'Write 3 or 4 short news snippets, about 300 to 450 words in total, each with a clear, punchy headline.\n\n' +
       'The roundup must naturally include EVERY one of these vocabulary words, each used at least once, ' +
       'in a way that makes the meaning easy to guess from the sentence:\n' + list + '\n\n' +
       'Rules:\n' +
