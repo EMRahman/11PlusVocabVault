@@ -291,6 +291,53 @@ main {
   margin-bottom: 0.65rem;
 }
 
+.quest-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.quest-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.quest-item-btn:hover {
+  background: #ecfdf5;
+  border-color: #22c55e;
+}
+
+.quest-item-btn.done {
+  background: #f0fdf4;
+  border-color: #86efac;
+  color: #14532d;
+}
+
+.quest-item-tick {
+  color: #16a34a;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.quest-item-count {
+  margin-left: auto;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
 /* ===========================
    Word Grid
    =========================== */

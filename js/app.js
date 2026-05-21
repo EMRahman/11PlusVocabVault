@@ -541,15 +541,81 @@
 
   var questState = {
     worlds: [
-      { id: 'forest', name: 'Forest of Clues', emoji: '🌲', theme: 'Forest' },
-      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰', theme: 'Castle' },
-      { id: 'dragon', name: 'Dragon Mountain', emoji: '🐉', theme: 'Dragon' },
-      { id: 'fairies', name: 'Fairy Glen', emoji: '🧚', theme: 'Fairies' },
-      { id: 'army-battle', name: 'Army Battle Fields', emoji: '🛡️', theme: 'Army Battle' },
-      { id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵', theme: 'Sea Journey' },
-      { id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙', theme: 'Wizard School' }
+      {
+        id: 'forest', name: 'Forest of Clues', emoji: '🌲',
+        quests: [
+          { id: 'forest-1', title: 'The Ancient Grove',      words: ['Abundant','Altar','Amiable','Analogy','Bleak','Blossom','Brisk','Clambered','Clone','Collapse'] },
+          { id: 'forest-2', title: 'Whispers in the Dark',   words: ['Commotion','Cosmetic','Crisp','Defiant','Dialect','Dilapidated','Divert','Eerie','Emerald','Espionage'] },
+          { id: 'forest-3', title: 'The Hidden Path',        words: ['Faltered','Flourish','Gnarled','Huddled','Illicit','Insight','Lurched','Mandate','Mantra','Matrix'] },
+          { id: 'forest-4', title: 'Shadows and Firelight',  words: ['Meandered','Neglect','Nimble','Overjoyed','Palm','Placid','Precious','Preservation','Prickly','Quaint'] },
+          { id: 'forest-5', title: "The Fox's Secret",       words: ['Quivered','Reckless','Rehabilitate','Rustling','Secrete','Sector','Serene','Simultaneous','Sinuous','Skeletal'] },
+          { id: 'forest-6', title: 'Heart of the Wood',      words: ['Solemn','Specimen','Stealthy','Tangled','Towering','Tranquil','Transparent','Uncanny','Vigilant','Wilderness'] }
+        ]
+      },
+      {
+        id: 'castle', name: 'Castle of Synonyms', emoji: '🏰',
+        quests: [
+          { id: 'castle-1', title: 'The Iron Gate',      words: ['Allege','Apex','Artefact','Budge','Bustling','Collision','Compensate','Concealed','Consumerism','Conviction'] },
+          { id: 'castle-2', title: 'The Great Hall',     words: ['Daunt','Domestic','Drastic','Dreary','Extravagant','Fraught','Hierarchy','Hypothesis','Indescribable','Jovial'] },
+          { id: 'castle-3', title: 'The Dungeon Below',  words: ['Knackered','Labyrinthine','Lawful','Opulent','Perception','Perplexed','Provision','Sentiment','Serpentine','Stifling'] },
+          { id: 'castle-4', title: 'The Royal Banquet',  words: ['Technician','Thunderous','Twilight','Uneasy','Vibrant','Volatile','Weary','Yearned'] }
+        ]
+      },
+      {
+        id: 'dragon', name: 'Dragon Mountain', emoji: '🐉',
+        quests: [
+          { id: 'dragon-1', title: 'The Dragon Awakens', words: ['Amateur','Anticipation','Avatar','Barricade','Bewildered','Ceaseless','Census','Crimson','Delusion','Drifted'] },
+          { id: 'dragon-2', title: 'Fire and Fury',      words: ['Duly','Enraged','Excerpt','Exquisite','Fragile','Haste','Illegible','Lapse','Mischievous','Misinterpret'] },
+          { id: 'dragon-3', title: "The Dragon's Hoard", words: ['Noxious','Ominous','Passive','Persistent','Proud','Puny','Putrid','Reluctant','Scurried','Shrouded'] },
+          { id: 'dragon-4', title: 'Taming the Beast',   words: ['Smother','Smouldering','Stubborn','Thrifty','Thrilled','Turbulent','Vague','Valiant','Wandered'] }
+        ]
+      },
+      {
+        id: 'fairies', name: 'Fairy Glen', emoji: '🧚',
+        quests: [
+          { id: 'fairies-1', title: 'Moonlit Meadow',            words: ['Agitated','Arduous','Astonished','Avail','Canyon','Captivating','Compassion','Compel','Delicate'] },
+          { id: 'fairies-2', title: 'The Fairy Ring',            words: ['Denote','Desolate','Determined','Diligent','Discriminate','Disperse','Elegant','Encapsulate','Ephemeral'] },
+          { id: 'fairies-3', title: 'Silver Wings',              words: ['Finite','Forsake','Glistening','Graceful','Illuminated','Impatient','Imprison','Incandescent','Incompatible'] },
+          { id: 'fairies-4', title: 'The Lost Glade',            words: ['Inedible','Inflection','Lavish','Livelihood','Luminous','Majestic','Mysterious','Obsession','Opportune'] },
+          { id: 'fairies-5', title: 'Enchanted Bloom',           words: ['Petrified','Piercing','Ragged','Rational','Rectify','Rickety','Rite','Scarlet','Spectacular'] },
+          { id: 'fairies-6', title: "The Fairy Queen's Trial",   words: ['Tender','Tumultuous','Ubiquitous','Vast','Vivid','Whirling','Withered','Wretched','Zealous'] }
+        ]
+      },
+      {
+        id: 'army-battle', name: 'Army Battle Fields', emoji: '🛡️',
+        quests: [
+          { id: 'army-1', title: 'The Call to Arms',  words: ['Belligerent','Bellowed','Bias','Calamity','Cautious','Cemetery','Clandestine','Consensus','Contentious','Context'] },
+          { id: 'army-2', title: 'Into the Fray',     words: ['Courageous','Eager','Earthly','Elated','Evasive','Flickered','Fractious','Furnish','Glorious','Grim','Hieroglyph'] },
+          { id: 'army-3', title: 'The Siege',         words: ['Hospitality','Hostile','Immortal','Inflammatory','Memorial','Muttered','Obedient','Panorama','Peculiar','Poised'] },
+          { id: 'army-4', title: 'Victory at Dawn',   words: ['Ravenous','Reassuring','Rigour','Spatial','Spirited','Sprightly','Successive','Timid','Vault','Whimsical'] }
+        ]
+      },
+      {
+        id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵',
+        quests: [
+          { id: 'sea-1', title: 'Setting Sail',        words: ['Aloft','Amplify','Cacophony','Circulate','Circumstance','Contemplate','Contented','Cove','Dazzling','Electrocute'] },
+          { id: 'sea-2', title: 'Stormy Waters',       words: ['Epidemic','Faded','Ferocious','Forfeit','Forlorn','Fragrant','Gargantuan','Gloomy','Haunted','Hearty'] },
+          { id: 'sea-3', title: 'The Deep Blue',       words: ['Hesitant','Hollow','Humid','Impermeable','Infuse','Jubilant','Lament','Looming','Melancholy','Menacing'] },
+          { id: 'sea-4', title: 'Lost at Sea',         words: ['Miserable','Misty','Murky','Nocturnal','Nostalgic','Notorious','Perilous','Precarious','Prominent','Radiant'] },
+          { id: 'sea-5', title: 'Island of Wonders',   words: ['Resilient','Resolute','Rippling','Savage','Scout','Shimmering','Shrieked','Shrivel','Splendid','Staggered'] },
+          { id: 'sea-6', title: 'The Final Voyage',    words: ['Stout','Stupendous','Substitute','Sulky','Supple','Surged','Swift','Teeming','Temperate','Tempestuous'] },
+          { id: 'sea-7', title: "Harbour's End",       words: ['Tense','Trepidation','Tribute','Unruly','Vigorous','Virtuous','Voracious','Warily','Wistful'] }
+        ]
+      },
+      {
+        id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙',
+        quests: [
+          { id: 'wizard-1', title: 'The First Spell',           words: ['Abuse','Acknowledge','Allocate','Barrage','Chaotic','Collective','Convention','Deterrent','Devout','Duration'] },
+          { id: 'wizard-2', title: 'Halls of Knowledge',        words: ['Exemplify','Expertise','Figurehead','Frantic','Glimmer','Hack','Immense','Impressive','Inconsistent','Ingenious'] },
+          { id: 'wizard-3', title: 'The Forbidden Tower',       words: ['Inscription','Legacy','Lingered','Obscure','Ornate','Plagiarise','Plateau','Progressive','Proximity','Realm'] },
+          { id: 'wizard-4', title: 'Masters and Apprentices',   words: ['Rebuke','Regime','Resolution','Robust','Saga','Scrutinise','Sociable','Sparse','Stimulate','Subjective'] },
+          { id: 'wizard-5', title: 'The Final Enchantment',     words: ['Subtle','Sufficient','Suspicious','Tolerant','Tremulous','Triumphant','Unidentified','Variant','Verge','Vicious'] }
+        ]
+      }
     ],
-    progress: { worldIndex: 0, levelsWonInWorld: 0, xp: 0, coins: 0 }
+    activeWorldIndex: 0,
+    activeQuestId: null,
+    progress: { completed: [], xp: 0, coins: 0 }
   };
 
   // ── Quiz DOM refs ──────────────────────────────────────────────────────────
@@ -635,9 +701,10 @@
       var raw = localStorage.getItem(QUEST_PROGRESS_KEY);
       if (!raw) return;
       var parsed = JSON.parse(raw);
-      if (parsed && typeof parsed.worldIndex === 'number') {
+      if (parsed && Array.isArray(parsed.completed)) {
         questState.progress = parsed;
       }
+      // Old progress format (worldIndex-based) is intentionally discarded.
     } catch (e) {}
   }
 
@@ -721,27 +788,39 @@
 
   function renderQuestMap() {
     var p = questState.progress;
-    var totalLevels = questState.worlds.length * 5;
-    var completedLevels = Math.min((p.worldIndex * 5) + p.levelsWonInWorld, totalLevels);
-    var completionPct = Math.round((completedLevels / totalLevels) * 100);
-    questWallet.textContent = 'XP: ' + p.xp + ' · Coins: ' + p.coins + ' · Current world: ' + (p.worldIndex + 1) + '/' + questState.worlds.length;
+    var totalQuests = 0;
+    questState.worlds.forEach(function (w) { totalQuests += w.quests.length; });
+    var completedCount = p.completed.length;
+    var completionPct = totalQuests > 0 ? Math.round((completedCount / totalQuests) * 100) : 0;
+    questWallet.textContent = 'XP: ' + p.xp + ' · Coins: ' + p.coins + ' · Quests done: ' + completedCount + '/' + totalQuests;
     questProgressFill.style.width = completionPct + '%';
     questProgressLabel.textContent = completionPct + '%';
     questProgressTrack.setAttribute('aria-valuenow', completionPct);
     questWorldList.innerHTML = '';
 
-    questState.worlds.forEach(function (world, idx) {
+    questState.worlds.forEach(function (world, worldIdx) {
       var card = document.createElement('div');
       card.className = 'quest-world-card';
-      var completed = idx < p.worldIndex ? 5 : (idx === p.worldIndex ? p.levelsWonInWorld : 0);
+      var worldDone = world.quests.filter(function (q) {
+        return p.completed.indexOf(q.id) !== -1;
+      }).length;
       card.innerHTML =
         '<h3>' + world.emoji + ' ' + world.name + '</h3>' +
-        '<p class="quest-world-meta">' + completed + '/5 quest rounds won · Mixed themes &amp; question types</p>';
-      var btn = document.createElement('button');
-      btn.className = 'quiz-start-btn';
-      btn.textContent = idx === p.worldIndex ? 'Start world' : 'Switch to theme';
-      btn.addEventListener('click', function () { startQuestWorld(idx); });
-      card.appendChild(btn);
+        '<p class="quest-world-meta">' + worldDone + '/' + world.quests.length + ' quests completed</p>';
+      var list = document.createElement('div');
+      list.className = 'quest-item-list';
+      world.quests.forEach(function (quest, questIdx) {
+        var done = p.completed.indexOf(quest.id) !== -1;
+        var btn = document.createElement('button');
+        btn.className = 'quest-item-btn' + (done ? ' done' : '');
+        btn.innerHTML =
+          (done ? '<span class="quest-item-tick">✓</span> ' : '') +
+          quest.title +
+          ' <span class="quest-item-count">(' + quest.words.length + ' words)</span>';
+        btn.addEventListener('click', function () { startQuest(worldIdx, questIdx); });
+        list.appendChild(btn);
+      });
+      card.appendChild(list);
       questWorldList.appendChild(card);
     });
   }
@@ -1009,10 +1088,11 @@
       distractorPool = quizState.scope === 'weakest' ? allWords : basePool;
     }
 
-    // Story Quest: restrict questions to words pre-themed for the chosen world
-    // so the themed sentences match the selected world.
-    if (quizState.isQuestMode) {
-      var worldId = questState.worlds[questState.progress.worldIndex].id;
+    // Story Quest: when no customPool is set, restrict to words themed for the
+    // active world. With named quests customPool is always set, so this guard
+    // only fires as a safety fallback.
+    if (quizState.isQuestMode && !quizState.customPool) {
+      var worldId = questState.worlds[questState.activeWorldIndex || 0].id;
       basePool = basePool.filter(function (w) {
         return w.themed_quest && w.themed_quest.theme === worldId;
       });
@@ -1274,12 +1354,23 @@
     quizExitBtn.focus();
   }
 
-  function startQuestWorld(worldIndex) {
-    questState.progress.worldIndex = worldIndex;
+  function startQuest(worldIdx, questIdx) {
+    var world = questState.worlds[worldIdx];
+    var quest = world.quests[questIdx];
+    questState.activeWorldIndex = worldIdx;
+    questState.activeQuestId = quest.id;
+    var questWords = quest.words;
+    var pool = allWords.filter(function (w) {
+      return questWords.indexOf(w.word) !== -1;
+    });
     quizState.scope = 'all';
-    quizState.length = 5;
+    quizState.length = Math.min(10, pool.length);
     quizState.mode = 'mixed';
     quizState.isQuestMode = true;
+    quizState.customPool = pool;
+    quizState.onComplete = function (score, total) {
+      return applyQuestRewards(score, total);
+    };
     closeQuestOverlay();
     openQuizOverlay();
   }
@@ -1290,15 +1381,14 @@
     var gainedXp = score * 8;
     questState.progress.coins += bonusCoins;
     questState.progress.xp += gainedXp;
-    if (passed) {
-      questState.progress.levelsWonInWorld += 1;
-      if (questState.progress.levelsWonInWorld >= 5 && questState.progress.worldIndex < questState.worlds.length - 1) {
-        questState.progress.worldIndex += 1;
-        questState.progress.levelsWonInWorld = 0;
+    if (passed && questState.activeQuestId) {
+      var qid = questState.activeQuestId;
+      if (questState.progress.completed.indexOf(qid) === -1) {
+        questState.progress.completed.push(qid);
       }
     }
     saveQuestProgress();
-    quizEndBest.textContent += ' · Quest rewards: +' + gainedXp + ' XP, +' + bonusCoins + ' coins';
+    return 'Quest rewards: +' + gainedXp + ' XP, +' + bonusCoins + ' coins';
   }
 
   // ── Event listeners ────────────────────────────────────────────────────────
