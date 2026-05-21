@@ -1006,6 +1006,15 @@
       distractorPool = quizState.scope === 'weakest' ? allWords : basePool;
     }
 
+    // Story Quest: restrict questions to words pre-themed for the chosen world
+    // so the themed sentences match the selected world.
+    if (quizState.isQuestMode) {
+      var worldId = questState.worlds[questState.progress.worldIndex].id;
+      basePool = basePool.filter(function (w) {
+        return w.themed_quest && w.themed_quest.theme === worldId;
+      });
+    }
+
     var pool = quizState.scope === 'weakest'
       ? buildWeakestPool(allWords)
       : basePool;
