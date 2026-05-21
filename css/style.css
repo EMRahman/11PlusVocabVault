@@ -241,6 +241,33 @@ main {
   gap: 0.75rem;
 }
 
+.quest-progress-wrap {
+  margin-bottom: 0.9rem;
+}
+
+.quest-progress-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 0.35rem;
+}
+
+.quest-progress-track {
+  height: 10px;
+  background: #dcfce7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.quest-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.35s ease;
+}
+
 .quest-world-card {
   border: 2px solid var(--color-border);
   border-radius: 14px;

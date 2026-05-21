@@ -534,9 +534,13 @@
 
   var questState = {
     worlds: [
-      { id: 'forest', name: 'Forest of Clues', emoji: '🌲' },
-      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰' },
-      { id: 'cave', name: 'Dragon Cave', emoji: '🐉' }
+      { id: 'forest', name: 'Forest of Clues', emoji: '🌲', theme: 'Forest', modes: ['sentence', 'definition', 'word', 'synonym', 'antonym'] },
+      { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰', theme: 'Castle', modes: ['synonym', 'definition', 'word', 'sentence', 'antonym'] },
+      { id: 'dragon', name: 'Dragon Mountain', emoji: '🐉', theme: 'Dragon', modes: ['antonym', 'word', 'definition', 'sentence', 'synonym'] },
+      { id: 'fairies', name: 'Fairy Glen', emoji: '🧚', theme: 'Fairies', modes: ['word', 'definition', 'sentence', 'synonym', 'antonym'] },
+      { id: 'arm-battle', name: 'Arm Battle Fields', emoji: '🛡️', theme: 'Arm Battle', modes: ['definition', 'antonym', 'word', 'sentence', 'synonym'] },
+      { id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵', theme: 'Sea Journey', modes: ['sentence', 'word', 'definition', 'antonym', 'synonym'] },
+      { id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙', theme: 'Wizard School', modes: ['synonym', 'word', 'definition', 'sentence', 'antonym'] }
     ],
     progress: { worldIndex: 0, levelsWonInWorld: 0, xp: 0, coins: 0 }
   };
@@ -558,6 +562,9 @@
   var questCloseBtn      = document.getElementById('quest-close-btn');
   var questWorldList     = document.getElementById('quest-world-list');
   var questWallet        = document.getElementById('quest-wallet');
+  var questProgressFill  = document.getElementById('quest-progress-fill');
+  var questProgressLabel = document.getElementById('quest-progress-label');
+  var questProgressTrack = document.getElementById('quest-progress-track');
 
   var quizQuestionScreen = document.getElementById('quiz-question-screen');
   var quizExitBtn        = document.getElementById('quiz-exit-btn');
@@ -677,7 +684,13 @@
 
   function renderQuestMap() {
     var p = questState.progress;
+    var totalLevels = questState.worlds.length * 5;
+    var completedLevels = Math.min((p.worldIndex * 5) + p.levelsWonInWorld, totalLevels);
+    var completionPct = Math.round((completedLevels / totalLevels) * 100);
     questWallet.textContent = 'XP: ' + p.xp + ' · Coins: ' + p.coins + ' · Current world: ' + (p.worldIndex + 1) + '/' + questState.worlds.length;
+    questProgressFill.style.width = completionPct + '%';
+    questProgressLabel.textContent = completionPct + '%';
+    questProgressTrack.setAttribute('aria-valuenow', completionPct);
     questWorldList.innerHTML = '';
 
     questState.worlds.forEach(function (world, idx) {
@@ -686,7 +699,7 @@
       var completed = idx < p.worldIndex ? 5 : (idx === p.worldIndex ? p.levelsWonInWorld : 0);
       card.innerHTML =
         '<h3>' + world.emoji + ' ' + world.name + '</h3>' +
-        '<p class="quest-world-meta">' + completed + '/5 battles won</p>';
+        '<p class="quest-world-meta">' + completed + '/5 quest rounds won · Theme: ' + world.theme + '</p>';
       var btn = document.createElement('button');
       btn.className = 'quiz-start-btn';
       btn.textContent = idx > p.worldIndex ? 'Locked' : 'Start world';
@@ -923,6 +936,7 @@
   function renderQuestion(index) {
     var q = quizState.questions[index];
     var total = quizState.questions.length;
+    var world = questState.worlds[questState.progress.worldIndex];
 
     // Ensure no answer button remains visually/keyboard selected between questions.
     resetQuizAnswerFocus();
@@ -939,19 +953,19 @@
 
     // Question
     if (q.type === 'definition') {
-      quizQuestionLabel.textContent = 'What word means this?';
+      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What word means this?';
       quizQuestionText.textContent  = q.questionWord.definition;
     } else if (q.type === 'sentence') {
-      quizQuestionLabel.textContent = 'Which word best completes this sentence?';
+      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word best completes this sentence?';
       quizQuestionText.textContent  = q.sentenceBlank;
     } else if (q.type === 'synonym') {
-      quizQuestionLabel.textContent = 'Which word means almost the SAME as this?';
+      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means almost the SAME as this?';
       quizQuestionText.textContent  = q.questionWord.word;
     } else if (q.type === 'antonym') {
-      quizQuestionLabel.textContent = 'Which word means the OPPOSITE of this?';
+      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means the OPPOSITE of this?';
       quizQuestionText.textContent  = q.questionWord.word;
     } else {
-      quizQuestionLabel.textContent = 'What does this word mean?';
+      quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What does this word mean?';
       quizQuestionText.textContent  = q.questionWord.word;
     }
 
@@ -1113,11 +1127,12 @@
   }
 
   function startQuestWorld(worldIndex) {
-    var worldModes = ['sentence', 'synonym', 'mixed'];
+    var world = questState.worlds[worldIndex];
+    var modeIndex = questState.progress.levelsWonInWorld % world.modes.length;
     questState.progress.worldIndex = worldIndex;
     quizState.scope = 'all';
     quizState.length = 5;
-    quizState.mode = worldModes[Math.min(worldIndex, worldModes.length - 1)];
+    quizState.mode = world.modes[modeIndex];
     quizState.isQuestMode = true;
     closeQuestOverlay();
     openQuizOverlay();

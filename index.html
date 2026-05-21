@@ -149,8 +149,17 @@
       <div class="quiz-setup-inner">
         <span class="quiz-setup-emoji" aria-hidden="true">🧭</span>
         <h2 id="quest-map-title" class="quiz-setup-title">Story Quest</h2>
-        <p class="quiz-setup-subtitle">Complete 5 battles to unlock the next world.</p>
+        <p class="quiz-setup-subtitle">Complete themed folklore-inspired quests (public-domain style adventures).</p>
         <div id="quest-wallet" class="quest-wallet"></div>
+        <div class="quest-progress-wrap" aria-label="Story quest completion">
+          <div class="quest-progress-row">
+            <span>Quest progress</span>
+            <span id="quest-progress-label">0%</span>
+          </div>
+          <div class="quest-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="quest-progress-track">
+            <div class="quest-progress-fill" id="quest-progress-fill"></div>
+          </div>
+        </div>
         <div id="quest-world-list" class="quest-world-list"></div>
       </div>
     </div>
