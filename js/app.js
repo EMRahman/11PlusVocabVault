@@ -1813,6 +1813,16 @@
     try { localStorage.setItem(NEWS_KEY, JSON.stringify(newsData)); } catch (e) {}
   }
 
+  // Stable 32-bit string hash; seeds the daily word picker so the chosen set
+  // is deterministic for a given calendar day.
+  function hashString(str) {
+    var h = 0;
+    for (var i = 0; i < str.length; i++) {
+      h = ((h << 5) - h + str.charCodeAt(i)) | 0;
+    }
+    return Math.abs(h);
+  }
+
   // Deterministic 0..1 generator (LCG) so the daily word set is stable within
   // a calendar day but rotates from one day to the next.
   function seededRandom(seed) {
