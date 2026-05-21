@@ -1,73 +1,879 @@
 {
   "stories": [
     {
-      "id": "lighthouse-storm",
-      "title": "The Lighthouse in the Storm",
-      "emoji": "🗼",
-      "blurb": "A young keeper must guard the light alone on the wildest night of the year.",
-      "words": ["Tempestuous", "Ferocious", "Savage", "Perilous", "Looming", "Grim", "Cove", "Surged", "Staggered", "Resolute", "Murky", "Faded"],
+      "id": "story-01",
+      "title": "The Forest Garden",
+      "emoji": "🌳",
+      "blurb": "Two cousins find a forgotten woodland garden and learn how a friendly place can come back to life.",
+      "words": [
+        "Abundant",
+        "Altar",
+        "Amiable",
+        "Analogy",
+        "Bleak",
+        "Blossom",
+        "Brisk",
+        "Clambered",
+        "Clone",
+        "Collapse"
+      ],
       "paragraphs": [
-        "Maya had never seen the sea look so tempestuous. From the window of the lighthouse, the waves were a ferocious grey wall, crashing against the rocks of the little cove below. Her grandfather, the keeper, was away on the mainland, and the storm had arrived early. Tonight, the lighthouse was hers to guard.",
-        "The wind was savage. It rattled the old windows and screamed down the stairwell like a living thing. Far out in the murky water, Maya could just make out the faded shape of a fishing boat, tossed about like a toy. Without the lighthouse beam, the perilous rocks would tear it apart.",
-        "She climbed the spiral steps two at a time. The great lamp had gone dark, because the storm had knocked something loose. A grim thought surged through her mind: if she could not fix it, the boat would be lost. Her hands trembled, but she stayed resolute. Grandfather had shown her how the mechanism worked a hundred times.",
-        "Maya staggered as the tower shuddered, then steadied herself and reached for the heavy switch. She pulled. For a heart-stopping moment, nothing happened. Then, with a deep hum, the lamp blazed back to life. A golden beam swept across the water, cutting through the looming darkness.",
-        "Below, the little boat turned toward the light and crept safely into the shelter of the cove. Maya let out a long breath. The storm still howled, but she was no longer afraid of it. She had kept the light burning, and that was all that mattered."
+        "The morning was bleak and grey, cold and empty, with little hope of sunshine. Even so, Priya and her cousin Theo set off into the woods at a brisk pace, walking quickly and lively to keep themselves warm. They had heard that an old garden lay hidden somewhere among the trees, lost for many years and waiting to be found again.",
+        "After an hour, they reached a tumbledown stone wall and clambered over it, scrambling on hands and feet in an awkward, careful way. Beyond the wall the trees opened out. In the centre stood a flat stone like an altar, the kind of raised table people once gathered around for ceremonies. Theo brushed away the moss while his amiable, friendly grandfather, who had walked behind them, smiled warmly and told them stories.",
+        "Grandad explained how the garden had once been full of life. He used a clever analogy, comparing the old garden to a sleeping animal that only needed waking, so the children could understand. \"It is not gone,\" he said gently. \"It is only resting, just as a bear rests through winter.\"",
+        "The cousins worked all spring. They cleared the weeds before they could collapse the fragile flower beds by suddenly falling down upon them. They planted cuttings, and Grandad showed them how each new shoot was a clone, an exact copy grown from its parent plant.",
+        "By summer the garden began to blossom, bursting into flower with petals of pink and gold. Bees buzzed and birds sang, and the once bleak clearing now held abundant colour, far more beauty than they had ever expected. The amiable old garden, like the bear, had finally woken up."
       ]
     },
     {
-      "id": "library-mystery",
-      "title": "The Clue in the Library",
-      "emoji": "🔍",
-      "blurb": "A blank book hidden behind the shelves leads Theo to a hundred-year-old secret.",
-      "words": ["Mysterious", "Clandestine", "Concealed", "Suspicious", "Scrutinise", "Obscure", "Stealthy", "Bewildered", "Inscription", "Evasive", "Espionage", "Uncanny"],
+      "id": "story-02",
+      "title": "The Secret of the Green Cottage",
+      "emoji": "🕵️",
+      "blurb": "A strange noise in the woods leads Mira to a crumbling cottage and a surprising secret.",
+      "words": [
+        "Commotion",
+        "Cosmetic",
+        "Crisp",
+        "Defiant",
+        "Dialect",
+        "Dilapidated",
+        "Divert",
+        "Eerie",
+        "Emerald",
+        "Espionage"
+      ],
       "paragraphs": [
-        "The old town library had a reputation for being mysterious, and Theo loved it for exactly that reason. Tucked between the dusty shelves was a reading room nobody seemed to use. One rainy afternoon, Theo noticed something strange: a book that had been concealed behind the others, its cover completely blank.",
-        "He opened it carefully. Inside the front page was an inscription in faded ink, a single sentence in a language he did not recognise. It felt like the start of some clandestine adventure, the kind he had only read about in stories of spies and espionage.",
-        "Theo decided to scrutinise every page. Most were ordinary, but one obscure paragraph near the back had tiny pencil marks under certain letters. He copied them down, growing more suspicious with every word. The marks slowly spelled out a riddle.",
-        "He showed it to Mrs Ableton, the librarian, but she became oddly evasive, changing the subject and hurrying away. That only made Theo more curious. Moving in a stealthy, careful way, he followed the riddle's directions to a corner shelf and pressed a loose wooden panel.",
-        "It swung open with an uncanny creak. Behind it was a small box of old letters: the lost history of the town, hidden for a hundred years. Theo stood there, completely bewildered and utterly delighted. The mysterious library had been keeping a secret all along, and he had been the one to find it."
+        "The autumn air was crisp, fresh and pleasantly sharp, as Mira walked the forest trail. Suddenly a loud commotion broke out behind the brambles, a noisy fuss of thumping and shouting. Curious, she decided to divert from the path, turning away from her usual route to follow the sound.",
+        "Through the trees she saw a dilapidated cottage, old and broken, its roof sagging from years of neglect. An eerie silence settled around it once the noise stopped, a strange, spooky quiet that made the hair on her arms prickle. Bright emerald moss, deep and richly green, covered the crooked walls.",
+        "Inside, she found old Mr Hadley, who spoke in the local dialect, a regional way of speaking with words she had never heard before. He was carefully painting the cracked window frames. \"It is only cosmetic,\" he said with a grin, meaning the work was just to improve the look of the place.",
+        "Mira had imagined something thrilling, perhaps even espionage, with secret spies gathering hidden information. The truth was far gentler. Mr Hadley was simply restoring the cottage his grandmother had loved.",
+        "A defiant robin perched on the gate, boldly refusing to move even as Mira passed. She laughed. There was no mystery here, only an old man and a brave little bird, both determined to bring the green cottage back to life."
       ]
     },
     {
-      "id": "wilderness-night",
-      "title": "The Night Walk",
-      "emoji": "🦊",
-      "blurb": "When the sun sets over the wilderness, a whole hidden world wakes up.",
-      "words": ["Nocturnal", "Nimble", "Wilderness", "Teeming", "Majestic", "Cautious", "Timid", "Ravenous", "Clambered", "Graceful", "Abundant", "Scurried"],
+      "id": "story-03",
+      "title": "The Map in the Old Oak",
+      "emoji": "🧭",
+      "blurb": "An expedition through the hills tests a young explorer's courage and curiosity.",
+      "words": [
+        "Faltered",
+        "Flourish",
+        "Gnarled",
+        "Huddled",
+        "Illicit",
+        "Insight",
+        "Lurched",
+        "Mandate",
+        "Mantra",
+        "Matrix"
+      ],
       "paragraphs": [
-        "Ranger Pia took us into the wilderness just as the sun was setting. 'The daytime forest is only half the story,' she said. 'Once it grows dark, a whole nocturnal world wakes up.' We switched on our dim red torches and waited, quiet and cautious.",
-        "At first the woods seemed empty. Then, slowly, they came alive. The trees were teeming with sound: the rustle of leaves, the hoot of an owl, the patter of tiny feet. A timid mouse scurried across the path and vanished into the abundant ferns.",
-        "A fox appeared on the ridge above us, nimble and silent. It moved in a graceful curve along the rocks, pausing now and then to sniff the cool night air. Pia whispered that it was probably ravenous after a long day of sleep, hunting now that the night belonged to it.",
-        "Higher up, something larger clambered over a fallen log. We froze. It was a deer, majestic against the moonlit sky, its antlers like pale branches of their own. It studied us for a long moment, decided we were harmless, and stepped away into the shadows.",
-        "By the time we left, I understood what Pia had meant. The wilderness was never truly asleep. It simply changed shifts, and the nocturnal animals were every bit as wonderful as the ones I already knew by day."
+        "The young explorers had a clear mandate from their teacher, an official order to map the hidden valley before sunset. Sam repeated her favourite mantra under her breath, the phrase she said again and again whenever she felt afraid: \"One step, then the next.\"",
+        "The trail was difficult. Their guide warned them never to take the illicit shortcut through the marsh, the forbidden route that was strictly against the rules. When the ground lurched beneath Sam's boots, suddenly tilting in an awkward way, her courage faltered, weakening for just a moment.",
+        "She steadied herself against a gnarled tree, its twisted and rough trunk bent by many years of wind. The friends huddled close together for warmth and safety while the guide unfolded an old chart. Its faded lines formed a strange matrix, a grid of squares and routes covering the whole valley.",
+        "Studying the grid gave Sam a sudden insight, a deep and clear understanding of where the treasure lay. \"The crossing point,\" she said. \"It is exactly where the two old paths meet.\"",
+        "They followed her idea and found a sheltered hollow where wildflowers seemed to flourish, growing and thriving better than anywhere else. Sam smiled, proud that her quiet mantra had carried her all the way to the end of the expedition."
       ]
     },
     {
-      "id": "glass-mountain",
-      "title": "The Realm of the Glass Mountain",
+      "id": "story-04",
+      "title": "The Slow Walk Home",
+      "emoji": "🌿",
+      "blurb": "On a gentle country walk, Lena discovers why the smallest things deserve the most care.",
+      "words": [
+        "Meandered",
+        "Neglect",
+        "Nimble",
+        "Overjoyed",
+        "Palm",
+        "Placid",
+        "Precious",
+        "Preservation",
+        "Prickly",
+        "Quaint"
+      ],
+      "paragraphs": [
+        "Lena and her grandmother meandered along the lane, following a path that wound this way and that with many gentle bends. They were in no hurry at all. Past a quaint little village they strolled, charming and old-fashioned with crooked chimneys and tiny flower boxes.",
+        "Beside the lane lay a placid pond, calm and peaceful without a single ripple. A nimble dragonfly, quick and light in its movement, skimmed across the smooth water and darted away again.",
+        "Grandmother stopped beside a prickly hedge, full of sharp little points, and pointed to a baby hedgehog curled underneath. \"People often neglect such tiny creatures,\" she said sadly, meaning they fail to care for them properly. \"But every small life is precious, far too valuable to forget.\"",
+        "She lifted the hedgehog and let it sit in the palm of her hand, the soft inner surface where it could rest safely. Lena was overjoyed, bursting with happiness, and promised to help.",
+        "Together they carried the hedgehog to a rescue centre devoted to the preservation of wildlife, the careful work of keeping animals safe from harm. As they walked home, Lena understood that a slow, gentle walk could change a precious little life forever."
+      ]
+    },
+    {
+      "id": "story-05",
+      "title": "The River Otter Rescue",
+      "emoji": "🦦",
+      "blurb": "By a winding river, two children help an injured otter find its way back to the wild.",
+      "words": [
+        "Quivered",
+        "Reckless",
+        "Rehabilitate",
+        "Rustling",
+        "Secrete",
+        "Sector",
+        "Serene",
+        "Simultaneous",
+        "Sinuous",
+        "Skeletal"
+      ],
+      "paragraphs": [
+        "The river was serene that morning, calm and peaceful as it curved through the meadow. Rustling reeds, swishing softly in the breeze, lined a sinuous channel that bent in smooth, winding curves towards the woods.",
+        "Behind a screen of skeletal winter branches, bare and thin like bones, Jonah spotted a young otter. It quivered with fear, shaking in small quick movements, and could not climb the bank. \"Do not be reckless,\" warned his sister Aria, meaning he should not do anything dangerous without thinking.",
+        "They worked together, and with two simultaneous movements, both happening at exactly the same time, they gently lifted the otter into a soft blanket. The frightened animal began to secrete a musky scent, releasing it the way otters do when alarmed.",
+        "The wildlife centre had a special sector, a separate part of the building, set aside for river animals. There the kind vets promised to rehabilitate the otter, helping to restore it to full health and a normal life.",
+        "Weeks later the children returned to that same sinuous bend in the river. They watched, overjoyed, as the healed otter slipped into the serene water and vanished, strong and free in the rustling reeds once more."
+      ]
+    },
+    {
+      "id": "story-06",
+      "title": "The Hidden Valley",
+      "emoji": "🏞️",
+      "blurb": "Deep in the wilderness, a young naturalist uncovers a valley that time forgot.",
+      "words": [
+        "Solemn",
+        "Specimen",
+        "Stealthy",
+        "Tangled",
+        "Towering",
+        "Tranquil",
+        "Transparent",
+        "Uncanny",
+        "Vigilant",
+        "Wilderness"
+      ],
+      "paragraphs": [
+        "Far beyond the last road lay the wilderness, a wild natural land hardly touched by people at all. Noor moved in a stealthy way, quiet and careful so no animal would notice her, while her vigilant guide stayed watchful and alert for any sign of danger.",
+        "They pushed through a thicket of tangled branches, twisted together in a messy knot, until towering cliffs rose before them, so tall and grand they blocked the sky. Beyond the cliffs lay a tranquil hidden valley, peaceful and still.",
+        "A pool of transparent water, so clear that light passed straight through it, lay at the valley's heart. The whole place felt uncanny, strangely and surprisingly unusual, as if no human had ever set foot there.",
+        "Noor knelt down with a solemn, serious expression and collected a leaf as a specimen, a careful sample to study back at school. \"This valley must be protected,\" she whispered.",
+        "As the sun set, a solemn hush fell over the secret valley. Noor promised to stay vigilant and guard its location, so the tranquil wilderness would stay safe and unspoiled for many years to come."
+      ]
+    },
+    {
+      "id": "story-07",
+      "title": "The Spellbinding School",
+      "emoji": "🪄",
+      "blurb": "At a magical school, a new pupil learns that great power needs great responsibility.",
+      "words": [
+        "Abuse",
+        "Acknowledge",
+        "Allocate",
+        "Barrage",
+        "Chaotic",
+        "Collective",
+        "Convention",
+        "Deterrent",
+        "Devout",
+        "Duration"
+      ],
+      "paragraphs": [
+        "On her very first day at Willowmark School of Magic, Esme faced a barrage of new lessons, a concentrated outpouring of spells, charms and rules coming at her all at once. The corridors were chaotic, wild and messy, as flying books zoomed in every direction.",
+        "By long convention, the accepted custom followed for hundreds of years, every new pupil attended the Welcome Assembly. The headmaster, a devout believer in kindness who was deeply committed to that belief, asked each student to acknowledge one promise, to openly accept and admit it was true.",
+        "\"You must never abuse magic,\" he said firmly, meaning they must never use it wrongly or cruelly. \"The thought of losing your wand should be deterrent enough, something that discourages anyone from breaking the rules.\"",
+        "The teachers would allocate each pupil a study room, giving every child a particular space for their lessons. For the duration of the first term, the whole length of time it lasted, the students would learn as a collective, working and growing together as one shared group.",
+        "Esme smiled as the chaotic hall slowly grew calm. She would honour her promise for the full duration of her studies, and one day, she hoped, the teachers would acknowledge her as a truly responsible young witch."
+      ]
+    },
+    {
+      "id": "story-08",
+      "title": "The Academy of Bright Ideas",
+      "emoji": "🧠",
+      "blurb": "On her first day at a magical school, Priya must prove her cleverness before the lights go out for good.",
+      "words": [
+        "Exemplify",
+        "Expertise",
+        "Figurehead",
+        "Frantic",
+        "Glimmer",
+        "Hack",
+        "Immense",
+        "Impressive",
+        "Inconsistent",
+        "Ingenious"
+      ],
+      "paragraphs": [
+        "Priya pushed open the doors of the Academy of Bright Ideas and gasped. The entrance hall was immense, so extremely large that the ceiling seemed to vanish into a sky of floating lanterns. Older pupils strolled past, balancing books that sorted themselves and pens that wrote in glowing ink. Everything here was meant to exemplify cleverness, to be a perfect, typical example of what a brilliant mind could create. Priya felt very small indeed.",
+        "Her guide was Headmaster Quill, who smiled kindly and explained the rules. Sadly, the headmaster was only a figurehead, a man with a grand title but very little real power. The true magic of the school came from the Lantern of Learning, an impressive crystal globe that made everyone admire it the moment they saw it. Its light fed on good ideas. Without fresh thinking, its glow would weaken to a faint glimmer, a tiny light barely brighter than a candle.",
+        "That very morning, something went wrong. The Lantern began to flicker, its brightness inconsistent, dimming and brightening without warning as if it could not stay the same. Pupils ran in frantic circles, wild with worry, shouting that someone had tried to hack the school's enchantments, gaining secret access they were never allowed to have. If the light failed completely, every spell in the building would unravel.",
+        "Priya thought hard. She remembered her grandmother's expertise with old machines, the special, deep knowledge she had shared on quiet evenings. An idea sparked. If broken ideas dimmed the Lantern, then perhaps a chain of fresh ones could feed it. She gathered the youngest pupils and asked each to whisper a brand-new thought into the crystal.",
+        "It was an ingenious plan, wonderfully clever and inventive, and slowly the Lantern steadied. Its light grew strong and golden once more. Headmaster Quill clapped, astonished. From that day on, the pupils said Priya did not just learn cleverness at the Academy. She had shown everyone exactly what cleverness truly meant."
+      ]
+    },
+    {
+      "id": "story-09",
+      "title": "The Tower of Forgotten Words",
+      "emoji": "📜",
+      "blurb": "Deep in an ancient library, two children search for a message left behind centuries ago.",
+      "words": [
+        "Inscription",
+        "Legacy",
+        "Lingered",
+        "Obscure",
+        "Ornate",
+        "Plagiarise",
+        "Plateau",
+        "Progressive",
+        "Proximity",
+        "Realm"
+      ],
+      "paragraphs": [
+        "High above the village stood the Tower of Forgotten Words, the oldest library in the whole realm, a kingdom famous for its love of stories. Tom and his sister Esme had been chosen to climb it. Their teacher said the tower held the legacy of a vanished scholar, the great achievement she had left behind for future readers to discover. Nobody had found it in two hundred years.",
+        "The staircase wound upward forever. Halfway, the children reached a flat plateau of stone, a level resting place where the steps paused before climbing again. Here the air felt still, and a strange quiet lingered, hanging on far longer than they expected. Carved into an ornate doorway, decorated with fancy swirls of leaves and stars, was an inscription, words cut deep into the stone by a careful hand.",
+        "The message was obscure, hard to understand, written in a faded language that twisted like ivy. Esme studied it patiently. She knew it would be wrong to simply copy the scholar's work and call it her own, for to plagiarise meant stealing another person's ideas. Instead, she translated it slowly and honestly, line by careful line.",
+        "The inscription spoke of a hidden room and of the proximity of treasure, promising the prize lay very near in space, closer than any reader would guess. The scholar had been a progressive thinker, always favouring new ideas and welcoming change long before others did. She had hidden her greatest book where only the patient would look.",
+        "Tom pressed the stone beside the doorway, and it swung open. Inside lay a shelf of glowing manuscripts, the scholar's true legacy at last. The children did not take the books. They simply read, and as they read, the forgotten words of the realm came warmly, wonderfully back to life."
+      ]
+    },
+    {
+      "id": "story-10",
+      "title": "The Great Scholars' Contest",
+      "emoji": "🏆",
+      "blurb": "Five young scholars compete in a battle of brains where teamwork matters more than being right.",
+      "words": [
+        "Rebuke",
+        "Regime",
+        "Resolution",
+        "Robust",
+        "Saga",
+        "Scrutinise",
+        "Sociable",
+        "Sparse",
+        "Stimulate",
+        "Subjective"
+      ],
+      "paragraphs": [
+        "The Great Scholars' Contest was famous across the land, a long saga of clever children and dramatic events stretching back over a hundred years. This year, five pupils gathered in the draughty Hall of Questions. The room was bare, with sparse furniture thinly scattered across the floor, just five chairs and a single oak table that looked old enough to remember every contest.",
+        "The contest followed a strict regime, a firm set of rules and daily routines that no one was allowed to break. Each morning began with puzzles designed to stimulate the mind, encouraging fresh thinking to develop and grow. The pupils had to scrutinise every clue, examining each one very carefully before daring to answer.",
+        "One boy, Felix, kept losing his temper. When his friend Anya disagreed, he wanted to rebuke her sharply, to scold her for being wrong. But Anya stayed calm and sociable, friendly and warm even under pressure, and she reminded him that many answers were subjective, based on personal opinion rather than solid fact.",
+        "On the final day came the hardest task of all. The judges presented a riddle so robust, so sturdy and strong, that no single scholar could crack it alone. Felix felt his confidence crumble. Then he remembered Anya's kindness and made a quiet resolution, a firm decision to stop competing and start cooperating.",
+        "The five pupils joined hands and shared every idea they had. Together, their thinking grew unstoppable, and the great riddle finally fell apart before them. The judges smiled. The true prize of the contest, they announced, had never been cleverness at all. It had always, quietly, been working together."
+      ]
+    },
+    {
+      "id": "story-11",
+      "title": "The Last Trial of Wizards",
+      "emoji": "🪄",
+      "blurb": "A nervous young wizard faces one final challenge that will decide whether she truly belongs.",
+      "words": [
+        "Subtle",
+        "Sufficient",
+        "Suspicious",
+        "Tolerant",
+        "Tremulous",
+        "Triumphant",
+        "Unidentified",
+        "Variant",
+        "Verge",
+        "Vicious"
+      ],
+      "paragraphs": [
+        "Mira stood on the verge of the final trial, right at the very edge of becoming a true wizard. One last challenge separated her from her dream. Her hands felt tremulous, shaking slightly with nerves, as she stepped into the moonlit courtyard where the elder wizards waited in a silent ring.",
+        "The first test was a riddle. The answer was subtle, hidden so quietly and cleverly that most students missed it entirely. Mira breathed slowly and let her mind settle. She noticed an unidentified shape in the riddle's words, a clue no one had recognised or named before, and she realised it was a variant of an old spell, a slightly different version of magic she had once read about.",
+        "Next, a creature padded into the courtyard. At first it looked vicious, baring its teeth in a cruel and violent snarl. Mira felt suspicious, certain something was not quite right. Instead of attacking, she stayed calm and tolerant, willing to accept the creature even though it frightened her. Slowly, the snarl softened into a purr.",
+        "The elders gave her one small jar of starlight. Was it sufficient, truly enough, to light the long dark tunnel ahead? Mira was not sure, but she walked forward anyway, holding the glow close. The jar lasted exactly to the end, not a single step short.",
+        "When Mira emerged, the wizards were waiting with proud, beaming faces. She had passed every test. Lifting her new silver staff high, she felt triumphant, glowing with the happy pride of someone who had finally, completely succeeded."
+      ]
+    },
+    {
+      "id": "story-12",
+      "title": "The Fairy in the Hidden Glen",
+      "emoji": "🧚",
+      "blurb": "When Ben stumbles into a secret glen, a tiny stranger needs his help to find the way home.",
+      "words": [
+        "Agitated",
+        "Arduous",
+        "Astonished",
+        "Avail",
+        "Canyon",
+        "Captivating",
+        "Compassion",
+        "Compel",
+        "Delicate",
+        "Denote"
+      ],
+      "paragraphs": [
+        "Ben was hiking along the edge of a deep canyon, a steep-sided valley carved long ago by a rushing river, when he heard a tiny sound. He climbed down a narrow path and found a hidden glen, the most captivating place he had ever seen, so beautiful it held all his attention at once. Flowers glowed softly in the grass.",
+        "On a mossy stone sat a fairy no taller than his thumb. Ben was astonished, completely amazed, and stared without blinking. The fairy looked agitated, upset and unable to stay calm, her delicate wings, so fine and easily damaged, trembling like leaves in the wind. She had lost the path back to her family.",
+        "A feeling of compassion swept over Ben, a warm wish to help someone who was clearly hurting. He could not simply walk away. Something seemed to compel him, a force gently pushing him to stay and assist, and he promised the fairy he would not leave until she was safe.",
+        "The journey was arduous, very difficult and demanding great effort. They climbed slippery rocks and squeezed past tangled roots. The fairy showed Ben a glowing flower and explained that its colour would denote the right direction, acting as a clear sign of the way home. They followed flower after flower deeper into the glen.",
+        "At last they reached a ring of silver toadstools. Ben worried his clumsy human help would avail nothing, that it would be of no real use to such tiny creatures. But the fairy hugged his fingertip and laughed. Her family swirled out to greet her, and Ben knew his kindness had mattered after all."
+      ]
+    },
+    {
+      "id": "story-13",
+      "title": "The Quest of the Last Petal",
+      "emoji": "🌸",
+      "blurb": "A brave fairy sets out across a dying land to save a flower that blooms for only one day.",
+      "words": [
+        "Desolate",
+        "Determined",
+        "Diligent",
+        "Discriminate",
+        "Disperse",
+        "Elegant",
+        "Encapsulate",
+        "Ephemeral",
+        "Finite",
+        "Forsake"
+      ],
+      "paragraphs": [
+        "The fairy realm was fading. Once-bright meadows had become desolate, empty and lonely and sad, with not a single bird left to sing. Only one magic flower could heal the land, but it was ephemeral, blooming beautifully for just a short time before vanishing. A young fairy named Wren stepped forward, determined to save it and refusing to give up.",
+        "The elders warned her the magic in the land was finite, having clear limits and certainly not endless. Wren listened, then made her choice. She would not forsake her home; she would never abandon the meadows that had raised her. With a small bag of seeds, she set off alone across the cracked grey hills.",
+        "Wren was diligent, hard-working and careful with every step she took. She did not discriminate between the grand paths and the humble ones, treating each trail fairly rather than judging it by how it looked. Sometimes the wind tried to make her seeds disperse, scattering them in every direction, but she held the bag tightly shut.",
+        "At last she reached a quiet pond where the magic flower grew. It was elegant, graceful and stylish, its single petal curling like a ribbon of light. Wren understood that this delicate bloom seemed to encapsulate the whole spirit of the realm, holding its entire beauty inside one fragile shape.",
+        "Gently, she planted her seeds in a circle around the flower. As the petal faded, the seeds sprouted, and new blossoms opened one by one. The desolate hills began to green again. Wren smiled, knowing that even something brief and ephemeral could leave behind a garden that lasted."
+      ]
+    },
+    {
+      "id": "story-14",
+      "title": "The Glittering Court of Fairies",
+      "emoji": "✨",
+      "blurb": "Inside a dazzling fairy palace, a kind-hearted girl must free a captured friend before dawn.",
+      "words": [
+        "Glistening",
+        "Graceful",
+        "Illuminated",
+        "Impatient",
+        "Imprison",
+        "Incandescent",
+        "Incompatible",
+        "Inedible",
+        "Inflection",
+        "Lavish"
+      ],
+      "paragraphs": [
+        "Lucy followed a glistening trail through the woods, the dewdrops shining with a wet, polished sparkle that led her to a hidden door. Beyond it lay the Glittering Court of Fairies, a lavish palace so rich and grand that gold and jewels covered every wall. The whole hall was illuminated, lit up brightly by a thousand tiny floating lights.",
+        "At the centre stood the Fairy Queen, graceful and smooth in every gentle movement. But her crown was incandescent, glowing with a fierce, bright light, and her face was stern. She had decided to imprison Lucy's friend Pip, locking the small pixie in a cage of frost for a crime he had not committed.",
+        "Lucy felt impatient, unable to wait calmly while her friend shivered behind the bars. Yet she knew that anger and fairy magic were incompatible, two things that simply could not work together in harmony. So she took a slow breath and spoke instead with a soft inflection, a gentle change in the tone of her voice.",
+        "The Queen had accused Pip of stealing a feast. Lucy proved the food had been inedible all along, not safe or fit to eat, so no clever pixie would ever have taken it. She laid the spoiled fruit before the throne as honest, glistening evidence.",
+        "The Queen's hard expression melted. With a graceful wave, she freed Pip from his frosty cell. The court erupted in cheer, and the incandescent crown dimmed to a warm, friendly glow. Lucy and Pip danced out into the dawn, their hearts as bright as the morning itself."
+      ]
+    },
+    {
+      "id": "story-15",
+      "title": "The Glen of the Glowing Stones",
+      "emoji": "🧚",
+      "blurb": "A practical girl follows piercing lights into a hidden glen where fairies need her help.",
+      "words": [
+        "Livelihood",
+        "Luminous",
+        "Majestic",
+        "Mysterious",
+        "Obsession",
+        "Opportune",
+        "Petrified",
+        "Piercing",
+        "Ragged",
+        "Rational"
+      ],
+      "paragraphs": [
+        "Nessa was a sensible, rational girl who never let her imagination run away with her, preferring clear thinking to wild guesses. Her family kept bees, and selling honey was their entire livelihood, the only way they earned the money they needed to live. So when a piercing, silvery light cut sharply across the moor one evening, Nessa told herself there must be an ordinary explanation. She decided to follow it, simply to prove she was right.",
+        "The light led her down a ragged path, all torn earth and uneven stone, into a glen she had never seen before. There she stopped, petrified, frozen still as a statue, for the whole hollow was bathed in a luminous glow. Mossy boulders shone gently in the dark, and a majestic waterfall tumbled down a cliff so grand and powerful that it took her breath away.",
+        "It was all deeply mysterious, impossible to explain, and for once Nessa's calm mind had no answer. Then a tiny voice spoke. A fairy no taller than her thumb perched on a fern, her wings flickering. The glen's glowing stones were fading, the fairy said, and without their light the fairies could not find their way home at night.",
+        "The fairy explained that a greedy hill-troll had developed an obsession with the stones, a craving that filled his mind day and night, and he had buried them under a heap of soil. Nessa realised her arrival was wonderfully opportune, coming at exactly the right moment when help was most needed. Being practical, she fetched a small trowel from her pocket and set to work.",
+        "Carefully she uncovered the stones, and one by one they blazed back to life until the glen shone like a fallen star. The fairies thanked her with a jar of golden, glowing honey that never ran empty. From that day, Nessa's family had the finest honey in the land, and her sharp, rational mind learned to leave a little room for wonder."
+      ]
+    },
+    {
+      "id": "story-16",
+      "title": "The Festival of a Thousand Lanterns",
+      "emoji": "🎆",
+      "blurb": "When the festival's main lantern breaks, one small fairy must rectify the trouble before nightfall.",
+      "words": [
+        "Rectify",
+        "Rickety",
+        "Rite",
+        "Scarlet",
+        "Spectacular",
+        "Tender",
+        "Tumultuous",
+        "Ubiquitous",
+        "Vast",
+        "Vivid"
+      ],
+      "paragraphs": [
+        "Once a year the fairies of Hollowbrook held a spectacular festival, a celebration so impressive to look at that creatures travelled from far away to see it. Lanterns were ubiquitous that night, hanging from every branch and bush so that they seemed to be everywhere you looked. The lighting of the Great Lantern was an ancient rite, a solemn ceremony performed exactly the same way for hundreds of years.",
+        "This year the task fell to a young fairy named Pip. The Great Lantern sat on a rickety wooden stand that was so weak and shaky it looked as if it might collapse at any moment. As the vast crowd gathered, filling the enormous clearing from edge to edge, the stand wobbled, tipped, and the lantern crashed to the ground in pieces.",
+        "A tumultuous gasp rose from the crowd, noisy and full of wild confusion, and Pip's heart sank. She knew she had to rectify the disaster quickly, to put the broken thing right before the festival was ruined. With tender, gentle hands she gathered the cracked panels of scarlet glass, each one a bright, glowing red.",
+        "Pip worked through the dusk, fitting the vivid pieces together so their bright, clear colours matched once more. She mended the rickety stand too, binding it with strong vine until it stood firm. When at last she lit the wick, the lantern blazed into life.",
+        "Light spilled across the clearing in a spectacular wave, and the rite was complete after all. The fairies cheered, and Pip stood beneath the glowing lantern feeling proud. Sometimes, she thought, the most magical festivals are the ones you have to mend with your own two hands."
+      ]
+    },
+    {
+      "id": "story-17",
+      "title": "The Castle's Hidden Treasure",
+      "emoji": "🏰",
+      "blurb": "Two children search a bustling castle for an artefact a stubborn lord refuses to share.",
+      "words": [
+        "Allege",
+        "Apex",
+        "Artefact",
+        "Budge",
+        "Bustling",
+        "Collision",
+        "Compensate",
+        "Concealed",
+        "Consumerism",
+        "Conviction"
+      ],
+      "paragraphs": [
+        "Greycliff Castle was always bustling, full of busy movement and noise as servants hurried through its halls. Twins Tom and Ada had come to visit for the summer, and they had heard a strange tale. People in the village would allege, without ever proving it, that a priceless artefact lay hidden somewhere inside the castle, an ancient object of great historical value.",
+        "The twins climbed to the apex of the tallest tower, the very highest point of the castle, to think. From up there they could see Lord Marsh in the courtyard, surrounded by shiny new carriages and chests of expensive things he had bought. His love of buying, his endless consumerism, was famous across the county.",
+        "Tom believed the artefact was real, and he said so with great conviction, a strong and certain belief that nothing could shake. Ada agreed. They searched the dusty library until, behind a heavy bookcase that would not budge no matter how hard they pushed, Ada noticed a panel that did not match the wall.",
+        "In their excitement the twins rushed forward, and a small collision sent them tumbling into each other before they steadied themselves. Behind the panel was a space, cleverly concealed so that no one could easily see it, and inside lay a golden crown wrapped in faded velvet.",
+        "Lord Marsh, it turned out, had hidden the crown so he need never share it. The twins gave it to the castle museum instead. To compensate the village for years of secrecy, to make up for what had been kept from them, the lord opened the castle gates to everyone, free of charge, every single day."
+      ]
+    },
+    {
+      "id": "story-18",
+      "title": "The New Cook of Thornwood Keep",
+      "emoji": "🍲",
+      "blurb": "A young cook faces a dreary castle and a strict hierarchy on her very first day.",
+      "words": [
+        "Daunt",
+        "Domestic",
+        "Drastic",
+        "Dreary",
+        "Extravagant",
+        "Fraught",
+        "Hierarchy",
+        "Hypothesis",
+        "Indescribable",
+        "Jovial"
+      ],
+      "paragraphs": [
+        "Mira arrived at Thornwood Keep on a dreary morning, the sky dull and grey and a little depressing. She had been hired to help in the castle kitchen, doing the domestic work of cooking and cleaning that kept the great household running. The huge, cold castle was enough to daunt anyone, making her feel small and discouraged before she had even unpacked.",
+        "Inside, Mira discovered a strict hierarchy, a system in which every servant was ranked in careful levels, from the head cook at the top down to the youngest scullery maid. The kitchen itself was fraught, full of stress and tangled difficulty, because the previous cook had left and nobody knew the recipes.",
+        "The head cook announced a drastic plan, an extreme change that would make a strong difference: that night's feast would be the most extravagant ever served, costing far more money than was really sensible. Mira formed a quiet hypothesis, a careful idea she could test, that the lost recipes might be written inside the old cookbooks on the dusty top shelf.",
+        "She was right. The faded pages held everything, and Mira set to work. By evening the kitchen smelled of roast vegetables, warm bread and honey cakes, a scent so delicious it was almost indescribable, far too wonderful to capture in ordinary words.",
+        "The feast was a triumph. The lord laughed, jovial and cheerful, and praised the kitchen staff in front of everyone. Mira looked around the warm, glowing room and realised the dreary castle did not feel cold or frightening any more. It felt, at last, like somewhere she belonged."
+      ]
+    },
+    {
+      "id": "story-19",
+      "title": "The Maze Beneath the Castle",
+      "emoji": "🗝️",
+      "blurb": "Lost in twisting castle corridors, Reed must read an old map to find his way out.",
+      "words": [
+        "Knackered",
+        "Labyrinthine",
+        "Lawful",
+        "Opulent",
+        "Perception",
+        "Perplexed",
+        "Provision",
+        "Sentiment",
+        "Serpentine",
+        "Stifling"
+      ],
+      "paragraphs": [
+        "Reed had been sent to deliver a message deep inside Castle Verren, but the lower corridors were labyrinthine, twisting and turning like a maze that confused everyone who entered. He felt utterly perplexed, completely confused, because no passage seemed to lead the way he expected.",
+        "The air down there was stifling, so hot and airless that breathing felt difficult, and soon Reed was knackered, completely worn out and aching with tiredness. He passed an opulent chamber, rich and luxurious, with golden mirrors and velvet chairs that looked far too grand for a forgotten cellar.",
+        "On a table he found a map and an old letter making provision for lost travellers, an arrangement that supplied them with a way to escape. The letter was full of warm sentiment, an affectionate feeling, written long ago by a kind castle steward who hated to think of anyone trapped below.",
+        "Reed studied the map and his perception sharpened, the way his mind understood the puzzle suddenly becoming clear. The route out followed a serpentine corridor that curled and bent like a moving snake. He reminded himself that using the steward's map was perfectly lawful, allowed and proper, since it had been left for exactly this purpose.",
+        "Following the winding path, Reed climbed up and up until daylight touched his face. He delivered his message at last, then turned to look back at the dark doorway. The castle keeper smiled and promised that the rescue map would always be left there, so no traveller need ever feel so lost again."
+      ]
+    },
+    {
+      "id": "story-20",
+      "title": "The Voyage to Whisper Cove",
+      "emoji": "⛵",
+      "blurb": "On a stormy sea voyage, young Jo must keep calm amid noise, lightning and crashing waves.",
+      "words": [
+        "Aloft",
+        "Amplify",
+        "Cacophony",
+        "Circulate",
+        "Circumstance",
+        "Contemplate",
+        "Contented",
+        "Cove",
+        "Dazzling",
+        "Electrocute"
+      ],
+      "paragraphs": [
+        "Jo loved sailing with her uncle, and on calm days she felt perfectly contented, quietly happy and satisfied with the gentle rocking of the boat. High aloft, held up in the air above the deck, the white sails billowed and snapped. Jo would contemplate the horizon for hours, thinking deeply about the lands that might lie beyond it.",
+        "One afternoon the weather changed. Dark clouds rolled in, and the wind began to circulate around the little ship, moving round and round in restless circles. Soon a cacophony filled the air, a horrible, loud jumble of messy noises, as rigging rattled, waves thumped and the storm seemed to amplify every sound, making each one louder and stronger.",
+        "Uncle Ben warned Jo to stay away from the metal mast during the lightning, because a strike could electrocute a person with a deadly shock of electricity. Given the circumstance, the dangerous condition they now found themselves in, he decided they must find shelter quickly.",
+        "Through the rain Jo spotted it: a cove, a small sheltered bay tucked between two cliffs, where the water lay calm and protected. They steered carefully inside, and the moment they passed the cliffs the wild noise died away.",
+        "As the storm drifted off, the sun broke through in a dazzling burst, so brilliantly bright that Jo had to shade her eyes. The cove glittered, peaceful and safe. Jo sat down beside her uncle, contented once more, and decided that even a frightening voyage could end somewhere beautiful."
+      ]
+    },
+    {
+      "id": "story-21",
+      "title": "The Island of the Faded Map",
+      "emoji": "🏝️",
+      "blurb": "A brave crew sails to a gloomy island rumoured to be haunted, in search of a cure.",
+      "words": [
+        "Epidemic",
+        "Faded",
+        "Ferocious",
+        "Forfeit",
+        "Forlorn",
+        "Fragrant",
+        "Gargantuan",
+        "Gloomy",
+        "Haunted",
+        "Hearty"
+      ],
+      "paragraphs": [
+        "A terrible sickness had spread through the harbour town, an epidemic that left almost every family unwell. The town doctor believed a healing flower grew on a distant island, but the only guide was a faded map, its ink so pale and worn it was barely readable.",
+        "Captain Rosa gathered a hearty crew, warm and full of energy, and they set sail at dawn. The voyage was hard. A ferocious storm, fierce and wild, tossed their ship for two whole days, and at one point Rosa feared they would have to forfeit the journey, giving up the search as a penalty for the dreadful weather.",
+        "At last they reached the island, a gloomy place where dark clouds hung low and little cheer could be found. Sailors whispered that it was haunted, troubled by ghosts and old sad memories, and the crew felt forlorn, lonely and sad, as they rowed towards the silent shore.",
+        "On the beach stood a gargantuan stone statue, so enormously huge it blocked out the sky. Beyond it lay a forlorn, abandoned garden. There, tucked among the weeds, the crew found the flower they sought, its blossoms fragrant with a sweet and pleasant scent that drifted on the breeze.",
+        "They filled their baskets and hurried home across the waves. Back in the harbour town, the doctor brewed the petals into medicine, and within a week the epidemic faded away. The grateful townsfolk threw a hearty feast, and the once-gloomy crew laughed long into the night."
+      ]
+    },
+    {
+      "id": "story-22",
+      "title": "The Voyage Through the Mist",
+      "emoji": "⛵",
+      "blurb": "A young sailor sets out across a fog-bound sea to bring her grandfather home.",
+      "words": [
+        "Hesitant",
+        "Hollow",
+        "Humid",
+        "Impermeable",
+        "Infuse",
+        "Jubilant",
+        "Lament",
+        "Looming",
+        "Melancholy",
+        "Menacing"
+      ],
+      "paragraphs": [
+        "Nell stood at the harbour wall, hesitant and unsure, watching the grey fog roll over the water like a slow-moving curtain. She was slow to step aboard the little boat because she did not know what waited beyond the mist. Her grandfather had not returned from the fishing grounds, and a heavy, lasting melancholy had settled over the cottage. That quiet, drawn-out sadness was the very thing that finally pushed her to act and untie the rope.",
+        "The morning air was thick and humid, so full of damp moisture that her coat felt wet before a single drop of rain had fallen. Luckily her oilskin cloak was impermeable, and not one bead of water could pass through it. She pulled the hood low and rowed steadily, listening to the hollow, echoing slap of the empty wooden hull against the swell. Each lonely sound seemed to remind her how alone she truly was out here.",
+        "To keep her courage up, Nell decided to infuse the journey with hope, soaking her thoughts in every happy memory of her grandfather she could find. Then a shape appeared ahead, looming large and dark above the fog. The cliff rose so high and threatening that it blotted out the pale sun. Beneath it, jagged rocks looked menacing, as though they could tear the boat apart at any moment.",
+        "She did not lament the danger or waste time mourning what might go wrong. Instead she gripped the oars, steered carefully between the menacing rocks, and slipped into a sheltered cove. There, resting against the stone, sat her grandfather's boat with its broken oar. He waved both arms, safe and sound, and the sight melted away the gloom of the long, misty crossing.",
+        "Nell rowed home with her grandfather beside her, both of them jubilant and bursting with joy. The fog lifted at last, and the harbour lights glowed warm and welcoming. The melancholy that had filled the cottage was gone, replaced by laughter, hot soup, and the simple, splendid comfort of being together again."
+      ]
+    },
+    {
+      "id": "story-23",
+      "title": "The Night the Lights Went Out",
+      "emoji": "🌙",
+      "blurb": "Two cousins steer a small boat through a dark voyage to reach the only light on the coast.",
+      "words": [
+        "Miserable",
+        "Misty",
+        "Murky",
+        "Nocturnal",
+        "Nostalgic",
+        "Notorious",
+        "Perilous",
+        "Precarious",
+        "Prominent",
+        "Radiant"
+      ],
+      "paragraphs": [
+        "The night voyage began under a misty sky, with thin fog drifting low across the water and softening every shape into a blur. Tom felt miserable and uncomfortable, soaked to the skin and shivering as the little boat rocked. His cousin Priya, however, refused to be unhappy. She had grown up on these waters and knew the route to the harbour as well as the back of her own hand.",
+        "Below them the sea looked murky, so dark and cloudy that they could not see a single thing beneath the surface. Around them, nocturnal creatures stirred in the darkness, for owls and bats only come awake at night. An old seal barked from a rock, and Priya grew nostalgic, remembering with a warm but slightly sad smile the summers she had spent here as a small child.",
+        "The crossing was perilous, far more dangerous than Tom had expected, and the wind made every wave a fresh threat. Worse still, they were heading towards Shark Point, a stretch of coast that was notorious among sailors, famous for the many boats it had wrecked. Tom gripped the side as the boat tilted at a precarious angle, so unsteady that one strong gust could have tipped them straight over.",
+        "Then Priya pointed ahead. Standing tall and prominent above the cliffs, easily the most noticeable landmark for miles, was the old lighthouse. Its lamp had been dark for an hour, but as they watched, a keeper climbed the stairs and lit it once more.",
+        "The beam burst out, radiant and gloriously bright, sweeping across the misty sea like a friend reaching out a hand. Tom forgot his misery at once. Guided by that shining light, they steered safely past the murky rocks and into the calm harbour, where dry blankets and a warm welcome were waiting."
+      ]
+    },
+    {
+      "id": "story-24",
+      "title": "The Rescue at Gull Rock",
+      "emoji": "🛟",
+      "blurb": "A determined girl and her dog brave wild waves to save a stranded climber.",
+      "words": [
+        "Resilient",
+        "Resolute",
+        "Rippling",
+        "Savage",
+        "Scout",
+        "Shimmering",
+        "Shrieked",
+        "Shrivel",
+        "Splendid",
+        "Staggered"
+      ],
+      "paragraphs": [
+        "Maya was a resilient girl, the sort of person who always bounced back quickly after every setback and hard day. That morning she had been sent to scout the cliff path, searching the area ahead for the safest route, when she heard a voice carried on the wind. Far out on Gull Rock, a climber was waving frantically, stranded by the rising tide.",
+        "The sea between the shore and the rock was savage, with fierce, violent waves smashing against the stone. Maya did not turn back. She was resolute, completely determined and certain, and she knew that hesitating would only make things worse. She grabbed the lifeboat rope, and her dog, Pip, barked beside her, ready to help.",
+        "The water's surface was rippling, moving in countless tiny waves that caught the early light. Through the spray Maya could see the wet rocks shimmering, glinting with a soft, wavering shine. As she rowed, an icy wave broke over the bow, and she shrieked, crying out in a sudden, high voice before laughing at her own surprise and rowing harder.",
+        "When she finally reached Gull Rock, the climber staggered towards her, walking in a wobbly, unsteady way after hours of clinging on in the cold. His hands were so chilled they seemed to shrivel and curl inward, shrinking up the way a leaf does without water. Maya helped him into the boat and wrapped him in a thick blanket.",
+        "Back on the beach, a splendid sight greeted them: a crowd of villagers cheering, the sun breaking through, and warm flasks of tea being passed around. It had been a difficult morning, but a wonderful, excellent ending. Maya knelt down and hugged Pip, the bravest, most loyal scout a rescuer could ever wish for."
+      ]
+    },
+    {
+      "id": "story-25",
+      "title": "The Stout Little Ship",
+      "emoji": "🌊",
+      "blurb": "When the captain falls ill, a young deckhand must guide a small ship through a raging ocean.",
+      "words": [
+        "Stout",
+        "Stupendous",
+        "Substitute",
+        "Sulky",
+        "Supple",
+        "Surged",
+        "Swift",
+        "Teeming",
+        "Temperate",
+        "Tempestuous"
+      ],
+      "paragraphs": [
+        "The Sea Otter was a stout little ship, strong and thickly built, with timbers solid enough to shrug off the hardest knock. Her young deckhand, Finn, had sailed many calm crossings in temperate weather, when the wind was mild and gentle and the sun warm. But this voyage would be nothing like those easy, moderate days, for a great storm was brewing far out on the horizon.",
+        "On the second morning, the captain fell ill and could not leave his bunk. The crew needed a substitute, someone to take his place at the wheel, and every sailor looked to Finn. At first he felt sulky, quietly cross and grumbling that the task was too much for him, but he shook off his bad mood and gripped the wheel with both hands.",
+        "By midday the ocean had turned tempestuous, wildly stormy and tossing with foam, and waves surged against the hull, rushing forward with sudden, tremendous force. Finn kept his knees soft and supple, bending easily so the rolling deck could not throw him down. A swift gust tore past, fast as a diving bird, and snapped a rope clean in two.",
+        "The waves grew stupendous, so amazingly huge that Finn gasped at the towering walls of grey water. Yet the sea was also teeming with life: dolphins, full of darting energy, leaped alongside the ship as if cheering the little crew onward through the chaos.",
+        "At last the storm blew itself out, and the water grew calm and temperate once more. The captain, feeling better, climbed on deck and clapped Finn warmly on the shoulder. 'A stupendous job,' he said with a proud smile. Finn grinned, no longer sulky at all, as the stout little ship sailed safely into a quiet, sunlit bay."
+      ]
+    },
+    {
+      "id": "story-26",
+      "title": "The Dragon of Ember Peak",
       "emoji": "🐉",
-      "blurb": "Elina climbs a mountain of glass to ask a dragon for the light her village needs.",
-      "words": ["Realm", "Valiant", "Enraged", "Luminous", "Labyrinthine", "Immense", "Astonished", "Courageous", "Ominous", "Petrified", "Incandescent", "Triumphant"],
+      "blurb": "An amateur explorer climbs a smouldering mountain, hoping the legend at its summit is real.",
+      "words": [
+        "Amateur",
+        "Anticipation",
+        "Avatar",
+        "Barricade",
+        "Bewildered",
+        "Ceaseless",
+        "Census",
+        "Crimson",
+        "Delusion",
+        "Drifted"
+      ],
       "paragraphs": [
-        "Far beyond the last village lay the realm of the Glass Mountain, where a dragon was said to guard a luminous jewel. Many had tried to reach it. None had returned. Yet Elina, the valiant daughter of the village blacksmith, decided she would be the one to try.",
-        "The path up the mountain was labyrinthine, twisting back on itself again and again. Immense walls of glass rose on either side, and her own reflection followed her like a hundred silent companions. An ominous wind moaned through the narrow passages, warning her to turn back.",
-        "At last she reached the dragon's cave. The creature was enraged to see a visitor and reared up, incandescent flames already glowing deep in its throat. For one terrible moment Elina stood petrified, unable to move a single step.",
-        "But she remembered why she had come. Her village needed the jewel's light to survive the long, dark winter. Drawing one courageous breath, she did not run. Instead she spoke gently to the dragon, telling it of the children who would freeze without its help.",
-        "The dragon was astonished. Nobody had ever spoken to it kindly before. Slowly, its flames softened to a warm glow. It lowered its great head and let Elina lift the luminous jewel from the rock. She walked home triumphant, and the Glass Mountain let her pass in peace."
+        "Rosa was only an amateur explorer, someone who climbed mountains purely for the love and joy of it rather than for money. Still, she had read every book about Ember Peak, the volcano said to be home to the last dragon in the land. A bubble of anticipation grew inside her, that fizzing, excited feeling you get just before something wonderful might happen.",
+        "Her older brother teased her on the path. 'A real dragon? That is just a delusion,' he laughed, meaning a false belief that no amount of proof could fix. But Rosa had found old village records, an ancient census that carefully counted every creature in the valley, and one strange line listed a single dragon. Surely an official count could not be wrong.",
+        "Higher up, smoke drifted lazily across the trail, moving slowly and lightly on the breeze. The mountain itself glowed crimson, a deep and fiery red, and a ceaseless rumble filled the air, never once pausing for breath. At a narrow ledge they found a barricade of fallen rocks, a barrier blocking the way, and they had to climb carefully over it.",
+        "Beyond the barricade, in a vast cave, Rosa stopped completely bewildered. She felt utterly confused, unable to make sense of what her eyes were showing her, for the cave was empty except for a glowing screen built into the stone wall. On the screen, a friendly dragon avatar blinked at her, the digital character chosen by whoever guarded this place.",
+        "An old woman stepped from the shadows, smiling. She was the mountain's keeper, and the 'dragon' was simply her clever puzzle, a game with a dragon avatar that tested every brave climber who reached the top. Rosa was not disappointed at all. The anticipation, the climb, and the crimson glow had been an adventure far better than any legend."
       ]
     },
     {
-      "id": "maths-test-day",
-      "title": "The Big Maths Test",
-      "emoji": "🎒",
-      "blurb": "Sam has revised all term, but the hardest part of the test is calming his nerves.",
-      "words": ["Diligent", "Eager", "Impatient", "Anticipation", "Commotion", "Hesitant", "Reluctant", "Elated", "Determined", "Mischievous", "Jovial", "Amiable"],
+      "id": "story-27",
+      "title": "The Riddle in the Lair",
+      "emoji": "📜",
+      "blurb": "A clever boy must read a crumbling scroll correctly before a dragon's patience runs out.",
+      "words": [
+        "Duly",
+        "Enraged",
+        "Excerpt",
+        "Exquisite",
+        "Fragile",
+        "Haste",
+        "Illegible",
+        "Lapse",
+        "Mischievous",
+        "Misinterpret"
+      ],
       "paragraphs": [
-        "The whole class buzzed with anticipation. Today was the big maths test, and Sam had been a diligent student all term, revising every evening at the kitchen table. Still, walking through the school gates that morning, he felt far more hesitant than eager.",
-        "In the cloakroom there was the usual commotion: bags swinging, doors banging, and voices everywhere at once. Sam's friend Leo, always mischievous, hid someone's shoe behind the radiator and grinned widely. Sam laughed, and felt a tiny bit calmer.",
-        "Their teacher, Mr Okafor, was a jovial man with an amiable smile that put everyone at ease. 'Remember,' he said warmly, 'this test only shows what you know today. Do your best, and that is enough.' Sam took a slow breath and felt his worry begin to fade.",
-        "At first Sam was reluctant to even pick up his pencil. The first question looked impossible. But he stayed determined and read it again, slowly. Suddenly it made sense. Then the next one did too. He grew impatient now, not with fear, but with the eagerness to keep going.",
-        "When Mr Okafor finally collected the papers, Sam knew he had done well. He felt absolutely elated, almost floating as he walked out to the playground. All those diligent evenings had been worth it after all."
+        "Deep inside the dragon's lair, the air shimmered with heat, and Arlo was duly led forward by two guards, brought in exactly the proper way the old laws demanded. The dragon was famous for being mischievous, playfully naughty rather than truly cruel, and it loved to set riddles for any traveller bold enough to enter its cave.",
+        "'Read me the words on this scroll,' the dragon said, 'and read them correctly.' The scroll was fragile, so easily damaged that it might crumble at the lightest touch. Arlo unrolled only a small excerpt of it, a short passage taken from the much longer text, and held his breath as the ancient paper creaked.",
+        "Much of the writing was illegible, the faded ink so smudged it was almost impossible to read. Arlo knew he must not rush, for if he acted with haste, that careless, dangerous speed could make him stumble over the words. One small lapse, a single moment when his attention slipped, and he might misinterpret the riddle and explain it completely wrongly.",
+        "He worked slowly and carefully, tracing each exquisite letter, beautifully and delicately drawn long ago by some patient hand. The dragon began to grumble, and for a moment Arlo feared it would grow enraged, becoming furiously, blazingly angry. But he refused to be hurried by fear.",
+        "At last Arlo read the excerpt aloud, every word correct and clear. The dragon's frown melted into a grin. 'Most travellers misinterpret it because they read in haste,' it chuckled. 'You did not.' It duly handed him a gleaming golden key, and Arlo walked out of the lair a hero, having never let his patience lapse."
+      ]
+    },
+    {
+      "id": "story-28",
+      "title": "Facing the Mountain Dragon",
+      "emoji": "🗻",
+      "blurb": "A small, frightened girl discovers that courage is not the same as being big and strong.",
+      "words": [
+        "Noxious",
+        "Ominous",
+        "Passive",
+        "Persistent",
+        "Proud",
+        "Puny",
+        "Putrid",
+        "Reluctant",
+        "Scurried",
+        "Shrouded"
+      ],
+      "paragraphs": [
+        "The mountain path was shrouded in thick grey cloud, hidden and covered so completely that Tess could barely see her own boots. She felt reluctant to keep climbing, not wanting to go a single step further, but the village needed someone to speak to the dragon, and no one else had dared. An ominous silence hung over the slope, the kind of stillness that warns you something bad may be near.",
+        "As she neared the cave, a noxious smell drifted out, harmful and stinging in her throat and nose. Mixed with it was a putrid stench, the foul reek of something old and rotting deep in the dark. Tess scurried forward anyway, hurrying along with short, quick steps, determined not to let the smells turn her back.",
+        "Inside, the dragon lay curled and grumpy. 'You?' it sneered. 'You are far too puny to bargain with me.' Tess was indeed small and might have looked weak, but she did not become passive. She refused to simply stand there accepting whatever happened without speaking up for her village.",
+        "Instead she was persistent, asking her questions again and again and never once giving up. The dragon, used to frightened visitors who fled at once, grew more and more curious about this brave, stubborn child who would not be scared away by an ominous growl or two.",
+        "It turned out the dragon was lonely, not wicked, and only roared because villagers ran from it. Tess promised to bring it a visitor every week. The dragon, delighted, cleared the noxious smoke from its cave with one mighty puff. Tess walked home through the parting mist, proud and pleased with herself, having proved that even someone puny can be wonderfully, splendidly brave."
+      ]
+    },
+    {
+      "id": "story-29",
+      "title": "The Drummer Boy's Brave Choice",
+      "emoji": "🥁",
+      "blurb": "On a noisy battlefield, a young drummer must decide what is truly right.",
+      "words": [
+        "Belligerent",
+        "Bellowed",
+        "Bias",
+        "Calamity",
+        "Cautious",
+        "Cemetery",
+        "Clandestine",
+        "Consensus",
+        "Contentious",
+        "Context"
+      ],
+      "paragraphs": [
+        "Tom was only twelve when he carried his drum onto the windy hill. Two armies faced each other, and the general bellowed orders so loudly that the sound seemed to roll over the grass like a wave. Most of the soldiers were belligerent, eager to argue and to fight, but Tom felt only fear. He kept thinking of the quiet cemetery near his village, the gentle place where people were laid to rest, and he wished nobody had to go there at all.",
+        "The two generals could not agree, and their argument was deeply contentious, splitting the camp into furious shouting groups. One side claimed the other had stolen a flag. Tom listened carefully and realised the story had no context; nobody had explained the full circumstances, so nobody could truly judge it. Each leader had a strong bias, an unfair preference for his own men, and that unfairness made every word sting like a thrown stone.",
+        "That night, Tom and three other young messengers held a clandestine meeting behind the supply tents, speaking in secret so the officers would not hear. Cautious and careful, they whispered a daring plan. If they could carry the truth between both camps, the soldiers might understand each other and the calamity of battle, a terrible disaster waiting to happen, could be avoided before sunrise.",
+        "At dawn, Tom crept across the misty field with a folded letter explaining exactly what had happened to the missing flag. He moved warily, ready to drop flat at any sound. The enemy guards almost seized him, yet his honest, frightened face made them pause and read.",
+        "Slowly, soldiers from both sides gathered to talk instead of charge. After hours of careful discussion, they reached a consensus, a true general agreement, and lowered their weapons. Tom's drum stayed silent that day, and he had never been prouder of any sound he did not make."
+      ]
+    },
+    {
+      "id": "story-30",
+      "title": "The Lantern Scout",
+      "emoji": "🏕️",
+      "blurb": "A young scout leads weary soldiers home through a long and dangerous night.",
+      "words": [
+        "Courageous",
+        "Eager",
+        "Earthly",
+        "Elated",
+        "Evasive",
+        "Flickered",
+        "Fractious",
+        "Furnish",
+        "Glorious",
+        "Grim"
+      ],
+      "paragraphs": [
+        "Private Anya was the youngest scout in the marching column, but she was the most eager of all, always the first to volunteer and the last to complain. The army had been ordered to cross the dark valley before morning, and the captain wore a grim, worried expression that made the older soldiers nervous. Anya gripped her small lantern, whose flame flickered and trembled in the cold wind like a frightened bird.",
+        "The march was long, and the tired troops grew fractious, snapping at one another and arguing over nothing at all. When Anya asked the captain how far they still had to walk, his answer was evasive; he avoided giving a clear reply, which only made everyone more uneasy. Anya decided that grumbling solved no earthly problem, no real, practical trouble at all, so she lifted her lantern higher and began to sing a marching tune.",
+        "Soon her courageous spirit spread through the ranks. The soldiers needed shelter, and Anya promised to find a barn and furnish it with straw and warm blankets so the men could rest. She remembered an empty farmhouse from an old map, and she led the column straight towards it through the whispering trees.",
+        "When the barn finally appeared, the soldiers were elated, cheering and clapping Anya on the shoulder. They lit a fire, shared their rations, and laughed for the first time in days. The captain's grim face melted into a tired smile.",
+        "At sunrise the valley was bathed in a glorious golden light, splendid and beautiful beyond words. The army marched out rested and ready, and Anya walked proudly at the front, her little lantern still glowing in her hand."
+      ]
+    },
+    {
+      "id": "story-31",
+      "title": "The Guardian of the Tomb",
+      "emoji": "🏛️",
+      "blurb": "Deep in an ancient desert, two children meet the silent keeper of a king's monument.",
+      "words": [
+        "Hieroglyph",
+        "Hospitality",
+        "Hostile",
+        "Immortal",
+        "Inflammatory",
+        "Memorial",
+        "Muttered",
+        "Obedient",
+        "Panorama",
+        "Peculiar"
+      ],
+      "paragraphs": [
+        "From the top of the great stone steps, Layla and her brother Sami saw a breathtaking panorama, a wide and unbroken view of the golden desert stretching all the way to the horizon. They had come to study the ancient tomb of a forgotten king, a vast memorial built long ago to honour his memory. The huge doors were carved with rows of hieroglyphs, picture symbols that the old people had once used instead of letters.",
+        "Inside, the air was cool and still. An old keeper greeted them, and at first Sami feared the man might be hostile, unfriendly and ready to send them away. Instead, the keeper showed them warm hospitality, offering cool water and dates with a generous, kindly smile. He spoke softly and muttered the king's name under his breath, as though afraid to wake something sleeping in the stone.",
+        "The keeper explained that the king had longed to be immortal, to live and be remembered forever, and that the painted walls told peculiar, fascinatingly strange stories of journeys among the stars. Layla copied a hieroglyph shaped like an owl, while obedient Sami followed every one of the keeper's instructions, careful never to touch the fragile paint.",
+        "Suddenly a tour guide outside began shouting cruel, inflammatory words, trying to stir up an angry crowd against the quiet keeper. Layla stepped forward bravely and explained how gentle and helpful the old man had truly been, and the crowd's anger cooled at once.",
+        "As the children left, the keeper gave them a small clay owl as a gift. Standing once more before that golden panorama, Layla promised she would always treat history, and old people, with respect."
+      ]
+    },
+    {
+      "id": "story-32",
+      "title": "The Key to the Mountain Vault",
+      "emoji": "🗝️",
+      "blurb": "A timid girl joins a daring quest to recover her village's stolen treasure.",
+      "words": [
+        "Poised",
+        "Ravenous",
+        "Reassuring",
+        "Rigour",
+        "Spatial",
+        "Spirited",
+        "Sprightly",
+        "Successive",
+        "Timid",
+        "Vault"
+      ],
+      "paragraphs": [
+        "Mira had always been timid, far too shy and nervous to raise her hand at school. So everyone was astonished when she volunteered for the quest to find the mountain vault, the secret stone room where her village's golden harvest crown had been hidden for safety. Her uncle gave her a reassuring smile, a calm and comforting look that made her feel braver at once.",
+        "The journey demanded great rigour, for the path was thorough and harsh, testing every traveller with cold winds and steep climbs. Mira surprised herself by being sprightly and quick on the rocky slopes, leaping lightly from stone to stone. Her spirited pony, full of energy and life, trotted happily beside her, tossing its mane in the morning air.",
+        "Three successive bridges crossed the gorge, one right after another, and each one swayed alarmingly above the river. Mira used her strong spatial awareness, her clear sense of space and distance, to judge exactly where to place each careful step. By the time she reached the far side, she was ravenous, so hungry she could have eaten an entire loaf, and she shared sandwiches with the others under a pine tree.",
+        "At last they found the vault carved deep into the mountainside. Its ancient lock needed a steady hand. Mira stood poised before it, balanced and calm, and turned the heavy key without a single tremble.",
+        "The crown glittered inside, safe at last. Carrying it home, Mira realised she was no longer the timid girl from the village. She had discovered a quiet, steady courage of her own."
+      ]
+    },
+    {
+      "id": "story-33",
+      "title": "The Lights of the Storm Festival",
+      "emoji": "🎆",
+      "blurb": "A young technician must save the village festival when a fierce storm strikes.",
+      "words": [
+        "Whirling",
+        "Withered",
+        "Wretched",
+        "Zealous",
+        "Technician",
+        "Thunderous",
+        "Twilight",
+        "Uneasy",
+        "Vibrant",
+        "Volatile"
+      ],
+      "paragraphs": [
+        "Every year the village held its famous Storm Festival, when the streets blazed with vibrant lanterns of every bright colour. This year, twelve-year-old Priya had been chosen as the lighting technician, the skilled person in charge of the electric displays. She was zealous about her job, working with eager, tireless energy to test each glowing bulb before twilight, the soft grey light that comes just before night.",
+        "But the weather turned volatile, changing suddenly from calm to wild. Dark clouds came whirling across the sky, spinning faster and faster. Priya felt uneasy, a little worried and uncomfortable, as the first thunderous boom rolled overhead like a giant drum. Around her, the festival flowers, once fresh, now looked withered and shrivelled in the cruel, gusting wind.",
+        "Then, with a crackle, the main lights went dark. The crowd groaned, and a wretched, miserable gloom settled over the soggy square. Priya knew that one mistake with the wires could ruin everything, yet she refused to give up.",
+        "Pulling on her rubber gloves, she traced the cables to a fallen junction box. With steady hands she reconnected the wires, working quickly while rain hammered the rooftops above her.",
+        "Suddenly the whole street burst back into vibrant, dazzling life. The thunderous applause that followed was louder than the storm itself. As the clouds finally drifted away, Priya stood beneath her glowing lanterns, soaked, tired, and absolutely thrilled with what she had saved."
+      ]
+    },
+    {
+      "id": "story-34",
+      "title": "The Long Race to Riverhold",
+      "emoji": "🏞️",
+      "blurb": "A young runner faces fear, mud, and a wild river to honour her grandmother.",
+      "words": [
+        "Weary",
+        "Yearned",
+        "Tense",
+        "Trepidation",
+        "Tribute",
+        "Unruly",
+        "Vigorous",
+        "Virtuous",
+        "Voracious",
+        "Warily"
+      ],
+      "paragraphs": [
+        "Every spring the village held the Race to Riverhold, a long contest across hills and streams. This year Esme had entered to run it as a tribute to her grandmother, a special act of respect for the woman who had taught her to love the countryside. Esme had always yearned to win, wanting it more than anything, yet on the morning of the race a wave of trepidation, a shaky and nervous fear, washed coldly over her.",
+        "At the starting line the runners were tense, their shoulders stiff and their faces serious. When the whistle blew, an unruly crowd of children surged forward all at once, hard to control and tumbling over one another. Esme set off with strong, vigorous strides, healthy and full of force, breathing steadily the way her grandmother had taught her.",
+        "The path led through a dark wood. Esme moved warily here, watching every shadow with careful, suspicious eyes, for the ground was slippery with mud. She passed a runner who had dropped his snack and was eyeing hers with a voracious, hungry stare, but Esme kindly shared half of it instead of racing on.",
+        "That virtuous, fair-minded choice cost her precious seconds, yet it filled her with a warm, quiet pride. By the final hill she was weary, her legs aching and heavy, but she kept her grandmother's smiling face fixed firmly in her mind.",
+        "Esme did not finish first that day, but she crossed the line with her head held high. Her family cheered, and she knew her grandmother would have been proud of every honest, kind-hearted step."
+      ]
+    },
+    {
+      "id": "story-35",
+      "title": "The Smouldering Mountain",
+      "emoji": "🌋",
+      "blurb": "Two friends climb a smoking mountain to rescue a trapped clockwork inventor.",
+      "words": [
+        "Wistful",
+        "Smother",
+        "Smouldering",
+        "Stubborn",
+        "Thrifty",
+        "Thrilled",
+        "Turbulent",
+        "Vague",
+        "Valiant",
+        "Wandered",
+        "Whimsical"
+      ],
+      "paragraphs": [
+        "Old Mr Finch was a whimsical inventor, playfully imaginative, who built singing clockwork birds and dancing tin frogs. When he failed to return from the smouldering mountain, the peak that slowly burned with smoke but little flame, the whole village grew worried. His niece Bea felt wistful, quietly sad as she gazed at his empty workshop, longing for the cheerful tinkering she could no longer hear.",
+        "Bea and her friend Otis decided to be valiant and go after him, brave and determined despite the danger. They packed carefully, for they were thrifty children who never wasted a crumb of food or a single match. The only map they had was vague, unclear and lacking exact detail, so they would have to trust their courage instead.",
+        "The climb was hard. The wind grew turbulent, rough and wild, tossing their cloaks about as they wandered up the twisting paths, drifting this way and that in search of any sign of the inventor. Smoke drifted everywhere, threatening to smother them, to cover them so thickly they could barely breathe.",
+        "At last they found Mr Finch, his ankle trapped beneath a fallen log. He was stubborn and refused to let them risk themselves, planting his hands firmly and insisting they leave him. But Bea was just as stubborn, and together the children levered the heavy log aside.",
+        "They helped the old man limp down the mountain before the smouldering rocks could grow any hotter. Back in the warm workshop, Mr Finch was thrilled, beaming with delight, and he built a tiny clockwork mountaineer just for Bea and Otis as a thank-you gift."
       ]
     }
   ]
