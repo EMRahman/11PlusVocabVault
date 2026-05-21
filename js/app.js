@@ -538,7 +538,7 @@
       { id: 'castle', name: 'Castle of Synonyms', emoji: '🏰', theme: 'Castle', modes: ['synonym', 'definition', 'word', 'sentence', 'antonym'] },
       { id: 'dragon', name: 'Dragon Mountain', emoji: '🐉', theme: 'Dragon', modes: ['antonym', 'word', 'definition', 'sentence', 'synonym'] },
       { id: 'fairies', name: 'Fairy Glen', emoji: '🧚', theme: 'Fairies', modes: ['word', 'definition', 'sentence', 'synonym', 'antonym'] },
-      { id: 'arm-battle', name: 'Arm Battle Fields', emoji: '🛡️', theme: 'Arm Battle', modes: ['definition', 'antonym', 'word', 'sentence', 'synonym'] },
+      { id: 'army-battle', name: 'Army Battle Fields', emoji: '🛡️', theme: 'Army Battle', modes: ['definition', 'antonym', 'word', 'sentence', 'synonym'] },
       { id: 'sea-journey', name: 'Sea Journey Isles', emoji: '⛵', theme: 'Sea Journey', modes: ['sentence', 'word', 'definition', 'antonym', 'synonym'] },
       { id: 'wizard-school', name: 'Wizard School Towers', emoji: '🧙', theme: 'Wizard School', modes: ['synonym', 'word', 'definition', 'sentence', 'antonym'] }
     ],
@@ -695,19 +695,73 @@
 
     questState.worlds.forEach(function (world, idx) {
       var card = document.createElement('div');
-      card.className = 'quest-world-card' + (idx > p.worldIndex ? ' locked' : '');
+      card.className = 'quest-world-card';
       var completed = idx < p.worldIndex ? 5 : (idx === p.worldIndex ? p.levelsWonInWorld : 0);
       card.innerHTML =
         '<h3>' + world.emoji + ' ' + world.name + '</h3>' +
         '<p class="quest-world-meta">' + completed + '/5 quest rounds won · Theme: ' + world.theme + '</p>';
       var btn = document.createElement('button');
       btn.className = 'quiz-start-btn';
-      btn.textContent = idx > p.worldIndex ? 'Locked' : 'Start world';
-      btn.disabled = idx > p.worldIndex;
+      btn.textContent = idx === p.worldIndex ? 'Start world' : 'Switch to theme';
       btn.addEventListener('click', function () { startQuestWorld(idx); });
       card.appendChild(btn);
       questWorldList.appendChild(card);
     });
+  }
+
+  function getQuestPromptPrefix(world, type) {
+    var map = {
+      forest: {
+        definition: 'In the whispering forest, decode this clue:',
+        sentence: 'Along the forest trail, complete this line:',
+        synonym: 'The forest guide asks for a matching word:',
+        antonym: 'To open the forest gate, choose the opposite:',
+        word: 'A woodland riddle asks:'
+      },
+      castle: {
+        definition: 'Inside the castle archives, solve this clue:',
+        sentence: 'In the castle hall, complete this proclamation:',
+        synonym: 'A royal scholar requests a near-meaning word:',
+        antonym: 'To lower the drawbridge, pick the opposite:',
+        word: 'A castle challenge asks:'
+      },
+      dragon: {
+        definition: 'At dragon mountain, interpret this ancient clue:',
+        sentence: 'Before the dragon cave, complete this warning:',
+        synonym: 'The dragon keeper asks for a kindred word:',
+        antonym: 'To calm the dragon, choose the opposite:',
+        word: 'A dragon trial asks:'
+      },
+      fairies: {
+        definition: 'In fairy glen, decipher this glowing clue:',
+        sentence: 'At the fairy ring, complete this spell-line:',
+        synonym: 'A fairy asks for a similar word:',
+        antonym: 'To unlock the moonflower, pick the opposite:',
+        word: 'A fairy puzzle asks:'
+      },
+      'army-battle': {
+        definition: 'On the army field, decode this command clue:',
+        sentence: 'In the battle plan, complete this briefing:',
+        synonym: 'The captain asks for a matching word:',
+        antonym: 'To outmaneuver the rival unit, choose the opposite:',
+        word: 'A strategy drill asks:'
+      },
+      'sea-journey': {
+        definition: 'On the sea voyage, interpret this sailor clue:',
+        sentence: 'From the ship log, complete this entry:',
+        synonym: 'The navigator requests a similar word:',
+        antonym: 'To steer through fog, pick the opposite:',
+        word: 'A sea challenge asks:'
+      },
+      'wizard-school': {
+        definition: 'At wizard school, solve this lesson clue:',
+        sentence: 'In spell class, complete this line:',
+        synonym: 'The head wizard asks for a like-meaning word:',
+        antonym: 'To seal the portal, choose the opposite:',
+        word: 'A wizard exam asks:'
+      }
+    };
+    return (map[world.id] && map[world.id][type]) || 'Quest challenge:';
   }
 
   function clearQuizAdvanceTimeout() {
@@ -954,19 +1008,19 @@
     // Question
     if (q.type === 'definition') {
       quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What word means this?';
-      quizQuestionText.textContent  = q.questionWord.definition;
+      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.definition;
     } else if (q.type === 'sentence') {
       quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word best completes this sentence?';
-      quizQuestionText.textContent  = q.sentenceBlank;
+      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.sentenceBlank;
     } else if (q.type === 'synonym') {
       quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means almost the SAME as this?';
-      quizQuestionText.textContent  = q.questionWord.word;
+      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
     } else if (q.type === 'antonym') {
       quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': Which word means the OPPOSITE of this?';
-      quizQuestionText.textContent  = q.questionWord.word;
+      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
     } else {
       quizQuestionLabel.textContent = (quizState.isQuestMode ? world.theme + ' Quest' : 'Quiz') + ': What does this word mean?';
-      quizQuestionText.textContent  = q.questionWord.word;
+      quizQuestionText.textContent  = (quizState.isQuestMode ? getQuestPromptPrefix(world, q.type) + ' ' : '') + q.questionWord.word;
     }
 
     // Answer buttons
