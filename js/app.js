@@ -147,6 +147,7 @@
         attachEventListeners();
         initGloss();
         initStoryMode();
+        initHistoryMode();
         initDailyNews();
         initQuiz();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
@@ -696,6 +697,8 @@
       reopenStoryReading();
     } else if (returnTo === 'news') {
       reopenNewsReading();
+    } else if (returnTo === 'history') {
+      reopenHistoryReading();
     } else {
       quizLaunchBtn.focus();
     }
@@ -1748,6 +1751,225 @@
         }
       })
       .catch(function () { stories = []; });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // HISTORY MODE
+  // A timeline of hand-written history articles — from the Big Bang to today —
+  // each featuring vocabulary words in context, followed by a quiz.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var HISTORY_PROGRESS_KEY = 'vocabVault_historyProgress';
+  var historyArticles = [];
+  var historyProgress = {};
+  var currentArticle = null;
+
+  var historyLaunchBtn      = document.getElementById('history-launch-btn');
+  var historyOverlay        = document.getElementById('history-overlay');
+  var historyLibraryScreen  = document.getElementById('history-library-screen');
+  var historyReadingScreen  = document.getElementById('history-reading-screen');
+  var historyCloseBtn       = document.getElementById('history-close-btn');
+  var historyBackBtn        = document.getElementById('history-back-btn');
+  var historyList           = document.getElementById('history-list');
+  var historyReadingEmoji   = document.getElementById('history-reading-emoji');
+  var historyReadingEra     = document.getElementById('history-reading-era');
+  var historyReadingTitle   = document.getElementById('history-reading-title');
+  var historyReadingBody    = document.getElementById('history-reading-body');
+  var historyQuizBtn        = document.getElementById('history-quiz-btn');
+
+  function loadHistoryProgress() {
+    try {
+      var raw = localStorage.getItem(HISTORY_PROGRESS_KEY);
+      historyProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      historyProgress = {};
+    }
+  }
+
+  function saveHistoryProgress() {
+    try { localStorage.setItem(HISTORY_PROGRESS_KEY, JSON.stringify(historyProgress)); } catch (e) {}
+  }
+
+  function articleWordObjects(article) {
+    var out = [];
+    (article.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderHistoryLibrary() {
+    historyList.innerHTML = '';
+    if (!historyArticles.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'History articles are still loading — try again in a moment.';
+      historyList.appendChild(empty);
+      return;
+    }
+    historyArticles.forEach(function (article) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = article.emoji + ' ' + article.title;
+
+      var era = document.createElement('span');
+      era.className = 'history-card-era';
+      era.textContent = article.era;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = article.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+      meta.appendChild(era);
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = articleWordObjects(article).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = historyProgress[article.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openArticle(article); });
+      historyList.appendChild(card);
+    });
+  }
+
+  function showHistoryScreen(screenEl) {
+    [historyLibraryScreen, historyReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openArticle(article) {
+    currentArticle = article;
+    var prog = historyProgress[article.id] || {};
+    prog.read = true;
+    historyProgress[article.id] = prog;
+    saveHistoryProgress();
+
+    historyReadingEmoji.textContent = article.emoji;
+    historyReadingEra.textContent = article.era;
+    historyReadingTitle.textContent = article.title;
+    renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article));
+    showHistoryScreen(historyReadingScreen);
+    historyReadingScreen.scrollTop = 0;
+    historyBackBtn.focus();
+  }
+
+  function openHistoryOverlay() {
+    renderHistoryLibrary();
+    showHistoryScreen(historyLibraryScreen);
+    historyOverlay.classList.remove('hidden');
+    historyOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    historyCloseBtn.focus();
+  }
+
+  function closeHistoryOverlay() {
+    hideGloss();
+    historyOverlay.classList.add('hidden');
+    historyOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentArticle = null;
+    historyLaunchBtn.focus();
+  }
+
+  function reopenHistoryReading() {
+    if (!currentArticle) { closeHistoryOverlay(); return; }
+    historyOverlay.classList.remove('hidden');
+    historyOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showHistoryScreen(historyReadingScreen);
+    historyQuizBtn.focus();
+  }
+
+  function recordArticleResult(article, score, total) {
+    var prog = historyProgress[article.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    historyProgress[article.id] = prog;
+    saveHistoryProgress();
+    if (score === total) return 'Article complete — perfect score! 🎉';
+    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initHistoryMode() {
+    loadHistoryProgress();
+
+    historyLaunchBtn.addEventListener('click', openHistoryOverlay);
+    historyCloseBtn.addEventListener('click', closeHistoryOverlay);
+
+    historyBackBtn.addEventListener('click', function () {
+      hideGloss();
+      renderHistoryLibrary();
+      showHistoryScreen(historyLibraryScreen);
+      historyCloseBtn.focus();
+    });
+
+    historyQuizBtn.addEventListener('click', function () {
+      if (!currentArticle) return;
+      var words = articleWordObjects(currentArticle);
+      if (!words.length) return;
+      var article = currentArticle;
+      hideGloss();
+      historyOverlay.classList.add('hidden');
+      historyOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'history',
+        onComplete: function (score, total) {
+          return recordArticleResult(article, score, total);
+        }
+      });
+    });
+
+    historyOverlay.addEventListener('click', function (e) {
+      if (e.target === historyOverlay) closeHistoryOverlay();
+    });
+
+    historyReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (historyOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeHistoryOverlay();
+    });
+
+    fetch('data/history.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        historyArticles = (data && data.articles) || [];
+        if (!historyOverlay.classList.contains('hidden') &&
+            !historyLibraryScreen.classList.contains('hidden')) {
+          renderHistoryLibrary();
+        }
+      })
+      .catch(function () { historyArticles = []; });
   }
 
   // ═══════════════════════════════════════════════════════════════════════════

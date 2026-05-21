@@ -75,6 +75,10 @@
         <span aria-hidden="true">📰</span>
         Daily News
       </button>
+      <button class="quiz-launch-btn history-launch-btn" id="history-launch-btn" aria-label="Open history mode">
+        <span aria-hidden="true">🏛️</span>
+        History Mode
+      </button>
     </section>
 
     <section class="word-grid" id="word-grid" aria-label="Vocabulary word cards"></section>
@@ -300,6 +304,48 @@
         <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
         <button class="quiz-start-btn quiz-primary-start-btn" id="story-quiz-btn">
           Quiz me on this story
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- History Mode overlay -->
+  <div id="history-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Library screen -->
+    <div id="history-library-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="history-library-title">
+      <button class="close-btn" id="history-close-btn" aria-label="Close history mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🏛️</span>
+        <h2 id="history-library-title" class="quiz-setup-title">History Mode</h2>
+        <p class="quiz-setup-subtitle">Journey through time — from the Big Bang to today — meeting key words along the way.</p>
+        <div id="history-list" class="story-list history-list"></div>
+      </div>
+    </div>
+
+    <!-- Reading screen -->
+    <div id="history-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="history-reading-title">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="history-back-btn" type="button" aria-label="Back to history library">← Timeline</button>
+      </div>
+      <div class="story-reading-inner">
+        <div class="story-reading-header">
+          <span class="story-reading-emoji" id="history-reading-emoji" aria-hidden="true"></span>
+          <div>
+            <p class="history-reading-era" id="history-reading-era"></p>
+            <h2 class="story-reading-title" id="history-reading-title"></h2>
+          </div>
+        </div>
+        <div class="story-reading-body" id="history-reading-body"></div>
+        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="history-quiz-btn">
+          Quiz me on this article
           <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
         </button>
       </div>

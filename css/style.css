@@ -1429,6 +1429,41 @@ footer {
   border-color: #C2410C;
 }
 
+.history-launch-btn {
+  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  border-color: #7C3AED;
+}
+
+.history-launch-btn:hover {
+  background: linear-gradient(135deg, #7C3AED, #6D28D9);
+  border-color: #6D28D9;
+}
+
+/* History era label */
+.history-reading-era {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7C3AED;
+  margin: 0 0 0.2rem;
+}
+
+/* History card era tag */
+.history-card-era {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  background: #EDE9FE;
+  color: #6D28D9;
+}
+
+/* History list — slightly more compact than story list so 40 cards scroll nicely */
+.history-list {
+  gap: 0.6rem;
+}
+
 /* Story library */
 .story-list {
   display: grid;
