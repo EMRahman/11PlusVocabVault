@@ -79,6 +79,133 @@
     } catch (e) {}
   }
 
+  // ── TTS read-along ────────────────────────────────────────────────────────
+  var ttsWordData   = null;   // {fullText, words:[{el,start,end}]}
+  var ttsPlaying    = false;
+  var ttsRate       = 1.0;
+  var ttsActiveIdx  = -1;
+  var ttsCurrentBar = null;   // {readBtn, controls, playPauseBtn}
+
+  function ttsActivateWord(idx) {
+    if (ttsActiveIdx >= 0 && ttsWordData && ttsWordData.words[ttsActiveIdx]) {
+      ttsWordData.words[ttsActiveIdx].el.classList.remove('tts-active');
+    }
+    ttsActiveIdx = idx;
+    if (idx >= 0 && ttsWordData && ttsWordData.words[idx]) {
+      var el = ttsWordData.words[idx].el;
+      el.classList.add('tts-active');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
+  }
+
+  function ttsClearActive() {
+    if (ttsActiveIdx >= 0 && ttsWordData && ttsWordData.words[ttsActiveIdx]) {
+      ttsWordData.words[ttsActiveIdx].el.classList.remove('tts-active');
+    }
+    ttsActiveIdx = -1;
+  }
+
+  function ttsBarShowIdle(bar) {
+    bar.readBtn.classList.remove('hidden');
+    bar.controls.classList.add('hidden');
+  }
+
+  function ttsBarShowActive(bar, playing) {
+    bar.readBtn.classList.add('hidden');
+    bar.controls.classList.remove('hidden');
+    bar.playPauseBtn.textContent = playing ? '⏸ Pause' : '▶ Resume';
+    bar.playPauseBtn.setAttribute('aria-label', playing ? 'Pause reading' : 'Resume reading');
+  }
+
+  function ttsStart() {
+    if (!ttsWordData || !ttsWordData.fullText || !('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    ttsClearActive();
+    var utter = new SpeechSynthesisUtterance(ttsWordData.fullText);
+    utter.lang = 'en-GB';
+    utter.rate = ttsRate;
+    utter.pitch = 1.0;
+    utter.onboundary = function (evt) {
+      if (evt.name !== 'word') return;
+      var ci = evt.charIndex;
+      var words = ttsWordData ? ttsWordData.words : [];
+      for (var i = 0; i < words.length; i++) {
+        if (ci >= words[i].start && ci < words[i].end) { ttsActivateWord(i); return; }
+        if (words[i].start > ci) { ttsActivateWord(i); return; }
+      }
+    };
+    utter.onend = function () {
+      ttsClearActive();
+      ttsPlaying = false;
+      if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
+    };
+    utter.onerror = function () {
+      ttsClearActive();
+      ttsPlaying = false;
+      if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
+    };
+    window.speechSynthesis.speak(utter);
+    ttsPlaying = true;
+  }
+
+  function ttsPause() {
+    if (!ttsPlaying) return;
+    window.speechSynthesis.pause();
+    ttsPlaying = false;
+  }
+
+  function ttsResume() {
+    if (ttsPlaying) return;
+    window.speechSynthesis.resume();
+    ttsPlaying = true;
+  }
+
+  function ttsStop() {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    ttsPlaying = false;
+    ttsClearActive();
+    if (ttsCurrentBar) {
+      ttsBarShowIdle(ttsCurrentBar);
+      ttsCurrentBar = null;
+    }
+  }
+
+  function initTTSBar(readBtnEl, controlsEl, playPauseBtnEl, stopBtnEl, speedBtnList) {
+    var bar = { readBtn: readBtnEl, controls: controlsEl, playPauseBtn: playPauseBtnEl };
+
+    readBtnEl.addEventListener('click', function () {
+      ttsStop();
+      ttsCurrentBar = bar;
+      ttsBarShowActive(bar, true);
+      ttsStart();
+    });
+
+    playPauseBtnEl.addEventListener('click', function () {
+      if (ttsPlaying) { ttsPause(); ttsBarShowActive(bar, false); }
+      else             { ttsResume(); ttsBarShowActive(bar, true);  }
+    });
+
+    stopBtnEl.addEventListener('click', function () { ttsStop(); });
+
+    forEachNode(speedBtnList, function (btn) {
+      btn.addEventListener('click', function () {
+        var rate = parseFloat(btn.dataset.rate);
+        if (isNaN(rate)) return;
+        ttsRate = rate;
+        forEachNode(speedBtnList, function (b) {
+          b.classList.toggle('tts-speed-active', b.dataset.rate === btn.dataset.rate);
+        });
+        if (ttsCurrentBar === bar) {
+          ttsStop();
+          ttsCurrentBar = bar;
+          ttsBarShowActive(bar, true);
+          ttsStart();
+        }
+      });
+    });
+  }
+
   var state = {
     query: '',
     ratingFilter: null, // null = all, 3-5 = exact match
@@ -1552,11 +1679,44 @@
   function renderReadingBody(containerEl, paragraphs, featuredWords) {
     containerEl.innerHTML = '';
     var matcher = buildHighlightMatcher(featuredWords);
-    paragraphs.forEach(function (text) {
+    var wordEntries = [];
+    var offset = 0;
+
+    paragraphs.forEach(function (text, pIdx) {
+      if (pIdx > 0) offset += 1; // space separator between paragraphs in fullText
       var p = document.createElement('p');
-      fillParagraph(p, text, matcher);
+      var re = /([A-Za-z’'][A-Za-z’']*)|([^A-Za-z’']+)/g;
+      var m;
+      while ((m = re.exec(text)) !== null) {
+        var token = m[0];
+        if (m[1]) { // word token
+          var span = document.createElement('span');
+          span.className = 'tts-word';
+          span.textContent = token;
+          var wObj = matcher && matcher.map[token.toLowerCase()];
+          if (!wObj && matcher) {
+            matcher.regex.lastIndex = 0;
+            var rm = matcher.regex.exec(token);
+            if (rm && rm[0].toLowerCase() === token.toLowerCase()) wObj = matcher.map[rm[0].toLowerCase()];
+          }
+          if (wObj) {
+            span.classList.add('vocab-highlight');
+            span.tabIndex = 0;
+            span.setAttribute('role', 'button');
+            span.setAttribute('aria-label', token + ' — tap for the meaning');
+            span.dataset.glossWord = wObj.word;
+          }
+          wordEntries.push({ el: span, start: offset, end: offset + token.length });
+          p.appendChild(span);
+        } else { // non-word token
+          p.appendChild(document.createTextNode(token));
+        }
+        offset += token.length;
+      }
       containerEl.appendChild(p);
     });
+
+    ttsWordData = { fullText: paragraphs.join(' '), words: wordEntries };
   }
 
   function ensureGloss() {
@@ -1758,6 +1918,7 @@
   }
 
   function closeStoryOverlay() {
+    ttsStop();
     hideGloss();
     storyOverlay.classList.add('hidden');
     storyOverlay.setAttribute('aria-hidden', 'true');
@@ -1796,6 +1957,7 @@
     storyCloseBtn.addEventListener('click', closeStoryOverlay);
 
     storyBackBtn.addEventListener('click', function () {
+      ttsStop();
       hideGloss();
       renderStoryLibrary();
       showStoryScreen(storyLibraryScreen);
@@ -1807,6 +1969,7 @@
       var words = storyWordObjects(currentStory);
       if (!words.length) return;
       var story = currentStory;
+      ttsStop();
       hideGloss();
       storyOverlay.classList.add('hidden');
       storyOverlay.setAttribute('aria-hidden', 'true');
@@ -1830,6 +1993,14 @@
       if (glossIsOpen()) { hideGloss(); return; }
       closeStoryOverlay();
     });
+
+    initTTSBar(
+      document.getElementById('story-tts-read-btn'),
+      document.getElementById('story-tts-controls'),
+      document.getElementById('story-tts-playpause'),
+      document.getElementById('story-tts-stop'),
+      document.querySelectorAll('#story-tts-controls .tts-speed-btn')
+    );
 
     fetch('data/stories.json')
       .then(function (res) { return res.json(); })
@@ -1978,6 +2149,7 @@
   }
 
   function closeHistoryOverlay() {
+    ttsStop();
     hideGloss();
     historyOverlay.classList.add('hidden');
     historyOverlay.setAttribute('aria-hidden', 'true');
@@ -2015,6 +2187,7 @@
     historyCloseBtn.addEventListener('click', closeHistoryOverlay);
 
     historyBackBtn.addEventListener('click', function () {
+      ttsStop();
       hideGloss();
       renderHistoryLibrary();
       showHistoryScreen(historyLibraryScreen);
@@ -2026,6 +2199,7 @@
       var words = articleWordObjects(currentArticle);
       if (!words.length) return;
       var article = currentArticle;
+      ttsStop();
       hideGloss();
       historyOverlay.classList.add('hidden');
       historyOverlay.setAttribute('aria-hidden', 'true');
@@ -2049,6 +2223,14 @@
       if (glossIsOpen()) { hideGloss(); return; }
       closeHistoryOverlay();
     });
+
+    initTTSBar(
+      document.getElementById('history-tts-read-btn'),
+      document.getElementById('history-tts-controls'),
+      document.getElementById('history-tts-playpause'),
+      document.getElementById('history-tts-stop'),
+      document.querySelectorAll('#history-tts-controls .tts-speed-btn')
+    );
 
     fetch('data/history.json')
       .then(function (res) { return res.json(); })
@@ -2289,6 +2471,7 @@
   }
 
   function closeNewsOverlay() {
+    ttsStop();
     hideGloss();
     newsOverlay.classList.add('hidden');
     newsOverlay.setAttribute('aria-hidden', 'true');
@@ -2380,6 +2563,7 @@
     });
 
     newsEditBtn.addEventListener('click', function () {
+      ttsStop();
       hideGloss();
       renderNewsGenerateScreen();
       showNewsScreen(newsGenerateScreen);
@@ -2388,6 +2572,7 @@
 
     newsQuizBtn.addEventListener('click', function () {
       if (!newsWords.length) return;
+      ttsStop();
       hideGloss();
       newsOverlay.classList.add('hidden');
       newsOverlay.setAttribute('aria-hidden', 'true');
@@ -2411,6 +2596,14 @@
       if (glossIsOpen()) { hideGloss(); return; }
       closeNewsOverlay();
     });
+
+    initTTSBar(
+      document.getElementById('news-tts-read-btn'),
+      document.getElementById('news-tts-controls'),
+      document.getElementById('news-tts-playpause'),
+      document.getElementById('news-tts-stop'),
+      document.querySelectorAll('#news-tts-controls .tts-speed-btn')
+    );
   }
 
 })();

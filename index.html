@@ -301,6 +301,26 @@
           <h2 class="story-reading-title" id="story-reading-title"></h2>
         </div>
         <div class="story-reading-body" id="story-reading-body"></div>
+        <div class="tts-bar" id="story-tts-bar">
+          <button class="tts-read-btn" id="story-tts-read-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Read to me
+          </button>
+          <div class="tts-controls hidden" id="story-tts-controls">
+            <div class="tts-action-row">
+              <button class="tts-action-btn" id="story-tts-playpause" type="button" aria-label="Pause reading">⏸ Pause</button>
+              <button class="tts-action-btn tts-stop-btn" id="story-tts-stop" type="button" aria-label="Stop reading">⏹ Stop</button>
+            </div>
+            <div class="tts-speed-group" role="group" aria-label="Reading speed">
+              <span class="tts-speed-label">Speed:</span>
+              <button class="tts-speed-btn" data-rate="0.5" type="button">0.5×</button>
+              <button class="tts-speed-btn" data-rate="0.75" type="button">0.75×</button>
+              <button class="tts-speed-btn tts-speed-active" data-rate="1" type="button">1×</button>
+              <button class="tts-speed-btn" data-rate="1.25" type="button">1.25×</button>
+              <button class="tts-speed-btn" data-rate="1.5" type="button">1.5×</button>
+            </div>
+          </div>
+        </div>
         <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
         <button class="quiz-start-btn quiz-primary-start-btn" id="story-quiz-btn">
           Quiz me on this story
@@ -343,6 +363,26 @@
           </div>
         </div>
         <div class="story-reading-body" id="history-reading-body"></div>
+        <div class="tts-bar" id="history-tts-bar">
+          <button class="tts-read-btn" id="history-tts-read-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Read to me
+          </button>
+          <div class="tts-controls hidden" id="history-tts-controls">
+            <div class="tts-action-row">
+              <button class="tts-action-btn" id="history-tts-playpause" type="button" aria-label="Pause reading">⏸ Pause</button>
+              <button class="tts-action-btn tts-stop-btn" id="history-tts-stop" type="button" aria-label="Stop reading">⏹ Stop</button>
+            </div>
+            <div class="tts-speed-group" role="group" aria-label="Reading speed">
+              <span class="tts-speed-label">Speed:</span>
+              <button class="tts-speed-btn" data-rate="0.5" type="button">0.5×</button>
+              <button class="tts-speed-btn" data-rate="0.75" type="button">0.75×</button>
+              <button class="tts-speed-btn tts-speed-active" data-rate="1" type="button">1×</button>
+              <button class="tts-speed-btn" data-rate="1.25" type="button">1.25×</button>
+              <button class="tts-speed-btn" data-rate="1.5" type="button">1.5×</button>
+            </div>
+          </div>
+        </div>
         <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
         <button class="quiz-start-btn quiz-primary-start-btn" id="history-quiz-btn">
           Quiz me on this article
@@ -417,6 +457,26 @@
           <h2 class="story-reading-title" id="news-reading-title">Today's News</h2>
         </div>
         <div class="story-reading-body" id="news-reading-body"></div>
+        <div class="tts-bar" id="news-tts-bar">
+          <button class="tts-read-btn" id="news-tts-read-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Read to me
+          </button>
+          <div class="tts-controls hidden" id="news-tts-controls">
+            <div class="tts-action-row">
+              <button class="tts-action-btn" id="news-tts-playpause" type="button" aria-label="Pause reading">⏸ Pause</button>
+              <button class="tts-action-btn tts-stop-btn" id="news-tts-stop" type="button" aria-label="Stop reading">⏹ Stop</button>
+            </div>
+            <div class="tts-speed-group" role="group" aria-label="Reading speed">
+              <span class="tts-speed-label">Speed:</span>
+              <button class="tts-speed-btn" data-rate="0.5" type="button">0.5×</button>
+              <button class="tts-speed-btn" data-rate="0.75" type="button">0.75×</button>
+              <button class="tts-speed-btn tts-speed-active" data-rate="1" type="button">1×</button>
+              <button class="tts-speed-btn" data-rate="1.25" type="button">1.25×</button>
+              <button class="tts-speed-btn" data-rate="1.5" type="button">1.5×</button>
+            </div>
+          </div>
+        </div>
         <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means.</p>
         <button class="quiz-start-btn quiz-primary-start-btn" id="news-quiz-btn">
           Done reading — quiz me!
