@@ -161,8 +161,7 @@
   }
 
   function ttsStop() {
-    if (!('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     ttsPlaying = false;
     ttsClearActive();
     if (ttsCurrentBar) {
