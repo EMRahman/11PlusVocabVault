@@ -98,28 +98,60 @@
     var enVoices = voices.filter(function (v) { return /^en/i.test(v.lang); });
     if (enVoices.length === 0) return;
 
+    // Lower score = higher quality. Neural/Natural/Online voices are markedly
+    // better than standard browser voices on Windows (Microsoft) and Mac (Siri).
+    function voiceScore(v) {
+      var isNatural = /natural|neural|online/i.test(v.name);
+      var isGB = /^en-GB/i.test(v.lang);
+      var isUS = /^en-US/i.test(v.lang);
+      if (isNatural && isGB) return 0;
+      if (isNatural && isUS) return 1;
+      if (isNatural)         return 2;
+      if (isGB)              return 3;
+      if (isUS)              return 4;
+      return 5;
+    }
+
+    function voiceDisplayName(v) {
+      var isNatural = /natural|neural|online/i.test(v.name);
+      var n = v.name
+        .replace(/^Microsoft\s+/i, '')
+        .replace(/\s+Online\s*\(Natural\)/i, '')
+        .replace(/\s+Online\b/i, '')
+        .replace(/\s+Neural\b/i, '')
+        .replace(/\s+-\s+English[^)]*$/i, '');
+      return (isNatural ? '★ ' : '') + n + ' (' + v.lang + ')';
+    }
+
     enVoices.sort(function (a, b) {
-      var rank = function (v) { return /^en-GB/i.test(v.lang) ? 0 : /^en-US/i.test(v.lang) ? 1 : 2; };
-      var diff = rank(a) - rank(b);
+      var diff = voiceScore(a) - voiceScore(b);
       return diff !== 0 ? diff : a.name.localeCompare(b.name);
     });
 
-    var savedName = localStorage.getItem(TTS_VOICE_KEY) || '';
+    // null = never set (first visit); '' = user explicitly chose Default
+    var savedName    = localStorage.getItem(TTS_VOICE_KEY);
+    var isFirstVisit = savedName === null;
+    var bestVoice    = enVoices[0];
 
     allVoiceSelectEls.forEach(function (sel) {
-      var prev = sel.value || savedName;
-      sel.innerHTML = '<option value="">Default</option>';
+      var target = isFirstVisit ? bestVoice.name : (savedName || '');
+      sel.innerHTML = '<option value="">Default (browser)</option>';
       enVoices.forEach(function (v) {
         var opt = document.createElement('option');
         opt.value = v.name;
-        opt.textContent = v.name + ' (' + v.lang + ')';
+        opt.textContent = voiceDisplayName(v);
         sel.appendChild(opt);
       });
-      sel.value = prev;
-      if (!sel.value) sel.value = '';
+      sel.value = target;
+      if (!sel.value) sel.value = isFirstVisit ? bestVoice.name : '';
     });
 
-    ttsVoice = enVoices.find(function (v) { return v.name === savedName; }) || null;
+    var targetName = isFirstVisit ? bestVoice.name : (savedName || '');
+    ttsVoice = enVoices.find(function (v) { return v.name === targetName; }) || (isFirstVisit ? bestVoice : null);
+
+    if (isFirstVisit && ttsVoice) {
+      try { localStorage.setItem(TTS_VOICE_KEY, ttsVoice.name); } catch (e) {}
+    }
   }
 
   function ttsActivateWord(idx) {
