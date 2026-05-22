@@ -7,6 +7,8 @@
 
   // ── View counts (persisted in localStorage) ────────────────────────────────
   var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
+  var TTS_VOICE_KEY   = '11plus-tts-voice';
+  var TTS_PITCH_KEY   = '11plus-tts-pitch';
   var viewCounts = {};
 
   function loadViewCounts() {
@@ -74,17 +76,51 @@
       var utter = new SpeechSynthesisUtterance(word);
       utter.lang = 'en-GB';
       utter.rate = 0.9;
-      utter.pitch = 1;
+      utter.pitch = ttsPitch;
+      if (ttsVoice) utter.voice = ttsVoice;
       window.speechSynthesis.speak(utter);
     } catch (e) {}
   }
 
   // ── TTS read-along ────────────────────────────────────────────────────────
-  var ttsWordData   = null;   // {fullText, words:[{el,start,end}]}
-  var ttsPlaying    = false;
-  var ttsRate       = 1.0;
-  var ttsActiveIdx  = -1;
-  var ttsCurrentBar = null;   // {readBtn, controls, playPauseBtn}
+  var ttsWordData       = null;   // {fullText, words:[{el,start,end}]}
+  var ttsPlaying        = false;
+  var ttsRate           = 1.0;
+  var ttsActiveIdx      = -1;
+  var ttsCurrentBar     = null;   // {readBtn, controls, playPauseBtn}
+  var ttsVoice          = null;   // SpeechSynthesisVoice | null
+  var ttsPitch          = 1.0;
+  var allVoiceSelectEls = [];     // one per TTS bar, kept in sync
+
+  function loadVoices() {
+    if (!('speechSynthesis' in window)) return;
+    var voices = window.speechSynthesis.getVoices();
+    var enVoices = voices.filter(function (v) { return /^en/i.test(v.lang); });
+    if (enVoices.length === 0) return;
+
+    enVoices.sort(function (a, b) {
+      var rank = function (v) { return /^en-GB/i.test(v.lang) ? 0 : /^en-US/i.test(v.lang) ? 1 : 2; };
+      var diff = rank(a) - rank(b);
+      return diff !== 0 ? diff : a.name.localeCompare(b.name);
+    });
+
+    var savedName = localStorage.getItem(TTS_VOICE_KEY) || '';
+
+    allVoiceSelectEls.forEach(function (sel) {
+      var prev = sel.value || savedName;
+      sel.innerHTML = '<option value="">Default</option>';
+      enVoices.forEach(function (v) {
+        var opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name + ' (' + v.lang + ')';
+        sel.appendChild(opt);
+      });
+      sel.value = prev;
+      if (!sel.value) sel.value = '';
+    });
+
+    ttsVoice = enVoices.find(function (v) { return v.name === savedName; }) || null;
+  }
 
   function ttsActivateWord(idx) {
     if (ttsActiveIdx >= 0 && ttsWordData && ttsWordData.words[ttsActiveIdx]) {
@@ -124,7 +160,8 @@
     var utter = new SpeechSynthesisUtterance(ttsWordData.fullText);
     utter.lang = 'en-GB';
     utter.rate = ttsRate;
-    utter.pitch = 1.0;
+    utter.pitch = ttsPitch;
+    if (ttsVoice) utter.voice = ttsVoice;
     utter.onboundary = function (evt) {
       if (evt.name !== 'word') return;
       var ci = evt.charIndex;
@@ -170,8 +207,36 @@
     }
   }
 
-  function initTTSBar(readBtnEl, controlsEl, playPauseBtnEl, stopBtnEl, speedBtnList) {
+  function initTTSBar(readBtnEl, controlsEl, playPauseBtnEl, stopBtnEl, speedBtnList, voiceSelectEl, pitchBtnList) {
     var bar = { readBtn: readBtnEl, controls: controlsEl, playPauseBtn: playPauseBtnEl };
+
+    if (voiceSelectEl) {
+      allVoiceSelectEls.push(voiceSelectEl);
+      loadVoices();
+      voiceSelectEl.addEventListener('change', function () {
+        var name = voiceSelectEl.value;
+        var voices = window.speechSynthesis.getVoices();
+        ttsVoice = voices.find(function (v) { return v.name === name; }) || null;
+        try { localStorage.setItem(TTS_VOICE_KEY, name); } catch (e) {}
+        allVoiceSelectEls.forEach(function (sel) { if (sel !== voiceSelectEl) sel.value = name; });
+        if (ttsCurrentBar) { ttsStop(); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
+      });
+    }
+
+    if (pitchBtnList && pitchBtnList.length) {
+      forEachNode(pitchBtnList, function (btn) {
+        btn.addEventListener('click', function () {
+          var pitch = parseFloat(btn.dataset.pitch);
+          if (isNaN(pitch)) return;
+          ttsPitch = pitch;
+          try { localStorage.setItem(TTS_PITCH_KEY, String(pitch)); } catch (e) {}
+          document.querySelectorAll('.tts-pitch-btn').forEach(function (b) {
+            b.classList.toggle('tts-speed-active', b.dataset.pitch === btn.dataset.pitch);
+          });
+          if (ttsCurrentBar) { ttsStop(); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
+        });
+      });
+    }
 
     readBtnEl.addEventListener('click', function () {
       ttsStop();
@@ -1998,7 +2063,9 @@
       document.getElementById('story-tts-controls'),
       document.getElementById('story-tts-playpause'),
       document.getElementById('story-tts-stop'),
-      document.querySelectorAll('#story-tts-controls .tts-speed-btn')
+      document.querySelectorAll('#story-tts-controls .tts-speed-btn'),
+      document.getElementById('story-tts-voice'),
+      document.querySelectorAll('#story-tts-controls .tts-pitch-btn')
     );
 
     fetch('data/stories.json')
@@ -2228,7 +2295,9 @@
       document.getElementById('history-tts-controls'),
       document.getElementById('history-tts-playpause'),
       document.getElementById('history-tts-stop'),
-      document.querySelectorAll('#history-tts-controls .tts-speed-btn')
+      document.querySelectorAll('#history-tts-controls .tts-speed-btn'),
+      document.getElementById('history-tts-voice'),
+      document.querySelectorAll('#history-tts-controls .tts-pitch-btn')
     );
 
     fetch('data/history.json')
@@ -2601,8 +2670,25 @@
       document.getElementById('news-tts-controls'),
       document.getElementById('news-tts-playpause'),
       document.getElementById('news-tts-stop'),
-      document.querySelectorAll('#news-tts-controls .tts-speed-btn')
+      document.querySelectorAll('#news-tts-controls .tts-speed-btn'),
+      document.getElementById('news-tts-voice'),
+      document.querySelectorAll('#news-tts-controls .tts-pitch-btn')
     );
   }
+
+  // ── TTS voice/pitch init ──────────────────────────────────────────────────
+  (function () {
+    var savedPitch = parseFloat(localStorage.getItem(TTS_PITCH_KEY));
+    if (!isNaN(savedPitch)) {
+      ttsPitch = savedPitch;
+      var savedStr = String(savedPitch);
+      document.querySelectorAll('.tts-pitch-btn').forEach(function (b) {
+        b.classList.toggle('tts-speed-active', b.dataset.pitch === savedStr);
+      });
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+    }
+  }());
 
 })();

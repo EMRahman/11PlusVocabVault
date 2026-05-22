@@ -1891,6 +1891,34 @@ footer {
   color: var(--color-primary-dark);
 }
 
+/* ── TTS voice picker ───────────────────────────────────────────────────── */
+.tts-voice-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.tts-voice-select {
+  font-family: var(--font-family);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: var(--color-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  max-width: 200px;
+  transition: border-color var(--transition);
+}
+
+.tts-voice-select:focus,
+.tts-voice-select:hover {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
 /* ── TTS active word highlight ──────────────────────────────────────────── */
 .tts-word {
   /* wraps every word — invisible until active */
