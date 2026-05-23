@@ -83,10 +83,11 @@
   }
 
   // ── TTS read-along ────────────────────────────────────────────────────────
-  var ttsWordData       = null;   // {fullText, words:[{el,start,end}]}
+  var ttsWordData       = null;   // {fullText, words:[{el,start,end,sentenceIdx}], sentences:[[firstWordIdx,lastWordIdx],...], bar}
   var ttsPlaying        = false;
   var ttsRate           = 1.0;
   var ttsActiveIdx      = -1;
+  var ttsActiveSentence = -1;
   var ttsCurrentBar     = null;   // {readBtn, controls, playPauseBtn}
   var ttsVoice          = null;   // SpeechSynthesisVoice | null
   var ttsPitch          = 1.0;
@@ -154,15 +155,27 @@
     }
   }
 
+  function ttsSetActiveSentence(sIdx) {
+    if (sIdx === ttsActiveSentence) return;
+    if (ttsActiveSentence >= 0 && ttsWordData && ttsWordData.sentences[ttsActiveSentence]) {
+      ttsWordData.sentences[ttsActiveSentence].classList.remove('tts-sentence-active');
+    }
+    ttsActiveSentence = sIdx;
+    if (sIdx >= 0 && ttsWordData && ttsWordData.sentences[sIdx]) {
+      ttsWordData.sentences[sIdx].classList.add('tts-sentence-active');
+    }
+  }
+
   function ttsActivateWord(idx) {
     if (ttsActiveIdx >= 0 && ttsWordData && ttsWordData.words[ttsActiveIdx]) {
       ttsWordData.words[ttsActiveIdx].el.classList.remove('tts-active');
     }
     ttsActiveIdx = idx;
     if (idx >= 0 && ttsWordData && ttsWordData.words[idx]) {
-      var el = ttsWordData.words[idx].el;
-      el.classList.add('tts-active');
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      var w = ttsWordData.words[idx];
+      w.el.classList.add('tts-active');
+      ttsSetActiveSentence(typeof w.sentenceIdx === 'number' ? w.sentenceIdx : -1);
+      w.el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
     }
   }
 
@@ -171,6 +184,7 @@
       ttsWordData.words[ttsActiveIdx].el.classList.remove('tts-active');
     }
     ttsActiveIdx = -1;
+    ttsSetActiveSentence(-1);
   }
 
   function ttsBarShowIdle(bar) {
@@ -185,18 +199,20 @@
     bar.playPauseBtn.setAttribute('aria-label', playing ? 'Pause reading' : 'Resume reading');
   }
 
-  function ttsStart() {
+  function ttsStart(startChar) {
     if (!ttsWordData || !ttsWordData.fullText || !('speechSynthesis' in window)) return;
+    var offset = (typeof startChar === 'number' && startChar > 0) ? startChar : 0;
+    var textToSpeak = offset > 0 ? ttsWordData.fullText.slice(offset) : ttsWordData.fullText;
     window.speechSynthesis.cancel();
     ttsClearActive();
-    var utter = new SpeechSynthesisUtterance(ttsWordData.fullText);
+    var utter = new SpeechSynthesisUtterance(textToSpeak);
     utter.lang = 'en-GB';
     utter.rate = ttsRate;
     utter.pitch = ttsPitch;
     if (ttsVoice) utter.voice = ttsVoice;
     utter.onboundary = function (evt) {
       if (evt.name !== 'word') return;
-      var ci = evt.charIndex;
+      var ci = evt.charIndex + offset;
       var words = ttsWordData ? ttsWordData.words : [];
       for (var i = 0; i < words.length; i++) {
         if (ci >= words[i].start && ci < words[i].end) { ttsActivateWord(i); return; }
@@ -215,6 +231,32 @@
     };
     window.speechSynthesis.speak(utter);
     ttsPlaying = true;
+  }
+
+  function initTapToJump() {
+    document.addEventListener('click', function (e) {
+      if (!ttsWordData || !ttsWordData.container) return;
+      var span = closestByClass(e.target, 'tts-word');
+      if (!span) return;
+      if (!ttsWordData.container.contains(span)) return;
+      var words = ttsWordData.words;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].el === span) { ttsJumpToWord(i); return; }
+      }
+    });
+  }
+
+  function ttsJumpToWord(idx) {
+    if (!ttsWordData || !ttsWordData.words[idx]) return;
+    var bar = ttsCurrentBar || ttsWordData.bar;
+    if (!bar) return;
+    if (ttsCurrentBar && ttsCurrentBar !== bar) {
+      ttsBarShowIdle(ttsCurrentBar);
+    }
+    ttsCurrentBar = bar;
+    ttsBarShowActive(bar, true);
+    ttsStart(ttsWordData.words[idx].start);
+    ttsActivateWord(idx);
   }
 
   function ttsPause() {
@@ -300,6 +342,8 @@
         }
       });
     });
+
+    return bar;
   }
 
   var state = {
@@ -361,6 +405,7 @@
   function init() {
     loadViewCounts();
     loadMastery();
+    initTapToJump();
     fetch('data/words.json')
       .then(function (res) { return res.json(); })
       .then(function (data) {
@@ -1772,20 +1817,38 @@
     }
   }
 
-  function renderReadingBody(containerEl, paragraphs, featuredWords) {
+  function renderReadingBody(containerEl, paragraphs, featuredWords, ttsBar) {
     containerEl.innerHTML = '';
     var matcher = buildHighlightMatcher(featuredWords);
     var wordEntries = [];
+    var sentences = []; // array of <span class="tts-sentence"> wrapper elements
+    var sentenceIdx = -1;
+    var sentenceEl = null;
+    var startNewSentence = true;
     var offset = 0;
 
+    function openSentence(p) {
+      sentenceIdx += 1;
+      sentenceEl = document.createElement('span');
+      sentenceEl.className = 'tts-sentence';
+      sentences[sentenceIdx] = sentenceEl;
+      p.appendChild(sentenceEl);
+      startNewSentence = false;
+    }
+
     paragraphs.forEach(function (text, pIdx) {
-      if (pIdx > 0) offset += 1; // space separator between paragraphs in fullText
+      if (pIdx > 0) {
+        offset += 1; // space separator between paragraphs in fullText
+        startNewSentence = true;
+      }
       var p = document.createElement('p');
+      sentenceEl = null;
       var re = /([A-Za-z’'][A-Za-z’']*)|([^A-Za-z’']+)/g;
       var m;
       while ((m = re.exec(text)) !== null) {
         var token = m[0];
         if (m[1]) { // word token
+          if (startNewSentence || !sentenceEl) openSentence(p);
           var span = document.createElement('span');
           span.className = 'tts-word';
           span.textContent = token;
@@ -1802,17 +1865,47 @@
             span.setAttribute('aria-label', token + ' — tap for the meaning');
             span.dataset.glossWord = wObj.word;
           }
-          wordEntries.push({ el: span, start: offset, end: offset + token.length });
-          p.appendChild(span);
+          wordEntries.push({ el: span, start: offset, end: offset + token.length, sentenceIdx: sentenceIdx });
+          sentenceEl.appendChild(span);
         } else { // non-word token
-          p.appendChild(document.createTextNode(token));
+          var hasTerminator = /[.!?]/.test(token);
+          // Trailing whitespace after a terminator belongs to the gap between
+          // sentences — keep it outside the sentence wrapper so the highlight
+          // doesn't bleed past the punctuation.
+          if (hasTerminator) {
+            var splitMatch = token.match(/^([\s\S]*?[.!?]+["'’”)\]]*)([\s\S]*)$/);
+            if (splitMatch) {
+              var inside = splitMatch[1];
+              var outside = splitMatch[2];
+              if (sentenceEl) sentenceEl.appendChild(document.createTextNode(inside));
+              else p.appendChild(document.createTextNode(inside));
+              if (outside) p.appendChild(document.createTextNode(outside));
+            } else if (sentenceEl) {
+              sentenceEl.appendChild(document.createTextNode(token));
+            } else {
+              p.appendChild(document.createTextNode(token));
+            }
+            startNewSentence = true;
+          } else if (sentenceEl) {
+            sentenceEl.appendChild(document.createTextNode(token));
+          } else {
+            p.appendChild(document.createTextNode(token));
+          }
         }
         offset += token.length;
       }
       containerEl.appendChild(p);
     });
 
-    ttsWordData = { fullText: paragraphs.join(' '), words: wordEntries };
+    ttsActiveIdx = -1;
+    ttsActiveSentence = -1;
+    ttsWordData = {
+      fullText: paragraphs.join(' '),
+      words: wordEntries,
+      sentences: sentences,
+      bar: ttsBar || null,
+      container: containerEl
+    };
   }
 
   function ensureGloss() {
@@ -1896,6 +1989,7 @@
   var stories = [];
   var storyProgress = {};
   var currentStory = null;
+  var storyTTSBar = null;
 
   var storyLaunchBtn     = document.getElementById('story-launch-btn');
   var storyOverlay       = document.getElementById('story-overlay');
@@ -1998,7 +2092,7 @@
 
     storyReadingEmoji.textContent = story.emoji;
     storyReadingTitle.textContent = story.title;
-    renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story));
+    renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
     showStoryScreen(storyReadingScreen);
     storyReadingScreen.scrollTop = 0;
     storyBackBtn.focus();
@@ -2090,7 +2184,7 @@
       closeStoryOverlay();
     });
 
-    initTTSBar(
+    storyTTSBar = initTTSBar(
       document.getElementById('story-tts-read-btn'),
       document.getElementById('story-tts-controls'),
       document.getElementById('story-tts-playpause'),
@@ -2122,6 +2216,7 @@
   var historyArticles = [];
   var historyProgress = {};
   var currentArticle = null;
+  var historyTTSBar = null;
 
   var historyLaunchBtn      = document.getElementById('history-launch-btn');
   var historyOverlay        = document.getElementById('history-overlay');
@@ -2231,7 +2326,7 @@
     historyReadingEmoji.textContent = article.emoji;
     historyReadingEra.textContent = article.era;
     historyReadingTitle.textContent = article.title;
-    renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article));
+    renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article), historyTTSBar);
     showHistoryScreen(historyReadingScreen);
     historyReadingScreen.scrollTop = 0;
     historyBackBtn.focus();
@@ -2322,7 +2417,7 @@
       closeHistoryOverlay();
     });
 
-    initTTSBar(
+    historyTTSBar = initTTSBar(
       document.getElementById('history-tts-read-btn'),
       document.getElementById('history-tts-controls'),
       document.getElementById('history-tts-playpause'),
@@ -2353,6 +2448,7 @@
   var NEWS_KEY = 'vocabVault_dailyNews';
   var newsData = { wordCount: 10, streak: 0, lastCompletedDate: null, edition: null };
   var newsWords = [];
+  var newsTTSBar = null;
 
   var newsLaunchBtn      = document.getElementById('news-launch-btn');
   var newsOverlay        = document.getElementById('news-overlay');
@@ -2551,7 +2647,7 @@
       .map(function (p) { return stripMarkdown(p).trim(); })
       .filter(function (p) { return p.length; });
     if (!paragraphs.length) paragraphs = [stripMarkdown(text)];
-    renderReadingBody(newsReadingBody, paragraphs, newsWords);
+    renderReadingBody(newsReadingBody, paragraphs, newsWords, newsTTSBar);
   }
 
   function showNewsScreen(screenEl) {
@@ -2697,7 +2793,7 @@
       closeNewsOverlay();
     });
 
-    initTTSBar(
+    newsTTSBar = initTTSBar(
       document.getElementById('news-tts-read-btn'),
       document.getElementById('news-tts-controls'),
       document.getElementById('news-tts-playpause'),

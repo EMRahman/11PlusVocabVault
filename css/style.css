@@ -1922,6 +1922,27 @@ footer {
 /* ── TTS active word highlight ──────────────────────────────────────────── */
 .tts-word {
   /* wraps every word — invisible until active */
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.tts-word:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+}
+
+.tts-sentence {
+  /* wraps each sentence — invisible until active */
+  border-radius: 6px;
+  transition: background var(--transition);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.tts-sentence.tts-sentence-active {
+  background: #EFF6FF;
+  padding: 0.1em 0.15em;
+  margin: 0 -0.15em;
 }
 
 .tts-word.tts-active {
