@@ -88,6 +88,7 @@
   var ttsRate           = 1.0;
   var ttsActiveIdx      = -1;
   var ttsActiveSentence = -1;
+  var ttsActiveUtter    = null;   // SpeechSynthesisUtterance currently driving the bar
   var ttsCurrentBar     = null;   // {readBtn, controls, playPauseBtn}
   var ttsVoice          = null;   // SpeechSynthesisVoice | null
   var ttsPitch          = 1.0;
@@ -199,10 +200,22 @@
     bar.playPauseBtn.setAttribute('aria-label', playing ? 'Pause reading' : 'Resume reading');
   }
 
+  function ttsDetachActiveUtter() {
+    if (!ttsActiveUtter) return;
+    // speechSynthesis.cancel() fires onend (or onerror) asynchronously for the
+    // pending utterance. Detach handlers so the stale callback can't flip the
+    // bar back to idle after we've already started a new utterance.
+    ttsActiveUtter.onend = null;
+    ttsActiveUtter.onerror = null;
+    ttsActiveUtter.onboundary = null;
+    ttsActiveUtter = null;
+  }
+
   function ttsStart(startChar) {
     if (!ttsWordData || !ttsWordData.fullText || !('speechSynthesis' in window)) return;
     var offset = (typeof startChar === 'number' && startChar > 0) ? startChar : 0;
     var textToSpeak = offset > 0 ? ttsWordData.fullText.slice(offset) : ttsWordData.fullText;
+    ttsDetachActiveUtter();
     window.speechSynthesis.cancel();
     ttsClearActive();
     var utter = new SpeechSynthesisUtterance(textToSpeak);
@@ -220,15 +233,20 @@
       }
     };
     utter.onend = function () {
+      if (utter !== ttsActiveUtter) return;
+      ttsActiveUtter = null;
       ttsClearActive();
       ttsPlaying = false;
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
     };
     utter.onerror = function () {
+      if (utter !== ttsActiveUtter) return;
+      ttsActiveUtter = null;
       ttsClearActive();
       ttsPlaying = false;
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
     };
+    ttsActiveUtter = utter;
     window.speechSynthesis.speak(utter);
     ttsPlaying = true;
   }
@@ -272,6 +290,7 @@
   }
 
   function ttsStop() {
+    ttsDetachActiveUtter();
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     ttsPlaying = false;
     ttsClearActive();
