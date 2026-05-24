@@ -494,8 +494,8 @@
   <!-- Proverbs Mode overlay -->
   <div id="proverbs-overlay" class="modal-overlay hidden" aria-hidden="true">
 
-    <!-- Library screen -->
-    <div id="proverbs-library-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="proverbs-library-title">
+    <!-- Culture picker screen -->
+    <div id="proverbs-culture-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="proverbs-culture-title">
       <button class="close-btn" id="proverbs-close-btn" aria-label="Close proverbs mode">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -503,8 +503,21 @@
       </button>
       <div class="quiz-setup-inner">
         <span class="quiz-setup-emoji" aria-hidden="true">🪶</span>
+        <h2 id="proverbs-culture-title" class="quiz-setup-title">Proverbs Mode</h2>
+        <p class="quiz-setup-subtitle">Wisdom from around the world — choose a tradition to explore.</p>
+        <div id="proverbs-cultures" class="story-list history-list"></div>
+      </div>
+    </div>
+
+    <!-- Library screen -->
+    <div id="proverbs-library-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="proverbs-library-title">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="proverbs-library-back-btn" type="button" aria-label="Back to traditions">← Traditions</button>
+      </div>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true" id="proverbs-library-emoji">🪶</span>
         <h2 id="proverbs-library-title" class="quiz-setup-title">Proverbs Mode</h2>
-        <p class="quiz-setup-subtitle">Wisdom from around the world — meet vocabulary woven through famous sayings.</p>
+        <p class="quiz-setup-subtitle" id="proverbs-library-subtitle">Wisdom from around the world — meet vocabulary woven through famous sayings.</p>
         <div id="proverbs-list" class="story-list history-list"></div>
       </div>
     </div>
