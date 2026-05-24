@@ -38,95 +38,6 @@
       ]
     },
     {
-      "id": "jp-impermanence",
-      "title": "Cherry Blossoms in the Wind",
-      "emoji": "🌸",
-      "culture": "Japanese",
-      "blurb": "Sayings that find beauty in things that fade — the heart of Japanese aesthetics.",
-      "words": ["Ephemeral", "Fragile", "Delicate", "Faded", "Wistful", "Melancholy", "Glistening", "Blossom", "Shimmering", "Tranquil"],
-      "proverbs": [
-        {
-          "native": "侘寂",
-          "lang": "ja",
-          "romanisation": "Wabi-sabi",
-          "translation": "Beauty in imperfection and impermanence.",
-          "meaning": "A cracked teacup, a weathered fence, a flower past its peak — these too are beautiful."
-        },
-        {
-          "native": "物の哀れ",
-          "lang": "ja",
-          "romanisation": "Mono no aware",
-          "translation": "The gentle sadness of passing things.",
-          "meaning": "The tender ache of knowing that lovely moments cannot last forever."
-        },
-        {
-          "native": "木漏れ日",
-          "lang": "ja",
-          "romanisation": "Komorebi",
-          "translation": "Sunlight filtering through leaves.",
-          "meaning": "A whole word for the shimmering, dappled light that dances on a forest floor."
-        },
-        {
-          "native": "一期一会",
-          "lang": "ja",
-          "romanisation": "Ichi-go ichi-e",
-          "translation": "One time, one meeting.",
-          "meaning": "Every encounter is unique and will not come again, so treasure it now."
-        }
-      ],
-      "paragraphs": [
-        "Cherry blossom season in Japan lasts barely a week. The pink petals open, glow, and are blown away — fragile, fleeting and entirely ephemeral. Yet Japanese tradition treats this brief blossom not as a loss but as the very heart of beauty.",
-        "Wabi-sabi is the name given to this delicate idea. A cracked bowl, a faded paper screen, an old wooden bridge — all are loved for the marks time has left on them. Perfection is cold; the worn and the wistful feel alive.",
-        "Mono no aware adds a soft melancholy to the same thought: the bittersweet awareness that every glistening morning, every shimmering river, every warm afternoon is on its way to becoming a memory.",
-        "Komorebi captures one such moment in a single word — the sunlight tumbling through leaves in tranquil patches of light. Ichi-go ichi-e reminds us that this exact view, this exact friend, this exact afternoon will never come again.",
-        "Together these ideas teach a quiet lesson: look up now. The blossom will be gone tomorrow, and that is precisely why it is precious today."
-      ]
-    },
-    {
-      "id": "jp-purpose-craft",
-      "title": "A Reason to Rise Each Morning",
-      "emoji": "🍵",
-      "culture": "Japanese",
-      "blurb": "Sayings about purpose, craft and the steady joy of small improvements.",
-      "words": ["Devout", "Diligent", "Zealous", "Rigour", "Conviction", "Sufficient", "Neglect", "Thrifty", "Expertise", "Eager"],
-      "proverbs": [
-        {
-          "native": "生き甲斐",
-          "lang": "ja",
-          "romanisation": "Ikigai",
-          "translation": "A reason for being.",
-          "meaning": "The thing that makes you eager to get out of bed — where what you love, what you are good at, and what the world needs all meet."
-        },
-        {
-          "native": "改善",
-          "lang": "ja",
-          "romanisation": "Kaizen",
-          "translation": "Continuous improvement.",
-          "meaning": "Small, diligent changes every day add up to enormous progress over time."
-        },
-        {
-          "native": "初心",
-          "lang": "ja",
-          "romanisation": "Shoshin",
-          "translation": "Beginner's mind.",
-          "meaning": "Approach every task with the wide-eyed curiosity of someone trying it for the first time."
-        },
-        {
-          "native": "もったいない",
-          "lang": "ja",
-          "romanisation": "Mottainai",
-          "translation": "What a waste!",
-          "meaning": "A thrifty respect for the worth of things — food, water, time, opportunity — and a refusal to neglect them."
-        }
-      ],
-      "paragraphs": [
-        "Ikigai is a Japanese word for the small, devout flame that gives a life its purpose — the conviction that makes you eager to rise in the morning. It might be a craft, a person, a question, or a daily routine; whatever it is, it is enough.",
-        "Kaizen names the quiet engine that keeps that flame alive: diligent, almost invisible improvement, every single day. A potter shapes one more bowl. A footballer practises one more pass. The change is never dramatic, but the expertise grows steadily.",
-        "Even a master, the saying shoshin reminds us, should keep the curiosity of a beginner. The most zealous learners never assume they already know — they meet each lesson with fresh, attentive rigour.",
-        "Mottainai pulls the lesson down into everyday life. Don't waste rice. Don't waste paper. Don't waste a quiet afternoon. A thrifty heart refuses to neglect the small gifts in front of it, knowing they are sufficient."
-      ]
-    },
-    {
       "id": "cn-patience-persistence",
       "title": "Drop by Drop, the Stone Wears Through",
       "emoji": "💧",
@@ -246,121 +157,193 @@
       ]
     },
     {
-      "id": "in-truth-dharma",
-      "title": "Truth Alone Triumphs",
-      "emoji": "🕉️",
-      "culture": "Indian",
-      "blurb": "Sanskrit sayings on truth, non-violence and our shared world.",
-      "words": ["Conviction", "Virtuous", "Compassion", "Tolerant", "Belligerent", "Hostile", "Triumphant", "Collective", "Realm", "Sentiment"],
+      "id": "cn-know-enemy",
+      "title": "Know Yourself, Know Your Enemy",
+      "emoji": "🎯",
+      "culture": "Chinese",
+      "blurb": "Sun Tzu's lessons on preparation, self-knowledge and why the smartest fights are the ones you never have to finish.",
+      "words": ["Scout", "Espionage", "Vigilant", "Cautious", "Anticipation", "Scrutinise", "Insight", "Determined", "Resolute", "Perception"],
       "proverbs": [
         {
-          "native": "सत्यमेव जयते",
-          "lang": "sa",
-          "romanisation": "Satyameva Jayate",
-          "translation": "Truth alone triumphs.",
-          "meaning": "Even when lies are loud, truth quietly wins in the end. Now the motto of India."
+          "native": "知己知彼，百戰不殆",
+          "lang": "zh",
+          "romanisation": "Zhī jǐ zhī bǐ, bǎi zhàn bù dài",
+          "translation": "Know yourself and know your enemy; in a hundred battles you will not be imperilled.",
+          "meaning": "Knowing both your own weaknesses and your opponent's strengths is what separates strategy from guesswork. (Sun Tzu)"
         },
         {
-          "native": "अहिंसा परमो धर्मः",
-          "lang": "sa",
-          "romanisation": "Ahimsā paramo dharmaḥ",
-          "translation": "Non-violence is the highest virtue.",
-          "meaning": "To refuse to harm any living thing is the noblest path — a sentiment that shaped Gandhi's life."
+          "native": "兵者，詭道也",
+          "lang": "zh",
+          "romanisation": "Bīng zhě, guǐ dào yě",
+          "translation": "War is the art of deception.",
+          "meaning": "Competitions are rarely won by whoever tries hardest. They are won by whoever thinks most clearly and prepares most thoroughly. (Sun Tzu)"
         },
         {
-          "native": "वसुधैव कुटुम्बकम्",
-          "lang": "sa",
-          "romanisation": "Vasudhaiva Kuṭumbakam",
-          "translation": "The whole world is one family.",
-          "meaning": "Every person, in every realm, is a relative we have not yet met."
+          "native": "上兵伐謀",
+          "lang": "zh",
+          "romanisation": "Shàng bīng fá móu",
+          "translation": "The best strategy attacks the enemy's plans.",
+          "meaning": "If you can see what someone intends to do before they do it, you have already won half the contest. (Sun Tzu)"
         }
       ],
       "paragraphs": [
-        "Carved on India's national emblem are three Sanskrit words: Satyameva Jayate — truth alone triumphs. The line comes from an ancient Upanishad and carries a quiet conviction: however belligerent a lie may sound today, the truth will be standing when the shouting stops.",
-        "A second great sentiment runs alongside it: ahimsā paramo dharmaḥ, 'non-violence is the highest virtue.' To choose not to harm — not in word, not in deed, not even in thought — is treated as the most virtuous path a person can take. It was this idea, more than any other, that armed Mahatma Gandhi against an empire without a single weapon.",
-        "The third saying, vasudhaiva kuṭumbakam, widens the circle as far as it will go. The whole earthly realm, it says, is a single household. Strangers in a hostile country are still cousins; tolerant compassion across borders is not a luxury but a duty.",
-        "Taken together, these proverbs sketch a collective ideal: speak truthfully, harm no one, and treat the planet's people as kin. A demanding triumph — but a triumphant one."
+        "Two and a half thousand years ago, a Chinese general named Sun Tzu wrote a short book still read by military commanders, chess players, sports coaches and business leaders today. The Art of War begins not with courage or physical strength but with knowledge. Understanding the situation clearly — including your own blind spots — is the most decisive advantage anyone can have.",
+        "Know yourself and know your enemy, and in a hundred battles you will not be imperilled. This is a determined challenge. It asks: how well do you actually know your own weaknesses? Your own patterns under pressure? And how carefully do you scrutinise the skills of whoever you are competing against? Most people do one of these things. The truly resolute competitor does both.",
+        "Sun Tzu also says: war is deception. By war he means any serious contest. The scouts who watch from a distance, the general whose espionage gives them information before the battle begins — these are the ones who win. Insight gathered early, through cautious vigilance, is worth far more than ten times the effort once the contest has already started.",
+        "The third principle is the most elegant: the best strategy attacks the enemy's plans. If your anticipation and perception are good enough to see what someone intends before they do it, you can remove the threat before it ever fully arrives. This is the opposite of reacting — it is acting early, from knowledge.",
+        "Children who learn this way of thinking are not being taught to be dishonest. They are being taught to be observant and prepared. A team that knows how the opposing side plays and has a quiet plan ready has a real advantage — even before a ball has been kicked."
       ]
     },
     {
-      "id": "in-hospitality",
-      "title": "The Guest Is God",
-      "emoji": "🪔",
-      "culture": "Indian",
-      "blurb": "Sayings that turn welcoming a guest into a sacred act.",
-      "words": ["Hospitality", "Amiable", "Sociable", "Hearty", "Tender", "Lavish", "Domestic", "Devout", "Compassion", "Reassuring"],
+      "id": "cn-appear-weak",
+      "title": "Appear Weak When You Are Strong",
+      "emoji": "🎭",
+      "culture": "Chinese",
+      "blurb": "Sun Tzu's counter-intuitive lessons on concealment, timing and why the greatest victories are the ones you never had to fight for.",
+      "words": ["Concealed", "Shrouded", "Stealthy", "Subtle", "Evasive", "Clandestine", "Swift", "Ingenious", "Hesitant", "Conviction"],
       "proverbs": [
         {
-          "native": "अतिथि देवो भव",
-          "lang": "sa",
-          "romanisation": "Atithi Devo Bhava",
-          "translation": "The guest is god.",
-          "meaning": "Treat any visitor at your door as if a divine being had arrived."
+          "native": "能而示之不能",
+          "lang": "zh",
+          "romanisation": "Néng ér shì zhī bù néng",
+          "translation": "When able, appear unable.",
+          "meaning": "The person who reveals their real strengths is giving away information. A skilled competitor looks weaker than they are to draw out a careless opponent. (Sun Tzu)"
         },
         {
-          "native": "मातृ देवो भव",
-          "lang": "sa",
-          "romanisation": "Mātṛ Devo Bhava",
-          "translation": "The mother is god.",
-          "meaning": "From the same Taittiriya Upanishad — honour your mother as you would honour the divine."
+          "native": "不戰而屈人之兵，善之善者也",
+          "lang": "zh",
+          "romanisation": "Bù zhàn ér qū rén zhī bīng, shàn zhī shàn zhě yě",
+          "translation": "To subdue the enemy without fighting is the greatest skill.",
+          "meaning": "The best outcome is the one where your position was so obviously strong that the contest never needed to happen. (Sun Tzu)"
         },
         {
-          "native": "एकं सत् विप्रा बहुधा वदन्ति",
-          "lang": "sa",
-          "romanisation": "Ekaṃ sat viprā bahudhā vadanti",
-          "translation": "Truth is one; the wise call it by many names.",
-          "meaning": "Many religions and traditions reach for the same truth through different doors — so be tolerant."
+          "native": "兵貴勝，不貴久",
+          "lang": "zh",
+          "romanisation": "Bīng guì shèng, bù guì jiǔ",
+          "translation": "In any contest, what matters is winning; what does not matter is how long it lasts.",
+          "meaning": "A quick, decisive result is almost always better than a long, draining struggle. Save your strength for what comes next. (Sun Tzu)"
         }
       ],
       "paragraphs": [
-        "In many Indian homes a guest is greeted not merely with politeness, but with reverence. The ancient line atithi devo bhava — 'the guest is god' — turns hospitality into something almost devout. Even a stranger at the door is welcomed with an amiable smile and a hearty meal.",
-        "This is not about putting on a lavish show. It is about tender attention: the cushion plumped, the cup refilled, the conversation kept sociable and warm. A small kindness done with care can leave a guest feeling more honoured than any expensive gift.",
-        "The same passage of the Taittiriya Upanishad also says mātṛ devo bhava — 'the mother is god.' Domestic love, the kind that quietly feeds and watches over us, is treated as one of the most sacred bonds a person can know.",
-        "A third saying widens this circle of welcome to ideas themselves: ekaṃ sat viprā bahudhā vadanti — 'truth is one; the wise call it by many names.' To open the door to a different belief is its own act of compassion, a reassuring reminder that we are reaching, in different languages, for the same light."
+        "Sun Tzu was fascinated by appearances — specifically the gap between how things look and how they actually are. His most counter-intuitive instruction is this: when you are strong, appear weak. When you are ready, appear hesitant. The goal is to keep your real position concealed for as long as possible, so the opponent commits before they know what they are facing.",
+        "This is not dishonesty for its own sake. An opponent who believes you are struggling will become careless. They will over-commit too early, revealing their own clandestine plans while yours remain shrouded. The stealthy, patient competitor who lets others underestimate them is using this principle every time. The result looks like a surprise — but it was planned.",
+        "To subdue the enemy without fighting is the best skill of all. This disturbed some of Sun Tzu's original readers. Was the general suggesting cowardice? No — something more subtle and ingenious: a position so obviously strong that the opponent decided not to fight. The victory that never needed to happen is the most efficient victory of all.",
+        "The third principle is swift and practical: win quickly. A long contest drains both sides. The conviction to act decisively at the right moment, after careful preparation, is worth far more than endless evasive back-and-forth. When the moment comes, act with speed and purpose.",
+        "Children use this well at its best. The debater who looks uncertain at the start and then delivers a well-prepared conclusion. The sports team that hides its best tactic until it counts. These are not tricks — they are strategy. Looking weak when strong is a skill that takes patience and practice to develop."
       ]
     },
     {
-      "id": "in-karma-action",
-      "title": "As the Seed, So the Fruit",
-      "emoji": "🌱",
-      "culture": "Indian",
-      "blurb": "Sayings on karma — that actions, large and small, shape the life that follows.",
-      "words": ["Legacy", "Successive", "Rectify", "Compensate", "Acknowledge", "Mandate", "Compel", "Conviction", "Provision", "Resolute"],
+      "id": "cn-clear-rules",
+      "title": "Rewards and Punishments Must Be Clear",
+      "emoji": "📐",
+      "culture": "Chinese",
+      "blurb": "Han Feizi's unsentimental lessons on why consistent rules applied equally to everyone are what actually hold any group together.",
+      "words": ["Lawful", "Mandate", "Convention", "Discriminate", "Acknowledge", "Compel", "Rebuke", "Deterrent", "Hierarchy", "Allocate"],
       "proverbs": [
         {
-          "native": "कर्म",
-          "lang": "sa",
-          "romanisation": "Karma",
-          "translation": "Action — and its consequences.",
-          "meaning": "Every deed, kind or cruel, plants a seed. The harvest comes in its own time."
+          "native": "賞罰分明",
+          "lang": "zh",
+          "romanisation": "Shǎng fá fēn míng",
+          "translation": "Rewards and punishments must be clearly divided.",
+          "meaning": "Any group works best when the rules are the same for everyone and the results of following or breaking them are entirely predictable."
         },
         {
-          "native": "योगः कर्मसु कौशलम्",
-          "lang": "sa",
-          "romanisation": "Yogaḥ karmasu kauśalam",
-          "translation": "Yoga is skill in action.",
-          "meaning": "True mastery is doing the right thing in the right way, with calm attention. (Bhagavad Gita)"
+          "native": "法不阿貴",
+          "lang": "zh",
+          "romanisation": "Fǎ bù ē guì",
+          "translation": "The law does not flatter the noble.",
+          "meaning": "Rules that bend for the powerful are not rules — they are decoration. Real order requires that nobody is above the system. (Han Feizi)"
         },
         {
-          "native": "यथा बीजं तथा फलम्",
-          "lang": "sa",
-          "romanisation": "Yathā bījaṃ tathā phalam",
-          "translation": "As the seed, so the fruit.",
-          "meaning": "You reap what you sow — kindness grows more kindness, harm grows more harm."
-        },
-        {
-          "native": "मनसा वाचा कर्मणा",
-          "lang": "sa",
-          "romanisation": "Manasā vācā karmaṇā",
-          "translation": "In thought, word and deed.",
-          "meaning": "Three places where your character is built: what you think, what you say, and what you do."
+          "native": "信賞必罰",
+          "lang": "zh",
+          "romanisation": "Xìn shǎng bì fá",
+          "translation": "Trustworthy rewards, certain punishments.",
+          "meaning": "People follow rules consistently only when they believe the consequences are real — for good work and for bad."
         }
       ],
       "paragraphs": [
-        "Karma is one of the most famous Sanskrit words in the world, and one of the most misunderstood. It does not mean instant punishment from a watchful sky. It simply means action — and the long, successive consequences every action sets in motion.",
-        "The Bhagavad Gita refines this into a single beautiful line: yogaḥ karmasu kauśalam, 'yoga is skill in action.' Doing things well, with steady attention and resolute conviction, is itself a spiritual practice. There is no mandate to retreat from the world; the work is the path.",
-        "Yathā bījaṃ tathā phalam — 'as the seed, so the fruit' — is the gardener's version of the same truth. The provisions you plant today decide tomorrow's harvest. A small daily kindness compounds; so does a small daily cruelty.",
-        "Manasā vācā karmaṇā widens the lens once more: thought, word and deed. Karma is shaped not only by what we do, but by what we say and even by what we let ourselves think. When we slip, we acknowledge it and rectify; when we are wronged, we do not compel revenge but quietly compensate with better deeds. That, slowly, is how a worthy legacy is built."
+        "Around 300 BC, a Chinese thinker named Han Feizi wrote one of the most unsentimental books about leadership ever produced. He was not interested in whether rulers were kind or virtuous. He was interested in what actually made a society stable. His answer was simple: clear rules, applied to everyone, with reliable consequences.",
+        "Rewards and punishments must be clearly divided. This sounds obvious — but Han Feizi was pointing at something every group tends to get wrong. Allocating rewards to friends while directing rebuke only at enemies destroys trust from within. If people cannot predict what will happen when they follow or break the rules, they stop believing in those rules at all.",
+        "The law does not flatter the noble. In a society built on strict hierarchy, this was a radical idea. Han Feizi argued that a lawful system must compel the same standard from a powerful minister as from an ordinary person. The most important person in the hierarchy should face the same deterrent consequence for breaking a rule as the least important one. Anything else is not law — it is just power.",
+        "Trustworthy rewards, certain punishments. People will not follow a convention they do not believe in. If good work goes without acknowledgement, good work stops. If bad behaviour is regularly excused, it spreads. Consistency is not cruelty — it is the only thing that makes any mandate fair enough to be worth following.",
+        "These ideas reach far beyond ancient China. Every classroom, every sports team and every family runs into Han Feizi's principles eventually. The rules do not have to be strict to be fair. They just have to be real, and they have to discriminate between good and poor behaviour the same way every single time."
+      ]
+    },
+    {
+      "id": "cn-rolling-stone",
+      "title": "Stones Rolling Down the Mountain",
+      "emoji": "🏔️",
+      "culture": "Chinese",
+      "blurb": "Sun Tzu on momentum, positioning and why where you stand before the contest begins is often more important than how hard you fight.",
+      "words": ["Apex", "Plateau", "Surged", "Towering", "Successive", "Vault", "Persistent", "Determined", "Looming", "Lurched"],
+      "proverbs": [
+        {
+          "native": "激水之疾，至於漂石者，勢也",
+          "lang": "zh",
+          "romanisation": "Jī shuǐ zhī jí, zhì yú piāo shí zhě, shì yě",
+          "translation": "The speed of rushing water that carries boulders — this is momentum.",
+          "meaning": "At the right moment, even something small and fast can move what seems immovable. Position and timing create force that raw effort alone cannot. (Sun Tzu)"
+        },
+        {
+          "native": "求之於勢，不責於人",
+          "lang": "zh",
+          "romanisation": "Qiú zhī yú shì, bù zé yú rén",
+          "translation": "Seek victory in positioning, not in blame on individuals.",
+          "meaning": "If a team keeps failing, the problem is usually how things are set up — not which single person is at fault. Fix the structure. (Sun Tzu)"
+        },
+        {
+          "native": "故善戰者，如轉圓石於千仞之山者",
+          "lang": "zh",
+          "romanisation": "Gù shàn zhàn zhě, rú zhuǎn yuán shí yú qiān rèn zhī shān zhě",
+          "translation": "The skilled commander is like rolling round boulders from a towering mountain.",
+          "meaning": "Build your position patiently over time, and when you release it, the force is unstoppable. (Sun Tzu)"
+        }
+      ],
+      "paragraphs": [
+        "Sun Tzu was fascinated by a force he called shì — momentum or strategic advantage. The idea is that at the right moment, a well-positioned force can achieve far more than a stronger force at the wrong moment. He compared it to water: a trickle is harmless, but water moving fast enough from the right height can carry boulders downstream. The power comes not from the water itself but from the position it fell from.",
+        "The soldier who surged forward at the perfect moment, from a towering position of advantage, with surprise behind them, was not necessarily stronger than their opponent. They were in a better place at a better time, after more patient preparation. The looming advantage was built long before the contest began.",
+        "Seek victory in positioning, not in blame on individuals. If a team keeps losing or a project keeps lurching sideways, the reflex is to find someone to rebuke. Sun Tzu's persistent advice was different: look at the structure. Is everyone in the right place? A good position makes ordinary people effective. A bad one defeats even the most determined talent.",
+        "Every goal reached through successive small steps demonstrates this principle. The student who reaches the apex of a difficult exam does not vault there in a single night — they build to it steadily, from a plateau of daily preparation. By the time the test arrives, they have already climbed most of the mountain.",
+        "The lesson for children is simple: before forcing your way through a hard problem, ask whether you are in the right position. Have you built enough preparation? The patient, well-positioned approach is not slow. It is the one that rolls boulders."
+      ]
+    },
+    {
+      "id": "cn-lips-teeth",
+      "title": "When the Lips Are Gone, the Teeth Grow Cold",
+      "emoji": "🤝",
+      "culture": "Chinese",
+      "blurb": "Warring States wisdom on alliances, geography and the art of thinking several moves ahead before agreeing to anything.",
+      "words": ["Realm", "Domestic", "Hostile", "Belligerent", "Proximity", "Collective", "Allege", "Hierarchy", "Deterrent", "Vigilant"],
+      "proverbs": [
+        {
+          "native": "唇亡齒寒",
+          "lang": "zh",
+          "romanisation": "Chún wáng chǐ hán",
+          "translation": "When the lips are gone, the teeth grow cold.",
+          "meaning": "Neighbours who protect each other stay safe. When one is destroyed, the other is next. (Zuo Zhuan)"
+        },
+        {
+          "native": "遠交近攻",
+          "lang": "zh",
+          "romanisation": "Yuǎn jiāo jìn gōng",
+          "translation": "Befriend the distant; deal carefully with the near.",
+          "meaning": "An ally far away cannot easily threaten you. A powerful neighbour in close proximity almost always can. (Warring States strategy)"
+        },
+        {
+          "native": "假道伐虢",
+          "lang": "zh",
+          "romanisation": "Jiǎ dào fá Guó",
+          "translation": "Borrow a road to attack Guo.",
+          "meaning": "Beware the small favour requested by someone with larger plans. Letting a powerful force through your door once may mean you cannot close it again. (36 Stratagems)"
+        }
+      ],
+      "paragraphs": [
+        "During China's turbulent Warring States period, rulers of small kingdoms had to make constant, life-or-death decisions about who to side with and who to be wary of. From those centuries of hard calculation came some of the sharpest strategic proverbs in history — not about fighting bravely, but about thinking carefully before anyone drew a sword.",
+        "When the lips are gone, the teeth grow cold. This proverb comes from a story in which one small kingdom allowed a belligerent neighbour to march through its domestic territory to attack another realm. The warning was ignored. When the hostile army finished destroying the second kingdom, it turned around and took the first one too. Being vigilant about what you agree to — and who benefits from your cooperation — is not paranoia. It is basic self-preservation.",
+        "Befriend the distant; deal carefully with the near. A powerful ally on the other side of the world cannot easily project force into your daily affairs. A powerful neighbour in close proximity can, and eventually the temptation to do so grows. The lesson is not about personal friendship — it is about the realistic geometry of collective security.",
+        "The third proverb is the craftiest. In the original story, a powerful kingdom needed to cross a small kingdom's land to attack an enemy. They offered generous gifts and allege friendship. The small king accepted. The army marched through — then turned around and took the small kingdom on the return journey. A deterrent position, once given away for a small favour, is very difficult to recover.",
+        "For children, these proverbs are about thinking several steps ahead before agreeing to something. When someone asks for something small, a vigilant mind asks: what is the bigger picture here? Who benefits from my yes? The habit of watching for patterns — not just reacting to the immediate moment — is one of the most useful habits anyone can build."
       ]
     },
     {
@@ -514,7 +497,7 @@
       "paragraphs": [
         "When the Roman poet Horace wrote carpe diem — 'seize the day' — he was not telling his friend to throw a wild party. He was warning her that life is finite, ephemeral, and dishearteningly short, so the next opportune moment to live well is the one she is in right now.",
         "Generals returning to Rome in triumphant parades had a slave whispering memento mori in their ear — 'remember you will die.' Even at the very apex of glorious victory, they were reminded that they were still earthly, mortal and small. Pride had a leash on it.",
-        "Tempus fugit, 'time flies,' is the gentle cousin of the same lesson. The afternoon that felt endless when you were five has already faded into a wistful memory; the school year you have anticipation about will withered to a single photograph before you know it.",
+        "Tempus fugit, 'time flies,' is the gentle cousin of the same lesson. The afternoon that felt endless when you were five has already faded into a wistful memory; the school year you have anticipation about will be withered to a single photograph before you know it.",
         "Sic transit gloria mundi closes the thought with a solemn bow: thus passes the glory of the world. The Romans were not telling us to despair, but to choose carefully what we spend our short, eager lives chasing. Some flowers wilt the day they bloom; some, planted well, become orchards."
       ]
     },
@@ -600,231 +583,193 @@
       ]
     },
     {
-      "id": "wp-doubt-self",
-      "title": "I Think, Therefore I Am",
-      "emoji": "🧠",
-      "culture": "Western Philosophy",
-      "blurb": "Three short lines from the dawn of modern European thought — Descartes, Montaigne and Pascal on doubt, humility and the limits of reason.",
-      "words": ["Perplexed", "Hesitant", "Obscure", "Vague", "Lingered", "Muttered", "Astonished", "Bewildered", "Inscription", "Misinterpret"],
+      "id": "rm-money-smell",
+      "title": "Money Has No Smell",
+      "emoji": "💰",
+      "culture": "Roman",
+      "blurb": "Roman proverbs on wealth, resource management and the honest truth that money matters — however uncomfortable that is to say out loud.",
+      "words": ["Opulent", "Lavish", "Livelihood", "Provision", "Allocate", "Compensate", "Furnish", "Hierarchy", "Thrifty", "Sufficient"],
       "proverbs": [
         {
-          "native": "Cogito, ergo sum.",
+          "native": "Pecunia non olet",
           "lang": "la",
-          "romanisation": "Cogito, ergo sum.",
-          "translation": "I think, therefore I am.",
-          "meaning": "René Descartes' answer to total doubt. If I can question my own existence, there must be a 'me' doing the questioning."
+          "romanisation": "Pecunia non olet",
+          "translation": "Money does not smell.",
+          "meaning": "Emperor Vespasian's reply when his son objected to a tax on public toilets. Money does not carry the history of how it was earned — it is simply money."
         },
         {
-          "native": "Que sais-je?",
-          "lang": "fr",
-          "romanisation": "Que sais-je?",
-          "translation": "What do I know?",
-          "meaning": "Michel de Montaigne's lifelong motto, carved into a beam in his tower study. A wise person is always a little unsure of their own opinions."
-        },
-        {
-          "native": "Le cœur a ses raisons que la raison ne connaît point.",
-          "lang": "fr",
-          "romanisation": "Le cœur a ses raisons que la raison ne connaît point.",
-          "translation": "The heart has its reasons that reason knows nothing of.",
-          "meaning": "Blaise Pascal: love, courage and beauty are real even when no proof can be drawn on a page."
-        }
-      ],
-      "paragraphs": [
-        "Long before the modern world, a French thinker named René Descartes sat alone by a stove and decided to doubt everything. Could he be sure the world was real? Could he be sure his own hands existed? He grew bewildered by the size of the question and perplexed by every familiar thing he had once trusted.",
-        "In that obscure, foggy moment Descartes noticed one rock that would not slip: he was doing the doubting. If he could think, he must exist. He muttered the words to himself, then wrote them down — Cogito ergo sum, 'I think, therefore I am.' The inscription has lingered in textbooks ever since.",
-        "It is easy to misinterpret Descartes as a person who refused to trust anything. In truth, he doubted in order to build a stronger foundation, like a builder testing a beam before laying the first stone.",
-        "Earlier still, Michel de Montaigne carved a different motto into a wooden beam in his tower study: Que sais-je? — 'What do I know?' He believed a wise person should always be a little hesitant, a little astonished by their own opinions. Certainty, he warned, is often only a vague feeling dressed up in confident clothes.",
-        "Blaise Pascal added the gentlest line of the three: 'The heart has its reasons that reason knows nothing of.' Love, courage and beauty are real even when no proof can be drawn on a page — and admitting that is not weakness but wisdom."
-      ]
-    },
-    {
-      "id": "wp-reason-freedom",
-      "title": "Dare to Know",
-      "emoji": "💡",
-      "culture": "Western Philosophy",
-      "blurb": "Enlightenment mottos from Kant, Bacon and Voltaire about courage, knowledge and the right to speak your mind.",
-      "words": ["Illuminated", "Stimulate", "Ingenious", "Progressive", "Robust", "Prominent", "Defiant", "Resolution", "Forfeit", "Reluctant"],
-      "proverbs": [
-        {
-          "native": "Sapere aude!",
+          "native": "Lucri bonus est odor ex re qualibet",
           "lang": "la",
-          "romanisation": "Sapere aude!",
-          "translation": "Dare to know!",
-          "meaning": "Immanuel Kant's motto for the Enlightenment. Have the courage to use your own mind, instead of waiting for someone else to do your thinking for you."
+          "romanisation": "Lucri bonus est odor ex re qualibet",
+          "translation": "The smell of profit is good from any source.",
+          "meaning": "Juvenal's cutting observation that those who claim to be above money usually have their own private exceptions. (Juvenal, Satires)"
         },
         {
-          "native": "Scientia potestas est.",
+          "native": "Omnia Romae cum pretio",
           "lang": "la",
-          "romanisation": "Scientia potestas est.",
-          "translation": "Knowledge is power.",
-          "meaning": "Francis Bacon argued that studying the world carefully — its rocks, plants and diseases — would give ordinary people the tools to improve their lives."
-        },
-        {
-          "native": "Je désapprouve ce que vous dites, mais je défendrai votre droit de le dire.",
-          "lang": "fr",
-          "romanisation": "Je désapprouve ce que vous dites, mais je défendrai votre droit de le dire.",
-          "translation": "I disapprove of what you say, but I will defend your right to say it.",
-          "meaning": "A line written by Evelyn Beatrice Hall to summarise Voltaire's view of free speech. Disagreement does not cancel the right to be heard."
+          "romanisation": "Omnia Romae cum pretio",
+          "translation": "Everything in Rome has a price.",
+          "meaning": "In any large system — a city, a school, an institution — most things can be negotiated if you find the right currency: attention, effort, access, or money. (Juvenal)"
         }
       ],
       "paragraphs": [
-        "Three hundred years ago Europe stepped into what later thinkers called the Enlightenment — a great age in which reason and curiosity illuminated almost every corner of life. The German philosopher Immanuel Kant gave the movement its battle cry: Sapere aude — 'Dare to know.' Have the courage, he said, to use your own mind.",
-        "To Kant, too many people stayed reluctant their whole lives, asking priests, kings or newspapers to do their thinking for them. But true freedom begins the moment you make the bold resolution to ask questions yourself. A robust mind, like a robust body, only grows when you stimulate it with hard work.",
-        "In England, Francis Bacon had already announced an ingenious idea: 'Knowledge is power.' Studying the world carefully — its rocks, its plants, its diseases — would give ordinary people new and progressive tools to improve their lives. Science, he insisted, must be a prominent gift to humanity, not a secret hidden in dusty libraries.",
-        "In France the writer Voltaire became famous for defending opponents he disagreed with. The line later put in his mouth — 'I disapprove of what you say, but I will defend your right to say it' — became a defiant motto. Free speech is so precious, he believed, that no society should ever forfeit it for the sake of a quiet life.",
-        "Together these three thinkers handed the modern world a small, bright toolkit. Be curious. Be brave. Listen even to people you disagree with. The lamps they illuminated are still burning in every classroom that asks 'why?' instead of merely 'what?'."
+        "In ancient Rome, the emperor Vespasian introduced a tax on the city's public toilets. When his son complained that this was undignified, Vespasian held up one of the first coins and asked: does this smell? His son admitted it did not. Pecunia non olet — money has no smell. The line has lived for two thousand years because it pointed at something true that polite people prefer to leave unsaid.",
+        "What Vespasian identified is a practical reality: money separates from its history once it changes hands. The lavish meal on the table does not announce the debt taken on to furnish it. The opulent gift does not display what was sacrificed to afford it. What matters economically is not how the money was earned but how wisely it is now allocated.",
+        "The Roman poet Juvenal pressed the same observation with sharp humour: the smell of profit is good from any source. He was mocking wealthy Romans who lectured about virtue while quietly accepting profitable arrangements they would never mention in public. His point was not that all money is equal — it was that claiming otherwise while still taking it is a kind of performance.",
+        "Everything in Rome has a price is not a complaint but a map. In a large, complex hierarchy, resources, access and outcomes can almost always be influenced by finding the right currency. Sometimes that currency is money. Sometimes it is time, attention, loyalty or skill. A thrifty, clear-eyed person who understands this can compensate for many disadvantages.",
+        "For children, the lesson is not to become mercenary. It is to develop an honest, grown-up literacy about how resources work. A sufficient understanding of money — how it flows, what it opens, what it cannot buy — is not cynical. Pretending resources do not matter is a luxury that most people cannot afford."
       ]
     },
     {
-      "id": "wp-becoming-strong",
-      "title": "What Does Not Kill Me",
-      "emoji": "🔨",
-      "culture": "Western Philosophy",
-      "blurb": "Nietzsche, Camus and Sartre on hardship, freedom and the long task of becoming who you are.",
-      "words": ["Daunt", "Trepidation", "Stout", "Stubborn", "Forsake", "Forlorn", "Fraught", "Tempestuous", "Wretched", "Lament"],
+      "id": "rm-want-peace",
+      "title": "If You Want Peace, Prepare for War",
+      "emoji": "🛡️",
+      "culture": "Roman",
+      "blurb": "Roman military wisdom on deterrence, preparation and the uncomfortable truth that strength is what actually keeps the peace.",
+      "words": ["Deterrent", "Vigilant", "Cautious", "Resolute", "Stout", "Valiant", "Robust", "Conviction", "Anticipation", "Determined"],
       "proverbs": [
         {
-          "native": "Was mich nicht umbringt, macht mich stärker.",
-          "lang": "de",
-          "romanisation": "Was mich nicht umbringt, macht mich stärker.",
-          "translation": "What does not kill me makes me stronger.",
-          "meaning": "Friedrich Nietzsche. Hardship can be the chisel that carves a braver, stronger self — though only if we let it."
+          "native": "Si vis pacem, para bellum",
+          "lang": "la",
+          "romanisation": "Si vis pacem, para bellum",
+          "translation": "If you want peace, prepare for war.",
+          "meaning": "A well-prepared force deters attacks. Peace is not maintained by wishing for goodwill but by making conflict too costly to start. (Vegetius)"
         },
         {
-          "native": "Werde, der du bist.",
-          "lang": "de",
-          "romanisation": "Werde, der du bist.",
-          "translation": "Become who you are.",
-          "meaning": "Nietzsche's reworking of an older Greek line by the poet Pindar. Do not copy other people — grow into the unique self that is already quietly inside you."
+          "native": "Aut viam inveniam aut faciam",
+          "lang": "la",
+          "romanisation": "Aut viam inveniam aut faciam",
+          "translation": "I will find a way or make one.",
+          "meaning": "Attributed to Hannibal crossing the Alps. An obstacle is not a final answer — it is a problem waiting for someone resolute enough to solve it."
         },
         {
-          "native": "L'homme est condamné à être libre.",
-          "lang": "fr",
-          "romanisation": "L'homme est condamné à être libre.",
-          "translation": "Man is condemned to be free.",
-          "meaning": "Jean-Paul Sartre. No destiny is written for us — every choice we make is our own, which is both frightening and a gift."
+          "native": "Numquam periculum sine periculo vincitur",
+          "lang": "la",
+          "romanisation": "Numquam periculum sine periculo vincitur",
+          "translation": "Danger is never overcome without danger.",
+          "meaning": "Some problems can only be solved by entering the uncomfortable situation directly. There is no completely safe approach to difficult things. (Publilius Syrus)"
         }
       ],
       "paragraphs": [
-        "In a small Swiss village in 1888, a German philosopher named Friedrich Nietzsche wrote one of his most famous lines: 'What does not kill me makes me stronger.' He had lived a fraught and often lonely life, fighting illness and rejection, yet he refused to lament his fate. Suffering, he insisted, could be the chisel that carves a stout, brave soul.",
-        "Nietzsche's other great motto was 'Become who you are.' Do not imitate; do not forsake your own voice for a fashionable opinion. The world will try to daunt you with its rules and its mockery, but the stubborn task of every person is to grow into a self that is truly their own.",
-        "A century later the French writer Albert Camus looked at a wretched world after the Second World War — cities in ruins, friends lost, futures uncertain — and reached a similar conclusion. 'In the depth of winter,' he wrote, 'I finally learned that within me there lay an invincible summer.' Even on the most tempestuous days, something in us can stay warm.",
-        "Jean-Paul Sartre, Camus's friend and later rival, taught that we are 'condemned to be free.' At first that sounds forlorn — no one is coming to choose for you, no destiny is written. But it is also a gift. Every choice belongs to you, and every choice is a chance to become braver than yesterday.",
-        "Together these thinkers offer a useful trepidation cure: when life feels heavy, remember that you are also the sculptor. The hammer in your hand may ache, but it is shaping someone strong."
+        "Around 400 AD, a Roman military writer named Vegetius collected the lessons of Rome's centuries of warfare into a single manual. His most striking advice was also the simplest: si vis pacem, para bellum — if you want peace, prepare for war. The logic is honest: nobody willingly attacks a robust, well-prepared opponent. Peace is not maintained by hoping for goodwill. It is maintained by making conflict too costly to start.",
+        "The Romans built the famous Pax Romana — a long period of relative peace across an enormous empire — on exactly this principle. Legions trained continuously even in peacetime. Fortifications were maintained. The deterrent of a vigilant, determined army meant that many potential conflicts never happened at all. The preparation itself was the peace.",
+        "A valiant person who is genuinely prepared rarely has to fight, because opponents calculate their chances first. Cautious, stout preparation builds real confidence — not aggression — and a reputation for being ready is itself a powerful deterrent. You do not need to threaten anyone. You need only to be obviously capable.",
+        "I will find a way or make one. When Hannibal's army faced the Alps with no known pass, the response was not to turn back. The resolute conviction that obstacles are problems to be solved — not instructions to stop — is the spirit behind Rome's greatest engineering, its roads, its aqueducts, its bridges.",
+        "For children, this is about preparation rather than aggression. You do not avoid difficulty by staying small and quiet. You avoid it by building real capability, and the anticipation to think ahead. Preparation is the quietest form of strength — and usually the most effective."
       ]
     },
     {
-      "id": "pe-wound-light",
-      "title": "Where the Light Enters",
-      "emoji": "🌹",
-      "culture": "Persian",
-      "blurb": "Sufi poetry from Rumi and Hafez about pain, longing and the strange gift of a broken heart.",
-      "words": ["Luminous", "Radiant", "Glimmer", "Concealed", "Shrouded", "Yearned", "Serene", "Flourish", "Quivered", "Smouldering"],
+      "id": "rm-agreements-kept",
+      "title": "Agreements Must Be Kept",
+      "emoji": "📋",
+      "culture": "Roman",
+      "blurb": "The Roman law principles that still run through every modern contract, courtroom and promise — and why keeping your word is the foundation of every functioning relationship.",
+      "words": ["Lawful", "Mandate", "Convention", "Acknowledge", "Solemn", "Rite", "Inscription", "Compel", "Rebuke", "Sufficient"],
       "proverbs": [
         {
-          "native": "زخم همان جایی است که نور از آن وارد می‌شود.",
-          "lang": "fa",
-          "romanisation": "Zakhm hamān jāyī ast ke nūr az ān vāred mīshavad.",
-          "translation": "The wound is the place where the light enters you.",
-          "meaning": "A line widely attributed to Rumi. Hearts that have been broken open are also hearts that can let new light in."
+          "native": "Pacta sunt servanda",
+          "lang": "la",
+          "romanisation": "Pacta sunt servanda",
+          "translation": "Agreements must be kept.",
+          "meaning": "The bedrock of Roman contract law, still used in international treaties today. The whole system of trust rests on promises being honoured."
         },
         {
-          "native": "درد را درمان ز توست.",
-          "lang": "fa",
-          "romanisation": "Dard rā darmān ze tost.",
-          "translation": "The cure for the pain comes from you.",
-          "meaning": "Rumi taught that the very wound which hurts you also holds the medicine — if you look at it with patience."
+          "native": "Dura lex, sed lex",
+          "lang": "la",
+          "romanisation": "Dura lex, sed lex",
+          "translation": "The law is harsh, but it is the law.",
+          "meaning": "Consistent rules, even uncomfortable ones, produce more fairness in the long run than rules that bend for whoever is most powerful at the moment."
         },
         {
-          "native": "بشنو این نی چون حکایت می‌کند، از جدایی‌ها شکایت می‌کند.",
-          "lang": "fa",
-          "romanisation": "Beshno in nay chun hekāyat mīkonad, az jodāyīhā shekāyat mīkonad.",
-          "translation": "Listen to this reed-flute, how it tells its tale; how it complains of being separated.",
-          "meaning": "The famous opening of Rumi's Masnavi. The reed cries because it was cut from the reed bed — and that longing becomes music."
+          "native": "Ignorantia legis neminem excusat",
+          "lang": "la",
+          "romanisation": "Ignorantia legis neminem excusat",
+          "translation": "Ignorance of the law excuses no one.",
+          "meaning": "If rules can be dodged by claiming you did not know them, they stop being rules. Everyone is expected to know what the agreed standards are."
         }
       ],
       "paragraphs": [
-        "Eight hundred years ago, in the city of Konya, a Persian poet named Jalal ad-Din Rumi wrote a line that has comforted readers ever since: 'The wound is the place where the light enters you.' It is one of the most luminous ideas in all of Persian poetry.",
-        "Rumi did not deny that pain hurts. He had lost his dearest friend and yearned for him for years, sometimes in shrouded sorrow, sometimes in joyful song. But he taught that a heart that has been broken open is also a heart that can let new light in — gentle, serene and radiant.",
-        "This thought runs through almost every Persian Sufi poet. Hafez, who lived a hundred years after Rumi, wrote that 'the cure for pain is in the pain.' Whatever we keep concealed inside us only grows heavier. Speaking it, weeping it, even writing it as a poem is the first step toward letting the smouldering ember become a clean, warm flame.",
-        "Persian gardens were designed with this idea in mind. Water threaded through narrow channels, pools quivered in the breeze, and roses flourished beside cypress trees. The eye is meant to find one tiny glimmer of beauty, then another, and another, until even a tired traveller feels less alone.",
-        "To read Rumi as a child today is to be handed an old, kind permission: it is alright to ache, it is alright to long. The cracks let in the day."
+        "Rome's greatest gift to the modern world may not be its roads or its aqueducts — it is its law. Roman lawyers built a body of legal thinking so carefully argued and so practically tested that it still forms the foundation of legal systems across Europe and beyond. At the heart of it lies a solemn three-word mandate: pacta sunt servanda — agreements must be kept.",
+        "This is the engine of trust. When two people make a deal, sign a contract, or give their word, the entire value of that exchange rests on the convention that both will honour it. The Romans understood that trade across a vast empire was only possible if every merchant, governor and craftsman could rely on agreements being kept — by lawful enforcement if not by goodwill alone.",
+        "The law is harsh, but it is the law. A system that bends whenever someone powerful asks it to is not a system — it is just the authority of whoever happens to be in charge today. The inscription on every legal document was meant to carry the same weight whether you were a senator or an ordinary citizen. The compel to apply the same standard to everyone is what makes any legal system worth having.",
+        "Ignorance of the law excuses no one. If a rule can be avoided by claiming you were unaware of it, it only applies to the unlucky or the weak. For a sufficient legal system to work, everyone must acknowledge the same rules. No rebuke can be avoided simply by shrugging.",
+        "For children, these principles live in everyday promises. A rite as simple as 'I said I would do this, so I will' is the smallest version of pacta sunt servanda. The person who keeps their word consistently — even when it is inconvenient — builds a kind of trust that is extremely hard to buy back once lost."
       ]
     },
     {
-      "id": "pe-one-body",
-      "title": "Sons of Adam",
-      "emoji": "🌍",
-      "culture": "Persian",
-      "blurb": "Saadi's famous verse — inscribed at the United Nations — on the shared humanity of every soul.",
-      "words": ["Huddled", "Wandered", "Tribute", "Wilderness", "Graceful", "Captivating", "Majestic", "Elegant", "Drifted", "Memorial"],
+      "id": "rm-cui-bono",
+      "title": "Who Stands to Gain?",
+      "emoji": "🔍",
+      "culture": "Roman",
+      "blurb": "Cicero's forensic question and two Roman commercial principles that form one of the most useful critical-thinking toolkits ever assembled.",
+      "words": ["Scrutinise", "Bias", "Suspicious", "Cautious", "Insight", "Perception", "Hypothesis", "Conviction", "Subjective", "Allege"],
       "proverbs": [
         {
-          "native": "بنی‌آدم اعضای یک پیکرند، که در آفرینش ز یک گوهرند.",
-          "lang": "fa",
-          "romanisation": "Banī Ādam a'zā-ye yek peykarand, ke dar āfarīnesh ze yek gowharand.",
-          "translation": "Human beings are limbs of one body, of one essence in creation.",
-          "meaning": "Saadi's most famous verse, inscribed at the entrance of the United Nations building in New York. The whole human family is one."
+          "native": "Cui bono?",
+          "lang": "la",
+          "romanisation": "Cui bono?",
+          "translation": "Who benefits?",
+          "meaning": "Cicero's forensic question, attributed to the judge Cassius. Before accepting any explanation for an event, ask who gains from it being believed."
         },
         {
-          "native": "چو عضوی به درد آورد روزگار، دگر عضوها را نماند قرار.",
-          "lang": "fa",
-          "romanisation": "Chu ozvī be dard āvarad rūzgār, degar ozvhā rā namānad qarār.",
-          "translation": "If one limb is troubled by suffering, no other limb will know any peace.",
-          "meaning": "The second half of Saadi's verse. When one part of humanity hurts, the whole body of humanity should feel it."
+          "native": "Caveat emptor",
+          "lang": "la",
+          "romanisation": "Caveat emptor",
+          "translation": "Let the buyer beware.",
+          "meaning": "In any transaction, the buyer is responsible for assessing what they are actually getting. Nobody is required to advertise their own flaws."
         },
         {
-          "native": "بیا تا قدر یکدیگر بدانیم.",
-          "lang": "fa",
-          "romanisation": "Biyā tā qadr-e yekdīgar bedānīm.",
-          "translation": "Come, let us know each other's worth.",
-          "meaning": "A line from Saadi's Golestan. Every person we meet is precious, if only we slow down to recognise it."
+          "native": "Quid pro quo",
+          "lang": "la",
+          "romanisation": "Quid pro quo",
+          "translation": "Something for something.",
+          "meaning": "Most real-world exchanges have a return expectation — visible or hidden. Understand what someone expects before you accept what they offer."
         }
       ],
       "paragraphs": [
-        "At the entrance of the United Nations building in New York, a Persian poem from the 13th century is carved into the wall. The poet Saadi wrote it nearly eight hundred years ago, yet world leaders chose it as a memorial to one shared truth: human beings, of one essence, are limbs of the same body. We belong to each other.",
-        "Saadi's words were a graceful answer to a question that every age must face. When one country suffers, when one family is left huddled in the cold, when refugees have drifted for years without a safe shore, is it really someone else's problem? The Persian poet's answer was a quiet no.",
-        "Rumi, his older contemporary, wrote in the same spirit: 'Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.' For the Sufis, no human being was a stranger. Even an enemy was someone you had not yet sat with long enough.",
-        "This idea pours like a river through Persian art. Miniature paintings show wanderers who wandered for years across deserts and majestic mountains, only to discover at journey's end that the friend they sought was inside them all along. Even captivating heroes in old tales finish their adventures gentler and humbler than they began.",
-        "To read Saadi today is to be invited into an old, elegant wilderness of kindness, where every face is a familiar one and every life is worth a tribute."
+        "The Roman lawyer Cicero credited a judge named Cassius with a question that has guided investigators, detectives and careful thinkers ever since: Cui bono? — Who benefits? When something happens, when a story is told, when a deal is offered, the first thing to ask is who gains from it. The answer rarely explains everything, but it almost always tells you where to start looking.",
+        "Scientists use a version of this when checking their own hypothesis: am I drawn to this conclusion because the evidence points here, or because I want it to be true? That is the subjective, internal version of cui bono — the self-interest we carry inside our own perception. Bias is not always imposed from outside. Sometimes we build it ourselves.",
+        "Let the buyer beware. This is sometimes used to excuse dishonest sellers, but its original meaning was about the buyer's responsibility. In the markets of ancient Rome, merchants were not required to allege every fault in what they sold. The cautious buyer was expected to scrutinise the goods themselves, rather than relying on the seller's enthusiasm. Check before you commit.",
+        "Something for something — quid pro quo — is the most honest description of how most transactions work. When someone offers something valuable without explanation, the clear-eyed question is: what do they expect in return? This is not a suspicious way of thinking. It is a realistic one. Understanding the full shape of an exchange prevents surprises.",
+        "Together, these three Roman questions form a practical toolkit: Who gains? What am I actually receiving? What does the other person expect? A child who learns to ask these questions calmly — without becoming cynical — will make far fewer decisions they later regret. Critical thinking is not suspicion. It is conviction backed by clear perception."
       ]
     },
     {
-      "id": "pe-moving-finger",
-      "title": "The Moving Finger Writes",
-      "emoji": "⏳",
-      "culture": "Persian",
-      "blurb": "Omar Khayyam and Hafez on the fleeting present — and the quiet duty to enjoy this exact afternoon.",
-      "words": ["Nostalgic", "Contented", "Elated", "Jubilant", "Splendid", "Vivid", "Whimsical", "Dazzling", "Exquisite", "Duration"],
+      "id": "rm-bread-circuses",
+      "title": "Bread and Circuses",
+      "emoji": "🎪",
+      "culture": "Roman",
+      "blurb": "Juvenal's sharp warning about distraction, divided attention and the oldest trick in the book for keeping people from thinking too hard.",
+      "words": ["Consumerism", "Convention", "Provision", "Allocate", "Hierarchy", "Regime", "Compel", "Domestic", "Collective", "Passive"],
       "proverbs": [
         {
-          "native": "این نیز بگذرد.",
-          "lang": "fa",
-          "romanisation": "Īn nīz bogzarad.",
-          "translation": "This too shall pass.",
-          "meaning": "An old Persian wisdom said to have been carved on King Solomon's ring. It calms the proud in joy and comforts the broken in sorrow."
+          "native": "Panem et circenses",
+          "lang": "la",
+          "romanisation": "Panem et circenses",
+          "translation": "Bread and circuses.",
+          "meaning": "Juvenal's two-word diagnosis of how power keeps people passive: provide enough food and entertainment, and most people will not ask difficult questions about who is in charge. (Juvenal, Satires)"
         },
         {
-          "native": "دم را غنیمت دان.",
-          "lang": "fa",
-          "romanisation": "Dam rā ghanīmat dān.",
-          "translation": "Treasure the present moment.",
-          "meaning": "A motto loved by Sufi poets: the breath you have right now is itself a small, finished gift."
+          "native": "Divide et impera",
+          "lang": "la",
+          "romanisation": "Divide et impera",
+          "translation": "Divide and rule.",
+          "meaning": "The oldest principle for managing a large group: keep people focused on their differences from each other, and they rarely organise against those at the top."
         },
         {
-          "native": "گذشت آنچه گذشت.",
-          "lang": "fa",
-          "romanisation": "Gozasht ānche gozasht.",
-          "translation": "What is past, is past.",
-          "meaning": "A common Persian saying urging us not to be trapped by yesterday's regret."
+          "native": "Mundus vult decipi, ergo decipiatur",
+          "lang": "la",
+          "romanisation": "Mundus vult decipi, ergo decipiatur",
+          "translation": "The world wants to be deceived, therefore let it be deceived.",
+          "meaning": "A harsh Roman observation: many people actively prefer comfortable stories to difficult truths. Recognising this in yourself is the first step to avoiding it."
         }
       ],
       "paragraphs": [
-        "In Persia eight centuries ago, a mathematician named Omar Khayyam paused from his calculations to write short, vivid four-line poems called rubaiyat. The most famous one says: 'The Moving Finger writes; and, having writ, moves on.' Whatever has been done is done; the only place we can ever truly stand is now.",
-        "Khayyam was not gloomy about this idea — he found it strangely freeing. Why spend a whole day in nostalgic worry over yesterday or anxious planning for tomorrow when this exact afternoon, with its splendid sky and warm bread, is asking to be enjoyed? Even a short duration of joy, fully lived, is worth more than a long, distracted life.",
-        "Hafez of Shiraz wrote in the same spirit a hundred years later. His verses are full of dazzling images: jubilant gardens, dancing candles, exquisite cups passed between friends. He believed that gratitude was the secret door to every other virtue. Notice the rose at your window today, and you will already be halfway to wisdom.",
-        "This is not a careless or whimsical philosophy. The Persian poets had all seen plague, war and loss. But they refused to let sorrow be the only colour on the page. To be elated by a kind word, to be contented with a simple meal, to look up at the stars on a winter night — these were holy acts.",
-        "The Moving Finger has already written. The question Khayyam and Hafez leave us with is gentler than it sounds: what will you let it write of you today?"
+        "The Roman poet Juvenal was not gentle about his fellow citizens. Writing around 100 AD, he watched the crowds pack into the Colosseum and collect free grain, and reached a blunt conclusion: the people had traded their collective voice for comfort. They no longer seriously debated who should hold power. All they wanted was enough bread and a circus to watch. Panem et circenses — bread and circuses — became his shorthand for a population that had chosen passive entertainment over active citizenship.",
+        "Juvenal was not inventing a conspiracy. He was describing a mechanism that Roman rulers understood very well, which is why they funded enormous entertainment venues and kept the grain provision running even under financial pressure. Allocate enough food and spectacle, and the hierarchy below stays stable. The regime does not need to compel obedience when people are well-fed and occupied.",
+        "Divide and rule is the companion principle. A regime that wants stability finds it useful to keep different groups within a population focused on their differences — by region, by tradition, by grievance. If people are fighting with each other, they rarely organise to ask why those further up the hierarchy have so much more. This is not a theory about ancient Rome alone — it is a pattern that has repeated across many centuries.",
+        "The world wants to be deceived. Many people, given the choice, select the comfortable version of a story over the accurate one. They accept the easy explanation. They ignore the convention-breaking fact. Those who notice this tendency in themselves — and actively work against it — are much harder to mislead.",
+        "For children today, these proverbs are essential media literacy. When something is offered free and immediately entertaining, the useful question is: what does the person offering this get from my attention? When two groups are fighting fiercely, ask whether both sides benefit from that fight or whether someone above them does. Being curious and alert — rather than passive and entertained — is what it means to think for yourself."
       ]
     },
     {
@@ -866,72 +811,193 @@
       ]
     },
     {
-      "id": "he-save-a-life",
-      "title": "To Save One Life",
-      "emoji": "🕯️",
-      "culture": "Jewish",
-      "blurb": "The Talmud's teaching that every single person carries an entire world inside them — and what that means in practice.",
-      "words": ["Precious", "Preservation", "Immense", "Immortal", "Livelihood", "Indescribable", "Obedient", "Imprison", "Impressive", "Infuse"],
+      "id": "yid-golden-key",
+      "title": "A Golden Key Opens Every Door",
+      "emoji": "🔑",
+      "culture": "Yiddish",
+      "blurb": "Hard-won Yiddish proverbs on money, resources and the honest truth about what opens doors and what closes them.",
+      "words": ["Opulent", "Lavish", "Thrifty", "Sufficient", "Livelihood", "Provision", "Furnish", "Compensate", "Allocate", "Sparse"],
       "proverbs": [
         {
-          "native": "כל המקיים נפש אחת, מעלין עליו כאילו קיים עולם מלא.",
-          "lang": "he",
-          "romanisation": "Kol ha-mekayem nefesh achat, ma'alin alav ke-ilu kiyem olam male.",
-          "translation": "Whoever saves a single life, it is as if they have saved an entire world.",
-          "meaning": "Sanhedrin 4:5 in the Mishnah. Every human carries an inner world that no one else can replace."
+          "native": "אַ גאָלדענער שליסל עפנט אַלע טירן",
+          "lang": "yi",
+          "romanisation": "A goldener shlissel efnt ale tirn",
+          "translation": "A golden key opens every door.",
+          "meaning": "Money is not everything, but pretending it counts for nothing is also untrue. Financial resources give you choices that stay closed without them."
         },
         {
-          "native": "אדם נברא יחידי.",
-          "lang": "he",
-          "romanisation": "Adam nivra yechidi.",
-          "translation": "Adam was created as a single individual.",
-          "meaning": "From the same Mishnah passage: every soul is unique, like a coin minted from a die that never quite repeats."
+          "native": "אַז מען האָט געלט, איז מען קלוג, שיין, און מען קען זינגען",
+          "lang": "yi",
+          "romanisation": "Az men hot gelt, iz men klug, sheyn, un men ken zingen",
+          "translation": "When you have money, you are considered wise, good-looking, and can sing well too.",
+          "meaning": "A sharp observation about human nature: the same person is treated very differently depending on whether they appear to have resources."
         },
         {
-          "native": "פיקוח נפש דוחה את הכל.",
-          "lang": "he",
-          "romanisation": "Pikuach nefesh docheh et ha-kol.",
-          "translation": "Saving a life overrides everything.",
-          "meaning": "A foundational principle of Jewish law. Almost any other rule may be set aside if a human life is in danger."
+          "native": "געלט איז אַ זאַלב צו אַלע וואונדן",
+          "lang": "yi",
+          "romanisation": "Gelt iz a zalb tsu ale vundn",
+          "translation": "Money is a salve for all wounds.",
+          "meaning": "Resources ease almost every practical difficulty. This is not a moral claim — it is an observation about how the world actually works."
         }
       ],
       "paragraphs": [
-        "One of the most famous teachings in the Jewish tradition comes from the Talmud, the great library of rabbinic wisdom: 'Whoever saves a single life, it is as if they have saved an entire world.' Every person, the rabbis taught, carries something immense and indescribable inside them.",
-        "The reasoning was striking. When a king mints coins, the rabbis said, every coin looks the same. But when God makes people, no two are alike — each one has a precious face, a unique voice, an immortal soul. To dismiss even one person is to throw away a world that nobody else will ever build.",
-        "This idea has shaped Jewish thinking about preservation of life for two thousand years. Almost any other religious rule can be set aside, even on the holiest day, if a human life is in danger. Rabbis would not be obedient to a ritual if obedience meant letting someone die. Life comes first.",
-        "The tradition does not stop at saving a life from physical danger. To embarrass someone in public, the rabbis warned, is also a kind of taking-life. Even one quiet act of dignity — defending the friend others mock, sharing food with the new pupil — can infuse a whole community with hope.",
-        "To imprison a soul in indifference, the tradition warns, harms your own livelihood as much as anyone else's. To care for one stranger, by contrast, is an impressive and mysterious thing — small from the outside, world-shaped on the inside."
+        "Jewish communities in Eastern Europe lived for centuries under laws that restricted what work they could do, what land they could own, and where they could settle. In that hard environment, they developed a clear-eyed view of money — not because they were greedy, but because they had seen plainly what life without any looked like. From those centuries of thrifty resourcefulness came some of the world's most honest proverbs about wealth.",
+        "A golden key opens every door. This is not a command to be lavish or opulent. It is a simple statement of what the community had observed again and again: money gives you choices. Without it, doors stay shut — to schools, to travel, to starting a business, to protecting your family when needed. With even a modest provision, a family could negotiate, plan, and act instead of simply endure.",
+        "A second saying cuts sharper: when you have money, people consider you wise, good-looking, and talented. This one smiles as it stings. The same person with empty pockets is often dismissed; the same person with resources is suddenly listened to. Pretending this dynamic does not exist leaves you unprepared for it.",
+        "The Yiddish tradition was not about accumulating wealth until you were opulent while others lived a sparse existence. The goal was sufficient provision — enough to be free, enough to keep learning, enough to compensate others fairly and allocate resources wisely. The livelihood worth having was one that brought dignity without requiring you to exploit others to furnish it.",
+        "For a child today, these proverbs are not an invitation to be materialistic. They are an invitation to be realistic. Understanding how resources work — how money flows, what it opens, what it cannot buy — is not cynical. It is the literacy of the real world. The person who understands money is far harder to take advantage of than the person who has decided it does not matter."
       ]
     },
     {
-      "id": "he-repair-world",
-      "title": "Tikkun Olam",
-      "emoji": "🛠️",
-      "culture": "Jewish",
-      "blurb": "Maimonides' famous ladder of giving and the Jewish idea that the world was left a little broken on purpose.",
-      "words": ["Abundant", "Allocate", "Rehabilitate", "Avail", "Sparse", "Amplify", "Analogy", "Hierarchy", "Impatient", "Furnish"],
+      "id": "yid-man-plans",
+      "title": "Man Plans, God Laughs",
+      "emoji": "🎲",
+      "culture": "Yiddish",
+      "blurb": "Yiddish wisdom on the gap between our best-laid plans and what life actually delivers — and what to do when they diverge.",
+      "words": ["Anticipation", "Resolution", "Volatile", "Precarious", "Looming", "Lurched", "Substitute", "Rectify", "Convention", "Acknowledge"],
       "proverbs": [
         {
-          "native": "תיקון עולם.",
-          "lang": "he",
-          "romanisation": "Tikkun olam.",
-          "translation": "Repair of the world.",
-          "meaning": "A short, deep phrase from Jewish mysticism and daily prayer: creation is left a little unfinished so that human hands can complete it."
+          "native": "מענטש טראַכט, גאָט לאַכט",
+          "lang": "yi",
+          "romanisation": "Mentsh tracht, Got lacht",
+          "translation": "Man plans, God laughs.",
+          "meaning": "Life rarely cooperates with even our most careful plans. Build them anyway — but hold them loosely."
         },
         {
-          "native": "לא עליך המלאכה לגמור, ולא אתה בן חורין להיבטל ממנה.",
-          "lang": "he",
-          "romanisation": "Lo alecha hamlacha ligmor, ve-lo ata ben chorin lehibatel mimena.",
-          "translation": "You are not obligated to complete the work, but neither are you free to give it up.",
-          "meaning": "Rabbi Tarfon in Pirkei Avot. Do the piece you can — and trust others to do the rest."
+          "native": "אַז מע קען נישט אַריבער, גייט מען אַרונטער",
+          "lang": "yi",
+          "romanisation": "Az me ken nisht ariber, geyt men arunter",
+          "translation": "If you can't go over, go under.",
+          "meaning": "When the direct route is blocked, find another way. There is almost always another way — if you refuse to accept the first obstacle as the final answer."
+        },
+        {
+          "native": "קיין עצה איז נישט אַזוי גוט ווי אַ גוטע חרטה",
+          "lang": "yi",
+          "romanisation": "Keyn eytse iz nisht azoy gut vi a gute kharate",
+          "translation": "No advice is as good as a good regret.",
+          "meaning": "A genuine lesson learned from a real mistake is often more useful than any advice given in advance."
         }
       ],
       "paragraphs": [
-        "Long after the days of Hillel, the Jewish tradition gave the world another beautiful phrase: tikkun olam, meaning 'repair of the world.' The idea is that creation arrived a little broken on purpose, so that human hands could finish the job. Every kind act, however small, helps to mend a tear.",
-        "In the Middle Ages a great rabbi named Maimonides drew up a remarkable hierarchy of giving — a ladder with eight rungs. At the lowest rung was the impatient giver who hands over a coin grudgingly. Higher up came those who gave with abundant joy, then those who gave without being asked. The very top rung surprised everyone.",
-        "On Maimonides' highest rung, you do not just allocate money to a poor neighbour — you furnish them with a job or a small loan so they can stand on their own feet. This is rehabilitate-the-world generosity: helping someone leave behind a sparse, anxious life and step into a fuller one, without ever feeling ashamed.",
-        "There is a useful analogy here. Imagine a torch lit in a dark room. If you use it only for yourself, the light stays the same. If you use it to amplify another person's torch, the room grows twice as bright — and neither flame is any dimmer. Generosity, in the Jewish view, works the same way.",
-        "Even a sparse purse can avail the world. A smile costs nothing yet repairs a small corner. To plant a tree, to mentor a younger child, to clear up after a meal — these are not tiny things. They are stitches in the long, patient tapestry of tikkun olam."
+        "Three Yiddish words say it plainly: mentsh tracht, Got lacht — man plans, God laughs. It became one of the most widely known sayings in the Eastern European Jewish world because it captured something everyone had experienced. You plan carefully, prepare sensibly, set everything in order. Then life lurched sideways anyway — a volatile change of circumstances, an unexpected obstacle — and the whole resolution collapses.",
+        "This is not a reason to stop planning. The same culture that coined man plans also said: if you can't go over, go under. When the direct path is blocked, a practical person finds the route around, beneath, or through. The substitute path may be longer and messier, but it still leads somewhere useful. Accepting the first obstacle as a final answer is a choice, not a fact.",
+        "The lesson is about the difference between a plan and a grip. A plan is valuable: it tells you where to start and what to bring. But holding a plan so rigidly that you cannot adapt when things shift is a precarious way of thinking. The person who can acknowledge that circumstances have changed, and pivot without panic, survives situations that defeat those who cannot let go.",
+        "Regret also has its place. A third Yiddish saying observes that sometimes a good regret is the best advice of all. This is not self-punishment. It is the honest acknowledgement of what went wrong, used quickly and practically to rectify the next attempt. Look back for exactly as long as it takes to learn something useful — then keep walking.",
+        "Children who grow up hearing man plans, God laughs are not being taught to give up. They are being taught that flexibility and the willingness to try a different convention when the first one fails are not signs of weakness. They are the most important skills any planner can have."
+      ]
+    },
+    {
+      "id": "yid-word-arrow",
+      "title": "A Word is Like a Shot Arrow",
+      "emoji": "🏹",
+      "culture": "Yiddish",
+      "blurb": "Yiddish proverbs on the dangerous power of words — and why knowing when to stay quiet is a harder skill than knowing what to say.",
+      "words": ["Bellowed", "Muttered", "Rebuke", "Inflammatory", "Cautious", "Hesitant", "Subtle", "Sparse", "Lament", "Suspicious"],
+      "proverbs": [
+        {
+          "native": "אַ וואָרט איז ווי אַ פֿײַל: אַז עס שיסט אַרויס, קען מען עס נישט צוריקברענגען",
+          "lang": "yi",
+          "romanisation": "A vort iz vi a fayl: az es shist aroys, ken men es nisht tsurikbrengen",
+          "translation": "A word is like an arrow: once it flies out, you cannot bring it back.",
+          "meaning": "Spoken words cannot be unspoken. Think before you fire."
+        },
+        {
+          "native": "אַ לאַנגע צונג איז אַן אָרעמקייט",
+          "lang": "yi",
+          "romanisation": "A lange tsung iz an oremkeyt",
+          "translation": "A long tongue is a poverty.",
+          "meaning": "The person who talks too much reveals their own plans, mistakes and weaknesses before they need to."
+        },
+        {
+          "native": "שווייגן איז גאָלד, רעדן איז זילבער",
+          "lang": "yi",
+          "romanisation": "Shvaygn iz gold, redn iz zilber",
+          "translation": "Silence is gold, speech is silver.",
+          "meaning": "Knowing when to stay quiet is a harder and rarer skill than knowing what to say."
+        }
+      ],
+      "paragraphs": [
+        "One of the sharpest Yiddish proverbs compares a spoken word to an arrow. Once the bowstring is released, the arrow is already flying — and no amount of lament, apology or explanation can bring it back. The Eastern European Jewish communities who preserved this saying had seen it prove true many times: a careless remark to the wrong person, a heated word in a crowded market, could cause damage that lasted years.",
+        "This culture of cautious speech was not timidity. These were people who argued passionately, debated every word of sacred texts, and spoke out about injustice at real personal risk. The lesson was not silence as cowardice — it was silence as discipline. The cautious speaker thinks first. The hesitant speaker waits for the right moment. A sparse, well-chosen remark lands harder than a torrent of noise.",
+        "A long tongue is a poverty. The person who bellows everything they think turns their words into a liability. They reveal plans too early. They fire back with inflammatory remarks when a subtle answer would have done far more. They describe their suspicions before checking whether they are accurate. Every unnecessary word is information given away for free.",
+        "Silence is gold, speech is silver. This does not mean silence is always right. Sometimes speaking out is the braver and more necessary thing to do. But the person who defaults to talking — who mutters into every gap and fills every moment with noise — rarely earns the weight that a carefully chosen word can carry. A rebuke that is quiet and precise lands harder than one that is shouted.",
+        "In a world where messages now fly out in seconds and can almost never be fully deleted, these old Yiddish arrows are sharper than ever. Think before you send. An inflammatory comment, a suspicious mood expressed without checking, a rushed reply — all travel at arrow speed. The string cannot be un-pulled once released."
+      ]
+    },
+    {
+      "id": "yid-bread-onion",
+      "title": "Better Bread and Onion with Joy",
+      "emoji": "🧅",
+      "culture": "Yiddish",
+      "blurb": "Yiddish proverbs on contentment, scarcity and what actually keeps a person going when the circumstances around them are difficult.",
+      "words": ["Wretched", "Miserable", "Grim", "Bleak", "Hearty", "Contented", "Sufficient", "Thrifty", "Stout", "Resolute"],
+      "proverbs": [
+        {
+          "native": "בעסער ברויט מיט ציבעלע אין פֿריילעכקייט, איידער בראָטן מיט טרויעריקייט",
+          "lang": "yi",
+          "romanisation": "Beser broyt mit tsibele in freylekheyt, eyder brotn mit troyer",
+          "translation": "Better bread with onion and joy than roast meat with sorrow.",
+          "meaning": "The quality of what you eat matters far less than the quality of how you feel while eating it. Warmth and honest company are real ingredients."
+        },
+        {
+          "native": "עס איז נישט אַזוי גוט מיט געלט, ווי עס איז שלעכט אָן דעם",
+          "lang": "yi",
+          "romanisation": "Es iz nisht azoy gut mit gelt, vi es iz shlekht on dem",
+          "translation": "It is not as good with money as it is bad without it.",
+          "meaning": "Having money does not guarantee happiness. But the absence of money is a real, daily difficulty that should not be romanticised."
+        },
+        {
+          "native": "שוועריקייטן שטאַרקן מענטשן",
+          "lang": "yi",
+          "romanisation": "Shverikayt shtarkn mentshn",
+          "translation": "Difficulties strengthen people.",
+          "meaning": "Hard times build a kind of person that comfortable times cannot. This is not a comforting promise — it is an observation from experience."
+        }
+      ],
+      "paragraphs": [
+        "Jewish communities in Eastern Europe knew poverty not as an idea but as a daily fact. Winters were bleak, resources were sparse, and laws often prevented families from earning a comfortable living. Out of that experience came a set of proverbs about survival, contentment and what actually keeps a person going when conditions around them are miserable.",
+        "Better bread with onion and joy than roast meat with sorrow. This is not romantic simplicity. It is a practical observation: food does not taste good when the atmosphere is wretched. A hearty loaf shared with people you trust beats a lavish dinner eaten in fear or silence. The warmth that keeps a family stout through hard times is more valuable than any luxury — and unlike luxuries, it cannot be taken away by law or circumstance.",
+        "The companion proverb is equally clear-eyed: it is not as good with money as it is bad without it. Notice the careful phrasing. It does not claim money is everything. It acknowledges that having it is not magical — but missing it is genuinely grim. A thrifty, resolute family can manage without wealth. A destitute one cannot. This is not pessimism — it is precision.",
+        "None of this is sugar-coating. Life without sufficient resources is genuinely hard, and these proverbs do not pretend otherwise. What they offer is this: within whatever you have, find the sufficient amount of warmth, of honest company, of shared effort, that makes each day bearable and sometimes even good. The joy alongside the bread and onion is real, even when it is small.",
+        "Difficulties strengthen people. The Yiddish communities that produced this saying had endured more than most. They were not being contented about suffering — they were recording what they had observed: that people who pass through real hardship and come out the other side clear-eyed and resolute have something that ease alone cannot build. Understanding that this is possible is itself a form of preparation."
+      ]
+    },
+    {
+      "id": "yid-need-thief",
+      "title": "When You Need a Thief, Take Him Off the Gallows",
+      "emoji": "👁️",
+      "culture": "Yiddish",
+      "blurb": "Yiddish proverbs on human nature — unsentimental, observant and honest about how people actually behave when circumstances change.",
+      "words": ["Suspicious", "Notorious", "Illicit", "Allege", "Stealthy", "Evasive", "Bias", "Scrutinise", "Compel", "Discriminate"],
+      "proverbs": [
+        {
+          "native": "אַז מע דאַרף דעם גנבֿ, נעמט מען אים אַראָפ פֿון דער תּליה",
+          "lang": "yi",
+          "romanisation": "Az me darf dem ganev, nemt men im arop fun der tlie",
+          "translation": "When you need a thief, you take him down from the gallows.",
+          "meaning": "Categories are not permanent. Someone considered suspicious or untrustworthy may become the most useful person available when the situation changes."
+        },
+        {
+          "native": "אַז דער גנבֿ האָט קיין הזדמנות נישט, איז ער אַן עהרלעכער מענטש",
+          "lang": "yi",
+          "romanisation": "Az der ganev hot keyn hazdomne nisht, iz er an erlekher mentsh",
+          "translation": "When a thief has no opportunity, he is an honest man.",
+          "meaning": "Many people behave well simply because conditions make it easy. Integrity under pressure — when breaking a rule would actually benefit you — is the real test."
+        },
+        {
+          "native": "וואָס וועט נישט גיין פֿאַר געלט, וועט גיין פֿאַר מערער געלט",
+          "lang": "yi",
+          "romanisation": "Vos vet nisht geyn far gelt, vet geyn far merer gelt",
+          "translation": "What will not be done for money will be done for more money.",
+          "meaning": "An honest observation about motivation: most stated resistance is not purely moral — it is about the price not yet being high enough."
+        }
+      ],
+      "paragraphs": [
+        "Perhaps the sharpest category of Yiddish wisdom is its sayings about human nature — unsentimental, precise and sometimes darkly funny. These proverbs were not written by people who assumed the best about everyone. They were produced by communities that had learned, over many hard centuries, that seeing people clearly was a survival skill.",
+        "When you need a thief, take him down from the gallows. This sounds notorious — even scandalous. But the meaning is practical: categories are not permanent. A person considered evasive, stealthy or illicit in one situation may be the most capable person available in another. A bias that dismisses someone based solely on their reputation rather than their actual usefulness is the kind of bias that gets people into trouble when circumstances change.",
+        "When a thief has no opportunity, he is an honest man. This proverb does not excuse dishonesty. It is an observation. Many people who allege high principles have simply never been placed in a situation where breaking a rule would benefit them significantly. Scrutinise the integrity, not just the claim. A person who is honest because they have nothing to gain from dishonesty is not the same as one who is honest when something real is at stake.",
+        "What will not be done for money will be done for more money. This is the bluntest of the three. It does not say that everyone can be compelled. It says that most resistance has a price, and that a clear-eyed person acknowledges this rather than pretending all refusals are purely principled. Understanding what people are actually responding to — not just what they say they are responding to — is not cynical. It is precise.",
+        "These are not sayings to live by in a mean-spirited way. You can discriminate carefully between who to trust and still treat everyone with basic dignity. Seeing people clearly is not the same as treating them badly — it is the first step to dealing with them honestly."
       ]
     },
     {
@@ -998,41 +1064,10 @@
       ],
       "paragraphs": [
         "In the 9th century, Baghdad was the most exciting city on earth. Its caliphs had founded a House of Wisdom — bayt al-hikma — where Arabic, Greek, Persian and Indian scholars worked side by side translating, copying and arguing. From this glowing vault of books came medicine, astronomy, algebra and much more.",
-        "One old saying still quoted today is this: 'The ink of the scholar is more sacred than the blood of the martyr.' For Islamic civilisation this was not just poetry. To read a single excerpt from Aristotle, to study one specimen of a healing plant, to copy out an old astronomical chart — these acts mattered as much as any battle.",
+        "One old saying still quoted today is this: 'The ink of the scholar is more precious than the blood of the martyr.' For Islamic civilisation this was not just poetry. To read a single excerpt from Aristotle, to study one specimen of a healing plant, to copy out an old astronomical chart — these acts mattered as much as any battle.",
         "Mathematics flourished. The very word algebra comes from al-jabr, written in Baghdad in around 820. Astronomers measured the spatial layout of the stars and built precise instruments. Scholars created a kind of matrix of human knowledge in which every discovery was carefully cross-referenced with the next.",
         "Linguists were equally rigorous. Arab grammarians studied every inflection of every verb, every hieroglyph-like marking on the page, every small change in meaning. Books on a single letter could run to hundreds of pages. A scholar who tried to plagiarise another's work was shamed for life.",
         "In the great markets of old Damascus, Cairo and Granada you could buy a book on almost any subject — a herbal census of Mediterranean plants, a guide to Indian numerals, an excerpt of Persian poetry. Each volume was a quiet artefact of an old, generous belief: that to learn together is one of the holiest things humans can do."
-      ]
-    },
-    {
-      "id": "ar-after-difficulty",
-      "title": "After Hardship, Ease",
-      "emoji": "🌅",
-      "culture": "Arabic",
-      "blurb": "A Quranic promise and a line from Khalil Gibran about the strange way suffering finally gives way to peace.",
-      "words": ["Tumultuous", "Stifling", "Bleak", "Dreary", "Desolate", "Placid", "Frantic", "Hollow", "Fragrant", "Crisp"],
-      "proverbs": [
-        {
-          "native": "إن مع العسر يسرا.",
-          "lang": "ar",
-          "romanisation": "Inna ma'a al-'usri yusrā.",
-          "translation": "Surely with hardship comes ease.",
-          "meaning": "Quran 94:6. The Arabic verse repeats the same promise twice in the same chapter — relief always follows the difficulty."
-        },
-        {
-          "native": "الصبر مفتاح الفرج.",
-          "lang": "ar",
-          "romanisation": "Aṣ-ṣabru miftāḥ al-faraj.",
-          "translation": "Patience is the key to relief.",
-          "meaning": "A classic Arabic proverb. The door of joy is not forced open — it is unlocked slowly, by patience."
-        }
-      ],
-      "paragraphs": [
-        "One of the most quoted lines in the Quran is short and steady: 'For surely with hardship comes ease.' The Arabic verse repeats the same idea twice, as if to make sure the reader does not miss it. After difficulty, ease. Not instead of difficulty — after it.",
-        "The promise is not that suffering will be cancelled. Every life has its bleak winters, its tumultuous arguments, its dreary mornings. The promise is that no storm is forever. The desolate field will green again. The stifling room will eventually be opened to a fragrant breeze.",
-        "The Lebanese poet Khalil Gibran, writing in the early 20th century, offered a similar message in a different voice. 'Out of suffering have emerged the strongest souls,' he wrote. 'The most massive characters are seared with scars.' What feels frantic and hollow today may quietly be carving the person you will become next year.",
-        "In Arabic story-telling this idea often appears as a journey. A traveller is lost in a sandstorm, certain the dunes will never end — and then, just over the next ridge, the placid green of an oasis appears. The water is crisp and cold. The earlier hardship is not forgotten, only translated into gratitude.",
-        "To a child hearing these words today, the meaning is gentle. A bad day at school is not the end of the story. A long week of revision will reach the morning of the test. The ease, when it comes, will taste sweeter for the difficulty that came before it."
       ]
     },
     {
@@ -1098,41 +1133,193 @@
       ]
     },
     {
-      "id": "ru-soul-endure",
-      "title": "Beauty Will Save the World",
-      "emoji": "📖",
-      "culture": "Russian",
-      "blurb": "Dostoevsky, Tolstoy and Solzhenitsyn on the patient strength of the Russian soul — and what beauty really is.",
-      "words": ["Vast", "Panorama", "Crimson", "Misty", "Weary", "Tremulous", "Ravenous", "Vibrant", "Ornate", "Uncanny"],
+      "id": "norse-praise-evening",
+      "title": "Praise No Day Till Evening",
+      "emoji": "🌑",
+      "culture": "Old Norse",
+      "blurb": "Hávamál sayings on the danger of judging too early, the wisdom of checking before you enter, and why being middling-wise beats thinking you already know everything.",
+      "words": ["Cautious", "Vigilant", "Warily", "Hesitant", "Scrutinise", "Suspicious", "Bias", "Acknowledge", "Subtle", "Stout"],
       "proverbs": [
         {
-          "native": "Красота спасёт мир.",
-          "lang": "ru",
-          "romanisation": "Krasota spasyot mir.",
-          "translation": "Beauty will save the world.",
-          "meaning": "From Dostoevsky's novel The Idiot. The 'beauty' he meant was not merely visual, but the deeper beauty of love, courage and forgiveness."
+          "native": "At kveldi skal dag leyfa; mæki, er reyndr er; ís, er yfir kemr",
+          "lang": "non",
+          "romanisation": "At kveldi skal dag leyfa; mæki, er reyndr er; ís, er yfir kemr",
+          "translation": "Praise the day at evening; the sword when it has been tested; the ice when you have crossed it.",
+          "meaning": "Judge nothing until it has been fully proved. A plan that looks perfect at dawn can be ruins by dusk. (Hávamál, stanza 81)"
         },
         {
-          "native": "Все счастливые семьи похожи друг на друга, каждая несчастливая семья несчастлива по-своему.",
-          "lang": "ru",
-          "romanisation": "Vse schastlivye sem'i pokhozhi drug na druga, kazhdaya neschastlivaya sem'ya neschastliva po-svoyemu.",
-          "translation": "All happy families are alike; each unhappy family is unhappy in its own way.",
-          "meaning": "The famous opening of Tolstoy's Anna Karenina. Tolstoy believed that joy has many fewer flavours than sorrow."
+          "native": "Gáttir allar, áðr gangi fram, um skoðask skyli, um skyggnask skyli",
+          "lang": "non",
+          "romanisation": "Gáttir allar, áðr gangi fram, um skoðask skyli, um skyggnask skyli",
+          "translation": "At every doorway before going in, look around carefully, peer in all directions.",
+          "meaning": "Slow down before entering any new situation. The wary person who scans the room first survives where the rushing person does not. (Hávamál, stanza 1)"
         },
         {
-          "native": "Жить не по лжи.",
-          "lang": "ru",
-          "romanisation": "Zhit' ne po lzhi.",
-          "translation": "Live not by lies.",
-          "meaning": "Alexander Solzhenitsyn's appeal to his fellow citizens under Soviet rule: refuse to repeat what you know is untrue, even if it costs you."
+          "native": "Meðalsnotr skyli manna hverr, æva til snotr sé",
+          "lang": "non",
+          "romanisation": "Meðalsnotr skyli manna hverr, æva til snotr sé",
+          "translation": "Middling wise should every person be; never too wise.",
+          "meaning": "The person who thinks they have figured out everything has already stopped paying attention — and that is when danger walks in. (Hávamál, stanza 56)"
         }
       ],
       "paragraphs": [
-        "In the long Russian novels of the 19th century, a single idea keeps returning: that even in a country of vast distances and weary winters, beauty can save the world. Fyodor Dostoevsky put the line directly into one of his most famous books. 'Beauty,' he wrote, 'will save the world.' It is one of the most quoted sentences in all of Russian literature.",
-        "What did he mean? Not just the beauty of an ornate cathedral or a vibrant sunset, though Russia has plenty of both. Dostoevsky meant the deeper beauty of kindness — a forgiven friend, a shared piece of bread, a tremulous prayer in the dark. These small acts, he believed, were the real panorama of the human soul.",
-        "Lev Tolstoy, his great rival, opened Anna Karenina with another sentence everyone now knows: 'Happy families are all alike; every unhappy family is unhappy in its own way.' The novel that follows is a sweeping crimson and misty landscape, full of love, regret and trains. Tolstoy wanted his readers to see, with uncanny clearness, how ordinary lives could be tragic and ordinary, too.",
-        "Both writers had known hunger. Russia in their century was full of ravenous winters and difficult cities. Yet neither writer wrote in despair. They believed the Russian soul had a stubborn ability to keep loving, keep singing, keep noticing the world's quiet glory even after losing nearly everything.",
-        "A century later, the writer Alexander Solzhenitsyn added one more line for the bookshelf: 'Live not by lies.' The cold winter of dictatorship had not crushed the spirit of the people. Russian literature still teaches its readers to look honestly at darkness, to hold on to small beauties, and to refuse to forget the truth even when the world is loudly demanding that they should."
+        "The Vikings were not a sentimental people. They crossed icy seas in open boats and spent winters in places that wanted to kill them. Their most famous book of wisdom, the Hávamál — the Sayings of the High One — opens not with poetry about glory but with a single cautious instruction: before you walk through any door, look around carefully. Check the benches. Notice who is already seated. The wary guest survives; the rushing one does not.",
+        "Praise the day at evening; praise the sword when it has been tested; praise the ice when you have crossed it. This stout list is a precise warning against celebrating too early. A sword looks impressive in the forge but may shatter in battle. Ice looks solid from the bank but may crack underfoot. The plan that seemed perfect at noon can fall apart by sundown. The Norseman who praised things only after they had proved themselves was the one who was never caught by surprise.",
+        "The Hávamál was deeply suspicious of people who seemed too sure of themselves. Be middling wise, it counsels — never too wise. A person who thinks they already understand everything has closed themselves to new information. They walk into rooms without looking. They ignore subtle signs. Their own bias towards cleverness becomes the very trap that catches them.",
+        "This is not an instruction to be hesitant forever. The Norse expected people to act decisively — but only after scanning the situation with vigilant, clear eyes. Scrutinise first. Acknowledge what you actually see, without the distortion of what you hoped or feared to find. Then move.",
+        "To this day, good detectives, good doctors and good coaches think this way. They warily resist deciding what something means before they have gathered enough information. They check suspicious details. They pause at doorways. The day is to be praised at evening — not a moment sooner."
+      ]
+    },
+    {
+      "id": "norse-tested-friend",
+      "title": "A Friend Tested Twice",
+      "emoji": "🤜",
+      "culture": "Old Norse",
+      "blurb": "Hávamál's unsentimental guide to friendship — not as a feeling, but as a practice proven under pressure.",
+      "words": ["Amiable", "Hearty", "Sociable", "Reluctant", "Discriminate", "Tolerant", "Acknowledge", "Conviction", "Stout", "Sufficient"],
+      "proverbs": [
+        {
+          "native": "Vin sínum skal maðr vinr vera, þeim ok þess vin",
+          "lang": "non",
+          "romanisation": "Vin sínum skal maðr vinr vera, þeim ok þess vin",
+          "translation": "To your friend be a friend, to them and to their friend.",
+          "meaning": "Friendship is not just a feeling between two people — it is a network of mutual responsibility. (Hávamál, stanza 42)"
+        },
+        {
+          "native": "En óvinar síns skyli engi maðr vinar vinr vera",
+          "lang": "non",
+          "romanisation": "En óvinar síns skyli engi maðr vinar vinr vera",
+          "translation": "No one should be a friend to the enemy of their friend.",
+          "meaning": "Loyalty has a shape. A friend who is also comfortable with your enemies is not fully a friend. (Hávamál, stanza 42)"
+        },
+        {
+          "native": "Maðr er manns gaman",
+          "lang": "non",
+          "romanisation": "Maðr er manns gaman",
+          "translation": "Man is the joy of man.",
+          "meaning": "We genuinely need each other — not only for warmth, but for the practical work of surviving and building anything worth having. (Hávamál, stanza 47)"
+        }
+      ],
+      "paragraphs": [
+        "The Norse had a very clear idea of what a friend actually was — and it was less amiable than many people expect. In the Hávamál, Odin teaches that a friend is not someone who smiles at you and says kind things in public. A friend is someone who has been tested: who showed up when things were difficult, kept their word when breaking it would have been easier, and proved themselves stout when you needed them most.",
+        "To your friend, be a friend. This sounds simple, but the line does not stop there. It continues: also be a friend to your friend's friend. Friendship, in the Norse world, was a network of hearty, mutual duty — not just a sociable feeling between two people. If you genuinely care for someone, you also take seriously the people they depend on.",
+        "The companion teaching is equally direct: no one should be a friend to the enemy of their friend. The Norse were reluctant to tolerate grey areas in loyalty. They expected people to discriminate clearly — this person is with me, that one is not. A friend who is also tolerant and comfortable around those who have wronged you is sending a signal worth acknowledging. Not every signal needs immediate action. But they should all be noticed.",
+        "None of this means the Vikings were cold or calculating. Man is the joy of man, the Hávamál says simply — we need each other. The conviction behind this is genuine: without real friends, a long winter, a difficult journey or a dark year is not sufficient. People need people. But they need true ones, not just pleasant-seeming ones.",
+        "For children, the practical lesson is this: not everyone who is pleasant to you is a friend. Wait. See what happens when something goes wrong. Does this person stay? Do they keep their word? The friend worth keeping is the one who shows up twice — once when things are easy, and once when they are not."
+      ]
+    },
+    {
+      "id": "norse-cattle-die",
+      "title": "Cattle Die, Kindred Die",
+      "emoji": "⚔️",
+      "culture": "Old Norse",
+      "blurb": "The most famous stanza of the Hávamál on what is mortal, what is not, and what actually survives long after everything else is gone.",
+      "words": ["Legacy", "Immortal", "Memorial", "Tribute", "Saga", "Finite", "Glorious", "Inscription", "Earthly", "Solemn"],
+      "proverbs": [
+        {
+          "native": "Deyr fé, deyja frændr, deyr sjálfr it sama",
+          "lang": "non",
+          "romanisation": "Deyr fé, deyja frændr, deyr sjálfr it sama",
+          "translation": "Cattle die, kinsmen die, you yourself die.",
+          "meaning": "Nothing you own or love is permanent. Pretending otherwise is the deepest foolishness. (Hávamál, stanza 76)"
+        },
+        {
+          "native": "En orðstírr deyr aldregi hveim er sér góðan getr",
+          "lang": "non",
+          "romanisation": "En orðstírr deyr aldregi hveim er sér góðan getr",
+          "translation": "But a good reputation never dies, for those who earn one.",
+          "meaning": "After everything else is gone, what remains is the story other people tell about you. (Hávamál, stanza 76–77)"
+        },
+        {
+          "native": "Ek veit einn, at aldri deyr: dómr um dauðan hvern",
+          "lang": "non",
+          "romanisation": "Ek veit einn, at aldri deyr: dómr um dauðan hvern",
+          "translation": "I know one thing that never dies: the judgment passed on each dead person.",
+          "meaning": "When you are gone, people will talk. What they say depends entirely on what you actually did. (Hávamál, stanza 77)"
+        }
+      ],
+      "paragraphs": [
+        "The most famous stanza in all of Norse literature is also its most direct. Cattle die, it says. Kinsmen die. You die yourself. No softening. No comfort. The animals you owned are gone. The family you loved is gone. In the end, so are you. This is not a threat — it is a solemn fact that the Norse treated every person as mature enough to hear.",
+        "But the poem does not stop there. One thing I know that never dies: the judgment passed on each dead person. Your earthly goods are finite. Your body is mortal, however glorious it feels today. But your reputation — the story your neighbours, your enemies and your children tell about you — is the only legacy that outlasts everything else.",
+        "This is practical as well as stirring. The Vikings built memorials and raised runestones not to glorify the dead but to record what they actually did. The inscription on a stone might say a man was trustworthy, a woman worked hard, a ship was well sailed. These are tribute stones of deeds, not flattery. The saga kept only what was real.",
+        "An immortal name, in the Norse sense, is not about being famous. It is about being someone other people can honestly point to and say: that person kept their word, did what was needed, and did not flinch. That is the only kind of fame that cannot be taken away.",
+        "For a child, this is not a lesson about death. It is a lesson about today. Every kind or unkind thing you do slowly builds the story that other people will carry about you. A reputation is half-written long before anyone realises it. The Norse advice is practical: write it carefully, starting now."
+      ]
+    },
+    {
+      "id": "norse-armed-wary",
+      "title": "Never Walk Without Your Weapon",
+      "emoji": "🪓",
+      "culture": "Old Norse",
+      "blurb": "Hávamál on preparation, self-reliance and the most important tool any traveller can carry — which turns out not to be a sword.",
+      "words": ["Perilous", "Hostile", "Scout", "Deterrent", "Robust", "Provision", "Wilderness", "Anticipation", "Resolute", "Vigilant"],
+      "proverbs": [
+        {
+          "native": "Vápnum sínum skala maðr velli á, feti ganga framar",
+          "lang": "non",
+          "romanisation": "Vápnum sínum skala maðr velli á, feti ganga framar",
+          "translation": "Never walk a step from your weapon on the open ground.",
+          "meaning": "Always be prepared for the situation to change. The person who left their tools at home is always the one who needed them. (Hávamál, stanza 38)"
+        },
+        {
+          "native": "Sá einn veit, er víða ratar, ok hefr fjölð um farit",
+          "lang": "non",
+          "romanisation": "Sá einn veit, er víða ratar, ok hefr fjölð um farit",
+          "translation": "He alone knows who has travelled widely and seen much of the world.",
+          "meaning": "Experience teaches things that advice never can. The world looks very different once you have actually been out in it. (Hávamál, stanza 18)"
+        },
+        {
+          "native": "Byrði betri berr-at maðr brautu at en sé mannvit mikit",
+          "lang": "non",
+          "romanisation": "Byrði betri berr-at maðr brautu at en sé mannvit mikit",
+          "translation": "No better burden can a man carry on the road than much common sense.",
+          "meaning": "Weapons matter — but the sharpest tool any traveller can carry is a prepared, watchful mind. (Hávamál, stanza 10)"
+        }
+      ],
+      "paragraphs": [
+        "Old Norse life was practical in a way that is hard to imagine today. You might need to cross a freezing fjord, walk several days through hostile wilderness, or arrive at a settlement you had never visited. The Hávamál's instruction was direct: never walk a step from your weapon on open ground. Because no one can know in advance what comes next — and being unprepared in a perilous moment can be fatal.",
+        "This is not an invitation to be fearful. The Norse sent scouts ahead precisely because vigilant preparation is what allows the main group to move confidently. A resolute traveller does not look afraid — they look ready. The deterrent of obvious preparedness is itself a form of protection. Many threats never develop because the potential target is clearly not an easy one.",
+        "The proverb about carrying common sense is equally practical. Real weapons are perilous if you do not know when to use them. A robust mind — alert, adaptable, thinking ahead — is worth more than a sharp blade carried without care. The wilderness does not care whether you are brave. It only cares whether you came prepared.",
+        "Provision made before the journey matters too. The skilled Norse traveller checked their supplies before setting out: food, rope, a spare cloak, knowledge of the route. Anticipation was not nervousness — it was craft. The person who thought through what could go wrong and brought what was needed was the person who came home.",
+        "For life today, the weapon is preparation. For an exam, preparation is revision. For a match, preparation is practice. For a difficult conversation, preparation is thinking through what you want to say before you say it. The Norse lesson is not about fear — it is about keeping your tools sharp before you need them, not after."
+      ]
+    },
+    {
+      "id": "norse-silent-wise",
+      "title": "Better a Fool Silent",
+      "emoji": "🤫",
+      "culture": "Old Norse",
+      "blurb": "Hávamál's blunt advice on when to speak, when to stay quiet, and why the person who says least often knows most.",
+      "words": ["Muttered", "Sparse", "Inflammatory", "Rebuke", "Bellowed", "Solemn", "Convention", "Consensus", "Passive", "Ominous"],
+      "proverbs": [
+        {
+          "native": "Ósnotr maðr, er með aldir kømr, þat er bazt, at hann þegi",
+          "lang": "non",
+          "romanisation": "Ósnotr maðr, er með aldir kømr, þat er bazt, at hann þegi",
+          "translation": "The unwise person, when they come among others, is best off staying silent.",
+          "meaning": "No one knows you know nothing — until you open your mouth and prove it. Silence preserves more options than speech. (Hávamál, stanza 27)"
+        },
+        {
+          "native": "Engi þat veit, at hann ekki kann, nema hann mæli til margt",
+          "lang": "non",
+          "romanisation": "Engi þat veit, at hann ekki kann, nema hann mæli til margt",
+          "translation": "No one knows a person knows nothing — unless they speak too much.",
+          "meaning": "Talking too much is the fastest way to reveal what you do not yet understand. (Hávamál, stanza 27)"
+        },
+        {
+          "native": "Meðalsnotr skyli manna hverr, æva til snotr sé",
+          "lang": "non",
+          "romanisation": "Meðalsnotr skyli manna hverr, æva til snotr sé",
+          "translation": "Middling wise should every person be; never too wise.",
+          "meaning": "The cleverest person in the room is not always the one doing the most talking — and rarely the one who thinks they know everything already. (Hávamál, stanza 56)"
+        }
+      ],
+      "paragraphs": [
+        "The Hávamál has no patience for people who talk too much. Its advice is delivered bluntly: the unwise person who comes among others is best off staying quiet. No one knows you know nothing, it continues — unless you speak too much. Silence, in the Norse world, was not weakness or being passive. It was a tactical position. It kept your knowledge and your ignorance equally concealed until you had a reason to reveal either.",
+        "The convention in many modern settings is the opposite: speak often, speak confidently, fill the silence. The Hávamál muttered its disagreement with this approach two thousand years ago. Bellowed opinions impress no one paying close attention. A sparse, well-chosen remark lands harder than a torrent of noise. The person who speaks rarely but accurately earns a solemn kind of weight that the constant talker never quite achieves.",
+        "None of this means saying nothing forever. The Norsemen were famously direct when the moment demanded it. The skill is knowing the difference. An inflammatory word at the wrong moment creates enemies unnecessarily. A rebuke delivered too loudly and too early signals that the speaker has lost control. A quiet, ominous stillness before speaking signals the opposite.",
+        "Middling wise should every person be; never too wise. The person who has decided they are the cleverest in the room has stopped learning. They are not actually listening to what is being said around them — they are waiting for their turn to prove they already knew. That gap in attention is exactly where they get caught.",
+        "The consensus of all three stanzas is this: talk less, observe more, and speak only when you have something to add that is worth the cost of revealing it. This is not a pleasant convention — it takes practice and some discomfort. But the person who masters it has a real advantage in almost every conversation they will ever have."
       ]
     }
   ]
