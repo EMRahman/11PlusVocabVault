@@ -95,18 +95,69 @@
     } catch (e) {}
   }
 
-  function speakWordFull(wordObj) {
+  function restoreModalText(wordObj) {
+    if (!wordObj) return;
+    modalDef.textContent      = wordObj.definition;
+    modalSentence.textContent = wordObj.sentence_usage;
+  }
+
+  function speakModalWord(wordObj) {
     if (!('speechSynthesis' in window)) return;
-    try {
-      window.speechSynthesis.cancel();
-      var text = wordObj.word + '. ' + wordObj.definition + '. Example: ' + wordObj.sentence_usage;
-      var utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'en-GB';
-      utter.rate = 0.85;
-      utter.pitch = ttsPitch;
-      if (ttsVoice) utter.voice = ttsVoice;
-      window.speechSynthesis.speak(utter);
-    } catch (e) {}
+    ttsStop();
+
+    var word     = wordObj.word;
+    var def      = wordObj.definition;
+    var sent     = wordObj.sentence_usage;
+    var fullText = word + '. ' + def + '. Example: ' + sent;
+
+    function tokenise(el, text, charOffset, sentIdx) {
+      el.innerHTML = '';
+      var entries = [];
+      var re = /([A-Za-z''][A-Za-z'']*)|([^A-Za-z'']+)/g;
+      var m;
+      while ((m = re.exec(text)) !== null) {
+        var tok = m[0];
+        if (m[1]) {
+          var span = document.createElement('span');
+          span.className = 'tts-word';
+          span.textContent = tok;
+          entries.push({ el: span, start: charOffset + m.index, end: charOffset + m.index + tok.length, sentenceIdx: sentIdx });
+          el.appendChild(span);
+        } else {
+          el.appendChild(document.createTextNode(tok));
+        }
+      }
+      return entries;
+    }
+
+    var defSentEl  = document.createElement('span');
+    defSentEl.className = 'tts-sentence';
+    var sentSentEl = document.createElement('span');
+    sentSentEl.className = 'tts-sentence';
+
+    var defOffset  = word.length + 2;              // skip "word. "
+    var sentOffset = defOffset + def.length + 11;  // skip ". Example: "
+
+    var defWords  = tokenise(defSentEl,  def,  defOffset,  0);
+    var sentWords = tokenise(sentSentEl, sent, sentOffset, 1);
+
+    modalDef.innerHTML = '';
+    modalDef.appendChild(defSentEl);
+    modalSentence.innerHTML = '';
+    modalSentence.appendChild(sentSentEl);
+
+    ttsWordData = {
+      fullText : fullText,
+      words    : defWords.concat(sentWords),
+      sentences: [defSentEl, sentSentEl],
+      bar      : null,
+      container: null,
+      onDone   : function () { restoreModalText(wordObj); }
+    };
+    ttsActiveIdx      = -1;
+    ttsActiveSentence = -1;
+    ttsCurrentBar     = null;
+    ttsStart();
   }
 
   // ── TTS read-along ────────────────────────────────────────────────────────
@@ -265,6 +316,7 @@
       ttsClearActive();
       ttsPlaying = false;
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
+      if (ttsWordData && ttsWordData.onDone) { var cb = ttsWordData.onDone; ttsWordData.onDone = null; cb(); }
     };
     utter.onerror = function () {
       if (utter !== ttsActiveUtter) return;
@@ -272,6 +324,7 @@
       ttsClearActive();
       ttsPlaying = false;
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
+      if (ttsWordData && ttsWordData.onDone) { var cb = ttsWordData.onDone; ttsWordData.onDone = null; cb(); }
     };
     ttsActiveUtter = utter;
     window.speechSynthesis.speak(utter);
@@ -696,9 +749,9 @@
   }
 
   function closeModal() {
-    if ('speechSynthesis' in window) {
-      try { window.speechSynthesis.cancel(); } catch (e) {}
-    }
+    restoreModalText(currentModalWord);
+    currentModalWord = null;
+    ttsStop();
     modalOverlay.classList.add('hidden');
     modalOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -781,10 +834,10 @@
       });
     });
 
-    // Speak button — reads word, definition and example sentence
+    // Speak button — reads word, definition and example sentence with word highlighting
     if (modalSpeakBtn) {
       modalSpeakBtn.addEventListener('click', function () {
-        if (currentModalWord) speakWordFull(currentModalWord);
+        if (currentModalWord) speakModalWord(currentModalWord);
       });
     }
 
