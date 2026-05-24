@@ -435,6 +435,7 @@
         initGloss();
         initStoryMode();
         initHistoryMode();
+        initFableMode();
         initDailyNews();
         initQuiz();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
@@ -1053,6 +1054,8 @@
       reopenNewsReading();
     } else if (returnTo === 'history') {
       reopenHistoryReading();
+    } else if (returnTo === 'fable') {
+      reopenFableReading();
     } else {
       quizLaunchBtn.focus();
     }
@@ -2456,6 +2459,240 @@
         }
       })
       .catch(function () { historyArticles = []; });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FABLE MODE
+  // A library of classic Aesop's fables — short stories with morals — that use
+  // vocabulary words in context, followed by a quiz scoped to that fable.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var FABLE_PROGRESS_KEY = 'vocabVault_fableProgress';
+  var fables = [];
+  var fableProgress = {};
+  var currentFable = null;
+  var fableTTSBar = null;
+
+  var fableLaunchBtn     = document.getElementById('fable-launch-btn');
+  var fableOverlay       = document.getElementById('fable-overlay');
+  var fableLibraryScreen = document.getElementById('fable-library-screen');
+  var fableReadingScreen = document.getElementById('fable-reading-screen');
+  var fableCloseBtn      = document.getElementById('fable-close-btn');
+  var fableBackBtn       = document.getElementById('fable-back-btn');
+  var fableList          = document.getElementById('fable-list');
+  var fableReadingEmoji  = document.getElementById('fable-reading-emoji');
+  var fableReadingTitle  = document.getElementById('fable-reading-title');
+  var fableReadingBody   = document.getElementById('fable-reading-body');
+  var fableReadingMoral  = document.getElementById('fable-reading-moral');
+  var fableQuizBtn       = document.getElementById('fable-quiz-btn');
+
+  function loadFableProgress() {
+    try {
+      var raw = localStorage.getItem(FABLE_PROGRESS_KEY);
+      fableProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      fableProgress = {};
+    }
+  }
+
+  function saveFableProgress() {
+    try { localStorage.setItem(FABLE_PROGRESS_KEY, JSON.stringify(fableProgress)); } catch (e) {}
+  }
+
+  function fableWordObjects(fable) {
+    var out = [];
+    (fable.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderFableLibrary() {
+    fableList.innerHTML = '';
+    if (!fables.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'Fables are still loading — try again in a moment.';
+      fableList.appendChild(empty);
+      return;
+    }
+    fables.forEach(function (fable) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = fable.emoji + ' ' + fable.title;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = fable.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = fableWordObjects(fable).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = fableProgress[fable.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openFable(fable); });
+      fableList.appendChild(card);
+    });
+  }
+
+  function showFableScreen(screenEl) {
+    [fableLibraryScreen, fableReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openFable(fable) {
+    currentFable = fable;
+    var prog = fableProgress[fable.id] || {};
+    prog.read = true;
+    fableProgress[fable.id] = prog;
+    saveFableProgress();
+
+    fableReadingEmoji.textContent = fable.emoji;
+    fableReadingTitle.textContent = fable.title;
+    renderReadingBody(fableReadingBody, fable.paragraphs, fableWordObjects(fable), fableTTSBar);
+    if (fable.moral) {
+      fableReadingMoral.textContent = 'Moral: ' + fable.moral;
+      fableReadingMoral.classList.remove('hidden');
+    } else {
+      fableReadingMoral.textContent = '';
+      fableReadingMoral.classList.add('hidden');
+    }
+    showFableScreen(fableReadingScreen);
+    fableReadingScreen.scrollTop = 0;
+    fableBackBtn.focus();
+  }
+
+  function openFableOverlay() {
+    renderFableLibrary();
+    showFableScreen(fableLibraryScreen);
+    fableOverlay.classList.remove('hidden');
+    fableOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    fableCloseBtn.focus();
+  }
+
+  function closeFableOverlay() {
+    ttsStop();
+    hideGloss();
+    fableOverlay.classList.add('hidden');
+    fableOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentFable = null;
+    fableLaunchBtn.focus();
+  }
+
+  function reopenFableReading() {
+    if (!currentFable) { closeFableOverlay(); return; }
+    fableOverlay.classList.remove('hidden');
+    fableOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showFableScreen(fableReadingScreen);
+    fableQuizBtn.focus();
+  }
+
+  function recordFableResult(fable, score, total) {
+    var prog = fableProgress[fable.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    fableProgress[fable.id] = prog;
+    saveFableProgress();
+    if (score === total) return 'Fable complete — perfect score! 🎉';
+    return 'Best for this fable: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initFableMode() {
+    loadFableProgress();
+
+    fableLaunchBtn.addEventListener('click', openFableOverlay);
+    fableCloseBtn.addEventListener('click', closeFableOverlay);
+
+    fableBackBtn.addEventListener('click', function () {
+      ttsStop();
+      hideGloss();
+      renderFableLibrary();
+      showFableScreen(fableLibraryScreen);
+      fableCloseBtn.focus();
+    });
+
+    fableQuizBtn.addEventListener('click', function () {
+      if (!currentFable) return;
+      var words = fableWordObjects(currentFable);
+      if (!words.length) return;
+      var fable = currentFable;
+      ttsStop();
+      hideGloss();
+      fableOverlay.classList.add('hidden');
+      fableOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'fable',
+        onComplete: function (score, total) {
+          return recordFableResult(fable, score, total);
+        }
+      });
+    });
+
+    fableOverlay.addEventListener('click', function (e) {
+      if (e.target === fableOverlay) closeFableOverlay();
+    });
+
+    fableReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (fableOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeFableOverlay();
+    });
+
+    fableTTSBar = initTTSBar(
+      document.getElementById('fable-tts-read-btn'),
+      document.getElementById('fable-tts-controls'),
+      document.getElementById('fable-tts-playpause'),
+      document.getElementById('fable-tts-stop'),
+      document.querySelectorAll('#fable-tts-controls .tts-speed-btn'),
+      document.getElementById('fable-tts-voice'),
+      document.querySelectorAll('#fable-tts-controls .tts-pitch-btn')
+    );
+
+    fetch('data/fables.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        fables = (data && data.fables) || [];
+        if (!fableOverlay.classList.contains('hidden') &&
+            !fableLibraryScreen.classList.contains('hidden')) {
+          renderFableLibrary();
+        }
+      })
+      .catch(function () { fables = []; });
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
