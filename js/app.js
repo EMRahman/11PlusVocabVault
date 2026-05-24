@@ -95,6 +95,20 @@
     } catch (e) {}
   }
 
+  function speakWordFull(wordObj) {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      var text = wordObj.word + '. ' + wordObj.definition + '. Example: ' + wordObj.sentence_usage;
+      var utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-GB';
+      utter.rate = 0.85;
+      utter.pitch = ttsPitch;
+      if (ttsVoice) utter.voice = ttsVoice;
+      window.speechSynthesis.speak(utter);
+    } catch (e) {}
+  }
+
   // ── TTS read-along ────────────────────────────────────────────────────────
   var ttsWordData       = null;   // {fullText, words:[{el,start,end,sentenceIdx}], sentences:[[firstWordIdx,lastWordIdx],...], bar}
   var ttsPlaying        = false;
@@ -406,7 +420,9 @@
   var modalAntonyms   = document.getElementById('modal-antonyms');
   var linkDefine      = document.getElementById('link-define');
   var linkExamples    = document.getElementById('link-examples');
-  var modalSpeakBtn   = document.getElementById('modal-speak-btn');
+  var modalSpeakBtn      = document.getElementById('modal-speak-btn');
+  var modalReadAloudBtn  = document.getElementById('modal-read-aloud-btn');
+  var currentModalWord   = null;
   var modalViewCount  = document.getElementById('modal-view-count');
   var wordCountEl     = document.getElementById('word-count');
   var totalWordsEl  = document.getElementById('total-words');
@@ -609,6 +625,7 @@
 
   // ── Modal ──────────────────────────────────────────────────────────────────
   function openModal(wordObj) {
+    currentModalWord = wordObj;
     incrementViewCount(wordObj.word);
 
     // Update the count badge on the card without re-rendering
@@ -770,6 +787,13 @@
       modalSpeakBtn.addEventListener('click', function () {
         var word = modalTitle.textContent;
         if (word) speakWord(word);
+      });
+    }
+
+    // Read Aloud button — speaks word + definition + example sentence
+    if (modalReadAloudBtn) {
+      modalReadAloudBtn.addEventListener('click', function () {
+        if (currentModalWord) speakWordFull(currentModalWord);
       });
     }
 

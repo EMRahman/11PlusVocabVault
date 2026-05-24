@@ -656,6 +656,45 @@ main {
   gap: 1.25rem;
 }
 
+.modal-read-aloud-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.read-aloud-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.read-aloud-btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.read-aloud-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.read-aloud-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 .modal-section-title {
   font-size: 0.75rem;
   font-weight: 800;
