@@ -420,9 +420,8 @@
   var modalAntonyms   = document.getElementById('modal-antonyms');
   var linkDefine      = document.getElementById('link-define');
   var linkExamples    = document.getElementById('link-examples');
-  var modalSpeakBtn      = document.getElementById('modal-speak-btn');
-  var modalReadAloudBtn  = document.getElementById('modal-read-aloud-btn');
-  var currentModalWord   = null;
+  var modalSpeakBtn    = document.getElementById('modal-speak-btn');
+  var currentModalWord = null;
   var modalViewCount  = document.getElementById('modal-view-count');
   var wordCountEl     = document.getElementById('word-count');
   var totalWordsEl  = document.getElementById('total-words');
@@ -782,17 +781,9 @@
       });
     });
 
-    // Speak button (audio pronunciation in modal)
+    // Speak button — reads word, definition and example sentence
     if (modalSpeakBtn) {
       modalSpeakBtn.addEventListener('click', function () {
-        var word = modalTitle.textContent;
-        if (word) speakWord(word);
-      });
-    }
-
-    // Read Aloud button — speaks word + definition + example sentence
-    if (modalReadAloudBtn) {
-      modalReadAloudBtn.addEventListener('click', function () {
         if (currentModalWord) speakWordFull(currentModalWord);
       });
     }
