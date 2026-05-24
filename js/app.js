@@ -436,6 +436,7 @@
         initStoryMode();
         initHistoryMode();
         initFableMode();
+        initProverbsMode();
         initDailyNews();
         initQuiz();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
@@ -1056,6 +1057,8 @@
       reopenHistoryReading();
     } else if (returnTo === 'fable') {
       reopenFableReading();
+    } else if (returnTo === 'proverbs') {
+      reopenProverbsReading();
     } else {
       quizLaunchBtn.focus();
     }
@@ -2461,6 +2464,7 @@
       .catch(function () { historyArticles = []; });
   }
 
+
   // ═══════════════════════════════════════════════════════════════════════════
   // FABLE MODE
   // A library of classic Aesop's fables — short stories with morals — that use
@@ -2693,6 +2697,274 @@
         }
       })
       .catch(function () { fables = []; });
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // PROVERBS MODE
+  // A curated library of famous proverbs from Japanese, Chinese, Indian, Greek
+  // and Roman cultures. Each collection groups 3-4 native-script proverbs and a
+  // connecting English commentary that uses ~10 vocabulary words.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var PROVERBS_PROGRESS_KEY = 'vocabVault_proverbsProgress';
+  var proverbCollections = [];
+  var proverbProgress = {};
+  var currentCollection = null;
+  var proverbsTTSBar = null;
+
+  var proverbsLaunchBtn       = document.getElementById('proverbs-launch-btn');
+  var proverbsOverlay         = document.getElementById('proverbs-overlay');
+  var proverbsLibraryScreen   = document.getElementById('proverbs-library-screen');
+  var proverbsReadingScreen   = document.getElementById('proverbs-reading-screen');
+  var proverbsCloseBtn        = document.getElementById('proverbs-close-btn');
+  var proverbsBackBtn         = document.getElementById('proverbs-back-btn');
+  var proverbsList            = document.getElementById('proverbs-list');
+  var proverbsReadingEmoji    = document.getElementById('proverbs-reading-emoji');
+  var proverbsReadingCulture  = document.getElementById('proverbs-reading-culture');
+  var proverbsReadingTitle    = document.getElementById('proverbs-reading-title');
+  var proverbsListCards       = document.getElementById('proverbs-list-cards');
+  var proverbsReadingBody     = document.getElementById('proverbs-reading-body');
+  var proverbsQuizBtn         = document.getElementById('proverbs-quiz-btn');
+
+  function loadProverbsProgress() {
+    try {
+      var raw = localStorage.getItem(PROVERBS_PROGRESS_KEY);
+      proverbProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      proverbProgress = {};
+    }
+  }
+
+  function saveProverbsProgress() {
+    try { localStorage.setItem(PROVERBS_PROGRESS_KEY, JSON.stringify(proverbProgress)); } catch (e) {}
+  }
+
+  function collectionWordObjects(collection) {
+    var out = [];
+    (collection.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderProverbsLibrary() {
+    proverbsList.innerHTML = '';
+    if (!proverbCollections.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'Proverbs are still loading — try again in a moment.';
+      proverbsList.appendChild(empty);
+      return;
+    }
+    proverbCollections.forEach(function (collection) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = collection.emoji + ' ' + collection.title;
+
+      var culture = document.createElement('span');
+      culture.className = 'history-card-era';
+      culture.textContent = collection.culture;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = collection.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+      meta.appendChild(culture);
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = collectionWordObjects(collection).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = proverbProgress[collection.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openCollection(collection); });
+      proverbsList.appendChild(card);
+    });
+  }
+
+  function renderProverbCards(containerEl, proverbs) {
+    containerEl.innerHTML = '';
+    if (!proverbs || !proverbs.length) return;
+    proverbs.forEach(function (p) {
+      var card = document.createElement('div');
+      card.className = 'proverb-card';
+
+      var native = document.createElement('p');
+      native.className = 'proverb-native';
+      if (p.lang) native.setAttribute('lang', p.lang);
+      native.textContent = p.native || '';
+
+      var roman = document.createElement('p');
+      roman.className = 'proverb-romanisation';
+      roman.textContent = p.romanisation || '';
+
+      var trans = document.createElement('p');
+      trans.className = 'proverb-translation';
+      trans.textContent = p.translation || '';
+
+      var meaning = document.createElement('p');
+      meaning.className = 'proverb-meaning';
+      meaning.textContent = p.meaning || '';
+
+      card.appendChild(native);
+      if (p.romanisation) card.appendChild(roman);
+      if (p.translation) card.appendChild(trans);
+      if (p.meaning) card.appendChild(meaning);
+      containerEl.appendChild(card);
+    });
+  }
+
+  function showProverbsScreen(screenEl) {
+    [proverbsLibraryScreen, proverbsReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openCollection(collection) {
+    currentCollection = collection;
+    var prog = proverbProgress[collection.id] || {};
+    prog.read = true;
+    proverbProgress[collection.id] = prog;
+    saveProverbsProgress();
+
+    proverbsReadingEmoji.textContent = collection.emoji;
+    proverbsReadingCulture.textContent = collection.culture;
+    proverbsReadingTitle.textContent = collection.title;
+    renderProverbCards(proverbsListCards, collection.proverbs);
+    renderReadingBody(proverbsReadingBody, collection.paragraphs, collectionWordObjects(collection), proverbsTTSBar);
+    showProverbsScreen(proverbsReadingScreen);
+    proverbsReadingScreen.scrollTop = 0;
+    proverbsBackBtn.focus();
+  }
+
+  function openProverbsOverlay() {
+    renderProverbsLibrary();
+    showProverbsScreen(proverbsLibraryScreen);
+    proverbsOverlay.classList.remove('hidden');
+    proverbsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    proverbsCloseBtn.focus();
+  }
+
+  function closeProverbsOverlay() {
+    ttsStop();
+    hideGloss();
+    proverbsOverlay.classList.add('hidden');
+    proverbsOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentCollection = null;
+    proverbsLaunchBtn.focus();
+  }
+
+  function reopenProverbsReading() {
+    if (!currentCollection) { closeProverbsOverlay(); return; }
+    proverbsOverlay.classList.remove('hidden');
+    proverbsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showProverbsScreen(proverbsReadingScreen);
+    proverbsQuizBtn.focus();
+  }
+
+  function recordCollectionResult(collection, score, total) {
+    var prog = proverbProgress[collection.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    proverbProgress[collection.id] = prog;
+    saveProverbsProgress();
+    if (score === total) return 'Collection complete — perfect score! 🎉';
+    return 'Best for this collection: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initProverbsMode() {
+    loadProverbsProgress();
+
+    proverbsLaunchBtn.addEventListener('click', openProverbsOverlay);
+    proverbsCloseBtn.addEventListener('click', closeProverbsOverlay);
+
+    proverbsBackBtn.addEventListener('click', function () {
+      ttsStop();
+      hideGloss();
+      renderProverbsLibrary();
+      showProverbsScreen(proverbsLibraryScreen);
+      proverbsCloseBtn.focus();
+    });
+
+    proverbsQuizBtn.addEventListener('click', function () {
+      if (!currentCollection) return;
+      var words = collectionWordObjects(currentCollection);
+      if (!words.length) return;
+      var collection = currentCollection;
+      ttsStop();
+      hideGloss();
+      proverbsOverlay.classList.add('hidden');
+      proverbsOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'proverbs',
+        onComplete: function (score, total) {
+          return recordCollectionResult(collection, score, total);
+        }
+      });
+    });
+
+    proverbsOverlay.addEventListener('click', function (e) {
+      if (e.target === proverbsOverlay) closeProverbsOverlay();
+    });
+
+    proverbsReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (proverbsOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeProverbsOverlay();
+    });
+
+    proverbsTTSBar = initTTSBar(
+      document.getElementById('proverbs-tts-read-btn'),
+      document.getElementById('proverbs-tts-controls'),
+      document.getElementById('proverbs-tts-playpause'),
+      document.getElementById('proverbs-tts-stop'),
+      document.querySelectorAll('#proverbs-tts-controls .tts-speed-btn'),
+      document.getElementById('proverbs-tts-voice'),
+      document.querySelectorAll('#proverbs-tts-controls .tts-pitch-btn')
+    );
+
+    fetch('data/proverbs.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        proverbCollections = (data && data.collections) || [];
+        if (!proverbsOverlay.classList.contains('hidden') &&
+            !proverbsLibraryScreen.classList.contains('hidden')) {
+          renderProverbsLibrary();
+        }
+      })
+      .catch(function () { proverbCollections = []; });
   }
 
   // ═══════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,603 @@
+{
+  "collections": [
+    {
+      "id": "jp-resilience",
+      "title": "Falling Seven Times, Rising Eight",
+      "emoji": "🎋",
+      "culture": "Japanese",
+      "blurb": "Japanese sayings about resilience, patient endurance and the courage to begin again.",
+      "words": ["Resilient", "Persistent", "Determined", "Resolute", "Faltered", "Staggered", "Triumphant", "Valiant", "Vigorous", "Diligent"],
+      "proverbs": [
+        {
+          "native": "七転び八起き",
+          "lang": "ja",
+          "romanisation": "Nana korobi ya oki",
+          "translation": "Fall seven times, stand up eight.",
+          "meaning": "Real strength is not in never falling but in always getting back up."
+        },
+        {
+          "native": "我慢",
+          "lang": "ja",
+          "romanisation": "Gaman",
+          "translation": "Enduring with patience and dignity.",
+          "meaning": "Bearing hardship quietly, without losing your composure or complaining."
+        },
+        {
+          "native": "頑張って",
+          "lang": "ja",
+          "romanisation": "Ganbatte",
+          "translation": "Do your best — keep going.",
+          "meaning": "A spirited cheer of encouragement: persevere, give it everything you have."
+        }
+      ],
+      "paragraphs": [
+        "Few cultures celebrate the art of getting back up like Japan. The proverb nana korobi ya oki teaches that a truly resilient spirit is measured not by how rarely you fall, but by how persistent you are in rising again. Even the most determined hero faltered before they ever triumphed.",
+        "Gaman is the quiet sister of this courage. It is the resolute, vigorous patience that lets a person carry on through cold winters, long study nights and difficult exams without complaint. To practise gaman is to keep your back straight even when your legs have staggered.",
+        "Children in Japanese classrooms are sent off to tests with the cheerful word ganbatte, a valiant little battle cry meaning give it your best. It is the reminder that effort itself is something to be proud of, whatever the score on the page.",
+        "Together these three sayings paint a picture of a diligent, unhurried strength. Setbacks are not endings but invitations. Tumble, breathe, and stand once more — and you will, in the end, walk away triumphant."
+      ]
+    },
+    {
+      "id": "jp-impermanence",
+      "title": "Cherry Blossoms in the Wind",
+      "emoji": "🌸",
+      "culture": "Japanese",
+      "blurb": "Sayings that find beauty in things that fade — the heart of Japanese aesthetics.",
+      "words": ["Ephemeral", "Fragile", "Delicate", "Faded", "Wistful", "Melancholy", "Glistening", "Blossom", "Shimmering", "Tranquil"],
+      "proverbs": [
+        {
+          "native": "侘寂",
+          "lang": "ja",
+          "romanisation": "Wabi-sabi",
+          "translation": "Beauty in imperfection and impermanence.",
+          "meaning": "A cracked teacup, a weathered fence, a flower past its peak — these too are beautiful."
+        },
+        {
+          "native": "物の哀れ",
+          "lang": "ja",
+          "romanisation": "Mono no aware",
+          "translation": "The gentle sadness of passing things.",
+          "meaning": "The tender ache of knowing that lovely moments cannot last forever."
+        },
+        {
+          "native": "木漏れ日",
+          "lang": "ja",
+          "romanisation": "Komorebi",
+          "translation": "Sunlight filtering through leaves.",
+          "meaning": "A whole word for the shimmering, dappled light that dances on a forest floor."
+        },
+        {
+          "native": "一期一会",
+          "lang": "ja",
+          "romanisation": "Ichi-go ichi-e",
+          "translation": "One time, one meeting.",
+          "meaning": "Every encounter is unique and will not come again, so treasure it now."
+        }
+      ],
+      "paragraphs": [
+        "Cherry blossom season in Japan lasts barely a week. The pink petals open, glow, and are blown away — fragile, fleeting and entirely ephemeral. Yet Japanese tradition treats this brief blossom not as a loss but as the very heart of beauty.",
+        "Wabi-sabi is the name given to this delicate idea. A cracked bowl, a faded paper screen, an old wooden bridge — all are loved for the marks time has left on them. Perfection is cold; the worn and the wistful feel alive.",
+        "Mono no aware adds a soft melancholy to the same thought: the bittersweet awareness that every glistening morning, every shimmering river, every warm afternoon is on its way to becoming a memory.",
+        "Komorebi captures one such moment in a single word — the sunlight tumbling through leaves in tranquil patches of light. Ichi-go ichi-e reminds us that this exact view, this exact friend, this exact afternoon will never come again.",
+        "Together these ideas teach a quiet lesson: look up now. The blossom will be gone tomorrow, and that is precisely why it is precious today."
+      ]
+    },
+    {
+      "id": "jp-purpose-craft",
+      "title": "A Reason to Rise Each Morning",
+      "emoji": "🍵",
+      "culture": "Japanese",
+      "blurb": "Sayings about purpose, craft and the steady joy of small improvements.",
+      "words": ["Devout", "Diligent", "Zealous", "Rigour", "Conviction", "Sufficient", "Neglect", "Thrifty", "Expertise", "Eager"],
+      "proverbs": [
+        {
+          "native": "生き甲斐",
+          "lang": "ja",
+          "romanisation": "Ikigai",
+          "translation": "A reason for being.",
+          "meaning": "The thing that makes you eager to get out of bed — where what you love, what you are good at, and what the world needs all meet."
+        },
+        {
+          "native": "改善",
+          "lang": "ja",
+          "romanisation": "Kaizen",
+          "translation": "Continuous improvement.",
+          "meaning": "Small, diligent changes every day add up to enormous progress over time."
+        },
+        {
+          "native": "初心",
+          "lang": "ja",
+          "romanisation": "Shoshin",
+          "translation": "Beginner's mind.",
+          "meaning": "Approach every task with the wide-eyed curiosity of someone trying it for the first time."
+        },
+        {
+          "native": "もったいない",
+          "lang": "ja",
+          "romanisation": "Mottainai",
+          "translation": "What a waste!",
+          "meaning": "A thrifty respect for the worth of things — food, water, time, opportunity — and a refusal to neglect them."
+        }
+      ],
+      "paragraphs": [
+        "Ikigai is a Japanese word for the small, devout flame that gives a life its purpose — the conviction that makes you eager to rise in the morning. It might be a craft, a person, a question, or a daily routine; whatever it is, it is enough.",
+        "Kaizen names the quiet engine that keeps that flame alive: diligent, almost invisible improvement, every single day. A potter shapes one more bowl. A footballer practises one more pass. The change is never dramatic, but the expertise grows steadily.",
+        "Even a master, the saying shoshin reminds us, should keep the curiosity of a beginner. The most zealous learners never assume they already know — they meet each lesson with fresh, attentive rigour.",
+        "Mottainai pulls the lesson down into everyday life. Don't waste rice. Don't waste paper. Don't waste a quiet afternoon. A thrifty heart refuses to neglect the small gifts in front of it, knowing they are sufficient."
+      ]
+    },
+    {
+      "id": "cn-patience-persistence",
+      "title": "Drop by Drop, the Stone Wears Through",
+      "emoji": "💧",
+      "culture": "Chinese",
+      "blurb": "Chinese sayings on patience, small steps and the quiet power of persistence.",
+      "words": ["Persistent", "Determined", "Ceaseless", "Arduous", "Diligent", "Resolute", "Successive", "Triumphant", "Apex", "Plateau"],
+      "proverbs": [
+        {
+          "native": "千里之行，始於足下",
+          "lang": "zh",
+          "romanisation": "Qiānlǐ zhī xíng, shǐ yú zúxià",
+          "translation": "A journey of a thousand miles begins beneath one's feet.",
+          "meaning": "Even the most arduous goal starts with the same first step you can take right now. (Laozi)"
+        },
+        {
+          "native": "水滴石穿",
+          "lang": "zh",
+          "romanisation": "Shuǐ dī shí chuān",
+          "translation": "Dripping water hollows out stone.",
+          "meaning": "Soft, persistent effort beats sudden, violent effort every time."
+        },
+        {
+          "native": "鐵杵磨成針",
+          "lang": "zh",
+          "romanisation": "Tiě chǔ mó chéng zhēn",
+          "translation": "An iron rod can be ground down into a needle.",
+          "meaning": "With enough diligent grinding, even the hardest task can be finished."
+        }
+      ],
+      "paragraphs": [
+        "Some of the oldest Chinese wisdom centres on a simple truth: greatness is not a leap, but a long line of small, determined footsteps. Laozi's famous line that a thousand-mile journey begins beneath your feet has comforted travellers, students and statesmen for over two thousand years.",
+        "However arduous the road, the first stride is the same size for everyone. There is no need to picture the distant apex of the mountain; there is only the next stone on the path.",
+        "Water teaches the same lesson in a softer way. A single drop is harmless, but ceaseless, successive drops can hollow out solid rock. Persistent effort, repeated quietly, can carve through what brute force cannot.",
+        "The story of the iron pestle ground into a sewing needle reaches even further. A boy bored of his studies meets an old woman patiently rubbing an iron rod against a stone, and learns that no diligent task is impossible if you refuse to stop.",
+        "Whether you feel stuck on a plateau or are only one resolute step from the summit, these proverbs all whisper the same encouragement: keep going, and you will arrive triumphant."
+      ]
+    },
+    {
+      "id": "cn-wisdom-learning",
+      "title": "Three Walking Together, One a Teacher",
+      "emoji": "📜",
+      "culture": "Chinese",
+      "blurb": "Confucian sayings on humble learning, honest knowing and the golden rule.",
+      "words": ["Contemplate", "Insight", "Rational", "Acknowledge", "Hypothesis", "Convention", "Eager", "Tolerant", "Subjective", "Compassion"],
+      "proverbs": [
+        {
+          "native": "學而不思則罔",
+          "lang": "zh",
+          "romanisation": "Xué ér bù sī zé wǎng",
+          "translation": "Learning without thinking is wasted.",
+          "meaning": "Facts you do not contemplate will slip straight through your mind. (Confucius)"
+        },
+        {
+          "native": "三人行，必有我師",
+          "lang": "zh",
+          "romanisation": "Sān rén xíng, bì yǒu wǒ shī",
+          "translation": "When three people walk together, one must be my teacher.",
+          "meaning": "Every person you meet can teach you something — if you are tolerant enough to listen. (Confucius)"
+        },
+        {
+          "native": "知之為知之，不知為不知",
+          "lang": "zh",
+          "romanisation": "Zhī zhī wéi zhī zhī, bù zhī wéi bù zhī",
+          "translation": "Know what you know; admit what you don't.",
+          "meaning": "True wisdom begins the moment you acknowledge the edges of your own understanding. (Confucius)"
+        },
+        {
+          "native": "己所不欲，勿施於人",
+          "lang": "zh",
+          "romanisation": "Jǐ suǒ bù yù, wù shī yú rén",
+          "translation": "Do not do to others what you would not want done to you.",
+          "meaning": "The Confucian golden rule — measure your actions by the compassion you would want returned."
+        }
+      ],
+      "paragraphs": [
+        "Confucius believed that learning was less about stuffing facts into your head and more about training the mind to think. To read a page and then not contemplate it, he said, is to learn nothing at all. A rational mind chews its food.",
+        "He was also deeply humble about how knowledge grows. When three people walk together, he taught, one of them is certainly your teacher — perhaps in what to do, perhaps in what to avoid. A tolerant student keeps their ears open even to those they might be tempted to dismiss.",
+        "His most piercing lesson is about the limits of our own insight. To pretend you know what you don't is foolish; to acknowledge the gap is the first real step toward wisdom. Treat every confident hypothesis as a question, not a conclusion.",
+        "Finally, long before such ideas became a Western convention, Confucius gave the world its golden rule: never do to others what you would hate done to yourself. It is a small, eager habit of compassion that quietly corrects our most subjective impulses."
+      ]
+    },
+    {
+      "id": "cn-foresight-prudence",
+      "title": "The Old Man Who Lost His Horse",
+      "emoji": "🐎",
+      "culture": "Chinese",
+      "blurb": "Sayings that teach calm foresight in a turning, unpredictable world.",
+      "words": ["Cautious", "Vigilant", "Anticipation", "Calamity", "Precarious", "Looming", "Perilous", "Circumstance", "Warily", "Volatile"],
+      "proverbs": [
+        {
+          "native": "塞翁失馬，焉知非福",
+          "lang": "zh",
+          "romanisation": "Sài wēng shī mǎ, yān zhī fēi fú",
+          "translation": "When the old man lost his horse, how could anyone know it was not a blessing?",
+          "meaning": "Today's misfortune may be tomorrow's good luck — judge no single moment too quickly."
+        },
+        {
+          "native": "居安思危",
+          "lang": "zh",
+          "romanisation": "Jū ān sī wēi",
+          "translation": "In times of peace, think of danger.",
+          "meaning": "Stay vigilant even when life feels calm; the wise plan in good weather for the storm."
+        },
+        {
+          "native": "防患未然",
+          "lang": "zh",
+          "romanisation": "Fáng huàn wèi rán",
+          "translation": "Prevent trouble before it sprouts.",
+          "meaning": "The cautious traveller mends the roof while the sun shines."
+        }
+      ],
+      "paragraphs": [
+        "In an old Chinese tale, a farmer loses his horse. His neighbours moan that it is a calamity. The old man only shrugs. The next week the horse returns with a wild companion — but soon after, his son falls from the new horse and breaks his leg. Misfortune again? Perhaps. Then an army comes to take young men to war, and the injured son is left at home. Each circumstance turned out to be the opposite of what it seemed.",
+        "The proverb 'when the old man lost his horse, how can anyone know it was not a blessing?' became a calm reminder that a single moment is never the whole story. Volatile events look very different from the safe distance of next year.",
+        "Two related sayings urge sensible foresight. 'In times of peace, think of danger' tells us to remain vigilant when everything looks easy, because a perilous storm is always looming somewhere over the horizon.",
+        "'Prevent trouble before it sprouts' is the warily practical cousin of the same idea. A cautious gardener pulls the weed while it is still small; a cautious king plans for the lean year while the harvest is still rich. Anticipation, not panic, is what keeps a precarious situation from becoming a disaster."
+      ]
+    },
+    {
+      "id": "in-truth-dharma",
+      "title": "Truth Alone Triumphs",
+      "emoji": "🕉️",
+      "culture": "Indian",
+      "blurb": "Sanskrit sayings on truth, non-violence and our shared world.",
+      "words": ["Conviction", "Virtuous", "Compassion", "Tolerant", "Belligerent", "Hostile", "Triumphant", "Collective", "Realm", "Sentiment"],
+      "proverbs": [
+        {
+          "native": "सत्यमेव जयते",
+          "lang": "sa",
+          "romanisation": "Satyameva Jayate",
+          "translation": "Truth alone triumphs.",
+          "meaning": "Even when lies are loud, truth quietly wins in the end. Now the motto of India."
+        },
+        {
+          "native": "अहिंसा परमो धर्मः",
+          "lang": "sa",
+          "romanisation": "Ahimsā paramo dharmaḥ",
+          "translation": "Non-violence is the highest virtue.",
+          "meaning": "To refuse to harm any living thing is the noblest path — a sentiment that shaped Gandhi's life."
+        },
+        {
+          "native": "वसुधैव कुटुम्बकम्",
+          "lang": "sa",
+          "romanisation": "Vasudhaiva Kuṭumbakam",
+          "translation": "The whole world is one family.",
+          "meaning": "Every person, in every realm, is a relative we have not yet met."
+        }
+      ],
+      "paragraphs": [
+        "Carved on India's national emblem are three Sanskrit words: Satyameva Jayate — truth alone triumphs. The line comes from an ancient Upanishad and carries a quiet conviction: however belligerent a lie may sound today, the truth will be standing when the shouting stops.",
+        "A second great sentiment runs alongside it: ahimsā paramo dharmaḥ, 'non-violence is the highest virtue.' To choose not to harm — not in word, not in deed, not even in thought — is treated as the most virtuous path a person can take. It was this idea, more than any other, that armed Mahatma Gandhi against an empire without a single weapon.",
+        "The third saying, vasudhaiva kuṭumbakam, widens the circle as far as it will go. The whole earthly realm, it says, is a single household. Strangers in a hostile country are still cousins; tolerant compassion across borders is not a luxury but a duty.",
+        "Taken together, these proverbs sketch a collective ideal: speak truthfully, harm no one, and treat the planet's people as kin. A demanding triumph — but a triumphant one."
+      ]
+    },
+    {
+      "id": "in-hospitality",
+      "title": "The Guest Is God",
+      "emoji": "🪔",
+      "culture": "Indian",
+      "blurb": "Sayings that turn welcoming a guest into a sacred act.",
+      "words": ["Hospitality", "Amiable", "Sociable", "Hearty", "Tender", "Lavish", "Domestic", "Devout", "Compassion", "Reassuring"],
+      "proverbs": [
+        {
+          "native": "अतिथि देवो भव",
+          "lang": "sa",
+          "romanisation": "Atithi Devo Bhava",
+          "translation": "The guest is god.",
+          "meaning": "Treat any visitor at your door as if a divine being had arrived."
+        },
+        {
+          "native": "मातृ देवो भव",
+          "lang": "sa",
+          "romanisation": "Mātṛ Devo Bhava",
+          "translation": "The mother is god.",
+          "meaning": "From the same Taittiriya Upanishad — honour your mother as you would honour the divine."
+        },
+        {
+          "native": "एकं सत् विप्रा बहुधा वदन्ति",
+          "lang": "sa",
+          "romanisation": "Ekaṃ sat viprā bahudhā vadanti",
+          "translation": "Truth is one; the wise call it by many names.",
+          "meaning": "Many religions and traditions reach for the same truth through different doors — so be tolerant."
+        }
+      ],
+      "paragraphs": [
+        "In many Indian homes a guest is greeted not merely with politeness, but with reverence. The ancient line atithi devo bhava — 'the guest is god' — turns hospitality into something almost devout. Even a stranger at the door is welcomed with an amiable smile and a hearty meal.",
+        "This is not about putting on a lavish show. It is about tender attention: the cushion plumped, the cup refilled, the conversation kept sociable and warm. A small kindness done with care can leave a guest feeling more honoured than any expensive gift.",
+        "The same passage of the Taittiriya Upanishad also says mātṛ devo bhava — 'the mother is god.' Domestic love, the kind that quietly feeds and watches over us, is treated as one of the most sacred bonds a person can know.",
+        "A third saying widens this circle of welcome to ideas themselves: ekaṃ sat viprā bahudhā vadanti — 'truth is one; the wise call it by many names.' To open the door to a different belief is its own act of compassion, a reassuring reminder that we are reaching, in different languages, for the same light."
+      ]
+    },
+    {
+      "id": "in-karma-action",
+      "title": "As the Seed, So the Fruit",
+      "emoji": "🌱",
+      "culture": "Indian",
+      "blurb": "Sayings on karma — that actions, large and small, shape the life that follows.",
+      "words": ["Legacy", "Successive", "Rectify", "Compensate", "Acknowledge", "Mandate", "Compel", "Conviction", "Provision", "Resolute"],
+      "proverbs": [
+        {
+          "native": "कर्म",
+          "lang": "sa",
+          "romanisation": "Karma",
+          "translation": "Action — and its consequences.",
+          "meaning": "Every deed, kind or cruel, plants a seed. The harvest comes in its own time."
+        },
+        {
+          "native": "योगः कर्मसु कौशलम्",
+          "lang": "sa",
+          "romanisation": "Yogaḥ karmasu kauśalam",
+          "translation": "Yoga is skill in action.",
+          "meaning": "True mastery is doing the right thing in the right way, with calm attention. (Bhagavad Gita)"
+        },
+        {
+          "native": "यथा बीजं तथा फलम्",
+          "lang": "sa",
+          "romanisation": "Yathā bījaṃ tathā phalam",
+          "translation": "As the seed, so the fruit.",
+          "meaning": "You reap what you sow — kindness grows more kindness, harm grows more harm."
+        },
+        {
+          "native": "मनसा वाचा कर्मणा",
+          "lang": "sa",
+          "romanisation": "Manasā vācā karmaṇā",
+          "translation": "In thought, word and deed.",
+          "meaning": "Three places where your character is built: what you think, what you say, and what you do."
+        }
+      ],
+      "paragraphs": [
+        "Karma is one of the most famous Sanskrit words in the world, and one of the most misunderstood. It does not mean instant punishment from a watchful sky. It simply means action — and the long, successive consequences every action sets in motion.",
+        "The Bhagavad Gita refines this into a single beautiful line: yogaḥ karmasu kauśalam, 'yoga is skill in action.' Doing things well, with steady attention and resolute conviction, is itself a spiritual practice. There is no mandate to retreat from the world; the work is the path.",
+        "Yathā bījaṃ tathā phalam — 'as the seed, so the fruit' — is the gardener's version of the same truth. The provisions you plant today decide tomorrow's harvest. A small daily kindness compounds; so does a small daily cruelty.",
+        "Manasā vācā karmaṇā widens the lens once more: thought, word and deed. Karma is shaped not only by what we do, but by what we say and even by what we let ourselves think. When we slip, we acknowledge it and rectify; when we are wronged, we do not compel revenge but quietly compensate with better deeds. That, slowly, is how a worthy legacy is built."
+      ]
+    },
+    {
+      "id": "gr-know-thyself",
+      "title": "Know Thyself",
+      "emoji": "🏛️",
+      "culture": "Greek",
+      "blurb": "Greek sayings on self-knowledge — the famous starting line of philosophy.",
+      "words": ["Contemplate", "Insight", "Perception", "Subjective", "Acknowledge", "Scrutinise", "Conviction", "Bias", "Delusion", "Solemn"],
+      "proverbs": [
+        {
+          "native": "Γνῶθι σεαυτόν",
+          "lang": "el",
+          "romanisation": "Gnōthi seautón",
+          "translation": "Know thyself.",
+          "meaning": "Carved above the Temple of Apollo at Delphi — the first task of any wise person."
+        },
+        {
+          "native": "ἓν οἶδα ὅτι οὐδὲν οἶδα",
+          "lang": "el",
+          "romanisation": "Hèn oîda hóti oudèn oîda",
+          "translation": "I know one thing — that I know nothing.",
+          "meaning": "The honest starting point for real learning, attributed to Socrates."
+        },
+        {
+          "native": "ὁ ἀνεξέταστος βίος οὐ βιωτὸς ἀνθρώπῳ",
+          "lang": "el",
+          "romanisation": "Ho anexétastos bíos ou biōtós anthrṓpōi",
+          "translation": "The unexamined life is not worth living.",
+          "meaning": "A life you never stop to scrutinise is barely a life at all. (Socrates)"
+        }
+      ],
+      "paragraphs": [
+        "Above the entrance to the Temple of Apollo at Delphi, two solemn Greek words were carved: Gnōthi seautón — know thyself. Pilgrims came from across the ancient world for answers, only to be reminded at the door that the most important question was about the person now asking.",
+        "Socrates carried this further. He wandered the streets of Athens insisting that he knew only one thing — that he knew nothing. It is the line that founded Western philosophy: a calm acknowledgement that real insight begins the moment we drop the delusion of already understanding.",
+        "He pressed his fellow citizens to contemplate their lives, not just live them. 'The unexamined life,' he warned, 'is not worth living.' To never pause and scrutinise your own perception, your own bias, your own subjective certainty is, he said, to sleepwalk through your own days.",
+        "These three sayings together form a quiet sequence: notice yourself, acknowledge what you do not know, and turn that honesty into conviction. It is hard, lifelong work — and the start of every other kind of wisdom."
+      ]
+    },
+    {
+      "id": "gr-moderation",
+      "title": "Nothing in Excess",
+      "emoji": "⚖️",
+      "culture": "Greek",
+      "blurb": "Greek wisdom on balance, moderation and the danger of too much of anything.",
+      "words": ["Temperate", "Lavish", "Extravagant", "Sufficient", "Voracious", "Opulent", "Thrifty", "Rigour", "Virtuous", "Subtle"],
+      "proverbs": [
+        {
+          "native": "Μηδὲν ἄγαν",
+          "lang": "el",
+          "romanisation": "Mēdèn ágan",
+          "translation": "Nothing in excess.",
+          "meaning": "The second great Delphic motto: a temperate life is a wise life."
+        },
+        {
+          "native": "Μέτρον ἄριστον",
+          "lang": "el",
+          "romanisation": "Métron áriston",
+          "translation": "Moderation is best.",
+          "meaning": "Attributed to Cleobulus — the right measure beats the most lavish quantity."
+        },
+        {
+          "native": "ἀρετή",
+          "lang": "el",
+          "romanisation": "Aretē",
+          "translation": "Excellence; virtue.",
+          "meaning": "For Aristotle, every virtue sits as a 'golden mean' between two extremes — courage between cowardice and recklessness, generosity between meanness and waste."
+        }
+      ],
+      "paragraphs": [
+        "Beside 'Know thyself' at the Temple of Apollo stood a second Greek motto: Mēdèn ágan — nothing in excess. The Greeks were suspicious of every voracious appetite. Too little food was misery, but too much was a different kind of trap. The temperate path, in their eyes, was the wise one.",
+        "Cleobulus, one of the Seven Sages, put it even more simply: métron áriston, 'moderation is best.' A thrifty supper with friends, they thought, would feed the soul more richly than a lavish, opulent banquet eaten alone. Quality of measure beat quantity of stuff.",
+        "Aristotle gave this idea its most subtle shape. Every virtuous quality, he argued, sits between two faults. Courage is the calm point between cowardice and reckless, extravagant daring. Generosity sits between stinginess and showing off. To find this golden mean takes rigour, attention and a steady eye.",
+        "The Greek invitation is gentle but demanding: enough, but not too much. A sufficient slice of cake, a fair share of praise, a reasonable bedtime. Excess in any direction, they noticed, tends to break the very thing we love."
+      ]
+    },
+    {
+      "id": "gr-change-fate",
+      "title": "You Cannot Step in the Same River Twice",
+      "emoji": "🌊",
+      "culture": "Greek",
+      "blurb": "Greek sayings on change, fate and the rivers that never stop flowing.",
+      "words": ["Ephemeral", "Volatile", "Turbulent", "Variant", "Inconsistent", "Rippling", "Surged", "Successive", "Faded", "Twilight"],
+      "proverbs": [
+        {
+          "native": "πάντα ῥεῖ",
+          "lang": "el",
+          "romanisation": "Pánta rheî",
+          "translation": "Everything flows.",
+          "meaning": "Nothing stays still — the world is in constant, rippling change. (Heraclitus)"
+        },
+        {
+          "native": "δὶς ἐς τὸν αὐτὸν ποταμὸν οὐκ ἂν ἐμβαίης",
+          "lang": "el",
+          "romanisation": "Dìs es tòn autòn potamòn ouk àn embaíēs",
+          "translation": "You cannot step into the same river twice.",
+          "meaning": "The river has moved on. So have you. (Heraclitus)"
+        },
+        {
+          "native": "σὺν Ἀθηνᾷ καὶ χεῖρα κίνει",
+          "lang": "el",
+          "romanisation": "Sỳn Athēnâi kaì cheîra kínei",
+          "translation": "Along with Athena, move your hand too.",
+          "meaning": "Pray to the goddess of wisdom if you like — but also lift your own hand and do the work."
+        }
+      ],
+      "paragraphs": [
+        "Heraclitus stood by a river and said the most famous thing any Greek ever said about change: pánta rheî — 'everything flows.' Rocks look solid, mountains seem immortal, friendships feel fixed; but in truth, every successive moment is a little different from the one before.",
+        "His other line drives the point home. You cannot step into the same river twice. The water that touched your foot a second ago has already surged downstream. The variant, rippling current you meet now is brand new, and so, in tiny ways, are you. Life is more ephemeral than it looks.",
+        "This sounds gloomy, but the Greeks turned it into a calm courage. If the world is volatile and turbulent — sometimes inconsistent, sometimes faded into twilight — then anchoring our hopes in 'things never changing' is foolish. The wise person learns to walk with the flow.",
+        "A third proverb reminds us we are not just passengers in this current. 'Along with Athena, move your hand too' — pray, hope, dream if you wish, but also pick up the oar and pull. Fate likes a person who is rowing."
+      ]
+    },
+    {
+      "id": "rm-time-duty",
+      "title": "Seize the Day",
+      "emoji": "🌅",
+      "culture": "Roman",
+      "blurb": "Latin sayings on the shortness of life and the urgency of living it well.",
+      "words": ["Ephemeral", "Glorious", "Finite", "Eager", "Opportune", "Faded", "Withered", "Wistful", "Anticipation", "Earthly"],
+      "proverbs": [
+        {
+          "native": "Carpe diem",
+          "lang": "la",
+          "romanisation": "Carpe diem",
+          "translation": "Seize the day.",
+          "meaning": "Don't postpone living to a tomorrow that is not promised. (Horace, Odes 1.11)"
+        },
+        {
+          "native": "Memento mori",
+          "lang": "la",
+          "romanisation": "Memento mori",
+          "translation": "Remember that you must die.",
+          "meaning": "Roman generals were whispered this in triumphal parades — a reminder that all earthly glory ends."
+        },
+        {
+          "native": "Tempus fugit",
+          "lang": "la",
+          "romanisation": "Tempus fugit",
+          "translation": "Time flies.",
+          "meaning": "The hours slip by quicker than you expect. Use them."
+        },
+        {
+          "native": "Sic transit gloria mundi",
+          "lang": "la",
+          "romanisation": "Sic transit gloria mundi",
+          "translation": "Thus passes the glory of the world.",
+          "meaning": "Even the most glorious empire fades. Live for what truly lasts."
+        }
+      ],
+      "paragraphs": [
+        "When the Roman poet Horace wrote carpe diem — 'seize the day' — he was not telling his friend to throw a wild party. He was warning her that life is finite, ephemeral, and dishearteningly short, so the next opportune moment to live well is the one she is in right now.",
+        "Generals returning to Rome in triumphant parades had a slave whispering memento mori in their ear — 'remember you will die.' Even at the very apex of glorious victory, they were reminded that they were still earthly, mortal and small. Pride had a leash on it.",
+        "Tempus fugit, 'time flies,' is the gentle cousin of the same lesson. The afternoon that felt endless when you were five has already faded into a wistful memory; the school year you have anticipation about will withered to a single photograph before you know it.",
+        "Sic transit gloria mundi closes the thought with a solemn bow: thus passes the glory of the world. The Romans were not telling us to despair, but to choose carefully what we spend our short, eager lives chasing. Some flowers wilt the day they bloom; some, planted well, become orchards."
+      ]
+    },
+    {
+      "id": "rm-fortune-virtue",
+      "title": "Fortune Favours the Bold",
+      "emoji": "⚔️",
+      "culture": "Roman",
+      "blurb": "Latin sayings on courage, hardship and the prize at the end of a hard road.",
+      "words": ["Valiant", "Courageous", "Zealous", "Reckless", "Arduous", "Perilous", "Triumphant", "Resolute", "Spirited", "Surged"],
+      "proverbs": [
+        {
+          "native": "Fortes Fortuna iuvat",
+          "lang": "la",
+          "romanisation": "Fortes Fortuna iuvat",
+          "translation": "Fortune favours the brave.",
+          "meaning": "Luck has a habit of finding people who already moved their feet. (Virgil, via Pliny)"
+        },
+        {
+          "native": "Per aspera ad astra",
+          "lang": "la",
+          "romanisation": "Per aspera ad astra",
+          "translation": "Through hardships to the stars.",
+          "meaning": "The road to anything worth reaching is steep and rough."
+        },
+        {
+          "native": "Amor vincit omnia",
+          "lang": "la",
+          "romanisation": "Amor vincit omnia",
+          "translation": "Love conquers all things.",
+          "meaning": "The bond between people is the most powerful force the Romans knew. (Virgil)"
+        }
+      ],
+      "paragraphs": [
+        "Pliny the Elder is said to have shouted fortes Fortuna iuvat — 'fortune favours the brave' — as he sailed his ship toward the perilous eruption of Mount Vesuvius. The line caught on. The Romans were certain that good luck has a habit of finding people who have already been valiant enough to step forward.",
+        "This is not a licence to be reckless. The bravery they admired was a resolute, spirited willingness to face hard things — not a thoughtless dash into them. A courageous person looks at the danger clearly, then moves anyway.",
+        "Per aspera ad astra, 'through hardships to the stars,' became one of the favourite mottos of explorers, schools and even space agencies. It is a quiet promise that the road to anything truly worth reaching will be arduous, and that the climb is part of the prize. No one ever surged to the summit on a flat path.",
+        "Finally, amor vincit omnia — 'love conquers all.' For all their zealous talk of armies and emperors, the Romans believed in the end that the strongest force in the world was the bond between people. It is what makes the hard road bearable, and the triumphant arrival worth sharing."
+      ]
+    },
+    {
+      "id": "rm-words-deeds",
+      "title": "Make Haste Slowly",
+      "emoji": "🏛️",
+      "culture": "Roman",
+      "blurb": "Latin sayings about words, deeds and the wisdom of careful action.",
+      "words": ["Haste", "Brisk", "Swift", "Cautious", "Tolerant", "Acknowledge", "Determined", "Conviction", "Rebuke", "Bias"],
+      "proverbs": [
+        {
+          "native": "Veni, vidi, vici",
+          "lang": "la",
+          "romanisation": "Vēnī, vīdī, vīcī",
+          "translation": "I came, I saw, I conquered.",
+          "meaning": "Julius Caesar's brisk, swift report after a lightning victory in 47 BC."
+        },
+        {
+          "native": "Festina lente",
+          "lang": "la",
+          "romanisation": "Festīnā lentē",
+          "translation": "Make haste slowly.",
+          "meaning": "Move with urgency, but never carelessly. The motto of Emperor Augustus."
+        },
+        {
+          "native": "Audi alteram partem",
+          "lang": "la",
+          "romanisation": "Audī alteram partem",
+          "translation": "Hear the other side.",
+          "meaning": "A fair judge listens patiently to both stories before deciding. A principle still used in modern courts."
+        },
+        {
+          "native": "Acta non verba",
+          "lang": "la",
+          "romanisation": "Acta non verba",
+          "translation": "Deeds, not words.",
+          "meaning": "What you actually do matters far more than what you promise."
+        }
+      ],
+      "paragraphs": [
+        "Few sentences in history have travelled further than Julius Caesar's three-word boast: vēnī, vīdī, vīcī — 'I came, I saw, I conquered.' Written after a brisk, swift campaign in 47 BC, it has been quoted ever since to celebrate any sudden, determined victory.",
+        "Yet Caesar's adopted son Augustus chose almost the opposite motto: festina lente — 'make haste slowly.' Move with energy, he said, but not in panic. Real speed comes from cautious preparation, not from frantic running. The line was so loved that Renaissance printers stamped it on their books.",
+        "Audi alteram partem — 'hear the other side' — is a phrase still quoted in modern courts of law. Before you rebuke anyone or harden into a bias, the Roman jurists insisted, you must be tolerant enough to acknowledge the other person's version of events. Half a story is worse than no story.",
+        "And acta non verba — 'deeds, not words.' It is easy to declare a noble conviction in front of a cheering crowd. The harder, quieter test is whether your actions on a wet Tuesday morning, when nobody is watching, match the brave things you said on Sunday."
+      ]
+    }
+  ]
+}
