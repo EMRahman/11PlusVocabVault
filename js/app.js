@@ -82,6 +82,19 @@
     } catch (e) {}
   }
 
+  function speakWordAndDefinition(wordObj) {
+    if (!('speechSynthesis' in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      var utter = new SpeechSynthesisUtterance(wordObj.word + '. ' + wordObj.definition);
+      utter.lang = 'en-GB';
+      utter.rate = 0.85;
+      utter.pitch = ttsPitch;
+      if (ttsVoice) utter.voice = ttsVoice;
+      window.speechSynthesis.speak(utter);
+    } catch (e) {}
+  }
+
   // ── TTS read-along ────────────────────────────────────────────────────────
   var ttsWordData       = null;   // {fullText, words:[{el,start,end,sentenceIdx}], sentences:[[firstWordIdx,lastWordIdx],...], bar}
   var ttsPlaying        = false;
@@ -256,6 +269,8 @@
       if (!ttsWordData || !ttsWordData.container) return;
       var span = closestByClass(e.target, 'tts-word');
       if (!span) return;
+      // vocab-highlight taps are handled by initGloss (stop TTS, speak word + definition)
+      if (span.classList.contains('vocab-highlight')) return;
       if (!ttsWordData.container.contains(span)) return;
       var words = ttsWordData.words;
       for (var i = 0; i < words.length; i++) {
@@ -1987,7 +2002,11 @@
       var span = closestByClass(e.target, 'vocab-highlight');
       if (span) {
         var wObj = findWordByName(span.dataset.glossWord);
-        if (wObj) showGloss(span, wObj);
+        if (wObj) {
+          ttsStop();
+          speakWordAndDefinition(wObj);
+          showGloss(span, wObj);
+        }
         return;
       }
       if (glossIsOpen() && !closestByClass(e.target, 'vocab-gloss')) {
@@ -2000,7 +2019,11 @@
       if (!span) return;
       e.preventDefault();
       var wObj = findWordByName(span.dataset.glossWord);
-      if (wObj) showGloss(span, wObj);
+      if (wObj) {
+        ttsStop();
+        speakWordAndDefinition(wObj);
+        showGloss(span, wObj);
+      }
     });
   }
 
