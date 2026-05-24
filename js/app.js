@@ -97,6 +97,7 @@
 
   function restoreModalText(wordObj) {
     if (!wordObj) return;
+    modalTitle.textContent    = wordObj.word;
     modalDef.textContent      = wordObj.definition;
     modalSentence.textContent = wordObj.sentence_usage;
   }
@@ -130,6 +131,15 @@
       return entries;
     }
 
+    // Wrap the title word in a span so boundary events at charIndex=0 activate
+    // the title rather than prematurely firing on the first definition word.
+    var titleSpan = document.createElement('span');
+    titleSpan.className = 'tts-word';
+    titleSpan.textContent = word;
+    modalTitle.innerHTML = '';
+    modalTitle.appendChild(titleSpan);
+    var titleEntry = { el: titleSpan, start: 0, end: word.length, sentenceIdx: -1 };
+
     var defSentEl  = document.createElement('span');
     defSentEl.className = 'tts-sentence';
     var sentSentEl = document.createElement('span');
@@ -148,7 +158,7 @@
 
     ttsWordData = {
       fullText : fullText,
-      words    : defWords.concat(sentWords),
+      words    : [titleEntry].concat(defWords).concat(sentWords),
       sentences: [defSentEl, sentSentEl],
       bar      : null,
       container: null,
