@@ -1496,6 +1496,16 @@ footer {
   border-color: #0F766E;
 }
 
+.proverbs-launch-btn {
+  background: linear-gradient(135deg, #EC4899, #DB2777);
+  border-color: #DB2777;
+}
+
+.proverbs-launch-btn:hover {
+  background: linear-gradient(135deg, #DB2777, #BE185D);
+  border-color: #BE185D;
+}
+
 /* Fable moral footer */
 .fable-moral {
   margin: 1rem 0 0.5rem;
@@ -1536,6 +1546,57 @@ footer {
 /* History list — slightly more compact than story list so 40 cards scroll nicely */
 .history-list {
   gap: 0.6rem;
+}
+
+/* Proverbs Mode — native-script cards shown above the connecting paragraphs */
+.proverbs-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.proverb-card {
+  border: 2px solid var(--color-border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background: #F0FDFA;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.proverb-native {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.45;
+  color: var(--color-text);
+  font-family: "Noto Serif JP", "Noto Sans SC", "Noto Sans Devanagari", "Noto Serif", "Nunito", serif;
+}
+
+.proverb-romanisation {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  font-size: 0.92rem;
+}
+
+.proverb-translation {
+  margin: 0.15rem 0 0;
+  font-weight: 700;
+  color: var(--color-text);
+  font-size: 0.98rem;
+}
+
+.proverb-translation::before { content: "\201C"; }
+.proverb-translation::after  { content: "\201D"; }
+
+.proverb-meaning {
+  margin: 0.15rem 0 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 /* Story library */
