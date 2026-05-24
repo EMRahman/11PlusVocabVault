@@ -1575,6 +1575,13 @@ footer {
   font-family: "Noto Serif JP", "Noto Sans SC", "Noto Sans Devanagari", "Noto Serif", "Nunito", serif;
 }
 
+.proverb-native[lang="he"],
+.proverb-native[lang="ar"],
+.proverb-native[lang="fa"] {
+  direction: rtl;
+  text-align: right;
+}
+
 .proverb-romanisation {
   margin: 0;
   font-style: italic;

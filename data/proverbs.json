@@ -598,6 +598,542 @@
         "Audi alteram partem — 'hear the other side' — is a phrase still quoted in modern courts of law. Before you rebuke anyone or harden into a bias, the Roman jurists insisted, you must be tolerant enough to acknowledge the other person's version of events. Half a story is worse than no story.",
         "And acta non verba — 'deeds, not words.' It is easy to declare a noble conviction in front of a cheering crowd. The harder, quieter test is whether your actions on a wet Tuesday morning, when nobody is watching, match the brave things you said on Sunday."
       ]
+    },
+    {
+      "id": "wp-doubt-self",
+      "title": "I Think, Therefore I Am",
+      "emoji": "🧠",
+      "culture": "Western Philosophy",
+      "blurb": "Three short lines from the dawn of modern European thought — Descartes, Montaigne and Pascal on doubt, humility and the limits of reason.",
+      "words": ["Perplexed", "Hesitant", "Obscure", "Vague", "Lingered", "Muttered", "Astonished", "Bewildered", "Inscription", "Misinterpret"],
+      "proverbs": [
+        {
+          "native": "Cogito, ergo sum.",
+          "lang": "la",
+          "romanisation": "Cogito, ergo sum.",
+          "translation": "I think, therefore I am.",
+          "meaning": "René Descartes' answer to total doubt. If I can question my own existence, there must be a 'me' doing the questioning."
+        },
+        {
+          "native": "Que sais-je?",
+          "lang": "fr",
+          "romanisation": "Que sais-je?",
+          "translation": "What do I know?",
+          "meaning": "Michel de Montaigne's lifelong motto, carved into a beam in his tower study. A wise person is always a little unsure of their own opinions."
+        },
+        {
+          "native": "Le cœur a ses raisons que la raison ne connaît point.",
+          "lang": "fr",
+          "romanisation": "Le cœur a ses raisons que la raison ne connaît point.",
+          "translation": "The heart has its reasons that reason knows nothing of.",
+          "meaning": "Blaise Pascal: love, courage and beauty are real even when no proof can be drawn on a page."
+        }
+      ],
+      "paragraphs": [
+        "Long before the modern world, a French thinker named René Descartes sat alone by a stove and decided to doubt everything. Could he be sure the world was real? Could he be sure his own hands existed? He grew bewildered by the size of the question and perplexed by every familiar thing he had once trusted.",
+        "In that obscure, foggy moment Descartes noticed one rock that would not slip: he was doing the doubting. If he could think, he must exist. He muttered the words to himself, then wrote them down — Cogito ergo sum, 'I think, therefore I am.' The inscription has lingered in textbooks ever since.",
+        "It is easy to misinterpret Descartes as a person who refused to trust anything. In truth, he doubted in order to build a stronger foundation, like a builder testing a beam before laying the first stone.",
+        "Earlier still, Michel de Montaigne carved a different motto into a wooden beam in his tower study: Que sais-je? — 'What do I know?' He believed a wise person should always be a little hesitant, a little astonished by their own opinions. Certainty, he warned, is often only a vague feeling dressed up in confident clothes.",
+        "Blaise Pascal added the gentlest line of the three: 'The heart has its reasons that reason knows nothing of.' Love, courage and beauty are real even when no proof can be drawn on a page — and admitting that is not weakness but wisdom."
+      ]
+    },
+    {
+      "id": "wp-reason-freedom",
+      "title": "Dare to Know",
+      "emoji": "💡",
+      "culture": "Western Philosophy",
+      "blurb": "Enlightenment mottos from Kant, Bacon and Voltaire about courage, knowledge and the right to speak your mind.",
+      "words": ["Illuminated", "Stimulate", "Ingenious", "Progressive", "Robust", "Prominent", "Defiant", "Resolution", "Forfeit", "Reluctant"],
+      "proverbs": [
+        {
+          "native": "Sapere aude!",
+          "lang": "la",
+          "romanisation": "Sapere aude!",
+          "translation": "Dare to know!",
+          "meaning": "Immanuel Kant's motto for the Enlightenment. Have the courage to use your own mind, instead of waiting for someone else to do your thinking for you."
+        },
+        {
+          "native": "Scientia potestas est.",
+          "lang": "la",
+          "romanisation": "Scientia potestas est.",
+          "translation": "Knowledge is power.",
+          "meaning": "Francis Bacon argued that studying the world carefully — its rocks, plants and diseases — would give ordinary people the tools to improve their lives."
+        },
+        {
+          "native": "Je désapprouve ce que vous dites, mais je défendrai votre droit de le dire.",
+          "lang": "fr",
+          "romanisation": "Je désapprouve ce que vous dites, mais je défendrai votre droit de le dire.",
+          "translation": "I disapprove of what you say, but I will defend your right to say it.",
+          "meaning": "A line written by Evelyn Beatrice Hall to summarise Voltaire's view of free speech. Disagreement does not cancel the right to be heard."
+        }
+      ],
+      "paragraphs": [
+        "Three hundred years ago Europe stepped into what later thinkers called the Enlightenment — a great age in which reason and curiosity illuminated almost every corner of life. The German philosopher Immanuel Kant gave the movement its battle cry: Sapere aude — 'Dare to know.' Have the courage, he said, to use your own mind.",
+        "To Kant, too many people stayed reluctant their whole lives, asking priests, kings or newspapers to do their thinking for them. But true freedom begins the moment you make the bold resolution to ask questions yourself. A robust mind, like a robust body, only grows when you stimulate it with hard work.",
+        "In England, Francis Bacon had already announced an ingenious idea: 'Knowledge is power.' Studying the world carefully — its rocks, its plants, its diseases — would give ordinary people new and progressive tools to improve their lives. Science, he insisted, must be a prominent gift to humanity, not a secret hidden in dusty libraries.",
+        "In France the writer Voltaire became famous for defending opponents he disagreed with. The line later put in his mouth — 'I disapprove of what you say, but I will defend your right to say it' — became a defiant motto. Free speech is so precious, he believed, that no society should ever forfeit it for the sake of a quiet life.",
+        "Together these three thinkers handed the modern world a small, bright toolkit. Be curious. Be brave. Listen even to people you disagree with. The lamps they illuminated are still burning in every classroom that asks 'why?' instead of merely 'what?'."
+      ]
+    },
+    {
+      "id": "wp-becoming-strong",
+      "title": "What Does Not Kill Me",
+      "emoji": "🔨",
+      "culture": "Western Philosophy",
+      "blurb": "Nietzsche, Camus and Sartre on hardship, freedom and the long task of becoming who you are.",
+      "words": ["Daunt", "Trepidation", "Stout", "Stubborn", "Forsake", "Forlorn", "Fraught", "Tempestuous", "Wretched", "Lament"],
+      "proverbs": [
+        {
+          "native": "Was mich nicht umbringt, macht mich stärker.",
+          "lang": "de",
+          "romanisation": "Was mich nicht umbringt, macht mich stärker.",
+          "translation": "What does not kill me makes me stronger.",
+          "meaning": "Friedrich Nietzsche. Hardship can be the chisel that carves a braver, stronger self — though only if we let it."
+        },
+        {
+          "native": "Werde, der du bist.",
+          "lang": "de",
+          "romanisation": "Werde, der du bist.",
+          "translation": "Become who you are.",
+          "meaning": "Nietzsche's reworking of an older Greek line by the poet Pindar. Do not copy other people — grow into the unique self that is already quietly inside you."
+        },
+        {
+          "native": "L'homme est condamné à être libre.",
+          "lang": "fr",
+          "romanisation": "L'homme est condamné à être libre.",
+          "translation": "Man is condemned to be free.",
+          "meaning": "Jean-Paul Sartre. No destiny is written for us — every choice we make is our own, which is both frightening and a gift."
+        }
+      ],
+      "paragraphs": [
+        "In a small Swiss village in 1888, a German philosopher named Friedrich Nietzsche wrote one of his most famous lines: 'What does not kill me makes me stronger.' He had lived a fraught and often lonely life, fighting illness and rejection, yet he refused to lament his fate. Suffering, he insisted, could be the chisel that carves a stout, brave soul.",
+        "Nietzsche's other great motto was 'Become who you are.' Do not imitate; do not forsake your own voice for a fashionable opinion. The world will try to daunt you with its rules and its mockery, but the stubborn task of every person is to grow into a self that is truly their own.",
+        "A century later the French writer Albert Camus looked at a wretched world after the Second World War — cities in ruins, friends lost, futures uncertain — and reached a similar conclusion. 'In the depth of winter,' he wrote, 'I finally learned that within me there lay an invincible summer.' Even on the most tempestuous days, something in us can stay warm.",
+        "Jean-Paul Sartre, Camus's friend and later rival, taught that we are 'condemned to be free.' At first that sounds forlorn — no one is coming to choose for you, no destiny is written. But it is also a gift. Every choice belongs to you, and every choice is a chance to become braver than yesterday.",
+        "Together these thinkers offer a useful trepidation cure: when life feels heavy, remember that you are also the sculptor. The hammer in your hand may ache, but it is shaping someone strong."
+      ]
+    },
+    {
+      "id": "pe-wound-light",
+      "title": "Where the Light Enters",
+      "emoji": "🌹",
+      "culture": "Persian",
+      "blurb": "Sufi poetry from Rumi and Hafez about pain, longing and the strange gift of a broken heart.",
+      "words": ["Luminous", "Radiant", "Glimmer", "Concealed", "Shrouded", "Yearned", "Serene", "Flourish", "Quivered", "Smouldering"],
+      "proverbs": [
+        {
+          "native": "زخم همان جایی است که نور از آن وارد می‌شود.",
+          "lang": "fa",
+          "romanisation": "Zakhm hamān jāyī ast ke nūr az ān vāred mīshavad.",
+          "translation": "The wound is the place where the light enters you.",
+          "meaning": "A line widely attributed to Rumi. Hearts that have been broken open are also hearts that can let new light in."
+        },
+        {
+          "native": "درد را درمان ز توست.",
+          "lang": "fa",
+          "romanisation": "Dard rā darmān ze tost.",
+          "translation": "The cure for the pain comes from you.",
+          "meaning": "Rumi taught that the very wound which hurts you also holds the medicine — if you look at it with patience."
+        },
+        {
+          "native": "بشنو این نی چون حکایت می‌کند، از جدایی‌ها شکایت می‌کند.",
+          "lang": "fa",
+          "romanisation": "Beshno in nay chun hekāyat mīkonad, az jodāyīhā shekāyat mīkonad.",
+          "translation": "Listen to this reed-flute, how it tells its tale; how it complains of being separated.",
+          "meaning": "The famous opening of Rumi's Masnavi. The reed cries because it was cut from the reed bed — and that longing becomes music."
+        }
+      ],
+      "paragraphs": [
+        "Eight hundred years ago, in the city of Konya, a Persian poet named Jalal ad-Din Rumi wrote a line that has comforted readers ever since: 'The wound is the place where the light enters you.' It is one of the most luminous ideas in all of Persian poetry.",
+        "Rumi did not deny that pain hurts. He had lost his dearest friend and yearned for him for years, sometimes in shrouded sorrow, sometimes in joyful song. But he taught that a heart that has been broken open is also a heart that can let new light in — gentle, serene and radiant.",
+        "This thought runs through almost every Persian Sufi poet. Hafez, who lived a hundred years after Rumi, wrote that 'the cure for pain is in the pain.' Whatever we keep concealed inside us only grows heavier. Speaking it, weeping it, even writing it as a poem is the first step toward letting the smouldering ember become a clean, warm flame.",
+        "Persian gardens were designed with this idea in mind. Water threaded through narrow channels, pools quivered in the breeze, and roses flourished beside cypress trees. The eye is meant to find one tiny glimmer of beauty, then another, and another, until even a tired traveller feels less alone.",
+        "To read Rumi as a child today is to be handed an old, kind permission: it is alright to ache, it is alright to long. The cracks let in the day."
+      ]
+    },
+    {
+      "id": "pe-one-body",
+      "title": "Sons of Adam",
+      "emoji": "🌍",
+      "culture": "Persian",
+      "blurb": "Saadi's famous verse — inscribed at the United Nations — on the shared humanity of every soul.",
+      "words": ["Huddled", "Wandered", "Tribute", "Wilderness", "Graceful", "Captivating", "Majestic", "Elegant", "Drifted", "Memorial"],
+      "proverbs": [
+        {
+          "native": "بنی‌آدم اعضای یک پیکرند، که در آفرینش ز یک گوهرند.",
+          "lang": "fa",
+          "romanisation": "Banī Ādam a'zā-ye yek peykarand, ke dar āfarīnesh ze yek gowharand.",
+          "translation": "Human beings are limbs of one body, of one essence in creation.",
+          "meaning": "Saadi's most famous verse, inscribed at the entrance of the United Nations building in New York. The whole human family is one."
+        },
+        {
+          "native": "چو عضوی به درد آورد روزگار، دگر عضوها را نماند قرار.",
+          "lang": "fa",
+          "romanisation": "Chu ozvī be dard āvarad rūzgār, degar ozvhā rā namānad qarār.",
+          "translation": "If one limb is troubled by suffering, no other limb will know any peace.",
+          "meaning": "The second half of Saadi's verse. When one part of humanity hurts, the whole body of humanity should feel it."
+        },
+        {
+          "native": "بیا تا قدر یکدیگر بدانیم.",
+          "lang": "fa",
+          "romanisation": "Biyā tā qadr-e yekdīgar bedānīm.",
+          "translation": "Come, let us know each other's worth.",
+          "meaning": "A line from Saadi's Golestan. Every person we meet is precious, if only we slow down to recognise it."
+        }
+      ],
+      "paragraphs": [
+        "At the entrance of the United Nations building in New York, a Persian poem from the 13th century is carved into the wall. The poet Saadi wrote it nearly eight hundred years ago, yet world leaders chose it as a memorial to one shared truth: human beings, of one essence, are limbs of the same body. We belong to each other.",
+        "Saadi's words were a graceful answer to a question that every age must face. When one country suffers, when one family is left huddled in the cold, when refugees have drifted for years without a safe shore, is it really someone else's problem? The Persian poet's answer was a quiet no.",
+        "Rumi, his older contemporary, wrote in the same spirit: 'Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.' For the Sufis, no human being was a stranger. Even an enemy was someone you had not yet sat with long enough.",
+        "This idea pours like a river through Persian art. Miniature paintings show wanderers who wandered for years across deserts and majestic mountains, only to discover at journey's end that the friend they sought was inside them all along. Even captivating heroes in old tales finish their adventures gentler and humbler than they began.",
+        "To read Saadi today is to be invited into an old, elegant wilderness of kindness, where every face is a familiar one and every life is worth a tribute."
+      ]
+    },
+    {
+      "id": "pe-moving-finger",
+      "title": "The Moving Finger Writes",
+      "emoji": "⏳",
+      "culture": "Persian",
+      "blurb": "Omar Khayyam and Hafez on the fleeting present — and the quiet duty to enjoy this exact afternoon.",
+      "words": ["Nostalgic", "Contented", "Elated", "Jubilant", "Splendid", "Vivid", "Whimsical", "Dazzling", "Exquisite", "Duration"],
+      "proverbs": [
+        {
+          "native": "این نیز بگذرد.",
+          "lang": "fa",
+          "romanisation": "Īn nīz bogzarad.",
+          "translation": "This too shall pass.",
+          "meaning": "An old Persian wisdom said to have been carved on King Solomon's ring. It calms the proud in joy and comforts the broken in sorrow."
+        },
+        {
+          "native": "دم را غنیمت دان.",
+          "lang": "fa",
+          "romanisation": "Dam rā ghanīmat dān.",
+          "translation": "Treasure the present moment.",
+          "meaning": "A motto loved by Sufi poets: the breath you have right now is itself a small, finished gift."
+        },
+        {
+          "native": "گذشت آنچه گذشت.",
+          "lang": "fa",
+          "romanisation": "Gozasht ānche gozasht.",
+          "translation": "What is past, is past.",
+          "meaning": "A common Persian saying urging us not to be trapped by yesterday's regret."
+        }
+      ],
+      "paragraphs": [
+        "In Persia eight centuries ago, a mathematician named Omar Khayyam paused from his calculations to write short, vivid four-line poems called rubaiyat. The most famous one says: 'The Moving Finger writes; and, having writ, moves on.' Whatever has been done is done; the only place we can ever truly stand is now.",
+        "Khayyam was not gloomy about this idea — he found it strangely freeing. Why spend a whole day in nostalgic worry over yesterday or anxious planning for tomorrow when this exact afternoon, with its splendid sky and warm bread, is asking to be enjoyed? Even a short duration of joy, fully lived, is worth more than a long, distracted life.",
+        "Hafez of Shiraz wrote in the same spirit a hundred years later. His verses are full of dazzling images: jubilant gardens, dancing candles, exquisite cups passed between friends. He believed that gratitude was the secret door to every other virtue. Notice the rose at your window today, and you will already be halfway to wisdom.",
+        "This is not a careless or whimsical philosophy. The Persian poets had all seen plague, war and loss. But they refused to let sorrow be the only colour on the page. To be elated by a kind word, to be contented with a simple meal, to look up at the stars on a winter night — these were holy acts.",
+        "The Moving Finger has already written. The question Khayyam and Hafez leave us with is gentler than it sounds: what will you let it write of you today?"
+      ]
+    },
+    {
+      "id": "he-if-not-now",
+      "title": "If Not Now, When?",
+      "emoji": "✡️",
+      "culture": "Jewish",
+      "blurb": "Three questions Rabbi Hillel asked two thousand years ago — and the Jewish tradition has been answering them ever since.",
+      "words": ["Poised", "Sprightly", "Nimble", "Bustling", "Lapse", "Verge", "Lawful", "Rite", "Mantra", "Furnish"],
+      "proverbs": [
+        {
+          "native": "אם אין אני לי, מי לי?",
+          "lang": "he",
+          "romanisation": "Im ein ani li, mi li?",
+          "translation": "If I am not for myself, who will be for me?",
+          "meaning": "The first of Hillel the Elder's three questions in Pirkei Avot. Nobody else can stand up for your life on your behalf."
+        },
+        {
+          "native": "וכשאני לעצמי, מה אני?",
+          "lang": "he",
+          "romanisation": "U-khshe-ani le-atzmi, ma ani?",
+          "translation": "And when I am only for myself, what am I?",
+          "meaning": "Hillel's second question. A life that helps no one else is hardly a life at all."
+        },
+        {
+          "native": "ואם לא עכשיו, אימתי?",
+          "lang": "he",
+          "romanisation": "Ve-im lo akhshav, eimatai?",
+          "translation": "And if not now, when?",
+          "meaning": "Hillel's sharpest line. Tomorrow keeps moving further away the longer we wait."
+        }
+      ],
+      "paragraphs": [
+        "Two thousand years ago, a Jewish teacher named Hillel was asked to summarise his faith. He answered with three short questions that have echoed down the centuries: 'If I am not for myself, who will be? If I am only for myself, what am I? And if not now, when?' Together they have become almost a mantra of Jewish life.",
+        "The first question reminds us that nobody else can live our life for us. A child must learn to stand up for their own ideas, to look after their own health, to be poised and ready to speak. To furnish the world with your gifts, you first have to believe you have any.",
+        "The second question turns the camera around. If we look after only ourselves, we shrink. A good life is one where we are also nimble enough to notice the neighbour who needs help, the new pupil sitting alone, the bustling family on the bus who could use a smile.",
+        "And the third question is the sharpest. 'If not now, when?' How easy it is to let kindness lapse, to wait for a better moment that never comes, to stand on the verge of doing the right thing and then find an excuse. Hillel's answer is gentle but firm: tomorrow is not a lawful currency.",
+        "Around the Sabbath table, these questions still live on. They are not a heavy rite but a sprightly little nudge — be brave, be kind, and be quick. The minute we have right now is the only minute we ever truly own."
+      ]
+    },
+    {
+      "id": "he-save-a-life",
+      "title": "To Save One Life",
+      "emoji": "🕯️",
+      "culture": "Jewish",
+      "blurb": "The Talmud's teaching that every single person carries an entire world inside them — and what that means in practice.",
+      "words": ["Precious", "Preservation", "Immense", "Immortal", "Livelihood", "Indescribable", "Obedient", "Imprison", "Impressive", "Infuse"],
+      "proverbs": [
+        {
+          "native": "כל המקיים נפש אחת, מעלין עליו כאילו קיים עולם מלא.",
+          "lang": "he",
+          "romanisation": "Kol ha-mekayem nefesh achat, ma'alin alav ke-ilu kiyem olam male.",
+          "translation": "Whoever saves a single life, it is as if they have saved an entire world.",
+          "meaning": "Sanhedrin 4:5 in the Mishnah. Every human carries an inner world that no one else can replace."
+        },
+        {
+          "native": "אדם נברא יחידי.",
+          "lang": "he",
+          "romanisation": "Adam nivra yechidi.",
+          "translation": "Adam was created as a single individual.",
+          "meaning": "From the same Mishnah passage: every soul is unique, like a coin minted from a die that never quite repeats."
+        },
+        {
+          "native": "פיקוח נפש דוחה את הכל.",
+          "lang": "he",
+          "romanisation": "Pikuach nefesh docheh et ha-kol.",
+          "translation": "Saving a life overrides everything.",
+          "meaning": "A foundational principle of Jewish law. Almost any other rule may be set aside if a human life is in danger."
+        }
+      ],
+      "paragraphs": [
+        "One of the most famous teachings in the Jewish tradition comes from the Talmud, the great library of rabbinic wisdom: 'Whoever saves a single life, it is as if they have saved an entire world.' Every person, the rabbis taught, carries something immense and indescribable inside them.",
+        "The reasoning was striking. When a king mints coins, the rabbis said, every coin looks the same. But when God makes people, no two are alike — each one has a precious face, a unique voice, an immortal soul. To dismiss even one person is to throw away a world that nobody else will ever build.",
+        "This idea has shaped Jewish thinking about preservation of life for two thousand years. Almost any other religious rule can be set aside, even on the holiest day, if a human life is in danger. Rabbis would not be obedient to a ritual if obedience meant letting someone die. Life comes first.",
+        "The tradition does not stop at saving a life from physical danger. To embarrass someone in public, the rabbis warned, is also a kind of taking-life. Even one quiet act of dignity — defending the friend others mock, sharing food with the new pupil — can infuse a whole community with hope.",
+        "To imprison a soul in indifference, the tradition warns, harms your own livelihood as much as anyone else's. To care for one stranger, by contrast, is an impressive and mysterious thing — small from the outside, world-shaped on the inside."
+      ]
+    },
+    {
+      "id": "he-repair-world",
+      "title": "Tikkun Olam",
+      "emoji": "🛠️",
+      "culture": "Jewish",
+      "blurb": "Maimonides' famous ladder of giving and the Jewish idea that the world was left a little broken on purpose.",
+      "words": ["Abundant", "Allocate", "Rehabilitate", "Avail", "Sparse", "Amplify", "Analogy", "Hierarchy", "Impatient", "Furnish"],
+      "proverbs": [
+        {
+          "native": "תיקון עולם.",
+          "lang": "he",
+          "romanisation": "Tikkun olam.",
+          "translation": "Repair of the world.",
+          "meaning": "A short, deep phrase from Jewish mysticism and daily prayer: creation is left a little unfinished so that human hands can complete it."
+        },
+        {
+          "native": "לא עליך המלאכה לגמור, ולא אתה בן חורין להיבטל ממנה.",
+          "lang": "he",
+          "romanisation": "Lo alecha hamlacha ligmor, ve-lo ata ben chorin lehibatel mimena.",
+          "translation": "You are not obligated to complete the work, but neither are you free to give it up.",
+          "meaning": "Rabbi Tarfon in Pirkei Avot. Do the piece you can — and trust others to do the rest."
+        }
+      ],
+      "paragraphs": [
+        "Long after the days of Hillel, the Jewish tradition gave the world another beautiful phrase: tikkun olam, meaning 'repair of the world.' The idea is that creation arrived a little broken on purpose, so that human hands could finish the job. Every kind act, however small, helps to mend a tear.",
+        "In the Middle Ages a great rabbi named Maimonides drew up a remarkable hierarchy of giving — a ladder with eight rungs. At the lowest rung was the impatient giver who hands over a coin grudgingly. Higher up came those who gave with abundant joy, then those who gave without being asked. The very top rung surprised everyone.",
+        "On Maimonides' highest rung, you do not just allocate money to a poor neighbour — you furnish them with a job or a small loan so they can stand on their own feet. This is rehabilitate-the-world generosity: helping someone leave behind a sparse, anxious life and step into a fuller one, without ever feeling ashamed.",
+        "There is a useful analogy here. Imagine a torch lit in a dark room. If you use it only for yourself, the light stays the same. If you use it to amplify another person's torch, the room grows twice as bright — and neither flame is any dimmer. Generosity, in the Jewish view, works the same way.",
+        "Even a sparse purse can avail the world. A smile costs nothing yet repairs a small corner. To plant a tree, to mentor a younger child, to clear up after a meal — these are not tiny things. They are stitches in the long, patient tapestry of tikkun olam."
+      ]
+    },
+    {
+      "id": "ar-camel-trust",
+      "title": "Tie Your Camel",
+      "emoji": "🐪",
+      "culture": "Arabic",
+      "blurb": "A famous Hadith on faith and practical action — and the way one short Arabic sentence travelled the world.",
+      "words": ["Encapsulate", "Notorious", "Drastic", "Discriminate", "Disperse", "Circulate", "Denote", "Clambered", "Meandered", "Saga"],
+      "proverbs": [
+        {
+          "native": "اعقلها وتوكل.",
+          "lang": "ar",
+          "romanisation": "I'qilhā wa tawakkal.",
+          "translation": "Tie your camel, and trust in God.",
+          "meaning": "From a famous Hadith. Faith was never meant to replace common sense — pray with one hand, and work with the other."
+        },
+        {
+          "native": "إنما الأعمال بالنيات.",
+          "lang": "ar",
+          "romanisation": "Innamā al-a'mālu bil-niyyāt.",
+          "translation": "Deeds are judged by intentions.",
+          "meaning": "Another famous Hadith. What matters is not just the outward act, but the heart that performs it."
+        }
+      ],
+      "paragraphs": [
+        "In the deserts of old Arabia, a man once said to the Prophet Muhammad, 'Should I leave my camel untied and trust in God?' The Prophet, peace be upon him, replied with a line that has lived ever since: 'Tie your camel — and then trust in God.' Faith was never meant to replace common sense.",
+        "The saying is one of the most notorious examples of Arabic wisdom because it captures so much in so few words. To encapsulate centuries of teaching, it says simply: pray with one hand and work with the other. Heaven helps the rider who has first tightened her own saddle.",
+        "In daily life this principle is everywhere. A pupil who only hopes to pass an exam, without revising, has left the camel loose. A traveller who refuses to take a coat into the mountains, certain that the weather will obey his prayers, may soon discover that prayer and preparation are partners, not rivals.",
+        "The lesson is gentle but clear. Trust is not a drastic abandoning of effort; it is the calm that comes after you have done your part. The wise Arabic teachers refused to discriminate between the spiritual and the practical. To them, washing your hands, mending your shoes and saying your prayers were all stitched into the same fabric.",
+        "Sayings like this travelled across the Muslim world along trade routes, where they would disperse through cities from Cordoba to Samarkand. A traveller would carry the words like a coin in a pouch, sharing them at one caravan stop after another, until the same little proverb circulated as widely as the silk on the merchants' backs.",
+        "To us today, 'tie your camel' may denote nothing more than a piece of practical advice. Yet for centuries of Arab travellers, who clambered onto their camels each dawn and rode for weeks across the sand, those four words were a quiet contract with the world. The proverb's own saga is itself remarkable: it began as a quick remark in a desert oasis, meandered through generations of teachers and storytellers, and ended up quoted in cafés and classrooms from Morocco to Indonesia."
+      ]
+    },
+    {
+      "id": "ar-ink-scholar",
+      "title": "Ink of the Scholar",
+      "emoji": "🪶",
+      "culture": "Arabic",
+      "blurb": "Sayings from the great age of Islamic scholarship, when Baghdad's House of Wisdom translated the world.",
+      "words": ["Hieroglyph", "Inflection", "Excerpt", "Specimen", "Census", "Artefact", "Spatial", "Matrix", "Plagiarise", "Vault"],
+      "proverbs": [
+        {
+          "native": "اطلبوا العلم من المهد إلى اللحد.",
+          "lang": "ar",
+          "romanisation": "Uṭlubū al-'ilma min al-mahdi ilā al-laḥd.",
+          "translation": "Seek knowledge from the cradle to the grave.",
+          "meaning": "A famous saying urging lifelong learning — no one is too young to start, and no one is too old to continue."
+        },
+        {
+          "native": "مداد العلماء أفضل من دماء الشهداء.",
+          "lang": "ar",
+          "romanisation": "Midād al-'ulamā' afḍal min dimā' ash-shuhadā'.",
+          "translation": "The ink of the scholars is more precious than the blood of the martyrs.",
+          "meaning": "An old saying long quoted in the Muslim world: the patient work of study is one of the highest of all callings."
+        },
+        {
+          "native": "العلم نور.",
+          "lang": "ar",
+          "romanisation": "Al-'ilmu nūr.",
+          "translation": "Knowledge is light.",
+          "meaning": "A short Arabic proverb. To learn is to push back the darkness, both around you and inside you."
+        }
+      ],
+      "paragraphs": [
+        "In the 9th century, Baghdad was the most exciting city on earth. Its caliphs had founded a House of Wisdom — bayt al-hikma — where Arabic, Greek, Persian and Indian scholars worked side by side translating, copying and arguing. From this glowing vault of books came medicine, astronomy, algebra and much more.",
+        "One old saying still quoted today is this: 'The ink of the scholar is more sacred than the blood of the martyr.' For Islamic civilisation this was not just poetry. To read a single excerpt from Aristotle, to study one specimen of a healing plant, to copy out an old astronomical chart — these acts mattered as much as any battle.",
+        "Mathematics flourished. The very word algebra comes from al-jabr, written in Baghdad in around 820. Astronomers measured the spatial layout of the stars and built precise instruments. Scholars created a kind of matrix of human knowledge in which every discovery was carefully cross-referenced with the next.",
+        "Linguists were equally rigorous. Arab grammarians studied every inflection of every verb, every hieroglyph-like marking on the page, every small change in meaning. Books on a single letter could run to hundreds of pages. A scholar who tried to plagiarise another's work was shamed for life.",
+        "In the great markets of old Damascus, Cairo and Granada you could buy a book on almost any subject — a herbal census of Mediterranean plants, a guide to Indian numerals, an excerpt of Persian poetry. Each volume was a quiet artefact of an old, generous belief: that to learn together is one of the holiest things humans can do."
+      ]
+    },
+    {
+      "id": "ar-after-difficulty",
+      "title": "After Hardship, Ease",
+      "emoji": "🌅",
+      "culture": "Arabic",
+      "blurb": "A Quranic promise and a line from Khalil Gibran about the strange way suffering finally gives way to peace.",
+      "words": ["Tumultuous", "Stifling", "Bleak", "Dreary", "Desolate", "Placid", "Frantic", "Hollow", "Fragrant", "Crisp"],
+      "proverbs": [
+        {
+          "native": "إن مع العسر يسرا.",
+          "lang": "ar",
+          "romanisation": "Inna ma'a al-'usri yusrā.",
+          "translation": "Surely with hardship comes ease.",
+          "meaning": "Quran 94:6. The Arabic verse repeats the same promise twice in the same chapter — relief always follows the difficulty."
+        },
+        {
+          "native": "الصبر مفتاح الفرج.",
+          "lang": "ar",
+          "romanisation": "Aṣ-ṣabru miftāḥ al-faraj.",
+          "translation": "Patience is the key to relief.",
+          "meaning": "A classic Arabic proverb. The door of joy is not forced open — it is unlocked slowly, by patience."
+        }
+      ],
+      "paragraphs": [
+        "One of the most quoted lines in the Quran is short and steady: 'For surely with hardship comes ease.' The Arabic verse repeats the same idea twice, as if to make sure the reader does not miss it. After difficulty, ease. Not instead of difficulty — after it.",
+        "The promise is not that suffering will be cancelled. Every life has its bleak winters, its tumultuous arguments, its dreary mornings. The promise is that no storm is forever. The desolate field will green again. The stifling room will eventually be opened to a fragrant breeze.",
+        "The Lebanese poet Khalil Gibran, writing in the early 20th century, offered a similar message in a different voice. 'Out of suffering have emerged the strongest souls,' he wrote. 'The most massive characters are seared with scars.' What feels frantic and hollow today may quietly be carving the person you will become next year.",
+        "In Arabic story-telling this idea often appears as a journey. A traveller is lost in a sandstorm, certain the dunes will never end — and then, just over the next ridge, the placid green of an oasis appears. The water is crisp and cold. The earlier hardship is not forgotten, only translated into gratitude.",
+        "To a child hearing these words today, the meaning is gentle. A bad day at school is not the end of the story. A long week of revision will reach the morning of the test. The ease, when it comes, will taste sweeter for the difficulty that came before it."
+      ]
+    },
+    {
+      "id": "ru-trust-verify",
+      "title": "Trust, but Verify",
+      "emoji": "🪆",
+      "culture": "Russian",
+      "blurb": "Two old peasant proverbs that, between them, summarise Russia's quiet, patient relationship with the world.",
+      "words": ["Suspicious", "Evasive", "Stealthy", "Clandestine", "Tense", "Uneasy", "Espionage", "Deterrent", "Lurched", "Inflammatory"],
+      "proverbs": [
+        {
+          "native": "Доверяй, но проверяй.",
+          "lang": "ru",
+          "romanisation": "Doveryaĭ, no proveryaĭ.",
+          "translation": "Trust, but verify.",
+          "meaning": "An old Russian peasant proverb made famous worldwide by Ronald Reagan during nuclear talks with the Soviet Union."
+        },
+        {
+          "native": "Тише едешь, дальше будешь.",
+          "lang": "ru",
+          "romanisation": "Tishe yedesh', dal'she budesh'.",
+          "translation": "The quieter you drive, the further you will go.",
+          "meaning": "A Russian way of saying both 'slow and steady wins the race' and 'haste makes waste.'"
+        }
+      ],
+      "paragraphs": [
+        "During the long Cold War years, an old Russian saying suddenly appeared on the lips of world leaders. Doveryai, no proveryai — 'Trust, but verify.' President Reagan used it again and again in his nuclear talks with Soviet leaders, and Mikhail Gorbachev half-jokingly complained that he heard it at every meeting.",
+        "The proverb is older than any treaty. Russian peasants used it for centuries when buying a horse, hiring a worker or sending a child off with a friend. Russia is a vast country, full of long roads and long winters. A wise person trusts — but then, gently, also checks. Even the most trustworthy harness has lurched loose on a bumpy track.",
+        "In a tense world of espionage and deterrent threats, that quiet peasant proverb gave both sides a workable rule. We will believe your promise to destroy these missiles, the Americans said, but we will also send our inspectors. Not because we are suspicious of you in particular, but because trust without checking can become foolishness.",
+        "Russians have another saying that fits beside this one: tishe yedesh, dal'she budesh — 'The quieter you go, the further you will reach.' Hurrying through life on a stealthy shortcut may seem clever, but evasive answers, uneasy compromises and clandestine deals usually come back to bite. The slow honest road, the proverb hints, is also the safest.",
+        "Even today, when relations grow inflammatory and headlines turn shrill, a quiet voice in Russian kitchens still mutters: doveryai, no proveryai. Trust people — most of them deserve it. But keep your eyes open all the same."
+      ]
+    },
+    {
+      "id": "ru-measure-twice",
+      "title": "Measure Seven Times",
+      "emoji": "📏",
+      "culture": "Russian",
+      "blurb": "The Russian carpenter's golden rule, and the long, patient view of work that built villages to last centuries.",
+      "words": ["Amateur", "Technician", "Hack", "Substitute", "Rickety", "Dilapidated", "Gnarled", "Towering", "Stupendous", "Supple"],
+      "proverbs": [
+        {
+          "native": "Семь раз отмерь, один раз отрежь.",
+          "lang": "ru",
+          "romanisation": "Sem' raz otmer', odin raz otrezh'.",
+          "translation": "Measure seven times, cut once.",
+          "meaning": "The Russian carpenter's golden rule. Plan carefully — a mistake in cutting wood, or in choosing a path in life, is hard to undo."
+        },
+        {
+          "native": "Терпение и труд всё перетрут.",
+          "lang": "ru",
+          "romanisation": "Terpenie i trud vse peretrut.",
+          "translation": "Patience and work grind through everything.",
+          "meaning": "A favourite Russian proverb. There is no obstacle so vast that calm, steady effort cannot wear it down over time."
+        }
+      ],
+      "paragraphs": [
+        "There are few sayings more practical than the Russian carpenter's rule: sem' raz otmer', odin raz otrezh' — 'Measure seven times, cut once.' Behind it lies a country full of long winters, where a single mistake in building a fence or a roof could cost a family dearly. Get it right at the start, the proverb says, or pay for it later.",
+        "Russian craftsmen took this to heart. A village technician who built sledges or coffin chests would measure his planks again and again before laying a saw against the wood. He had no money to waste on a hack job. The amateur cuts first and apologises later; the master measures slowly and apologises never.",
+        "Walk through an old Russian village even today and you can see the result. Houses with their gnarled wooden beams stand for two hundred years, their carved windows still neat. A dilapidated barn is rare; a rickety roof rarer still. The lesson is that a careful first plan is worth more than a stupendous finished mistake.",
+        "Russians have a second proverb that pairs perfectly with the first: terpenie i trud vse peretrut — 'Patience and work grind through everything.' The most towering mountain is moved one barrow-load at a time. The supple wood becomes a fine sledge only after weeks of careful steaming. There is no real substitute for slow effort.",
+        "Children growing up in Russian families often hear both sayings together, on rainy afternoons when a long task feels impossible. Measure seven times. And then keep going, patiently, until the work is done. There is something deeply hopeful in that pair of small, calm sentences."
+      ]
+    },
+    {
+      "id": "ru-soul-endure",
+      "title": "Beauty Will Save the World",
+      "emoji": "📖",
+      "culture": "Russian",
+      "blurb": "Dostoevsky, Tolstoy and Solzhenitsyn on the patient strength of the Russian soul — and what beauty really is.",
+      "words": ["Vast", "Panorama", "Crimson", "Misty", "Weary", "Tremulous", "Ravenous", "Vibrant", "Ornate", "Uncanny"],
+      "proverbs": [
+        {
+          "native": "Красота спасёт мир.",
+          "lang": "ru",
+          "romanisation": "Krasota spasyot mir.",
+          "translation": "Beauty will save the world.",
+          "meaning": "From Dostoevsky's novel The Idiot. The 'beauty' he meant was not merely visual, but the deeper beauty of love, courage and forgiveness."
+        },
+        {
+          "native": "Все счастливые семьи похожи друг на друга, каждая несчастливая семья несчастлива по-своему.",
+          "lang": "ru",
+          "romanisation": "Vse schastlivye sem'i pokhozhi drug na druga, kazhdaya neschastlivaya sem'ya neschastliva po-svoyemu.",
+          "translation": "All happy families are alike; each unhappy family is unhappy in its own way.",
+          "meaning": "The famous opening of Tolstoy's Anna Karenina. Tolstoy believed that joy has many fewer flavours than sorrow."
+        },
+        {
+          "native": "Жить не по лжи.",
+          "lang": "ru",
+          "romanisation": "Zhit' ne po lzhi.",
+          "translation": "Live not by lies.",
+          "meaning": "Alexander Solzhenitsyn's appeal to his fellow citizens under Soviet rule: refuse to repeat what you know is untrue, even if it costs you."
+        }
+      ],
+      "paragraphs": [
+        "In the long Russian novels of the 19th century, a single idea keeps returning: that even in a country of vast distances and weary winters, beauty can save the world. Fyodor Dostoevsky put the line directly into one of his most famous books. 'Beauty,' he wrote, 'will save the world.' It is one of the most quoted sentences in all of Russian literature.",
+        "What did he mean? Not just the beauty of an ornate cathedral or a vibrant sunset, though Russia has plenty of both. Dostoevsky meant the deeper beauty of kindness — a forgiven friend, a shared piece of bread, a tremulous prayer in the dark. These small acts, he believed, were the real panorama of the human soul.",
+        "Lev Tolstoy, his great rival, opened Anna Karenina with another sentence everyone now knows: 'Happy families are all alike; every unhappy family is unhappy in its own way.' The novel that follows is a sweeping crimson and misty landscape, full of love, regret and trains. Tolstoy wanted his readers to see, with uncanny clearness, how ordinary lives could be tragic and ordinary, too.",
+        "Both writers had known hunger. Russia in their century was full of ravenous winters and difficult cities. Yet neither writer wrote in despair. They believed the Russian soul had a stubborn ability to keep loving, keep singing, keep noticing the world's quiet glory even after losing nearly everything.",
+        "A century later, the writer Alexander Solzhenitsyn added one more line for the bookshelf: 'Live not by lies.' The cold winter of dictatorship had not crushed the spirit of the people. Russian literature still teaches its readers to look honestly at darkness, to hold on to small beauties, and to refuse to forget the truth even when the world is loudly demanding that they should."
+      ]
     }
   ]
 }
