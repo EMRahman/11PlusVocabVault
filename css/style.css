@@ -1486,6 +1486,33 @@ footer {
   border-color: #6D28D9;
 }
 
+.fable-launch-btn {
+  background: linear-gradient(135deg, #14B8A6, #0D9488);
+  border-color: #0D9488;
+}
+
+.fable-launch-btn:hover {
+  background: linear-gradient(135deg, #0D9488, #0F766E);
+  border-color: #0F766E;
+}
+
+/* Fable moral footer */
+.fable-moral {
+  margin: 1rem 0 0.5rem;
+  padding: 0.85rem 1.1rem;
+  border-left: 4px solid #0D9488;
+  background: #F0FDFA;
+  color: #115E59;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.98rem;
+  border-radius: 6px;
+}
+
+.fable-moral.hidden {
+  display: none;
+}
+
 /* History era label */
 .history-reading-era {
   font-size: 0.78rem;
