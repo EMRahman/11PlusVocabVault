@@ -4590,25 +4590,17 @@
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // COMIC MODE — Star-Sloth original comics. Offline, template-based.
+  // COMIC MODE — Star-Sloth original comics. Offline, fixed stories.
   // ═══════════════════════════════════════════════════════════════════════════
 
   var comicLaunchBtn       = document.getElementById('comic-launch-btn');
   var comicOverlay         = document.getElementById('comic-overlay');
-  var comicSetupScreen     = document.getElementById('comic-setup-screen');
   var comicViewingScreen   = document.getElementById('comic-viewing-screen');
   var comicCloseBtn        = document.getElementById('comic-close-btn');
   var comicBackBtn         = document.getElementById('comic-back-btn');
   var comicPrintBtn        = document.getElementById('comic-print-btn');
-  var comicWordChipsEl     = document.getElementById('comic-word-chips');
-  var comicShuffleBtn      = document.getElementById('comic-shuffle-btn');
-  var comicUnmasteredCheck = document.getElementById('comic-unmastered-check');
-  var comicTemplateGridEl  = document.getElementById('comic-template-grid');
-  var comicGenerateBtn     = document.getElementById('comic-generate-btn');
   var comicPanelsContainer = document.getElementById('comic-panels-container');
   var comicGlossaryEl      = document.getElementById('comic-glossary');
-
-  var comicState = { selectedWords: [], selectedTemplate: null, displayedWords: [] };
 
   // ── SVG character generators ───────────────────────────────────────────────
 
@@ -4797,14 +4789,338 @@
       '</svg>';
   }
 
-  // ── Template definitions ───────────────────────────────────────────────────
+  // ── Fixed stories ──────────────────────────────────────────────────────────
 
-  var comicTemplateList = [
-    { id: 'urgentBriefing', name: 'The Urgent Briefing',       icon: '🚨', desc: '1 word'   },
-    { id: 'overClocksPlan', name: "Over-Clock's Instant Plan", icon: '☕', desc: '1-2 words' },
-    { id: 'joltExplains',   name: 'Jolt Explains Everything',  icon: '⚡', desc: '2+ words'  },
-    { id: 'waitForIt',      name: 'Wait For It...',            icon: '🕐', desc: '1 word'   },
-    { id: 'vocabAcademy',   name: 'Galactic Vocab Academy',    icon: '🏫', desc: '1-3 words' }
+  var COMIC_STORIES = [
+
+    // Story 1 — Haste Makes Space-Waste
+    {
+      words: [
+        { word: 'haste',    definition: 'Excessive speed that can cause mistakes.' },
+        { word: 'reckless', definition: 'Doing dangerous things without thinking.' },
+        { word: 'cautious', definition: 'Careful to avoid danger or mistakes.' }
+      ],
+      panels: [
+        { caption: '🚨 RED ALERT!',
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: 'THE OXYGEN GENERATOR IS BROKEN! No time to be cautious — haste is the only option!',
+          bubbleType: 'shout', sfx: null },
+        { caption: null,
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'Connecting all 50 wires at once is NOT reckless. It is EFFICIENCY. Watch me.',
+          bubbleType: 'shout', sfx: 'ZZZAP!' },
+        { caption: '0.003 SECONDS LATER...',
+          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'I may have been... reckless.',
+          bubbleType: 'speech', sfx: 'PFFFFT' },
+        { caption: 'STAR-SLOTH HAS BEEN STUDYING ONE TINY WIRE FOR TWO HOURS.',
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: '...cautious... careful to avoid mistakes... yes...',
+          bubbleType: 'thought', sfx: null },
+        { caption: 'HE CONNECTS IT.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'click.' },
+        { caption: 'OXYGEN RESTORED. SOMEHOW.',
+          char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'Haste caused the disaster. Being cautious FIXED it. He is my hero.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 2 — The Late Hero Catches the Wormhole
+    {
+      words: [
+        { word: 'opportune', definition: 'Happening at a particularly suitable or favourable time.' },
+        { word: 'vigilant',  definition: 'Watchful and alert for danger.' }
+      ],
+      panels: [
+        { caption: "IN OVER-CLOCK'S LAIR...",
+          char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
+          bubble: 'My trap is perfectly opportune — timed to the exact moment Star-Sloth lands! MWAHAHA.',
+          bubbleType: 'shout', sfx: null },
+        { caption: "STAR-SLOTH'S FLIGHT PLAN: NAP, THEN MINIMUM SPEED.",
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: '...zz...' },
+        { caption: 'SIX HOURS LATER. OVER-CLOCK REMAINS VIGILANT.',
+          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
+          bubble: 'I am being vigilant. He will arrive. Any moment. I am absolutely certain.',
+          bubbleType: 'speech', sfx: 'tick tick tick' },
+        { caption: 'THE TRAP TIMER RUNS OUT.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'NOOOOO!',
+          bubbleType: 'shout', sfx: 'KA-BOOM' },
+        { caption: 'STAR-SLOTH FINALLY ARRIVES.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: 'GALAXY SAVED. WITHOUT TRYING.',
+          char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'His late arrival was opportune! Over-Clock was vigilant for six hours for NOTHING. The trap defeated itself.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 3 — The Canvas of the Cosmos
+    {
+      words: [
+        { word: 'contemplate', definition: 'To think deeply about something.' },
+        { word: 'frantic',     definition: 'Wild with worry, fear, or hurry.' }
+      ],
+      panels: [
+        { caption: '🐰 BLUR-BUNNIES ON THE HULL! 🐰',
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: "Don't contemplate it — DO something! They are eating through the WALLS!",
+          bubbleType: 'shout', sfx: null },
+        { caption: 'JOLT ATTEMPTS FRANTIC SWATTING.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'FRANTIC SWATTING IS DEFINITELY WORKING. IT IS ABSOLUTELY WORKING.',
+          bubbleType: 'shout', sfx: 'BOING BOING BOING' },
+        { caption: 'STAR-SLOTH GOES TO THE SUPPLY CUPBOARD.',
+          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
+          bubble: 'WHY IS HE GETTING PAINT?! This is not the time to contemplate ART!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'THREE HOURS OF QUIET CONTEMPLATION LATER.',
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: 'A HYPER-REALISTIC 3D TUNNEL ON THE BLAST DOOR.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'BONK BONK BONK' },
+        { caption: 'BUNNIES SAFELY PILED UP. HULL INTACT.',
+          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'He stopped to contemplate! We were frantic and achieved nothing. The slower one wins AGAIN.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 4 — The Fast-Forward Fiasco
+    {
+      words: [
+        { word: 'scurried',  definition: 'Moved quickly with short, hurried steps.' },
+        { word: 'meandered', definition: 'Moved or followed a path with many gentle bends.' }
+      ],
+      panels: [
+        { caption: "IN OVER-CLOCK'S LAIR...",
+          char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
+          bubble: 'My Caffeine-Cannon will end Star-Sloth! He always meandered peacefully. NOT ANY MORE!',
+          bubbleType: 'shout', sfx: 'ZAP' },
+        { caption: 'STAR-SLOTH IS NOT CALIBRATED FOR THIS.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'HE SCURRIED INTO THAT DOOR! Now that wall! He has never scurried before! THIS IS BAD.',
+          bubbleType: 'shout', sfx: 'CRASH' },
+        { caption: 'HE SCURRIED INTO EVERYTHING.',
+          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'OOF OOF OOF' },
+        { caption: 'OVER-CLOCK ATTACKS, EXPECTING EASY VICTORY.',
+          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
+          bubble: 'He always meandered so gracefully! Now he has scurried into MY equipment! Wait —',
+          bubbleType: 'speech', sfx: null },
+        { caption: 'A WATER COOLER FALLS ONTO OVER-CLOCK\'S HOVER-BOOTS.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'MY BOOTS! AGAIN!',
+          bubbleType: 'shout', sfx: 'SPLOSH — FZZZT' },
+        { caption: 'EFFECTS WEAR OFF. PEACE RESTORED.',
+          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'He meandered to victory. Via scurried chaos. Accidentally. I will log this as intentional.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 5 — The Silent Treatment
+    {
+      words: [
+        { word: 'stealthy',   definition: 'Quiet and careful so nobody notices.' },
+        { word: 'scrutinise', definition: 'To examine something very carefully.' }
+      ],
+      panels: [
+        { caption: '🕵️ A SPY HAS BEEN CAPTURED! 🕵️',
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: 'SCRUTINISE HIM! Get the passcode! Use every technique! Be stealthy! Be LOUD! Just GET IT!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'THE ADMIRAL ATTEMPTS TO SCRUTINISE THE SPY.',
+          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
+          bubble: "You are not very stealthy with all that shouting, Admiral.",
+          bubbleType: 'speech', sfx: null },
+        { caption: 'THE ADMIRAL GIVES UP. STAR-SLOTH IS LEFT ALONE WITH THE SPY.',
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: 'ONE HOUR. TWO HOURS. STAR-SLOTH TAKES FIVE MINUTES TO BLINK ONCE.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: 'THREE HOURS OF TOTAL SILENCE.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'FINE! Here is the passcode! PLEASE make the stealthy one stop sitting there!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'PASSCODE RETRIEVED. GALAXY SAFE.',
+          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'He was so stealthy! He managed to scrutinise everything by scrutinising nothing. GENIUS.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 6 — The Slow-Cooked Trap
+    {
+      words: [
+        { word: 'lingered', definition: 'Stayed longer than expected.' },
+        { word: 'drifted',  definition: 'Moved slowly and lightly.' }
+      ],
+      panels: [
+        { caption: '6:00 AM.',
+          char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
+          bubble: '...the aroma lingered... so nicely...',
+          bubbleType: 'thought', sfx: null },
+        { caption: 'SPACE-PIRATES BOARD THE SHIP.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'PIRATES HAVE DRIFTED THROUGH EVERY AIRLOCK! STAR-SLOTH! DO SOMETHING!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'JOLT TRIES TO FIGHT. GETS SWATTED.',
+          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'OW.',
+          bubbleType: 'speech', sfx: null },
+        { caption: '10:00 AM. THE OATMEAL HAS LINGERED ON THE HEAT FAR TOO LONG.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'GLORP GLORP' },
+        { caption: 'STICKY PORRIDGE DRIFTED DOWN EVERY CORRIDOR.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'We drifted into a trap! What IS this stuff?! My boots! Not again!',
+          bubbleType: 'shout', sfx: 'SQUELCH' },
+        { caption: 'STAR-SLOTH FINALLY TAKES ONE SPOONFUL.',
+          char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#E8FFE8',
+          bubble: null, bubbleType: null, sfx: null }
+      ]
+    },
+
+    // Story 7 — The Password Panic
+    {
+      words: [
+        { word: 'rational',  definition: 'Based on reason and clear thinking, rather than emotion.' },
+        { word: 'resolute',  definition: 'Very determined and sure.' },
+        { word: 'agitated',  definition: 'Upset and unable to stay calm.' }
+      ],
+      panels: [
+        { caption: '💥 SELF-DESTRUCT INITIATED. 10 MINUTES. 3 ATTEMPTS. 💥',
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: 'Stay rational, everyone! We MUST be rational! Stay rational! BE RATIONAL!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'JOLT GUESSES.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: "PASSWORD123! BZZT. 12345678! BZZT. One try left. I am NOT rational. I AM AGITATED.",
+          bubbleType: 'shout', sfx: null },
+        { caption: 'STAR-SLOTH SLOWLY PUSHES JOLT ASIDE. NINE MINUTES PASS.',
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: '10 SECONDS LEFT.',
+          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
+          bubble: 'Be resolute! DO SOMETHING! WE ARE ALL GOING TO — BE RESOLUTE!',
+          bubbleType: 'shout', sfx: 'BEEP BEEP BEEP' },
+        { caption: 'ONE CHARACTER. PER SECOND. RESOLUTE.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'click… click… click' },
+        { caption: 'DEACTIVATED.',
+          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'He was rational when I was agitated. Resolute when I was screaming. I need a lie-down.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 8 — The Slow and Steady Stroll
+    {
+      words: [
+        { word: 'diligent', definition: 'Hard-working and careful.' },
+        { word: 'reckless', definition: 'Doing dangerous things without thinking.' }
+      ],
+      panels: [
+        { caption: '⚠️ THE CRISS-CROSS ASTEROID FIELD ⚠️',
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: 'Every reckless pilot who sped through it scraped their hull! But we have NO choice!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'OTHER PILOTS ZOOM IN.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'Being diligent takes too long! We must be reckless fast! FULL SPEED!',
+          bubbleType: 'shout', sfx: 'SCRAPE SCRAPE CRUNCH' },
+        { caption: 'STAR-SLOTH TAKES THE WHEEL. DROPS TO 1 MPH.',
+          char: 'admiral', pose: 'waiting', fullWidth: false, bg: '#FFF0E0',
+          bubble: 'WE WILL BE SITTING DUCKS.',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'OVER-CLOCK FIRES EVERYTHING FROM HIS LAIR.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'Why. Will. They. Not. HIT?!',
+          bubbleType: 'shout', sfx: 'boing boing boing' },
+        { caption: 'DILIGENT SLOWNESS. SHIELDS ABSORB EVERY GENTLE TAP.',
+          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: 'bonk… bonk… bonk' },
+        { caption: 'THROUGH WITHOUT A SCRATCH.',
+          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+          bubble: 'Reckless speed would have destroyed us. Diligent slowness got us through. I am writing this down.',
+          bubbleType: 'speech', sfx: null }
+      ]
+    },
+
+    // Story 9 — The Pre-Emptive Strike
+    {
+      words: [
+        { word: 'drifted',   definition: 'Moved slowly and lightly.' },
+        { word: 'opportune', definition: 'Happening at a particularly suitable or favourable time.' },
+        { word: 'wandered',  definition: 'Moved around without a clear plan.' }
+      ],
+      panels: [
+        { caption: "IN OVER-CLOCK'S LAIR. 6:00 AM.",
+          char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
+          bubble: 'My laser fires at NOON — the most opportune moment in galactic history! MWAHAHAHA!',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'STAR-SLOTH LEANS ON THE LAUNCH LEVER. BY ACCIDENT.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'The ship has wandered into a launch sequence! Star-Sloth? STAR-SLOTH?!',
+          bubbleType: 'shout', sfx: null },
+        { caption: '11:58 AM. OVER-CLOCK CHECKS HIS WATCH.',
+          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
+          bubble: 'Two minutes. Nothing can stop me. Not even a sloth who wandered off course.',
+          bubbleType: 'speech', sfx: 'tick tick tick' },
+        { caption: "11:59 AM. THE SHIP DRIFTED — AT 1 MPH — INTO THE CANNON BARREL.",
+          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'We have drifted into the barrel. We have drifted. INTO. THE BARREL.',
+          bubbleType: 'shout', sfx: null },
+        { caption: 'NOON.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: 'MY OWN BASE! MY OWN OPPORTUNE MOMENT!',
+          bubbleType: 'shout', sfx: 'KA-BLOOOM' },
+        { caption: 'STAR-SLOTH THOUGHT HE WAS GOING FOR A MORNING DRIVE.',
+          char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#E8FFE8',
+          bubble: null, bubbleType: null, sfx: null }
+      ]
+    },
+
+    // Story 10 — The Un-Chase Scene
+    {
+      words: [
+        { word: 'serene', definition: 'Calm and peaceful.' },
+        { word: 'placid', definition: 'Calm and peaceful, without strong movement or emotion.' },
+        { word: 'swift',  definition: 'Very fast.' }
+      ],
+      panels: [
+        { caption: "🏅 THE ADMIRAL'S MEDAL HAS BEEN STOLEN! 🏅",
+          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
+          bubble: 'A swift thief! HE IS TOO SWIFT! ALL UNITS — AFTER HIM!',
+          bubbleType: 'shout', sfx: 'ZOOOOOM' },
+        { caption: 'JOLT AND THE SPACE-COPS SPRINT LAPS AROUND THE CIRCULAR STATION.',
+          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'OW OW OW.',
+          bubbleType: 'speech', sfx: 'SLIP' },
+        { caption: 'STAR-SLOTH DOES NOT CHASE. ONE STEP FORWARD. HAND OUTSTRETCHED.',
+          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
+          bubble: null, bubbleType: null, sfx: null },
+        { caption: 'LAP 7. EVERYONE IS EXHAUSTED.',
+          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
+          bubble: 'Star-Sloth is so serene! So placid! How can he be so serene while we are all collapsing?!',
+          bubbleType: 'shout', sfx: 'wheeze wheeze' },
+        { caption: 'THE THIEF RUNS A FULL CIRCLE AND SPRINTS INTO STAR-SLOTH\'S OPEN HAND.',
+          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
+          bubble: '...how.',
+          bubbleType: 'speech', sfx: 'BONK' },
+        { caption: 'MEDAL RETURNED. NOT A DROP OF SWEAT.',
+          char: 'starSloth', pose: 'blink', fullWidth: true, bg: '#E8FFE8',
+          bubble: null, bubbleType: null, sfx: null }
+      ]
+    }
+
   ];
 
   var COMIC_SVG = {
@@ -4814,173 +5130,7 @@
     overClock: svgOverClock
   };
 
-  function templateUrgentBriefing(words) {
-    var w = words[0], W = w.word, D = w.definition;
-    return [
-      { caption: '🚨 INCOMING TRANSMISSION! 🚨',
-        char: 'admiral', pose: 'exploding',
-        bubble: 'STAR-SLOTH! The galaxy needs to learn "' + W + '" IMMEDIATELY! Lives are at stake!',
-        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: true },
-      { caption: null,
-        char: 'starSloth', pose: 'zen',
-        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: 'THREE HOURS LATER...',
-        char: 'jolt', pose: 'translating',
-        bubble: "HE'S PROCESSING IT! I can see his left claw tensing! That's a 0.0003% movement — A BREAKTHROUGH!",
-        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
-      { caption: null,
-        char: 'starSloth', pose: 'blink',
-        bubble: '"' + W + '"... it means... ' + D,
-        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: "MEANWHILE, IN THE VILLAIN'S ASTEROID LAIR...",
-        char: 'overClock', pose: 'meltdown',
-        bubble: 'His "' + W + '" strategy is INFURIATING! He never PANICS! How does he DO it?!',
-        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: false },
-      { caption: 'GALAXY SAVED. EVENTUALLY.',
-        char: 'admiral', pose: 'waiting',
-        bubble: 'That was... somehow... exactly what we needed. Well done, Star-Sloth.',
-        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
-    ];
-  }
-
-  function templateOverClocksPlan(words) {
-    var w1 = words[0], w2 = words[1] || words[0];
-    var W1 = w1.word, D1 = w1.definition;
-    var W2 = w2.word, D2 = w2.definition;
-    return [
-      { caption: "DEEP IN THE VILLAIN'S LAIR...",
-        char: 'overClock', pose: 'smug',
-        bubble: 'My ' + W1 + ' scheme will conquer the galaxy in 0.003 seconds! MWAHAHA!',
-        bubbleType: 'shout', sfx: null, bg: '#FFE8F8', fullWidth: true },
-      { caption: null,
-        char: 'jolt', pose: 'zoom',
-        bubble: 'Actually... ' + W1 + ' means: ' + D1 + '! Your plan sounds... educational?',
-        bubbleType: 'speech', sfx: null, bg: '#EEEEFF', fullWidth: false },
-      { caption: null,
-        char: 'overClock', pose: 'meltdown',
-        bubble: 'IT DOES?! That means I accidentally created a PLANET-WIDE STUDY GROUP?!',
-        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: false },
-      { caption: 'MOMENTS LATER...',
-        char: 'starSloth', pose: 'zen',
-        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: null,
-        char: 'jolt', pose: 'translating',
-        bubble: 'He says: "How wonderfully ' + W2 + ' of you!" (' + W2 + ': ' + D2 + ')',
-        bubbleType: 'speech', sfx: null, bg: '#EEEEFF', fullWidth: false },
-      { caption: 'GALAXY IMPROVED. ACCIDENTALLY.',
-        char: 'admiral', pose: 'waiting',
-        bubble: 'Even villains learn something new every orbit.',
-        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
-    ];
-  }
-
-  function templateJoltExplains(words) {
-    var w1 = words[0], w2 = words[1] || words[0];
-    var W1 = w1.word, D1 = w1.definition;
-    var W2 = w2.word, D2 = w2.definition;
-    return [
-      { caption: null,
-        char: 'jolt', pose: 'zoom',
-        bubble: 'STAR-SLOTH! What does ' + W1 + ' mean?! QUICK! NO TIME! I NEED THE ANSWER NOW!',
-        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: true },
-      { caption: '...',
-        char: 'starSloth', pose: 'blink',
-        bubble: W1 + ': ' + D1,
-        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: 'JOLT TRIES IT OUT...',
-        char: 'jolt', pose: 'zoom',
-        bubble: '"This asteroid is very ' + W1 + '!" Did I use it right?! CAPTAIN?! HELP!',
-        bubbleType: 'shout', sfx: 'WOOOOSH!', bg: '#EEEEFF', fullWidth: false },
-      { caption: 'WHAT ABOUT THE NEXT WORD...?',
-        char: 'starSloth', pose: 'zen',
-        bubble: W2 + ': ' + D2,
-        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: 'SOMEHOW, EVERYTHING IS FINE.',
-        char: 'admiral', pose: 'waiting',
-        bubble: 'How did you resolve Deck 7?! Star-Sloth... are you ASLEEP?',
-        bubbleType: 'speech', sfx: null, bg: '#FFF0E0', fullWidth: false },
-      { caption: null,
-        char: 'jolt', pose: 'translating',
-        bubble: 'His ' + W2 + ' approach was the master plan all along. I\'ll log it as intentional.',
-        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
-    ];
-  }
-
-  function templateWaitForIt(words) {
-    var w = words[0], W = w.word, D = w.definition;
-    return [
-      { caption: 'THE MOST INTENSE MOMENT IN GALACTIC HISTORY!',
-        char: 'overClock', pose: 'meltdown',
-        bubble: 'STOP HIM! If he uses "' + W + '" correctly, ALL IS LOST!',
-        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: true },
-      { caption: "STAR-SLOTH'S CLAW BEGINS TO MOVE...",
-        char: 'starSloth', pose: 'action',
-        bubble: '...', bubbleType: 'thought', sfx: '(2 inches)', bg: '#FFFDE7', fullWidth: false },
-      { caption: null,
-        char: 'jolt', pose: 'translating',
-        bubble: '"' + W + '" means: ' + D + '! And the claw... it\'s still MOVING! HEROICALLY!',
-        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
-      { caption: '47 MINUTES LATER...',
-        char: 'admiral', pose: 'exploding',
-        bubble: 'I have grown a full BEARD waiting! WHEN WILL HE PRESS THE BUTTON?!',
-        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: false },
-      { caption: null,
-        char: 'starSloth', pose: 'zen',
-        bubble: W + '.', bubbleType: 'speech', sfx: 'click.', bg: '#FFFDE7', fullWidth: false },
-      { caption: 'DONE.',
-        char: 'jolt', pose: 'zoom',
-        bubble: 'Over-Clock fainted. Admiral grew a beard. Star-Sloth used "' + W + '" perfectly. WORTH IT.',
-        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
-    ];
-  }
-
-  function templateVocabAcademy(words) {
-    var w1 = words[0], w2 = words[1] || words[0];
-    var W1 = w1.word, D1 = w1.definition;
-    var W2 = w2.word, D2 = w2.definition;
-    return [
-      { caption: '🏫 GALACTIC VOCAB ACADEMY — LESSON IN PROGRESS',
-        char: 'admiral', pose: 'exploding',
-        bubble: 'SOMEONE explain "' + W1 + '" THIS INSTANT! The exam is in five minutes!',
-        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: true },
-      { caption: null,
-        char: 'overClock', pose: 'smug',
-        bubble: 'Easy! ' + W1 + ' means COFFEE! Obviously!',
-        bubbleType: 'speech', sfx: null, bg: '#FFE8E8', fullWidth: false },
-      { caption: null,
-        char: 'starSloth', pose: 'blink',
-        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: 'STAR-SLOTH... RAISES A CLAW.',
-        char: 'jolt', pose: 'translating',
-        bubble: 'HE KNOWS! He says: ' + W1 + ' means ' + D1 + '! TEXTBOOK PERFECT! HE WAS LISTENING ALL ALONG!',
-        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
-      { caption: null,
-        char: 'starSloth', pose: 'zen',
-        bubble: 'And ' + W2 + ': ' + D2 + '.',
-        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
-      { caption: 'GOLD STAR. WELL EARNED.',
-        char: 'overClock', pose: 'meltdown',
-        bubble: 'He got it right AGAIN?! But he was ASLEEP! This is STATISTICALLY IMPOSSIBLE!',
-        bubbleType: 'shout', sfx: null, bg: '#E8FFE8', fullWidth: true }
-    ];
-  }
-
-  var COMIC_TEMPLATE_FNS = {
-    urgentBriefing: templateUrgentBriefing,
-    overClocksPlan: templateOverClocksPlan,
-    joltExplains:   templateJoltExplains,
-    waitForIt:      templateWaitForIt,
-    vocabAcademy:   templateVocabAcademy
-  };
-
   // ── Helpers ────────────────────────────────────────────────────────────────
-
-  function comicIndexOf(word) {
-    for (var i = 0; i < comicState.selectedWords.length; i++) {
-      if (comicState.selectedWords[i].word === word) return i;
-    }
-    return -1;
-  }
 
   function comicHighlight(text, words) {
     var result = text;
@@ -5037,107 +5187,19 @@
       '<div class="glossary-items">' + glossaryItems + '</div>';
   }
 
-  // ── Word picker ────────────────────────────────────────────────────────────
-
-  function loadComicWords() {
-    var unmasteredOnly = comicUnmasteredCheck && comicUnmasteredCheck.checked;
-    var pool = unmasteredOnly
-      ? allWords.filter(function (w) { return getMasteryStatus(w.word) !== 'mastered'; })
-      : allWords;
-    if (!pool.length) pool = allWords;
-    var arr = pool.slice();
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-    }
-    comicState.displayedWords  = arr.slice(0, 6);
-    comicState.selectedWords   = [];
-    renderComicWordChips();
-    updateComicGenerateBtn();
-  }
-
-  function renderComicWordChips() {
-    comicWordChipsEl.innerHTML = '';
-    comicState.displayedWords.forEach(function (wObj) {
-      var chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'comic-word-chip';
-      chip.textContent = wObj.word;
-      if (comicIndexOf(wObj.word) >= 0) chip.classList.add('selected');
-      chip.addEventListener('click', function () { toggleComicWord(wObj, chip); });
-      comicWordChipsEl.appendChild(chip);
-    });
-  }
-
-  function toggleComicWord(wObj, chipEl) {
-    var idx = comicIndexOf(wObj.word);
-    if (idx >= 0) {
-      comicState.selectedWords.splice(idx, 1);
-      chipEl.classList.remove('selected');
-    } else {
-      if (comicState.selectedWords.length >= 3) return;
-      comicState.selectedWords.push(wObj);
-      chipEl.classList.add('selected');
-    }
-    updateComicGenerateBtn();
-  }
-
-  // ── Template picker ────────────────────────────────────────────────────────
-
-  function renderComicTemplates() {
-    comicTemplateGridEl.innerHTML = '';
-    comicTemplateList.forEach(function (tpl) {
-      var card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'comic-template-card';
-      if (comicState.selectedTemplate === tpl.id) card.classList.add('selected');
-      card.innerHTML =
-        '<span class="template-icon">' + tpl.icon + '</span>' +
-        '<span class="template-name">' + tpl.name + '</span>' +
-        '<span class="template-desc">' + tpl.desc + '</span>';
-      card.addEventListener('click', function () {
-        comicState.selectedTemplate = tpl.id;
-        document.querySelectorAll('.comic-template-card').forEach(function (c) {
-          c.classList.remove('selected');
-        });
-        card.classList.add('selected');
-        updateComicGenerateBtn();
-      });
-      comicTemplateGridEl.appendChild(card);
-    });
-  }
-
-  function updateComicGenerateBtn() {
-    comicGenerateBtn.disabled =
-      comicState.selectedWords.length < 1 || comicState.selectedTemplate === null;
-  }
-
   // ── Generate & display ─────────────────────────────────────────────────────
 
-  function generateComic() {
-    if (!comicState.selectedWords.length || !comicState.selectedTemplate) return;
-    var tplFn = COMIC_TEMPLATE_FNS[comicState.selectedTemplate];
-    if (!tplFn) return;
-    var panels = tplFn(comicState.selectedWords);
-    renderComicPanels(panels, comicState.selectedWords);
-    showComicScreen(comicViewingScreen);
-    comicViewingScreen.scrollTop = 0;
-    comicBackBtn.focus();
-  }
-
-  function showComicScreen(screenEl) {
-    [comicSetupScreen, comicViewingScreen].forEach(function (s) { s.classList.add('hidden'); });
-    screenEl.classList.remove('hidden');
+  function generateRandomComic() {
+    var story = COMIC_STORIES[Math.floor(Math.random() * COMIC_STORIES.length)];
+    renderComicPanels(story.panels, story.words);
   }
 
   function openComicOverlay() {
-    showComicScreen(comicSetupScreen);
-    comicState.selectedTemplate = null;
+    generateRandomComic();
     comicOverlay.classList.remove('hidden');
     comicOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    loadComicWords();
-    renderComicTemplates();
+    comicViewingScreen.scrollTop = 0;
     comicCloseBtn.focus();
   }
 
@@ -5152,8 +5214,8 @@
     comicLaunchBtn.addEventListener('click', openComicOverlay);
     comicCloseBtn.addEventListener('click', closeComicOverlay);
     comicBackBtn.addEventListener('click', function () {
-      showComicScreen(comicSetupScreen);
-      comicCloseBtn.focus();
+      generateRandomComic();
+      comicViewingScreen.scrollTop = 0;
     });
     comicPrintBtn.addEventListener('click', function () {
       document.body.classList.add('comic-printing');
@@ -5163,11 +5225,6 @@
       });
       window.print();
     });
-    comicShuffleBtn.addEventListener('click', loadComicWords);
-    if (comicUnmasteredCheck) {
-      comicUnmasteredCheck.addEventListener('change', loadComicWords);
-    }
-    comicGenerateBtn.addEventListener('click', generateComic);
     comicOverlay.addEventListener('click', function (e) {
       if (e.target === comicOverlay) closeComicOverlay();
     });
