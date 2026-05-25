@@ -2555,7 +2555,6 @@ footer {
   min-width: 0;
   border-radius: var(--radius-card);
   border: 2px solid #C7D2FE;
-  min-height: 72px;
   cursor: pointer;
   perspective: 600px;
   -webkit-tap-highlight-color: transparent;
@@ -2563,9 +2562,8 @@ footer {
 }
 
 .snap-flip-inner {
-  position: relative;
-  width: 100%;
-  min-height: 68px;
+  display: grid;
+  grid-template-areas: 'card';
   transform-style: preserve-3d;
   transition: transform 0.38s ease;
 }
@@ -2576,13 +2574,13 @@ footer {
 
 .snap-flip-front,
 .snap-flip-back {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  grid-area: card;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0.6rem 0.75rem;
+  min-height: 68px;
   border-radius: calc(var(--radius-card) - 2px);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
