@@ -704,14 +704,25 @@
   <!-- Comic Mode overlay -->
   <div id="comic-overlay" class="modal-overlay hidden" aria-hidden="true">
 
-    <div id="comic-viewing-screen" class="quiz-panel comic-viewing-panel" role="dialog" aria-modal="true" aria-label="Star-Sloth Comics">
+    <!-- Library screen -->
+    <div id="comic-library-screen" class="quiz-panel comic-library-panel" role="dialog" aria-modal="true" aria-label="Star-Sloth Comics">
       <button class="close-btn" id="comic-close-btn" aria-label="Close comics">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🚀</span>
+        <h2 class="quiz-setup-title comic-title-font">Star-Sloth Comics</h2>
+        <p class="quiz-setup-subtitle">Pick a mission for the galaxy's slowest hero.</p>
+        <div id="comic-story-list" class="comic-story-list"></div>
+      </div>
+    </div>
+
+    <!-- Viewing screen -->
+    <div id="comic-viewing-screen" class="quiz-panel comic-viewing-panel hidden" role="dialog" aria-modal="true" aria-label="Star-Sloth comic">
       <div class="quiz-screen-actions comic-view-actions">
-        <button class="quiz-exit-btn" id="comic-back-btn" type="button" aria-label="Generate new comic">🚀 New Comic</button>
+        <button class="quiz-exit-btn" id="comic-back-btn" type="button" aria-label="Back to comic list">← All Comics</button>
         <button class="quiz-exit-btn" id="comic-print-btn" type="button" aria-label="Print comic">🖨️ Print</button>
       </div>
       <div id="comic-book">
