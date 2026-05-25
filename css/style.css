@@ -2669,6 +2669,66 @@ footer {
   font-size: 2rem !important;
 }
 
+/* ── Library screen ──────────────────────────────────── */
+
+.comic-library-panel {
+  max-width: 540px !important;
+}
+
+.comic-story-list {
+  display: grid;
+  gap: 0.65rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.comic-story-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-card);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  width: 100%;
+}
+
+.comic-story-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.comic-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.comic-card-blurb {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.comic-card-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.25rem;
+}
+
+.comic-card-word {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.15rem 0.55rem;
+  border-radius: 50px;
+}
+
 /* ── Viewing screen ───────────────────────────────────── */
 
 .comic-viewing-panel {
