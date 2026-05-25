@@ -532,6 +532,10 @@
         initProverbsMode();
         initDailyNews();
         initQuiz();
+        initDetectiveMode();
+        initScrambleMode();
+        initFlashBlitz();
+        initSynonymSnap();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
@@ -3533,6 +3537,1053 @@
       document.getElementById('news-tts-voice'),
       document.querySelectorAll('#news-tts-controls .tts-pitch-btn')
     );
+  }
+
+  // ── Word Detective Mode ──────────────────────────────────────────────────────
+
+  var DETECTIVE_BESTS_KEY = 'vocabVault_detectiveBests';
+  var DETECTIVE_POINTS    = [500, 400, 300, 200, 100];
+
+  var detectiveState = {
+    words         : [],
+    index         : 0,
+    score         : 0,
+    clueStep      : 0,
+    answered      : false,
+    choices       : [],
+    correctChoice : null,
+    sessionLength : 5,
+    bests         : {}
+  };
+
+  function initDetectiveMode() {
+    try { detectiveState.bests = JSON.parse(localStorage.getItem(DETECTIVE_BESTS_KEY) || '{}'); } catch (e) { detectiveState.bests = {}; }
+
+    document.getElementById('detective-launch-btn').addEventListener('click', openDetective);
+    document.getElementById('detective-close').addEventListener('click', closeDetective);
+    document.getElementById('detective-start-btn').addEventListener('click', startDetectiveGame);
+    document.getElementById('detective-exit-btn').addEventListener('click', function () { showDetectiveScreen('setup'); });
+    document.getElementById('detective-play-again-btn').addEventListener('click', function () { showDetectiveScreen('setup'); });
+    document.getElementById('detective-done-btn').addEventListener('click', closeDetective);
+
+    document.querySelectorAll('[data-detective-length]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-detective-length]').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        detectiveState.sessionLength = parseInt(btn.dataset.detectiveLength, 10);
+        updateDetectiveBestDisplay();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('detective-overlay');
+        if (overlay && !overlay.classList.contains('hidden')) closeDetective();
+      }
+    });
+  }
+
+  function openDetective() {
+    var overlay = document.getElementById('detective-overlay');
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    showDetectiveScreen('setup');
+    updateDetectiveBestDisplay();
+  }
+
+  function closeDetective() {
+    var overlay = document.getElementById('detective-overlay');
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function showDetectiveScreen(name) {
+    var map = { setup: 'detective-setup', game: 'detective-game-screen', end: 'detective-end-screen' };
+    Object.keys(map).forEach(function (k) {
+      var el = document.getElementById(map[k]);
+      if (el) el.classList.toggle('hidden', k !== name);
+    });
+  }
+
+  function updateDetectiveBestDisplay() {
+    var el = document.getElementById('detective-personal-best');
+    var best = detectiveState.bests[detectiveState.sessionLength];
+    if (best) {
+      el.textContent = 'Personal best (' + detectiveState.sessionLength + ' cases): ' + best + ' pts';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  }
+
+  function startDetectiveGame() {
+    var eligible = allWords.filter(function (w) {
+      return w.synonyms && w.synonyms.length && w.antonyms && w.antonyms.length;
+    });
+    detectiveState.words = shuffle(eligible).slice(0, detectiveState.sessionLength);
+    detectiveState.index = 0;
+    detectiveState.score = 0;
+    showDetectiveScreen('game');
+    showDetectiveQuestion();
+  }
+
+  function getDetectiveClues(wordObj) {
+    var blanks = wordObj.word.replace(/./g, '_ ').trim();
+    return [
+      { label: 'Word type',    value: wordObj.word_type },
+      { label: 'Letter count', value: wordObj.word.length + ' letters: ' + blanks },
+      { label: 'A synonym is', value: wordObj.synonyms[0] },
+      { label: 'An antonym is', value: wordObj.antonyms[0] },
+      { label: 'Definition',   value: wordObj.definition }
+    ];
+  }
+
+  function showDetectiveQuestion() {
+    var wordObj = detectiveState.words[detectiveState.index];
+    detectiveState.clueStep = 0;
+    detectiveState.answered = false;
+
+    var caseEl = document.getElementById('detective-case-label');
+    caseEl.textContent = 'Case ' + (detectiveState.index + 1) + ' of ' + detectiveState.sessionLength;
+    document.getElementById('detective-score-display').textContent = 'Score: ' + detectiveState.score;
+
+    var stack = document.getElementById('detective-clue-stack');
+    stack.innerHTML = '';
+    var clues = getDetectiveClues(wordObj);
+    clues.forEach(function (clue, i) {
+      var card = document.createElement('div');
+      card.className = 'detective-clue-card detective-clue-hidden';
+      var numSpan = document.createElement('span');
+      numSpan.className = 'detective-clue-number';
+      numSpan.textContent = 'Clue ' + (i + 1);
+      var labelSpan = document.createElement('span');
+      labelSpan.className = 'detective-clue-label';
+      labelSpan.textContent = clue.label + ':';
+      var valSpan = document.createElement('span');
+      valSpan.className = 'detective-clue-value';
+      valSpan.textContent = clue.value;
+      card.appendChild(numSpan);
+      card.appendChild(labelSpan);
+      card.appendChild(valSpan);
+      stack.appendChild(card);
+    });
+
+    var distractors = pickDistractors(wordObj, allWords, 3);
+    detectiveState.choices = shuffle([wordObj].concat(distractors));
+    detectiveState.correctChoice = wordObj;
+
+    document.getElementById('detective-choices').innerHTML = '';
+    document.getElementById('detective-choices-hint').textContent = '';
+    document.getElementById('detective-feedback').textContent = '';
+    document.getElementById('detective-feedback').className = 'quiz-feedback';
+
+    setTimeout(revealDetectiveClue, 200);
+  }
+
+  function revealDetectiveClue() {
+    if (detectiveState.answered) return;
+    var cards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
+    var step = detectiveState.clueStep;
+    if (step < cards.length) {
+      cards[step].classList.remove('detective-clue-hidden');
+      cards[step].classList.add('detective-clue-revealed');
+      detectiveState.clueStep++;
+    }
+    var pts = DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100;
+    document.getElementById('detective-choices-hint').textContent =
+      'Guess now for ' + pts + ' points — or wait for the next clue!';
+    renderDetectiveChoices();
+  }
+
+  function renderDetectiveChoices() {
+    var grid = document.getElementById('detective-choices');
+    grid.innerHTML = '';
+    detectiveState.choices.forEach(function (wordObj, i) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer-btn';
+      btn.textContent = wordObj.word;
+      btn.addEventListener('click', function () { detectiveGuess(i); });
+      grid.appendChild(btn);
+    });
+
+    if (detectiveState.clueStep < 5) {
+      var revealBtn = document.createElement('button');
+      revealBtn.className = 'quiz-exit-btn';
+      revealBtn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;text-align:center;';
+      revealBtn.textContent = 'Show next clue ↓';
+      revealBtn.addEventListener('click', function () {
+        revealBtn.remove();
+        revealDetectiveClue();
+      });
+      grid.appendChild(revealBtn);
+    }
+  }
+
+  function detectiveGuess(choiceIndex) {
+    if (detectiveState.answered) return;
+    detectiveState.answered = true;
+
+    var correct = detectiveState.choices[choiceIndex] === detectiveState.correctChoice;
+    var pts = correct ? (DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100) : 0;
+
+    var buttons = document.querySelectorAll('#detective-choices .quiz-answer-btn');
+    buttons.forEach(function (btn, i) {
+      btn.disabled = true;
+      if (detectiveState.choices[i] === detectiveState.correctChoice) btn.classList.add('correct');
+      else if (i === choiceIndex && !correct) btn.classList.add('wrong');
+    });
+
+    var allCards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
+    allCards.forEach(function (card) {
+      card.classList.remove('detective-clue-hidden');
+      card.classList.add('detective-clue-revealed');
+    });
+
+    document.getElementById('detective-choices-hint').textContent = '';
+    var fb = document.getElementById('detective-feedback');
+    if (correct) {
+      detectiveState.score += pts;
+      document.getElementById('detective-score-display').textContent = 'Score: ' + detectiveState.score;
+      fb.textContent = pts === 500 ? '⭐ First clue — genius! +500 pts'
+        : '✓ Correct! +' + pts + ' points';
+      fb.className = 'quiz-feedback visible feedback-correct';
+    } else {
+      fb.textContent = '✗ It was "' + detectiveState.correctChoice.word + '" — keep going!';
+      fb.className = 'quiz-feedback visible feedback-wrong';
+    }
+
+    setTimeout(function () {
+      detectiveState.index++;
+      if (detectiveState.index >= detectiveState.sessionLength) {
+        showDetectiveEnd();
+      } else {
+        showDetectiveQuestion();
+      }
+    }, 2200);
+  }
+
+  function showDetectiveEnd() {
+    showDetectiveScreen('end');
+    var score = detectiveState.score;
+    var len   = detectiveState.sessionLength;
+    var best  = detectiveState.bests[len] || 0;
+    var isNew = score > best;
+    if (isNew) {
+      detectiveState.bests[len] = score;
+      try { localStorage.setItem(DETECTIVE_BESTS_KEY, JSON.stringify(detectiveState.bests)); } catch (e) {}
+    }
+    var maxPts = len * 500;
+    var pct = score / maxPts;
+    document.getElementById('detective-end-emoji').textContent  = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🔍' : '🕵️';
+    document.getElementById('detective-end-title').textContent  = pct >= 0.8 ? 'Master Detective!' : pct >= 0.5 ? 'Sharp Investigator!' : 'Keep Sleuthing!';
+    document.getElementById('detective-end-score').textContent  = score + ' pts out of ' + maxPts + ' possible';
+    document.getElementById('detective-end-best').textContent   = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+  }
+
+  // ── Scramble Mode ────────────────────────────────────────────────────────────
+
+  var SCRAMBLE_BESTS_KEY = 'vocabVault_scrambleBests';
+
+  var scrambleState = {
+    words         : [],
+    index         : 0,
+    sessionLength : 5,
+    sessionScore  : 0,
+    wordScore     : 200,
+    wrongAttempts : 0,
+    hintsUsed     : 0,
+    hintCount     : 0,
+    currentWord   : null,
+    bests         : {}
+  };
+
+  var scrambleTiles = [];
+
+  function initScrambleMode() {
+    try { scrambleState.bests = JSON.parse(localStorage.getItem(SCRAMBLE_BESTS_KEY) || '{}'); } catch (e) { scrambleState.bests = {}; }
+
+    document.getElementById('scramble-launch-btn').addEventListener('click', openScramble);
+    document.getElementById('scramble-close').addEventListener('click', closeScramble);
+    document.getElementById('scramble-start-btn').addEventListener('click', startScramble);
+    document.getElementById('scramble-exit-btn').addEventListener('click', function () { showScrambleScreen('setup'); });
+    document.getElementById('scramble-play-again-btn').addEventListener('click', function () { showScrambleScreen('setup'); });
+    document.getElementById('scramble-done-btn').addEventListener('click', closeScramble);
+    document.getElementById('scramble-hint-btn').addEventListener('click', scrambleHint);
+    document.getElementById('scramble-skip-btn').addEventListener('click', scrambleSkip);
+
+    document.querySelectorAll('[data-scramble-length]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-scramble-length]').forEach(function (b) {
+          b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        scrambleState.sessionLength = parseInt(btn.dataset.scrambleLength, 10);
+        updateScrambleBestDisplay();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('scramble-overlay');
+        if (overlay && !overlay.classList.contains('hidden')) closeScramble();
+      }
+    });
+  }
+
+  function openScramble() {
+    var overlay = document.getElementById('scramble-overlay');
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    showScrambleScreen('setup');
+    updateScrambleBestDisplay();
+  }
+
+  function closeScramble() {
+    var overlay = document.getElementById('scramble-overlay');
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function showScrambleScreen(name) {
+    var map = { setup: 'scramble-setup', game: 'scramble-game-screen', end: 'scramble-end-screen' };
+    Object.keys(map).forEach(function (k) {
+      var el = document.getElementById(map[k]);
+      if (el) el.classList.toggle('hidden', k !== name);
+    });
+  }
+
+  function updateScrambleBestDisplay() {
+    var el = document.getElementById('scramble-personal-best');
+    var best = scrambleState.bests[scrambleState.sessionLength];
+    if (best) {
+      el.textContent = 'Personal best (' + scrambleState.sessionLength + ' words): ' + best + ' pts';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  }
+
+  function scrambleLetters(word) {
+    var letters = word.split('');
+    var shuffled = shuffle(letters);
+    if (word.length > 2 && shuffled.join('') === word) {
+      var tmp = shuffled[0]; shuffled[0] = shuffled[1]; shuffled[1] = tmp;
+    }
+    return shuffled;
+  }
+
+  function startScramble() {
+    scrambleState.words = shuffle(allWords.filter(function (w) { return w.word.length >= 4; }))
+      .slice(0, scrambleState.sessionLength);
+    scrambleState.index = 0;
+    scrambleState.sessionScore = 0;
+    showScrambleScreen('game');
+    showScrambleWord();
+  }
+
+  function showScrambleWord() {
+    var wordObj = scrambleState.words[scrambleState.index];
+    scrambleState.currentWord   = wordObj;
+    scrambleState.wordScore     = 200;
+    scrambleState.wrongAttempts = 0;
+    scrambleState.hintsUsed     = 0;
+    scrambleState.hintCount     = 0;
+
+    document.getElementById('scramble-word-counter').textContent =
+      'Word ' + (scrambleState.index + 1) + ' of ' + scrambleState.sessionLength;
+    document.getElementById('scramble-session-score').textContent = 'Score: ' + scrambleState.sessionScore;
+    document.getElementById('scramble-definition-hint').textContent = wordObj.definition;
+    document.getElementById('scramble-feedback').textContent = '';
+    document.getElementById('scramble-feedback').className = 'quiz-feedback';
+
+    var hint = document.getElementById('scramble-hint-btn');
+    hint.disabled = false;
+    hint.textContent = '💡 Hint (−50 pts)';
+
+    var answerRow = document.getElementById('scramble-answer-row');
+    var sourceRow = document.getElementById('scramble-source-row');
+    answerRow.innerHTML = '';
+    sourceRow.innerHTML = '';
+    answerRow.className = 'scramble-answer-row';
+    scrambleTiles = [];
+
+    var letters = scrambleLetters(wordObj.word);
+    letters.forEach(function (letter, i) {
+      var tile = document.createElement('button');
+      tile.className = 'scramble-tile';
+      tile.textContent = letter;
+      tile.dataset.tileIndex = i;
+      tile.dataset.loc = 'source';
+      tile.setAttribute('aria-label', 'Letter ' + letter);
+      tile.addEventListener('click', function () { scrambleTileClick(tile); });
+      sourceRow.appendChild(tile);
+      scrambleTiles.push({ letter: letter, elem: tile, placed: false, hintLocked: false });
+    });
+  }
+
+  function scrambleTileClick(tile) {
+    if (tile.disabled) return;
+    var answerRow = document.getElementById('scramble-answer-row');
+    var sourceRow = document.getElementById('scramble-source-row');
+    var idx = parseInt(tile.dataset.tileIndex, 10);
+
+    if (tile.dataset.loc === 'source') {
+      tile.dataset.loc = 'answer';
+      tile.classList.add('answer-tile');
+      answerRow.appendChild(tile);
+      scrambleTiles[idx].placed = true;
+      checkScrambleAnswer();
+    } else {
+      if (scrambleTiles[idx].hintLocked) return;
+      tile.dataset.loc = 'source';
+      tile.classList.remove('answer-tile');
+      sourceRow.appendChild(tile);
+      scrambleTiles[idx].placed = false;
+    }
+  }
+
+  function checkScrambleAnswer() {
+    var allPlaced = scrambleTiles.every(function (t) { return t.placed; });
+    if (!allPlaced) return;
+
+    var answerRow = document.getElementById('scramble-answer-row');
+    var placed = Array.prototype.slice.call(answerRow.children);
+    var spelled = placed.map(function (el) { return el.textContent; }).join('');
+    var target  = scrambleState.currentWord.word;
+
+    if (spelled.toLowerCase() === target.toLowerCase()) {
+      answerRow.classList.add('scramble-correct');
+      placed.forEach(function (el) { el.disabled = true; });
+      var pts = Math.max(0, scrambleState.wordScore);
+      scrambleState.sessionScore += pts;
+      var fb = document.getElementById('scramble-feedback');
+      fb.textContent = pts > 0 ? '✓ Correct! +' + pts + ' pts' : '✓ Correct!';
+      fb.className = 'quiz-feedback visible feedback-correct';
+      document.getElementById('scramble-session-score').textContent = 'Score: ' + scrambleState.sessionScore;
+      document.getElementById('scramble-hint-btn').disabled = true;
+      document.getElementById('scramble-skip-btn').disabled = true;
+      setTimeout(scrambleAdvance, 1600);
+    } else {
+      answerRow.classList.add('scramble-wrong');
+      scrambleState.wrongAttempts++;
+      scrambleState.wordScore = Math.max(0, scrambleState.wordScore - 25);
+      var fb2 = document.getElementById('scramble-feedback');
+      fb2.textContent = '✗ Not quite — try rearranging!';
+      fb2.className = 'quiz-feedback visible feedback-wrong';
+      setTimeout(function () {
+        answerRow.classList.remove('scramble-wrong');
+        var sourceRow2 = document.getElementById('scramble-source-row');
+        var wrongTiles = Array.prototype.slice.call(answerRow.children);
+        wrongTiles.forEach(function (el) {
+          var idx2 = parseInt(el.dataset.tileIndex, 10);
+          if (!scrambleTiles[idx2].hintLocked) {
+            el.dataset.loc = 'source';
+            el.classList.remove('answer-tile');
+            sourceRow2.appendChild(el);
+            scrambleTiles[idx2].placed = false;
+          }
+        });
+        var fb3 = document.getElementById('scramble-feedback');
+        fb3.textContent = '';
+        fb3.className = 'quiz-feedback';
+      }, 700);
+    }
+  }
+
+  function scrambleHint() {
+    if (scrambleState.hintsUsed >= 3) return;
+    var wordObj = scrambleState.currentWord;
+    var word = wordObj.word;
+    var answerRow = document.getElementById('scramble-answer-row');
+    var placed = Array.prototype.slice.call(answerRow.children);
+    var placedCount = placed.length;
+
+    var nextLetterIdx = scrambleState.hintCount;
+    if (nextLetterIdx >= word.length) return;
+
+    var correctLetter = word[nextLetterIdx];
+    var sourceTile = null;
+    var sourceRow = document.getElementById('scramble-source-row');
+    var srcChildren = Array.prototype.slice.call(sourceRow.children);
+    for (var i = 0; i < srcChildren.length; i++) {
+      var el = srcChildren[i];
+      var tIdx = parseInt(el.dataset.tileIndex, 10);
+      if (!scrambleTiles[tIdx].hintLocked && el.textContent.toLowerCase() === correctLetter.toLowerCase()) {
+        sourceTile = el;
+        break;
+      }
+    }
+
+    if (!sourceTile) return;
+
+    var tIdx2 = parseInt(sourceTile.dataset.tileIndex, 10);
+    scrambleTiles[tIdx2].hintLocked = true;
+    sourceTile.dataset.loc = 'answer';
+    sourceTile.classList.add('hint-locked', 'answer-tile');
+    answerRow.appendChild(sourceTile);
+    scrambleTiles[tIdx2].placed = true;
+    scrambleState.hintsUsed++;
+    scrambleState.hintCount++;
+    scrambleState.wordScore = Math.max(0, scrambleState.wordScore - 50);
+
+    var hintBtn = document.getElementById('scramble-hint-btn');
+    hintBtn.textContent = '💡 Hint (−50 pts) [' + (3 - scrambleState.hintsUsed) + ' left]';
+    if (scrambleState.hintsUsed >= 3) hintBtn.disabled = true;
+
+    checkScrambleAnswer();
+  }
+
+  function scrambleSkip() {
+    var fb = document.getElementById('scramble-feedback');
+    fb.textContent = 'Skipped! The word was "' + scrambleState.currentWord.word + '"';
+    fb.className = 'quiz-feedback visible feedback-wrong';
+    document.getElementById('scramble-hint-btn').disabled = true;
+    document.getElementById('scramble-skip-btn').disabled = true;
+    setTimeout(scrambleAdvance, 1800);
+  }
+
+  function scrambleAdvance() {
+    scrambleState.index++;
+    if (scrambleState.index >= scrambleState.sessionLength) {
+      showScrambleEnd();
+    } else {
+      showScrambleWord();
+    }
+  }
+
+  function showScrambleEnd() {
+    showScrambleScreen('end');
+    var score = scrambleState.sessionScore;
+    var len   = scrambleState.sessionLength;
+    var best  = scrambleState.bests[len] || 0;
+    var isNew = score > best;
+    if (isNew) {
+      scrambleState.bests[len] = score;
+      try { localStorage.setItem(SCRAMBLE_BESTS_KEY, JSON.stringify(scrambleState.bests)); } catch (e) {}
+    }
+    var maxPts = len * 200;
+    var pct = score / maxPts;
+    document.getElementById('scramble-end-emoji').textContent = pct >= 0.8 ? '🧩' : pct >= 0.5 ? '🔤' : '📝';
+    document.getElementById('scramble-end-title').textContent = pct >= 0.8 ? 'Spelling Wizard!' : pct >= 0.5 ? 'Word Wrangler!' : 'Getting Warmed Up!';
+    document.getElementById('scramble-end-score').textContent = score + ' pts out of ' + maxPts + ' possible';
+    document.getElementById('scramble-end-best').textContent  = isNew ? '⭐ New personal best!' : 'Personal best: ' + (best || 0) + ' pts';
+  }
+
+  // ── Flash Blitz Mode ─────────────────────────────────────────────────────────
+
+  var blitzState = {
+    words         : [],
+    index         : 0,
+    flipped       : false,
+    scope         : 'all',
+    timerSecs     : 15,
+    sessionSize   : 10,
+    timerInterval : null,
+    timerMs       : 0,
+    got           : 0,
+    nearly        : 0,
+    missed        : 0,
+    missedWords   : []
+  };
+
+  function initFlashBlitz() {
+    document.getElementById('blitz-launch-btn').addEventListener('click', openBlitz);
+    document.getElementById('blitz-close').addEventListener('click', closeBlitz);
+    document.getElementById('blitz-start-btn').addEventListener('click', startBlitz);
+    document.getElementById('blitz-exit-btn').addEventListener('click', function () { stopBlitzTimer(); showBlitzScreen('setup'); });
+    document.getElementById('blitz-play-again-btn').addEventListener('click', function () { showBlitzScreen('setup'); });
+    document.getElementById('blitz-done-btn').addEventListener('click', closeBlitz);
+    document.getElementById('blitz-card').addEventListener('click', flipBlitzCard);
+    document.getElementById('blitz-card').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flipBlitzCard(); }
+    });
+    document.getElementById('blitz-got-btn').addEventListener('click', function () { blitzRate('got'); });
+    document.getElementById('blitz-nearly-btn').addEventListener('click', function () { blitzRate('nearly'); });
+    document.getElementById('blitz-missed-btn').addEventListener('click', function () { blitzRate('missed'); });
+
+    ['data-blitz-size', 'data-blitz-scope', 'data-blitz-timer'].forEach(function (attr) {
+      document.querySelectorAll('[' + attr + ']').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('[' + attr + ']').forEach(function (b) {
+            b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        });
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('blitz-overlay');
+        if (overlay && !overlay.classList.contains('hidden')) { stopBlitzTimer(); closeBlitz(); }
+      }
+    });
+  }
+
+  function openBlitz() {
+    var overlay = document.getElementById('blitz-overlay');
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    showBlitzScreen('setup');
+  }
+
+  function closeBlitz() {
+    stopBlitzTimer();
+    var overlay = document.getElementById('blitz-overlay');
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function showBlitzScreen(name) {
+    var map = { setup: 'blitz-setup', card: 'blitz-card-screen', end: 'blitz-end-screen' };
+    Object.keys(map).forEach(function (k) {
+      var el = document.getElementById(map[k]);
+      if (el) el.classList.toggle('hidden', k !== name);
+    });
+  }
+
+  function startBlitz() {
+    var sizeBtn  = document.querySelector('[data-blitz-size].active');
+    var scopeBtn = document.querySelector('[data-blitz-scope].active');
+    var timerBtn = document.querySelector('[data-blitz-timer].active');
+
+    var rawSize  = sizeBtn  ? sizeBtn.dataset.blitzSize   : '10';
+    var scope    = scopeBtn ? scopeBtn.dataset.blitzScope  : 'all';
+    var timerSec = timerBtn ? parseInt(timerBtn.dataset.blitzTimer, 10) : 15;
+
+    var pool = scope === '5star'
+      ? allWords.filter(function (w) { return w.usefulness_rating === 5; })
+      : scope === 'weakest'
+        ? buildBlitzWeakPool()
+        : allWords.slice();
+
+    pool = shuffle(pool);
+    var size = rawSize === 'all' ? pool.length : Math.min(parseInt(rawSize, 10), pool.length);
+    if (size < 1) size = pool.length;
+
+    blitzState.words    = pool.slice(0, size);
+    blitzState.index    = 0;
+    blitzState.flipped  = false;
+    blitzState.scope    = scope;
+    blitzState.timerSecs = timerSec;
+    blitzState.got      = 0;
+    blitzState.nearly   = 0;
+    blitzState.missed   = 0;
+    blitzState.missedWords = [];
+
+    var timerBar = document.getElementById('blitz-timer-bar');
+    timerBar.style.display = timerSec > 0 ? 'block' : 'none';
+
+    showBlitzScreen('card');
+    showBlitzCard();
+  }
+
+  function buildBlitzWeakPool() {
+    var withMisses = allWords.filter(function (w) {
+      var m = mastery[w.word];
+      return m && m.incorrect > 0;
+    });
+    withMisses.sort(function (a, b) {
+      var ma = mastery[a.word] || {};
+      var mb = mastery[b.word] || {};
+      return (mb.incorrect - mb.correct) - (ma.incorrect - ma.correct);
+    });
+    var newWords = allWords.filter(function (w) { return getMasteryStatus(w.word) === 'new'; });
+    return shuffle(withMisses.concat(newWords));
+  }
+
+  function showBlitzCard() {
+    var wordObj = blitzState.words[blitzState.index];
+    blitzState.flipped = false;
+
+    var card = document.getElementById('blitz-card');
+    card.classList.remove('is-flipped');
+    card.setAttribute('aria-label', 'Flash card — tap to flip');
+
+    document.getElementById('blitz-progress-label').textContent =
+      'Card ' + (blitzState.index + 1) + ' of ' + blitzState.words.length;
+    document.getElementById('blitz-word-type').textContent = wordObj.word_type || '';
+    document.getElementById('blitz-word').textContent = wordObj.word;
+    document.getElementById('blitz-back-word').textContent = wordObj.word;
+    document.getElementById('blitz-definition').textContent = wordObj.definition;
+    document.getElementById('blitz-sentence').textContent = wordObj.sentence_usage || '';
+    var syns = (wordObj.synonyms || []).join(', ');
+    var synLabel = document.getElementById('blitz-synonyms-label');
+    synLabel.textContent = syns ? 'Synonyms: ' + syns : '';
+
+    document.getElementById('blitz-rate-row').classList.add('hidden');
+
+    if (blitzState.timerSecs > 0) {
+      startBlitzTimer();
+    } else {
+      document.getElementById('blitz-timer-fill').style.width = '0%';
+    }
+  }
+
+  function startBlitzTimer() {
+    stopBlitzTimer();
+    blitzState.timerMs = blitzState.timerSecs * 1000;
+    var fill = document.getElementById('blitz-timer-fill');
+    fill.style.width = '100%';
+    fill.classList.remove('blitz-timer-urgent');
+
+    blitzState.timerInterval = setInterval(function () {
+      if (blitzState.flipped) { stopBlitzTimer(); return; }
+      blitzState.timerMs -= 100;
+      var pct = Math.max(0, blitzState.timerMs / (blitzState.timerSecs * 1000));
+      fill.style.width = (pct * 100).toFixed(1) + '%';
+      if (pct < 0.3) fill.classList.add('blitz-timer-urgent');
+      if (blitzState.timerMs <= 0) {
+        stopBlitzTimer();
+        flipBlitzCard();
+      }
+    }, 100);
+  }
+
+  function stopBlitzTimer() {
+    if (blitzState.timerInterval) {
+      clearInterval(blitzState.timerInterval);
+      blitzState.timerInterval = null;
+    }
+  }
+
+  function flipBlitzCard() {
+    if (blitzState.flipped) return;
+    stopBlitzTimer();
+    blitzState.flipped = true;
+    var card = document.getElementById('blitz-card');
+    card.classList.add('is-flipped');
+    card.setAttribute('aria-label', 'Flash card — showing definition');
+    document.getElementById('blitz-rate-row').classList.remove('hidden');
+    document.getElementById('blitz-timer-fill').style.width = '100%';
+    document.getElementById('blitz-timer-fill').classList.remove('blitz-timer-urgent');
+  }
+
+  function blitzRate(rating) {
+    var wordObj = blitzState.words[blitzState.index];
+    if (rating === 'got') {
+      blitzState.got++;
+      recordAnswer(wordObj.word, true);
+    } else if (rating === 'missed') {
+      blitzState.missed++;
+      blitzState.missedWords.push(wordObj);
+      recordAnswer(wordObj.word, false);
+    } else {
+      blitzState.nearly++;
+    }
+    blitzState.index++;
+    if (blitzState.index >= blitzState.words.length) {
+      showBlitzEnd();
+    } else {
+      showBlitzCard();
+    }
+  }
+
+  function showBlitzEnd() {
+    stopBlitzTimer();
+    showBlitzScreen('end');
+    var total = blitzState.words.length;
+    var got   = blitzState.got;
+    var pct   = got / total;
+    document.getElementById('blitz-end-emoji').textContent = pct >= 0.8 ? '⚡' : pct >= 0.5 ? '🃏' : '📚';
+    document.getElementById('blitz-end-title').textContent = pct >= 0.8 ? 'Lightning Round!' : pct >= 0.5 ? 'Solid Session!' : 'Keep Flipping!';
+    document.getElementById('blitz-end-score').textContent =
+      '✅ Got: ' + blitzState.got + '  🤔 Nearly: ' + blitzState.nearly + '  ❌ Missed: ' + blitzState.missed;
+
+    var reviewEl = document.getElementById('blitz-misses-review');
+    var listEl   = document.getElementById('blitz-misses-list');
+    listEl.innerHTML = '';
+    if (blitzState.missedWords.length) {
+      blitzState.missedWords.forEach(function (w) {
+        var li = document.createElement('li');
+        li.className = 'quiz-review-item';
+        var strong = document.createElement('strong');
+        strong.textContent = w.word;
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(' — ' + w.definition));
+        listEl.appendChild(li);
+      });
+      reviewEl.classList.remove('hidden');
+    } else {
+      reviewEl.classList.add('hidden');
+    }
+  }
+
+  // ── Synonym Snap Mode ────────────────────────────────────────────────────────
+
+  var SNAP_BESTS_KEY  = 'vocabVault_snapBests';
+  var SNAP_TIMER_SECS = 3;
+
+  var snapState = {
+    pairs         : [],
+    index         : 0,
+    score         : 0,
+    streak        : 0,
+    bestStreak    : 0,
+    pairCount     : 20,
+    timerInterval : null,
+    timerMs       : 0,
+    answered      : false,
+    misses        : [],
+    bests         : {}
+  };
+
+  function initSynonymSnap() {
+    try { snapState.bests = JSON.parse(localStorage.getItem(SNAP_BESTS_KEY) || '{}'); } catch (e) { snapState.bests = {}; }
+
+    document.getElementById('snap-launch-btn').addEventListener('click', openSnap);
+    document.getElementById('snap-close').addEventListener('click', closeSnap);
+    document.getElementById('snap-start-btn').addEventListener('click', startSnap);
+    document.getElementById('snap-exit-btn').addEventListener('click', function () { stopSnapTimer(); showSnapScreen('setup'); });
+    document.getElementById('snap-play-again-btn').addEventListener('click', function () { showSnapScreen('setup'); });
+    document.getElementById('snap-done-btn').addEventListener('click', closeSnap);
+    document.getElementById('snap-yes-btn').addEventListener('click', function () { snapAnswer(true); });
+    document.getElementById('snap-no-btn').addEventListener('click', function () { snapAnswer(false); });
+
+    document.querySelectorAll('[data-snap-count]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-snap-count]').forEach(function (b) {
+          b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        snapState.pairCount = parseInt(btn.dataset.snapCount, 10);
+        updateSnapBestDisplay();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('snap-overlay');
+        if (overlay && !overlay.classList.contains('hidden')) { stopSnapTimer(); closeSnap(); }
+      }
+    });
+  }
+
+  function openSnap() {
+    var overlay = document.getElementById('snap-overlay');
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    showSnapScreen('setup');
+    updateSnapBestDisplay();
+  }
+
+  function closeSnap() {
+    stopSnapTimer();
+    var overlay = document.getElementById('snap-overlay');
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function showSnapScreen(name) {
+    var map = { setup: 'snap-setup', game: 'snap-game-screen', end: 'snap-end-screen' };
+    Object.keys(map).forEach(function (k) {
+      var el = document.getElementById(map[k]);
+      if (el) el.classList.toggle('hidden', k !== name);
+    });
+  }
+
+  function updateSnapBestDisplay() {
+    var el = document.getElementById('snap-personal-best');
+    var best = snapState.bests[snapState.pairCount];
+    if (best) {
+      el.textContent = 'Personal best (' + snapState.pairCount + ' pairs): ' + best + ' pts';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  }
+
+  function generateSnapPairs(count) {
+    var eligible = allWords.filter(function (w) {
+      return w.synonyms && w.synonyms.length && w.antonyms && w.antonyms.length;
+    });
+    if (eligible.length < 4) return [];
+
+    var pairs = [];
+    var pool = shuffle(eligible);
+
+    for (var i = 0; i < count; i++) {
+      var type = i % 4;
+      var wordObj = pool[i % pool.length];
+      var pair;
+
+      if (type === 0) {
+        var syn = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+        pair = { wordA: wordObj.word, wordB: syn, questionType: 'SYNONYMS', isYes: true };
+      } else if (type === 1) {
+        var ant = wordObj.antonyms[Math.floor(Math.random() * wordObj.antonyms.length)];
+        pair = { wordA: wordObj.word, wordB: ant, questionType: 'ANTONYMS', isYes: true };
+      } else if (type === 2) {
+        var syn2 = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+        pair = { wordA: wordObj.word, wordB: syn2, questionType: 'ANTONYMS', isYes: false };
+      } else {
+        var other = pool[(i + Math.floor(pool.length / 2)) % pool.length];
+        pair = {
+          wordA: wordObj.word,
+          wordB: other.word,
+          questionType: Math.random() < 0.5 ? 'SYNONYMS' : 'ANTONYMS',
+          isYes: false
+        };
+      }
+      pairs.push(pair);
+    }
+    return shuffle(pairs);
+  }
+
+  function startSnap() {
+    snapState.pairs     = generateSnapPairs(snapState.pairCount);
+    snapState.index     = 0;
+    snapState.score     = 0;
+    snapState.streak    = 0;
+    snapState.bestStreak = 0;
+    snapState.misses    = [];
+    showSnapScreen('game');
+    showSnapPair();
+  }
+
+  function showSnapPair() {
+    var pair = snapState.pairs[snapState.index];
+    snapState.answered = false;
+
+    document.getElementById('snap-pair-counter').textContent =
+      'Pair ' + (snapState.index + 1) + ' of ' + snapState.pairCount;
+    document.getElementById('snap-score-display').textContent = 'Score: ' + snapState.score;
+
+    var streakEl = document.getElementById('snap-streak-display');
+    if (snapState.streak >= 2) {
+      streakEl.textContent = '🔥 ' + snapState.streak;
+    } else {
+      streakEl.textContent = '';
+    }
+
+    document.getElementById('snap-question-type').textContent = pair.questionType;
+    document.getElementById('snap-word-a').textContent = pair.wordA;
+    document.getElementById('snap-word-b').textContent = pair.wordB;
+
+    var flashEl = document.getElementById('snap-flash-msg');
+    flashEl.textContent = '';
+    flashEl.className = 'snap-flash-msg';
+
+    document.getElementById('snap-yes-btn').disabled = false;
+    document.getElementById('snap-no-btn').disabled  = false;
+
+    startSnapTimer();
+  }
+
+  function startSnapTimer() {
+    stopSnapTimer();
+    snapState.timerMs = SNAP_TIMER_SECS * 1000;
+    var fill = document.getElementById('snap-timer-fill');
+    fill.style.width = '100%';
+    fill.classList.remove('snap-timer-urgent');
+
+    snapState.timerInterval = setInterval(function () {
+      snapState.timerMs -= 50;
+      var pct = Math.max(0, snapState.timerMs / (SNAP_TIMER_SECS * 1000));
+      fill.style.width = (pct * 100).toFixed(1) + '%';
+      if (pct < 0.3) fill.classList.add('snap-timer-urgent');
+      if (snapState.timerMs <= 0) {
+        stopSnapTimer();
+        if (!snapState.answered) snapAnswer(null);
+      }
+    }, 50);
+  }
+
+  function stopSnapTimer() {
+    if (snapState.timerInterval) {
+      clearInterval(snapState.timerInterval);
+      snapState.timerInterval = null;
+    }
+  }
+
+  function snapAnswer(userYes) {
+    if (snapState.answered) return;
+    snapState.answered = true;
+    stopSnapTimer();
+
+    document.getElementById('snap-yes-btn').disabled = true;
+    document.getElementById('snap-no-btn').disabled  = true;
+
+    var pair    = snapState.pairs[snapState.index];
+    var correct = (userYes === null) ? false : (userYes === pair.isYes);
+    var pts     = 0;
+    var flashEl = document.getElementById('snap-flash-msg');
+
+    if (userYes === null) {
+      snapState.streak = 0;
+      flashEl.textContent = '⏱ Time\'s up! It was ' + (pair.isYes ? 'YES' : 'NO');
+      flashEl.className = 'snap-flash-msg snap-wrong';
+      snapState.misses.push(pair);
+    } else if (correct) {
+      snapState.streak++;
+      if (snapState.streak > snapState.bestStreak) snapState.bestStreak = snapState.streak;
+      var multiplier = snapState.streak >= 10 ? 2 : snapState.streak >= 5 ? 1.5 : 1;
+      pts = Math.round(100 * multiplier);
+      snapState.score += pts;
+      var msg = '✓ Correct! +' + pts;
+      if (multiplier > 1) msg += ' (×' + multiplier + ' streak!)';
+      flashEl.textContent = msg;
+      flashEl.className = 'snap-flash-msg snap-correct';
+    } else {
+      snapState.streak = 0;
+      flashEl.textContent = '✗ Wrong! It was ' + (pair.isYes ? 'YES' : 'NO');
+      flashEl.className = 'snap-flash-msg snap-wrong';
+      snapState.misses.push(pair);
+    }
+
+    document.getElementById('snap-score-display').textContent = 'Score: ' + snapState.score;
+
+    var streakEl = document.getElementById('snap-streak-display');
+    streakEl.textContent = snapState.streak >= 2 ? '🔥 ' + snapState.streak : '';
+
+    setTimeout(function () {
+      snapState.index++;
+      if (snapState.index >= snapState.pairCount) {
+        showSnapEnd();
+      } else {
+        showSnapPair();
+      }
+    }, 900);
+  }
+
+  function showSnapEnd() {
+    stopSnapTimer();
+    showSnapScreen('end');
+    var score = snapState.score;
+    var count = snapState.pairCount;
+    var best  = snapState.bests[count] || 0;
+    var isNew = score > best;
+    if (isNew) {
+      snapState.bests[count] = score;
+      try { localStorage.setItem(SNAP_BESTS_KEY, JSON.stringify(snapState.bests)); } catch (e) {}
+    }
+    var maxPts = count * 200;
+    var pct = score / maxPts;
+    document.getElementById('snap-end-emoji').textContent = pct >= 0.7 ? '🎭' : pct >= 0.4 ? '🎲' : '🃏';
+    document.getElementById('snap-end-title').textContent = pct >= 0.7 ? 'Snap Champion!' : pct >= 0.4 ? 'Word Matcher!' : 'Keep Snapping!';
+    document.getElementById('snap-end-score').textContent =
+      score + ' pts · Best streak: 🔥 ' + snapState.bestStreak;
+    document.getElementById('snap-end-best').textContent = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+
+    var reviewEl = document.getElementById('snap-misses-review');
+    var listEl   = document.getElementById('snap-misses-list');
+    listEl.innerHTML = '';
+    if (snapState.misses.length) {
+      snapState.misses.forEach(function (pair) {
+        var li = document.createElement('li');
+        li.className = 'quiz-review-item';
+        li.textContent = '"' + pair.wordA + '" vs "' + pair.wordB + '" — '
+          + (pair.isYes ? 'These ARE ' : 'These are NOT ') + pair.questionType;
+        listEl.appendChild(li);
+      });
+      reviewEl.classList.remove('hidden');
+    } else {
+      reviewEl.classList.add('hidden');
+    }
   }
 
   // ── TTS voice/pitch init ──────────────────────────────────────────────────

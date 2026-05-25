@@ -87,6 +87,22 @@
         <span aria-hidden="true">🪶</span>
         Proverbs Mode
       </button>
+      <button class="quiz-launch-btn detective-launch-btn" id="detective-launch-btn" aria-label="Open word detective mode">
+        <span aria-hidden="true">🔍</span>
+        Word Detective
+      </button>
+      <button class="quiz-launch-btn scramble-launch-btn" id="scramble-launch-btn" aria-label="Open scramble mode">
+        <span aria-hidden="true">🔤</span>
+        Scramble
+      </button>
+      <button class="quiz-launch-btn blitz-launch-btn" id="blitz-launch-btn" aria-label="Open flash blitz mode">
+        <span aria-hidden="true">⚡</span>
+        Flash Blitz
+      </button>
+      <button class="quiz-launch-btn snap-launch-btn" id="snap-launch-btn" aria-label="Open synonym snap mode">
+        <span aria-hidden="true">🎭</span>
+        Synonym Snap
+      </button>
     </section>
 
     <section class="word-grid" id="word-grid" aria-label="Vocabulary word cards"></section>
@@ -696,6 +712,308 @@
     <p>Built for 11+ exam prep &mdash; <span id="total-words"></span> words and counting</p>
     <p class="version-stamp">v2026-05-24</p>
   </footer>
+
+  <!-- Word Detective overlay -->
+  <div id="detective-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="detective-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="detective-setup-title">
+      <button class="close-btn" id="detective-close" aria-label="Close Word Detective">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🔍</span>
+        <h2 id="detective-setup-title" class="quiz-setup-title">Word Detective</h2>
+        <p class="quiz-setup-subtitle">Clues drip out one at a time. Guess the mystery word before the definition is revealed — the sooner you guess, the more points you earn!</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="detective-length-label">
+            <p id="detective-length-label" class="quiz-scope-label">How many cases?</p>
+            <button class="quiz-option-btn active" data-detective-length="5" aria-pressed="true">5 cases</button>
+            <button class="quiz-option-btn" data-detective-length="10" aria-pressed="false">10 cases</button>
+          </div>
+        </div>
+        <div id="detective-personal-best" class="quiz-personal-best hidden"></div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="detective-start-btn">
+          Open Case File
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game screen -->
+    <div id="detective-game-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="detective-case-label">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="detective-exit-btn" type="button">Exit</button>
+      </div>
+      <div class="detective-game-inner">
+        <div class="detective-header">
+          <span id="detective-case-label" class="detective-case-label">Case 1 of 5</span>
+          <span id="detective-score-display" class="quiz-score-display">Score: 0</span>
+        </div>
+        <div id="detective-clue-stack" class="detective-clue-stack" aria-label="Clues revealed so far"></div>
+        <p id="detective-choices-hint" class="detective-choices-hint"></p>
+        <div id="detective-choices" class="quiz-answers-grid" role="group" aria-label="Answer choices"></div>
+        <div id="detective-feedback" class="quiz-feedback" aria-live="assertive" aria-atomic="true"></div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="detective-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="detective-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="detective-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="detective-end-title"></h2>
+        <p class="quiz-end-score" id="detective-end-score"></p>
+        <p class="quiz-end-best" id="detective-end-best"></p>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="detective-play-again-btn">Another case!</button>
+          <button class="quiz-back-btn" id="detective-done-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scramble overlay -->
+  <div id="scramble-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="scramble-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="scramble-setup-title">
+      <button class="close-btn" id="scramble-close" aria-label="Close Scramble">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🔤</span>
+        <h2 id="scramble-setup-title" class="quiz-setup-title">Scramble</h2>
+        <p class="quiz-setup-subtitle">Letters all mixed up! Tap them in the right order to spell the word. Use the clue if you're stuck — but it'll cost you points!</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="scramble-length-label">
+            <p id="scramble-length-label" class="quiz-scope-label">How many words?</p>
+            <button class="quiz-option-btn active" data-scramble-length="5" aria-pressed="true">5 quick</button>
+            <button class="quiz-option-btn" data-scramble-length="10" aria-pressed="false">10 standard</button>
+            <button class="quiz-option-btn" data-scramble-length="15" aria-pressed="false">15 challenge</button>
+          </div>
+        </div>
+        <div id="scramble-personal-best" class="quiz-personal-best hidden"></div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="scramble-start-btn">
+          Start Scrambling!
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game screen -->
+    <div id="scramble-game-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="scramble-word-counter">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="scramble-exit-btn" type="button">Exit</button>
+      </div>
+      <div class="scramble-game-inner">
+        <div class="scramble-header">
+          <span id="scramble-word-counter" class="detective-case-label">Word 1 of 5</span>
+          <span id="scramble-session-score" class="quiz-score-display">Score: 0</span>
+        </div>
+        <p class="scramble-definition-hint" id="scramble-definition-hint"></p>
+        <div id="scramble-answer-row" class="scramble-answer-row" aria-label="Letters placed so far" role="group"></div>
+        <p class="scramble-divider-hint">↑ tap a letter above to put it back</p>
+        <div id="scramble-source-row" class="scramble-source-row" aria-label="Available letters" role="group"></div>
+        <div class="scramble-actions">
+          <button class="quiz-exit-btn" id="scramble-hint-btn" type="button">💡 Hint (−50 pts)</button>
+          <button class="quiz-exit-btn" id="scramble-skip-btn" type="button">Skip →</button>
+        </div>
+        <div id="scramble-feedback" class="quiz-feedback" aria-live="assertive" aria-atomic="true"></div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="scramble-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="scramble-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="scramble-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="scramble-end-title"></h2>
+        <p class="quiz-end-score" id="scramble-end-score"></p>
+        <p class="quiz-end-best" id="scramble-end-best"></p>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="scramble-play-again-btn">Play again!</button>
+          <button class="quiz-back-btn" id="scramble-done-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Flash Blitz overlay -->
+  <div id="blitz-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="blitz-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="blitz-setup-title">
+      <button class="close-btn" id="blitz-close" aria-label="Close Flash Blitz">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">⚡</span>
+        <h2 id="blitz-setup-title" class="quiz-setup-title">Flash Blitz</h2>
+        <p class="quiz-setup-subtitle">Flip through word cards at speed. Think of the meaning, then flip to check. Rate yourself honestly — that's how real mastery builds!</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="blitz-size-label">
+            <p id="blitz-size-label" class="quiz-scope-label">How many cards?</p>
+            <button class="quiz-option-btn active" data-blitz-size="10" aria-pressed="true">10 cards</button>
+            <button class="quiz-option-btn" data-blitz-size="20" aria-pressed="false">20 cards</button>
+            <button class="quiz-option-btn" data-blitz-size="all" aria-pressed="false">All words</button>
+          </div>
+          <div class="quiz-option-group" role="group" aria-labelledby="blitz-scope-label">
+            <p id="blitz-scope-label" class="quiz-scope-label">Which words?</p>
+            <button class="quiz-option-btn active" data-blitz-scope="all" aria-pressed="true">All words</button>
+            <button class="quiz-option-btn" data-blitz-scope="5star" aria-pressed="false">&#9733;&#9733;&#9733;&#9733;&#9733; Five-star only</button>
+            <button class="quiz-option-btn" data-blitz-scope="weakest" aria-pressed="false">Weakest words</button>
+          </div>
+          <div class="quiz-option-group" role="group" aria-labelledby="blitz-timer-label">
+            <p id="blitz-timer-label" class="quiz-scope-label">Timer per card</p>
+            <button class="quiz-option-btn" data-blitz-timer="10" aria-pressed="false">10 seconds</button>
+            <button class="quiz-option-btn active" data-blitz-timer="15" aria-pressed="true">15 seconds</button>
+            <button class="quiz-option-btn" data-blitz-timer="0" aria-pressed="false">No timer</button>
+          </div>
+        </div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="blitz-start-btn">
+          Start Flash Blitz!
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Card screen -->
+    <div id="blitz-card-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="blitz-progress-label">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="blitz-exit-btn" type="button">Exit</button>
+      </div>
+      <div class="blitz-game-inner">
+        <div class="blitz-timer-bar" id="blitz-timer-bar" aria-hidden="true">
+          <div class="blitz-timer-fill" id="blitz-timer-fill"></div>
+        </div>
+        <p id="blitz-progress-label" class="detective-case-label">Card 1 of 10</p>
+        <div class="blitz-card-wrap">
+          <div class="blitz-card" id="blitz-card" role="button" tabindex="0" aria-label="Flash card — tap to flip">
+            <div class="blitz-card-face blitz-card-front">
+              <span class="blitz-word-type-badge" id="blitz-word-type"></span>
+              <p class="blitz-word" id="blitz-word"></p>
+              <p class="blitz-flip-hint">Tap to flip →</p>
+            </div>
+            <div class="blitz-card-face blitz-card-back">
+              <p class="blitz-back-label" id="blitz-back-word"></p>
+              <p class="blitz-definition" id="blitz-definition"></p>
+              <p class="blitz-sentence" id="blitz-sentence"></p>
+              <p class="blitz-synonyms-label" id="blitz-synonyms-label"></p>
+            </div>
+          </div>
+        </div>
+        <div class="blitz-rate-row hidden" id="blitz-rate-row" role="group" aria-label="Did you know this word?">
+          <button class="blitz-rate-btn blitz-got-it" id="blitz-got-btn">✅ Got it!</button>
+          <button class="blitz-rate-btn blitz-nearly" id="blitz-nearly-btn">🤔 Nearly</button>
+          <button class="blitz-rate-btn blitz-missed" id="blitz-missed-btn">❌ Missed it</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="blitz-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="blitz-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="blitz-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="blitz-end-title"></h2>
+        <p class="quiz-end-score" id="blitz-end-score"></p>
+        <div class="quiz-review hidden" id="blitz-misses-review">
+          <h3 class="quiz-review-title">Words to revisit</h3>
+          <ul class="quiz-review-list" id="blitz-misses-list"></ul>
+        </div>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="blitz-play-again-btn">Another round!</button>
+          <button class="quiz-back-btn" id="blitz-done-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Synonym Snap overlay -->
+  <div id="snap-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="snap-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="snap-setup-title">
+      <button class="close-btn" id="snap-close" aria-label="Close Synonym Snap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🎭</span>
+        <h2 id="snap-setup-title" class="quiz-setup-title">Synonym Snap</h2>
+        <p class="quiz-setup-subtitle">Two words flash up. Are they SYNONYMS or ANTONYMS? Tap YES or NO before time runs out. Build your streak for a score multiplier! 🔥</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="snap-count-label">
+            <p id="snap-count-label" class="quiz-scope-label">How many rounds?</p>
+            <button class="quiz-option-btn active" data-snap-count="20" aria-pressed="true">20 pairs (quick)</button>
+            <button class="quiz-option-btn" data-snap-count="40" aria-pressed="false">40 pairs (extended)</button>
+          </div>
+        </div>
+        <div id="snap-personal-best" class="quiz-personal-best hidden"></div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="snap-start-btn">
+          Play Snap!
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game screen -->
+    <div id="snap-game-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="snap-pair-counter">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="snap-exit-btn" type="button">Exit</button>
+      </div>
+      <div class="snap-game-inner">
+        <div class="snap-header">
+          <span id="snap-pair-counter" class="detective-case-label">Pair 1 of 20</span>
+          <span id="snap-score-display" class="quiz-score-display">Score: 0</span>
+        </div>
+        <div class="snap-streak-row">
+          <span id="snap-streak-display" class="quiz-streak" aria-live="polite"></span>
+        </div>
+        <div class="snap-timer-bar" aria-hidden="true">
+          <div class="snap-timer-fill" id="snap-timer-fill"></div>
+        </div>
+        <p id="snap-question" class="snap-question-text">Are these <strong id="snap-question-type">SYNONYMS</strong>?</p>
+        <div class="snap-pair-row">
+          <div class="snap-word-pill" id="snap-word-a"></div>
+          <div class="snap-vs-badge">vs</div>
+          <div class="snap-word-pill" id="snap-word-b"></div>
+        </div>
+        <div id="snap-flash-msg" class="snap-flash-msg" aria-live="assertive" aria-atomic="true"></div>
+        <div class="snap-action-row">
+          <button class="snap-yes-btn" id="snap-yes-btn">✅ YES</button>
+          <button class="snap-no-btn" id="snap-no-btn">❌ NO</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="snap-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="snap-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="snap-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="snap-end-title"></h2>
+        <p class="quiz-end-score" id="snap-end-score"></p>
+        <p class="quiz-end-best" id="snap-end-best"></p>
+        <div class="quiz-review hidden" id="snap-misses-review">
+          <h3 class="quiz-review-title">Review your misses</h3>
+          <ul class="quiz-review-list" id="snap-misses-list"></ul>
+        </div>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="snap-play-again-btn">Play again!</button>
+          <button class="quiz-back-btn" id="snap-done-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
   <script src="js/app.js"></script>
 </body>
