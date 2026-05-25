@@ -4649,7 +4649,8 @@
   var comicCloseBtn        = document.getElementById('comic-close-btn');
   var comicViewerCloseBtn  = document.getElementById('comic-viewer-close-btn');
   var comicBackBtn         = document.getElementById('comic-back-btn');
-  var comicPrintBtn        = document.getElementById('comic-print-btn');
+  var comicScrollContent   = document.getElementById('comic-scroll-content');
+  var comicScrollFill      = document.getElementById('comic-scroll-fill');
   var comicStoryList       = document.getElementById('comic-story-list');
   var comicPanelsContainer = document.getElementById('comic-panels-container');
   var comicGlossaryEl      = document.getElementById('comic-glossary');
@@ -6551,7 +6552,8 @@
     renderComicPanels(story.panels, story.words);
     comicLibraryScreen.classList.add('hidden');
     comicViewingScreen.classList.remove('hidden');
-    comicViewingScreen.scrollTop = 0;
+    comicScrollContent.scrollTop = 0;
+    comicScrollFill.style.height = '0%';
     comicBackBtn.focus();
   }
 
@@ -6595,13 +6597,10 @@
     comicBackBtn.addEventListener('click', function () {
       showComicLibrary();
     });
-    comicPrintBtn.addEventListener('click', function () {
-      document.body.classList.add('comic-printing');
-      window.addEventListener('afterprint', function handler() {
-        document.body.classList.remove('comic-printing');
-        window.removeEventListener('afterprint', handler);
-      });
-      window.print();
+    comicScrollContent.addEventListener('scroll', function () {
+      var max = comicScrollContent.scrollHeight - comicScrollContent.clientHeight;
+      var pct = max > 0 ? comicScrollContent.scrollTop / max : 0;
+      comicScrollFill.style.height = (pct * 100) + '%';
     });
     comicOverlay.addEventListener('click', function (e) {
       if (e.target === comicOverlay) closeComicOverlay();
