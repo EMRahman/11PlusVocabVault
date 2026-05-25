@@ -4413,11 +4413,11 @@
 
   function updateSnapBestDisplay() {
     var el = document.getElementById('snap-personal-best');
-    var key = snapState.pairCount + '_' + snapState.snapMode;
+    var key = snapState.pairCount + '_' + snapState.snapMode + '_' + snapState.timerSecs;
     var best = snapState.bests[key];
     if (best) {
       var modeLabel = snapState.snapMode === 'synonyms' ? 'synonyms' : snapState.snapMode === 'antonyms' ? 'antonyms' : 'mixed';
-      el.textContent = 'Personal best (' + snapState.pairCount + ' pairs, ' + modeLabel + '): ' + best + ' pts';
+      el.textContent = 'Personal best (' + snapState.pairCount + ' pairs, ' + modeLabel + ', ' + snapState.timerSecs + 's): ' + best + ' pts';
       el.classList.remove('hidden');
     } else {
       el.classList.add('hidden');
@@ -4606,7 +4606,7 @@
     showSnapScreen('end');
     var score = snapState.score;
     var count = snapState.pairCount;
-    var key   = count + '_' + snapState.snapMode;
+    var key   = count + '_' + snapState.snapMode + '_' + snapState.timerSecs;
     var best  = snapState.bests[key] || 0;
     var isNew = score > best;
     if (isNew) {
