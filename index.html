@@ -727,13 +727,19 @@
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
-      <div class="quiz-screen-actions comic-view-actions">
-        <button class="quiz-exit-btn" id="comic-back-btn" type="button" aria-label="Back to comic list">← All Comics</button>
-        <button class="quiz-exit-btn" id="comic-print-btn" type="button" aria-label="Print comic">🖨️ Print</button>
-      </div>
-      <div id="comic-book">
-        <div id="comic-panels-container" class="comic-panels-grid"></div>
-        <div id="comic-glossary" class="comic-glossary"></div>
+      <div class="comic-view-layout">
+        <div id="comic-scroll-content">
+          <div class="quiz-screen-actions">
+            <button class="quiz-exit-btn" id="comic-back-btn" type="button" aria-label="Back to comic list">← All Comics</button>
+          </div>
+          <div id="comic-book">
+            <div id="comic-panels-container" class="comic-panels-grid"></div>
+            <div id="comic-glossary" class="comic-glossary"></div>
+          </div>
+        </div>
+        <div id="comic-scroll-nav" aria-hidden="true">
+          <div id="comic-scroll-fill"></div>
+        </div>
       </div>
     </div>
 

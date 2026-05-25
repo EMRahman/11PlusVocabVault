@@ -2735,10 +2735,41 @@ footer {
 
 .comic-viewing-panel {
   max-width: 700px !important;
+  overflow-y: hidden !important;
 }
 
-.comic-view-actions {
-  justify-content: space-between !important;
+.comic-view-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+#comic-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+#comic-scroll-nav {
+  width: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  margin: 0.75rem 0.5rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+#comic-scroll-fill {
+  width: 100%;
+  height: 0%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: height 0.1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #comic-book {
@@ -3037,25 +3068,4 @@ footer {
   .comic-bubble {
     font-size: 0.72rem;
   }
-}
-
-/* ── Print ───────────────────────────────────────────── */
-
-@media print {
-  body.comic-printing > *:not(#comic-overlay) { display: none !important; }
-  body.comic-printing #comic-overlay {
-    position: static !important;
-    background: white !important;
-    display: block !important;
-  }
-  body.comic-printing #comic-viewing-screen {
-    max-width: 100% !important;
-    box-shadow: none !important;
-    max-height: none !important;
-    overflow: visible !important;
-    animation: none !important;
-  }
-  body.comic-printing .comic-view-actions { display: none !important; }
-  body.comic-printing #comic-book { padding: 0 !important; }
-  .comic-panel { break-inside: avoid; }
 }
