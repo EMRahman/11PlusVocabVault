@@ -2553,19 +2553,76 @@ footer {
 .snap-word-pill {
   flex: 1;
   min-width: 0;
-  padding: 1rem;
   border-radius: var(--radius-card);
-  background: var(--color-primary-light);
   border: 2px solid #C7D2FE;
-  font-size: clamp(0.9rem, 3vw, 1.15rem);
-  font-weight: 900;
-  text-align: center;
-  color: #3730A3;
-  word-break: break-word;
-  min-height: 56px;
+  min-height: 72px;
+  cursor: pointer;
+  perspective: 600px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.snap-flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 68px;
+  transform-style: preserve-3d;
+  transition: transform 0.38s ease;
+}
+
+.snap-word-pill.flipped .snap-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.snap-flip-front,
+.snap-flip-back {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0.6rem 0.75rem;
+  border-radius: calc(var(--radius-card) - 2px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  word-break: break-word;
+  text-align: center;
+}
+
+.snap-flip-front {
+  background: var(--color-primary-light);
+  color: #3730A3;
+}
+
+.snap-pill-word {
+  font-size: clamp(0.9rem, 3vw, 1.15rem);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.snap-pill-hint {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #818CF8;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.snap-flip-back {
+  background: #EEF2FF;
+  border: 2px solid #A5B4FC;
+  border-radius: calc(var(--radius-card) - 2px);
+  color: #1E1B4B;
+  font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+  font-weight: 600;
+  line-height: 1.35;
+  transform: rotateY(180deg);
+}
+
+.snap-pill-def {
+  display: block;
 }
 
 .snap-vs-badge {

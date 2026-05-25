@@ -1043,9 +1043,29 @@
         </div>
         <p id="snap-question" class="snap-question-text">Are these <strong id="snap-question-type">SYNONYMS</strong>?</p>
         <div class="snap-pair-row">
-          <div class="snap-word-pill" id="snap-word-a"></div>
+          <div class="snap-word-pill" id="snap-word-a" role="button" tabindex="0" aria-label="Word A — tap to see meaning">
+            <div class="snap-flip-inner">
+              <div class="snap-flip-front">
+                <span class="snap-pill-word"></span>
+                <span class="snap-pill-hint">tap to flip</span>
+              </div>
+              <div class="snap-flip-back">
+                <span class="snap-pill-def"></span>
+              </div>
+            </div>
+          </div>
           <div class="snap-vs-badge">vs</div>
-          <div class="snap-word-pill" id="snap-word-b"></div>
+          <div class="snap-word-pill" id="snap-word-b" role="button" tabindex="0" aria-label="Word B — tap to see meaning">
+            <div class="snap-flip-inner">
+              <div class="snap-flip-front">
+                <span class="snap-pill-word"></span>
+                <span class="snap-pill-hint">tap to flip</span>
+              </div>
+              <div class="snap-flip-back">
+                <span class="snap-pill-def"></span>
+              </div>
+            </div>
+          </div>
         </div>
         <div id="snap-flash-msg" class="snap-flash-msg" aria-live="assertive" aria-atomic="true"></div>
         <div class="snap-action-row">
