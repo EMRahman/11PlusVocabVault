@@ -6487,6 +6487,13 @@
 
   var PANEL_TILTS = [-0.6, 0.4, -0.3, 0.5, -0.4, 0.35];
 
+  var SCENE_CLASS_MAP = {
+    overClock: 'panel-scene-overclock',
+    jolt:      'panel-scene-jolt',
+    admiral:   'panel-scene-admiral',
+    starSloth: 'panel-scene-starsloth'
+  };
+
   function buildPanelHTML(panelDef, words, idx) {
     var tilt    = panelDef.fullWidth ? 0 : (PANEL_TILTS[idx % PANEL_TILTS.length] || 0);
     var svgFn   = COMIC_SVG[panelDef.char] || svgStarSloth;
@@ -6502,8 +6509,9 @@
     var sfxHtml = panelDef.sfx
       ? '<div class="panel-sfx">' + panelDef.sfx + '</div>'
       : '';
-    return '<div class="comic-panel' + (panelDef.fullWidth ? ' full-width' : '') + '"' +
-      ' style="--panel-tilt:' + tilt + 'deg;background:' + (panelDef.bg || '#FFFDE7') + '">' +
+    var sceneClass = SCENE_CLASS_MAP[panelDef.char] || 'panel-scene-starsloth';
+    return '<div class="comic-panel' + (panelDef.fullWidth ? ' full-width' : '') + ' ' + sceneClass + '"' +
+      ' style="--panel-tilt:' + tilt + 'deg;background-color:' + (panelDef.bg || '#FFFDE7') + '">' +
       captionHtml +
       '<div class="panel-stage">' +
       '<div class="panel-char-svg">' + svgHtml + '</div>' +

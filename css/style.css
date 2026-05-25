@@ -2775,6 +2775,78 @@ footer {
   transform: none;
 }
 
+/* 2-column box panels: stack character on top, bubble below */
+.comic-panel:not(.full-width) {
+  min-height: 190px;
+}
+
+.comic-panel:not(.full-width) .panel-stage {
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.comic-panel:not(.full-width) .panel-char-svg {
+  width: 68px;
+  align-self: center;
+}
+
+.comic-panel:not(.full-width) .comic-bubble {
+  width: 100%;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+/* Left-pointing tail doesn't apply when character is above the bubble */
+.comic-panel:not(.full-width) .comic-bubble::before,
+.comic-panel:not(.full-width) .comic-bubble::after {
+  display: none;
+}
+
+/* ── Scene background patterns (layered over inline background-color) ── */
+
+/* Over-Clock's lair — sinister diagonal purple stripes */
+.panel-scene-overclock {
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px, transparent 10px,
+      rgba(160, 0, 180, 0.07) 10px, rgba(160, 0, 180, 0.07) 12px
+    );
+}
+
+/* Jolt — electric energy glow at base + spark in corner */
+.panel-scene-jolt {
+  background-image:
+    radial-gradient(ellipse at 50% 110%, rgba(80, 80, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 85% 8%, rgba(255, 210, 0, 0.12) 0%, transparent 35%);
+}
+
+/* Admiral — ship bridge: faint technical crosshatch grid */
+.panel-scene-admiral {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 15px,
+      rgba(60, 90, 160, 0.07) 15px, rgba(60, 90, 160, 0.07) 16px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 15px,
+      rgba(60, 90, 160, 0.07) 15px, rgba(60, 90, 160, 0.07) 16px
+    );
+}
+
+/* Star-Sloth — space starfield dot pattern */
+.panel-scene-starsloth {
+  background-image:
+    radial-gradient(circle, rgba(120, 120, 220, 0.28) 1px, transparent 1px),
+    radial-gradient(circle, rgba(200, 200, 255, 0.18) 1px, transparent 1px);
+  background-size: 32px 32px, 19px 19px;
+  background-position: 0 0, 11px 11px;
+}
+
 .panel-caption {
   background: #FFE082;
   border-bottom: 2.5px solid #1a1a1a;
