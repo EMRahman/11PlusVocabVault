@@ -4348,6 +4348,24 @@
     document.getElementById('snap-yes-btn').addEventListener('click', function () { snapAnswer(true); });
     document.getElementById('snap-no-btn').addEventListener('click', function () { snapAnswer(false); });
 
+    ['snap-word-a', 'snap-word-b'].forEach(function (id) {
+      var pill = document.getElementById(id);
+      pill.addEventListener('click', function () {
+        if (pill.style.cursor === 'default') return;
+        pill.classList.toggle('flipped');
+        pill.setAttribute('aria-pressed', pill.classList.contains('flipped') ? 'true' : 'false');
+      });
+      pill.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (pill.style.cursor !== 'default') {
+            pill.classList.toggle('flipped');
+            pill.setAttribute('aria-pressed', pill.classList.contains('flipped') ? 'true' : 'false');
+          }
+        }
+      });
+    });
+
     document.querySelectorAll('[data-snap-count]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         document.querySelectorAll('[data-snap-count]').forEach(function (b) {
@@ -4424,6 +4442,14 @@
     }
   }
 
+  function findSnapWordDef(wordStr) {
+    var lower = wordStr.toLowerCase();
+    for (var i = 0; i < allWords.length; i++) {
+      if (allWords[i].word.toLowerCase() === lower) return allWords[i];
+    }
+    return null;
+  }
+
   function generateSnapPairs(count) {
     var eligible = allWords.filter(function (w) {
       return w.synonyms && w.synonyms.length && w.antonyms && w.antonyms.length;
@@ -4479,6 +4505,11 @@
           };
         }
       }
+      pair.defA = wordObj.definition;
+      pair.typeA = wordObj.word_type || '';
+      var wbObj = findSnapWordDef(pair.wordB);
+      pair.defB = wbObj ? wbObj.definition : null;
+      pair.typeB = wbObj ? (wbObj.word_type || '') : '';
       pairs.push(pair);
     }
     return shuffle(pairs);
@@ -4511,8 +4542,27 @@
     }
 
     document.getElementById('snap-question-type').textContent = pair.questionType;
-    document.getElementById('snap-word-a').textContent = pair.wordA;
-    document.getElementById('snap-word-b').textContent = pair.wordB;
+
+    var pillA = document.getElementById('snap-word-a');
+    pillA.classList.remove('flipped');
+    pillA.querySelector('.snap-pill-word').textContent = pair.wordA;
+    pillA.querySelector('.snap-pill-def').textContent =
+      (pair.typeA ? '(' + pair.typeA + ')  ' : '') + pair.defA;
+    pillA.querySelector('.snap-pill-hint').style.display = '';
+
+    var pillB = document.getElementById('snap-word-b');
+    pillB.classList.remove('flipped');
+    pillB.querySelector('.snap-pill-word').textContent = pair.wordB;
+    if (pair.defB) {
+      pillB.querySelector('.snap-pill-def').textContent =
+        (pair.typeB ? '(' + pair.typeB + ')  ' : '') + pair.defB;
+      pillB.querySelector('.snap-pill-hint').style.display = '';
+      pillB.style.cursor = '';
+    } else {
+      pillB.querySelector('.snap-pill-def').textContent = '';
+      pillB.querySelector('.snap-pill-hint').style.display = 'none';
+      pillB.style.cursor = 'default';
+    }
 
     var flashEl = document.getElementById('snap-flash-msg');
     flashEl.textContent = '';
