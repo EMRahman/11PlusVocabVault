@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="build-info.js"></script>
 </head>
 <body>
 
@@ -19,6 +20,7 @@
       </div>
       <div class="word-count" id="word-count"></div>
     </div>
+    <div class="build-stamp" id="build-stamp"></div>
   </header>
 
   <main>
@@ -751,7 +753,6 @@
 
   <footer>
     <p>Built for 11+ exam prep &mdash; <span id="total-words"></span> words and counting</p>
-    <p class="version-stamp">v2026-05-24</p>
   </footer>
 
   <!-- Word Detective overlay -->
@@ -1057,5 +1058,15 @@
   </div>
 
   <script src="js/app.js"></script>
+  <script>
+    (function () {
+      var el = document.getElementById('build-stamp');
+      if (!el) return;
+      var info = typeof BUILD_INFO !== 'undefined' ? BUILD_INFO : null;
+      if (info) {
+        el.textContent = 'build ' + info.date + ' · ' + info.time;
+      }
+    })();
+  </script>
 </body>
 </html>
