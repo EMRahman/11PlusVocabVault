@@ -6463,6 +6463,48 @@
     }
 
   ];
+
+  function enhanceComicStory(story) {
+    var hasPatience = story.words.some(function (w) { return String(w.word).toLowerCase() === 'patience'; });
+    if (!hasPatience) {
+      story.words.push({ word: 'patience', definition: 'The capacity to stay calm while waiting without complaining.' });
+    }
+
+    story.blurb = story.blurb + ' Slapstick chaos meets patient heroics.';
+
+    var introPanel = {
+      caption: 'SLO-O-RAMA ORIGIN RECAP: THE FASTEST SUIT + THE SLOWEST BRAIN.',
+      char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
+      bubble: '...patience first... then heroics...',
+      bubbleType: 'thought', sfx: 'SWOOOOOSH... (very slowly)'
+    };
+
+    var waitForItPanel = {
+      caption: 'WAIT FOR IT... STAR-SLOTH LIFTS ONE FINGER TO SAVE THE GALAXY.',
+      char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFFDE7',
+      bubble: '...nearly... there...',
+      bubbleType: 'whisper', sfx: '...inch... inch... inch...'
+    };
+
+    var ironyPanel = {
+      caption: 'IRONY ALERT: EVERYONE PANICS. THE SLOTH WINS BY TAKING HIS TIME.',
+      char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+      bubble: 'Fast plans exploded. Patience worked. Again. I need less coffee and more contemplation.',
+      bubbleType: 'speech', sfx: 'BONK! SPLAT! wheeze...'
+    };
+
+    var panels = story.panels || [];
+    if (panels.length > 0) {
+      panels.unshift(introPanel);
+      panels.splice(Math.max(2, panels.length - 1), 0, waitForItPanel);
+      panels.push(ironyPanel);
+    }
+
+    return story;
+  }
+
+  COMIC_STORIES = COMIC_STORIES.map(enhanceComicStory);
+
   // ── end COMIC_STORIES ──
 
 
