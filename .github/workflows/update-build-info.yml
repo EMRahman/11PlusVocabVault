@@ -1,0 +1,38 @@
+name: Update Build Info
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'build-info.js'
+
+jobs:
+  update-build-info:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate build info
+        run: |
+          BUILD_DATE=$(date -u '+%Y-%m-%d')
+          BUILD_TIME=$(date -u '+%H:%M UTC')
+          BUILD_ISO=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+          cat > build-info.js << JSEOF
+          const BUILD_INFO = {
+            date: '${BUILD_DATE}',
+            time: '${BUILD_TIME}',
+            iso: '${BUILD_ISO}'
+          };
+          JSEOF
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add build-info.js
+          git diff --staged --quiet || git commit -m "chore: update build info [skip ci]"
+          git push
