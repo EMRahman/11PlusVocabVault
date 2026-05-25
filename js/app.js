@@ -5155,7 +5155,14 @@
       showComicScreen(comicSetupScreen);
       comicCloseBtn.focus();
     });
-    comicPrintBtn.addEventListener('click', function () { window.print(); });
+    comicPrintBtn.addEventListener('click', function () {
+      document.body.classList.add('comic-printing');
+      window.addEventListener('afterprint', function handler() {
+        document.body.classList.remove('comic-printing');
+        window.removeEventListener('afterprint', handler);
+      });
+      window.print();
+    });
     comicShuffleBtn.addEventListener('click', loadComicWords);
     if (comicUnmasteredCheck) {
       comicUnmasteredCheck.addEventListener('change', loadComicWords);

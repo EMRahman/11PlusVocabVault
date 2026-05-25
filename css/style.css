@@ -3014,21 +3014,21 @@ footer {
 /* ── Print ───────────────────────────────────────────── */
 
 @media print {
-  body > *:not(#comic-overlay) { display: none !important; }
-  #comic-overlay {
+  body.comic-printing > *:not(#comic-overlay) { display: none !important; }
+  body.comic-printing #comic-overlay {
     position: static !important;
     background: white !important;
     display: block !important;
   }
-  #comic-setup-screen { display: none !important; }
-  #comic-viewing-screen {
+  body.comic-printing #comic-setup-screen { display: none !important; }
+  body.comic-printing #comic-viewing-screen {
     max-width: 100% !important;
     box-shadow: none !important;
     max-height: none !important;
     overflow: visible !important;
     animation: none !important;
   }
-  .comic-view-actions { display: none !important; }
-  #comic-book { padding: 0 !important; }
+  body.comic-printing .comic-view-actions { display: none !important; }
+  body.comic-printing #comic-book { padding: 0 !important; }
   .comic-panel { break-inside: avoid; }
 }
