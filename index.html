@@ -6,7 +6,7 @@
   <title>11+ Vocab Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -102,6 +102,10 @@
       <button class="quiz-launch-btn snap-launch-btn" id="snap-launch-btn" aria-label="Open synonym snap mode">
         <span aria-hidden="true">🎭</span>
         Synonym Snap
+      </button>
+      <button class="quiz-launch-btn comic-launch-btn" id="comic-launch-btn" aria-label="Open Star-Sloth comic creator">
+        <span aria-hidden="true">🦥</span>
+        Comics
       </button>
     </section>
 
@@ -692,6 +696,58 @@
           Done reading — quiz me!
           <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
         </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Comic Mode overlay -->
+  <div id="comic-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="comic-setup-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="comic-setup-title">
+      <button class="close-btn" id="comic-close-btn" aria-label="Close comic creator">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🦥</span>
+        <h2 id="comic-setup-title" class="quiz-setup-title comic-title-font">Star-Sloth Comics</h2>
+        <p class="quiz-setup-subtitle">Pick vocab words, pick a story template, and watch the galaxy's slowest hero save the day!</p>
+
+        <div class="comic-section">
+          <p class="comic-section-title">1. Choose 1–3 vocab words</p>
+          <div class="comic-word-chips" id="comic-word-chips"></div>
+          <div class="comic-word-controls">
+            <label class="comic-unmastered-label">
+              <input type="checkbox" id="comic-unmastered-check"> Unmastered words only
+            </label>
+            <button class="comic-shuffle-btn" id="comic-shuffle-btn" type="button">🔀 Shuffle</button>
+          </div>
+        </div>
+
+        <div class="comic-section">
+          <p class="comic-section-title">2. Choose a story template</p>
+          <div class="comic-template-grid" id="comic-template-grid"></div>
+        </div>
+
+        <button id="comic-generate-btn" class="quiz-start-btn quiz-primary-start-btn" disabled type="button">
+          Create Comic! 🎨
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Viewing screen -->
+    <div id="comic-viewing-screen" class="quiz-panel comic-viewing-panel hidden" role="dialog" aria-modal="true" aria-label="Your Star-Sloth comic">
+      <div class="quiz-screen-actions comic-view-actions">
+        <button class="quiz-exit-btn" id="comic-back-btn" type="button" aria-label="Back to comic setup">← New Comic</button>
+        <button class="quiz-exit-btn" id="comic-print-btn" type="button" aria-label="Print comic">🖨️ Print</button>
+      </div>
+      <div id="comic-book">
+        <div id="comic-panels-container" class="comic-panels-grid"></div>
+        <div id="comic-glossary" class="comic-glossary"></div>
       </div>
     </div>
 
