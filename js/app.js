@@ -4318,8 +4318,7 @@
 
   // ── Synonym Snap Mode ────────────────────────────────────────────────────────
 
-  var SNAP_BESTS_KEY  = 'vocabVault_snapBests';
-  var SNAP_TIMER_SECS = 3;
+  var SNAP_BESTS_KEY = 'vocabVault_snapBests';
 
   var snapState = {
     pairs         : [],
@@ -4328,6 +4327,8 @@
     streak        : 0,
     bestStreak    : 0,
     pairCount     : 20,
+    timerSecs     : 10,
+    snapMode      : 'mixed',
     timerInterval : null,
     timerMs       : 0,
     answered      : false,
@@ -4354,6 +4355,27 @@
         });
         btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
         snapState.pairCount = parseInt(btn.dataset.snapCount, 10);
+        updateSnapBestDisplay();
+      });
+    });
+
+    document.querySelectorAll('[data-snap-timer]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-snap-timer]').forEach(function (b) {
+          b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        snapState.timerSecs = parseInt(btn.dataset.snapTimer, 10);
+      });
+    });
+
+    document.querySelectorAll('[data-snap-mode]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-snap-mode]').forEach(function (b) {
+          b.classList.remove('active'); b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active'); btn.setAttribute('aria-pressed', 'true');
+        snapState.snapMode = btn.dataset.snapMode;
         updateSnapBestDisplay();
       });
     });
@@ -4391,9 +4413,11 @@
 
   function updateSnapBestDisplay() {
     var el = document.getElementById('snap-personal-best');
-    var best = snapState.bests[snapState.pairCount];
+    var key = snapState.pairCount + '_' + snapState.snapMode;
+    var best = snapState.bests[key];
     if (best) {
-      el.textContent = 'Personal best (' + snapState.pairCount + ' pairs): ' + best + ' pts';
+      var modeLabel = snapState.snapMode === 'synonyms' ? 'synonyms' : snapState.snapMode === 'antonyms' ? 'antonyms' : 'mixed';
+      el.textContent = 'Personal best (' + snapState.pairCount + ' pairs, ' + modeLabel + '): ' + best + ' pts';
       el.classList.remove('hidden');
     } else {
       el.classList.add('hidden');
@@ -4406,31 +4430,54 @@
     });
     if (eligible.length < 4) return [];
 
+    var mode = snapState.snapMode;
     var pairs = [];
     var pool = shuffle(eligible);
 
     for (var i = 0; i < count; i++) {
-      var type = i % 4;
       var wordObj = pool[i % pool.length];
+      var other = pool[(i + Math.floor(pool.length / 2)) % pool.length];
       var pair;
 
-      if (type === 0) {
-        var syn = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
-        pair = { wordA: wordObj.word, wordB: syn, questionType: 'SYNONYMS', isYes: true };
-      } else if (type === 1) {
-        var ant = wordObj.antonyms[Math.floor(Math.random() * wordObj.antonyms.length)];
-        pair = { wordA: wordObj.word, wordB: ant, questionType: 'ANTONYMS', isYes: true };
-      } else if (type === 2) {
-        var syn2 = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
-        pair = { wordA: wordObj.word, wordB: syn2, questionType: 'ANTONYMS', isYes: false };
+      if (mode === 'synonyms') {
+        if (i % 2 === 0) {
+          var syn = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+          pair = { wordA: wordObj.word, wordB: syn, questionType: 'SYNONYMS', isYes: true };
+        } else if (i % 4 === 1) {
+          var ant = wordObj.antonyms[Math.floor(Math.random() * wordObj.antonyms.length)];
+          pair = { wordA: wordObj.word, wordB: ant, questionType: 'SYNONYMS', isYes: false };
+        } else {
+          pair = { wordA: wordObj.word, wordB: other.word, questionType: 'SYNONYMS', isYes: false };
+        }
+      } else if (mode === 'antonyms') {
+        if (i % 2 === 0) {
+          var ant2 = wordObj.antonyms[Math.floor(Math.random() * wordObj.antonyms.length)];
+          pair = { wordA: wordObj.word, wordB: ant2, questionType: 'ANTONYMS', isYes: true };
+        } else if (i % 4 === 1) {
+          var syn2 = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+          pair = { wordA: wordObj.word, wordB: syn2, questionType: 'ANTONYMS', isYes: false };
+        } else {
+          pair = { wordA: wordObj.word, wordB: other.word, questionType: 'ANTONYMS', isYes: false };
+        }
       } else {
-        var other = pool[(i + Math.floor(pool.length / 2)) % pool.length];
-        pair = {
-          wordA: wordObj.word,
-          wordB: other.word,
-          questionType: Math.random() < 0.5 ? 'SYNONYMS' : 'ANTONYMS',
-          isYes: false
-        };
+        var type = i % 4;
+        if (type === 0) {
+          var syn3 = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+          pair = { wordA: wordObj.word, wordB: syn3, questionType: 'SYNONYMS', isYes: true };
+        } else if (type === 1) {
+          var ant3 = wordObj.antonyms[Math.floor(Math.random() * wordObj.antonyms.length)];
+          pair = { wordA: wordObj.word, wordB: ant3, questionType: 'ANTONYMS', isYes: true };
+        } else if (type === 2) {
+          var syn4 = wordObj.synonyms[Math.floor(Math.random() * wordObj.synonyms.length)];
+          pair = { wordA: wordObj.word, wordB: syn4, questionType: 'ANTONYMS', isYes: false };
+        } else {
+          pair = {
+            wordA: wordObj.word,
+            wordB: other.word,
+            questionType: Math.random() < 0.5 ? 'SYNONYMS' : 'ANTONYMS',
+            isYes: false
+          };
+        }
       }
       pairs.push(pair);
     }
@@ -4479,14 +4526,15 @@
 
   function startSnapTimer() {
     stopSnapTimer();
-    snapState.timerMs = SNAP_TIMER_SECS * 1000;
+    var totalMs = snapState.timerSecs * 1000;
+    snapState.timerMs = totalMs;
     var fill = document.getElementById('snap-timer-fill');
     fill.style.width = '100%';
     fill.classList.remove('snap-timer-urgent');
 
     snapState.timerInterval = setInterval(function () {
       snapState.timerMs -= 50;
-      var pct = Math.max(0, snapState.timerMs / (SNAP_TIMER_SECS * 1000));
+      var pct = Math.max(0, snapState.timerMs / totalMs);
       fill.style.width = (pct * 100).toFixed(1) + '%';
       if (pct < 0.3) fill.classList.add('snap-timer-urgent');
       if (snapState.timerMs <= 0) {
@@ -4558,10 +4606,11 @@
     showSnapScreen('end');
     var score = snapState.score;
     var count = snapState.pairCount;
-    var best  = snapState.bests[count] || 0;
+    var key   = count + '_' + snapState.snapMode;
+    var best  = snapState.bests[key] || 0;
     var isNew = score > best;
     if (isNew) {
-      snapState.bests[count] = score;
+      snapState.bests[key] = score;
       try { localStorage.setItem(SNAP_BESTS_KEY, JSON.stringify(snapState.bests)); } catch (e) {}
     }
     var maxPts = count * 200;

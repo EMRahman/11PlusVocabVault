@@ -997,6 +997,18 @@
             <button class="quiz-option-btn active" data-snap-count="20" aria-pressed="true">20 pairs (quick)</button>
             <button class="quiz-option-btn" data-snap-count="40" aria-pressed="false">40 pairs (extended)</button>
           </div>
+          <div class="quiz-option-group" role="group" aria-labelledby="snap-timer-label">
+            <p id="snap-timer-label" class="quiz-scope-label">Time per pair?</p>
+            <button class="quiz-option-btn active" data-snap-timer="10" aria-pressed="true">10 sec</button>
+            <button class="quiz-option-btn" data-snap-timer="20" aria-pressed="false">20 sec</button>
+            <button class="quiz-option-btn" data-snap-timer="30" aria-pressed="false">30 sec</button>
+          </div>
+          <div class="quiz-option-group" role="group" aria-labelledby="snap-mode-label">
+            <p id="snap-mode-label" class="quiz-scope-label">Which word pairs?</p>
+            <button class="quiz-option-btn active" data-snap-mode="mixed" aria-pressed="true">Mixed</button>
+            <button class="quiz-option-btn" data-snap-mode="synonyms" aria-pressed="false">Synonyms only</button>
+            <button class="quiz-option-btn" data-snap-mode="antonyms" aria-pressed="false">Antonyms only</button>
+          </div>
         </div>
         <div id="snap-personal-best" class="quiz-personal-best hidden"></div>
         <button class="quiz-start-btn quiz-primary-start-btn" id="snap-start-btn">
