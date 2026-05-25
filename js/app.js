@@ -531,6 +531,7 @@
         initFableMode();
         initProverbsMode();
         initDailyNews();
+        initComicMode();
         initQuiz();
         initDetectiveMode();
         initScrambleMode();
@@ -4586,6 +4587,595 @@
     } else {
       reviewEl.classList.add('hidden');
     }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COMIC MODE — Star-Sloth original comics. Offline, template-based.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var comicLaunchBtn       = document.getElementById('comic-launch-btn');
+  var comicOverlay         = document.getElementById('comic-overlay');
+  var comicSetupScreen     = document.getElementById('comic-setup-screen');
+  var comicViewingScreen   = document.getElementById('comic-viewing-screen');
+  var comicCloseBtn        = document.getElementById('comic-close-btn');
+  var comicBackBtn         = document.getElementById('comic-back-btn');
+  var comicPrintBtn        = document.getElementById('comic-print-btn');
+  var comicWordChipsEl     = document.getElementById('comic-word-chips');
+  var comicShuffleBtn      = document.getElementById('comic-shuffle-btn');
+  var comicUnmasteredCheck = document.getElementById('comic-unmastered-check');
+  var comicTemplateGridEl  = document.getElementById('comic-template-grid');
+  var comicGenerateBtn     = document.getElementById('comic-generate-btn');
+  var comicPanelsContainer = document.getElementById('comic-panels-container');
+  var comicGlossaryEl      = document.getElementById('comic-glossary');
+
+  var comicState = { selectedWords: [], selectedTemplate: null, displayedWords: [] };
+
+  // ── SVG character generators ───────────────────────────────────────────────
+
+  function svgStarSloth(pose) {
+    var blink  = pose === 'blink';
+    var action = pose === 'action';
+    var lidH   = blink ? 7 : 4;
+    var pupils = blink ? '' :
+      '<circle cx="42" cy="49" r="2.5" fill="#1a1a1a"/>' +
+      '<circle cx="58" cy="49" r="2.5" fill="#1a1a1a"/>';
+    var speedLines = action
+      ? '<line x1="2" y1="30" x2="18" y2="30" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<line x1="1" y1="44" x2="16" y2="44" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<line x1="2" y1="58" x2="17" y2="58" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<line x1="3" y1="72" x2="18" y2="72" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<text x="4" y="14" font-size="5.5" fill="#BBB" font-weight="bold" font-family="Impact,Arial,sans-serif" letter-spacing="1">SWOOOOOSH!</text>'
+      : '';
+    return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      speedLines +
+      '<path d="M23,45 Q20,34 27,28 Q22,20 31,22 Q31,14 41,18 Q43,11 50,13 Q57,11 59,18 Q69,14 69,22 Q78,20 73,28 Q80,34 77,45" fill="#D4B880" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<circle cx="50" cy="46" r="26" fill="#C4A870" stroke="#1a1a1a" stroke-width="2.5"/>' +
+      '<ellipse cx="50" cy="50" rx="18" ry="16" fill="#DCCA90"/>' +
+      '<ellipse cx="42" cy="46" rx="5" ry="4.5" fill="white" stroke="#333" stroke-width="1"/>' +
+      '<rect x="37" y="42" width="10" height="' + lidH + '" rx="2" fill="#C4A870"/>' +
+      '<ellipse cx="58" cy="46" rx="5" ry="4.5" fill="white" stroke="#333" stroke-width="1"/>' +
+      '<rect x="53" y="42" width="10" height="' + lidH + '" rx="2" fill="#C4A870"/>' +
+      pupils +
+      '<ellipse cx="50" cy="58" rx="8" ry="6" fill="#D0B068"/>' +
+      '<ellipse cx="50" cy="57" rx="3.5" ry="2.5" fill="#7A4A20" stroke="#333" stroke-width="1"/>' +
+      '<path d="M45,64 Q50,68 55,64" fill="none" stroke="#555" stroke-width="1.5"/>' +
+      '<ellipse cx="50" cy="96" rx="19" ry="22" fill="#9AAAB8" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<line x1="50" y1="74" x2="50" y2="118" stroke="#7A8A98" stroke-width="1.5"/>' +
+      '<circle cx="50" cy="88" r="7" fill="#3A68D0" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<text x="50" y="93" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial,sans-serif">S</text>' +
+      '<ellipse cx="34" cy="94" rx="5" ry="9" fill="#7A8A98" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<ellipse cx="66" cy="94" rx="5" ry="9" fill="#7A8A98" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<path d="M31,78 Q20,88 18,104" fill="none" stroke="#C4A870" stroke-width="7" stroke-linecap="round"/>' +
+      '<path d="M15,106 Q17,113 21,108" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M18,109 Q20,116 24,111" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M21,111 Q23,118 27,113" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M69,78 Q80,88 82,104" fill="none" stroke="#C4A870" stroke-width="7" stroke-linecap="round"/>' +
+      '<path d="M85,106 Q83,113 79,108" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M82,109 Q80,116 76,111" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<path d="M79,111 Q77,118 73,113" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      '</svg>';
+  }
+
+  function svgJolt(pose) {
+    var translating = pose === 'translating';
+    var tiltAngle   = translating ? '0' : '-12';
+    var ghost = translating ? '' :
+      '<ellipse cx="40" cy="64" rx="20" ry="28" fill="rgba(150,150,175,0.18)" transform="translate(-10,0)"/>';
+    var magGlass = translating
+      ? '<circle cx="74" cy="42" r="8" fill="rgba(200,230,255,0.85)" stroke="#888" stroke-width="2"/>' +
+        '<line x1="80" y1="48" x2="87" y2="55" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>'
+      : '';
+    return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      ghost +
+      '<g transform="rotate(' + tiltAngle + ', 50, 65)">' +
+      '<ellipse cx="50" cy="72" rx="22" ry="28" fill="#C8C8D8" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<ellipse cx="50" cy="72" rx="16" ry="22" fill="none" stroke="#9898A8" stroke-width="1"/>' +
+      '<circle cx="50" cy="58" r="16" fill="white" stroke="#1a1a1a" stroke-width="2.5"/>' +
+      '<circle cx="50" cy="58" r="12" fill="#2A90E8"/>' +
+      '<circle cx="50" cy="58" r="8"  fill="#1A60B0"/>' +
+      '<circle cx="50" cy="58" r="4"  fill="#0A3070"/>' +
+      '<circle cx="50" cy="58" r="1.5" fill="white"/>' +
+      '<circle cx="44" cy="52" r="3.5" fill="rgba(255,255,255,0.55)"/>' +
+      '<circle cx="50" cy="58" r="14" fill="none" stroke="rgba(160,190,210,0.6)" stroke-width="1" stroke-dasharray="2 3"/>' +
+      '<line x1="50" y1="42" x2="50" y2="32" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<circle cx="50" cy="30" r="3" fill="#F0B020" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<path d="M28,64 L18,74 L26,74 L16,86" fill="none" stroke="#F0B020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<path d="M72,64 L82,74 L74,74 L84,86" fill="none" stroke="#F0B020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<rect x="37" y="98" width="10" height="8" rx="2" fill="#999" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<rect x="53" y="98" width="10" height="8" rx="2" fill="#999" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<path d="M38,106 Q42,118 46,106" fill="#F08020"/>' +
+      '<path d="M54,106 Q58,118 62,106" fill="#F08020"/>' +
+      '<path d="M40,106 Q42,112 44,106" fill="#FFF080"/>' +
+      '<path d="M56,106 Q58,112 60,106" fill="#FFF080"/>' +
+      '</g>' +
+      magGlass +
+      '</svg>';
+  }
+
+  function svgAdmiral(pose) {
+    var exploding = pose === 'exploding';
+    var sweat = '<ellipse cx="27" cy="30" rx="2" ry="3" fill="#A0D0F0" transform="rotate(-20,27,30)"/>' +
+      '<ellipse cx="76" cy="26" rx="2" ry="3" fill="#A0D0F0" transform="rotate(20,76,26)"/>' +
+      '<ellipse cx="21" cy="52" rx="1.5" ry="2.5" fill="#A0D0F0" transform="rotate(-30,21,52)"/>';
+    if (exploding) {
+      sweat +=
+        '<ellipse cx="14" cy="40" rx="2.5" ry="3.5" fill="#A0D0F0" transform="rotate(-15,14,40)"/>' +
+        '<ellipse cx="82" cy="44" rx="2" ry="3" fill="#A0D0F0" transform="rotate(25,82,44)"/>' +
+        '<ellipse cx="24" cy="70" rx="2" ry="3" fill="#A0D0F0" transform="rotate(-40,24,70)"/>' +
+        '<ellipse cx="80" cy="64" rx="2" ry="3" fill="#A0D0F0" transform="rotate(30,80,64)"/>';
+    }
+    var mouth = exploding
+      ? '<ellipse cx="50" cy="68" rx="8" ry="6" fill="#8B2020"/><ellipse cx="50" cy="68" rx="6" ry="4" fill="#B03030"/>'
+      : '<path d="M43,67 Q50,71 57,67" fill="none" stroke="#333" stroke-width="1.5"/>';
+    var eyebrows = exploding
+      ? '<path d="M36,42 Q42,37 48,42" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>' +
+        '<path d="M52,42 Q58,37 64,42" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>'
+      : '<path d="M37,43 Q42,40 47,43" fill="none" stroke="#1a1a1a" stroke-width="2"/>' +
+        '<path d="M53,43 Q58,40 63,43" fill="none" stroke="#1a1a1a" stroke-width="2"/>';
+    var vein = '<path d="M45,32 Q47,28 50,32 Q53,28 55,32" fill="none" stroke="#C03030" stroke-width="1.5"/>';
+    if (exploding) vein += '<path d="M38,40 Q40,36 43,40" fill="none" stroke="#C03030" stroke-width="1.5"/>';
+    var arms = exploding
+      ? '<path d="M27,82 Q14,94 20,108" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
+        '<path d="M73,82 Q86,94 80,108" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>'
+      : '<path d="M28,84 Q28,96 38,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
+        '<path d="M72,84 Q72,96 62,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
+        '<path d="M38,100 Q50,104 62,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>';
+    return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      sweat +
+      '<rect x="24" y="18" width="52" height="12" rx="4" fill="#1A3A6A" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<rect x="19" y="27" width="62" height="6" rx="2" fill="#142D54" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<circle cx="50" cy="23" r="5" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<text x="50" y="27" text-anchor="middle" font-size="7" fill="#1a1a1a" font-family="Arial,sans-serif">★</text>' +
+      '<circle cx="50" cy="52" r="26" fill="#E04040" stroke="#1a1a1a" stroke-width="2.5"/>' +
+      '<ellipse cx="24" cy="52" rx="6" ry="8" fill="#D03030" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<ellipse cx="76" cy="52" rx="6" ry="8" fill="#D03030" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<ellipse cx="42" cy="48" rx="5" ry="5" fill="white" stroke="#333" stroke-width="1"/>' +
+      '<circle cx="42" cy="48" r="3" fill="#1a1a1a"/>' +
+      '<circle cx="41" cy="47" r="1" fill="white"/>' +
+      '<ellipse cx="58" cy="48" rx="5" ry="5" fill="white" stroke="#333" stroke-width="1"/>' +
+      '<circle cx="58" cy="48" r="3" fill="#1a1a1a"/>' +
+      '<circle cx="57" cy="47" r="1" fill="white"/>' +
+      eyebrows +
+      '<path d="M39,61 Q45,65 50,62 Q55,65 61,61" fill="#4A2000" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<path d="M39,61 Q41,69 48,63" fill="#4A2000"/>' +
+      '<path d="M61,61 Q59,69 52,63" fill="#4A2000"/>' +
+      vein + mouth +
+      '<ellipse cx="50" cy="100" rx="23" ry="20" fill="#1A3A6A" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<circle cx="40" cy="88" r="4" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<circle cx="40" cy="97" r="4" fill="#C0A000" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<circle cx="40" cy="106" r="4" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<circle cx="54" cy="88" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<circle cx="54" cy="96" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
+      '<circle cx="54" cy="104" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
+      arms +
+      '</svg>';
+  }
+
+  function svgOverClock(pose) {
+    var meltdown = pose === 'meltdown';
+    var liquidY  = meltdown ? 50 : 46;
+    var liquidH  = 60 - liquidY;
+    var bubbles  = meltdown
+      ? '<circle cx="44" cy="' + (liquidY - 8)  + '" r="2"   fill="rgba(255,255,255,0.55)"/>' +
+        '<circle cx="54" cy="' + (liquidY - 14) + '" r="1.5" fill="rgba(255,255,255,0.55)"/>' +
+        '<circle cx="60" cy="' + (liquidY - 6)  + '" r="2.5" fill="rgba(255,255,255,0.55)"/>'
+      : '<circle cx="46" cy="' + (liquidY - 6)  + '" r="1.5" fill="rgba(255,255,255,0.45)"/>' +
+        '<circle cx="56" cy="' + (liquidY - 10) + '" r="1"   fill="rgba(255,255,255,0.45)"/>';
+    var steam = meltdown
+      ? '<path d="M68,16 Q72,10 70,4 Q75,8 73,2" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<path d="M74,20 Q79,13 77,7 Q82,11 80,5" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>'
+      : '<path d="M68,18 Q71,12 69,7" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>';
+    var jitter = meltdown
+      ? '<line x1="27" y1="46" x2="21" y2="52" stroke="#888" stroke-width="1" stroke-linecap="round"/>' +
+        '<line x1="73" y1="46" x2="79" y2="52" stroke="#888" stroke-width="1" stroke-linecap="round"/>'
+      : '';
+    var mouth = meltdown
+      ? '<path d="M43,58 Q50,52 57,58" fill="none" stroke="#333" stroke-width="2"/>'
+      : '<path d="M44,56 Q50,60 56,56" fill="none" stroke="#333" stroke-width="1.5"/>';
+    return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      steam + jitter +
+      '<rect x="28" y="10" width="44" height="52" rx="8" fill="rgba(210,235,255,0.8)" stroke="#1a1a1a" stroke-width="2.5"/>' +
+      '<rect x="30" y="' + liquidY + '" width="40" height="' + liquidH + '" fill="#5A2F00" opacity="0.9"/>' +
+      '<ellipse cx="50" cy="' + liquidY + '" rx="20" ry="2" fill="#7A4A00"/>' +
+      bubbles +
+      '<path d="M72,22 Q82,22 82,37 Q82,52 72,52" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>' +
+      '<path d="M28,24 Q18,21 15,32" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>' +
+      '<circle cx="50" cy="30" r="9" fill="rgba(255,255,215,0.85)" stroke="#555" stroke-width="1"/>' +
+      '<line x1="50" y1="30" x2="50" y2="24" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>' +
+      '<line x1="50" y1="30" x2="55" y2="33" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>' +
+      mouth +
+      '<rect x="42" y="64" width="16" height="40" rx="6" fill="#3A6A30" stroke="#1a1a1a" stroke-width="2"/>' +
+      '<rect x="36" y="66" width="12" height="36" rx="4" fill="#E8E8E8" stroke="#BBB" stroke-width="1"/>' +
+      '<rect x="52" y="66" width="12" height="36" rx="4" fill="#E8E8E8" stroke="#BBB" stroke-width="1"/>' +
+      '<text x="42" y="78" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">⏰</text>' +
+      '<text x="58" y="78" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">⏱</text>' +
+      '<text x="42" y="92" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">🕐</text>' +
+      '<path d="M42,72 Q26,78 22,92" fill="none" stroke="#3A6A30" stroke-width="5" stroke-linecap="round"/>' +
+      '<path d="M58,72 Q74,78 78,92" fill="none" stroke="#3A6A30" stroke-width="5" stroke-linecap="round"/>' +
+      '<ellipse cx="44" cy="106" rx="7" ry="4" fill="#3A6A30" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '<ellipse cx="56" cy="106" rx="7" ry="4" fill="#3A6A30" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      '</svg>';
+  }
+
+  // ── Template definitions ───────────────────────────────────────────────────
+
+  var comicTemplateList = [
+    { id: 'urgentBriefing', name: 'The Urgent Briefing',       icon: '🚨', desc: '1 word'   },
+    { id: 'overClocksPlan', name: "Over-Clock's Instant Plan", icon: '☕', desc: '1-2 words' },
+    { id: 'joltExplains',   name: 'Jolt Explains Everything',  icon: '⚡', desc: '2+ words'  },
+    { id: 'waitForIt',      name: 'Wait For It...',            icon: '🕐', desc: '1 word'   },
+    { id: 'vocabAcademy',   name: 'Galactic Vocab Academy',    icon: '🏫', desc: '1-3 words' }
+  ];
+
+  var COMIC_SVG = {
+    starSloth: svgStarSloth,
+    jolt:      svgJolt,
+    admiral:   svgAdmiral,
+    overClock: svgOverClock
+  };
+
+  function templateUrgentBriefing(words) {
+    var w = words[0], W = w.word, D = w.definition;
+    return [
+      { caption: '🚨 INCOMING TRANSMISSION! 🚨',
+        char: 'admiral', pose: 'exploding',
+        bubble: 'STAR-SLOTH! The galaxy needs to learn "' + W + '" IMMEDIATELY! Lives are at stake!',
+        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: true },
+      { caption: null,
+        char: 'starSloth', pose: 'zen',
+        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: 'THREE HOURS LATER...',
+        char: 'jolt', pose: 'translating',
+        bubble: "HE'S PROCESSING IT! I can see his left claw tensing! That's a 0.0003% movement — A BREAKTHROUGH!",
+        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
+      { caption: null,
+        char: 'starSloth', pose: 'blink',
+        bubble: '"' + W + '"... it means... ' + D,
+        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: "MEANWHILE, IN THE VILLAIN'S ASTEROID LAIR...",
+        char: 'overClock', pose: 'meltdown',
+        bubble: 'His "' + W + '" strategy is INFURIATING! He never PANICS! How does he DO it?!',
+        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: false },
+      { caption: 'GALAXY SAVED. EVENTUALLY.',
+        char: 'admiral', pose: 'waiting',
+        bubble: 'That was... somehow... exactly what we needed. Well done, Star-Sloth.',
+        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
+    ];
+  }
+
+  function templateOverClocksPlan(words) {
+    var w1 = words[0], w2 = words[1] || words[0];
+    var W1 = w1.word, D1 = w1.definition;
+    var W2 = w2.word, D2 = w2.definition;
+    return [
+      { caption: "DEEP IN THE VILLAIN'S LAIR...",
+        char: 'overClock', pose: 'smug',
+        bubble: 'My ' + W1 + ' scheme will conquer the galaxy in 0.003 seconds! MWAHAHA!',
+        bubbleType: 'shout', sfx: null, bg: '#FFE8F8', fullWidth: true },
+      { caption: null,
+        char: 'jolt', pose: 'zoom',
+        bubble: 'Actually... ' + W1 + ' means: ' + D1 + '! Your plan sounds... educational?',
+        bubbleType: 'speech', sfx: null, bg: '#EEEEFF', fullWidth: false },
+      { caption: null,
+        char: 'overClock', pose: 'meltdown',
+        bubble: 'IT DOES?! That means I accidentally created a PLANET-WIDE STUDY GROUP?!',
+        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: false },
+      { caption: 'MOMENTS LATER...',
+        char: 'starSloth', pose: 'zen',
+        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: null,
+        char: 'jolt', pose: 'translating',
+        bubble: 'He says: "How wonderfully ' + W2 + ' of you!" (' + W2 + ': ' + D2 + ')',
+        bubbleType: 'speech', sfx: null, bg: '#EEEEFF', fullWidth: false },
+      { caption: 'GALAXY IMPROVED. ACCIDENTALLY.',
+        char: 'admiral', pose: 'waiting',
+        bubble: 'Even villains learn something new every orbit.',
+        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
+    ];
+  }
+
+  function templateJoltExplains(words) {
+    var w1 = words[0], w2 = words[1] || words[0];
+    var W1 = w1.word, D1 = w1.definition;
+    var W2 = w2.word, D2 = w2.definition;
+    return [
+      { caption: null,
+        char: 'jolt', pose: 'zoom',
+        bubble: 'STAR-SLOTH! What does ' + W1 + ' mean?! QUICK! NO TIME! I NEED THE ANSWER NOW!',
+        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: true },
+      { caption: '...',
+        char: 'starSloth', pose: 'blink',
+        bubble: W1 + ': ' + D1,
+        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: 'JOLT TRIES IT OUT...',
+        char: 'jolt', pose: 'zoom',
+        bubble: '"This asteroid is very ' + W1 + '!" Did I use it right?! CAPTAIN?! HELP!',
+        bubbleType: 'shout', sfx: 'WOOOOSH!', bg: '#EEEEFF', fullWidth: false },
+      { caption: 'WHAT ABOUT THE NEXT WORD...?',
+        char: 'starSloth', pose: 'zen',
+        bubble: W2 + ': ' + D2,
+        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: 'SOMEHOW, EVERYTHING IS FINE.',
+        char: 'admiral', pose: 'waiting',
+        bubble: 'How did you resolve Deck 7?! Star-Sloth... are you ASLEEP?',
+        bubbleType: 'speech', sfx: null, bg: '#FFF0E0', fullWidth: false },
+      { caption: null,
+        char: 'jolt', pose: 'translating',
+        bubble: 'His ' + W2 + ' approach was the master plan all along. I\'ll log it as intentional.',
+        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
+    ];
+  }
+
+  function templateWaitForIt(words) {
+    var w = words[0], W = w.word, D = w.definition;
+    return [
+      { caption: 'THE MOST INTENSE MOMENT IN GALACTIC HISTORY!',
+        char: 'overClock', pose: 'meltdown',
+        bubble: 'STOP HIM! If he uses "' + W + '" correctly, ALL IS LOST!',
+        bubbleType: 'shout', sfx: null, bg: '#FFE8E8', fullWidth: true },
+      { caption: "STAR-SLOTH'S CLAW BEGINS TO MOVE...",
+        char: 'starSloth', pose: 'action',
+        bubble: '...', bubbleType: 'thought', sfx: '(2 inches)', bg: '#FFFDE7', fullWidth: false },
+      { caption: null,
+        char: 'jolt', pose: 'translating',
+        bubble: '"' + W + '" means: ' + D + '! And the claw... it\'s still MOVING! HEROICALLY!',
+        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
+      { caption: '47 MINUTES LATER...',
+        char: 'admiral', pose: 'exploding',
+        bubble: 'I have grown a full BEARD waiting! WHEN WILL HE PRESS THE BUTTON?!',
+        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: false },
+      { caption: null,
+        char: 'starSloth', pose: 'zen',
+        bubble: W + '.', bubbleType: 'speech', sfx: 'click.', bg: '#FFFDE7', fullWidth: false },
+      { caption: 'DONE.',
+        char: 'jolt', pose: 'zoom',
+        bubble: 'Over-Clock fainted. Admiral grew a beard. Star-Sloth used "' + W + '" perfectly. WORTH IT.',
+        bubbleType: 'speech', sfx: null, bg: '#E8FFE8', fullWidth: true }
+    ];
+  }
+
+  function templateVocabAcademy(words) {
+    var w1 = words[0], w2 = words[1] || words[0];
+    var W1 = w1.word, D1 = w1.definition;
+    var W2 = w2.word, D2 = w2.definition;
+    return [
+      { caption: '🏫 GALACTIC VOCAB ACADEMY — LESSON IN PROGRESS',
+        char: 'admiral', pose: 'exploding',
+        bubble: 'SOMEONE explain "' + W1 + '" THIS INSTANT! The exam is in five minutes!',
+        bubbleType: 'shout', sfx: null, bg: '#FFF0E0', fullWidth: true },
+      { caption: null,
+        char: 'overClock', pose: 'smug',
+        bubble: 'Easy! ' + W1 + ' means COFFEE! Obviously!',
+        bubbleType: 'speech', sfx: null, bg: '#FFE8E8', fullWidth: false },
+      { caption: null,
+        char: 'starSloth', pose: 'blink',
+        bubble: '...', bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: 'STAR-SLOTH... RAISES A CLAW.',
+        char: 'jolt', pose: 'translating',
+        bubble: 'HE KNOWS! He says: ' + W1 + ' means ' + D1 + '! TEXTBOOK PERFECT! HE WAS LISTENING ALL ALONG!',
+        bubbleType: 'shout', sfx: null, bg: '#EEEEFF', fullWidth: false },
+      { caption: null,
+        char: 'starSloth', pose: 'zen',
+        bubble: 'And ' + W2 + ': ' + D2 + '.',
+        bubbleType: 'thought', sfx: null, bg: '#FFFDE7', fullWidth: false },
+      { caption: 'GOLD STAR. WELL EARNED.',
+        char: 'overClock', pose: 'meltdown',
+        bubble: 'He got it right AGAIN?! But he was ASLEEP! This is STATISTICALLY IMPOSSIBLE!',
+        bubbleType: 'shout', sfx: null, bg: '#E8FFE8', fullWidth: true }
+    ];
+  }
+
+  var COMIC_TEMPLATE_FNS = {
+    urgentBriefing: templateUrgentBriefing,
+    overClocksPlan: templateOverClocksPlan,
+    joltExplains:   templateJoltExplains,
+    waitForIt:      templateWaitForIt,
+    vocabAcademy:   templateVocabAcademy
+  };
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+
+  function comicIndexOf(word) {
+    for (var i = 0; i < comicState.selectedWords.length; i++) {
+      if (comicState.selectedWords[i].word === word) return i;
+    }
+    return -1;
+  }
+
+  function comicHighlight(text, words) {
+    var result = text;
+    words.forEach(function (wObj) {
+      var esc = wObj.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var re  = new RegExp('\\b(' + esc + ')\\b', 'gi');
+      result  = result.replace(re, '<strong class="comic-vocab-word">$1</strong>');
+    });
+    return result;
+  }
+
+  var PANEL_TILTS = [-0.6, 0.4, -0.3, 0.5, -0.4, 0.35];
+
+  function buildPanelHTML(panelDef, words, idx) {
+    var tilt    = panelDef.fullWidth ? 0 : (PANEL_TILTS[idx % PANEL_TILTS.length] || 0);
+    var svgFn   = COMIC_SVG[panelDef.char] || svgStarSloth;
+    var svgHtml = svgFn(panelDef.pose || 'zen');
+    var bubbleText = panelDef.bubble ? comicHighlight(panelDef.bubble, words) : '';
+    var captionHtml = panelDef.caption
+      ? '<div class="panel-caption">' + panelDef.caption + '</div>'
+      : '';
+    var bubbleClass = 'comic-bubble bubble-' + (panelDef.bubbleType || 'speech');
+    var bubbleHtml  = bubbleText
+      ? '<div class="' + bubbleClass + '">' + bubbleText + '</div>'
+      : '';
+    var sfxHtml = panelDef.sfx
+      ? '<div class="panel-sfx">' + panelDef.sfx + '</div>'
+      : '';
+    return '<div class="comic-panel' + (panelDef.fullWidth ? ' full-width' : '') + '"' +
+      ' style="--panel-tilt:' + tilt + 'deg;background:' + (panelDef.bg || '#FFFDE7') + '">' +
+      captionHtml +
+      '<div class="panel-stage">' +
+      '<div class="panel-char-svg">' + svgHtml + '</div>' +
+      bubbleHtml +
+      '</div>' +
+      sfxHtml +
+      '</div>';
+  }
+
+  function renderComicPanels(panels, words) {
+    comicPanelsContainer.innerHTML = '';
+    var html = '';
+    panels.forEach(function (panel, i) { html += buildPanelHTML(panel, words, i); });
+    comicPanelsContainer.innerHTML = html;
+
+    var glossaryItems = words.map(function (w) {
+      return '<div class="glossary-item">' +
+        '<span class="glossary-word">' + w.word + '</span>' +
+        '<span class="glossary-def">' + w.definition + '</span>' +
+        '</div>';
+    }).join('');
+    comicGlossaryEl.innerHTML =
+      '<div class="glossary-title">⚡ JOLT\'S VOCAB FILE</div>' +
+      '<div class="glossary-items">' + glossaryItems + '</div>';
+  }
+
+  // ── Word picker ────────────────────────────────────────────────────────────
+
+  function loadComicWords() {
+    var unmasteredOnly = comicUnmasteredCheck && comicUnmasteredCheck.checked;
+    var pool = unmasteredOnly
+      ? allWords.filter(function (w) { return getMasteryStatus(w.word) !== 'mastered'; })
+      : allWords;
+    if (!pool.length) pool = allWords;
+    var arr = pool.slice();
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    comicState.displayedWords  = arr.slice(0, 6);
+    comicState.selectedWords   = [];
+    renderComicWordChips();
+    updateComicGenerateBtn();
+  }
+
+  function renderComicWordChips() {
+    comicWordChipsEl.innerHTML = '';
+    comicState.displayedWords.forEach(function (wObj) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'comic-word-chip';
+      chip.textContent = wObj.word;
+      if (comicIndexOf(wObj.word) >= 0) chip.classList.add('selected');
+      chip.addEventListener('click', function () { toggleComicWord(wObj, chip); });
+      comicWordChipsEl.appendChild(chip);
+    });
+  }
+
+  function toggleComicWord(wObj, chipEl) {
+    var idx = comicIndexOf(wObj.word);
+    if (idx >= 0) {
+      comicState.selectedWords.splice(idx, 1);
+      chipEl.classList.remove('selected');
+    } else {
+      if (comicState.selectedWords.length >= 3) return;
+      comicState.selectedWords.push(wObj);
+      chipEl.classList.add('selected');
+    }
+    updateComicGenerateBtn();
+  }
+
+  // ── Template picker ────────────────────────────────────────────────────────
+
+  function renderComicTemplates() {
+    comicTemplateGridEl.innerHTML = '';
+    comicTemplateList.forEach(function (tpl) {
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'comic-template-card';
+      if (comicState.selectedTemplate === tpl.id) card.classList.add('selected');
+      card.innerHTML =
+        '<span class="template-icon">' + tpl.icon + '</span>' +
+        '<span class="template-name">' + tpl.name + '</span>' +
+        '<span class="template-desc">' + tpl.desc + '</span>';
+      card.addEventListener('click', function () {
+        comicState.selectedTemplate = tpl.id;
+        document.querySelectorAll('.comic-template-card').forEach(function (c) {
+          c.classList.remove('selected');
+        });
+        card.classList.add('selected');
+        updateComicGenerateBtn();
+      });
+      comicTemplateGridEl.appendChild(card);
+    });
+  }
+
+  function updateComicGenerateBtn() {
+    comicGenerateBtn.disabled =
+      comicState.selectedWords.length < 1 || comicState.selectedTemplate === null;
+  }
+
+  // ── Generate & display ─────────────────────────────────────────────────────
+
+  function generateComic() {
+    if (!comicState.selectedWords.length || !comicState.selectedTemplate) return;
+    var tplFn = COMIC_TEMPLATE_FNS[comicState.selectedTemplate];
+    if (!tplFn) return;
+    var panels = tplFn(comicState.selectedWords);
+    renderComicPanels(panels, comicState.selectedWords);
+    showComicScreen(comicViewingScreen);
+    comicViewingScreen.scrollTop = 0;
+    comicBackBtn.focus();
+  }
+
+  function showComicScreen(screenEl) {
+    [comicSetupScreen, comicViewingScreen].forEach(function (s) { s.classList.add('hidden'); });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openComicOverlay() {
+    showComicScreen(comicSetupScreen);
+    comicState.selectedTemplate = null;
+    comicOverlay.classList.remove('hidden');
+    comicOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    loadComicWords();
+    renderComicTemplates();
+    comicCloseBtn.focus();
+  }
+
+  function closeComicOverlay() {
+    comicOverlay.classList.add('hidden');
+    comicOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (comicLaunchBtn) comicLaunchBtn.focus();
+  }
+
+  function initComicMode() {
+    comicLaunchBtn.addEventListener('click', openComicOverlay);
+    comicCloseBtn.addEventListener('click', closeComicOverlay);
+    comicBackBtn.addEventListener('click', function () {
+      showComicScreen(comicSetupScreen);
+      comicCloseBtn.focus();
+    });
+    comicPrintBtn.addEventListener('click', function () {
+      document.body.classList.add('comic-printing');
+      window.addEventListener('afterprint', function handler() {
+        document.body.classList.remove('comic-printing');
+        window.removeEventListener('afterprint', handler);
+      });
+      window.print();
+    });
+    comicShuffleBtn.addEventListener('click', loadComicWords);
+    if (comicUnmasteredCheck) {
+      comicUnmasteredCheck.addEventListener('change', loadComicWords);
+    }
+    comicGenerateBtn.addEventListener('click', generateComic);
+    comicOverlay.addEventListener('click', function (e) {
+      if (e.target === comicOverlay) closeComicOverlay();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (comicOverlay.classList.contains('hidden')) return;
+      closeComicOverlay();
+    });
   }
 
   // ── TTS voice/pitch init ──────────────────────────────────────────────────
