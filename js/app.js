@@ -4598,6 +4598,7 @@
   var comicLibraryScreen   = document.getElementById('comic-library-screen');
   var comicViewingScreen   = document.getElementById('comic-viewing-screen');
   var comicCloseBtn        = document.getElementById('comic-close-btn');
+  var comicViewerCloseBtn  = document.getElementById('comic-viewer-close-btn');
   var comicBackBtn         = document.getElementById('comic-back-btn');
   var comicPrintBtn        = document.getElementById('comic-print-btn');
   var comicStoryList       = document.getElementById('comic-story-list');
@@ -5345,6 +5346,7 @@
   function initComicMode() {
     comicLaunchBtn.addEventListener('click', openComicOverlay);
     comicCloseBtn.addEventListener('click', closeComicOverlay);
+    comicViewerCloseBtn.addEventListener('click', closeComicOverlay);
     comicBackBtn.addEventListener('click', function () {
       showComicLibrary();
     });
