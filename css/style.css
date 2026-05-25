@@ -2752,6 +2752,10 @@ footer {
   min-height: 0;
 }
 
+#comic-scroll-content .quiz-screen-actions {
+  justify-content: flex-start;
+}
+
 #comic-scroll-nav {
   width: 6px;
   background: rgba(0, 0, 0, 0.08);
