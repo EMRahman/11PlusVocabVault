@@ -3903,6 +3903,7 @@
     var hint = document.getElementById('scramble-hint-btn');
     hint.disabled = false;
     hint.textContent = '💡 Hint (−50 pts)';
+    document.getElementById('scramble-skip-btn').disabled = false;
 
     var answerRow = document.getElementById('scramble-answer-row');
     var sourceRow = document.getElementById('scramble-source-row');
@@ -4136,6 +4137,7 @@
     var overlay = document.getElementById('blitz-overlay');
     overlay.classList.add('hidden');
     overlay.setAttribute('aria-hidden', 'true');
+    applyFilters();
   }
 
   function showBlitzScreen(name) {
