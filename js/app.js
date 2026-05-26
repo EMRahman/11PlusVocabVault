@@ -3555,7 +3555,8 @@
     correctChoice : null,
     sessionLength : 5,
     bests         : {},
-    wrongChoices  : []
+    wrongChoices  : [],
+    questionEpoch : 0
   };
 
   function initDetectiveMode() {
@@ -3647,6 +3648,7 @@
     detectiveState.clueStep = 0;
     detectiveState.answered = false;
     detectiveState.wrongChoices = [];
+    detectiveState.questionEpoch++;
 
     var caseEl = document.getElementById('detective-case-label');
     caseEl.textContent = 'Case ' + (detectiveState.index + 1) + ' of ' + detectiveState.sessionLength;
@@ -3778,7 +3780,9 @@
       fb.textContent = pts === 500 ? '⭐ First clue — genius! +500 pts' : '✓ Correct! +' + pts + ' points';
       fb.className = 'quiz-feedback visible feedback-correct';
 
+      var correctEpoch = detectiveState.questionEpoch;
       setTimeout(function () {
+        if (detectiveState.questionEpoch !== correctEpoch) return;
         detectiveState.index++;
         if (detectiveState.index >= detectiveState.sessionLength) showDetectiveEnd();
         else showDetectiveQuestion();
@@ -3794,9 +3798,11 @@
       var cards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
 
       if (detectiveState.clueStep < cards.length) {
+        var epoch = detectiveState.questionEpoch;
         fb.textContent = 'Not quite — here\'s another clue!';
         fb.className = 'quiz-feedback visible feedback-wrong';
         setTimeout(function () {
+          if (detectiveState.questionEpoch !== epoch) return;
           fb.textContent = '';
           fb.className = 'quiz-feedback';
           revealDetectiveClue();
@@ -3810,7 +3816,9 @@
         document.getElementById('detective-choices-hint').textContent = '';
         fb.textContent = '✗ It was "' + detectiveState.correctChoice.word + '" — keep going!';
         fb.className = 'quiz-feedback visible feedback-wrong';
+        var wrongEpoch = detectiveState.questionEpoch;
         setTimeout(function () {
+          if (detectiveState.questionEpoch !== wrongEpoch) return;
           detectiveState.index++;
           if (detectiveState.index >= detectiveState.sessionLength) showDetectiveEnd();
           else showDetectiveQuestion();
