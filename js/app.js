@@ -6262,7 +6262,7 @@
     var s = String(sfx);
     if (/KA-?BOOM|KA-?BLOOO?M|BOOM|BLAST|CRASH|SLAM|BANG|WHAM|CRUNCH|SPLAT|POW|KAPOW|THUD|BONK/i.test(s)) return 'boom';
     if (/ZAP|ZZZ|FZZ|BUZZ|CRACKLE|SPARK|FZZT/i.test(s)) return 'zap';
-    if (/MWAHA|MWEHE|MWEH|sigh|drip|tick|tock|click|fzzt|...|zz/i.test(s) && s.length < 20) return 'soft';
+    if (/MWAHA|MWEHE|MWEH|sigh|drip|tick|tock|click|fzzt|\.\.\.|zz/i.test(s) && s.length < 20) return 'soft';
     if (s === s.toUpperCase() && s.length > 2) return 'boom';
     return 'soft';
   }
