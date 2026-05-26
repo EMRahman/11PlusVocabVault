@@ -2166,6 +2166,36 @@ footer {
   pointer-events: none;
 }
 
+.detective-clue-next {
+  background: #1e3a5f;
+  border: 2px dashed #3B82F6;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+.detective-clue-next:hover  { opacity: 0.9; transform: scale(1.01); }
+.detective-clue-next:active { transform: scale(0.98); }
+
+.detective-clue-next .detective-clue-label,
+.detective-clue-next .detective-clue-value {
+  display: none;
+}
+
+.detective-clue-next .detective-clue-number {
+  background: #2563EB;
+}
+
+.detective-clue-next .detective-clue-reveal-hint {
+  color: #93C5FD;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.detective-clue-hidden .detective-clue-reveal-hint,
+.detective-clue-revealed .detective-clue-reveal-hint {
+  display: none;
+}
+
 .detective-clue-revealed {
   background: #ECFDF5;
   border: 2px solid #6EE7B7;
