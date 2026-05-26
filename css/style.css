@@ -130,8 +130,8 @@ main {
 }
 
 .controls-launch {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
@@ -164,6 +164,55 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+.launch-group--filters {
+  background: #F0F4FF;
+}
+
+.launch-group--filters .launch-group-label {
+  color: var(--color-text-secondary);
+}
+
+.launch-group-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+}
+
+.launch-group-toggle:hover .launch-group-label {
+  opacity: 0.75;
+}
+
+.collapse-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--color-primary);
+  transition: transform var(--transition);
+  flex-shrink: 0;
+}
+
+.launch-group--reading .collapse-chevron {
+  color: #16A34A;
+}
+
+.launch-group--filters .collapse-chevron {
+  color: var(--color-text-secondary);
+}
+
+.launch-group-toggle[aria-expanded="false"] .collapse-chevron {
+  transform: rotate(-90deg);
+}
+
+.launch-group-body.collapsed {
+  display: none;
 }
 
 /* Search */

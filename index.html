@@ -24,44 +24,85 @@
 
   <main>
     <section class="controls">
-      <div class="controls-filters">
-        <div class="search-wrap">
-          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <input
-            type="search"
-            id="search-input"
-            class="search-input"
-            placeholder="Search words…"
-            aria-label="Search vocabulary words"
-            autocomplete="off"
-          />
-        </div>
-        <div class="filter-wrap" role="group" aria-label="Filter by usefulness rating">
-          <span class="filter-label">Stars:</span>
-          <button class="filter-btn active" data-rating="all" aria-pressed="true">All</button>
-          <button class="filter-btn" data-rating="5" aria-pressed="false">★★★★★</button>
-          <button class="filter-btn" data-rating="4" aria-pressed="false">★★★★</button>
-          <button class="filter-btn" data-rating="3" aria-pressed="false">★★★</button>
-        </div>
-        <div class="filter-wrap" role="group" aria-label="Filter by viewed status">
-          <span class="filter-label">Viewed:</span>
-          <button class="view-filter-btn active" data-view-filter="all" aria-pressed="true">Any</button>
-          <button class="view-filter-btn" data-view-filter="unviewed" aria-pressed="false">Not viewed</button>
-        </div>
-        <div class="filter-wrap" role="group" aria-label="Filter by mastery">
-          <span class="filter-label">Mastery:</span>
-          <button class="mastery-filter-btn active" data-mastery-filter="all" aria-pressed="true">All</button>
-          <button class="mastery-filter-btn" data-mastery-filter="new" aria-pressed="false">New</button>
-          <button class="mastery-filter-btn" data-mastery-filter="learning" aria-pressed="false">Learning</button>
-          <button class="mastery-filter-btn" data-mastery-filter="mastered" aria-pressed="false">Mastered</button>
-        </div>
-      </div>
       <div class="controls-launch">
+        <div class="launch-group launch-group--filters">
+          <button class="launch-group-toggle" aria-expanded="false" aria-controls="filters-body">
+            <span class="launch-group-label">Filter Words</span>
+            <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="controls-filters launch-group-body collapsed" id="filters-body">
+            <div class="search-wrap">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                type="search"
+                id="search-input"
+                class="search-input"
+                placeholder="Search words…"
+                aria-label="Search vocabulary words"
+                autocomplete="off"
+              />
+            </div>
+            <div class="filter-wrap" role="group" aria-label="Filter by usefulness rating">
+              <span class="filter-label">Stars:</span>
+              <button class="filter-btn active" data-rating="all" aria-pressed="true">All</button>
+              <button class="filter-btn" data-rating="5" aria-pressed="false">★★★★★</button>
+              <button class="filter-btn" data-rating="4" aria-pressed="false">★★★★</button>
+              <button class="filter-btn" data-rating="3" aria-pressed="false">★★★</button>
+            </div>
+            <div class="filter-wrap" role="group" aria-label="Filter by viewed status">
+              <span class="filter-label">Viewed:</span>
+              <button class="view-filter-btn active" data-view-filter="all" aria-pressed="true">Any</button>
+              <button class="view-filter-btn" data-view-filter="unviewed" aria-pressed="false">Not viewed</button>
+            </div>
+            <div class="filter-wrap" role="group" aria-label="Filter by mastery">
+              <span class="filter-label">Mastery:</span>
+              <button class="mastery-filter-btn active" data-mastery-filter="all" aria-pressed="true">All</button>
+              <button class="mastery-filter-btn" data-mastery-filter="new" aria-pressed="false">New</button>
+              <button class="mastery-filter-btn" data-mastery-filter="learning" aria-pressed="false">Learning</button>
+              <button class="mastery-filter-btn" data-mastery-filter="mastered" aria-pressed="false">Mastered</button>
+            </div>
+          </div>
+        </div>
+        <div class="launch-group launch-group--reading">
+          <button class="launch-group-toggle" aria-expanded="false" aria-controls="reading-body">
+            <span class="launch-group-label">Reading Tools</span>
+            <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="launch-group-buttons launch-group-body collapsed" id="reading-body">
+            <button class="quiz-launch-btn story-launch-btn" id="story-launch-btn" aria-label="Open stories">
+              <span aria-hidden="true">📖</span>
+              Stories
+            </button>
+            <button class="quiz-launch-btn news-launch-btn" id="news-launch-btn" aria-label="Open daily news">
+              <span aria-hidden="true">📰</span>
+              Daily News
+            </button>
+            <button class="quiz-launch-btn history-launch-btn" id="history-launch-btn" aria-label="Open history">
+              <span aria-hidden="true">🏛️</span>
+              History
+            </button>
+            <button class="quiz-launch-btn fable-launch-btn" id="fable-launch-btn" aria-label="Open fables">
+              <span aria-hidden="true">📕</span>
+              Fables
+            </button>
+            <button class="quiz-launch-btn proverbs-launch-btn" id="proverbs-launch-btn" aria-label="Open proverbs">
+              <span aria-hidden="true">🪶</span>
+              Proverbs
+            </button>
+            <button class="quiz-launch-btn comic-launch-btn" id="comic-launch-btn" aria-label="Open Star-Sloth Comics">
+              <span aria-hidden="true">🚀</span>
+              Comics
+            </button>
+          </div>
+        </div>
         <div class="launch-group">
-          <span class="launch-group-label">Games</span>
-          <div class="launch-group-buttons">
+          <button class="launch-group-toggle" aria-expanded="false" aria-controls="games-body">
+            <span class="launch-group-label">Games</span>
+            <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="launch-group-buttons launch-group-body collapsed" id="games-body">
             <button class="quiz-launch-btn" id="quiz-launch-btn" aria-label="Start vocabulary quiz">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"/>
@@ -86,38 +127,9 @@
               <span aria-hidden="true">🎭</span>
               Synonym Snap
             </button>
-          </div>
-        </div>
-        <div class="launch-group launch-group--reading">
-          <span class="launch-group-label">Reading Tools</span>
-          <div class="launch-group-buttons">
             <button class="quiz-launch-btn quest-launch-btn" id="quest-launch-btn" aria-label="Start story quest mode">
               <span aria-hidden="true">🗺️</span>
               Story Quest
-            </button>
-            <button class="quiz-launch-btn story-launch-btn" id="story-launch-btn" aria-label="Open story mode">
-              <span aria-hidden="true">📖</span>
-              Story Mode
-            </button>
-            <button class="quiz-launch-btn news-launch-btn" id="news-launch-btn" aria-label="Open daily news mode">
-              <span aria-hidden="true">📰</span>
-              Daily News
-            </button>
-            <button class="quiz-launch-btn history-launch-btn" id="history-launch-btn" aria-label="Open history mode">
-              <span aria-hidden="true">🏛️</span>
-              History Mode
-            </button>
-            <button class="quiz-launch-btn fable-launch-btn" id="fable-launch-btn" aria-label="Open fable mode">
-              <span aria-hidden="true">📕</span>
-              Fable Mode
-            </button>
-            <button class="quiz-launch-btn proverbs-launch-btn" id="proverbs-launch-btn" aria-label="Open proverbs mode">
-              <span aria-hidden="true">🪶</span>
-              Proverbs Mode
-            </button>
-            <button class="quiz-launch-btn comic-launch-btn" id="comic-launch-btn" aria-label="Open Star-Sloth Comics">
-              <span aria-hidden="true">🚀</span>
-              Comics
             </button>
           </div>
         </div>
