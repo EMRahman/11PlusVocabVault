@@ -6503,4 +6503,14 @@
     }
   }());
 
+  // ── Collapsible section toggles ───────────────────────────────────────────
+  document.querySelectorAll('.launch-group-toggle').forEach(function (toggle) {
+    toggle.addEventListener('click', function () {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      var body = document.getElementById(this.getAttribute('aria-controls'));
+      if (body) body.classList.toggle('collapsed', expanded);
+    });
+  });
+
 })();
