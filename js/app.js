@@ -3554,7 +3554,8 @@
     choices       : [],
     correctChoice : null,
     sessionLength : 5,
-    bests         : {}
+    bests         : {},
+    wrongChoices  : []
   };
 
   function initDetectiveMode() {
@@ -3633,10 +3634,8 @@
   }
 
   function getDetectiveClues(wordObj) {
-    var blanks = wordObj.word.replace(/./g, '_ ').trim();
     return [
       { label: 'Word type',    value: wordObj.word_type },
-      { label: 'Letter count', value: wordObj.word.length + ' letters: ' + blanks },
       { label: 'A synonym is', value: wordObj.synonyms[0] },
       { label: 'An antonym is', value: wordObj.antonyms[0] },
       { label: 'Definition',   value: wordObj.definition }
@@ -3647,6 +3646,7 @@
     var wordObj = detectiveState.words[detectiveState.index];
     detectiveState.clueStep = 0;
     detectiveState.answered = false;
+    detectiveState.wrongChoices = [];
 
     var caseEl = document.getElementById('detective-case-label');
     caseEl.textContent = 'Case ' + (detectiveState.index + 1) + ' of ' + detectiveState.sessionLength;
@@ -3667,9 +3667,13 @@
       var valSpan = document.createElement('span');
       valSpan.className = 'detective-clue-value';
       valSpan.textContent = clue.value;
+      var hintSpan = document.createElement('span');
+      hintSpan.className = 'detective-clue-reveal-hint';
+      hintSpan.textContent = 'Tap to reveal · −100 pts';
       card.appendChild(numSpan);
       card.appendChild(labelSpan);
       card.appendChild(valSpan);
+      card.appendChild(hintSpan);
       stack.appendChild(card);
     });
 
@@ -3690,14 +3694,41 @@
     var cards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
     var step = detectiveState.clueStep;
     if (step < cards.length) {
-      cards[step].classList.remove('detective-clue-hidden');
+      cards[step].classList.remove('detective-clue-next', 'detective-clue-hidden');
       cards[step].classList.add('detective-clue-revealed');
+      cards[step].onclick = null;
+      cards[step].style.cursor = '';
       detectiveState.clueStep++;
     }
     var pts = DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100;
-    document.getElementById('detective-choices-hint').textContent =
-      'Guess now for ' + pts + ' points — or wait for the next clue!';
+    document.getElementById('detective-choices-hint').textContent = 'Guess now for ' + pts + ' points';
     renderDetectiveChoices();
+    setupNextClueCard();
+  }
+
+  function setupNextClueCard() {
+    if (detectiveState.answered) return;
+    var cards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
+    var nextStep = detectiveState.clueStep;
+    if (nextStep >= cards.length) return;
+    var nextCard = cards[nextStep];
+    nextCard.classList.remove('detective-clue-hidden');
+    nextCard.classList.add('detective-clue-next');
+    nextCard.style.cursor = 'pointer';
+    nextCard.onclick = function () {
+      if (detectiveState.answered) return;
+      detectiveState.score = Math.max(0, detectiveState.score - 100);
+      document.getElementById('detective-score-display').textContent = 'Score: ' + detectiveState.score;
+      nextCard.classList.remove('detective-clue-next');
+      nextCard.classList.add('detective-clue-revealed');
+      nextCard.onclick = null;
+      nextCard.style.cursor = '';
+      detectiveState.clueStep++;
+      var pts = DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100;
+      document.getElementById('detective-choices-hint').textContent = 'Guess now for ' + pts + ' points';
+      renderDetectiveChoices();
+      setupNextClueCard();
+    };
   }
 
   function renderDetectiveChoices() {
@@ -3707,64 +3738,85 @@
       var btn = document.createElement('button');
       btn.className = 'quiz-answer-btn';
       btn.textContent = wordObj.word;
-      btn.addEventListener('click', function () { detectiveGuess(i); });
+      if (detectiveState.wrongChoices.indexOf(i) !== -1) {
+        btn.disabled = true;
+        btn.classList.add('wrong');
+      } else {
+        btn.addEventListener('click', function () { detectiveGuess(i); });
+      }
       grid.appendChild(btn);
     });
-
-    if (detectiveState.clueStep < 5) {
-      var revealBtn = document.createElement('button');
-      revealBtn.className = 'quiz-exit-btn';
-      revealBtn.style.cssText = 'display:block;width:100%;margin-top:0.5rem;text-align:center;';
-      revealBtn.textContent = 'Show next clue ↓';
-      revealBtn.addEventListener('click', function () {
-        revealBtn.remove();
-        revealDetectiveClue();
-      });
-      grid.appendChild(revealBtn);
-    }
   }
 
   function detectiveGuess(choiceIndex) {
     if (detectiveState.answered) return;
-    detectiveState.answered = true;
 
     var correct = detectiveState.choices[choiceIndex] === detectiveState.correctChoice;
-    var pts = correct ? (DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100) : 0;
 
-    var buttons = document.querySelectorAll('#detective-choices .quiz-answer-btn');
-    buttons.forEach(function (btn, i) {
-      btn.disabled = true;
-      if (detectiveState.choices[i] === detectiveState.correctChoice) btn.classList.add('correct');
-      else if (i === choiceIndex && !correct) btn.classList.add('wrong');
-    });
-
-    var allCards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
-    allCards.forEach(function (card) {
-      card.classList.remove('detective-clue-hidden');
-      card.classList.add('detective-clue-revealed');
-    });
-
-    document.getElementById('detective-choices-hint').textContent = '';
-    var fb = document.getElementById('detective-feedback');
     if (correct) {
+      detectiveState.answered = true;
+      var pts = DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100;
+
+      var buttons = document.querySelectorAll('#detective-choices .quiz-answer-btn');
+      buttons.forEach(function (btn, i) {
+        btn.disabled = true;
+        if (detectiveState.choices[i] === detectiveState.correctChoice) btn.classList.add('correct');
+      });
+
+      var allCards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
+      allCards.forEach(function (card) {
+        card.classList.remove('detective-clue-hidden', 'detective-clue-next');
+        card.classList.add('detective-clue-revealed');
+        card.onclick = null;
+        card.style.cursor = '';
+      });
+
+      document.getElementById('detective-choices-hint').textContent = '';
       detectiveState.score += pts;
       document.getElementById('detective-score-display').textContent = 'Score: ' + detectiveState.score;
-      fb.textContent = pts === 500 ? '⭐ First clue — genius! +500 pts'
-        : '✓ Correct! +' + pts + ' points';
+      var fb = document.getElementById('detective-feedback');
+      fb.textContent = pts === 500 ? '⭐ First clue — genius! +500 pts' : '✓ Correct! +' + pts + ' points';
       fb.className = 'quiz-feedback visible feedback-correct';
-    } else {
-      fb.textContent = '✗ It was "' + detectiveState.correctChoice.word + '" — keep going!';
-      fb.className = 'quiz-feedback visible feedback-wrong';
-    }
 
-    setTimeout(function () {
-      detectiveState.index++;
-      if (detectiveState.index >= detectiveState.sessionLength) {
-        showDetectiveEnd();
+      setTimeout(function () {
+        detectiveState.index++;
+        if (detectiveState.index >= detectiveState.sessionLength) showDetectiveEnd();
+        else showDetectiveQuestion();
+      }, 2200);
+
+    } else {
+      detectiveState.wrongChoices.push(choiceIndex);
+      var buttons = document.querySelectorAll('#detective-choices .quiz-answer-btn');
+      buttons[choiceIndex].disabled = true;
+      buttons[choiceIndex].classList.add('wrong');
+
+      var fb = document.getElementById('detective-feedback');
+      var cards = document.querySelectorAll('#detective-clue-stack .detective-clue-card');
+
+      if (detectiveState.clueStep < cards.length) {
+        fb.textContent = 'Not quite — here\'s another clue!';
+        fb.className = 'quiz-feedback visible feedback-wrong';
+        setTimeout(function () {
+          fb.textContent = '';
+          fb.className = 'quiz-feedback';
+          revealDetectiveClue();
+        }, 700);
       } else {
-        showDetectiveQuestion();
+        detectiveState.answered = true;
+        buttons.forEach(function (btn, i) {
+          btn.disabled = true;
+          if (detectiveState.choices[i] === detectiveState.correctChoice) btn.classList.add('correct');
+        });
+        document.getElementById('detective-choices-hint').textContent = '';
+        fb.textContent = '✗ It was "' + detectiveState.correctChoice.word + '" — keep going!';
+        fb.className = 'quiz-feedback visible feedback-wrong';
+        setTimeout(function () {
+          detectiveState.index++;
+          if (detectiveState.index >= detectiveState.sessionLength) showDetectiveEnd();
+          else showDetectiveQuestion();
+        }, 2200);
       }
-    }, 2200);
+    }
   }
 
   function showDetectiveEnd() {
