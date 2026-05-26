@@ -2835,127 +2835,166 @@ footer {
   padding: 0.5rem 0.75rem 1rem;
 }
 
+/* ── Comic strip grid (Dog Man-style chunky) ──────────── */
+
 .comic-panels-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 /* ── Individual comic panels ──────────────────────────── */
 
 .comic-panel {
-  border: 3.5px solid #1a1a1a;
-  border-radius: 4px;
+  border: 4.5px solid #1a1a1a;
+  border-radius: 5px;
   overflow: hidden;
   transform: rotate(var(--panel-tilt, 0deg));
-  box-shadow: 3px 3px 0 #1a1a1a;
+  box-shadow: 5px 5px 0 #1a1a1a;
   display: flex;
   flex-direction: column;
-  min-height: 160px;
+  min-height: 220px;
   position: relative;
+  grid-column: span 2;
+  background-blend-mode: multiply;
 }
 
+/* Panel size variants */
+.comic-panel.size-wide,
 .comic-panel.full-width {
   grid-column: 1 / -1;
   transform: none;
+  min-height: 240px;
 }
 
-/* 2-column box panels: stack character on top, bubble below */
-.comic-panel:not(.full-width) {
-  min-height: 190px;
+.comic-panel.size-tall {
+  grid-row: span 2;
+  min-height: 320px;
 }
 
-.comic-panel:not(.full-width) .panel-stage {
+.comic-panel.size-splash {
+  grid-column: 1 / -1;
+  transform: none;
+  min-height: 300px;
+}
+
+/* Standard 2-col panels stack character on top, bubble below */
+.comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .panel-stage {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 8px;
+  padding: 10px;
 }
 
-.comic-panel:not(.full-width) .panel-char-svg {
-  width: 68px;
+.comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .panel-char-svg {
+  width: 90px;
   align-self: center;
 }
 
-.comic-panel:not(.full-width) .comic-bubble {
+.comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .comic-bubble {
   width: 100%;
   margin-top: 0;
   box-sizing: border-box;
 }
 
-/* Left-pointing tail doesn't apply when character is above the bubble */
-.comic-panel:not(.full-width) .comic-bubble::before,
-.comic-panel:not(.full-width) .comic-bubble::after {
+.comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .comic-bubble::before,
+.comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .comic-bubble::after {
   display: none;
 }
 
-/* ── Scene background patterns (layered over inline background-color) ── */
+/* Shot variants — character zoom */
+.comic-panel.shot-closeup .panel-char-svg { width: 140px !important; }
+.comic-panel.shot-wide .panel-char-svg { width: 70px !important; }
 
-/* Over-Clock's lair — sinister diagonal purple stripes */
+/* ── Scene background patterns (chunky illustrated feel) ── */
+
 .panel-scene-overclock {
   background-image:
+    radial-gradient(circle at 20% 20%, rgba(170, 0, 200, 0.18) 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(120, 0, 160, 0.16) 0%, transparent 40%),
     repeating-linear-gradient(
       -45deg,
-      transparent 0px, transparent 10px,
-      rgba(160, 0, 180, 0.07) 10px, rgba(160, 0, 180, 0.07) 12px
+      transparent 0px, transparent 14px,
+      rgba(160, 0, 180, 0.11) 14px, rgba(160, 0, 180, 0.11) 16px
     );
 }
 
-/* Jolt — electric energy glow at base + spark in corner */
 .panel-scene-jolt {
   background-image:
-    radial-gradient(ellipse at 50% 110%, rgba(80, 80, 255, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 85% 8%, rgba(255, 210, 0, 0.12) 0%, transparent 35%);
+    radial-gradient(ellipse at 50% 110%, rgba(80, 80, 255, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 85% 8%, rgba(255, 210, 0, 0.22) 0%, transparent 30%),
+    radial-gradient(circle at 12% 22%, rgba(255, 200, 0, 0.18) 0%, transparent 25%);
 }
 
-/* Admiral — ship bridge: faint technical crosshatch grid */
 .panel-scene-admiral {
   background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 220, 120, 0.25) 0%, transparent 45%),
     repeating-linear-gradient(
       0deg,
-      transparent 0px, transparent 15px,
-      rgba(60, 90, 160, 0.07) 15px, rgba(60, 90, 160, 0.07) 16px
+      transparent 0px, transparent 18px,
+      rgba(60, 90, 160, 0.10) 18px, rgba(60, 90, 160, 0.10) 19px
     ),
     repeating-linear-gradient(
       90deg,
-      transparent 0px, transparent 15px,
-      rgba(60, 90, 160, 0.07) 15px, rgba(60, 90, 160, 0.07) 16px
+      transparent 0px, transparent 18px,
+      rgba(60, 90, 160, 0.10) 18px, rgba(60, 90, 160, 0.10) 19px
     );
 }
 
-/* Star-Sloth — space starfield dot pattern */
 .panel-scene-starsloth {
   background-image:
-    radial-gradient(circle, rgba(120, 120, 220, 0.28) 1px, transparent 1px),
-    radial-gradient(circle, rgba(200, 200, 255, 0.18) 1px, transparent 1px);
-  background-size: 32px 32px, 19px 19px;
-  background-position: 0 0, 11px 11px;
+    radial-gradient(ellipse at 30% 30%, rgba(140, 100, 220, 0.20) 0%, transparent 40%),
+    radial-gradient(ellipse at 75% 75%, rgba(80, 150, 220, 0.18) 0%, transparent 45%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.55) 1.2px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.35) 0.8px, transparent 1.2px);
+  background-size: auto, auto, 36px 36px, 22px 22px;
+  background-position: 0 0, 0 0, 0 0, 13px 13px;
 }
 
+/* Caption sticker — Dog Man's yellow taped label */
 .panel-caption {
-  background: #FFE082;
-  border-bottom: 2.5px solid #1a1a1a;
-  font-family: 'Bangers', cursive;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
+  background: linear-gradient(180deg, #FFE082 0%, #FFD54F 100%);
+  border-bottom: 3px solid #1a1a1a;
+  font-family: 'Bangers', 'Impact', cursive;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  padding: 4px 10px;
   text-align: center;
   color: #1a1a1a;
   line-height: 1.3;
+  position: relative;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
+
+.panel-caption::before,
+.panel-caption::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+}
+.panel-caption::before { left: -2px; transform: skewX(-20deg); }
+.panel-caption::after  { right: -2px; transform: skewX(20deg); }
 
 .panel-stage {
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .panel-char-svg {
   flex-shrink: 0;
-  width: 72px;
+  width: 100px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.18));
 }
 
 .panel-char-svg svg {
@@ -2964,47 +3003,78 @@ footer {
   display: block;
 }
 
+/* Props layer — sits behind character */
+.panel-props {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.panel-props svg {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
+
+/* Action lines overlay — radial speed lines */
+.panel-action-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+.panel-action-lines svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* ── Speech bubbles ──────────────────────────────────── */
 
 .comic-bubble {
   flex: 1;
   font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-  font-size: 0.78rem;
+  font-size: 0.86rem;
   line-height: 1.35;
-  padding: 6px 8px;
-  border-radius: 10px;
-  border: 2px solid #1a1a1a;
+  padding: 8px 11px;
+  border-radius: 14px;
+  border: 2.5px solid #1a1a1a;
   background: white;
   position: relative;
-  margin-top: 4px;
+  margin-top: 6px;
   word-break: break-word;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
 }
 
-/* Bubble tail (pointing left toward character) */
 .comic-bubble::before {
   content: '';
   position: absolute;
-  left: -10px;
-  top: 12px;
-  border: 5px solid transparent;
+  left: -12px;
+  top: 14px;
+  border: 6px solid transparent;
   border-right-color: #1a1a1a;
 }
 
 .comic-bubble::after {
   content: '';
   position: absolute;
-  left: -7px;
-  top: 13px;
-  border: 4px solid transparent;
+  left: -8px;
+  top: 15px;
+  border: 5px solid transparent;
   border-right-color: white;
 }
 
-/* Thought bubble — dashed border */
+/* Thought bubble — fluffy scalloped cloud */
 .comic-bubble.bubble-thought {
   border-style: dashed;
-  background: #F8F8FF;
+  background: #F4F1FF;
   font-style: italic;
   color: #444;
+  border-radius: 26px 22px 24px 28px / 22px 26px 28px 24px;
 }
 
 .comic-bubble.bubble-thought::before,
@@ -3012,41 +3082,97 @@ footer {
   display: none;
 }
 
-/* Shout bubble — jagged / bold */
+/* Shout bubble — jagged spiky star burst */
 .comic-bubble.bubble-shout {
-  border-width: 2.5px;
-  font-weight: 700;
+  border: none;
+  font-weight: 800;
+  font-family: 'Bangers', 'Comic Neue', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
   background: #FFFEF0;
-  box-shadow: inset 0 0 0 1px #FFE000, 0 0 0 1.5px #1a1a1a;
+  color: #1a1a1a;
+  padding: 12px 14px;
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: polygon(
+    0% 12%, 6% 0%, 14% 10%, 22% 2%, 30% 12%, 40% 4%,
+    50% 14%, 60% 2%, 70% 12%, 80% 4%, 90% 14%, 100% 6%,
+    96% 22%, 100% 36%, 94% 50%, 100% 62%, 96% 78%, 100% 92%,
+    90% 96%, 80% 88%, 70% 100%, 60% 90%, 50% 100%, 40% 88%,
+    30% 100%, 20% 92%, 10% 100%, 4% 90%, 0% 80%, 6% 64%, 0% 50%, 4% 36%, 0% 24%
+  );
+  position: relative;
+  text-shadow: 1px 1px 0 rgba(255, 220, 0, 0.55);
 }
 
-/* Rage bubble — red-tinted, double-border, for fights/villain fury */
+.comic-bubble.bubble-shout::before,
+.comic-bubble.bubble-shout::after {
+  display: none;
+}
+
+/* The black "ink" outline behind the shout bubble — uses a same-shape pseudo */
+.comic-bubble.bubble-shout {
+  background:
+    radial-gradient(circle at 50% 50%, #FFFEF0 0%, #FFFEF0 78%, #FFE000 90%, #FFE000 100%);
+  outline: 3px solid #1a1a1a;
+  outline-offset: -3px;
+}
+
+/* Rage bubble — red dripping fury */
 .comic-bubble.bubble-rage {
-  border-width: 3px;
-  border-color: #C0392B;
+  border-width: 3.5px;
+  border-color: #8B0000;
   font-weight: 900;
-  background: #FFF0F0;
+  font-family: 'Bangers', 'Comic Neue', cursive;
+  font-size: 1.02rem;
+  letter-spacing: 0.05em;
+  background: #FFE5E5;
   color: #7B0000;
-  box-shadow: inset 0 0 0 1px #FF6B6B, 0 0 0 2px #C0392B;
-  letter-spacing: 0.04em;
+  box-shadow: inset 0 0 0 1.5px #FF6B6B, 3px 3px 0 #1a1a1a;
+  border-radius: 16px 16px 22px 22px / 14px 14px 26px 26px;
+  text-shadow: 1px 1px 0 #FFB0B0;
 }
-.comic-bubble.bubble-rage::before { border-right-color: #C0392B; }
-.comic-bubble.bubble-rage::after  { border-right-color: #FFF0F0; }
+.comic-bubble.bubble-rage::before { border-right-color: #8B0000; }
+.comic-bubble.bubble-rage::after  { border-right-color: #FFE5E5; }
 
-/* Whisper bubble — small gray dashed italic, for asides */
+/* Whisper bubble — small gray dashed italic */
 .comic-bubble.bubble-whisper {
   border-style: dashed;
   border-color: #999;
   background: #F5F5F5;
   font-style: italic;
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   color: #555;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 .comic-bubble.bubble-whisper::before { border-right-color: #999; }
 .comic-bubble.bubble-whisper::after  { border-right-color: #F5F5F5; }
 
-/* Sound effect */
+/* ── SFX burst (jagged star polygon with Bangers text) ── */
+
+.panel-sfx-burst {
+  position: absolute;
+  top: 8%;
+  right: 4%;
+  z-index: 3;
+  pointer-events: none;
+  transform: rotate(var(--sfx-rotate, -8deg));
+  width: 90px;
+  height: auto;
+}
+
+.panel-sfx-burst.sfx-bottom-left {
+  top: auto; right: auto;
+  bottom: 10%; left: 6%;
+}
+
+.panel-sfx-burst svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.55));
+}
+
+/* Legacy plain-text SFX (still used for soft sfx like 'tick...') */
 .panel-sfx {
   font-family: 'Bangers', cursive;
   font-size: 0.9rem;
@@ -3111,20 +3237,47 @@ footer {
 
 /* ── Responsive ──────────────────────────────────────── */
 
+@media (max-width: 700px) {
+  .comic-panels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .comic-panel.size-tall {
+    grid-row: auto;
+    min-height: 240px;
+  }
+}
+
 @media (max-width: 500px) {
   .comic-panels-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
-  .comic-panel.full-width {
+  .comic-panel,
+  .comic-panel.full-width,
+  .comic-panel.size-wide,
+  .comic-panel.size-splash,
+  .comic-panel.size-tall {
     grid-column: 1;
+    grid-row: auto;
+    min-height: 200px;
   }
 
-  .panel-char-svg {
-    width: 56px;
+  .comic-panel:not(.full-width):not(.size-wide):not(.size-splash) .panel-char-svg {
+    width: 76px;
   }
+
+  .comic-panel.shot-closeup .panel-char-svg { width: 110px !important; }
 
   .comic-bubble {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
+  }
+
+  .comic-bubble.bubble-shout {
+    font-size: 0.9rem;
+  }
+
+  .panel-sfx-burst {
+    width: 70px;
   }
 }

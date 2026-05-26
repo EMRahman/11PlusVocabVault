@@ -4707,188 +4707,440 @@
 
   // ── SVG character generators ───────────────────────────────────────────────
 
+  // ── Dog Man-style character SVGs ──────────────────────────────────────────
+  // Each function returns an <svg> string. Poses are listed in comments.
+
+  var INK = '#1a1a1a';
+
   function svgStarSloth(pose) {
-    var blink  = pose === 'blink';
-    var action = pose === 'action';
-    var lidH   = blink ? 7 : 4;
-    var pupils = blink ? '' :
-      '<circle cx="42" cy="49" r="2.5" fill="#1a1a1a"/>' +
-      '<circle cx="58" cy="49" r="2.5" fill="#1a1a1a"/>';
-    var speedLines = action
-      ? '<line x1="2" y1="30" x2="18" y2="30" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
-        '<line x1="1" y1="44" x2="16" y2="44" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
-        '<line x1="2" y1="58" x2="17" y2="58" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
-        '<line x1="3" y1="72" x2="18" y2="72" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
-        '<text x="4" y="14" font-size="5.5" fill="#BBB" font-weight="bold" font-family="Impact,Arial,sans-serif" letter-spacing="1">SWOOOOOSH!</text>'
+    // Poses: zen (default), blink, action, shock, victory, sleepy, closeup
+    var isBlink   = pose === 'blink';
+    var isAction  = pose === 'action';
+    var isShock   = pose === 'shock';
+    var isVictory = pose === 'victory';
+    var isSleepy  = pose === 'sleepy';
+    var isCloseup = pose === 'closeup';
+
+    if (isCloseup) {
+      return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<path d="M14,52 Q9,30 22,18 Q14,4 30,8 Q32,-2 46,4 Q50,-3 58,4 Q72,-2 74,12 Q88,8 82,24 Q92,32 86,52 Q88,72 70,84 Q60,94 50,92 Q40,94 30,84 Q12,72 14,52 Z" fill="#D4B880" stroke="' + INK + '" stroke-width="3.5"/>' +
+        '<ellipse cx="50" cy="56" rx="28" ry="24" fill="#E8D4A0"/>' +
+        '<ellipse cx="36" cy="50" rx="11" ry="9" fill="#8A6840"/>' +
+        '<ellipse cx="64" cy="50" rx="11" ry="9" fill="#8A6840"/>' +
+        '<circle cx="38" cy="50" r="7" fill="white" stroke="' + INK + '" stroke-width="2"/>' +
+        '<circle cx="62" cy="50" r="7" fill="white" stroke="' + INK + '" stroke-width="2"/>' +
+        '<circle cx="39" cy="51" r="3.5" fill="' + INK + '"/>' +
+        '<circle cx="63" cy="51" r="3.5" fill="' + INK + '"/>' +
+        '<circle cx="40.5" cy="49.5" r="1.4" fill="white"/>' +
+        '<circle cx="64.5" cy="49.5" r="1.4" fill="white"/>' +
+        '<ellipse cx="50" cy="64" rx="5" ry="3.5" fill="#5A3010" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<path d="M40,72 Q50,79 60,72" fill="none" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/>' +
+        '</svg>';
+    }
+
+    var lidsClosed = isBlink || isSleepy || isVictory;
+    var eyeY = isShock ? 47 : 49;
+    var eyeR = isShock ? 6.5 : 4.5;
+    var pupilR = isShock ? 2 : 2.8;
+
+    var eyes = lidsClosed
+      ? '<path d="M36,47 Q42,51 48,47" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round"/>' +
+        '<path d="M52,47 Q58,51 64,47" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round"/>'
+      : '<ellipse cx="42" cy="' + eyeY + '" rx="' + eyeR + '" ry="' + (eyeR + 0.5) + '" fill="white" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<ellipse cx="58" cy="' + eyeY + '" rx="' + eyeR + '" ry="' + (eyeR + 0.5) + '" fill="white" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<circle cx="42" cy="' + (eyeY + 0.5) + '" r="' + pupilR + '" fill="' + INK + '"/>' +
+        '<circle cx="58" cy="' + (eyeY + 0.5) + '" r="' + pupilR + '" fill="' + INK + '"/>' +
+        '<circle cx="43" cy="' + (eyeY - 0.5) + '" r="1" fill="white"/>' +
+        '<circle cx="59" cy="' + (eyeY - 0.5) + '" r="1" fill="white"/>';
+
+    var mouth = isShock
+      ? '<ellipse cx="50" cy="66" rx="5" ry="6" fill="#3A1500" stroke="' + INK + '" stroke-width="1.5"/>'
+      : isVictory
+        ? '<path d="M40,64 Q50,73 60,64" fill="#4A2000" stroke="' + INK + '" stroke-width="1.8"/>'
+        : '<path d="M45,64 Q50,68 55,64" fill="none" stroke="' + INK + '" stroke-width="1.8" stroke-linecap="round"/>';
+
+    var zMarks = isSleepy
+      ? '<text x="74" y="22" font-size="11" font-family="Bangers,Impact,sans-serif" fill="#6C63FF" stroke="' + INK + '" stroke-width="0.6">Z</text>' +
+        '<text x="84" y="12" font-size="7" font-family="Bangers,Impact,sans-serif" fill="#6C63FF" stroke="' + INK + '" stroke-width="0.4">z</text>'
       : '';
+
+    var speedLines = isAction
+      ? '<path d="M2,30 Q10,29 18,30" fill="none" stroke="#9090A0" stroke-width="1.8" stroke-linecap="round"/>' +
+        '<path d="M1,44 Q9,43 16,44" fill="none" stroke="#9090A0" stroke-width="1.8" stroke-linecap="round"/>' +
+        '<path d="M3,72 Q11,71 18,72" fill="none" stroke="#9090A0" stroke-width="1.8" stroke-linecap="round"/>'
+      : '';
+
+    var shockBurst = isShock
+      ? '<path d="M50,4 L52,12 L60,8 L56,16 L66,18 L58,22 L66,30 L56,28 L60,38 L52,32 L50,42 L48,32 L40,38 L44,28 L34,30 L42,22 L34,18 L44,16 L40,8 L48,12 Z" fill="none" stroke="#FFC000" stroke-width="1.5"/>'
+      : '';
+
+    var victoryArms = isVictory
+      ? '<path d="M30,80 Q18,68 12,52" fill="none" stroke="#C4A870" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M70,80 Q82,68 88,52" fill="none" stroke="#C4A870" stroke-width="9" stroke-linecap="round"/>' +
+        '<circle cx="12" cy="50" r="6" fill="#C4A870" stroke="' + INK + '" stroke-width="2"/>' +
+        '<circle cx="88" cy="50" r="6" fill="#C4A870" stroke="' + INK + '" stroke-width="2"/>'
+      : '';
+
+    var actionClaw = isAction
+      ? '<path d="M50,72 Q52,52 60,40" fill="none" stroke="#C4A870" stroke-width="9" stroke-linecap="round"/>' +
+        '<circle cx="60" cy="40" r="5" fill="#C4A870" stroke="' + INK + '" stroke-width="2"/>' +
+        '<path d="M57,36 L59,32 M60,35 L62,31 M63,36 L65,32" stroke="' + INK + '" stroke-width="1.5" stroke-linecap="round"/>'
+      : '';
+
+    var defaultArms = (isVictory || isAction)
+      ? ''
+      : '<path d="M30,80 Q22,90 22,108" fill="none" stroke="#C4A870" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M70,80 Q78,90 78,108" fill="none" stroke="#C4A870" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M19,108 Q22,116 26,110" fill="none" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<path d="M75,110 Q78,118 82,112" fill="none" stroke="' + INK + '" stroke-width="1.5"/>';
+
     return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      speedLines +
-      '<path d="M23,45 Q20,34 27,28 Q22,20 31,22 Q31,14 41,18 Q43,11 50,13 Q57,11 59,18 Q69,14 69,22 Q78,20 73,28 Q80,34 77,45" fill="#D4B880" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<circle cx="50" cy="46" r="26" fill="#C4A870" stroke="#1a1a1a" stroke-width="2.5"/>' +
-      '<ellipse cx="50" cy="50" rx="18" ry="16" fill="#DCCA90"/>' +
-      '<ellipse cx="42" cy="46" rx="5" ry="4.5" fill="white" stroke="#333" stroke-width="1"/>' +
-      '<rect x="37" y="42" width="10" height="' + lidH + '" rx="2" fill="#C4A870"/>' +
-      '<ellipse cx="58" cy="46" rx="5" ry="4.5" fill="white" stroke="#333" stroke-width="1"/>' +
-      '<rect x="53" y="42" width="10" height="' + lidH + '" rx="2" fill="#C4A870"/>' +
-      pupils +
-      '<ellipse cx="50" cy="58" rx="8" ry="6" fill="#D0B068"/>' +
-      '<ellipse cx="50" cy="57" rx="3.5" ry="2.5" fill="#7A4A20" stroke="#333" stroke-width="1"/>' +
-      '<path d="M45,64 Q50,68 55,64" fill="none" stroke="#555" stroke-width="1.5"/>' +
-      '<ellipse cx="50" cy="96" rx="19" ry="22" fill="#9AAAB8" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<line x1="50" y1="74" x2="50" y2="118" stroke="#7A8A98" stroke-width="1.5"/>' +
-      '<circle cx="50" cy="88" r="7" fill="#3A68D0" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<text x="50" y="93" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="Arial,sans-serif">S</text>' +
-      '<ellipse cx="34" cy="94" rx="5" ry="9" fill="#7A8A98" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<ellipse cx="66" cy="94" rx="5" ry="9" fill="#7A8A98" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<path d="M31,78 Q20,88 18,104" fill="none" stroke="#C4A870" stroke-width="7" stroke-linecap="round"/>' +
-      '<path d="M15,106 Q17,113 21,108" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<path d="M18,109 Q20,116 24,111" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<path d="M21,111 Q23,118 27,113" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<path d="M69,78 Q80,88 82,104" fill="none" stroke="#C4A870" stroke-width="7" stroke-linecap="round"/>' +
-      '<path d="M85,106 Q83,113 79,108" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<path d="M82,109 Q80,116 76,111" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<path d="M79,111 Q77,118 73,113" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>' +
+      speedLines + shockBurst + zMarks +
+      '<path d="M22,46 Q18,32 28,26 Q22,16 32,20 Q30,10 42,16 Q44,8 50,12 Q56,8 58,16 Q70,10 68,20 Q78,16 72,26 Q82,32 78,46 Q82,58 70,66 Q60,72 50,70 Q40,72 30,66 Q18,58 22,46 Z" fill="#D4B880" stroke="' + INK + '" stroke-width="3"/>' +
+      '<ellipse cx="50" cy="50" rx="20" ry="18" fill="#E8D4A0"/>' +
+      '<ellipse cx="42" cy="50" rx="8" ry="6.5" fill="#8A6840"/>' +
+      '<ellipse cx="58" cy="50" rx="8" ry="6.5" fill="#8A6840"/>' +
+      eyes +
+      '<ellipse cx="50" cy="60" rx="4" ry="3" fill="#5A3010" stroke="' + INK + '" stroke-width="1.5"/>' +
+      mouth +
+      '<path d="M30,76 Q26,98 32,116 Q50,122 68,116 Q74,98 70,76 Q60,82 50,82 Q40,82 30,76 Z" fill="#9AAAB8" stroke="' + INK + '" stroke-width="2.5"/>' +
+      '<circle cx="50" cy="92" r="9" fill="#3A68D0" stroke="' + INK + '" stroke-width="2"/>' +
+      '<text x="50" y="97" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="Arial Black,Arial,sans-serif">S</text>' +
+      defaultArms + victoryArms + actionClaw +
       '</svg>';
   }
 
   function svgJolt(pose) {
-    var translating = pose === 'translating';
-    var tiltAngle   = translating ? '0' : '-12';
-    var ghost = translating ? '' :
-      '<ellipse cx="40" cy="64" rx="20" ry="28" fill="rgba(150,150,175,0.18)" transform="translate(-10,0)"/>';
-    var magGlass = translating
-      ? '<circle cx="74" cy="42" r="8" fill="rgba(200,230,255,0.85)" stroke="#888" stroke-width="2"/>' +
-        '<line x1="80" y1="48" x2="87" y2="55" stroke="#888" stroke-width="2.5" stroke-linecap="round"/>'
+    // Poses: zoom (default), translating, panic, smug, exhausted, closeup
+    var isTrans    = pose === 'translating';
+    var isPanic    = pose === 'panic';
+    var isSmug     = pose === 'smug';
+    var isExhaust  = pose === 'exhausted';
+    var isCloseup  = pose === 'closeup';
+
+    if (isCloseup) {
+      return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        '<circle cx="50" cy="52" r="38" fill="white" stroke="' + INK + '" stroke-width="3.5"/>' +
+        '<circle cx="50" cy="52" r="30" fill="#2A90E8"/>' +
+        '<circle cx="50" cy="52" r="22" fill="#1A60B0"/>' +
+        '<circle cx="50" cy="52" r="13" fill="#0A3070"/>' +
+        '<circle cx="50" cy="52" r="5" fill="white"/>' +
+        '<circle cx="38" cy="40" r="8" fill="rgba(255,255,255,0.55)"/>' +
+        '<line x1="50" y1="14" x2="50" y2="2" stroke="' + INK + '" stroke-width="3"/>' +
+        '<circle cx="50" cy="2" r="4" fill="#F0B020" stroke="' + INK + '" stroke-width="2"/>' +
+        // Lightning bolts radiating
+        '<path d="M10,30 L20,40 L14,42 L24,52" fill="none" stroke="#F0B020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path d="M90,30 L80,40 L86,42 L76,52" fill="none" stroke="#F0B020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>';
+    }
+
+    var tilt = isTrans ? 0 : (isPanic ? 8 : (isSmug ? -4 : (isExhaust ? 18 : -12)));
+    var ghost = (isTrans || isExhaust) ? '' :
+      '<ellipse cx="40" cy="64" rx="20" ry="28" fill="rgba(150,150,175,0.22)" transform="translate(-8,0)"/>';
+
+    var magGlass = isTrans
+      ? '<circle cx="76" cy="40" r="9" fill="rgba(200,230,255,0.85)" stroke="#666" stroke-width="2.5"/>' +
+        '<line x1="82" y1="46" x2="90" y2="54" stroke="#666" stroke-width="3" stroke-linecap="round"/>'
       : '';
+
+    // Inner screen content: default = focused dot, panic = !!!, smug = ★, exhausted = X X
+    var screenInner;
+    if (isPanic) {
+      screenInner =
+        '<text x="50" y="63" text-anchor="middle" fill="white" font-size="16" font-weight="900" font-family="Bangers,Impact,sans-serif">!!!</text>';
+    } else if (isSmug) {
+      screenInner =
+        '<text x="50" y="64" text-anchor="middle" fill="#FFD700" font-size="18" font-family="Arial,sans-serif">★</text>';
+    } else if (isExhaust) {
+      screenInner =
+        '<path d="M44,54 L52,62 M52,54 L44,62" stroke="white" stroke-width="2.2" stroke-linecap="round"/>' +
+        '<path d="M48,54 L56,62 M56,54 L48,62" stroke="white" stroke-width="2.2" stroke-linecap="round"/>';
+    } else {
+      screenInner =
+        '<circle cx="50" cy="58" r="4" fill="#0A3070"/>' +
+        '<circle cx="50" cy="58" r="1.5" fill="white"/>';
+    }
+
+    // Arms: panic up, smug crossed, exhausted slack, default zigzag
+    var arms;
+    if (isPanic) {
+      arms = '<path d="M28,68 Q14,52 8,38" fill="none" stroke="#F0B020" stroke-width="4" stroke-linecap="round"/>' +
+        '<path d="M72,68 Q86,52 92,38" fill="none" stroke="#F0B020" stroke-width="4" stroke-linecap="round"/>';
+    } else if (isSmug) {
+      arms = '<path d="M30,68 Q42,76 50,70 Q58,76 70,68" fill="none" stroke="#F0B020" stroke-width="4" stroke-linecap="round"/>';
+    } else if (isExhaust) {
+      arms = '<path d="M28,72 Q22,96 28,108" fill="none" stroke="#F0B020" stroke-width="4" stroke-linecap="round"/>' +
+        '<path d="M72,72 Q78,96 72,108" fill="none" stroke="#F0B020" stroke-width="4" stroke-linecap="round"/>';
+    } else {
+      arms = '<path d="M28,64 L18,74 L26,74 L16,86" fill="none" stroke="#F0B020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path d="M72,64 L82,74 L74,74 L84,86" fill="none" stroke="#F0B020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>';
+    }
+
+    var sweatDrop = isPanic
+      ? '<ellipse cx="22" cy="42" rx="2" ry="3.5" fill="#A0D0F0" stroke="' + INK + '" stroke-width="0.8"/>'
+      : '';
+
     return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      ghost +
-      '<g transform="rotate(' + tiltAngle + ', 50, 65)">' +
-      '<ellipse cx="50" cy="72" rx="22" ry="28" fill="#C8C8D8" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<ellipse cx="50" cy="72" rx="16" ry="22" fill="none" stroke="#9898A8" stroke-width="1"/>' +
-      '<circle cx="50" cy="58" r="16" fill="white" stroke="#1a1a1a" stroke-width="2.5"/>' +
-      '<circle cx="50" cy="58" r="12" fill="#2A90E8"/>' +
-      '<circle cx="50" cy="58" r="8"  fill="#1A60B0"/>' +
-      '<circle cx="50" cy="58" r="4"  fill="#0A3070"/>' +
-      '<circle cx="50" cy="58" r="1.5" fill="white"/>' +
+      ghost + sweatDrop +
+      '<g transform="rotate(' + tilt + ', 50, 65)">' +
+      '<ellipse cx="50" cy="72" rx="24" ry="30" fill="#C8C8D8" stroke="' + INK + '" stroke-width="3"/>' +
+      '<ellipse cx="50" cy="72" rx="17" ry="23" fill="none" stroke="#8888A0" stroke-width="1.5"/>' +
+      '<circle cx="50" cy="58" r="17" fill="white" stroke="' + INK + '" stroke-width="3"/>' +
+      '<circle cx="50" cy="58" r="13" fill="#2A90E8"/>' +
+      '<circle cx="50" cy="58" r="9"  fill="#1A60B0"/>' +
+      screenInner +
       '<circle cx="44" cy="52" r="3.5" fill="rgba(255,255,255,0.55)"/>' +
-      '<circle cx="50" cy="58" r="14" fill="none" stroke="rgba(160,190,210,0.6)" stroke-width="1" stroke-dasharray="2 3"/>' +
-      '<line x1="50" y1="42" x2="50" y2="32" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<circle cx="50" cy="30" r="3" fill="#F0B020" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<path d="M28,64 L18,74 L26,74 L16,86" fill="none" stroke="#F0B020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '<path d="M72,64 L82,74 L74,74 L84,86" fill="none" stroke="#F0B020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '<rect x="37" y="98" width="10" height="8" rx="2" fill="#999" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<rect x="53" y="98" width="10" height="8" rx="2" fill="#999" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<path d="M38,106 Q42,118 46,106" fill="#F08020"/>' +
-      '<path d="M54,106 Q58,118 62,106" fill="#F08020"/>' +
-      '<path d="M40,106 Q42,112 44,106" fill="#FFF080"/>' +
-      '<path d="M56,106 Q58,112 60,106" fill="#FFF080"/>' +
+      '<line x1="50" y1="41" x2="50" y2="31" stroke="' + INK + '" stroke-width="2.5"/>' +
+      '<circle cx="50" cy="29" r="3.5" fill="#F0B020" stroke="' + INK + '" stroke-width="1.8"/>' +
+      arms +
+      '<rect x="37" y="100" width="10" height="9" rx="2" fill="#999" stroke="' + INK + '" stroke-width="1.8"/>' +
+      '<rect x="53" y="100" width="10" height="9" rx="2" fill="#999" stroke="' + INK + '" stroke-width="1.8"/>' +
+      '<path d="M38,109 Q42,120 46,109" fill="#F08020"/>' +
+      '<path d="M54,109 Q58,120 62,109" fill="#F08020"/>' +
       '</g>' +
       magGlass +
       '</svg>';
   }
 
   function svgAdmiral(pose) {
-    var exploding = pose === 'exploding';
-    var sweat = '<ellipse cx="27" cy="30" rx="2" ry="3" fill="#A0D0F0" transform="rotate(-20,27,30)"/>' +
-      '<ellipse cx="76" cy="26" rx="2" ry="3" fill="#A0D0F0" transform="rotate(20,76,26)"/>' +
-      '<ellipse cx="21" cy="52" rx="1.5" ry="2.5" fill="#A0D0F0" transform="rotate(-30,21,52)"/>';
-    if (exploding) {
-      sweat +=
-        '<ellipse cx="14" cy="40" rx="2.5" ry="3.5" fill="#A0D0F0" transform="rotate(-15,14,40)"/>' +
-        '<ellipse cx="82" cy="44" rx="2" ry="3" fill="#A0D0F0" transform="rotate(25,82,44)"/>' +
-        '<ellipse cx="24" cy="70" rx="2" ry="3" fill="#A0D0F0" transform="rotate(-40,24,70)"/>' +
-        '<ellipse cx="80" cy="64" rx="2" ry="3" fill="#A0D0F0" transform="rotate(30,80,64)"/>';
+    // Poses: calm (default), exploding, salute, weeping, closeup
+    var isExp     = pose === 'exploding';
+    var isSalute  = pose === 'salute';
+    var isWeep    = pose === 'weeping';
+    var isCloseup = pose === 'closeup';
+    var skin      = isExp ? '#E04040' : (isWeep ? '#FFB8B0' : '#F4C2A0');
+    var skinDk    = isExp ? '#B02020' : (isWeep ? '#E89890' : '#D49878');
+
+    if (isCloseup) {
+      return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        // Hat
+        '<rect x="14" y="6" width="72" height="16" rx="5" fill="#1A3A6A" stroke="' + INK + '" stroke-width="3"/>' +
+        '<rect x="8" y="20" width="84" height="9" rx="3" fill="#142D54" stroke="' + INK + '" stroke-width="2.5"/>' +
+        '<circle cx="50" cy="14" r="6" fill="#E0C020" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<text x="50" y="18" text-anchor="middle" font-size="8" fill="' + INK + '">★</text>' +
+        // Face
+        '<circle cx="50" cy="58" r="36" fill="' + skin + '" stroke="' + INK + '" stroke-width="3.5"/>' +
+        '<ellipse cx="18" cy="58" rx="7" ry="10" fill="' + skinDk + '" stroke="' + INK + '" stroke-width="2.5"/>' +
+        '<ellipse cx="82" cy="58" rx="7" ry="10" fill="' + skinDk + '" stroke="' + INK + '" stroke-width="2.5"/>' +
+        // Eyes
+        '<ellipse cx="38" cy="54" rx="7" ry="7" fill="white" stroke="' + INK + '" stroke-width="2"/>' +
+        '<ellipse cx="62" cy="54" rx="7" ry="7" fill="white" stroke="' + INK + '" stroke-width="2"/>' +
+        '<circle cx="38" cy="55" r="4" fill="' + INK + '"/>' +
+        '<circle cx="62" cy="55" r="4" fill="' + INK + '"/>' +
+        '<circle cx="39.5" cy="53" r="1.5" fill="white"/>' +
+        '<circle cx="63.5" cy="53" r="1.5" fill="white"/>' +
+        // Eyebrows
+        '<path d="M30,44 Q38,38 46,44" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linecap="round"/>' +
+        '<path d="M54,44 Q62,38 70,44" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linecap="round"/>' +
+        // Beard
+        '<path d="M28,68 Q40,82 50,80 Q60,82 72,68 Q70,80 60,86 Q50,90 40,86 Q30,80 28,68 Z" fill="#4A2000" stroke="' + INK + '" stroke-width="1.8"/>' +
+        // Mouth
+        (isExp
+          ? '<ellipse cx="50" cy="76" rx="9" ry="7" fill="#3A0000"/><ellipse cx="50" cy="76" rx="7" ry="5" fill="#B03030"/>'
+          : '<path d="M42,76 Q50,82 58,76" fill="none" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/>') +
+        '</svg>';
     }
-    var mouth = exploding
-      ? '<ellipse cx="50" cy="68" rx="8" ry="6" fill="#8B2020"/><ellipse cx="50" cy="68" rx="6" ry="4" fill="#B03030"/>'
-      : '<path d="M43,67 Q50,71 57,67" fill="none" stroke="#333" stroke-width="1.5"/>';
-    var eyebrows = exploding
-      ? '<path d="M36,42 Q42,37 48,42" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>' +
-        '<path d="M52,42 Q58,37 64,42" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>'
-      : '<path d="M37,43 Q42,40 47,43" fill="none" stroke="#1a1a1a" stroke-width="2"/>' +
-        '<path d="M53,43 Q58,40 63,43" fill="none" stroke="#1a1a1a" stroke-width="2"/>';
-    var vein = '<path d="M45,32 Q47,28 50,32 Q53,28 55,32" fill="none" stroke="#C03030" stroke-width="1.5"/>';
-    if (exploding) vein += '<path d="M38,40 Q40,36 43,40" fill="none" stroke="#C03030" stroke-width="1.5"/>';
-    var arms = exploding
-      ? '<path d="M27,82 Q14,94 20,108" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
-        '<path d="M73,82 Q86,94 80,108" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>'
-      : '<path d="M28,84 Q28,96 38,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
-        '<path d="M72,84 Q72,96 62,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>' +
-        '<path d="M38,100 Q50,104 62,100" fill="none" stroke="#1A3A6A" stroke-width="8" stroke-linecap="round"/>';
+
+    // Sweat (always some when stressed; lots when exploding)
+    var sweat = '<ellipse cx="27" cy="30" rx="2.2" ry="3.2" fill="#A0D0F0" stroke="' + INK + '" stroke-width="0.8" transform="rotate(-20,27,30)"/>' +
+      '<ellipse cx="76" cy="26" rx="2.2" ry="3.2" fill="#A0D0F0" stroke="' + INK + '" stroke-width="0.8" transform="rotate(20,76,26)"/>';
+    if (isExp) {
+      sweat +=
+        '<ellipse cx="14" cy="40" rx="2.5" ry="3.6" fill="#A0D0F0" stroke="' + INK + '" stroke-width="0.8" transform="rotate(-15,14,40)"/>' +
+        '<ellipse cx="84" cy="44" rx="2.5" ry="3.6" fill="#A0D0F0" stroke="' + INK + '" stroke-width="0.8" transform="rotate(25,84,44)"/>';
+    }
+
+    // Tears for weeping
+    var tears = isWeep
+      ? '<path d="M40,52 Q38,72 36,90" fill="none" stroke="#5AB0E8" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M60,52 Q62,72 64,90" fill="none" stroke="#5AB0E8" stroke-width="3" stroke-linecap="round"/>' +
+        '<ellipse cx="36" cy="92" rx="3" ry="4" fill="#5AB0E8"/>' +
+        '<ellipse cx="64" cy="92" rx="3" ry="4" fill="#5AB0E8"/>'
+      : '';
+
+    var mouth = isExp
+      ? '<ellipse cx="50" cy="68" rx="9" ry="7" fill="#3A0000" stroke="' + INK + '" stroke-width="1.5"/><ellipse cx="50" cy="68" rx="7" ry="5" fill="#B03030"/>'
+      : isWeep
+        ? '<path d="M42,70 Q50,64 58,70" fill="none" stroke="' + INK + '" stroke-width="2"/>'
+        : '<path d="M43,67 Q50,72 57,67" fill="none" stroke="' + INK + '" stroke-width="1.8" stroke-linecap="round"/>';
+
+    var eyebrows = isExp
+      ? '<path d="M34,42 Q42,36 48,42" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>' +
+        '<path d="M52,42 Q58,36 66,42" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>'
+      : isWeep
+        ? '<path d="M36,42 Q42,46 47,42" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round"/>' +
+          '<path d="M53,42 Q58,46 64,42" fill="none" stroke="' + INK + '" stroke-width="2.5" stroke-linecap="round"/>'
+        : '<path d="M37,43 Q42,40 47,43" fill="none" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/>' +
+          '<path d="M53,43 Q58,40 63,43" fill="none" stroke="' + INK + '" stroke-width="2.2" stroke-linecap="round"/>';
+
+    var vein = isExp
+      ? '<path d="M45,32 Q47,28 50,32 Q53,28 55,32" fill="none" stroke="#C03030" stroke-width="1.8"/>' +
+        '<path d="M38,40 Q40,36 43,40" fill="none" stroke="#C03030" stroke-width="1.5"/>'
+      : '';
+
+    var arms;
+    if (isSalute) {
+      arms = '<path d="M27,82 Q34,52 44,42" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M73,82 Q73,96 63,100" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<circle cx="44" cy="40" r="5" fill="' + skin + '" stroke="' + INK + '" stroke-width="2"/>';
+    } else if (isExp) {
+      arms = '<path d="M27,82 Q12,92 18,108" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M73,82 Q88,92 82,108" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>';
+    } else if (isWeep) {
+      arms = '<path d="M28,84 Q24,98 32,108" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M72,84 Q76,98 68,108" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>';
+    } else {
+      arms = '<path d="M28,84 Q28,96 38,100" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M72,84 Q72,96 62,100" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>' +
+        '<path d="M38,100 Q50,104 62,100" fill="none" stroke="#1A3A6A" stroke-width="9" stroke-linecap="round"/>';
+    }
+
     return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-      sweat +
-      '<rect x="24" y="18" width="52" height="12" rx="4" fill="#1A3A6A" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<rect x="19" y="27" width="62" height="6" rx="2" fill="#142D54" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<circle cx="50" cy="23" r="5" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<text x="50" y="27" text-anchor="middle" font-size="7" fill="#1a1a1a" font-family="Arial,sans-serif">★</text>' +
-      '<circle cx="50" cy="52" r="26" fill="#E04040" stroke="#1a1a1a" stroke-width="2.5"/>' +
-      '<ellipse cx="24" cy="52" rx="6" ry="8" fill="#D03030" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<ellipse cx="76" cy="52" rx="6" ry="8" fill="#D03030" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<ellipse cx="42" cy="48" rx="5" ry="5" fill="white" stroke="#333" stroke-width="1"/>' +
-      '<circle cx="42" cy="48" r="3" fill="#1a1a1a"/>' +
-      '<circle cx="41" cy="47" r="1" fill="white"/>' +
-      '<ellipse cx="58" cy="48" rx="5" ry="5" fill="white" stroke="#333" stroke-width="1"/>' +
-      '<circle cx="58" cy="48" r="3" fill="#1a1a1a"/>' +
-      '<circle cx="57" cy="47" r="1" fill="white"/>' +
-      eyebrows +
-      '<path d="M39,61 Q45,65 50,62 Q55,65 61,61" fill="#4A2000" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<path d="M39,61 Q41,69 48,63" fill="#4A2000"/>' +
-      '<path d="M61,61 Q59,69 52,63" fill="#4A2000"/>' +
-      vein + mouth +
-      '<ellipse cx="50" cy="100" rx="23" ry="20" fill="#1A3A6A" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<circle cx="40" cy="88" r="4" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<circle cx="40" cy="97" r="4" fill="#C0A000" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<circle cx="40" cy="106" r="4" fill="#E0C020" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<circle cx="54" cy="88" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<circle cx="54" cy="96" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
-      '<circle cx="54" cy="104" r="2" fill="#8AA0BB" stroke="#1a1a1a" stroke-width="1"/>' +
+      sweat + tears +
+      '<rect x="24" y="18" width="52" height="13" rx="4" fill="#1A3A6A" stroke="' + INK + '" stroke-width="2.5"/>' +
+      '<rect x="18" y="28" width="64" height="7" rx="2" fill="#142D54" stroke="' + INK + '" stroke-width="2"/>' +
+      '<circle cx="50" cy="23" r="5.5" fill="#E0C020" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<text x="50" y="27" text-anchor="middle" font-size="8" fill="' + INK + '">★</text>' +
+      '<circle cx="50" cy="54" r="27" fill="' + skin + '" stroke="' + INK + '" stroke-width="3"/>' +
+      '<ellipse cx="22" cy="54" rx="6" ry="8" fill="' + skinDk + '" stroke="' + INK + '" stroke-width="2"/>' +
+      '<ellipse cx="78" cy="54" rx="6" ry="8" fill="' + skinDk + '" stroke="' + INK + '" stroke-width="2"/>' +
+      '<ellipse cx="42" cy="50" rx="5.5" ry="5.5" fill="white" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<circle cx="42" cy="50" r="3.2" fill="' + INK + '"/>' +
+      '<circle cx="43" cy="49" r="1.2" fill="white"/>' +
+      '<ellipse cx="58" cy="50" rx="5.5" ry="5.5" fill="white" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<circle cx="58" cy="50" r="3.2" fill="' + INK + '"/>' +
+      '<circle cx="59" cy="49" r="1.2" fill="white"/>' +
+      eyebrows + vein +
+      '<path d="M39,62 Q45,66 50,63 Q55,66 61,62 Q63,72 58,76 Q50,78 42,76 Q37,72 39,62 Z" fill="#4A2000" stroke="' + INK + '" stroke-width="1.5"/>' +
+      mouth +
+      '<path d="M28,82 Q22,104 30,118 Q50,124 70,118 Q78,104 72,82 Q60,88 50,88 Q40,88 28,82 Z" fill="#1A3A6A" stroke="' + INK + '" stroke-width="2.5"/>' +
+      '<circle cx="40" cy="92" r="3.5" fill="#E0C020" stroke="' + INK + '" stroke-width="1"/>' +
+      '<circle cx="40" cy="102" r="3.5" fill="#E0C020" stroke="' + INK + '" stroke-width="1"/>' +
+      '<circle cx="40" cy="112" r="3.5" fill="#E0C020" stroke="' + INK + '" stroke-width="1"/>' +
       arms +
       '</svg>';
   }
 
   function svgOverClock(pose) {
-    var meltdown = pose === 'meltdown';
-    var liquidY  = meltdown ? 50 : 46;
-    var liquidH  = 60 - liquidY;
-    var bubbles  = meltdown
-      ? '<circle cx="44" cy="' + (liquidY - 8)  + '" r="2"   fill="rgba(255,255,255,0.55)"/>' +
-        '<circle cx="54" cy="' + (liquidY - 14) + '" r="1.5" fill="rgba(255,255,255,0.55)"/>' +
-        '<circle cx="60" cy="' + (liquidY - 6)  + '" r="2.5" fill="rgba(255,255,255,0.55)"/>'
-      : '<circle cx="46" cy="' + (liquidY - 6)  + '" r="1.5" fill="rgba(255,255,255,0.45)"/>' +
-        '<circle cx="56" cy="' + (liquidY - 10) + '" r="1"   fill="rgba(255,255,255,0.45)"/>';
-    var steam = meltdown
-      ? '<path d="M68,16 Q72,10 70,4 Q75,8 73,2" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>' +
-        '<path d="M74,20 Q79,13 77,7 Q82,11 80,5" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>'
-      : '<path d="M68,18 Q71,12 69,7" fill="none" stroke="#CCC" stroke-width="1.5" stroke-linecap="round"/>';
-    var jitter = meltdown
-      ? '<line x1="27" y1="46" x2="21" y2="52" stroke="#888" stroke-width="1" stroke-linecap="round"/>' +
-        '<line x1="73" y1="46" x2="79" y2="52" stroke="#888" stroke-width="1" stroke-linecap="round"/>'
+    // Poses: smug (default), meltdown, scheming, gloating, deflated, closeup
+    var isMelt    = pose === 'meltdown';
+    var isScheme  = pose === 'scheming';
+    var isGloat   = pose === 'gloating';
+    var isDeflate = pose === 'deflated';
+    var isCloseup = pose === 'closeup';
+
+    if (isCloseup) {
+      return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+        // Coffee-jar head with steam
+        '<path d="M30,80 Q72,80 75,4 Q80,12 76,8 Q82,4 78,0" fill="none" stroke="#AAA" stroke-width="1.5" stroke-linecap="round"/>' +
+        '<rect x="14" y="14" width="72" height="76" rx="10" fill="rgba(210,235,255,0.88)" stroke="' + INK + '" stroke-width="3.5"/>' +
+        '<rect x="18" y="48" width="64" height="38" fill="#5A2F00" opacity="0.92"/>' +
+        '<ellipse cx="50" cy="48" rx="32" ry="3" fill="#7A4A00"/>' +
+        '<circle cx="36" cy="56" r="2.5" fill="rgba(255,255,255,0.55)"/>' +
+        '<circle cx="60" cy="64" r="3" fill="rgba(255,255,255,0.55)"/>' +
+        '<circle cx="50" cy="72" r="2" fill="rgba(255,255,255,0.55)"/>' +
+        // Goggle eye
+        '<circle cx="50" cy="42" r="14" fill="rgba(255,255,215,0.9)" stroke="' + INK + '" stroke-width="2.5"/>' +
+        '<circle cx="50" cy="42" r="6" fill="' + INK + '"/>' +
+        '<circle cx="52" cy="40" r="2" fill="white"/>' +
+        // Sinister grin
+        '<path d="M30,72 Q50,82 70,72" fill="#3A1500" stroke="' + INK + '" stroke-width="2.5"/>' +
+        '<path d="M34,72 L38,76 M42,73 L42,77 M50,74 L50,78 M58,73 L58,77 M62,72 L66,76" stroke="white" stroke-width="1.5"/>' +
+        '</svg>';
+    }
+
+    var liquidY = isMelt ? 50 : (isDeflate ? 56 : 46);
+    var liquidH = 60 - liquidY;
+
+    var bubbles = isMelt
+      ? '<circle cx="44" cy="' + (liquidY - 8)  + '" r="2.2" fill="rgba(255,255,255,0.6)"/>' +
+        '<circle cx="54" cy="' + (liquidY - 14) + '" r="1.8" fill="rgba(255,255,255,0.6)"/>' +
+        '<circle cx="60" cy="' + (liquidY - 6)  + '" r="2.5" fill="rgba(255,255,255,0.6)"/>'
+      : '<circle cx="46" cy="' + (liquidY - 6) + '" r="1.5" fill="rgba(255,255,255,0.45)"/>';
+
+    var steam;
+    if (isMelt) {
+      steam = '<path d="M66,18 Q70,10 68,4 Q73,8 71,2" fill="none" stroke="#CCC" stroke-width="2" stroke-linecap="round"/>' +
+        '<path d="M72,22 Q77,14 75,8 Q80,12 78,6" fill="none" stroke="#CCC" stroke-width="2" stroke-linecap="round"/>' +
+        '<path d="M78,18 Q82,11 80,5" fill="none" stroke="#CCC" stroke-width="2" stroke-linecap="round"/>';
+    } else if (isDeflate) {
+      steam = '';
+    } else {
+      steam = '<path d="M68,18 Q71,12 69,7" fill="none" stroke="#CCC" stroke-width="1.8" stroke-linecap="round"/>';
+    }
+
+    // Eye expression
+    var eye;
+    if (isMelt) {
+      eye = '<circle cx="50" cy="30" r="10" fill="rgba(255,255,215,0.9)" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<circle cx="50" cy="30" r="3" fill="' + INK + '"/>' +
+        '<path d="M40,22 Q45,18 52,22" fill="none" stroke="#C03030" stroke-width="2" stroke-linecap="round"/>';
+    } else if (isScheme) {
+      eye = '<circle cx="50" cy="30" r="10" fill="rgba(255,255,215,0.9)" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<ellipse cx="50" cy="32" rx="5" ry="2" fill="' + INK + '"/>';
+    } else if (isDeflate) {
+      eye = '<circle cx="50" cy="30" r="9" fill="rgba(255,255,215,0.7)" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<path d="M44,28 L52,32 M52,28 L44,32" stroke="' + INK + '" stroke-width="2" stroke-linecap="round"/>';
+    } else {
+      eye = '<circle cx="50" cy="30" r="9" fill="rgba(255,255,215,0.9)" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<circle cx="50" cy="30" r="4" fill="' + INK + '"/>' +
+        '<circle cx="51.5" cy="28.5" r="1.5" fill="white"/>';
+    }
+
+    var mouth;
+    if (isMelt) {
+      mouth = '<ellipse cx="50" cy="58" rx="7" ry="4.5" fill="#3A0000" stroke="' + INK + '" stroke-width="1.5"/>';
+    } else if (isGloat) {
+      mouth = '<path d="M40,54 Q50,68 60,54" fill="#3A1500" stroke="' + INK + '" stroke-width="2.2"/>' +
+        '<path d="M40,54 Q50,60 60,54" fill="none" stroke="white" stroke-width="1"/>';
+    } else if (isDeflate) {
+      mouth = '<path d="M44,60 Q50,55 56,60" fill="none" stroke="' + INK + '" stroke-width="2" stroke-linecap="round"/>';
+    } else {
+      mouth = '<path d="M42,55 Q50,62 58,55" fill="none" stroke="' + INK + '" stroke-width="2" stroke-linecap="round"/>';
+    }
+
+    var jitter = isMelt
+      ? '<line x1="27" y1="46" x2="21" y2="52" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>' +
+        '<line x1="73" y1="46" x2="79" y2="52" stroke="#888" stroke-width="1.2" stroke-linecap="round"/>'
       : '';
-    var mouth = meltdown
-      ? '<path d="M43,58 Q50,52 57,58" fill="none" stroke="#333" stroke-width="2"/>'
-      : '<path d="M44,56 Q50,60 56,56" fill="none" stroke="#333" stroke-width="1.5"/>';
+
+    var arms;
+    if (isScheme) {
+      arms = '<path d="M28,72 Q38,76 44,72" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>' +
+        '<path d="M72,72 Q62,76 56,72" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>' +
+        '<circle cx="44" cy="72" r="4" fill="#3A6A30" stroke="' + INK + '" stroke-width="1.5"/>' +
+        '<circle cx="56" cy="72" r="4" fill="#3A6A30" stroke="' + INK + '" stroke-width="1.5"/>';
+    } else if (isGloat) {
+      arms = '<path d="M42,72 Q24,60 14,72" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>' +
+        '<path d="M58,72 Q76,60 86,72" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>';
+    } else if (isDeflate) {
+      arms = '<path d="M42,76 Q34,98 32,108" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>' +
+        '<path d="M58,76 Q66,98 68,108" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>';
+    } else {
+      arms = '<path d="M42,72 Q26,78 22,92" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>' +
+        '<path d="M58,72 Q74,78 78,92" fill="none" stroke="#3A6A30" stroke-width="6" stroke-linecap="round"/>';
+    }
+
     return '<svg viewBox="0 0 100 122" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
       steam + jitter +
-      '<rect x="28" y="10" width="44" height="52" rx="8" fill="rgba(210,235,255,0.8)" stroke="#1a1a1a" stroke-width="2.5"/>' +
-      '<rect x="30" y="' + liquidY + '" width="40" height="' + liquidH + '" fill="#5A2F00" opacity="0.9"/>' +
-      '<ellipse cx="50" cy="' + liquidY + '" rx="20" ry="2" fill="#7A4A00"/>' +
+      // Coffee jar head
+      '<rect x="26" y="8" width="48" height="56" rx="9" fill="rgba(210,235,255,0.8)" stroke="' + INK + '" stroke-width="3"/>' +
+      '<rect x="28" y="' + liquidY + '" width="44" height="' + liquidH + '" fill="#5A2F00" opacity="0.92"/>' +
+      '<ellipse cx="50" cy="' + liquidY + '" rx="22" ry="2.2" fill="#7A4A00"/>' +
       bubbles +
-      '<path d="M72,22 Q82,22 82,37 Q82,52 72,52" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>' +
-      '<path d="M28,24 Q18,21 15,32" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>' +
-      '<circle cx="50" cy="30" r="9" fill="rgba(255,255,215,0.85)" stroke="#555" stroke-width="1"/>' +
-      '<line x1="50" y1="30" x2="50" y2="24" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>' +
-      '<line x1="50" y1="30" x2="55" y2="33" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>' +
-      mouth +
-      '<rect x="42" y="64" width="16" height="40" rx="6" fill="#3A6A30" stroke="#1a1a1a" stroke-width="2"/>' +
-      '<rect x="36" y="66" width="12" height="36" rx="4" fill="#E8E8E8" stroke="#BBB" stroke-width="1"/>' +
-      '<rect x="52" y="66" width="12" height="36" rx="4" fill="#E8E8E8" stroke="#BBB" stroke-width="1"/>' +
-      '<text x="42" y="78" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">⏰</text>' +
-      '<text x="58" y="78" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">⏱</text>' +
-      '<text x="42" y="92" text-anchor="middle" font-size="7" fill="#555" font-family="Arial,sans-serif">🕐</text>' +
-      '<path d="M42,72 Q26,78 22,92" fill="none" stroke="#3A6A30" stroke-width="5" stroke-linecap="round"/>' +
-      '<path d="M58,72 Q74,78 78,92" fill="none" stroke="#3A6A30" stroke-width="5" stroke-linecap="round"/>' +
-      '<ellipse cx="44" cy="106" rx="7" ry="4" fill="#3A6A30" stroke="#1a1a1a" stroke-width="1.5"/>' +
-      '<ellipse cx="56" cy="106" rx="7" ry="4" fill="#3A6A30" stroke="#1a1a1a" stroke-width="1.5"/>' +
+      // Handles
+      '<path d="M74,20 Q86,20 86,38 Q86,56 74,56" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<path d="M26,22 Q14,18 12,32" fill="none" stroke="' + INK + '" stroke-width="3.5" stroke-linecap="round"/>' +
+      eye + mouth +
+      // Body — green coat with clock pockets
+      '<path d="M40,64 Q36,98 38,116 Q50,120 62,116 Q64,98 60,64 Z" fill="#3A6A30" stroke="' + INK + '" stroke-width="2.5"/>' +
+      '<circle cx="50" cy="82" r="6" fill="#E8E8E8" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<line x1="50" y1="78" x2="50" y2="82" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<line x1="50" y1="82" x2="53" y2="83" stroke="' + INK + '" stroke-width="1.5"/>' +
+      '<circle cx="50" cy="100" r="4" fill="#E8E8E8" stroke="' + INK + '" stroke-width="1.2"/>' +
+      arms +
+      '<ellipse cx="44" cy="116" rx="7" ry="4" fill="#3A6A30" stroke="' + INK + '" stroke-width="2"/>' +
+      '<ellipse cx="56" cy="116" rx="7" ry="4" fill="#3A6A30" stroke="' + INK + '" stroke-width="2"/>' +
       '</svg>';
   }
 
@@ -4910,21 +5162,9 @@
           char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
           bubble: 'The oxygen generator on their ship will fail in twelve minutes. I have ensured it. Their haste will DESTROY them! MWAHAHA!',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Jolt will be reckless. He cannot help himself. Reckless actions cause reckless results. This is SCIENCE.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Nobody cautious enough to fix it in time even exists. MWEHE HEE.',
-          bubbleType: 'speech', sfx: null },
         { caption: '🚨 RED ALERT — ABOARD THE SHIP 🚨',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'Oxygen generator failing! Twelve minutes! Everyone remain calm! DO NOT PANIC!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'We must be cautious! Haste makes mistakes! I SAID STAY CALM!',
+          bubble: 'Oxygen generator failing! Twelve minutes! We must be cautious! Haste makes mistakes! STAY CALM!',
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
@@ -4934,93 +5174,33 @@
           char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#EEEEFF',
           bubble: 'Connecting all 50 wires at once is NOT reckless. It is EFFICIENCY. Stand back.',
           bubbleType: 'shout', sfx: null },
-        { caption: 'JOLT GRABS ALL 50 WIRES SIMULTANEOUSLY.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'No time to be cautious — haste is the only option! HERE WE GO!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'ZZZAP!!!' },
         { caption: '0.003 SECONDS LATER...',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I may have been... reckless.',
-          bubbleType: 'speech', sfx: 'PFFFFT' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'YOU BLEW UP THE GENERATOR! THE THING THAT WAS ALREADY BROKEN!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'OVER-CLOCK WATCHES FROM HIS LAIR.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Haste causes mistakes. Reckless actions cause disasters. This is absolutely delightful.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: "It's FINE. I'll use the BACKUP WIRES. Haste is still the answer.",
-          bubbleType: 'shout', sfx: null },
+          bubble: 'I may have been... reckless. No time to be cautious — haste was the only option!',
+          bubbleType: 'speech', sfx: 'ZZZAP!!!' },
         { caption: 'JOLT CONNECTS THE BACKUP WIRES. ALL AT ONCE. AGAIN.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
           bubble: null, bubbleType: null, sfx: 'KA-BOOM!' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
-          bubble: 'THE BACKUP IS ALSO GONE?! WHY?! WE HAVE EIGHT MINUTES! WHY ARE THERE NO MORE WIRES?!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'OVER-CLOCK SMILES.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'Sending a repair-saboteur drone. Just to make this more entertaining.',
           bubbleType: 'speech', sfx: 'DEPLOY' },
         { caption: '🤖 SABOTEUR DRONE ENTERS THE ENGINE ROOM! 🤖',
           char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#FFE0C8',
-          bubble: 'A DRONE?! SERIOUSLY?! NOT TODAY!',
+          bubble: 'A DRONE?! I AM VERY FAST AND NOT AT ALL RECKLESS RIGHT NOW!',
           bubbleType: 'shout', sfx: 'CLANG CLANG' },
-        { caption: 'JOLT CHARGES THE DRONE.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I AM VERY FAST AND NOT AT ALL RECKLESS RIGHT NOW!',
-          bubbleType: 'shout', sfx: 'POW!' },
         { caption: 'THE DRONE SWATS JOLT INTO THE WALL.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
           bubble: 'OW. THAT WAS RECKLESS OF IT.',
           bubbleType: 'speech', sfx: 'WHAM!' },
-        { caption: 'JOLT GETS BACK UP.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'ROUND TWO. I HAVE LEARNED NOTHING.',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'CRASH!' },
-        { caption: 'SIX MINUTES LEFT.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'SIX MINUTES! SOMEONE DO SOMETHING OTHER THAN GETTING HIT!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'THE DRONE SMASHES INTO THE CONTROL PANEL.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'PERFECT CHAOS! Nobody cautious enough to fix this even exists!',
+          bubble: 'PERFECT CHAOS! Nobody cautious enough to fix this even exists! Six minutes left!',
           bubbleType: 'shout', sfx: 'CRUNCH!' },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
-          bubble: '...cautious... careful to avoid danger or mistakes... yes...',
-          bubbleType: 'whisper', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'STAR-SLOTH! NOW IS NOT THE TIME FOR BEING SERENE!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH BLINKS. PICKS UP THE MANUAL.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: 'FOUR MINUTES PASS. STAR-SLOTH READS.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: '...page twelve... wiring diagram... one wire controls the rest...',
           bubbleType: 'whisper', sfx: '...tick...' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'THREE MINUTES! READING IS NOT CAUTIOUS — IT IS SLOW! THERE IS A DIFFERENCE!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...cautious...',
-          bubbleType: 'whisper', sfx: null },
-        { caption: 'STAR-SLOTH RAISES ONE CLAW. SLOWLY.',
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: null,
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'He cannot possibly— the cautious approach takes HOURS! Not one minute! IMPOSSIBLE!',
@@ -5041,17 +5221,9 @@
           bubble: 'HOW?! RECKLESS FAILED! HASTE FAILED! HOW DID CAUTIOUS WIN IN ONE MINUTE?!',
           bubbleType: 'rage', sfx: null },
         { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: '...oh.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'Two reckless attempts made it worse. One cautious minute fixed everything. I need to sit down.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK, IN HIS LAIR. ALONE.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'My drone fell over. MY OWN DRONE.',
-          bubbleType: 'speech', sfx: 'drip... drip...' },
         { caption: 'OXYGEN RESTORED. GALAXY SAFE.',
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
           bubble: 'Haste caused the disaster. Reckless speed made it worse. Being cautious — truly cautious — fixed everything. Star-Sloth wins. Over-Clock loses. Again.',
@@ -5074,11 +5246,7 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'I have been vigilant for months planning this. Vigilant! Every detail accounted for. Every second scheduled.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The opportune moment will arrive. I will be vigilant. And Star-Sloth will be... Star-Sloth.',
+          bubble: 'I have been vigilant for months. The opportune moment will arrive. And Star-Sloth will be... Star-Sloth.',
           bubbleType: 'speech', sfx: 'tick tick tick' },
         { caption: "ABOARD THE SHIP. STAR-SLOTH'S FLIGHT PLAN.",
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
@@ -5091,10 +5259,6 @@
           char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
           bubble: '...nap first...',
           bubbleType: 'whisper', sfx: '...zz... zz...' },
-        { caption: '7:00 AM.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Star-Sloth! We need to leave! STAR-SLOTH!',
-          bubbleType: 'shout', sfx: null },
         { caption: '9:00 AM.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'STAR-SLOTH! THE MISSION! STAR-SLOTH! PLEASE!',
@@ -5103,34 +5267,18 @@
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'He will arrive soon. I am vigilant. I have been vigilant for five hours. That is fine. I am fine.',
           bubbleType: 'speech', sfx: 'tick tick tick' },
-        { caption: null,
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...one more hour...',
-          bubbleType: 'whisper', sfx: '...zz...' },
         { caption: '12:00 PM. THE ADMIRAL JOINS JOLT.',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'WE ARE SIX HOURS LATE! Over-Clock will be vigilant! HE WILL BE WAITING!',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#EEEEFF',
-          bubble: 'Over-Clock must be getting desperate by now. Or very, very vigilant. Either way — BAD.',
-          bubbleType: 'shout', sfx: null },
         { caption: '2:00 PM. OVER-CLOCK PACES.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'I am being vigilant. He WILL arrive. He must. My timing is opportune. The most opportune!',
+          bubble: 'I am being vigilant. He WILL arrive. My timing is opportune. The most opportune!',
           bubbleType: 'speech', sfx: 'tick tick tick' },
-        { caption: '3:00 PM. OVER-CLOCK CHECKS HIS SCANNER.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Still no signal. That is fine. My plan is still opportune. The trap is still set. I am VERY fine.',
-          bubbleType: 'speech', sfx: null },
         { caption: '4:00 PM. OVER-CLOCK HITS HIS CONSOLE.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'WHY IS HE NOT HERE YET?! HOW SLOW CAN ONE SLOTH POSSIBLY BE?!',
           bubbleType: 'rage', sfx: 'BANG BANG BANG' },
-        { caption: 'HIS ASSISTANT DROID SAYS SOMETHING.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'WHAT DO YOU MEAN "THE TIMER IS IRREVERSIBLE"?!',
-          bubbleType: 'rage', sfx: null },
         { caption: '5:00 PM.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'He will arrive. He WILL. I will be vigilant for one more hour. I have been vigilant for ELEVEN HOURS.',
@@ -5139,14 +5287,6 @@
           char: 'starSloth', pose: 'blink', fullWidth: true, bg: '#FFFDE7',
           bubble: '...opportune time to leave...',
           bubbleType: 'whisper', sfx: null },
-        { caption: '5:55 PM. FIVE MINUTES TO DETONATION.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'FIVE MINUTES! COME ON! COME ON! BE LATE! NO — BE ON TIME! COME ON!',
-          bubbleType: 'rage', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'We are still forty minutes away! We are SO late! This is SO bad!',
-          bubbleType: 'shout', sfx: null },
         { caption: '5:59 PM. ONE MINUTE TO DETONATION.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'ONE MINUTE! PLEASE JUST ARRIVE! THIS WAS OPPORTUNE! THE MOST OPPORTUNE!',
@@ -5167,55 +5307,22 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'The trap is GONE. It blew up on its own. Star-Sloth — you saved us by napping.',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'HE DEFEATED OVER-CLOCK BY BEING SIX HOURS LATE?!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'OVER-CLOCK DEPLOYS ATTACK DRONES TO INTERCEPT THEM.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'ATTACK DRONES! They will FORCE the ship to arrive early! Come on, come on!',
           bubbleType: 'rage', sfx: 'LAUNCH' },
-        { caption: 'JOLT SPOTS THE DRONES.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'DRONES! INCOMING! WHY IS OVER-CLOCK SENDING DRONES TO PULL US FASTER?!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH DOES NOT NOTICE THE DRONES.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: '...zz...' },
         { caption: 'JOLT FIGHTS OFF THE DRONES USING THE EMERGENCY BRAKES.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'IF WE ARRIVE EARLY THE TRAP FIRES! I MUST SLOW US DOWN! MUST! SLOW! DOWN!',
           bubbleType: 'shout', sfx: 'CLANG POW CRASH' },
-        { caption: 'JOLT DEFEATS THREE DRONES.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Three down. Seven to go. I am being very vigilant about our arrival time.',
-          bubbleType: 'speech', sfx: 'BONK' },
         { caption: 'OVER-CLOCK CANNOT BELIEVE IT.',
           char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
-          bubble: 'HE IS FIGHTING MY DRONES TO STAY LATE?! HE WANTS TO ARRIVE LATE?! WHY WOULD ANYONE WANT TO ARRIVE LATE?!',
+          bubble: 'HE IS FIGHTING MY DRONES TO STAY LATE?! WHY WOULD ANYONE WANT TO ARRIVE LATE?!',
           bubbleType: 'rage', sfx: null },
-        { caption: '5:58 PM. TWO MINUTES LEFT.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Two minutes to detonation. Forty minutes from arrival. We are going to be FINE.',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'One minute. Thirty. Twenty. Ten. He is still forty minutes away. I was vigilant for nothing.',
-          bubbleType: 'speech', sfx: 'beep... beep...' },
         { caption: 'OVER-CLOCK PRESSES THE ABORT BUTTON. IT IS LOCKED.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'Abort! ABORT! I locked it for dramatic effect! WHY DID I LOCK IT?!',
           bubbleType: 'rage', sfx: null },
-        { caption: "OVER-CLOCK'S ASSISTANT DROID SHRUGS.",
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'For dramatic effect. I said it was for dramatic effect. I remember now.',
-          bubbleType: 'speech', sfx: 'tick...' },
-        { caption: 'STAR-SLOTH IS STILL NAPPING. FORTY MINUTES AWAY.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: '...zz...' },
         { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
           bubble: 'The trap detonated. We are forty minutes away. Star-Sloth is asleep. Over-Clock locked his own abort button for dramatic effect.',
@@ -5246,32 +5353,20 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The Blur-Bunnies cannot be stopped by frantic swatting. They bounce. They bite. They multiply.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Anyone foolish enough to contemplate this will be far too slow. There is no time to contemplate Blur-Bunnies.',
+          bubble: 'They cannot be stopped by frantic swatting. Anyone foolish enough to contemplate them will be far too slow. MWEHE HEE.',
           bubbleType: 'speech', sfx: 'MWEHE HEE' },
         { caption: '🐰 BLUR-BUNNIES ON THE HULL! 🐰',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: "They are eating through the WALLS! Don't contemplate it — DO something!",
           bubbleType: 'shout', sfx: 'MUNCH MUNCH MUNCH' },
         { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I AM SWATTING THEM! FRANTIC SWATTING IS DEFINITELY WORKING!',
-          bubbleType: 'shout', sfx: 'BOING BOING' },
-        { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#FFD0D0',
-          bubble: 'Okay, frantic swatting is NOT working. They are BOUNCY.',
+          bubble: 'Frantic swatting is NOT working. They are BOUNCY.',
           bubbleType: 'speech', sfx: 'BONK — OOF' },
         { caption: 'MORE BLUR-BUNNIES APPEAR.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'Releasing Blur-Bunny Wave Two! Forty more bunnies! They are frantic creatures — perfect for defeating frantic enemies!',
           bubbleType: 'shout', sfx: 'DEPLOY' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'THERE ARE FORTY MORE?! GET THEM! CALL THE NAVY! CALL ANYONE!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'JOLT DEPLOYS THE STATIC CANNON.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'STATIC FIELD ACTIVATED! EAT ELECTRICITY, BUNNIES!',
@@ -5280,41 +5375,22 @@
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'They... absorbed it. They are BIGGER now. I made it worse.',
           bubbleType: 'speech', sfx: 'MUNCH MUNCH MUNCH' },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'DEPLOYING THE FREEZE RAY! STAY STILL, BUNNIES!',
-          bubbleType: 'shout', sfx: 'WHOOOOSH' },
         { caption: 'THE BUNNIES BOUNCE OFF THE ICE. FASTER NOW.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'The ice made them slidey. They are frantic AND slidey.',
+          bubble: 'Five things tried. They are frantic AND slidey. We have made it worse.',
           bubbleType: 'speech', sfx: 'BOING BOING BOING' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
-          bubble: 'WE HAVE TRIED FIVE THINGS AND THEY ARE ALL WORSE! IS THERE ANYTHING WE HAVE NOT TRIED?!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'STAR-SLOTH WALKS TO THE SUPPLY CUPBOARD.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: '...I will contemplate this...',
           bubbleType: 'thought', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'THERE IS NO TIME TO CONTEMPLATE! THE HULL HAS SEVEN MINUTES!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'STAR-SLOTH RETURNS WITH PAINT AND A BRUSH.',
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: '...I have contemplated...',
           bubbleType: 'whisper', sfx: null },
         { caption: 'THREE HOURS LATER. STAR-SLOTH HAS BEEN PAINTING.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: null,
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'WHY IS THE SLOTH PAINTING?! THE HULL IS BEING EATEN! WHY IS NOBODY FRANTIC?!',
           bubbleType: 'rage', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Star-Sloth! The hull! The bunnies! FRANTIC SITUATION! WHY ARE YOU STILL PAINTING?!',
-          bubbleType: 'shout', sfx: null },
         { caption: '...STAR-SLOTH CONTINUES PAINTING...',
           char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
           bubble: '...almost done contemplating... just the shadows...',
@@ -5323,18 +5399,10 @@
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'WHY ARE THEY RUNNING INTO A WALL?! THIS WAS NOT PART OF THE PLAN!',
           bubbleType: 'shout', sfx: 'BONK BONK BONK' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'THE BUNNIES ARE RUNNING INTO THE PAINTING?! THEY THINK IT IS REAL?!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'BLUR-BUNNIES PILE UP AGAINST THE BLAST DOOR. DAZED.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
           bubble: 'They are all stunned. They all hit the painted wall. At full bunny speed.',
           bubbleType: 'speech', sfx: 'bonk... bonk...' },
-        { caption: 'STAR-SLOTH RETURNS TO HIS CHAIR.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...contemplation complete...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'OVER-CLOCK SENDS REINFORCEMENT BUNNIES. WAVE THREE.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'ONE HUNDRED MORE BUNNIES! This is not a painting problem! This is a QUANTITY problem! Release wave three!',
@@ -5343,10 +5411,6 @@
           char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
           bubble: 'THE PAINTING IS HOLDING THEM ALL. EVERY. SINGLE. BUNNY. IS STUCK ON THE PAINTING.',
           bubbleType: 'shout', sfx: 'BONK BONK BONK' },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'It is a pile. A bunny pile. Against a painted wall. This is genuinely impressive.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'OVER-CLOCK DEPLOYS A VACUUM CANNON TO SUCK IN THE PAINTING.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'VACUUM CANNON! Suck in the painting! No painting, no trap!',
@@ -5359,18 +5423,6 @@
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'The vacuum sucked in its own bunnies. Over-Clock has defeated himself twice.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'JOLT TRIES TO HELP. DEPLOYS THE NET CANNON AT THE REMAINING BUNNIES.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'NET CANNON! I will help! I am helpful!',
-          bubbleType: 'shout', sfx: 'FWOMP' },
-        { caption: 'THE NET CATCHES THE ADMIRAL.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'JOLT! I AM IN THE NET AGAIN! AGAIN! WHY AM I ALWAYS IN THE NET?!',
-          bubbleType: 'shout', sfx: 'OOF' },
-        { caption: 'STAR-SLOTH FINISHES THE PAINTING. SIGNS IT.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...I contemplated the brushwork...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'OVER-CLOCK FIRES A HEAT RAY AT THE PAINTING.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'HEAT RAY! Melt the painting! Melt the tunnel! Melt everything!',
@@ -5379,15 +5431,7 @@
           char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
           bubble: 'THEY ARE STUCK IN IT NOW?! I MADE A BUNNY MOSAIC?! THIS WAS NOT THE PLAN!',
           bubbleType: 'rage', sfx: 'bonk... bonk...' },
-                { caption: 'OVER-CLOCK CANNOT BELIEVE WHAT HE SAW.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'They were defeated by a PAINTING?! My Blur-Bunnies lost to ART?! HOW?!',
-          bubbleType: 'rage', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'He painted his way out of it. While we were frantic. He was just... painting.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
+                { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'We were frantic and achieved nothing for three hours. He contemplated and painted for three hours. Same time. Different result.',
           bubbleType: 'speech', sfx: null },
@@ -5417,43 +5461,21 @@
           bubbleType: 'shout', sfx: 'ZAP' },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'A sloth who scurried has never been seen. There is a reason for this. It will be SPECTACULAR.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'And when he scurried into the control room — the ship destroys itself! FOOLPROOF!',
+          bubble: 'A sloth who scurried has never been seen. When he scurried into the control room — the ship destroys itself! FOOLPROOF!',
           bubbleType: 'speech', sfx: 'MWEHE HEE' },
         { caption: 'THE CAFFEINE CANNON FIRES.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: '...I normally meander at a pace that is—',
           bubbleType: 'whisper', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'ZAP — WHOOOOSH!' },
         { caption: 'STAR-SLOTH IS MOVING AT SPEEDS NEVER RECORDED IN SLOTH HISTORY.',
           char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFE0C8',
           bubble: null, bubbleType: null, sfx: 'CRASH!' },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'HE SCURRIED INTO THAT DOOR! AND THAT WALL! HE NEVER SCURRIED BEFORE! THIS IS VERY BAD!',
-          bubbleType: 'shout', sfx: 'OOF OOF OOF' },
         { caption: 'STAR-SLOTH SCURRIED LEFT, RIGHT, LEFT, INTO A CEILING.',
           char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
           bubble: null, bubbleType: null, sfx: 'BONK CRASH WHAM' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'HE SCURRIED THROUGH THE KITCHEN! THE CAFETERIA IS DESTROYED! STOP HIM!',
-          bubbleType: 'shout', sfx: 'SPLAT' },
         { caption: 'OVER-CLOCK ADVANCES, EXPECTING EASY VICTORY.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'He always meandered so gracefully! Now he has scurried INTO my base! PERFECT!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH SCURRIED PAST THE SECURITY GATE.',
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFE0C8',
-          bubble: null, bubbleType: null, sfx: 'CLANG CLANG CRASH' },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
-          bubble: 'He scurried through my security gate! Excellent! He is heading RIGHT for my throne room! BETTER!',
           bubbleType: 'shout', sfx: null },
         { caption: 'OVER-CLOCK DEPLOYS HIS BODYGUARD BOTS.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
@@ -5462,36 +5484,18 @@
         { caption: 'STAR-SLOTH SCURRIED INTO THE BODYGUARD BOTS.',
           char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
           bubble: null, bubbleType: null, sfx: 'POW! WHAM! CRASH!' },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'THAT WAS NOT SUPPOSED TO HAPPEN! HE WAS SUPPOSED TO GET CAUGHT, NOT BOWL THEM OVER!',
-          bubbleType: 'rage', sfx: null },
         { caption: 'BOTS DOWN. STAR-SLOTH SCURRIES ON.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: "He is running through Over-Clock's base and destroying everything IN IT! By accident!",
           bubbleType: 'shout', sfx: 'CRASH BANG BOOM' },
-        { caption: "A WATER COOLER LANDS ON OVER-CLOCK'S HOVER-BOOTS.",
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'MY BOOTS! AGAIN!',
-          bubbleType: 'rage', sfx: 'SPLOSH — FZZZT' },
         { caption: 'STAR-SLOTH SCURRIED THROUGH THE TROPHY ROOM.',
           char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
           bubble: 'MY TROPHIES! MY THRONE! MY EVIL DESK CHAIR! HE SCURRIED THROUGH ALL OF IT!',
           bubbleType: 'rage', sfx: 'CRASH CRASH CRASH' },
-        { caption: "STAR-SLOTH SCURRIED THROUGH OVER-CLOCK'S LABORATORY.",
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFE0C8',
-          bubble: null, bubbleType: null, sfx: 'CRASH CRASH CRASH' },
         { caption: "EXPERIMENTS AND INVENTIONS EVERYWHERE.",
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'MY SHRINK RAY! MY GROW RAY! MY SLIGHTLY-SIDEWAYS RAY! HE SCURRIED THROUGH ALL OF THEM!',
           bubbleType: 'rage', sfx: null },
-        { caption: "THE SLIGHTLY-SIDEWAYS RAY ACTIVATES. EVERYTHING IS AT AN ANGLE.",
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Everything is tilted 15 degrees. I am walking sideways. This is fine. This is absolutely fine.',
-          bubbleType: 'speech', sfx: 'TILT' },
-        { caption: "STAR-SLOTH SCURRIED INTO THE POWER ROOM.",
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'CLANG CLANG BOOM' },
         { caption: "OVER-CLOCK'S ENTIRE POWER GRID FLICKERS.",
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'MY LIGHTS! MY SCREENS! MY VILLAIN SPOTLIGHT! IT IS DARK IN HERE! I CANNOT LOOK MENACING IN THE DARK!',
@@ -5499,28 +5503,14 @@
         { caption: "STAR-SLOTH SCURRIED INTO THE HALL OF TROPHIES.",
           char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFD0D0',
           bubble: null, bubbleType: null, sfx: 'POW! WHAM! CRASH! CLATTER!' },
-        { caption: "EVERY TROPHY OVER-CLOCK EVER WON IS NOW ON THE FLOOR.",
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'MY BEST VILLAIN AWARD 2087! MY RUNNER-UP VILLAIN AWARD 2088! MY PARTICIPATION TROPHY 2089!',
-          bubbleType: 'rage', sfx: 'crash...' },
         { caption: "JOLT WATCHES OPEN-MOUTHED.",
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'He meandered everywhere before. Always meandering. And now he scurried. And this is what happens. THIS IS WHAT HAPPENS.',
           bubbleType: 'shout', sfx: null },
-        { caption: "STAR-SLOTH SCURRIED INTO THE EMERGENCY ESCAPE POD ROOM.",
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'WHOOOOSH CRASH' },
         { caption: "ALL SEVEN ESCAPE PODS LAUNCH SIMULTANEOUSLY.",
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'MY ESCAPE PODS! ALL SEVEN! GONE! NOW I CANNOT ESCAPE! FROM MY OWN BASE!',
           bubbleType: 'rage', sfx: 'LAUNCH LAUNCH LAUNCH' },
-        { caption: "STAR-SLOTH SCURRIED THROUGH THE VILLAIN CAFETERIA.",
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFD0D0',
-          bubble: null, bubbleType: null, sfx: 'SPLAT CRASH SQUISH' },
-        { caption: "OVER-CLOCK'S LUNCH IS EVERYWHERE.",
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'THAT WAS MY LUNCH. I WAS GOING TO EAT THAT. AFTER MY VICTORY. IT WAS A GOOD LUNCH.',
-          bubbleType: 'rage', sfx: 'drip...' },
         { caption: "STAR-SLOTH SCURRIED INTO THE MAIN VILLAIN CONTROL ROOM.",
           char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFD0D0',
           bubble: null, bubbleType: null, sfx: 'CRASH BANG CRASH CRASH CRASH' },
@@ -5532,14 +5522,7 @@
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: '...I appear to have scurried...',
           bubbleType: 'whisper', sfx: null },
-        { caption: 'STAR-SLOTH SURVEYS THE DEVASTATION.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...I shall meander home now...',
-          bubbleType: 'whisper', sfx: null },
-        { caption: "STAR-SLOTH MEANDERED BACK THROUGH OVER-CLOCK'S RUINED BASE.",
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: null,
+        { caption: "STAR-SLOTH MEANDERED HOME THROUGH OVER-CLOCK'S RUINED BASE.",
           char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#E8FFE8',
           bubble: '...I have meandered home...',
           bubbleType: 'thought', sfx: null },
@@ -5551,10 +5534,6 @@
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: "He normally meandered. Over-Clock forced him to scurry. The scurrying destroyed Over-Clock's base. The plan worked. Not how Over-Clock planned.",
           bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'HE DEFEATED THE VILLAIN BY RUNNING AROUND CHAOTICALLY INTO ALL HIS STUFF?!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'OVER-CLOCK DEFEATED. ACCIDENTALLY.',
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
           bubble: "He meandered to victory via accidental scurrying. He always meandered. The scurrying was the plan — just not Star-Sloth's plan. Over-Clock's base is rubble. Star-Sloth is already asleep again.",
@@ -5577,24 +5556,16 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'My agent is trained to resist all interrogation. Stealthy, silent, and utterly uncrackable.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The Admiral will try to scrutinise him. The Admiral cannot scrutinise a sandwich. MWAHAHA.',
+          bubble: 'My agent is stealthy and uncrackable. The Admiral will try to scrutinise him. The Admiral cannot scrutinise a sandwich. MWAHAHA.',
           bubbleType: 'speech', sfx: null },
         { caption: '🕵️ A SPY HAS BEEN CAPTURED! 🕵️',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'SCRUTINISE HIM! Get the passcode! Use every technique! EVERY TECHNIQUE!',
           bubbleType: 'shout', sfx: null },
-        { caption: 'THE ADMIRAL SCRUTINISES THE SPY.',
+        { caption: 'THE ADMIRAL SCRUTINISES THE SPY. SPY SAYS NOTHING.',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'TELL ME THE PASSCODE! I AM SCRUTINISING YOU VERY HARD RIGHT NOW!',
           bubbleType: 'shout', sfx: null },
-        { caption: 'SPY: SAYS NOTHING.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The Admiral will never be stealthy enough to scrutinise my agent. Never.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'JOLT DEPLOYS THE TRUTH SCANNER.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'TRUTH SCANNER ACTIVATED! NOBODY CAN RESIST THIS! NOBODY!',
@@ -5603,11 +5574,7 @@
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#EEEEFF',
           bubble: 'He yawned. At my truth scanner. He yawned AT it.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'JOLT TRIES THE TICKLE PROTOCOL.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'NOBODY. RESISTS. THE TICKLE. PROTOCOL.',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'THE SPY IS NOT TICKLISH.',
+        { caption: 'JOLT TRIES THE TICKLE PROTOCOL. THE SPY IS NOT TICKLISH.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'He is not ticklish. He is a stealthy spy. Of course he is not ticklish.',
           bubbleType: 'speech', sfx: 'sigh...' },
@@ -5615,15 +5582,7 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'THE NOISE MACHINE! IT PLAYS THE MOST ANNOYING SOUND IN THE UNIVERSE!',
           bubbleType: 'shout', sfx: 'WEEEE-WOOOO-WEEEE' },
-        { caption: 'THE ADMIRAL CRACKS FIRST.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'TURN IT OFF! TURN IT OFF! I CANNOT SCRUTINISE ANYTHING IN THIS NOISE! TURN IT OFF!',
-          bubbleType: 'rage', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: true, bg: '#FFE8F8',
-          bubble: 'Frantic noise. Frantic tools. Frantic Admiral. My agent remains stealthy and silent. As trained.',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'THE ADMIRAL GIVES UP. COLLAPSES INTO A CHAIR.',
+        { caption: 'THE ADMIRAL CRACKS. COLLAPSES INTO A CHAIR.',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'I cannot scrutinise him. He is too stealthy. Nothing worked. We are doomed.',
           bubbleType: 'speech', sfx: null },
@@ -5634,9 +5593,6 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'What is he going to DO? He is just... sitting there. That is NOT how you scrutinise someone!',
           bubbleType: 'shout', sfx: null },
-        { caption: 'ONE HOUR. NOT A WORD.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: 'TWO HOURS. STAR-SLOTH BLINKS ONCE.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: null },
@@ -5649,47 +5605,18 @@
           bubble: null, bubbleType: null, sfx: '...' },
         { caption: "THE SPY'S EYE TWITCHES.",
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'No no no. He is trained for THIS. He can handle silence. He IS stealthy. Stay silent, agent! STAY SILENT!',
+          bubble: 'No no no. He is trained for THIS. He IS stealthy. Stay silent, agent! STAY SILENT!',
           bubbleType: 'rage', sfx: null },
-        { caption: 'STAR-SLOTH BLINKS. SLOWLY.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: 'THREE HOURS OF SILENCE. THE SPY CRACKS.',
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: 'FINE! Here is the passcode! Please DO something! Make a noise! ANYTHING!' },
-        { caption: 'OVER-CLOCK SENDS THE SPY A CODED MESSAGE.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'Sending emergency signal to agent! Hold on! Do not crack! DO NOT CRACK!',
-          bubbleType: 'rage', sfx: 'BZZT' },
-        { caption: 'THE SPY CANNOT CHECK HIS COMMUNICATOR. STAR-SLOTH IS WATCHING.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: 'OVER-CLOCK DEPLOYS A RESCUE BOT.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'RESCUE BOT! Break the agent out! He is in an interrogation room with a SLOTH! Save him!',
           bubbleType: 'rage', sfx: 'DEPLOY' },
-        { caption: 'THE RESCUE BOT ENTERS. STAR-SLOTH LOOKS AT IT.',
-          char: 'starSloth', pose: 'blink', fullWidth: true, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
         { caption: "THE RESCUE BOT FREEZES UNDER STAR-SLOTH'S GAZE.",
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'The rescue bot has... stopped. It is just looking at Star-Sloth looking at it. This is the most serene standoff in history.',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK SCREAMS INTO HIS COMMUNICATOR.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'RESCUE BOT! MOVE! DO SOMETHING! YOU ARE SUPPOSED TO RESCUE! MOVE!',
-          bubbleType: 'rage', sfx: null },
-        { caption: 'THE RESCUE BOT CANNOT MOVE. THE SILENCE IS TOO THICK.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I think the rescue bot is also cracking. I think the rescue bot is uncomfortable.',
-          bubbleType: 'speech', sfx: '...' },
-        { caption: 'THE ADMIRAL TRIES TO HELP WITH A LOUD HAILER.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'WILL EVERYONE PLEASE MAKE A NOISE?! THE SILENCE IS MAKING ME UNCOMFORTABLE AND I AM NOT EVEN IN THE ROOM!',
-          bubbleType: 'shout', sfx: 'BOOM' },
-        { caption: 'THE ADMIRAL IS REMOVED FROM THE CORRIDOR.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Sir. Sir. You are not helping. Please go to the canteen.',
           bubbleType: 'speech', sfx: null },
         { caption: 'THREE HOURS AND TEN MINUTES. THE RESCUE BOT ALSO CRACKS.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
@@ -5699,19 +5626,9 @@
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'My agent, my rescue bot, and possibly my own willpower are all cracking. I cannot scrutinise this.',
           bubbleType: 'speech', sfx: 'drip...' },
-        { caption: 'STAR-SLOTH BLINKS. ONCE.',
-          char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: 'THE SPY CANNOT TAKE IT ANYMORE.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
                 { caption: 'PASSCODE RETRIEVED.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'He cracked. My stealthy, uncrackable agent... cracked... because of a sloth sitting still for three hours.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'He was stealthier than the spy. He scrutinised everything by scrutinising nothing. He sat still and won.',
           bubbleType: 'speech', sfx: null },
         { caption: null,
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
@@ -5739,11 +5656,7 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The pirates drifted in silently. They linger near every corridor. Nobody knows they are there. Yet.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Nothing can stop forty pirates who have already drifted inside. Nothing at all. MWEHE HEE.',
+          bubble: 'The pirates drifted in silently. They linger near every corridor. Nothing can stop forty pirates who have already drifted inside. MWEHE HEE.',
           bubbleType: 'speech', sfx: null },
         { caption: '6:00 AM. STAR-SLOTH MAKES OATMEAL.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
@@ -5753,53 +5666,25 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'STAR-SLOTH! PIRATES HAVE DRIFTED THROUGH EVERY AIRLOCK! FORTY PIRATES! DO SOMETHING!',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...the oatmeal must linger on the heat...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'THE PIRATES STORM THE CORRIDORS.',
           char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
           bubble: 'PIRATES IN CORRIDOR A! PIRATES IN CORRIDOR B! PIRATES EVERYWHERE! WE ARE OVERWHELMED!',
           bubbleType: 'shout', sfx: 'CLANG CLANG CLANG' },
-        { caption: 'JOLT TRIES TO FIGHT THE PIRATES.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I WILL FIGHT FORTY PIRATES BY MYSELF! THIS IS FINE! I AM FINE!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'ONE PIRATE SWATS JOLT ASIDE.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
           bubble: 'OW.',
           bubbleType: 'speech', sfx: 'WHAM' },
-        { caption: 'JOLT TRIES AGAIN.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'OKAY! DIFFERENT PIRATE! SAME PLAN!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'OW. AGAIN.',
-          bubbleType: 'speech', sfx: 'BONK' },
         { caption: 'JOLT FIRES THE STATIC CANNON AT THE PIRATES.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'STATIC CANNON! NOBODY RESISTS THE STATIC CANNON!',
           bubbleType: 'shout', sfx: 'FZZZZT' },
         { caption: 'THE CANNON HITS THE CEILING. THE PIRATES LAUGH.',
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#EEEEFF',
-          bubble: 'I missed. Forty pirates. I missed ALL FORTY.',
+          bubble: 'I missed. Forty pirates. The pirates lingered in every corridor and I missed ALL FORTY.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK WATCHES, DELIGHTED.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The pirates lingered in every corridor! Jolt cannot fight them! My plan is WORKING!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH STIRS THE OATMEAL.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...it lingers on the heat so well...',
-          bubbleType: 'thought', sfx: null },
         { caption: '10:00 AM. THE OATMEAL HAS LINGERED ON THE HEAT FOR FOUR HOURS.',
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: 'GLORP GLORP GLORP' },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...it has lingered long enough...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'STAR-SLOTH TIPS THE POT.',
           char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: 'SPLOOOOOSH' },
@@ -5812,53 +5697,17 @@
           bubble: 'The pirates have stopped. They are all stuck in... oatmeal?',
           bubbleType: 'speech', sfx: 'SQUELCH SQUELCH' },
         { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Every pirate is stuck. The oatmeal drifted into every single corridor. How did he know?',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'MY PIRATES! They drifted into a PORRIDGE TRAP?! THIS STUFF IS EVERYWHERE! MY BOOTS! AGAIN!',
           bubbleType: 'rage', sfx: 'SQUELCH' },
-        { caption: 'JOLT TRIES THE FREEZE PROTOCOL.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'FREEZE GUN! Nobody moves in ice! NOBODY!',
-          bubbleType: 'shout', sfx: 'WHOOOOSH' },
-        { caption: 'THE FREEZE GUN FREEZES THE CORRIDOR. AND JOLT.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I forgot I was standing in the corridor. OW.',
-          bubbleType: 'speech', sfx: 'CRACK' },
         { caption: 'THE PIRATES WALK AROUND THE ICE PATCH.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'They... went around it. My ice covered six square metres. They went around six square metres.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'JOLT DEPLOYS THE TANGLE WIRE.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'TANGLE WIRE! From Corridor B to Corridor C! ACROSS EVERY PATH!',
-          bubbleType: 'shout', sfx: 'SPROING' },
         { caption: 'THE ADMIRAL RUNS INTO THE TANGLE WIRE.',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'JOLT! I AM IN THE WIRE! I AM TANGLED! THE PIRATES ARE STEPPING OVER ME!',
           bubbleType: 'shout', sfx: 'OOF' },
-        { caption: 'A PIRATE STOPS TO HELP THE ADMIRAL OUT OF THE WIRE.',
-          char: 'jolt', pose: 'translating', fullWidth: true, bg: '#EEEEFF',
-          bubble: 'A pirate helped the Admiral out of the wire. A PIRATE. The pirate was polite. This is the worst day.',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'JOLT TRIES THE GRAVITY REVERSAL SWITCH.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'GRAVITY REVERSAL! FLIP THEM TO THE CEILING!',
-          bubbleType: 'shout', sfx: 'BZZT' },
-        { caption: 'EVERYONE STICKS TO THE CEILING. INCLUDING JOLT.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'Everyone. Including me. The pirates are fine. They are on the ceiling now. Still in the corridors.',
-          bubbleType: 'speech', sfx: 'thud... thud...' },
-        { caption: '9:00 AM. STAR-SLOTH STIRS THE OATMEAL. ON THE CEILING.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...gravity is... different today... the oatmeal lingers nicely...',
-          bubbleType: 'thought', sfx: null },
-        { caption: 'GRAVITY RESTORED. EVERYONE FALLS. PIRATES UNAFFECTED.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I ran out of ideas. I genuinely ran out. The pirates are still here. In my corridors.',
-          bubbleType: 'speech', sfx: 'THUD' },
         { caption: 'OVER-CLOCK IS GLEEFUL.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'My pirates have lingered in every corridor for four hours and Jolt has achieved nothing. NOTHING. MWAHAHA.',
@@ -5870,10 +5719,6 @@
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
           bubble: 'Forty pirates. Defeated by breakfast. He just lingered on making oatmeal for four hours. And it worked.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'STAR-SLOTH FINALLY TAKES ONE SPOONFUL.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...it lingered just right...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'SHIP SECURED. OVER-CLOCK DEFEATED BY BREAKFAST.',
           char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
           bubble: 'The pirates drifted in through every airlock. The oatmeal drifted into every corridor. One drifted in. The other drifted them out. Star-Sloth saved the ship with porridge.',
@@ -5897,28 +5742,16 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Nobody can be rational under this pressure. Nobody can stay resolute with ten minutes left.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'They will become agitated. They will panic. They will use all three attempts. And then— BOOM.',
+          bubble: 'Nobody can be rational under this pressure. Nobody can stay resolute. They will become agitated. They will panic. And then— BOOM.',
           bubbleType: 'speech', sfx: 'MWEHE HEE' },
         { caption: '💥 SELF-DESTRUCT INITIATED. 10:00. 3 ATTEMPTS. 💥',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'Stay rational, everyone! We MUST be rational! Stay rational! BE RATIONAL! NOW!',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I AM RATIONAL. THIS IS MY RATIONAL FACE. WE HAVE NINE MINUTES FORTY SECONDS.',
-          bubbleType: 'shout', sfx: null },
         { caption: 'JOLT TYPES THE FIRST ATTEMPT.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'PASSWORD ONE TWO THREE! OBVIOUSLY!',
           bubbleType: 'shout', sfx: 'BZZT — WRONG' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'ONE ATTEMPT LEFT AFTER THE NEXT! STAY RATIONAL! BE RATIONAL! I AM RATIONAL!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'JOLT TYPES THE SECOND ATTEMPT.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: '1 2 3 4 5 6 7 8! SURELY THAT IS IT!',
@@ -5931,107 +5764,40 @@
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'One attempt remaining! Five minutes! They will be too agitated to be rational! VICTORY IS MINE!',
           bubbleType: 'shout', sfx: 'BEEP BEEP BEEP' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'THREE MINUTES! WHY HAS NOBODY TYPED ANYTHING?! TYPE SOMETHING! BE RATIONAL AND TYPE!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH SLOWLY PUSHES JOLT ASIDE.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: 'STAR-SLOTH SITS DOWN AT THE CONSOLE.',
+        { caption: 'STAR-SLOTH SLOWLY PUSHES JOLT ASIDE AND SITS AT THE CONSOLE.',
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: '...resolute...',
           bubbleType: 'whisper', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'He cannot stay resolute with ninety seconds left! No one can! The agitation will take over! IMPOSSIBLE!',
-          bubbleType: 'speech', sfx: 'BEEP BEEP BEEP' },
         { caption: 'ONE CHARACTER. PER SECOND. RESOLUTE.',
           char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: 'click... click... click' },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'TWENTY SECONDS! HE IS STILL TYPING! ONE CLICK PER SECOND! STAR-SLOTH!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'TEN SECONDS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'Ten... nine... eight... even the resolute break at the end! Seven... six... COME ON!',
           bubbleType: 'rage', sfx: 'BEEP BEEP BEEP' },
-        { caption: 'STAR-SLOTH PRESSES THE FINAL KEY.',
-          char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'click.' },
         { caption: 'THREE SECONDS. STAR-SLOTH PRESSES THE FINAL KEY.',
-          char: 'starSloth', pose: 'action', fullWidth: false, bg: '#FFFDE7',
+          char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFFDE7',
           bubble: null, bubbleType: null, sfx: 'click.' },
         { caption: 'OVER-CLOCK WATCHES THE SCREEN. TWO SECONDS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'Two seconds. One. Zero— wait. Zero.',
-          bubbleType: 'speech', sfx: 'BEEP... silence' },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'Zero.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'ZERO?! It DEACTIVATED?! HOW?! IT IS AT ZERO AND IT DEACTIVATED?! WHAT?!',
-          bubbleType: 'rage', sfx: null },
+          bubble: 'Two seconds. One. Zero— wait. Zero. ZERO?! It DEACTIVATED?! HOW?!',
+          bubbleType: 'rage', sfx: 'BEEP... silence' },
         { caption: 'THE SELF-DESTRUCT SCREEN READS: DEACTIVATED.',
           char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#E8FFE8',
           bubble: 'DEACTIVATED! STAR-SLOTH GOT IT! AT ZERO! AT LITERALLY ZERO SECONDS! HE GOT IT!',
           bubbleType: 'shout', sfx: 'YESSS!' },
-        { caption: 'STAR-SLOTH SITS BACK.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...resolute...',
-          bubbleType: 'whisper', sfx: null },
         { caption: 'OVER-CLOCK CHECKS THE LOG. STAR-SLOTH ENTERED 47 CHARACTERS IN 47 SECONDS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'One. Character. Per. Second. For forty-seven seconds. While agitated screaming surrounded him. While MY drone blared. While the timer hit zero.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK SITS DOWN.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'I have never been that resolute about anything in my life.',
-          bubbleType: 'speech', sfx: 'sigh...' },
                 { caption: 'DEACTIVATED.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'RESOLUTE?! HE WAS RESOLUTE?! HOW?! HOW IS A SLOTH MORE RESOLUTE THAN ME?!',
+          bubble: 'RESOLUTE?! HE WAS RESOLUTE?! HOW IS A SLOTH MORE RESOLUTE THAN ME?!',
           bubbleType: 'rage', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: '...he did it. He was rational when everything was on the line. He was resolute for every single click.',
-          bubbleType: 'speech', sfx: null },
         { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'I was agitated. The Admiral was agitated. Over-Clock was certain. Star-Sloth was resolute. One of us got it right.',
           bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK DEPLOYS AN AGITATION DRONE TO DISTRACT STAR-SLOTH.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'AGITATION DRONE! It plays an alarm sound directly in his ear! Nobody can stay resolute in that noise!',
-          bubbleType: 'shout', sfx: 'DEPLOY' },
-        { caption: 'THE AGITATION DRONE ARRIVES. FIFTEEN SECONDS LEFT.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'STAR-SLOTH! DRONE! IT IS MAKING NOISE DIRECTLY AT YOUR HEAD! STAR-SLOTH!',
-          bubbleType: 'shout', sfx: 'WEEEE-WOOOO-WEEEE' },
-        { caption: 'STAR-SLOTH TYPES THROUGH THE NOISE.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'click... click...' },
-        { caption: 'OVER-CLOCK INCREASES THE VOLUME.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'MAXIMUM VOLUME! MAXIMUM AGITATION! NOBODY IS THAT RESOLUTE!',
-          bubbleType: 'rage', sfx: 'WEEEEEEEE' },
-        { caption: "THE ADMIRAL CRACKS. JOLT CRACKS. THE DRONE'S OWN SPEAKER CRACKS.",
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I AM EXTREMELY AGITATED. THIS IS THE MOST AGITATED I HAVE EVER BEEN. MAKE IT STOP.',
-          bubbleType: 'rage', sfx: null },
-        { caption: 'STAR-SLOTH TYPES. CLICK. CLICK.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'click... click...' },
-        { caption: 'THE DRONE RUNS OUT OF BATTERY. FIVE SECONDS LEFT.',
-          char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
-          bubble: 'NO! THE DRONE BATTERY! I SHOULD HAVE CHARGED IT! I KNEW I SHOULD HAVE CHARGED IT!',
-          bubbleType: 'rage', sfx: 'fzzzt... dead' },
-        { caption: 'STAR-SLOTH DOES NOT NOTICE THE DRONE IS GONE.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'click...' },
                 { caption: 'OVER-CLOCK, ALONE IN HIS LAIR.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'I built a system to make them agitated. And one of them was so rational... so resolute... it did not matter.',
@@ -6058,55 +5824,32 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'And I will be waiting with my cannon array! Speed through and hit asteroids! Stop and get shot! There is no way through!',
+          bubble: 'I will be waiting with my cannon array! Speed through and hit asteroids! Diligent slowness? My cannons auto-target anything still. FOOLPROOF!',
           bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Diligent slowness? No pilot is slow ENOUGH. My cannons auto-target anything still enough to hit. FOOLPROOF!',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'THE SHIP REACHES THE ASTEROID FIELD.',
+        { caption: 'THE SHIP REACHES THE ASTEROID FIELD. JOLT GRABS THE CONTROLS.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'We need to be reckless and FAST! Being diligent wastes time! FULL SPEED AHEAD!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'JOLT GRABS THE CONTROLS.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I am reckless AND skilled! These are different things! Mostly!',
           bubbleType: 'shout', sfx: 'SCRAPE SCRAPE CRUNCH' },
         { caption: 'JOLT HITS THREE ASTEROIDS IN TWO SECONDS.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
           bubble: 'Okay, three asteroids. That is a normal amount to hit immediately.',
           bubbleType: 'speech', sfx: 'CLANG CLANG BONK' },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
-          bubble: 'BEING RECKLESS IS EXACTLY WHAT OVER-CLOCK WANTS! GET AWAY FROM THE CONTROLS!',
-          bubbleType: 'shout', sfx: null },
         { caption: 'STAR-SLOTH TAKES THE WHEEL.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: '...diligent... and careful...',
           bubbleType: 'thought', sfx: null },
         { caption: 'STAR-SLOTH DROPS SPEED TO 1 MPH.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'ONE MILE PER HOUR?! WE WILL BE SITTING DUCKS! OVER-CLOCK WILL FIRE EVERYTHING!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'WE WILL BE HIT! RECKLESS SPEED IS THE ONLY OPTION! WHY IS HE GOING SO SLOWLY?!',
+          bubble: 'ONE MILE PER HOUR?! WE WILL BE SITTING DUCKS! RECKLESS SPEED IS THE ONLY OPTION!',
           bubbleType: 'shout', sfx: null },
         { caption: 'OVER-CLOCK FIRES EVERYTHING.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'CANNON ARRAY FIRE! They are moving too slowly to dodge! DESTROY THEM!',
           bubbleType: 'shout', sfx: 'BOOM BOOM BOOM' },
-        { caption: 'THE SHOTS ARRIVE. SLOWLY. AND BOUNCE.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'Why. Will. They. Not. HIT?! THEY ARE MOVING ONE MILE PER HOUR!',
-          bubbleType: 'rage', sfx: 'boing boing boing' },
         { caption: 'DILIGENT SLOWNESS. SHIELDS ABSORB EVERY TAP.',
-          char: 'starSloth', pose: 'blink', fullWidth: true, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'bonk... bonk... bonk' },
-        { caption: 'OVER-CLOCK FIRES HIS ENTIRE ARSENAL.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: "FIRE EVERYTHING! FIRE THE BACKUP! FIRE THE BACKUP'S BACKUP! FIRE IT ALL!",
-          bubbleType: 'rage', sfx: 'BOOM BOOM BOOM' },
+          char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
+          bubble: 'Why. Will. They. Not. HIT?! FIRE THE BACKUP! FIRE IT ALL!',
+          bubbleType: 'rage', sfx: 'boing boing boing' },
         { caption: 'ALL OF IT BOUNCES OFF THE SLOW-MOVING SHIELDS.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
           bubble: 'Every single shot bounces off. Because we are going one mile per hour. The shields are not even trying.',
@@ -6115,33 +5858,10 @@
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'EMPTY?! I wasted EVERYTHING on a diligent sloth going ONE MILE PER HOUR?!',
           bubbleType: 'rage', sfx: 'click click click' },
-        { caption: 'STAR-SLOTH DILIGENTLY STEERS AROUND THE FINAL ASTEROID.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...diligent...',
-          bubbleType: 'whisper', sfx: null },
-        { caption: 'THROUGH WITHOUT A SCRATCH.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#E8FFE8',
-          bubble: 'We are THROUGH! Not a scratch! How?! HOW?! One mile per hour. That is how.',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'I told everyone to be reckless. And the diligent approach worked. I am going to sit quietly for a moment.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'OVER-CLOCK, SURROUNDED BY EMPTY AMMO CASINGS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'I built a TRAP for reckless pilots. And a diligent sloth at one mile per hour walked straight through it. I hate diligent sloths.',
           bubbleType: 'speech', sfx: 'sigh...' },
-        { caption: 'OVER-CLOCK FIRES HIS SECRET RESERVE CANNON.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'SECRET RESERVE CANNON! I kept this one hidden! FIRE EVERYTHING LEFT!',
-          bubbleType: 'rage', sfx: 'BOOM BOOM BOOM BOOM' },
-        { caption: 'ALL OF IT BOUNCES OFF.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: 'bonk... bonk... bonk' },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
-          bubble: 'Still bouncing. We are still diligently going one mile per hour. Still bouncing.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'OVER-CLOCK DEPLOYS HIS COMBAT BOTS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'COMBAT BOTS! Fly out and STOP THEM! They cannot be diligent through combat bots!',
@@ -6150,33 +5870,10 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'I WILL FIGHT THEM! I AM VERY RECKLESS ABOUT THIS AND THAT IS FINE!',
           bubbleType: 'shout', sfx: 'POW WHAM CRASH' },
-        { caption: 'JOLT DEFEATS THE COMBAT BOTS. GETS HIT BY A RICOCHET.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'OW. All bots down. I am down too. But THEY are more down.',
-          bubbleType: 'speech', sfx: 'BONK' },
-        { caption: 'STAR-SLOTH DILIGENTLY STEERS AROUND A PARTICULARLY LARGE ASTEROID.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...diligent...',
-          bubbleType: 'thought', sfx: null },
         { caption: 'OVER-CLOCK RAMS HIS OWN SHIP INTO THE PATH.',
           char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
           bubble: 'I WILL BLOCK THEM MYSELF! MY OWN SHIP! RIGHT IN THE PATH! THEY CANNOT GO AROUND ME!',
           bubbleType: 'rage', sfx: null },
-        { caption: "STAR-SLOTH DILIGENTLY STEERS AROUND OVER-CLOCK'S SHIP. AT ONE MILE PER HOUR.",
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: null, bubbleType: null, sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'HE WENT AROUND MY SHIP! I AM BLOCKING THE PATH! HOW DID HE GO AROUND MY SHIP?!',
-          bubbleType: 'rage', sfx: null },
-        { caption: 'STAR-SLOTH HAS BEEN DILIGENTLY NAVIGATING FOR FOUR HOURS.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...almost through...',
-          bubbleType: 'whisper', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'He has been at this wheel for four hours. Not once did he swerve recklessly. Not once. Four. Hours.',
-          bubbleType: 'speech', sfx: null },
         { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
           bubble: 'We are almost out. Over-Clock has used every cannon. Every bot. His own ship. Everything. And we are still going. One. Mile. Per. Hour.',
@@ -6185,10 +5882,6 @@
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'EMPTY?! I am out of fuel?! I rammed my own ship into their path so many times I ran OUT?! I HATE DILIGENT SLOTHS.',
           bubbleType: 'rage', sfx: 'sputter... sputter...' },
-        { caption: 'STAR-SLOTH PASSES THE FINAL ASTEROID. ONE MILE PER HOUR.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#E8FFE8',
-          bubble: '...diligent...',
-          bubbleType: 'whisper', sfx: null },
         { caption: 'LAST ASTEROID CLEARED. FULL CLEAR.',
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#E8FFE8',
           bubble: 'CLEAR! WE ARE THROUGH! THROUGH! NOT A SCRATCH! ONE MILE PER HOUR! CLEAR!',
@@ -6216,11 +5909,7 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The target is locked. The beam is aimed. They will never know it is coming. The moment is so opportune.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'And even if they knew — they could never get in my way in time. Not even that wandering sloth.',
+          bubble: 'The target is locked. The moment is so opportune. They could never get in my way in time. Not even that wandering sloth.',
           bubbleType: 'speech', sfx: 'tick tick' },
         { caption: '7:00 AM. STAR-SLOTH LEANS ON THE LAUNCH LEVER. BY ACCIDENT.',
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
@@ -6229,42 +5918,22 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: 'THE SHIP HAS WANDERED INTO A LAUNCH SEQUENCE! STAR-SLOTH?! STAR-SLOTH?!',
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...I appear to have wandered...',
-          bubbleType: 'whisper', sfx: null },
         { caption: 'THE SHIP DRIFTED. AT 1 MPH. HEADING NOWHERE IN PARTICULAR.',
           char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
-          bubble: '...I have drifted this way before... peaceful...',
+          bubble: '...I appear to have wandered... peaceful...',
           bubbleType: 'thought', sfx: null },
         { caption: null,
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
           bubble: "WE ARE DRIFTING TOWARD OVER-CLOCK'S SECTOR! TURN AROUND! STAR-SLOTH! WAKE UP!",
           bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...the stars look different this way... peaceful...',
-          bubbleType: 'thought', sfx: null },
         { caption: '9:00 AM. OVER-CLOCK NOTICES SOMETHING ON HIS SCANNER.',
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
           bubble: 'Something has wandered into my sector. Tiny. Slow. One mile per hour. Nothing to worry about.',
           bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: "I HAVE THE CONTROLS! I AM STEERING AWAY! WE ARE— still drifting toward it. Star-Sloth changed the autopilot settings.",
-          bubbleType: 'shout', sfx: null },
-        { caption: '11:00 AM.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'One hour until my opportune laser fires. That slow little ship is still wandering toward my base. Curiously.',
-          bubbleType: 'speech', sfx: 'tick tick tick' },
         { caption: "THE SHIP HAS DRIFTED INTO OVER-CLOCK'S OUTER DEFENCES.",
           char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
           bubble: 'WE HAVE DRIFTED INTO HIS OUTER DEFENCES! HOW?! WHY?! TURN AROUND!',
           bubbleType: 'shout', sfx: null },
-        { caption: '11:55 AM. OVER-CLOCK CHECKS HIS SCANNER.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'Five minutes! That wandering ship is very close now. Almost as if it drifted directly toward the cannon...',
-          bubbleType: 'speech', sfx: 'tick tick tick' },
         { caption: '11:58 AM.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'It has drifted INTO the cannon barrel approach. That cannot be intentional. THAT CANNOT BE INTENTIONAL.',
@@ -6289,66 +5958,18 @@
           char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#E8FFE8',
           bubble: "The base is destroyed. We are fine. He wandered in. And Over-Clock's own weapon destroyed his own base.",
           bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH THOUGHT HE WAS GOING FOR A MORNING DRIVE.',
-          char: 'starSloth', pose: 'blink', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...I simply wandered and drifted...',
-          bubbleType: 'thought', sfx: null },
         { caption: null,
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'HE SAVED THE GALAXY BY FALLING ASLEEP ON THE LAUNCH LEVER?!',
           bubbleType: 'shout', sfx: null },
-        { caption: 'OVER-CLOCK TRIES TO REMOTELY ROTATE THE CANNON.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'ROTATE! ROTATE THE CANNON! POINT IT AWAY FROM THE BARREL! PLEASE ROTATE!',
-          bubbleType: 'rage', sfx: 'GRNND GRNND' },
-        { caption: 'THE CANNON ROTATES. SLOWLY. NOT FAST ENOUGH.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'Come on. Come on. It is rotating. It is definitely rotating. Faster. FASTER.',
-          bubbleType: 'speech', sfx: 'grnnd... grnnd...' },
-        { caption: 'STAR-SLOTH IS STILL DRIFTING. PEACEFULLY.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...I have wandered so peacefully today...',
-          bubbleType: 'thought', sfx: null },
-        { caption: 'JOLT TRIES TO REVERSE THE SHIP.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'REVERSE! REVERSE! I AM REVERSING! WHY ARE WE STILL DRIFTING FORWARD?!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH CHANGED THE CONTROLS TO FORWARD-ONLY.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'He changed the controls to forward-only. There is no reverse. There is only... forward. Into the barrel.',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'OVER-CLOCK TRIES EVERYTHING.',
+        { caption: 'OVER-CLOCK TRIES EVERYTHING. UNPLUGS THE BASE.',
           char: 'overClock', pose: 'meltdown', fullWidth: true, bg: '#FFE8E8',
-          bubble: 'SELF-DESTRUCT ABORT! POWER DOWN! FIRE MANUALLY! UNPLUGGING EVERYTHING!',
+          bubble: 'SELF-DESTRUCT ABORT! POWER DOWN! UNPLUGGING EVERYTHING! The backup is... also the cannon. Of course.',
           bubbleType: 'rage', sfx: 'BZZT CRASH CLANG' },
-        { caption: 'THE POWER GOES OUT IN THE ENTIRE BASE.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'I unplugged everything. The backup power kicked in. The backup is... also the cannon. Of course.',
-          bubbleType: 'speech', sfx: 'click...' },
         { caption: 'JOLT CALCULATES THE ANGLE.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'We wandered 4.3 metres into the barrel. At the opportune moment the cannon fires it will hit its own interior.',
+          bubble: 'We wandered 4.3 metres into the barrel. The cannon fires OUTWARD — we are at the safe end. Over-Clock cannot fire without destroying his own base. We drifted into the safest spot.',
           bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'THAT IS VERY BAD FOR US! WE ARE INSIDE IT! WE ARE IN THE CANNON!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Actually... the cannon fires OUTWARD. We are at the base end. The explosion goes that way. We are fine.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'Oh. Are we fine? Is this a good position to be in?',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I believe so. Over-Clock cannot fire without destroying his own base. We wandered and drifted into the safest spot.',
-          bubbleType: 'speech', sfx: null },
-        { caption: 'STAR-SLOTH BLINKS.',
-          char: 'starSloth', pose: 'blink', fullWidth: true, bg: '#FFFDE7',
-          bubble: '...I simply wandered here...',
-          bubbleType: 'whisper', sfx: null },
                 { caption: 'OVER-CLOCK, SITTING IN HIS RUINED BASE.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'The most opportune moment in history. Ruined. Because a sloth wandered and drifted into my cannon barrel. BY ACCIDENT.',
@@ -6376,33 +5997,21 @@
           bubbleType: 'shout', sfx: null },
         { caption: null,
           char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'He is swift. He is slippery. He runs laps around any pursuer. No serene, placid creature can catch something swift.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The only way to catch swift is to be MORE swift. And nobody is more swift than my thief. MWAHAHA.',
+          bubble: 'He is swift. He runs laps around any pursuer. No serene, placid creature can catch something swift. Nobody is more swift than my thief. MWAHAHA.',
           bubbleType: 'speech', sfx: 'ZOOOOOM' },
         { caption: "THE ADMIRAL'S MEDAL HAS BEEN STOLEN!",
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'A SWIFT THIEF! HE IS TOO SWIFT! AFTER HIM! ALL UNITS — AFTER HIM!',
           bubbleType: 'shout', sfx: 'ZOOOOOM' },
         { caption: 'JOLT GIVES CHASE.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I AM ALSO SWIFT! I AM ALMOST AS SWIFT! I AM DEFINITELY CATCHING HIM!',
-          bubbleType: 'shout', sfx: null },
-        { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I am not catching him.',
+          bubble: 'I AM ALSO SWIFT! I AM ALMOST AS SWIFT! ...I am not catching him.',
           bubbleType: 'speech', sfx: 'SLIP' },
         { caption: 'THE THIEF RUNS LAPS AROUND THE CIRCULAR STATION.',
           char: 'admiral', pose: 'exploding', fullWidth: true, bg: '#FFF0E0',
           bubble: 'HE IS LAPPING US! HE IS LAPPING THE CHASERS! A THIEF IS LAPPING THE SPACE NAVY!',
           bubbleType: 'shout', sfx: 'WHOOOOSH' },
-        { caption: 'LAP 2. JOLT SETS A TRAP.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'NET LAUNCHER! NOTHING ESCAPES THE NET LAUNCHER!',
-          bubbleType: 'shout', sfx: 'FWOMP' },
-        { caption: 'THE THIEF DODGES THE NET. IT CATCHES THE ADMIRAL.',
+        { caption: 'LAP 2. THE THIEF DODGES THE NET. IT CATCHES THE ADMIRAL.',
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'JOLT! I AM IN THE NET! THE WRONG ONE IS IN THE NET! JOLT!',
           bubbleType: 'shout', sfx: 'OOF' },
@@ -6414,26 +6023,10 @@
           char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
           bubble: '...serene...',
           bubbleType: 'thought', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'zoom', fullWidth: true, bg: '#EEEEFF',
-          bubble: 'Star-Sloth is just standing there with his hand out. The thief is moving at 60 mph. THIS IS NOT A PLAN.',
-          bubbleType: 'shout', sfx: null },
         { caption: 'LAP 4. JOLT TRIES THE SLIPPERY FLOOR PROTOCOL.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'SLIPPERY FLOOR! NOTHING RUNS ON SLIPPERY FLOORS!',
-          bubbleType: 'shout', sfx: 'SPRAAAY' },
-        { caption: null,
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#FFD0D0',
-          bubble: 'I forgot the floor was slippery. OW.',
+          bubble: 'SLIPPERY FLOOR! ...I forgot the floor was slippery. OW.',
           bubbleType: 'speech', sfx: 'SLIP CRASH OOF' },
-        { caption: 'LAP 5. THE ADMIRAL IS EXHAUSTED.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'I cannot keep up! He is TOO SWIFT! I need a moment! Just a moment!',
-          bubbleType: 'speech', sfx: 'wheeze wheeze' },
-        { caption: 'LAP 6. OVER-CLOCK IS LESS CONFIDENT.',
-          char: 'overClock', pose: 'smug', fullWidth: false, bg: '#FFE8F8',
-          bubble: 'The sloth is still just standing there. With his hand out. That is fine. The thief will not run into it.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'LAP 7. JOLT WHEEZES.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
           bubble: 'Star-Sloth is so placid! HOW is he so serene while I am collapsing?! HOW?!',
@@ -6454,49 +6047,13 @@
           char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
           bubble: 'He caught the thief by not chasing. He was serene. He was placid. He just waited.',
           bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'Swift enough to run eight laps. Not swift enough to see a calm sloth standing still. That is something.',
-          bubbleType: 'speech', sfx: null },
         { caption: 'OVER-CLOCK CANNOT ACCEPT THIS.',
           char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
           bubble: 'He ran into a HAND. My SWIFT thief ran into a HAND that was STANDING STILL. Mathematically impossible.',
           bubbleType: 'rage', sfx: null },
-        { caption: 'JOLT SITS DOWN AND BREATHES.',
-          char: 'jolt', pose: 'translating', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I ran eight laps. I am not... I am not a well robot right now.',
-          bubbleType: 'speech', sfx: 'wheeze wheeze wheeze' },
-        { caption: 'THE ADMIRAL COUNTS HIS MEDALS.',
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'All medals present! All medals accounted for! Even the one that was stolen! All medals!',
-          bubbleType: 'shout', sfx: null },
-        { caption: 'STAR-SLOTH HAS NOT MOVED FROM HIS SPOT.',
-          char: 'starSloth', pose: 'zen', fullWidth: false, bg: '#FFFDE7',
-          bubble: '...serene...',
-          bubbleType: 'thought', sfx: null },
-        { caption: 'OVER-CLOCK REVIEWS THE FOOTAGE.',
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'I am watching the footage back. The thief was running at sixty miles per hour. The sloth did not move. And then— and then— and then the thief just ran into his hand.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'I will watch it again. Maybe I missed something. Maybe there was a trick.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'overClock', pose: 'meltdown', fullWidth: false, bg: '#FFE8E8',
-          bubble: 'No. No trick. The swift thief ran into a placid hand. My swift thief. My best asset. Into. A. Hand.',
-          bubbleType: 'speech', sfx: 'sigh...' },
-        { caption: 'JOLT FINALLY GETS HIS BREATH BACK.',
-          char: 'jolt', pose: 'zoom', fullWidth: false, bg: '#EEEEFF',
-          bubble: 'I chased a swift thief for eight laps at full speed and achieved nothing. Star-Sloth stood still and caught him. In one move. FROM STANDING STILL.',
-          bubbleType: 'shout', sfx: null },
         { caption: 'THE THIEF IS ESCORTED OUT.',
           char: 'jolt', pose: 'translating', fullWidth: false, bg: '#E8FFE8',
-          bubble: 'The thief said, and I quote: "I have been defeated by a sloth who was just standing there." He looked confused. I understand.',
-          bubbleType: 'speech', sfx: null },
-        { caption: null,
-          char: 'admiral', pose: 'exploding', fullWidth: false, bg: '#FFF0E0',
-          bubble: 'He was serene through eight laps of noise and chaos. Placid while everyone else was running. And he won.',
+          bubble: 'The thief said, and I quote: "I have been defeated by a sloth who was just standing there." Swift enough to run eight laps. Not swift enough to see a calm sloth.',
           bubbleType: 'speech', sfx: null },
         { caption: 'STAR-SLOTH SITS BACK IN HIS CHAIR.',
           char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
@@ -6523,33 +6080,59 @@
 
     story.blurb = story.blurb + ' Slapstick chaos meets patient heroics.';
 
-    var introPanel = {
-      caption: 'SLO-O-RAMA ORIGIN RECAP: THE FASTEST SUIT + THE SLOWEST BRAIN.',
-      char: 'starSloth', pose: 'zen', fullWidth: true, bg: '#FFFDE7',
-      bubble: '...patience first... then heroics...',
-      bubbleType: 'thought', sfx: 'SWOOOOOSH... (very slowly)'
-    };
-
-    var waitForItPanel = {
-      caption: 'WAIT FOR IT... STAR-SLOTH LIFTS ONE FINGER TO SAVE THE GALAXY.',
-      char: 'starSloth', pose: 'action', fullWidth: true, bg: '#FFFDE7',
-      bubble: '...nearly... there...',
-      bubbleType: 'whisper', sfx: '...inch... inch... inch...'
-    };
-
     var ironyPanel = {
       caption: 'IRONY ALERT: EVERYONE PANICS. THE SLOTH WINS BY TAKING HIS TIME.',
-      char: 'jolt', pose: 'translating', fullWidth: true, bg: '#E8FFE8',
+      char: 'jolt', pose: 'exhausted', size: 'splash', bg: '#E8FFE8',
       bubble: 'Fast plans exploded. Patience worked. Again. I need less coffee and more contemplation.',
-      bubbleType: 'speech', sfx: 'BONK! SPLAT! wheeze...'
+      bubbleType: 'speech', sfx: 'BONK!',
+      props: ['dustCloud', 'sparks']
     };
 
     var panels = story.panels || [];
     if (panels.length > 0) {
-      panels.unshift(introPanel);
-      panels.splice(Math.max(2, panels.length - 1), 0, waitForItPanel);
       panels.push(ironyPanel);
     }
+
+    // Opportunistically tag each existing panel with Dog Man visual fields.
+    panels.forEach(function (p) {
+      if (!p) return;
+      var sfx = p.sfx || '';
+      var loud = /KA-?BOO?M|KA-?BLOOO?M|BOOM|BLAST|CRASH|SLAM|WHAM|CRUNCH|SPLAT|POW|KAPOW|THUD|BONK|CLANG/i.test(sfx);
+      var zappy = /ZAP|ZZZ|FZZ|BUZZ|CRACKLE|SPARK|FZZT/i.test(sfx);
+
+      // Splash for huge climactic moments
+      if (loud && p.bubbleType === 'shout' && !p.size && !p.fullWidth) {
+        p.size = 'wide';
+      }
+
+      // Action lines on rage / zoom / loud
+      if (!('actionLines' in p)) {
+        if (p.bubbleType === 'rage' || (loud && p.bubbleType === 'shout') ||
+            (p.char === 'jolt' && p.pose === 'zoom')) {
+          p.actionLines = true;
+        }
+      }
+
+      // Closeup for emotionally heavy admiral/over-clock shouts
+      if (!p.shot) {
+        if ((p.char === 'admiral' && p.bubbleType === 'shout') ||
+            (p.char === 'overClock' && p.bubbleType === 'rage')) {
+          p.shot = 'closeup';
+        }
+      }
+
+      // Props
+      if (!p.props) {
+        var props = [];
+        if (loud) props.push('dustCloud', 'sparks');
+        if (zappy) props.push('lightning');
+        if (p.char === 'jolt' && p.pose === 'zoom') props.push('motionSwoosh');
+        if (p.char === 'starSloth') props.push('stars');
+        if (p.char === 'overClock') props.push('cog');
+        if (p.caption && /BRIDGE|ENGINE|CONTROL|RED ALERT/i.test(p.caption)) props.push('controlPanel');
+        if (props.length) p.props = props;
+      }
+    });
 
     return story;
   }
@@ -6566,6 +6149,92 @@
     overClock: svgOverClock
   };
 
+  // ── Prop SVG library (rendered behind characters) ─────────────────────────
+
+  var PROP_SVG = {
+    sparks: '<svg viewBox="0 0 100 100" style="left:-4%;top:-6%;width:108%;height:114%;opacity:0.85"><g fill="none" stroke="#FFC000" stroke-width="2.5" stroke-linecap="round">' +
+      '<path d="M10,18 L18,26 M22,12 L26,22 M30,8 L30,18 M82,16 L74,24 M90,30 L80,32 M88,46 L78,46"/>' +
+      '<path d="M14,72 L22,68 M28,86 L30,76 M70,78 L78,72 M86,82 L78,86"/>' +
+      '<circle cx="48" cy="14" r="2" fill="#FFE000" stroke="' + INK + '" stroke-width="1"/>' +
+      '<circle cx="86" cy="60" r="1.5" fill="#FFE000" stroke="' + INK + '" stroke-width="0.8"/>' +
+      '<circle cx="12" cy="50" r="1.5" fill="#FFE000" stroke="' + INK + '" stroke-width="0.8"/>' +
+      '</g></svg>',
+    lightning: '<svg viewBox="0 0 100 100" style="left:0;top:0;width:100%;height:100%;opacity:0.7"><g fill="#FFD000" stroke="' + INK + '" stroke-width="1.5" stroke-linejoin="round">' +
+      '<path d="M14,8 L20,28 L14,30 L26,52 L20,52 L34,76"/>' +
+      '<path d="M86,12 L78,30 L84,32 L74,50 L80,52 L70,72"/>' +
+      '</g></svg>',
+    motionSwoosh: '<svg viewBox="0 0 100 100" style="left:-2%;top:30%;width:104%;height:50%;opacity:0.55"><g fill="none" stroke="#6080C0" stroke-width="2.5" stroke-linecap="round">' +
+      '<path d="M2,30 Q40,28 70,40"/>' +
+      '<path d="M2,46 Q40,44 78,52"/>' +
+      '<path d="M2,62 Q40,60 70,68"/>' +
+      '<path d="M2,78 Q40,76 64,82"/>' +
+      '</g></svg>',
+    dustCloud: '<svg viewBox="0 0 100 100" style="left:-6%;bottom:-4%;top:auto;width:112%;height:38%;opacity:0.7"><g fill="#D4D0C8" stroke="' + INK + '" stroke-width="1.8">' +
+      '<ellipse cx="20" cy="70" rx="14" ry="9"/>' +
+      '<ellipse cx="40" cy="62" rx="16" ry="10"/>' +
+      '<ellipse cx="62" cy="68" rx="14" ry="9"/>' +
+      '<ellipse cx="80" cy="74" rx="12" ry="8"/>' +
+      '</g></svg>',
+    stars: '<svg viewBox="0 0 100 100" style="left:0;top:0;width:100%;height:100%;opacity:0.85"><g fill="#FFE000" stroke="' + INK + '" stroke-width="0.8">' +
+      '<path d="M16,18 L18,22 L22,22 L19,25 L20,29 L16,27 L12,29 L13,25 L10,22 L14,22 Z"/>' +
+      '<path d="M82,14 L84,18 L88,18 L85,21 L86,25 L82,23 L78,25 L79,21 L76,18 L80,18 Z"/>' +
+      '<path d="M12,82 L13,84 L15,84 L13.5,86 L14,88 L12,87 L10,88 L10.5,86 L9,84 L11,84 Z"/>' +
+      '<path d="M88,86 L89,88 L91,88 L89.5,90 L90,92 L88,91 L86,92 L86.5,90 L85,88 L87,88 Z"/>' +
+      '</g></svg>',
+    cog: '<svg viewBox="0 0 100 100" style="right:4%;top:6%;left:auto;width:34%;height:34%;opacity:0.35"><g fill="#888" stroke="' + INK + '" stroke-width="1.5">' +
+      '<path d="M50,8 L56,14 L64,12 L66,20 L74,22 L72,30 L78,36 L74,42 L78,50 L70,52 L68,60 L60,60 L56,68 L48,64 L40,68 L36,60 L28,60 L26,52 L18,50 L22,42 L18,36 L24,30 L22,22 L30,20 L32,12 L40,14 Z"/>' +
+      '<circle cx="50" cy="40" r="8" fill="#EEE"/>' +
+      '</g></svg>',
+    controlPanel: '<svg viewBox="0 0 100 100" style="left:6%;bottom:6%;top:auto;width:88%;height:22%;opacity:0.45"><g stroke="' + INK + '" stroke-width="1.5">' +
+      '<rect x="4" y="4" width="92" height="40" fill="#2A4A6A"/>' +
+      '<circle cx="14" cy="16" r="3" fill="#E04040"/>' +
+      '<circle cx="26" cy="16" r="3" fill="#E0C020"/>' +
+      '<circle cx="38" cy="16" r="3" fill="#40E040"/>' +
+      '<rect x="50" y="10" width="40" height="6" fill="#102030"/>' +
+      '<rect x="50" y="22" width="40" height="6" fill="#102030"/>' +
+      '<rect x="6" y="30" width="20" height="10" fill="#444"/>' +
+      '<rect x="30" y="30" width="20" height="10" fill="#444"/>' +
+      '</g></svg>'
+  };
+
+  // ── SFX burst — jagged star polygon with Bangers text ─────────────────────
+
+  function svgSfx(text, kind) {
+    if (!text) return '';
+    var palette = {
+      boom:     { fill: '#FFD000', edge: '#C03030', text: '#7B0000' },
+      zap:      { fill: '#80E0FF', edge: '#1060C0', text: '#0A2050' },
+      sinister: { fill: '#C040E0', edge: '#5A0080', text: '#FFF' },
+      soft:     { fill: '#FFE082', edge: '#A07000', text: '#5A3000' }
+    };
+    var c = palette[kind] || palette.boom;
+    // Jagged star burst path
+    var burst = 'M50,2 L58,16 L74,8 L70,24 L88,22 L78,36 L96,42 L80,52 L94,64 L76,66 L86,82 L68,78 L72,96 L58,84 L50,98 L42,84 L28,96 L32,78 L14,82 L24,66 L6,64 L20,52 L4,42 L22,36 L12,22 L30,24 L26,8 L42,16 Z';
+    // Truncate very long sfx text
+    var shown = String(text).length > 14 ? String(text).slice(0, 12) + '..' : String(text);
+    return '<svg viewBox="0 0 100 100" aria-hidden="true">' +
+      '<path d="' + burst + '" fill="' + c.fill + '" stroke="' + c.edge + '" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="' + burst + '" fill="none" stroke="' + INK + '" stroke-width="1.5" stroke-linejoin="round" transform="translate(1.5,1.5) scale(0.97)"/>' +
+      '<text x="50" y="58" text-anchor="middle" font-family="Bangers,Impact,sans-serif" font-size="' + (shown.length > 8 ? 14 : 20) + '" font-weight="900" fill="' + c.text + '" stroke="' + INK + '" stroke-width="0.6" style="letter-spacing:0.04em">' + shown + '</text>' +
+      '</svg>';
+  }
+
+  // ── Radial action lines overlay ───────────────────────────────────────────
+
+  function svgActionLines(color) {
+    var col = color || '#1a1a1a';
+    var lines = '';
+    for (var i = 0; i < 18; i++) {
+      var a = (i / 18) * Math.PI * 2;
+      var x1 = 50 + Math.cos(a) * 60;
+      var y1 = 50 + Math.sin(a) * 60;
+      var x2 = 50 + Math.cos(a) * 38;
+      var y2 = 50 + Math.sin(a) * 38;
+      lines += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + col + '" stroke-width="1.5" stroke-linecap="round"/>';
+    }
+    return '<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">' + lines + '</svg>';
+  }
+
   // ── Helpers ────────────────────────────────────────────────────────────────
 
   function comicHighlight(text, words) {
@@ -6578,7 +6247,7 @@
     return result;
   }
 
-  var PANEL_TILTS = [-0.6, 0.4, -0.3, 0.5, -0.4, 0.35];
+  var PANEL_TILTS = [-1.2, 0.8, -0.6, 1.1, -0.9, 0.7, -0.4, 1.0];
 
   var SCENE_CLASS_MAP = {
     overClock: 'panel-scene-overclock',
@@ -6587,10 +6256,22 @@
     starSloth: 'panel-scene-starsloth'
   };
 
+  // Choose a soft SFX kind from the sfx string
+  function detectSfxKind(sfx, bubbleType) {
+    if (!sfx) return null;
+    var s = String(sfx);
+    if (/KA-?BOOM|KA-?BLOOO?M|BOOM|BLAST|CRASH|SLAM|BANG|WHAM|CRUNCH|SPLAT|POW|KAPOW|THUD|BONK/i.test(s)) return 'boom';
+    if (/ZAP|ZZZ|FZZ|BUZZ|CRACKLE|SPARK|FZZT/i.test(s)) return 'zap';
+    if (/MWAHA|MWEHE|MWEH|sigh|drip|tick|tock|click|fzzt|\.\.\.|zz/i.test(s) && s.length < 20) return 'soft';
+    if (s === s.toUpperCase() && s.length > 2) return 'boom';
+    return 'soft';
+  }
+
   function buildPanelHTML(panelDef, words, idx) {
-    var tilt    = panelDef.fullWidth ? 0 : (PANEL_TILTS[idx % PANEL_TILTS.length] || 0);
-    var svgFn   = COMIC_SVG[panelDef.char] || svgStarSloth;
-    var svgHtml = svgFn(panelDef.pose || 'zen');
+    var isSplash  = panelDef.fullWidth || panelDef.size === 'splash' || panelDef.size === 'wide';
+    var tilt      = isSplash ? 0 : (PANEL_TILTS[idx % PANEL_TILTS.length] || 0);
+    var svgFn     = COMIC_SVG[panelDef.char] || svgStarSloth;
+    var svgHtml   = svgFn(panelDef.pose || 'zen');
     var bubbleText = panelDef.bubble ? comicHighlight(panelDef.bubble, words) : '';
     var captionHtml = panelDef.caption
       ? '<div class="panel-caption">' + panelDef.caption + '</div>'
@@ -6599,13 +6280,56 @@
     var bubbleHtml  = bubbleText
       ? '<div class="' + bubbleClass + '">' + bubbleText + '</div>'
       : '';
-    var sfxHtml = panelDef.sfx
-      ? '<div class="panel-sfx">' + panelDef.sfx + '</div>'
-      : '';
+
+    // Size class
+    var sizeClass = '';
+    if (panelDef.fullWidth) sizeClass = ' full-width';
+    else if (panelDef.size === 'wide')   sizeClass = ' size-wide';
+    else if (panelDef.size === 'tall')   sizeClass = ' size-tall';
+    else if (panelDef.size === 'splash') sizeClass = ' size-splash';
+
+    // Shot class (character zoom)
+    var shotClass = '';
+    if (panelDef.shot === 'closeup') shotClass = ' shot-closeup';
+    else if (panelDef.shot === 'wide') shotClass = ' shot-wide';
+
+    // Props layer
+    var propsHtml = '';
+    if (panelDef.props && panelDef.props.length) {
+      var inner = '';
+      panelDef.props.forEach(function (p) {
+        if (PROP_SVG[p]) inner += PROP_SVG[p];
+      });
+      if (inner) propsHtml = '<div class="panel-props">' + inner + '</div>';
+    }
+
+    // Action lines overlay
+    var actionHtml = '';
+    if (panelDef.actionLines) {
+      var col = (panelDef.bubbleType === 'rage') ? '#8B0000' : '#1a1a1a';
+      actionHtml = '<div class="panel-action-lines">' + svgActionLines(col) + '</div>';
+    }
+
+    // SFX — burst (for loud) or plain text (for soft)
+    var sfxHtml = '';
+    if (panelDef.sfx) {
+      var kind = panelDef.sfxKind || detectSfxKind(panelDef.sfx, panelDef.bubbleType);
+      if (kind === 'soft') {
+        sfxHtml = '<div class="panel-sfx">' + panelDef.sfx + '</div>';
+      } else {
+        var corner = (idx % 2 === 0) ? '' : ' sfx-bottom-left';
+        var rot = ((idx * 37) % 30) - 15;
+        sfxHtml = '<div class="panel-sfx-burst' + corner + '" style="--sfx-rotate:' + rot + 'deg">' +
+          svgSfx(panelDef.sfx, kind) + '</div>';
+      }
+    }
+
     var sceneClass = SCENE_CLASS_MAP[panelDef.char] || 'panel-scene-starsloth';
-    return '<div class="comic-panel' + (panelDef.fullWidth ? ' full-width' : '') + ' ' + sceneClass + '"' +
+    return '<div class="comic-panel' + sizeClass + shotClass + ' ' + sceneClass + '"' +
       ' style="--panel-tilt:' + tilt + 'deg;background-color:' + (panelDef.bg || '#FFFDE7') + '">' +
       captionHtml +
+      propsHtml +
+      actionHtml +
       '<div class="panel-stage">' +
       '<div class="panel-char-svg">' + svgHtml + '</div>' +
       bubbleHtml +
