@@ -658,6 +658,25 @@
   }
 
   // ── Filtering ──────────────────────────────────────────────────────────────
+  function updateFilterSummary() {
+    var el = document.getElementById('filters-preview');
+    if (!el) return;
+    var parts = [];
+    if (state.query) {
+      parts.push('"' + state.query + '"');
+    }
+    if (state.ratingFilter !== null) {
+      var stars = '';
+      for (var i = 0; i < state.ratingFilter; i++) stars += '★';
+      parts.push(stars);
+    }
+    if (state.unviewedOnly) parts.push('Not viewed');
+    if (state.masteryFilter && state.masteryFilter !== 'all') {
+      parts.push(state.masteryFilter.charAt(0).toUpperCase() + state.masteryFilter.slice(1));
+    }
+    el.textContent = parts.length ? parts.join(' · ') : 'All words';
+  }
+
   function applyFilters() {
     var results = allWords;
 
@@ -686,6 +705,8 @@
         return getMasteryStatus(w.word) === state.masteryFilter;
       });
     }
+
+    updateFilterSummary();
 
     renderCards(results);
   }
@@ -6504,12 +6525,44 @@
   }());
 
   // ── Collapsible section toggles ───────────────────────────────────────────
+  var LAUNCH_GROUP_KEY = 'launchGroupOpen';
+
+  function loadLaunchGroupState() {
+    try {
+      return JSON.parse(localStorage.getItem(LAUNCH_GROUP_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveLaunchGroupState(s) {
+    try {
+      localStorage.setItem(LAUNCH_GROUP_KEY, JSON.stringify(s));
+    } catch (e) {}
+  }
+
+  (function restoreLaunchGroupState() {
+    var saved = loadLaunchGroupState();
+    document.querySelectorAll('.launch-group-toggle').forEach(function (toggle) {
+      var key = toggle.getAttribute('aria-controls');
+      if (saved[key] === true) {
+        toggle.setAttribute('aria-expanded', 'true');
+        var body = document.getElementById(key);
+        if (body) body.classList.remove('collapsed');
+      }
+    });
+  }());
+
   document.querySelectorAll('.launch-group-toggle').forEach(function (toggle) {
     toggle.addEventListener('click', function () {
       var expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', String(!expanded));
-      var body = document.getElementById(this.getAttribute('aria-controls'));
+      var key = this.getAttribute('aria-controls');
+      var body = document.getElementById(key);
       if (body) body.classList.toggle('collapsed', expanded);
+      var saved = loadLaunchGroupState();
+      saved[key] = !expanded;
+      saveLaunchGroupState(saved);
     });
   });
 

@@ -177,7 +177,7 @@ main {
 .launch-group-toggle {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.6rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -189,6 +189,57 @@ main {
 
 .launch-group-toggle:hover .launch-group-label {
   opacity: 0.75;
+}
+
+.launch-group-label {
+  flex-shrink: 0;
+}
+
+.launch-group-preview {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: opacity 0.18s ease, max-width 0.25s ease, transform 0.18s ease;
+  max-width: 70%;
+  opacity: 1;
+}
+
+.launch-group-preview .preview-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.launch-group-preview--summary {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-text-secondary);
+  text-transform: none;
+  padding: 0.22rem 0.6rem;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.launch-group-toggle[aria-expanded="true"] .launch-group-preview {
+  opacity: 0;
+  max-width: 0;
+  margin-left: auto;
+  transform: scale(0.9);
+  pointer-events: none;
 }
 
 .collapse-chevron {
@@ -912,6 +963,22 @@ footer {
   .mastery-filter-btn {
     padding: 0.5rem 0.7rem;
     font-size: 0.8rem;
+  }
+
+  .launch-group-preview {
+    gap: 0.2rem;
+  }
+
+  .launch-group-preview .preview-icon {
+    width: 1.35rem;
+    height: 1.35rem;
+    font-size: 0.8rem;
+  }
+
+  .launch-group-preview--summary {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.5rem;
+    max-width: 55vw;
   }
 
   /* Bottom sheet modal on mobile */
