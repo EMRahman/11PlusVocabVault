@@ -10764,6 +10764,38 @@
       }
     },
     {
+      "word": "Vivacious",
+      "pronunciation": "vih-VAY-shuss",
+      "definition": "Full of energy, enthusiasm, and liveliness.",
+      "sentence_usage": "The vivacious girl lit up the room with her infectious laughter and boundless energy.",
+      "synonyms": [
+        "Lively",
+        "Spirited",
+        "Animated"
+      ],
+      "antonyms": [
+        "Dull",
+        "Listless",
+        "Lethargic"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "A student who bounces on her heels, chatters at top speed, and fills every corridor with irresistible laughter and sparkling energy.",
+        "word": "The vivacious young wizard dashed into the great hall, spinning her wand and singing to herself.",
+        "sentence": "The _____ apprentice filled the wizard school's corridors with laughter and a never-ending stream of clever ideas.",
+        "synonym": {
+          "cloze": "A _____ debate began the moment the young wizards gathered around the glowing cauldron at midnight.",
+          "answer": "Lively"
+        },
+        "antonym": {
+          "cloze": "The hall fell strangely quiet as the _____ student stared out of the window, too tired to raise a hand.",
+          "answer": "Listless"
+        }
+      }
+    },
+    {
       "word": "Vivid",
       "pronunciation": "VIV-id",
       "definition": "Very bright, strong, or clear in the mind.",
