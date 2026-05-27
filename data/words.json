@@ -12810,6 +12810,294 @@
           "answer": "Cheerfully"
         }
       }
+    },
+    {
+      "word": "Oblivious",
+      "pronunciation": "uh-BLIV-ee-uhs",
+      "definition": "Completely unaware of what is happening around you.",
+      "sentence_usage": "He was oblivious to the noise around him as he read his book.",
+      "synonyms": [
+        "Unaware",
+        "Ignorant",
+        "Heedless"
+      ],
+      "antonyms": [
+        "Aware",
+        "Conscious",
+        "Alert"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "A young deer grazes among the ferns without noticing the silent fox watching from behind the mossy oak.",
+        "word": "The squirrels were oblivious to the owl perched silently above them in the ancient Forest of Clues.",
+        "sentence": "The rabbits hopped happily through the ferns, completely _____ to the silent fox creeping behind the nearby oak.",
+        "synonym": {
+          "cloze": "The little badger remained _____ that a hungry owl was perched silently on the branch above the mossy trail.",
+          "answer": "Unaware"
+        },
+        "antonym": {
+          "cloze": "Every wise stag stayed _____ to the smallest snap of a twig along the quiet forest path at dusk.",
+          "answer": "Alert"
+        }
+      }
+    },
+    {
+      "word": "Equilibrium",
+      "pronunciation": "ee-kwi-LIB-ree-uhm",
+      "definition": "A state of natural, ecological, or systemic balance.",
+      "sentence_usage": "The pond's delicate equilibrium was disturbed when the new fish arrived.",
+      "synonyms": [
+        "Balance",
+        "Stability",
+        "Harmony"
+      ],
+      "antonyms": [
+        "Imbalance",
+        "Chaos",
+        "Disorder"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Sailors must keep their footing steady when the deck rocks and rolls beneath their boots upon the wild ocean.",
+        "word": "The sailors maintained perfect equilibrium on the rolling deck as the great ship crossed the Sea Journey Isles.",
+        "sentence": "The young sailor lost his _____ when a sudden wave struck the side of the great wooden ship.",
+        "synonym": {
+          "cloze": "The old sea captain taught the new crew to find their _____ before climbing high upon the swaying mast.",
+          "answer": "Balance"
+        },
+        "antonym": {
+          "cloze": "The mighty storm brought terrible _____ to the deck as barrels tumbled and ropes whipped through the salty air.",
+          "answer": "Chaos"
+        }
+      }
+    },
+    {
+      "word": "Revelation",
+      "pronunciation": "rev-uh-LAY-shun",
+      "definition": "A profound, surprising realization.",
+      "sentence_usage": "Discovering the hidden door was a true revelation.",
+      "synonyms": [
+        "Discovery",
+        "Realization",
+        "Disclosure"
+      ],
+      "antonyms": [
+        "Concealment",
+        "Secret",
+        "Mystery"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "A young pupil suddenly understood the hidden meaning of an ancient scroll she had studied for many long weeks.",
+        "word": "The headmaster's words brought a sudden revelation to the young pupil studying her dusty spellbook in the tower library.",
+        "sentence": "The pupil's _____ came when she finally decoded the glowing runes inscribed upon the cover of her ancient spellbook.",
+        "synonym": {
+          "cloze": "Every clever pupil dreams of a grand _____ inside the dusty library at Wizard School Towers.",
+          "answer": "Discovery"
+        },
+        "antonym": {
+          "cloze": "An ancient _____ surrounded the locked spellbook hidden deep within the highest tower of the wizard school.",
+          "answer": "Mystery"
+        }
+      }
+    },
+    {
+      "word": "Residual",
+      "pronunciation": "ri-ZID-yoo-uhl",
+      "definition": "Remaining or lingering, often used to describe a mental self-image.",
+      "sentence_usage": "There was still a residual smell of smoke after the fire was put out.",
+      "synonyms": [
+        "Remaining",
+        "Lingering",
+        "Leftover"
+      ],
+      "antonyms": [
+        "Vanished",
+        "Cleared",
+        "Departed"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Drifting smoke and faint embers still glow inside the cave long after the great beast has flown away.",
+        "word": "A residual cloud of smoke hung over Dragon Mountain hours after the great beast had returned to its cave.",
+        "sentence": "A faint _____ glow shimmered among the cooling embers deep inside the dark cavern of Dragon Mountain.",
+        "synonym": {
+          "cloze": "A _____ scent of smoke and ash filled the rocky passages long after the great beast had flown away.",
+          "answer": "Lingering"
+        },
+        "antonym": {
+          "cloze": "The thick smoke had completely _____ by the time the brave knights climbed up to inspect the empty mountain cave.",
+          "answer": "Vanished"
+        }
+      }
+    },
+    {
+      "word": "Magnificence",
+      "pronunciation": "mag-NIF-i-suhns",
+      "definition": "Extreme grandeur, brilliance, or impressiveness.",
+      "sentence_usage": "The cathedral's magnificence took the visitors' breath away.",
+      "synonyms": [
+        "Grandeur",
+        "Splendour",
+        "Brilliance"
+      ],
+      "antonyms": [
+        "Plainness",
+        "Modesty",
+        "Insignificance"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Royal banquet halls glitter with golden chandeliers, silken banners, and jewelled crowns that dazzle every visiting noble.",
+        "word": "The Castle of Synonyms shone with such magnificence that visiting kings gasped at every jewelled throne and silken banner.",
+        "sentence": "Visitors stared in awe at the _____ of the royal hall, where every wall glittered with gold and sapphire jewels.",
+        "synonym": {
+          "cloze": "Every visiting prince spoke of the royal hall's overwhelming _____ when they returned to their own distant kingdoms.",
+          "answer": "Grandeur"
+        },
+        "antonym": {
+          "cloze": "The hidden servants' quarters surprised the noble guests with their dusty _____ and bare wooden walls.",
+          "answer": "Plainness"
+        }
+      }
+    },
+    {
+      "word": "Construct",
+      "pronunciation": "KON-strukt",
+      "definition": "A thing that has been built or formed, such as a structure.",
+      "sentence_usage": "The video game's construct fooled the player into thinking it was real.",
+      "synonyms": [
+        "Structure",
+        "Framework",
+        "Edifice"
+      ],
+      "antonyms": [
+        "Ruin",
+        "Wreckage",
+        "Demolition"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "An enchanted hall built from glowing runes and spell-woven stones forms the very heart of Wizard School Towers.",
+        "word": "The grand magical construct at Wizard School Towers held countless floating spellbooks within its shimmering glass walls.",
+        "sentence": "The students gazed in wonder at the magical _____ of floating books and runes hovering above the marble courtyard.",
+        "synonym": {
+          "cloze": "A glowing magical _____ rose above the courtyard, its spell-woven walls shimmering brightly in the moonlight.",
+          "answer": "Structure"
+        },
+        "antonym": {
+          "cloze": "Years of neglect left the abandoned tower in complete _____, with shattered spellbooks scattered across every cold stone floor.",
+          "answer": "Ruin"
+        }
+      }
+    },
+    {
+      "word": "Interactive",
+      "pronunciation": "in-tur-AK-tiv",
+      "definition": "Designed to respond to user input.",
+      "sentence_usage": "The interactive whiteboard let pupils tap answers directly onto the screen.",
+      "synonyms": [
+        "Responsive",
+        "Reactive",
+        "Engaging"
+      ],
+      "antonyms": [
+        "Passive",
+        "Inert",
+        "Unresponsive"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "A spellbook at the school listens to spoken words and changes its pages whenever a young pupil reads aloud.",
+        "word": "The interactive spellbook at Wizard School Towers turned its pages whenever a pupil whispered the ancient secret password.",
+        "sentence": "Every pupil studied the _____ scroll whose glowing letters shifted whenever a question was asked aloud in class.",
+        "synonym": {
+          "cloze": "The magical wand was wonderfully _____ to every gentle command its young owner whispered in the library.",
+          "answer": "Responsive"
+        },
+        "antonym": {
+          "cloze": "The ancient scroll lay completely _____ on the desk, refusing to reveal any of its hidden secrets to the pupils.",
+          "answer": "Passive"
+        }
+      }
+    },
+    {
+      "word": "Simulation",
+      "pronunciation": "sim-yuh-LAY-shun",
+      "definition": "A highly detailed digital imitation of the real world.",
+      "sentence_usage": "The flight simulation felt exactly like piloting a real aeroplane.",
+      "synonyms": [
+        "Imitation",
+        "Replica",
+        "Reproduction"
+      ],
+      "antonyms": [
+        "Reality",
+        "Original",
+        "Authenticity"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "A clever illusion spell creates a perfect copy of any room, fooling every pupil who walks inside it.",
+        "word": "The wizards cast a magical simulation that made the classroom seem like an enchanted forest at sunset.",
+        "sentence": "The pupils gasped at the lifelike _____ conjured by the headmaster's powerful spell within the great wizard school.",
+        "synonym": {
+          "cloze": "The headmaster's powerful spell created a perfect _____ of the dragon hovering above the dusty wooden floor.",
+          "answer": "Imitation"
+        },
+        "antonym": {
+          "cloze": "Young wizards learn to spot the difference between a clever illusion and the true _____ around them.",
+          "answer": "Reality"
+        }
+      }
+    },
+    {
+      "word": "Bliss",
+      "pronunciation": "bliss",
+      "definition": "Perfect, untroubled happiness, often resulting from ignorance.",
+      "sentence_usage": "She felt pure bliss as she watched the sunset over the meadow.",
+      "synonyms": [
+        "Joy",
+        "Ecstasy",
+        "Delight"
+      ],
+      "antonyms": [
+        "Misery",
+        "Sorrow",
+        "Agony"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "Tiny winged creatures dance among the glowing toadstools, smiling without a single worry inside their cheerful little hearts.",
+        "word": "The fairies felt pure bliss as they danced beneath the moonlit toadstools of the sparkling Fairy Glen.",
+        "sentence": "Pure _____ filled the Fairy Glen as the pixies twirled gently between the glowing petals at moonrise.",
+        "synonym": {
+          "cloze": "The fairies fluttered with quiet _____ when the first dewdrops of spring sparkled across the petals.",
+          "answer": "Joy"
+        },
+        "antonym": {
+          "cloze": "Dark clouds brought sudden _____ to the Fairy Glen when the last toadstool stopped glowing brightly.",
+          "answer": "Misery"
+        }
+      }
     }
   ]
 }
