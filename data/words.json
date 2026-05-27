@@ -11210,6 +11210,1606 @@
           "answer": "Indifferent"
         }
       }
+    },
+    {
+      "word": "Abhorrent",
+      "pronunciation": "ab-HOR-uhnt",
+      "definition": "Causing complete disgust or horror.",
+      "sentence_usage": "The damp cellar gave off an abhorrent smell that drove every visitor straight back outside.",
+      "synonyms": [
+        "Repulsive",
+        "Loathsome",
+        "Detestable"
+      ],
+      "antonyms": [
+        "Delightful",
+        "Pleasing",
+        "Agreeable"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "The breath drifting from the cave was so foul that brave knights turned back in disgust.",
+        "word": "An abhorrent stench of smoke and old bones clung to every knight who crept inside the dragon's lair.",
+        "sentence": "The bravest soldiers gagged at the _____ smell of smoke and bones rising from the dragon's lair.",
+        "synonym": {
+          "cloze": "The knights covered their noses, finding the dragon's _____ breath impossible to bear deep inside the cave.",
+          "answer": "Repulsive"
+        },
+        "antonym": {
+          "cloze": "Compared with the smoky lair, the cool mountain meadow felt a _____ relief from heat and ash.",
+          "answer": "Pleasing"
+        }
+      }
+    },
+    {
+      "word": "Acrimonious",
+      "pronunciation": "ak-ruh-MOH-nee-us",
+      "definition": "Full of bitter anger and harsh words.",
+      "sentence_usage": "An acrimonious row broke out among the cousins when the last slice of cake disappeared.",
+      "synonyms": [
+        "Bitter",
+        "Spiteful",
+        "Caustic"
+      ],
+      "antonyms": [
+        "Friendly",
+        "Cordial",
+        "Peaceful"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Two cousins of the king argued so fiercely at the banquet that shouting echoed down every stone corridor.",
+        "word": "An acrimonious quarrel between two nobles spoiled the queen's banquet inside the great stone hall.",
+        "sentence": "The _____ argument between the two dukes drowned out every other voice at the royal banquet.",
+        "synonym": {
+          "cloze": "The two dukes traded such _____ words across the banquet table that the king demanded silence at once.",
+          "answer": "Bitter"
+        },
+        "antonym": {
+          "cloze": "After hours of shouting, the queen forced a _____ handshake between the dukes before all the watching courtiers.",
+          "answer": "Cordial"
+        }
+      }
+    },
+    {
+      "word": "Adamant",
+      "pronunciation": "AD-uh-muhnt",
+      "definition": "Refusing to be persuaded or to change your mind.",
+      "sentence_usage": "Mum was adamant that we wear coats, no matter how warm the sunshine looked.",
+      "synonyms": [
+        "Unyielding",
+        "Insistent",
+        "Firm"
+      ],
+      "antonyms": [
+        "Flexible",
+        "Wavering",
+        "Pliant"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The old king refused every plea from his queen and councillors to step down from the throne.",
+        "word": "The adamant queen would not let a single knight leave the castle before the sunrise bell.",
+        "sentence": "Despite the storm outside, the _____ king insisted that every courtier remain in the throne room until dawn.",
+        "synonym": {
+          "cloze": "The queen was _____ in her demand that the gates stay shut until the visiting prince apologised.",
+          "answer": "Unyielding"
+        },
+        "antonym": {
+          "cloze": "After much pleading, the king finally became more _____ and let the youngest knight ride out for help.",
+          "answer": "Flexible"
+        }
+      }
+    },
+    {
+      "word": "Affable",
+      "pronunciation": "AF-uh-buhl",
+      "definition": "Friendly and easy to talk to.",
+      "sentence_usage": "Our affable neighbour always stops to share gardening tips whenever we pass his gate.",
+      "synonyms": [
+        "Genial",
+        "Cordial",
+        "Approachable"
+      ],
+      "antonyms": [
+        "Surly",
+        "Aloof",
+        "Unfriendly"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Every new pupil at the magic school felt welcome the moment the kindly teacher greeted them by name.",
+        "word": "The affable old wizard waved to every pupil hurrying across the courtyard with their spellbooks.",
+        "sentence": "The new potions master proved so _____ that nervous pupils soon felt at home in his strange tower classroom.",
+        "synonym": {
+          "cloze": "The headmistress was so _____ that even the shyest first-years dared to ask her questions after class.",
+          "answer": "Genial"
+        },
+        "antonym": {
+          "cloze": "The new librarian seemed _____ at first, refusing even to glance up at pupils searching for books.",
+          "answer": "Surly"
+        }
+      }
+    },
+    {
+      "word": "Audacious",
+      "pronunciation": "aw-DAY-shus",
+      "definition": "Showing great daring, often in a risky or surprising way.",
+      "sentence_usage": "Her audacious leap from the top boulder left the rest of the climbing club open-mouthed.",
+      "synonyms": [
+        "Bold",
+        "Daring",
+        "Fearless"
+      ],
+      "antonyms": [
+        "Cowardly",
+        "Timid",
+        "Cautious"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The young captain led a raid across the river at dawn when no one believed it could be done.",
+        "word": "The audacious captain rode straight at the enemy lines before any soldier could shout a warning.",
+        "sentence": "Her _____ midnight charge through the enemy camp won the whole battle before sunrise even broke over the field.",
+        "synonym": {
+          "cloze": "Only the most _____ scout would have crept through the enemy camp on the eve of the great battle.",
+          "answer": "Bold"
+        },
+        "antonym": {
+          "cloze": "The general scolded the _____ recruits who hung back from the front rank during the long siege.",
+          "answer": "Timid"
+        }
+      }
+    },
+    {
+      "word": "Benevolent",
+      "pronunciation": "buh-NEV-uh-luhnt",
+      "definition": "Kind and wishing to do good for other people.",
+      "sentence_usage": "A benevolent stranger paid for the family's groceries when their card was declined at the till.",
+      "synonyms": [
+        "Kindly",
+        "Generous",
+        "Charitable"
+      ],
+      "antonyms": [
+        "Cruel",
+        "Mean",
+        "Spiteful"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The young queen gave warm cloaks to every villager outside the gates before winter swept across the kingdom.",
+        "word": "The benevolent king walked through the castle gates to hand bread to villagers waiting in the cold.",
+        "sentence": "The _____ queen ordered the royal kitchens to send hot stew down to every cottage in the kingdom that winter.",
+        "synonym": {
+          "cloze": "The _____ princess offered her own warm cloak to a shivering child at the castle gates.",
+          "answer": "Kindly"
+        },
+        "antonym": {
+          "cloze": "The _____ regent ordered every gate locked, leaving hungry villagers shivering outside the castle walls.",
+          "answer": "Cruel"
+        }
+      }
+    },
+    {
+      "word": "Capricious",
+      "pronunciation": "kuh-PRISH-us",
+      "definition": "Changing your mind or behaviour quickly and without good reason.",
+      "sentence_usage": "Our capricious puppy adores his squeaky toy one minute and ignores it the next.",
+      "synonyms": [
+        "Fickle",
+        "Unpredictable",
+        "Whimsical"
+      ],
+      "antonyms": [
+        "Steady",
+        "Reliable",
+        "Constant"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "The little sprite kept changing her mind about which petal to perch on next.",
+        "word": "The capricious queen of the fairies offered three wishes, then snatched them back before sunrise.",
+        "sentence": "The _____ pixie promised to guide us home, then darted off after a glowing moth without warning.",
+        "synonym": {
+          "cloze": "The _____ moon-sprite kept changing the path through the glen, so the lost children went round in circles.",
+          "answer": "Fickle"
+        },
+        "antonym": {
+          "cloze": "Unlike the other sprites, this little fairy was _____ and would guide travellers home every single time.",
+          "answer": "Reliable"
+        }
+      }
+    },
+    {
+      "word": "Decrepit",
+      "pronunciation": "di-KREP-it",
+      "definition": "Worn out or broken down by long use or old age.",
+      "sentence_usage": "The decrepit shed at the bottom of the garden looked ready to collapse in the next storm.",
+      "synonyms": [
+        "Dilapidated",
+        "Crumbling",
+        "Rickety"
+      ],
+      "antonyms": [
+        "Sturdy",
+        "New",
+        "Sound"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "The forester's hut beside the woodland path leaned so far that branches now propped up its walls.",
+        "word": "The travellers sheltered inside a decrepit forester's hut buried deep among the gnarled forest trees.",
+        "sentence": "The _____ wooden bridge across the brook groaned under every footstep through the silent forest.",
+        "synonym": {
+          "cloze": "The _____ cottage in the woods had ferns sprouting from its roof and ivy growing through the broken windows.",
+          "answer": "Dilapidated"
+        },
+        "antonym": {
+          "cloze": "The foresters rebuilt the cabin until it stood _____ once more against the deepest winter snow.",
+          "answer": "Sturdy"
+        }
+      }
+    },
+    {
+      "word": "Despondent",
+      "pronunciation": "di-SPON-duhnt",
+      "definition": "Feeling low in spirits because hope seems lost.",
+      "sentence_usage": "After missing the last bus, Tom looked despondent on the long walk home.",
+      "synonyms": [
+        "Dejected",
+        "Disheartened",
+        "Downcast"
+      ],
+      "antonyms": [
+        "Cheerful",
+        "Hopeful",
+        "Buoyant"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "After weeks of empty horizons, the crew lost all hope of ever spotting land again.",
+        "word": "The despondent sailor leaned against the rail, watching the empty grey waves slide past the ship.",
+        "sentence": "After three storms in a row, the _____ crew sat silently on the deck, watching the empty horizon.",
+        "synonym": {
+          "cloze": "The young cabin boy felt _____ when the captain announced their supplies would last only one more week.",
+          "answer": "Dejected"
+        },
+        "antonym": {
+          "cloze": "A _____ shout went up from every sailor when the lookout finally spotted the green island ahead.",
+          "answer": "Cheerful"
+        }
+      }
+    },
+    {
+      "word": "Eminent",
+      "pronunciation": "EM-uh-nuhnt",
+      "definition": "Famous and respected within a particular field.",
+      "sentence_usage": "An eminent doctor spoke at the school assembly about looking after our eyes.",
+      "synonyms": [
+        "Distinguished",
+        "Renowned",
+        "Notable"
+      ],
+      "antonyms": [
+        "Unknown",
+        "Obscure",
+        "Unremarkable"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Every pupil whispered when the famous old scholar drifted past the library shelves in his star-flecked robes.",
+        "word": "The eminent scholar of dragon-lore came to teach a single lesson in the topmost tower classroom.",
+        "sentence": "Pupils crowded the courtyard to glimpse the _____ professor who had written every textbook on the library's top shelf.",
+        "synonym": {
+          "cloze": "Only the most _____ wizards were invited to give a lesson at the school's hundredth anniversary feast.",
+          "answer": "Distinguished"
+        },
+        "antonym": {
+          "cloze": "Once a celebrated potion-master, the wizard now lived as an _____ hermit in a tower beyond the school.",
+          "answer": "Obscure"
+        }
+      }
+    },
+    {
+      "word": "Fastidious",
+      "pronunciation": "fas-TID-ee-us",
+      "definition": "Very careful about getting every small detail right.",
+      "sentence_usage": "She was fastidious about lining up each pencil exactly parallel to the edge of her desk.",
+      "synonyms": [
+        "Meticulous",
+        "Particular",
+        "Painstaking"
+      ],
+      "antonyms": [
+        "Careless",
+        "Sloppy",
+        "Slapdash"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The old potions master measured every ingredient with a tiny brass spoon before tipping it into the cauldron.",
+        "word": "The fastidious librarian re-shelved each scroll twice, checking the dust on every wooden shelf.",
+        "sentence": "The _____ potion master measured each silver leaf to the last grain before letting the cauldron bubble over the flame.",
+        "synonym": {
+          "cloze": "The new spellbook keeper was so _____ that she dusted each shelf in the library twice every single morning.",
+          "answer": "Meticulous"
+        },
+        "antonym": {
+          "cloze": "The _____ apprentice splashed potions across the bench and never wiped the cauldron clean before the next lesson.",
+          "answer": "Sloppy"
+        }
+      }
+    },
+    {
+      "word": "Furtive",
+      "pronunciation": "FUR-tiv",
+      "definition": "Acting quietly and secretly so as not to be noticed.",
+      "sentence_usage": "He shot a furtive glance at the answer sheet before the teacher turned around.",
+      "synonyms": [
+        "Sneaky",
+        "Surreptitious",
+        "Covert"
+      ],
+      "antonyms": [
+        "Open",
+        "Honest",
+        "Brazen"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "A small grey shape slipped between the ferns, glancing back over its shoulder at every step.",
+        "word": "The furtive fox crept along the hedgerow, glancing back at every rustle in the autumn leaves.",
+        "sentence": "A _____ shape darted between the trees, ducking behind every fern at the slightest snap of a twig.",
+        "synonym": {
+          "cloze": "The forester noticed a _____ figure ducking between the hedgerow shadows just after the moon rose above the trees.",
+          "answer": "Sneaky"
+        },
+        "antonym": {
+          "cloze": "Once safe in the meadow, the badger ambled out in a wholly _____ way and started digging for grubs.",
+          "answer": "Open"
+        }
+      }
+    },
+    {
+      "word": "Garrulous",
+      "pronunciation": "GAR-uh-luhs",
+      "definition": "Talking far too much, often about unimportant things.",
+      "sentence_usage": "Our garrulous aunt told the same long story three times during one car journey.",
+      "synonyms": [
+        "Talkative",
+        "Chatty",
+        "Long-winded"
+      ],
+      "antonyms": [
+        "Reserved",
+        "Silent",
+        "Taciturn"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The old courtier could not stop telling everyone at the banquet about the same dull hunting trip.",
+        "word": "The garrulous courtier kept the queen at the banquet table until every torch in the hall burned low.",
+        "sentence": "A _____ duke held the queen captive at the banquet, talking on about his last hunt until midnight chimed.",
+        "synonym": {
+          "cloze": "The _____ herald kept the visiting prince at the gates for hours before letting him ride into the courtyard.",
+          "answer": "Chatty"
+        },
+        "antonym": {
+          "cloze": "The new ambassador was so _____ that the king never learned why he had ridden all the way to court.",
+          "answer": "Reserved"
+        }
+      }
+    },
+    {
+      "word": "Idyllic",
+      "pronunciation": "i-DIL-ik",
+      "definition": "Peaceful and beautiful, like a perfect scene in a story.",
+      "sentence_usage": "We spent an idyllic afternoon picnicking beside the slow, glittering river.",
+      "synonyms": [
+        "Blissful",
+        "Perfect",
+        "Charming"
+      ],
+      "antonyms": [
+        "Dreadful",
+        "Bleak",
+        "Awful"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "The little glade glittered with dewdrops, soft moonlight and the gentle wingbeats of a hundred sleepy sprites.",
+        "word": "The travellers stepped into an idyllic clearing where moon-sprites drifted between the silver toadstools and the dew.",
+        "sentence": "We slept beside an _____ pool where moonlight caught every petal and tiny sprites hummed in the warm summer air.",
+        "synonym": {
+          "cloze": "The fairy queen showed us a _____ corner of the glen where lavender grew thick and dewdrops sparkled all night.",
+          "answer": "Blissful"
+        },
+        "antonym": {
+          "cloze": "The hidden corner of the glen was _____ after the storm, with broken petals lying across every muddy path.",
+          "answer": "Bleak"
+        }
+      }
+    },
+    {
+      "word": "Indignant",
+      "pronunciation": "in-DIG-nuhnt",
+      "definition": "Angry because something seems unfair or insulting.",
+      "sentence_usage": "Sara was indignant when she was blamed for the broken vase she had never touched.",
+      "synonyms": [
+        "Outraged",
+        "Affronted",
+        "Resentful"
+      ],
+      "antonyms": [
+        "Pleased",
+        "Calm",
+        "Contented"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The young knight felt deeply wronged when the king awarded her brother a prize that she had clearly earned.",
+        "word": "The indignant princess marched into the throne room demanding to know who had given the order without her.",
+        "sentence": "An _____ duchess strode into the throne room, demanding to know why her name had been left off the banquet list.",
+        "synonym": {
+          "cloze": "The young knight was _____ when the herald announced the prize had gone to her older cousin instead.",
+          "answer": "Outraged"
+        },
+        "antonym": {
+          "cloze": "Once the queen had explained her reasoning, every courtier seemed _____ rather than angry with the new royal decree.",
+          "answer": "Pleased"
+        }
+      }
+    },
+    {
+      "word": "Lethargic",
+      "pronunciation": "luh-THAR-jik",
+      "definition": "Lacking energy and feeling slow or sleepy.",
+      "sentence_usage": "The hot afternoon left the whole class lethargic during the geography test.",
+      "synonyms": [
+        "Sluggish",
+        "Drowsy",
+        "Listless"
+      ],
+      "antonyms": [
+        "Energetic",
+        "Lively",
+        "Alert"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "The old bear stayed curled inside its den long after spring sunshine reached the forest floor.",
+        "word": "The lethargic squirrels dozed on warm branches and barely twitched as twigs snapped below the oak.",
+        "sentence": "After feasting on berries, the _____ badger barely shifted as starlings hopped through the leaves around its paws.",
+        "synonym": {
+          "cloze": "Even the foxes seemed _____ in the heavy heat, sprawling under ferns rather than hunting through the long evening.",
+          "answer": "Sluggish"
+        },
+        "antonym": {
+          "cloze": "By the first cool morning the deer were _____ again, leaping between the trees as the foresters watched.",
+          "answer": "Lively"
+        }
+      }
+    },
+    {
+      "word": "Magnanimous",
+      "pronunciation": "mag-NAN-uh-muhs",
+      "definition": "Generous and forgiving, especially towards a rival or someone weaker.",
+      "sentence_usage": "The winning captain made a magnanimous speech praising every player on the losing team.",
+      "synonyms": [
+        "Generous",
+        "Forgiving",
+        "Big-hearted"
+      ],
+      "antonyms": [
+        "Petty",
+        "Mean",
+        "Vengeful"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "After winning the tournament, the young king praised every fallen knight and returned all their captured swords.",
+        "word": "The magnanimous queen pardoned the captured rebels and let them ride home through the castle gates at sunset.",
+        "sentence": "After winning the duel, the _____ prince returned the rival knight's sword and invited him to the royal banquet.",
+        "synonym": {
+          "cloze": "The queen made a _____ gesture by handing back the captured banner to her defeated rival at the gates.",
+          "answer": "Forgiving"
+        },
+        "antonym": {
+          "cloze": "A _____ ruler would have stripped the loser of every banner, but this young queen chose a finer path.",
+          "answer": "Petty"
+        }
+      }
+    },
+    {
+      "word": "Malevolent",
+      "pronunciation": "muh-LEV-uh-luhnt",
+      "definition": "Wishing harm or evil on other people.",
+      "sentence_usage": "A malevolent glare from the bully made the younger children scatter across the playground.",
+      "synonyms": [
+        "Wicked",
+        "Spiteful",
+        "Villainous"
+      ],
+      "antonyms": [
+        "Kindly",
+        "Loving",
+        "Benign"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Yellow eyes glared from deep inside the cave, plainly wishing harm on anyone who stepped near the entrance.",
+        "word": "The malevolent dragon coiled around its hoard, watching every flicker of torchlight that crept toward its cave mouth.",
+        "sentence": "Two _____ eyes glowed from the cave, fixed on the knight who crept past the smouldering pile of bones outside.",
+        "synonym": {
+          "cloze": "The dragon had a _____ reputation across every village within sight of the smoking mountain peak.",
+          "answer": "Wicked"
+        },
+        "antonym": {
+          "cloze": "Travellers were stunned to find the dragon _____ at heart, gently shielding orphaned beasts inside its great warm cave.",
+          "answer": "Kindly"
+        }
+      }
+    },
+    {
+      "word": "Mercurial",
+      "pronunciation": "mer-KYUR-ee-uhl",
+      "definition": "Quickly changing in mood or behaviour.",
+      "sentence_usage": "Our mercurial cat purrs sweetly one minute and swats your hand the next.",
+      "synonyms": [
+        "Volatile",
+        "Changeable",
+        "Erratic"
+      ],
+      "antonyms": [
+        "Steady",
+        "Constant",
+        "Even-tempered"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "The little sprite laughed in one breath and sulked in the very next, never settling for more than a heartbeat.",
+        "word": "The mercurial pixie giggled at the lost travellers, then burst into tears before darting under a glowing toadstool.",
+        "sentence": "The _____ moon-fairy guided us joyfully for a minute, then sulked behind a petal and refused to point the way.",
+        "synonym": {
+          "cloze": "Every sprite in the glen was _____ tonight, dancing happily one moment and hiding behind petals the next.",
+          "answer": "Volatile"
+        },
+        "antonym": {
+          "cloze": "Unlike the other fairies, this one was _____ in mood, beaming brightly at every visitor who stepped into the glen.",
+          "answer": "Steady"
+        }
+      }
+    },
+    {
+      "word": "Nefarious",
+      "pronunciation": "ni-FAIR-ee-us",
+      "definition": "Extremely wicked, especially in a sneaky or criminal way.",
+      "sentence_usage": "The story's villain hatches a nefarious plan to steal every clock in the city.",
+      "synonyms": [
+        "Wicked",
+        "Villainous",
+        "Sinister"
+      ],
+      "antonyms": [
+        "Virtuous",
+        "Noble",
+        "Honourable"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Deep inside the smoking peak, the great beast plotted a wicked scheme to seize every gold coin in the valley.",
+        "word": "The nefarious dragon laid traps of glittering fool's gold along every mountain path leading up to its cave.",
+        "sentence": "The villagers whispered that a _____ scheme was hatching deep inside the smouldering caves above their valley.",
+        "synonym": {
+          "cloze": "The dragon's plans grew more _____ each year, threatening every wagon that crossed the mountain pass.",
+          "answer": "Villainous"
+        },
+        "antonym": {
+          "cloze": "Few believed that any dragon could be _____ at heart, yet this one guarded the village from far worse beasts.",
+          "answer": "Noble"
+        }
+      }
+    },
+    {
+      "word": "Nonchalant",
+      "pronunciation": "non-shuh-LAHNT",
+      "definition": "Calm and not seeming to worry about anything.",
+      "sentence_usage": "He gave a nonchalant shrug, even though the test mark was much lower than usual.",
+      "synonyms": [
+        "Unconcerned",
+        "Casual",
+        "Indifferent"
+      ],
+      "antonyms": [
+        "Anxious",
+        "Worried",
+        "Agitated"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Even as the great wave reared above the deck, the captain leaned on the rail with no sign of worry.",
+        "word": "The nonchalant captain whistled at the wheel while every other sailor scrambled to lash the cargo down.",
+        "sentence": "Even as thunder shook the sails, the _____ captain leaned against the wheel and sipped slowly from his battered tin cup.",
+        "synonym": {
+          "cloze": "The first mate looked _____ as the harbour shrank behind them, though half the crew were waving madly from the deck.",
+          "answer": "Casual"
+        },
+        "antonym": {
+          "cloze": "Below deck the cabin boy felt _____ all night, listening to the timbers groan as the storm shook the ship.",
+          "answer": "Anxious"
+        }
+      }
+    },
+    {
+      "word": "Obstinate",
+      "pronunciation": "OB-stin-uht",
+      "definition": "Refusing to change one's mind or course of action.",
+      "sentence_usage": "The obstinate goat refused to leave the muddy patch, no matter how hard we tugged its rope.",
+      "synonyms": [
+        "Stubborn",
+        "Headstrong",
+        "Mulish"
+      ],
+      "antonyms": [
+        "Flexible",
+        "Compliant",
+        "Yielding"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The old guard would never lower his shield, however firmly the queen herself commanded him to step aside.",
+        "word": "The obstinate prince refused to leave the throne room until every one of his demands had been met.",
+        "sentence": "The _____ knight stood guard at the gatehouse for hours, refusing every royal request to step aside for the herald.",
+        "synonym": {
+          "cloze": "The _____ guard would not budge from his post outside the great hall, even when the queen herself approached.",
+          "answer": "Stubborn"
+        },
+        "antonym": {
+          "cloze": "Only a _____ courtier would have bowed to the queen's surprising new decree without a single protest.",
+          "answer": "Compliant"
+        }
+      }
+    },
+    {
+      "word": "Pernicious",
+      "pronunciation": "puh-NISH-us",
+      "definition": "Causing great harm in a quiet, gradual way.",
+      "sentence_usage": "The pernicious rumour spread through the school until even the teachers heard it.",
+      "synonyms": [
+        "Harmful",
+        "Damaging",
+        "Destructive"
+      ],
+      "antonyms": [
+        "Beneficial",
+        "Helpful",
+        "Wholesome"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "A faint smoke drifted from the cave each night, slowly killing the moss and ferns along the mountain path.",
+        "word": "The pernicious smoke from the dragon's lair drifted down the slope and yellowed every leaf below.",
+        "sentence": "A thin trail of _____ smoke crept down the slope, withering every fern and patch of moss along the path.",
+        "synonym": {
+          "cloze": "The villagers feared the slow, _____ effect of the smoke that drifted from the smouldering peak each night.",
+          "answer": "Harmful"
+        },
+        "antonym": {
+          "cloze": "Surprisingly, the warm ash blown from the cave proved _____ to the fields, helping the barley grow taller each year.",
+          "answer": "Beneficial"
+        }
+      }
+    },
+    {
+      "word": "Pristine",
+      "pronunciation": "PRIS-teen",
+      "definition": "Perfectly clean, fresh and untouched.",
+      "sentence_usage": "The new school blazer hung in the wardrobe, still pristine in its plastic cover.",
+      "synonyms": [
+        "Spotless",
+        "Immaculate",
+        "Unspoiled"
+      ],
+      "antonyms": [
+        "Dirty",
+        "Soiled",
+        "Sullied"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "No human boot had ever pressed the moss in this hidden corner of the glade, where dew lay perfectly untouched.",
+        "word": "The pristine fairy meadow glittered with morning dew that no human foot had ever crossed.",
+        "sentence": "A _____ pool lay deep within the glen, its silver surface untouched by any falling petal or fairy wing.",
+        "synonym": {
+          "cloze": "The fairy queen led us to a _____ corner of the glade where the dew lay perfect across every blade of grass.",
+          "answer": "Immaculate"
+        },
+        "antonym": {
+          "cloze": "After the goblin raid, the once-pretty glen was _____ with mud, broken petals and footprints across every silver path.",
+          "answer": "Dirty"
+        }
+      }
+    },
+    {
+      "word": "Querulous",
+      "pronunciation": "KWAIR-uh-luhs",
+      "definition": "Complaining in a whining or grumbling way.",
+      "sentence_usage": "A querulous toddler dragged behind his parents the whole way around the supermarket.",
+      "synonyms": [
+        "Whining",
+        "Peevish",
+        "Grumbling"
+      ],
+      "antonyms": [
+        "Cheerful",
+        "Content",
+        "Uncomplaining"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "An elderly duke grumbled all the way through the banquet about the meat, the music and the candles.",
+        "word": "The querulous old duke whined at the banquet about cold soup, bent spoons and missing salt cellars.",
+        "sentence": "The _____ visiting earl complained that the castle beds were too soft and the banquet candles burned too brightly.",
+        "synonym": {
+          "cloze": "A _____ courtier grumbled the whole evening about the seating plan that the queen had arranged.",
+          "answer": "Peevish"
+        },
+        "antonym": {
+          "cloze": "The new ambassador was so _____ that he praised every dish at the banquet, even the dry oat biscuits.",
+          "answer": "Cheerful"
+        }
+      }
+    },
+    {
+      "word": "Sceptical",
+      "pronunciation": "SKEP-ti-kuhl",
+      "definition": "Doubting whether something is true or likely.",
+      "sentence_usage": "I was sceptical when my brother promised the dog had eaten his homework again.",
+      "synonyms": [
+        "Doubtful",
+        "Suspicious",
+        "Dubious"
+      ],
+      "antonyms": [
+        "Trusting",
+        "Convinced",
+        "Credulous"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Half the pupils refused to believe the old wizard's claim that mice could be taught to read entire spellbooks.",
+        "word": "The sceptical pupils whispered behind their spellbooks as the new teacher promised to make a feather sing.",
+        "sentence": "A _____ pupil in the back row folded her arms when the teacher claimed the broomstick would whistle her favourite tune.",
+        "synonym": {
+          "cloze": "The headmistress was _____ of every new spell the boastful young wizard claimed to have invented in the library.",
+          "answer": "Doubtful"
+        },
+        "antonym": {
+          "cloze": "The first-years were so _____ that they believed every wild story the older pupils told in the dining hall.",
+          "answer": "Trusting"
+        }
+      }
+    },
+    {
+      "word": "Steadfast",
+      "pronunciation": "STED-fast",
+      "definition": "Firm and unwavering, especially in loyalty or purpose.",
+      "sentence_usage": "Despite the cold, the lighthouse keeper remained steadfast at his post throughout the long winter night.",
+      "synonyms": [
+        "Loyal",
+        "Faithful",
+        "Unwavering"
+      ],
+      "antonyms": [
+        "Disloyal",
+        "Fickle",
+        "Wavering"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The young captain held the bridge for three whole days without once leaving her place at the front.",
+        "word": "The steadfast captain held the bridge for three days, refusing to retreat even as enemy banners crossed the river.",
+        "sentence": "The _____ banner-bearer never let the flag touch the muddy ground, even when arrows rained over the front line.",
+        "synonym": {
+          "cloze": "The captain praised her _____ archers, who held the high wall throughout the long siege without a single complaint.",
+          "answer": "Loyal"
+        },
+        "antonym": {
+          "cloze": "The general dismissed the _____ recruits who slipped away from camp the moment the enemy banners appeared on the ridge.",
+          "answer": "Disloyal"
+        }
+      }
+    },
+    {
+      "word": "Truculent",
+      "pronunciation": "TRUK-yuh-luhnt",
+      "definition": "Quick to argue or fight, with an aggressive manner.",
+      "sentence_usage": "A truculent shopper barged to the front of the queue, glaring at everyone who tried to object.",
+      "synonyms": [
+        "Belligerent",
+        "Combative",
+        "Aggressive"
+      ],
+      "antonyms": [
+        "Meek",
+        "Peaceful",
+        "Amiable"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The new recruit picked a fight with every other soldier in the camp before the captain had even unsaddled his horse.",
+        "word": "The truculent recruit started a quarrel with every soldier in the marching line before they had crossed the river.",
+        "sentence": "A _____ sergeant marched into the camp and started a quarrel with every captain he passed under the banners.",
+        "synonym": {
+          "cloze": "The captain dismissed her most _____ soldier for picking fights with three sergeants in a single day on the field.",
+          "answer": "Combative"
+        },
+        "antonym": {
+          "cloze": "Once the battle ended, the old captain became surprisingly _____ and shared his rations with the enemy prisoners.",
+          "answer": "Peaceful"
+        }
+      }
+    },
+    {
+      "word": "Venerable",
+      "pronunciation": "VEN-uh-ruh-buhl",
+      "definition": "Old and deserving great respect.",
+      "sentence_usage": "The venerable oak at the centre of the village has stood for more than four hundred years.",
+      "synonyms": [
+        "Esteemed",
+        "Respected",
+        "Revered"
+      ],
+      "antonyms": [
+        "Disreputable",
+        "Dishonoured",
+        "Lowly"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Every pupil bowed when the silver-bearded headmaster shuffled into the great hall for the first lesson of term.",
+        "word": "The venerable headmaster opened the spellbook with hands that had cast magic for over a hundred years.",
+        "sentence": "The _____ wizard had taught more pupils than there were stars over the spire of the highest tower in the school.",
+        "synonym": {
+          "cloze": "Every first-year stood up the moment the _____ scholar swept into the dining hall in her starred green robe.",
+          "answer": "Esteemed"
+        },
+        "antonym": {
+          "cloze": "Once a famous tutor, he was now considered _____ after the scandal with the talking parrot during the summer exams.",
+          "answer": "Disreputable"
+        }
+      }
+    },
+    {
+      "word": "Admonish",
+      "pronunciation": "ad-MON-ish",
+      "definition": "To warn or scold someone gently but firmly.",
+      "sentence_usage": "Mrs Patel had to admonish the class for whispering during the spelling test.",
+      "synonyms": [
+        "Reprimand",
+        "Caution",
+        "Chide"
+      ],
+      "antonyms": [
+        "Praise",
+        "Compliment",
+        "Commend"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The old teacher would quietly warn each pupil who chewed sweets during a difficult potion lesson.",
+        "word": "The headmaster had to admonish a small group of first-years for racing brooms inside the library.",
+        "sentence": "The strict potion master would gently _____ any pupil who left a single drop of dragonfly oil on the bench.",
+        "synonym": {
+          "cloze": "The headmistress had to _____ the older pupils for sneaking into the locked spellbook store after lights-out.",
+          "answer": "Reprimand"
+        },
+        "antonym": {
+          "cloze": "The kindly teacher would always _____ a pupil who tried a tricky spell, even when sparks burned the carpet.",
+          "answer": "Praise"
+        }
+      }
+    },
+    {
+      "word": "Alleviate",
+      "pronunciation": "uh-LEE-vee-ayt",
+      "definition": "To make pain, trouble or worry less severe.",
+      "sentence_usage": "A warm bath should alleviate the aching legs after such a long hike.",
+      "synonyms": [
+        "Ease",
+        "Relieve",
+        "Soothe"
+      ],
+      "antonyms": [
+        "Worsen",
+        "Aggravate",
+        "Intensify"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "A gentle blue potion brewed in the school infirmary could quickly take away even the worst headache.",
+        "word": "The kind matron brewed a herb tea to alleviate the headache of every pupil after the long exam.",
+        "sentence": "A spoonful of the matron's silver syrup could _____ any cough caught in the draughty corridors of the school.",
+        "synonym": {
+          "cloze": "The school healer used moon-flower tea to _____ every sore throat in the dormitories during the winter term.",
+          "answer": "Ease"
+        },
+        "antonym": {
+          "cloze": "Mixing the wrong herbs together would _____ the headache of any pupil foolish enough to drink the brew.",
+          "answer": "Worsen"
+        }
+      }
+    },
+    {
+      "word": "Coax",
+      "pronunciation": "kohks",
+      "definition": "To gently persuade someone to do something.",
+      "sentence_usage": "Granny had to coax the kitten down from the top of the curtain rail.",
+      "synonyms": [
+        "Persuade",
+        "Cajole",
+        "Wheedle"
+      ],
+      "antonyms": [
+        "Bully",
+        "Force",
+        "Compel"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "The little sprite gently whispered until the shy moth flew down from its hiding place under the tall toadstool.",
+        "word": "The smallest fairy tried to coax a glow-worm from beneath a leaf with a song softer than a sigh.",
+        "sentence": "The young pixie tried to _____ a glow-worm out from beneath a curling fern with a song softer than a whisper.",
+        "synonym": {
+          "cloze": "The fairy queen tried to _____ the lost child back across the bridge with the promise of a single sweet petal.",
+          "answer": "Persuade"
+        },
+        "antonym": {
+          "cloze": "The wicked goblin would never _____ a moth from its leaf, choosing instead to shake the whole tree without warning.",
+          "answer": "Bully"
+        }
+      }
+    },
+    {
+      "word": "Decipher",
+      "pronunciation": "di-SY-fur",
+      "definition": "To work out the meaning of something difficult or in code.",
+      "sentence_usage": "It took Mum ages to decipher the doctor's spidery handwriting on the prescription.",
+      "synonyms": [
+        "Decode",
+        "Interpret",
+        "Unravel"
+      ],
+      "antonyms": [
+        "Muddle",
+        "Confuse",
+        "Obscure"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The pupils spent three lessons trying to read a faded scroll covered in tiny silver runes from a forgotten age.",
+        "word": "The wise old librarian could decipher every faded rune on the dusty scrolls in the topmost tower.",
+        "sentence": "The young scholar took a whole night to _____ a single line of runes scratched onto the cover of the spellbook.",
+        "synonym": {
+          "cloze": "Only the headmistress could _____ the runes carved into the locked door of the forbidden wing of the school.",
+          "answer": "Decode"
+        },
+        "antonym": {
+          "cloze": "A clumsy spell would _____ the scroll's careful runes and leave the message lost forever to every reader.",
+          "answer": "Muddle"
+        }
+      }
+    },
+    {
+      "word": "Dwindle",
+      "pronunciation": "DWIN-duhl",
+      "definition": "To grow gradually less and less.",
+      "sentence_usage": "Our biscuit supply began to dwindle long before the picnic was over.",
+      "synonyms": [
+        "Shrink",
+        "Diminish",
+        "Lessen"
+      ],
+      "antonyms": [
+        "Grow",
+        "Increase",
+        "Expand"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The barrels of fresh water in the hold grew lower with every passing day at sea.",
+        "word": "The crew watched the fresh water dwindle in the barrels as the ship drifted past the last green island.",
+        "sentence": "The crew watched their fresh water _____ as the wind dropped and the ship drifted between empty, salty horizons.",
+        "synonym": {
+          "cloze": "Each week at sea would _____ the barrels of biscuit and salted pork in the lower hold of the ship.",
+          "answer": "Shrink"
+        },
+        "antonym": {
+          "cloze": "Once they reached the harbour, the supplies in the hold finally began to _____ again with every fresh delivery.",
+          "answer": "Grow"
+        }
+      }
+    },
+    {
+      "word": "Embellish",
+      "pronunciation": "em-BEL-ish",
+      "definition": "To make something more attractive by adding extra details.",
+      "sentence_usage": "Grandad likes to embellish his old fishing stories with bigger catches every year.",
+      "synonyms": [
+        "Decorate",
+        "Adorn",
+        "Ornament"
+      ],
+      "antonyms": [
+        "Mar",
+        "Strip",
+        "Simplify"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The royal weavers spent weeks adding silver thread, tiny pearls and golden tassels to the new banner.",
+        "word": "The court tailors would embellish every royal cloak with silver threads, tiny pearls and a hundred golden buttons.",
+        "sentence": "The royal weavers would _____ the queen's new banner with silver threads, glittering beads and a single fierce red lion.",
+        "synonym": {
+          "cloze": "The royal jeweller would _____ each crown with tiny rubies and curling gold leaves for every grand banquet.",
+          "answer": "Decorate"
+        },
+        "antonym": {
+          "cloze": "The new queen ordered her stewards to _____ the throne room and remove every golden curtain and shining trinket.",
+          "answer": "Strip"
+        }
+      }
+    },
+    {
+      "word": "Eradicate",
+      "pronunciation": "i-RAD-i-kayt",
+      "definition": "To destroy or get rid of something completely.",
+      "sentence_usage": "The gardener used boiling water to eradicate the weeds between the paving slabs.",
+      "synonyms": [
+        "Eliminate",
+        "Wipe out",
+        "Abolish"
+      ],
+      "antonyms": [
+        "Preserve",
+        "Maintain",
+        "Foster"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "The mountain witch promised the king she could rid every cave of the smoke-breathing beasts within a single summer.",
+        "word": "Brave knights rode up the mountain to eradicate the goblins that swarmed inside the lower dragon caves.",
+        "sentence": "The mountain witch promised to _____ the swarm of smoking imps that had crept out of the dragon's lower caves.",
+        "synonym": {
+          "cloze": "The king sent his knights to _____ the imps that scurried out of the smouldering mountain at every sunset.",
+          "answer": "Eliminate"
+        },
+        "antonym": {
+          "cloze": "The dragon's smoke seemed to _____ rather than destroy the rare embers-flowers that grew along the burning paths.",
+          "answer": "Preserve"
+        }
+      }
+    },
+    {
+      "word": "Exacerbate",
+      "pronunciation": "eg-ZAS-er-bayt",
+      "definition": "To make a bad situation even worse.",
+      "sentence_usage": "Scratching the rash will only exacerbate the itching.",
+      "synonyms": [
+        "Worsen",
+        "Aggravate",
+        "Intensify"
+      ],
+      "antonyms": [
+        "Soothe",
+        "Calm",
+        "Ease"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Pouring water onto the cave fire only made the smoke grow thicker and the flames roar even higher.",
+        "word": "The clumsy knight tried to exacerbate the dragon's anger by shouting insults from the mouth of the cave.",
+        "sentence": "Splashing water on the burning cave only seemed to _____ the dragon's anger and the smoke billowed even higher.",
+        "synonym": {
+          "cloze": "Shouting insults from the cave mouth would _____ the dragon's temper and bring its scaly tail crashing through the rocks.",
+          "answer": "Aggravate"
+        },
+        "antonym": {
+          "cloze": "A soft lullaby seemed to _____ the dragon, lulling it back into a peaceful sleep on its pile of glittering gold.",
+          "answer": "Soothe"
+        }
+      }
+    },
+    {
+      "word": "Impede",
+      "pronunciation": "im-PEED",
+      "definition": "To slow down or block the progress of something.",
+      "sentence_usage": "Heavy luggage tends to impede a quick dash to catch the train.",
+      "synonyms": [
+        "Hinder",
+        "Hamper",
+        "Obstruct"
+      ],
+      "antonyms": [
+        "Assist",
+        "Aid",
+        "Help"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Fallen logs across the road slowed the cavalry to a crawl during the long march toward the river.",
+        "word": "Heavy mud and fallen trees did everything they could to impede the cavalry on the long march south.",
+        "sentence": "Fallen trees across the muddy track would _____ the cavalry until the engineers cleared a fresh path with their axes.",
+        "synonym": {
+          "cloze": "Sharp stakes hammered into the riverbed would _____ any enemy ship trying to sail upstream toward the field camp.",
+          "answer": "Hamper"
+        },
+        "antonym": {
+          "cloze": "The local farmers offered to _____ the marching cavalry by guiding them along the quickest hidden track to the bridge.",
+          "answer": "Assist"
+        }
+      }
+    },
+    {
+      "word": "Implore",
+      "pronunciation": "im-PLOR",
+      "definition": "To beg someone earnestly for something.",
+      "sentence_usage": "The children began to implore their parents for just one more chapter at bedtime.",
+      "synonyms": [
+        "Beg",
+        "Beseech",
+        "Plead"
+      ],
+      "antonyms": [
+        "Demand",
+        "Order",
+        "Command"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The young farmer fell to his knees in the great hall and begged the queen for mercy on his village.",
+        "word": "The exhausted messenger would implore the king to send help to the small village beyond the eastern hills.",
+        "sentence": "A weary messenger fell to his knees and tried to _____ the queen to send help to his starving mountain village.",
+        "synonym": {
+          "cloze": "The young farmer rode through the night to _____ the king for grain before the villagers' last winter stores ran out.",
+          "answer": "Beseech"
+        },
+        "antonym": {
+          "cloze": "Only a king's most trusted general would dare _____ the royal cavalry to charge across the muddy field.",
+          "answer": "Command"
+        }
+      }
+    },
+    {
+      "word": "Loathe",
+      "pronunciation": "lohth",
+      "definition": "To hate something or someone very strongly.",
+      "sentence_usage": "I loathe the smell of boiled cabbage drifting through the corridor at lunchtime.",
+      "synonyms": [
+        "Detest",
+        "Despise",
+        "Abhor"
+      ],
+      "antonyms": [
+        "Adore",
+        "Love",
+        "Cherish"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "The huge beast turned its nose away from any honeyed bun the brave young baker held out at the cave mouth.",
+        "word": "The dragon seemed to loathe sweet things and would never touch the honey buns left at the cave entrance.",
+        "sentence": "The fierce beast appeared to _____ sweet honey buns and would knock the trays into the smouldering cave fire.",
+        "synonym": {
+          "cloze": "The dragon would _____ the gritty taste of crumbled mountain salt and would breathe smoke at any tray placed nearby.",
+          "answer": "Detest"
+        },
+        "antonym": {
+          "cloze": "The hatchling grew to _____ the warm gold piled deep inside the cave and would not leave it for a moment.",
+          "answer": "Adore"
+        }
+      }
+    },
+    {
+      "word": "Pacify",
+      "pronunciation": "PAS-uh-fy",
+      "definition": "To calm down someone who is angry or upset.",
+      "sentence_usage": "A spoonful of yoghurt usually helps pacify the baby when she starts to wail.",
+      "synonyms": [
+        "Calm",
+        "Soothe",
+        "Appease"
+      ],
+      "antonyms": [
+        "Provoke",
+        "Anger",
+        "Enrage"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The young general rode along the line, speaking quietly to each shouting soldier until tempers cooled in the camp.",
+        "word": "The young general rode through the camp to pacify the soldiers who were grumbling about the cold rations.",
+        "sentence": "The wise old captain managed to _____ the furious troops with promises of warm food and a longer rest by the river.",
+        "synonym": {
+          "cloze": "Only the general's voice could _____ the troops after the long muddy march through the rain across the field.",
+          "answer": "Soothe"
+        },
+        "antonym": {
+          "cloze": "Shouting orders into the camp at midnight would only _____ the soldiers further and start fresh quarrels by every fire.",
+          "answer": "Provoke"
+        }
+      }
+    },
+    {
+      "word": "Procure",
+      "pronunciation": "pruh-KYUR",
+      "definition": "To obtain something with care or effort.",
+      "sentence_usage": "Dad managed to procure two tickets to the sold-out concert through an old friend.",
+      "synonyms": [
+        "Obtain",
+        "Acquire",
+        "Secure"
+      ],
+      "antonyms": [
+        "Lose",
+        "Forfeit",
+        "Relinquish"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "At every harbour the cook went ashore to bring back salt, lemons and fresh barrels of clean drinking water.",
+        "word": "The captain sent the cook ashore to procure salt, fresh lemons and a barrel of clean water from the village.",
+        "sentence": "At every harbour the cook would _____ salt, lemons and dried fish to keep the crew well fed across the next leg.",
+        "synonym": {
+          "cloze": "The young sailor was sent ashore to _____ a pile of clean canvas and three new lengths of rope for the deck.",
+          "answer": "Acquire"
+        },
+        "antonym": {
+          "cloze": "A careless quartermaster would _____ the last of the dried meat to the harbour rats during the long evening watch.",
+          "answer": "Lose"
+        }
+      }
+    },
+    {
+      "word": "Quell",
+      "pronunciation": "kwel",
+      "definition": "To put a stop to something, usually a feeling or a disturbance.",
+      "sentence_usage": "A glass of milk can sometimes quell the rumbling of a midnight stomach.",
+      "synonyms": [
+        "Suppress",
+        "Subdue",
+        "Stifle"
+      ],
+      "antonyms": [
+        "Incite",
+        "Provoke",
+        "Spark"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The captain rode forward alone to put a stop to the rising panic among her troops before any banner fell.",
+        "word": "The young captain rode forward alone to quell the panic in the front rank before the enemy charge began.",
+        "sentence": "The general's calm voice would _____ the rising panic in the front rank just before the enemy banners crested the ridge.",
+        "synonym": {
+          "cloze": "Only the captain's calm voice could _____ the panic in the front rank as the enemy line crested the muddy ridge.",
+          "answer": "Subdue"
+        },
+        "antonym": {
+          "cloze": "A reckless shout from the back of the camp would _____ a fresh quarrel between the youngest soldiers around every fire.",
+          "answer": "Provoke"
+        }
+      }
+    },
+    {
+      "word": "Refute",
+      "pronunciation": "ri-FYOOT",
+      "definition": "To prove that something is false or wrong.",
+      "sentence_usage": "Sam was able to refute the rumour by showing his maths book to the teacher.",
+      "synonyms": [
+        "Disprove",
+        "Rebut",
+        "Contradict"
+      ],
+      "antonyms": [
+        "Confirm",
+        "Verify",
+        "Support"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The bright young pupil showed every page of her spellbook to prove the old story about moon-mice was simply untrue.",
+        "word": "The young apprentice tried hard to refute the old tale that wizards could never speak with talking mice.",
+        "sentence": "The clever apprentice prepared a clear spell to _____ the headmaster's claim that broomsticks could never carry a heavy cauldron.",
+        "synonym": {
+          "cloze": "It took weeks of careful study to _____ the wild rumour that the school's library was guarded by sleeping moon-mice.",
+          "answer": "Disprove"
+        },
+        "antonym": {
+          "cloze": "A second pupil stepped forward to _____ the headmaster's claim and showed three identical spellbooks to the whole class.",
+          "answer": "Confirm"
+        }
+      }
+    },
+    {
+      "word": "Thwart",
+      "pronunciation": "thwort",
+      "definition": "To prevent someone from achieving what they intend.",
+      "sentence_usage": "A locked back door was enough to thwart the cunning cat's escape plan.",
+      "synonyms": [
+        "Foil",
+        "Frustrate",
+        "Block"
+      ],
+      "antonyms": [
+        "Assist",
+        "Enable",
+        "Help"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The young captain planted sharp stakes along the riverbank to spoil the enemy's plan to cross at dawn.",
+        "word": "Three brave scouts rode out to thwart the enemy's plan before the first banners crossed the muddy river.",
+        "sentence": "The clever captain set fires along the riverbank to _____ the enemy charge before the morning mist had even lifted.",
+        "synonym": {
+          "cloze": "The general's secret plan was to _____ every enemy supply wagon long before it could reach the great battle camp.",
+          "answer": "Foil"
+        },
+        "antonym": {
+          "cloze": "The friendly farmers offered to _____ the marching army by guiding them safely along the quickest path to the river crossing.",
+          "answer": "Assist"
+        }
+      }
+    },
+    {
+      "word": "Adversary",
+      "pronunciation": "AD-vur-sair-ee",
+      "definition": "An opponent in a contest, fight or argument.",
+      "sentence_usage": "In the final round, Tom faced his old chess club adversary across the polished wooden board.",
+      "synonyms": [
+        "Opponent",
+        "Rival",
+        "Foe"
+      ],
+      "antonyms": [
+        "Ally",
+        "Friend",
+        "Partner"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Across the misty field stood a soldier the young captain had fought against in every campaign since boyhood.",
+        "word": "The young captain bowed to her adversary across the field before the first trumpet split the morning silence.",
+        "sentence": "The young captain bowed to her _____ across the misty field before the first trumpet rang out across the camp.",
+        "synonym": {
+          "cloze": "The general respected every _____ who marched onto the field with banners flying and trumpets blazing in the sunshine.",
+          "answer": "Rival"
+        },
+        "antonym": {
+          "cloze": "By the end of the campaign, the captain's old enemy had become a trusted _____ in every council of war.",
+          "answer": "Ally"
+        }
+      }
+    },
+    {
+      "word": "Predicament",
+      "pronunciation": "pri-DIK-uh-muhnt",
+      "definition": "A difficult or unpleasant situation that is hard to escape.",
+      "sentence_usage": "Locked out in the rain with no phone, Mum was in a real predicament.",
+      "synonyms": [
+        "Plight",
+        "Quandary",
+        "Dilemma"
+      ],
+      "antonyms": [
+        "Solution",
+        "Comfort",
+        "Relief"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The ship sat helpless on a sandbank with the tide falling fast and the harbour many miles away.",
+        "word": "The crew faced a tricky predicament when the ship stuck fast on a sandbank with the tide falling.",
+        "sentence": "The crew found themselves in a tight _____ when the ship lodged on a sandbank with the tide falling fast.",
+        "synonym": {
+          "cloze": "The captain quickly explained their _____ to the cabin boy: no wind, no fresh water, and only one barrel of biscuit.",
+          "answer": "Plight"
+        },
+        "antonym": {
+          "cloze": "The rising tide proved a sudden _____ to the stranded ship, lifting it gently off the sandbank just before sunset.",
+          "answer": "Relief"
+        }
+      }
+    },
+    {
+      "word": "Zenith",
+      "pronunciation": "ZEN-ith",
+      "definition": "The highest point reached by something, especially success or power.",
+      "sentence_usage": "At the zenith of her career, the violinist played for cheering crowds across three continents.",
+      "synonyms": [
+        "Peak",
+        "Summit",
+        "Pinnacle"
+      ],
+      "antonyms": [
+        "Bottom",
+        "Nadir",
+        "Low"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "From the very top of the smoking peak, the great beast could see every village in the valley below.",
+        "word": "The mountain reached its zenith above the cloud line, where the dragon's cave glowed bright red at sunset.",
+        "sentence": "From the icy _____ of the smouldering peak, the dragon could see every torch flickering in the valley below.",
+        "synonym": {
+          "cloze": "The brave knight reached the _____ of the dragon's mountain just as the sun rose above the clouds.",
+          "answer": "Summit"
+        },
+        "antonym": {
+          "cloze": "From the very _____ of the valley, the great smouldering mountain above looked impossibly far away in the morning mist.",
+          "answer": "Bottom"
+        }
+      }
+    },
+    {
+      "word": "Hastily",
+      "pronunciation": "HAY-stuh-lee",
+      "definition": "In a quick or hurried way, often without enough thought.",
+      "sentence_usage": "He hastily stuffed the sandwich into his bag as the school bus pulled away.",
+      "synonyms": [
+        "Quickly",
+        "Hurriedly",
+        "Speedily"
+      ],
+      "antonyms": [
+        "Slowly",
+        "Leisurely",
+        "Calmly"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adverb",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "The squirrels darted up the great oak in a sudden flurry, scattering acorns across the mossy floor below.",
+        "word": "The squirrels hastily buried their last acorns under the gnarled roots before the first snowfall covered the forest.",
+        "sentence": "The deer fled _____ between the trees the moment they caught the snap of a twig along the mossy path.",
+        "synonym": {
+          "cloze": "The badger trotted _____ through the ferns when the first cold raindrops began to drum on the broad summer leaves.",
+          "answer": "Quickly"
+        },
+        "antonym": {
+          "cloze": "The old fox padded _____ across the woodland clearing, sniffing every fern as if no hunter could ever surprise him.",
+          "answer": "Slowly"
+        }
+      }
+    },
+    {
+      "word": "Solemnly",
+      "pronunciation": "SOL-um-lee",
+      "definition": "In a very serious or formal way.",
+      "sentence_usage": "She solemnly promised to look after the class hamster during the entire summer holiday.",
+      "synonyms": [
+        "Seriously",
+        "Gravely",
+        "Earnestly"
+      ],
+      "antonyms": [
+        "Cheerfully",
+        "Light-heartedly",
+        "Jokingly"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adverb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Every knight knelt before the throne and quietly swore to defend the kingdom for as long as they drew breath.",
+        "word": "Each new knight solemnly knelt before the queen and laid a polished sword across the cold stone floor.",
+        "sentence": "Each new knight knelt _____ before the queen and laid a polished silver sword across the cold marble floor.",
+        "synonym": {
+          "cloze": "The young squire bowed _____ before the queen as the herald announced his new and rather grand title.",
+          "answer": "Gravely"
+        },
+        "antonym": {
+          "cloze": "The youngest princess bowed _____ to the visiting prince and made a silly face at her brother behind her fan.",
+          "answer": "Cheerfully"
+        }
+      }
     }
   ]
 }
