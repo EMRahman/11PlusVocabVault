@@ -366,7 +366,7 @@ main {
 }
 
 .quest-launch-btn {
-  background: linear-gradient(135deg, #14532d 0%, #22c55e 60%, #bbf7d0 100%);
+  background: linear-gradient(135deg, #052e16 0%, #0f4423 60%, #15803d 100%);
 }
 .quest-launch-btn:hover { filter: brightness(1.1); }
 
@@ -1020,7 +1020,7 @@ footer {
   align-items: center;
   gap: 0.45rem;
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, #4338ca 0%, #6c63ff 60%, #a5b4fc 100%);
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 60%, #4f46e5 100%);
   color: #fff;
   border-radius: 50px;
   font-size: 0.95rem;
@@ -1628,35 +1628,35 @@ footer {
    Story Mode & Daily News
    =========================== */
 .story-launch-btn {
-  background: linear-gradient(135deg, #075985 0%, #0ea5e9 60%, #7dd3fc 100%);
-  border-color: #0ea5e9;
+  background: linear-gradient(135deg, #082f49 0%, #0c4a6e 60%, #0369a1 100%);
+  border-color: #0369a1;
 }
 
 .news-launch-btn {
-  background: linear-gradient(135deg, #9a3412 0%, #f97316 60%, #fed7aa 100%);
-  border-color: #f97316;
+  background: linear-gradient(135deg, #431407 0%, #7c2d12 60%, #c2410c 100%);
+  border-color: #c2410c;
 }
 
 .story-launch-btn:hover { filter: brightness(1.1); }
 .news-launch-btn:hover { filter: brightness(1.1); }
 
 .history-launch-btn {
-  background: linear-gradient(135deg, #5b21b6 0%, #8b5cf6 60%, #ddd6fe 100%);
-  border-color: #8b5cf6;
+  background: linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%);
+  border-color: #6d28d9;
 }
 
 .history-launch-btn:hover { filter: brightness(1.1); }
 
 .fable-launch-btn {
-  background: linear-gradient(135deg, #134e4a 0%, #14b8a6 60%, #99f6e4 100%);
-  border-color: #14b8a6;
+  background: linear-gradient(135deg, #042f2e 0%, #0f4c47 60%, #0d9488 100%);
+  border-color: #0d9488;
 }
 
 .fable-launch-btn:hover { filter: brightness(1.1); }
 
 .proverbs-launch-btn {
-  background: linear-gradient(135deg, #831843 0%, #ec4899 60%, #fbcfe8 100%);
-  border-color: #ec4899;
+  background: linear-gradient(135deg, #2d0a14 0%, #771537 60%, #be185d 100%);
+  border-color: #be185d;
 }
 
 .proverbs-launch-btn:hover { filter: brightness(1.1); }
@@ -2214,7 +2214,7 @@ footer {
    Word Detective Mode
    =========================== */
 
-.detective-launch-btn { background: linear-gradient(135deg, #022c22 0%, #065f46 60%, #34d399 100%); }
+.detective-launch-btn { background: linear-gradient(135deg, #022c22 0%, #064e3b 60%, #065f46 100%); }
 .detective-launch-btn:hover { filter: brightness(1.1); }
 
 .detective-game-inner {
@@ -2342,7 +2342,7 @@ footer {
    Scramble Mode
    =========================== */
 
-.scramble-launch-btn { background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 60%, #c4b5fd 100%); }
+.scramble-launch-btn { background: linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%); }
 .scramble-launch-btn:hover { filter: brightness(1.1); }
 
 .scramble-game-inner {
@@ -2481,7 +2481,7 @@ footer {
    Flash Blitz Mode
    =========================== */
 
-.blitz-launch-btn { background: linear-gradient(135deg, #78350f 0%, #b45309 60%, #fde68a 100%); }
+.blitz-launch-btn { background: linear-gradient(135deg, #1c0a00 0%, #78350f 60%, #b45309 100%); }
 .blitz-launch-btn:hover { filter: brightness(1.1); }
 
 .blitz-game-inner {
@@ -2658,7 +2658,7 @@ footer {
    Synonym Snap Mode
    =========================== */
 
-.snap-launch-btn { background: linear-gradient(135deg, #831843 0%, #be185d 60%, #fbcfe8 100%); }
+.snap-launch-btn { background: linear-gradient(135deg, #2d0a14 0%, #6e1239 60%, #9d174d 100%); }
 .snap-launch-btn:hover { filter: brightness(1.1); }
 
 .snap-game-inner {
@@ -2882,8 +2882,8 @@ footer {
    =========================== */
 
 .comic-launch-btn {
-  background: linear-gradient(135deg, #3f6212 0%, #84cc16 60%, #d9f99d 100%);
-  border-color: #84cc16;
+  background: linear-gradient(135deg, #1a2e05 0%, #2d4a0a 60%, #4d7c0f 100%);
+  border-color: #4d7c0f;
 }
 
 .comic-launch-btn:hover { filter: brightness(1.1); }
