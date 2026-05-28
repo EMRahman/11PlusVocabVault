@@ -1220,6 +1220,32 @@
         </div>
       </header>
       <div id="portrait-suggest" class="portrait-suggest" role="listbox" aria-label="Word suggestions"></div>
+      <div id="portrait-filter-bar" class="portrait-filter-bar" role="group" aria-label="Filter word suggestions">
+        <div class="portrait-filter-group" role="group" aria-label="Filter by peak decade">
+          <span class="portrait-filter-label">Peak</span>
+          <button class="portrait-filter-btn active" data-peak="any"        aria-pressed="true"  type="button">Any</button>
+          <button class="portrait-filter-btn"         data-peak="pre1900"   aria-pressed="false" type="button">Pre-1900</button>
+          <button class="portrait-filter-btn"         data-peak="1900-50"   aria-pressed="false" type="button">1900–50</button>
+          <button class="portrait-filter-btn"         data-peak="1950-2000" aria-pressed="false" type="button">1950–2000</button>
+          <button class="portrait-filter-btn"         data-peak="2000plus"  aria-pressed="false" type="button">2000+</button>
+        </div>
+        <div class="portrait-filter-group" role="group" aria-label="Filter by usage trend">
+          <span class="portrait-filter-label">Trend</span>
+          <button class="portrait-filter-btn active" data-trend="any"        aria-pressed="true"  type="button">Any</button>
+          <button class="portrait-filter-btn"         data-trend="rising"    aria-pressed="false" type="button">▲ Rising</button>
+          <button class="portrait-filter-btn"         data-trend="steady"    aria-pressed="false" type="button">▬ Steady</button>
+          <button class="portrait-filter-btn"         data-trend="declining" aria-pressed="false" type="button">▼ Declining</button>
+        </div>
+        <div class="portrait-filter-group" role="group" aria-label="Filter by rarity">
+          <span class="portrait-filter-label">Rarity</span>
+          <button class="portrait-filter-btn active" data-rarity="any" aria-pressed="true"  type="button">Any</button>
+          <button class="portrait-filter-btn"         data-rarity="1"  aria-pressed="false" type="button">1★</button>
+          <button class="portrait-filter-btn"         data-rarity="2"  aria-pressed="false" type="button">2★</button>
+          <button class="portrait-filter-btn"         data-rarity="3"  aria-pressed="false" type="button">3★</button>
+          <button class="portrait-filter-btn"         data-rarity="4"  aria-pressed="false" type="button">4★</button>
+          <button class="portrait-filter-btn"         data-rarity="5"  aria-pressed="false" type="button">5★</button>
+        </div>
+      </div>
       <div class="portrait-body">
         <div class="portrait-headline">
           <h3 id="portrait-word" class="portrait-word">Pick a word above</h3>

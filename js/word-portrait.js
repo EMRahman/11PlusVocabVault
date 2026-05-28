@@ -297,6 +297,7 @@
     var current = null;
     var activeTab = 'roots';
     var active = false;
+    var filterState = { peak: 'any', trend: 'any', rarity: 'any' };
 
     function ensureData() {
       if (loaded) return Promise.resolve(true);
@@ -368,11 +369,50 @@
       if (searchInput) searchInput.focus();
     }
 
+    function matchesPeak(decade, filter) {
+      if (filter === 'any') return true;
+      if (filter === 'pre1900')    return decade < 1900;
+      if (filter === '1900-50')    return decade >= 1900 && decade < 1950;
+      if (filter === '1950-2000')  return decade >= 1950 && decade < 2000;
+      if (filter === '2000plus')   return decade >= 2000;
+      return false;
+    }
+
+    function getFilteredPool() {
+      var anyActive = filterState.peak !== 'any' ||
+                      filterState.trend !== 'any' ||
+                      filterState.rarity !== 'any';
+      if (!anyActive) return null;
+      var pop = (explorerData && explorerData.popularity) || {};
+      return allWords.filter(function (w) {
+        var p = pop[w.word];
+        if (!p) return false;
+        if (!matchesPeak(p.peakDecade, filterState.peak)) return false;
+        if (filterState.trend !== 'any' && p.trend !== filterState.trend) return false;
+        if (filterState.rarity !== 'any' && p.rarity !== Number(filterState.rarity)) return false;
+        return true;
+      });
+    }
+
     function showSuggestions(q) {
       suggestEl.innerHTML = '';
       var term = q.trim().toLowerCase();
-      if (!term) {
-        // Featured: words that DO have curated etymology + popularity
+      var pool = getFilteredPool(); // null = no filter active
+
+      if (pool !== null) {
+        var results = term
+          ? pool.filter(function (w) { return w.word.toLowerCase().indexOf(term) !== -1; })
+          : pool;
+        results.slice(0, 12).forEach(function (w) {
+          suggestEl.appendChild(buildSuggest(w, !!(explorerData.etymology || {})[w.word]));
+        });
+        if (!results.length) {
+          suggestEl.appendChild(el('span', 'portrait-filter-empty', 'No words match these filters'));
+          suggestEl.style.display = 'flex';
+          return;
+        }
+      } else if (!term) {
+        // Featured: words that DO have curated etymology
         var featured = Object.keys(explorerData.etymology || {}).slice(0, 12);
         featured.forEach(function (name) {
           var w = allWords.find(function (x) { return x.word === name; });
@@ -417,6 +457,24 @@
     launchBtn.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
     if (clearBtn) clearBtn.addEventListener('click', clearPortrait);
+    var filterBar = document.getElementById('portrait-filter-bar');
+    if (filterBar) {
+      filterBar.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('.portrait-filter-btn');
+        if (!btn) return;
+        var dim = btn.hasAttribute('data-peak')   ? 'peak'   :
+                  btn.hasAttribute('data-trend')  ? 'trend'  :
+                  btn.hasAttribute('data-rarity') ? 'rarity' : null;
+        if (!dim) return;
+        filterState[dim] = btn.getAttribute('data-' + dim);
+        btn.closest('.portrait-filter-group').querySelectorAll('.portrait-filter-btn').forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        showSuggestions(searchInput.value);
+      });
+    }
     searchInput.addEventListener('input', function () {
       showSuggestions(searchInput.value);
       updateClearVisibility();
