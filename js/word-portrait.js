@@ -284,6 +284,7 @@
     var suggestEl = document.getElementById('portrait-suggest');
     var titleEl = document.getElementById('portrait-word');
     var metaEl = document.getElementById('portrait-meta');
+    var cardBtn = document.getElementById('portrait-card-btn');
     var tabBtns = overlay ? overlay.querySelectorAll('.portrait-tab') : [];
     var panels = {
       roots:   document.getElementById('portrait-roots'),
@@ -334,6 +335,7 @@
       if (!current) {
         titleEl.textContent = 'Pick a word above';
         metaEl.textContent = '';
+        if (cardBtn) cardBtn.hidden = true;
         panels.roots.innerHTML = '';
         panels.history.innerHTML = '';
         panels.family.innerHTML = '';
@@ -341,6 +343,7 @@
       }
       titleEl.textContent = current.word;
       metaEl.textContent = (current.word_type || '') + (current.pronunciation ? ' · ' + current.pronunciation : '');
+      if (cardBtn) cardBtn.hidden = typeof openWordDetail !== 'function';
       if (activeTab === 'roots')   renderRoots(panels.roots, current, (explorerData.etymology || {})[current.word]);
       if (activeTab === 'history') renderHistory(panels.history, current, (explorerData.popularity || {})[current.word]);
       if (activeTab === 'family')  renderFamily(panels.family, current);
@@ -457,6 +460,9 @@
     launchBtn.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
     if (clearBtn) clearBtn.addEventListener('click', clearPortrait);
+    if (cardBtn) cardBtn.addEventListener('click', function () {
+      if (current && typeof openWordDetail === 'function') openWordDetail(current);
+    });
     var filterBar = document.getElementById('portrait-filter-bar');
     if (filterBar) {
       filterBar.addEventListener('click', function (ev) {
