@@ -68,6 +68,10 @@
     saveMastery();
   }
 
+  // Bridge so the Constellation Quest game module (its own file) can feed the
+  // shared mastery system when the player captures words.
+  window.vaultRecordAnswer = recordAnswer;
+
   // ── Audio pronunciation ────────────────────────────────────────────────────
   function speakWord(word) {
     if (!('speechSynthesis' in window)) return;
@@ -525,6 +529,18 @@
     tryInit();
   }
 
+  function wireConstellationQuest(words) {
+    var attempts = 0;
+    function tryInit() {
+      if (typeof window.initConstellationQuest === 'function') {
+        window.initConstellationQuest(words, openModal);
+        return;
+      }
+      if (attempts++ < 80) setTimeout(tryInit, 50);
+    }
+    tryInit();
+  }
+
   function wireExplorerExtras(words) {
     if (typeof window.initMoodMap === 'function') {
       window.initMoodMap(words, openModal);
@@ -559,6 +575,7 @@
         initFlashBlitz();
         initSynonymSnap();
         wireWordUniverse(allWords);
+        wireConstellationQuest(allWords);
         wireExplorerExtras(allWords);
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {

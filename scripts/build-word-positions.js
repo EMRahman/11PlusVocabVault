@@ -28,6 +28,15 @@ const K_ATTRACT = 0.15;
 const K_ANTONYM = 0.012;
 const SEED = 11;
 
+// Clustering (for the Constellation Quest game). k-means over the final 3D
+// layout: spatial proximity there is a faithful proxy for semantic similarity,
+// since the force layout already pulls synonyms together and pushes antonyms
+// apart. Deterministic via the same LCG seed so the result is stable.
+const CLUSTER_K = 12;
+const KMEANS_ITERS = 40;
+const CLUSTER_MIN = 12;
+const CLUSTER_MAX = 45;
+
 function lcgRandom(seed) {
   let s = seed >>> 0;
   return function () {
@@ -217,6 +226,219 @@ function neighborLists(words, graph, topK) {
   return result;
 }
 
+function round4(v) { return Math.round(v * 10000) / 10000; }
+
+// k-means++ seeding: spread initial centroids out (probability of picking a
+// point as the next centroid is proportional to its squared distance to the
+// nearest already-chosen centroid).
+function kmeansPlusPlusInit(pos, k, rand) {
+  const n = pos.length;
+  const centroids = [];
+  const first = Math.floor(rand() * n) % n;
+  centroids.push({ x: pos[first].x, y: pos[first].y, z: pos[first].z });
+  const best = new Float64Array(n).fill(Infinity);
+  while (centroids.length < k) {
+    const last = centroids[centroids.length - 1];
+    let total = 0;
+    for (let i = 0; i < n; i++) {
+      const dx = pos[i].x - last.x, dy = pos[i].y - last.y, dz = pos[i].z - last.z;
+      const d = dx * dx + dy * dy + dz * dz;
+      if (d < best[i]) best[i] = d;
+      total += best[i];
+    }
+    let target = rand() * total, acc = 0, chosen = n - 1;
+    for (let i = 0; i < n; i++) { acc += best[i]; if (acc >= target) { chosen = i; break; } }
+    centroids.push({ x: pos[chosen].x, y: pos[chosen].y, z: pos[chosen].z });
+  }
+  return centroids;
+}
+
+function kmeans(pos, k, rand, iters) {
+  const n = pos.length;
+  const centroids = kmeansPlusPlusInit(pos, k, rand);
+  const assign = new Int32Array(n).fill(-1);
+  for (let it = 0; it < iters; it++) {
+    let changed = false;
+    for (let i = 0; i < n; i++) {
+      let bestC = 0, bestD = Infinity;
+      for (let c = 0; c < k; c++) {
+        const dx = pos[i].x - centroids[c].x, dy = pos[i].y - centroids[c].y, dz = pos[i].z - centroids[c].z;
+        const d = dx * dx + dy * dy + dz * dz;
+        if (d < bestD) { bestD = d; bestC = c; }
+      }
+      if (assign[i] !== bestC) { assign[i] = bestC; changed = true; }
+    }
+    const sums = [];
+    for (let c = 0; c < k; c++) sums.push({ x: 0, y: 0, z: 0, n: 0 });
+    for (let i = 0; i < n; i++) {
+      const s = sums[assign[i]];
+      s.x += pos[i].x; s.y += pos[i].y; s.z += pos[i].z; s.n++;
+    }
+    for (let c = 0; c < k; c++) {
+      if (sums[c].n > 0) centroids[c] = { x: sums[c].x / sums[c].n, y: sums[c].y / sums[c].n, z: sums[c].z / sums[c].n };
+    }
+    if (!changed && it > 0) break;
+  }
+  return { assign: assign, centroids: centroids };
+}
+
+// Keep clusters playable: dissolve undersized clusters into the next-nearest
+// centroid, and offload the farthest members of oversized clusters. A few
+// passes settle it; exact balance isn't required, just a sane size range.
+function balanceClusters(assign, centroids, pos, minSize, maxSize) {
+  const n = pos.length;
+  const k = centroids.length;
+  function d2(i, c) {
+    const dx = pos[i].x - centroids[c].x, dy = pos[i].y - centroids[c].y, dz = pos[i].z - centroids[c].z;
+    return dx * dx + dy * dy + dz * dz;
+  }
+  function nearest(i, exclude) {
+    let bestC = -1, bestD = Infinity;
+    for (let c = 0; c < k; c++) {
+      if (c === exclude || centroids[c] === null) continue;
+      const d = d2(i, c);
+      if (d < bestD) { bestD = d; bestC = c; }
+    }
+    return bestC;
+  }
+  function membersOf() {
+    const m = []; for (let c = 0; c < k; c++) m.push([]);
+    for (let i = 0; i < n; i++) if (assign[i] >= 0) m[assign[i]].push(i);
+    return m;
+  }
+  for (let pass = 0; pass < 5; pass++) {
+    let changed = false;
+    let members = membersOf();
+    for (let c = 0; c < k; c++) {
+      if (centroids[c] === null || members[c].length === 0) continue;
+      const active = centroids.filter(function (x) { return x !== null; }).length;
+      if (members[c].length < minSize && active > 1) {
+        centroids[c] = null;
+        members[c].forEach(function (i) { assign[i] = nearest(i, c); });
+        changed = true;
+      }
+    }
+    if (changed) continue;
+    members = membersOf();
+    for (let c = 0; c < k; c++) {
+      if (centroids[c] === null || members[c].length <= maxSize) continue;
+      const sorted = members[c].slice().sort(function (a, b) { return d2(b, c) - d2(a, c); });
+      const extra = members[c].length - maxSize;
+      for (let t = 0; t < extra; t++) {
+        const nc = nearest(sorted[t], c);
+        if (nc >= 0) { assign[sorted[t]] = nc; changed = true; }
+      }
+    }
+    if (!changed) break;
+  }
+  // Compact away dissolved/empty clusters and recompute centroids from members.
+  const members = membersOf();
+  const remap = {}; let nid = 0;
+  for (let c = 0; c < k; c++) {
+    if (centroids[c] !== null && members[c].length > 0) remap[c] = nid++;
+  }
+  for (let i = 0; i < n; i++) {
+    assign[i] = remap[assign[i]] !== undefined ? remap[assign[i]] : 0;
+  }
+  const finalK = nid;
+  const sums = [];
+  for (let c = 0; c < finalK; c++) sums.push({ x: 0, y: 0, z: 0, n: 0 });
+  for (let i = 0; i < n; i++) {
+    const s = sums[assign[i]];
+    s.x += pos[i].x; s.y += pos[i].y; s.z += pos[i].z; s.n++;
+  }
+  const newCentroids = [];
+  for (let c = 0; c < finalK; c++) {
+    newCentroids.push(sums[c].n > 0
+      ? { x: sums[c].x / sums[c].n, y: sums[c].y / sums[c].n, z: sums[c].z / sums[c].n }
+      : { x: 0, y: 0, z: 0 });
+  }
+  return { assign: assign, centroids: newCentroids };
+}
+
+// Unlock graph: a cluster is adjacent to its 2 nearest neighbours (by centroid)
+// plus any cluster it shares a synonym edge with. A centroid MST is unioned in
+// so the whole graph is connected (no cluster is ever unreachable).
+function buildClusterAdjacency(clusters, graph, assign) {
+  const k = clusters.length;
+  const adj = []; for (let c = 0; c < k; c++) adj.push(new Set());
+  function cd(a, b) {
+    const A = clusters[a].centroid, B = clusters[b].centroid;
+    const dx = A[0] - B[0], dy = A[1] - B[1], dz = A[2] - B[2];
+    return dx * dx + dy * dy + dz * dz;
+  }
+  graph.edges.forEach(function (e) {
+    const ca = assign[e.i], cb = assign[e.j];
+    if (ca !== cb) { adj[ca].add(cb); adj[cb].add(ca); }
+  });
+  for (let c = 0; c < k; c++) {
+    const others = [];
+    for (let o = 0; o < k; o++) if (o !== c) others.push({ o: o, d: cd(c, o) });
+    others.sort(function (a, b) { return a.d - b.d; });
+    for (let t = 0; t < Math.min(2, others.length); t++) { adj[c].add(others[t].o); adj[others[t].o].add(c); }
+  }
+  if (k > 1) {
+    const inTree = new Array(k).fill(false);
+    inTree[0] = true; let count = 1;
+    while (count < k) {
+      let best = null;
+      for (let a = 0; a < k; a++) {
+        if (!inTree[a]) continue;
+        for (let b = 0; b < k; b++) {
+          if (inTree[b]) continue;
+          const d = cd(a, b);
+          if (!best || d < best.d) best = { a: a, b: b, d: d };
+        }
+      }
+      if (!best) break;
+      inTree[best.b] = true; count++;
+      adj[best.a].add(best.b); adj[best.b].add(best.a);
+    }
+  }
+  return adj.map(function (s) { return Array.from(s).sort(function (a, b) { return a - b; }); });
+}
+
+function buildClusters(words, graph, pos) {
+  const rand = lcgRandom(SEED + 7);
+  const km = kmeans(pos, CLUSTER_K, rand, KMEANS_ITERS);
+  const bal = balanceClusters(km.assign, km.centroids, pos, CLUSTER_MIN, CLUSTER_MAX);
+  const assign = bal.assign;
+  const centroids = bal.centroids;
+  const k = centroids.length;
+
+  // Degree in the similarity graph picks an evocative, recognisable hub word
+  // as each constellation's name.
+  const degree = new Array(words.length).fill(0);
+  graph.edges.forEach(function (e) { degree[e.i]++; degree[e.j]++; });
+  graph.antiEdges.forEach(function (e) { degree[e.i]++; degree[e.j]++; });
+
+  const members = []; for (let c = 0; c < k; c++) members.push([]);
+  for (let i = 0; i < words.length; i++) members[assign[i]].push(i);
+
+  const clusters = members.map(function (mem, c) {
+    let bestIdx = mem[0];
+    mem.forEach(function (i) {
+      if (bestIdx === undefined) { bestIdx = i; return; }
+      if (degree[i] > degree[bestIdx]) { bestIdx = i; return; }
+      if (degree[i] === degree[bestIdx]) {
+        const ri = words[i].usefulness_rating || 0, rb = words[bestIdx].usefulness_rating || 0;
+        if (ri > rb) bestIdx = i;
+        else if (ri === rb && words[i].word < words[bestIdx].word) bestIdx = i;
+      }
+    });
+    return {
+      id: c,
+      name: bestIdx !== undefined ? words[bestIdx].word : 'Cluster ' + c,
+      centroid: [round4(centroids[c].x), round4(centroids[c].y), round4(centroids[c].z)],
+      words: mem.map(function (i) { return words[i].word; }),
+    };
+  });
+
+  const adj = buildClusterAdjacency(clusters, graph, assign);
+  clusters.forEach(function (cl, c) { cl.neighbors = adj[c]; });
+  return clusters;
+}
+
 function main() {
   const data = JSON.parse(fs.readFileSync(WORDS_PATH, 'utf8'));
   const words = data.words;
@@ -225,6 +447,7 @@ function main() {
   const graph = buildGraph(words);
   const pos = layout(words, graph);
   const neighbors = neighborLists(words, graph, 6);
+  const clusters = buildClusters(words, graph, pos);
   const dt = ((Date.now() - t0) / 1000).toFixed(2);
 
   // Quantize to 4 decimals to keep payload small
@@ -246,11 +469,14 @@ function main() {
     antiEdges: graph.antiEdges.length,
     positions: positions,
     neighbors: neighbors,
+    clusters: clusters,
   };
   fs.writeFileSync(OUT_PATH, JSON.stringify(out));
   const kb = (fs.statSync(OUT_PATH).size / 1024).toFixed(1);
   console.log('Wrote ' + OUT_PATH);
   console.log('  ' + words.length + ' words, ' + graph.edges.length + ' attractive edges, ' + graph.antiEdges.length + ' antonym pairs');
+  console.log('  ' + clusters.length + ' clusters, sizes ' +
+    clusters.map(function (c) { return c.words.length; }).sort(function (a, b) { return a - b; }).join(',') );
   console.log('  layout completed in ' + dt + 's, file ' + kb + ' KB');
 }
 

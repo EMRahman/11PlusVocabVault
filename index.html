@@ -138,6 +138,10 @@
               <span aria-hidden="true">🗺️</span>
               Story Quest
             </button>
+            <button class="quiz-launch-btn quest3d-launch-btn" id="quest3d-launch-btn" aria-label="Start Constellation Quest 3D game">
+              <span aria-hidden="true">🚀</span>
+              Constellation Quest
+            </button>
           </div>
         </div>
         <div class="launch-group launch-group--explorer">
@@ -1182,6 +1186,70 @@
     </div>
   </div>
 
+  <!-- Constellation Quest (3D game) overlay -->
+  <div id="quest3d-overlay" class="modal-overlay quest3d-overlay hidden" aria-hidden="true">
+    <div class="quest3d-panel" role="dialog" aria-modal="true" aria-labelledby="quest3d-title">
+      <header class="universe-bar">
+        <h2 id="quest3d-title" class="universe-title">Constellation Quest</h2>
+        <div class="universe-controls">
+          <span class="quest3d-hud" aria-live="polite">
+            <span class="quest3d-hud-item" title="Score">⭐ <strong id="quest3d-score">0</strong></span>
+            <span class="quest3d-hud-item" title="Constellations cleared">🌌 <strong id="quest3d-cleared">0</strong>/<span id="quest3d-total">0</span></span>
+          </span>
+          <button id="quest3d-close" class="universe-btn universe-close" type="button" aria-label="Exit Constellation Quest" title="Exit game">✕</button>
+        </div>
+      </header>
+
+      <div class="quest3d-body">
+        <!-- Setup -->
+        <section id="quest3d-setup" class="quest3d-screen quest3d-setup">
+          <div class="quest3d-setup-inner">
+            <div class="quest3d-setup-emoji" aria-hidden="true">🚀</div>
+            <h3 class="quest3d-setup-title">Constellation Quest</h3>
+            <p class="quest3d-setup-text">Fly between star clusters and capture every word by answering its question. Clear a constellation to unlock its neighbours — light up the whole galaxy!</p>
+            <p id="quest3d-best" class="quest3d-setup-best" role="status" aria-live="polite"></p>
+            <button id="quest3d-begin" class="quest3d-begin" type="button">Begin journey 🚀</button>
+          </div>
+        </section>
+
+        <!-- Flight (3D scene) -->
+        <section id="quest3d-flight" class="quest3d-screen quest3d-stage hidden">
+          <canvas id="quest3d-canvas" aria-label="3D constellation map"></canvas>
+          <div id="quest3d-labels" class="quest3d-labels" aria-hidden="true"></div>
+          <p id="quest3d-status" class="universe-status quest3d-status" role="status" aria-live="polite"></p>
+
+          <!-- Capture card (overlays the scene for the current cluster) -->
+          <div id="quest3d-capture" class="quest3d-capture hidden" role="dialog" aria-modal="true" aria-label="Capture words">
+            <div class="quest3d-capture-head">
+              <h3 id="quest3d-cluster-name" class="quest3d-capture-name">Constellation</h3>
+              <button id="quest3d-retreat" class="universe-btn quest3d-retreat" type="button" aria-label="Retreat to the map">Retreat ↩</button>
+            </div>
+            <div class="quest3d-capture-progress">
+              <span id="quest3d-progress-text" class="quest3d-progress-text">0 / 0 captured</span>
+              <div class="quest3d-progress-track"><div id="quest3d-progress-fill" class="quest3d-progress-fill"></div></div>
+            </div>
+            <p id="quest3d-prompt" class="quest3d-prompt"></p>
+            <div id="quest3d-answers" class="quiz-answers-grid quest3d-answers"></div>
+            <p id="quest3d-feedback" class="quiz-feedback quest3d-feedback"></p>
+          </div>
+        </section>
+
+        <!-- End -->
+        <section id="quest3d-end" class="quest3d-screen quest3d-end hidden">
+          <div class="quiz-end-inner">
+            <div id="quest3d-end-emoji" class="quiz-end-emoji" aria-hidden="true">🏆</div>
+            <h3 id="quest3d-end-title" class="quiz-end-title">Galaxy complete!</h3>
+            <p id="quest3d-end-score" class="quiz-end-score"></p>
+            <p id="quest3d-end-best" class="quiz-end-best"></p>
+            <div class="quiz-end-actions">
+              <button id="quest3d-replay" class="quest3d-begin" type="button">Play again 🚀</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
   <!-- Mood Map overlay -->
   <div id="moodmap-overlay" class="modal-overlay explorer-overlay hidden" aria-hidden="true">
     <div class="explorer-panel" role="dialog" aria-modal="true" aria-labelledby="moodmap-title">
@@ -1273,6 +1341,7 @@
     }
   </script>
   <script type="module" src="js/word-universe.js?v=202605281548"></script>
+  <script type="module" src="js/word-quest-3d.js?v=202605281548"></script>
   <script src="js/mood-map.js?v=202605281548"></script>
   <script src="js/word-portrait.js?v=202605281548"></script>
   <script src="js/app.js?v=202605281548"></script>
