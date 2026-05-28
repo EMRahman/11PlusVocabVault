@@ -20,6 +20,7 @@ const TAP_TIME_THRESHOLD = 500;
 const FLY_DURATION = 900;          // ms for the hop between constellations
 const FEEDBACK_DELAY = 950;        // ms to show answer feedback before advancing
 const SAVE_KEY = 'vocabVault_constellationQuest';
+const WORDS_PER_CLUSTER = 3;       // questions per cluster visit (nearby words only)
 
 // One bright hue per constellation so clusters read as distinct groups.
 const CLUSTER_HUES = [
@@ -98,6 +99,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   let positions = null;
   let clusters = null;       // [{id,name,centroid,words[],neighbors[]}]
   let wordCluster = null;    // Map word -> cluster id
+  let neighborMap = null;    // word -> [synonym words] from precomputed graph
   let active = false;
 
   const state = {
@@ -109,6 +111,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     streak: 0,
     clearedCount: 0,
     activeClusterId: null,
+    activeClusterWordList: [], // the 3 nearby words chosen for the current capture
     nextQuestionTimer: 0,
     questionQueue: [],
     questionType: 0,         // alternates question style
@@ -161,6 +164,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
       const data = await res.json();
       positions = data.positions;
       clusters = data.clusters || [];
+      neighborMap = data.neighbors || {};
       if (!clusters.length) throw new Error('no clusters');
       wordCluster = new Map();
       clusters.forEach(function (cl) {
@@ -400,12 +404,63 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   }
 
   // ── Capture flow ─────────────────────────────────────────────────────────────
+
+  // BFS from the cluster's hub word up to 2 hops within the cluster, then
+  // falls back to closest 3D neighbours so we always return WORDS_PER_CLUSTER
+  // uncaptured words (or fewer if the cluster is nearly exhausted).
+  function pickNearbyWords(clusterId) {
+    const cl = clusters[clusterId];
+    const hub = cl.name;
+    const clusterWordSet = new Set(cl.words);
+    const visited = new Set();
+    const selected = [];
+
+    function tryAdd(w) {
+      if (selected.length >= WORDS_PER_CLUSTER) return;
+      if (visited.has(w) || state.capturedWords[w]) return;
+      visited.add(w);
+      selected.push(w);
+    }
+
+    // Layer 0 — hub word itself
+    visited.add(hub);
+    if (!state.capturedWords[hub] && clusterWordSet.has(hub)) selected.push(hub);
+
+    // Layer 1 — direct graph neighbours of hub that live in this cluster
+    const hop1 = shuffle((neighborMap[hub] || []).filter(function (w) { return clusterWordSet.has(w); }));
+    hop1.forEach(tryAdd);
+
+    // Layer 2 — neighbours of layer-1 words, still within cluster
+    if (selected.length < WORDS_PER_CLUSTER) {
+      hop1.forEach(function (w1) {
+        shuffle((neighborMap[w1] || []).filter(function (w) { return clusterWordSet.has(w); })).forEach(tryAdd);
+      });
+    }
+
+    // Fallback — pick by 3D proximity to hub when graph edges are sparse
+    if (selected.length < WORDS_PER_CLUSTER && positions[hub]) {
+      const hubPos = positions[hub];
+      const byDist = cl.words
+        .filter(function (w) { return !visited.has(w) && !state.capturedWords[w] && positions[w]; })
+        .sort(function (a, b) {
+          const pa = positions[a], pb = positions[b];
+          const da = (pa[0]-hubPos[0])**2 + (pa[1]-hubPos[1])**2 + (pa[2]-hubPos[2])**2;
+          const db = (pb[0]-hubPos[0])**2 + (pb[1]-hubPos[1])**2 + (pb[2]-hubPos[2])**2;
+          return da - db;
+        });
+      byDist.forEach(tryAdd);
+    }
+
+    return selected;
+  }
+
   function startCapture(clusterId) {
     const cl = clusters[clusterId];
-    const pending = cl.words.filter(function (w) { return !state.capturedWords[w]; });
-    if (pending.length === 0) { finishCluster(clusterId); return; }
+    const nearby = pickNearbyWords(clusterId);
+    if (nearby.length === 0) { finishCluster(clusterId); return; }
     state.activeClusterId = clusterId;
-    state.questionQueue = shuffle(pending);
+    state.activeClusterWordList = nearby;
+    state.questionQueue = shuffle(nearby);
     state.wrongInCluster = 0;
     clusterNameEl.textContent = cl.name + ' constellation';
     captureCard.classList.remove('hidden');
@@ -417,10 +472,10 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   function updateProgress() {
     const id = state.activeClusterId;
     if (id === null) return;
-    const tot = clusters[id].words.length;
-    const prog = state.clusterProgress[id] || 0;
+    const tot = state.activeClusterWordList.length;
+    const prog = state.activeClusterWordList.filter(function (w) { return state.capturedWords[w]; }).length;
     progressTextEl.textContent = prog + ' / ' + tot + ' captured';
-    progressFillEl.style.width = Math.round((prog / tot) * 100) + '%';
+    progressFillEl.style.width = (tot > 0 ? Math.round((prog / tot) * 100) : 0) + '%';
   }
 
   function wordByName(name) {
@@ -523,7 +578,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     if (state.beaconState[clusterId] === 'cleared') { backToFlight(); return; }
     state.beaconState[clusterId] = 'cleared';
     state.clearedCount++;
-    const size = clusters[clusterId].words.length;
+    const size = state.activeClusterWordList.length || WORDS_PER_CLUSTER;
     let bonus = 300 + size * 50;
     let perfect = state.wrongInCluster === 0;
     if (perfect) bonus += 200;
@@ -534,6 +589,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     persistBest();
     captureCard.classList.add('hidden');
     state.activeClusterId = null;
+    state.activeClusterWordList = [];
     three.controls.enabled = true;
     setStatus('✨ ' + clusters[clusterId].name + ' cleared! +' + bonus + (perfect ? ' (perfect!)' : ''));
     if (state.clearedCount >= clusters.length) {
@@ -552,6 +608,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     state.nextQuestionTimer = 0;
     captureCard.classList.add('hidden');
     state.activeClusterId = null;
+    state.activeClusterWordList = [];
     if (three) three.controls.enabled = true;
   }
 
