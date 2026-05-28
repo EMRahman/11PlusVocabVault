@@ -525,6 +525,15 @@
     tryInit();
   }
 
+  function wireExplorerExtras(words) {
+    if (typeof window.initMoodMap === 'function') {
+      window.initMoodMap(words, openModal);
+    }
+    if (typeof window.initWordPortrait === 'function') {
+      window.initWordPortrait(words, openModal);
+    }
+  }
+
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
     loadViewCounts();
@@ -550,6 +559,7 @@
         initFlashBlitz();
         initSynonymSnap();
         wireWordUniverse(allWords);
+        wireExplorerExtras(allWords);
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
