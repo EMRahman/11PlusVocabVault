@@ -29,7 +29,7 @@ jobs:
             iso: '${BUILD_ISO}'
           };
           JSEOF
-          sed -i "s/BUILD_VER/${BUILD_VER}/g" index.html
+          sed -i "s/?v=[^\"']*/?v=${BUILD_VER}/g" index.html
 
       - name: Commit and push
         run: |
