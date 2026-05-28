@@ -109,6 +109,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     streak: 0,
     clearedCount: 0,
     activeClusterId: null,
+    nextQuestionTimer: 0,
     questionQueue: [],
     questionType: 0,         // alternates question style
     wrongInCluster: 0,
@@ -448,6 +449,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   }
 
   function nextQuestion() {
+    if (state.activeClusterId === null) return;
     feedbackEl.textContent = '';
     feedbackEl.className = 'quiz-feedback quest3d-feedback';
     if (state.questionQueue.length === 0) { finishCluster(state.activeClusterId); return; }
@@ -501,7 +503,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
       state.questionQueue.push(missed);
     }
     updateProgress();
-    setTimeout(nextQuestion, FEEDBACK_DELAY);
+    state.nextQuestionTimer = setTimeout(nextQuestion, FEEDBACK_DELAY);
   }
 
   function markCaptured(word) {
@@ -546,6 +548,8 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   }
 
   function backToFlight() {
+    clearTimeout(state.nextQuestionTimer);
+    state.nextQuestionTimer = 0;
     captureCard.classList.add('hidden');
     state.activeClusterId = null;
     if (three) three.controls.enabled = true;
