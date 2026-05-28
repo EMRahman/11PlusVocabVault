@@ -398,12 +398,13 @@
       suggestEl.innerHTML = '';
       var term = q.trim().toLowerCase();
       var pool = getFilteredPool(); // null = no filter active
+      var byWord = function (a, b) { return a.word.localeCompare(b.word); };
 
       if (pool !== null) {
         var results = term
           ? pool.filter(function (w) { return w.word.toLowerCase().indexOf(term) !== -1; })
-          : pool;
-        results.slice(0, 12).forEach(function (w) {
+          : pool.slice();
+        results.sort(byWord).forEach(function (w) {
           suggestEl.appendChild(buildSuggest(w, !!(explorerData.etymology || {})[w.word]));
         });
         if (!results.length) {
@@ -412,17 +413,16 @@
           return;
         }
       } else if (!term) {
-        // Featured: words that DO have curated etymology
-        var featured = Object.keys(explorerData.etymology || {}).slice(0, 12);
-        featured.forEach(function (name) {
-          var w = allWords.find(function (x) { return x.word === name; });
-          if (w) suggestEl.appendChild(buildSuggest(w, true));
-        });
+        // Featured: all words with curated etymology, alphabetised
+        Object.keys(explorerData.etymology || {})
+          .map(function (name) { return allWords.find(function (x) { return x.word === name; }); })
+          .filter(Boolean)
+          .sort(byWord)
+          .forEach(function (w) { suggestEl.appendChild(buildSuggest(w, true)); });
       } else {
-        var matches = allWords.filter(function (w) {
+        allWords.filter(function (w) {
           return w.word.toLowerCase().indexOf(term) !== -1;
-        }).slice(0, 12);
-        matches.forEach(function (w) {
+        }).sort(byWord).forEach(function (w) {
           suggestEl.appendChild(buildSuggest(w, !!(explorerData.etymology || {})[w.word]));
         });
       }

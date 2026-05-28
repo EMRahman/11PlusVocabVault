@@ -3811,7 +3811,7 @@ footer {
   padding: 0.5rem 0.9rem;
   background: rgba(8, 10, 24, 0.85);
   border-bottom: 1px solid rgba(120, 130, 200, 0.15);
-  max-height: 6rem;
+  max-height: 12rem;
   overflow-y: auto;
 }
 .portrait-suggest-item {
