@@ -3891,7 +3891,11 @@ footer {
   padding: 1rem 1rem 1.4rem;
 }
 .portrait-headline {
-  text-align: center;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
   margin-bottom: 0.8rem;
 }
 .portrait-word {
@@ -3902,14 +3906,13 @@ footer {
   color: #fde68a;
 }
 .portrait-meta {
-  margin: 0.15rem 0 0;
+  margin: 0;
   font-size: 0.78rem;
   color: #94a3b8;
 }
 .portrait-card-btn {
-  margin-top: 0.55rem;
-  padding: 0.35rem 0.9rem;
-  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: #fde68a;
   background: rgba(167, 139, 250, 0.15);
@@ -3917,6 +3920,7 @@ footer {
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
+  align-self: center;
 }
 .portrait-card-btn:hover {
   background: rgba(167, 139, 250, 0.28);
