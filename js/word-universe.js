@@ -118,6 +118,20 @@ window.initWordUniverse = function (allWords, openWordDetail) {
     controls.maxDistance = SCENE_RADIUS * 4.5;
     controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
 
+    // On macOS, trackpad pinch arrives as ctrlKey+wheel with tiny deltaY values
+    // that OrbitControls barely registers. Intercept and handle zoom directly.
+    canvas.addEventListener('wheel', function(e) {
+      if (!e.ctrlKey) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const offset = camera.position.clone().sub(controls.target);
+      const dist = offset.length();
+      const scale = 1.0 + e.deltaY * 0.025;
+      const newDist = Math.max(controls.minDistance, Math.min(controls.maxDistance, dist * scale));
+      camera.position.copy(controls.target).add(offset.multiplyScalar(newDist / dist));
+      controls.update();
+    }, { passive: false, capture: true });
+
     scene.add(new THREE.AmbientLight(0xffffff, 0.8));
     const dir = new THREE.DirectionalLight(0xffffff, 0.6);
     dir.position.set(1, 1, 1);
