@@ -238,7 +238,10 @@
     searchInput.addEventListener('input', onSearch);
     window.addEventListener('resize', function () { if (active) fit(); });
     document.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Escape' && active) close();
+      if (ev.key !== 'Escape' || !active) return;
+      var detail = document.getElementById('modal-overlay');
+      if (detail && !detail.classList.contains('hidden')) return;
+      close();
     });
   };
 })();

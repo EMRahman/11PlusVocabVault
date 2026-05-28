@@ -443,6 +443,11 @@ window.initWordUniverse = function (allWords, openWordDetail) {
     if (document.hidden) stopLoop(); else startLoop();
   });
   document.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Escape' && active) close();
+    if (ev.key !== 'Escape' || !active) return;
+    // The word-detail modal sits on top when a star is tapped; let its own
+    // Escape handler close it first instead of dismissing the universe too.
+    var detail = document.getElementById('modal-overlay');
+    if (detail && !detail.classList.contains('hidden')) return;
+    close();
   });
 };
