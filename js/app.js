@@ -513,6 +513,18 @@
   }
 
 
+  function wireWordUniverse(words) {
+    var attempts = 0;
+    function tryInit() {
+      if (typeof window.initWordUniverse === 'function') {
+        window.initWordUniverse(words, openModal);
+        return;
+      }
+      if (attempts++ < 80) setTimeout(tryInit, 50);
+    }
+    tryInit();
+  }
+
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
     loadViewCounts();
@@ -537,6 +549,7 @@
         initScrambleMode();
         initFlashBlitz();
         initSynonymSnap();
+        wireWordUniverse(allWords);
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
