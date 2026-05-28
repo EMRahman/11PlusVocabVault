@@ -366,8 +366,9 @@ main {
 }
 
 .quest-launch-btn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #052e16 0%, #0f4423 60%, #15803d 100%);
 }
+.quest-launch-btn:hover { filter: brightness(1.1); }
 
 .quest-wallet {
   margin: 1rem 0;
@@ -1019,8 +1020,7 @@ footer {
   align-items: center;
   gap: 0.45rem;
   padding: 0.6rem 1.2rem;
-  background: #6C63FF;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 60%, #4f46e5 100%);
   color: #fff;
   border-radius: 50px;
   font-size: 0.95rem;
@@ -1039,8 +1039,7 @@ footer {
 }
 
 .quiz-launch-btn:hover {
-  background: var(--color-primary-dark);
-  border-color: var(--color-primary-dark);
+  filter: brightness(1.1);
   box-shadow: 0 4px 14px var(--color-shadow);
   transform: translateY(-1px);
 }
@@ -1629,54 +1628,38 @@ footer {
    Story Mode & Daily News
    =========================== */
 .story-launch-btn {
-  background: linear-gradient(135deg, #0EA5E9, #0284C7);
-  border-color: #0284C7;
+  background: linear-gradient(135deg, #082f49 0%, #0c4a6e 60%, #0369a1 100%);
+  border-color: #0369a1;
 }
 
 .news-launch-btn {
-  background: linear-gradient(135deg, #F97316, #EA580C);
-  border-color: #EA580C;
+  background: linear-gradient(135deg, #431407 0%, #7c2d12 60%, #c2410c 100%);
+  border-color: #c2410c;
 }
 
-.story-launch-btn:hover {
-  background: linear-gradient(135deg, #0284C7, #0369A1);
-  border-color: #0369A1;
-}
-
-.news-launch-btn:hover {
-  background: linear-gradient(135deg, #EA580C, #C2410C);
-  border-color: #C2410C;
-}
+.story-launch-btn:hover { filter: brightness(1.1); }
+.news-launch-btn:hover { filter: brightness(1.1); }
 
 .history-launch-btn {
-  background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-  border-color: #7C3AED;
+  background: linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%);
+  border-color: #6d28d9;
 }
 
-.history-launch-btn:hover {
-  background: linear-gradient(135deg, #7C3AED, #6D28D9);
-  border-color: #6D28D9;
-}
+.history-launch-btn:hover { filter: brightness(1.1); }
 
 .fable-launch-btn {
-  background: linear-gradient(135deg, #14B8A6, #0D9488);
-  border-color: #0D9488;
+  background: linear-gradient(135deg, #042f2e 0%, #0f4c47 60%, #0d9488 100%);
+  border-color: #0d9488;
 }
 
-.fable-launch-btn:hover {
-  background: linear-gradient(135deg, #0D9488, #0F766E);
-  border-color: #0F766E;
-}
+.fable-launch-btn:hover { filter: brightness(1.1); }
 
 .proverbs-launch-btn {
-  background: linear-gradient(135deg, #EC4899, #DB2777);
-  border-color: #DB2777;
+  background: linear-gradient(135deg, #2d0a14 0%, #771537 60%, #be185d 100%);
+  border-color: #be185d;
 }
 
-.proverbs-launch-btn:hover {
-  background: linear-gradient(135deg, #DB2777, #BE185D);
-  border-color: #BE185D;
-}
+.proverbs-launch-btn:hover { filter: brightness(1.1); }
 
 /* Fable moral footer */
 .fable-moral {
@@ -2231,8 +2214,8 @@ footer {
    Word Detective Mode
    =========================== */
 
-.detective-launch-btn { background: #065F46; }
-.detective-launch-btn:hover { background: #047857; }
+.detective-launch-btn { background: linear-gradient(135deg, #022c22 0%, #064e3b 60%, #065f46 100%); }
+.detective-launch-btn:hover { filter: brightness(1.1); }
 
 .detective-game-inner {
   padding: 1rem 1.25rem 1.5rem;
@@ -2359,8 +2342,8 @@ footer {
    Scramble Mode
    =========================== */
 
-.scramble-launch-btn { background: #7C3AED; }
-.scramble-launch-btn:hover { background: #6D28D9; }
+.scramble-launch-btn { background: linear-gradient(135deg, #2e1065 0%, #4c1d95 60%, #6d28d9 100%); }
+.scramble-launch-btn:hover { filter: brightness(1.1); }
 
 .scramble-game-inner {
   padding: 1rem 1.25rem 1.5rem;
@@ -2498,8 +2481,8 @@ footer {
    Flash Blitz Mode
    =========================== */
 
-.blitz-launch-btn { background: #B45309; }
-.blitz-launch-btn:hover { background: #92400E; }
+.blitz-launch-btn { background: linear-gradient(135deg, #1c0a00 0%, #78350f 60%, #b45309 100%); }
+.blitz-launch-btn:hover { filter: brightness(1.1); }
 
 .blitz-game-inner {
   display: flex;
@@ -2675,8 +2658,8 @@ footer {
    Synonym Snap Mode
    =========================== */
 
-.snap-launch-btn { background: #BE185D; }
-.snap-launch-btn:hover { background: #9D174D; }
+.snap-launch-btn { background: linear-gradient(135deg, #2d0a14 0%, #6e1239 60%, #9d174d 100%); }
+.snap-launch-btn:hover { filter: brightness(1.1); }
 
 .snap-game-inner {
   display: flex;
@@ -2899,14 +2882,11 @@ footer {
    =========================== */
 
 .comic-launch-btn {
-  background: linear-gradient(135deg, #84CC16, #65A30D);
-  border-color: #65A30D;
+  background: linear-gradient(135deg, #1a2e05 0%, #2d4a0a 60%, #4d7c0f 100%);
+  border-color: #4d7c0f;
 }
 
-.comic-launch-btn:hover {
-  background: linear-gradient(135deg, #65A30D, #4D7C0F);
-  border-color: #4D7C0F;
-}
+.comic-launch-btn:hover { filter: brightness(1.1); }
 
 .comic-title-font {
   font-family: 'Bangers', cursive;
