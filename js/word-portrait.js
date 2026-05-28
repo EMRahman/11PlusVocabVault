@@ -299,7 +299,7 @@
 
     function ensureData() {
       if (loaded) return Promise.resolve(true);
-      return fetch(EXPLORER_URL).then(function (r) {
+      return fetch(EXPLORER_URL, { cache: 'no-store' }).then(function (r) {
         if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.json();
       }).then(function (d) {
