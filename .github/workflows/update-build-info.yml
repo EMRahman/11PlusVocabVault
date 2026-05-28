@@ -21,6 +21,7 @@ jobs:
           BUILD_DATE=$(date -u '+%Y-%m-%d')
           BUILD_TIME=$(date -u '+%H:%M UTC')
           BUILD_ISO=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+          BUILD_VER=$(date -u '+%Y%m%d%H%M')
           cat > build-info.js << JSEOF
           const BUILD_INFO = {
             date: '${BUILD_DATE}',
@@ -28,11 +29,12 @@ jobs:
             iso: '${BUILD_ISO}'
           };
           JSEOF
+          sed -i "s/?v=[^\"']*/?v=${BUILD_VER}/g" index.html
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add build-info.js
+          git add build-info.js index.html
           git diff --staged --quiet || git commit -m "chore: update build info [skip ci]"
           git push
