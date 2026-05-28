@@ -3906,6 +3906,26 @@ footer {
   font-size: 0.78rem;
   color: #94a3b8;
 }
+.portrait-card-btn {
+  margin-top: 0.55rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fde68a;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.portrait-card-btn:hover {
+  background: rgba(167, 139, 250, 0.28);
+  border-color: rgba(167, 139, 250, 0.7);
+}
+.portrait-card-btn:focus-visible {
+  outline: 2px solid #fde68a;
+  outline-offset: 2px;
+}
 .portrait-tabs {
   display: flex;
   gap: 0.3rem;
