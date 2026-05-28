@@ -39,6 +39,7 @@
     var canvas = document.getElementById('moodmap-canvas');
     var launchBtn = document.getElementById('moodmap-launch-btn');
     var closeBtn = document.getElementById('moodmap-close');
+    var clearBtn = document.getElementById('moodmap-clear');
     var searchInput = document.getElementById('moodmap-search');
     var legendEl = document.getElementById('moodmap-legend');
     var tooltipEl = document.getElementById('moodmap-tooltip');
@@ -207,9 +208,22 @@
       });
     }
 
+    function updateClearVisibility() {
+      if (!clearBtn) return;
+      clearBtn.hidden = !filterTerm;
+    }
+
     function onSearch() {
       filterTerm = (searchInput.value || '').trim().toLowerCase();
       draw();
+      updateClearVisibility();
+    }
+
+    function onClear() {
+      if (searchInput) searchInput.value = '';
+      filterTerm = '';
+      draw();
+      updateClearVisibility();
     }
 
     function open() {
@@ -235,6 +249,7 @@
     bindPointer();
     launchBtn.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
+    if (clearBtn) clearBtn.addEventListener('click', onClear);
     searchInput.addEventListener('input', onSearch);
     window.addEventListener('resize', function () { if (active) fit(); });
     document.addEventListener('keydown', function (ev) {

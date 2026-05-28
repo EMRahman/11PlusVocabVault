@@ -279,6 +279,7 @@
     var overlay = document.getElementById('portrait-overlay');
     var launchBtn = document.getElementById('portrait-launch-btn');
     var closeBtn = document.getElementById('portrait-close');
+    var clearBtn = document.getElementById('portrait-clear');
     var searchInput = document.getElementById('portrait-search');
     var suggestEl = document.getElementById('portrait-suggest');
     var titleEl = document.getElementById('portrait-word');
@@ -344,12 +345,27 @@
       if (activeTab === 'family')  renderFamily(panels.family, current);
     }
 
+    function updateClearVisibility() {
+      if (!clearBtn) return;
+      clearBtn.hidden = !current && !(searchInput && searchInput.value);
+    }
+
     function pick(wordObj) {
       current = wordObj;
       searchInput.value = wordObj.word;
       suggestEl.innerHTML = '';
       suggestEl.style.display = 'none';
       renderCurrent();
+      updateClearVisibility();
+    }
+
+    function clearPortrait() {
+      current = null;
+      if (searchInput) searchInput.value = '';
+      renderCurrent();
+      showSuggestions('');
+      updateClearVisibility();
+      if (searchInput) searchInput.focus();
     }
 
     function showSuggestions(q) {
@@ -400,7 +416,11 @@
 
     launchBtn.addEventListener('click', open);
     closeBtn.addEventListener('click', close);
-    searchInput.addEventListener('input', function () { showSuggestions(searchInput.value); });
+    if (clearBtn) clearBtn.addEventListener('click', clearPortrait);
+    searchInput.addEventListener('input', function () {
+      showSuggestions(searchInput.value);
+      updateClearVisibility();
+    });
     searchInput.addEventListener('focus', function () { showSuggestions(searchInput.value); });
     tabBtns.forEach(function (b) {
       b.addEventListener('click', function () { setActiveTab(b.getAttribute('data-tab')); });

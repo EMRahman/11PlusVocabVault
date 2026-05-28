@@ -3507,11 +3507,19 @@ footer {
   color: #e6e9f5;
   border-radius: 999px;
   padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
+  /* 16px stops iOS Safari from auto-zooming on focus. */
+  font-size: 16px;
   min-width: 8rem;
   max-width: 14rem;
   outline: none;
 }
+.universe-clear {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(165, 180, 252, 0.5);
+  color: #e0e7ff;
+  font-weight: 600;
+}
+.universe-clear:hover { background: rgba(99, 102, 241, 0.45); }
 .universe-search::placeholder { color: #7a82a8; }
 .universe-search:focus { border-color: #818cf8; }
 
@@ -3704,11 +3712,19 @@ footer {
   color: #e6e9f5;
   border-radius: 999px;
   padding: 0.4rem 0.9rem;
-  font-size: 0.9rem;
+  /* 16px stops iOS Safari from auto-zooming on focus. */
+  font-size: 16px;
   min-width: 8rem;
   max-width: 14rem;
   outline: none;
 }
+.explorer-clear {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(165, 180, 252, 0.5);
+  color: #e0e7ff;
+  font-weight: 600;
+}
+.explorer-clear:hover { background: rgba(99, 102, 241, 0.45); }
 .explorer-search::placeholder { color: #7a82a8; }
 .explorer-search:focus { border-color: #818cf8; }
 .explorer-btn {

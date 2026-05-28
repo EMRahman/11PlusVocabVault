@@ -44,6 +44,7 @@ window.initWordUniverse = function (allWords, openWordDetail) {
   const labelLayer = document.getElementById('universe-labels');
   const searchInput = document.getElementById('universe-search');
   const resetBtn = document.getElementById('universe-reset');
+  const clearBtn = document.getElementById('universe-clear');
   const closeBtn = document.getElementById('universe-close');
   const launchBtn = document.getElementById('universe-launch-btn');
   const legendEl = document.getElementById('universe-legend');
@@ -344,6 +345,7 @@ window.initWordUniverse = function (allWords, openWordDetail) {
     three.highlightWord = wordObj.word;
     applyHighlight();
     flyTo(idx);
+    updateClearVisibility();
     if (typeof openWordDetail === 'function') {
       openWordDetail(wordObj);
     }
@@ -388,11 +390,28 @@ window.initWordUniverse = function (allWords, openWordDetail) {
 
   function onResize() { fitCanvas(); }
 
+  function updateClearVisibility() {
+    if (!clearBtn) return;
+    const hasSelection = !!(three && (three.filterTerm || three.highlightWord)) || (searchInput && searchInput.value);
+    clearBtn.hidden = !hasSelection;
+  }
+
   function onSearchInput() {
     if (!three) return;
     three.filterTerm = searchInput.value.trim().toLowerCase();
     three.highlightWord = null;
     applyHighlight();
+    updateClearVisibility();
+  }
+
+  function onClear() {
+    if (searchInput) searchInput.value = '';
+    if (three) {
+      three.filterTerm = '';
+      three.highlightWord = null;
+      applyHighlight();
+    }
+    updateClearVisibility();
   }
 
   function onReset() {
@@ -404,6 +423,7 @@ window.initWordUniverse = function (allWords, openWordDetail) {
     if (searchInput) searchInput.value = '';
     applyHighlight();
     three.controls.update();
+    updateClearVisibility();
   }
 
   async function open() {
@@ -436,6 +456,7 @@ window.initWordUniverse = function (allWords, openWordDetail) {
   launchBtn.addEventListener('click', open);
   if (closeBtn) closeBtn.addEventListener('click', close);
   if (resetBtn) resetBtn.addEventListener('click', onReset);
+  if (clearBtn) clearBtn.addEventListener('click', onClear);
   if (searchInput) searchInput.addEventListener('input', onSearchInput);
   window.addEventListener('resize', onResize);
   document.addEventListener('visibilitychange', function () {
