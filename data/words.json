@@ -13130,6 +13130,838 @@
           "answer": "Bottom"
         }
       }
+    },
+    {
+      "word": "Conservative",
+      "pronunciation": "kun-SUR-vuh-tiv",
+      "definition": "Preferring traditional ways and being cautious about making big changes.",
+      "sentence_usage": "The conservative elder refused to alter the village rules that had stood for two hundred years.",
+      "synonyms": [
+        "Traditional",
+        "Cautious",
+        "Restrained"
+      ],
+      "antonyms": [
+        "Progressive",
+        "Radical",
+        "Daring"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Preferring the old traditions of the castle and being careful about any change to its rules.",
+        "word": "The conservative steward insisted that every feast follow the same order it had for five centuries.",
+        "sentence": "The _____ lord refused to hang new banners in the great hall, saying the old ones told a better story.",
+        "synonym": {
+          "cloze": "The _____ knight distrusted every new weapon, swearing his grandfather's sword was good enough.",
+          "answer": "Traditional"
+        },
+        "antonym": {
+          "cloze": "The _____ young prince wanted to tear down the old tower and build a great glass observatory.",
+          "answer": "Progressive"
+        }
+      }
+    },
+    {
+      "word": "Pragmatic",
+      "pronunciation": "prag-MAT-ik",
+      "definition": "Focused on practical solutions that actually work, rather than following strict theories.",
+      "sentence_usage": "The pragmatic engineer chose the simplest fix rather than the most impressive one.",
+      "synonyms": [
+        "Practical",
+        "Sensible",
+        "Realistic"
+      ],
+      "antonyms": [
+        "Idealistic",
+        "Impractical",
+        "Unrealistic"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Choosing the practical solution that keeps the ship afloat rather than following grand theories.",
+        "word": "The pragmatic captain patched the hull with sailcloth rather than waiting for the perfect timber.",
+        "sentence": "Taking a _____ view, the navigator marked the slower but safer route around the reef on her chart.",
+        "synonym": {
+          "cloze": "The _____ sailor tied double knots — he never trusted theory when his life was at stake.",
+          "answer": "Sensible"
+        },
+        "antonym": {
+          "cloze": "The _____ first mate dreamed of sailing faster than the wind, forgetting they were already behind schedule.",
+          "answer": "Idealistic"
+        }
+      }
+    },
+    {
+      "word": "Tenacious",
+      "pronunciation": "tuh-NAY-shus",
+      "definition": "Holding firmly to a purpose and never giving up, even when things are very difficult.",
+      "sentence_usage": "The tenacious climber gripped the rock face and refused to descend despite the howling wind.",
+      "synonyms": [
+        "Determined",
+        "Persistent",
+        "Relentless"
+      ],
+      "antonyms": [
+        "Weak",
+        "Yielding",
+        "Feeble"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Holding the battle line and refusing to retreat no matter how fierce the enemy charge.",
+        "word": "The tenacious soldiers gripped their shields and stood firm through three waves of attack.",
+        "sentence": "No matter how many times the enemy charged, the _____ defenders held every inch of the ridge.",
+        "synonym": {
+          "cloze": "The _____ sergeant pushed his troops forward even as exhaustion gnawed at every muscle.",
+          "answer": "Relentless"
+        },
+        "antonym": {
+          "cloze": "The _____ regiment abandoned its post at the first rumble of distant cannon fire.",
+          "answer": "Feeble"
+        }
+      }
+    },
+    {
+      "word": "Meticulous",
+      "pronunciation": "muh-TIK-yoo-lus",
+      "definition": "Paying very careful attention to every small detail to make sure everything is exactly right.",
+      "sentence_usage": "The meticulous student checked every line of her essay three times before handing it in.",
+      "synonyms": [
+        "Thorough",
+        "Precise",
+        "Careful"
+      ],
+      "antonyms": [
+        "Careless",
+        "Sloppy",
+        "Hasty"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Following every step of a spell recipe without skipping a single detail, or the magic will fail.",
+        "word": "The meticulous student measured each ingredient to the nearest grain before adding it to the cauldron.",
+        "sentence": "Professor Starwick was so _____ that she marked the potion bottles in three different colours to avoid any mix-up.",
+        "synonym": {
+          "cloze": "Only a _____ approach would ensure that the enchantment held beyond the first midnight.",
+          "answer": "Thorough"
+        },
+        "antonym": {
+          "cloze": "The _____ apprentice spilt dragon-scale powder everywhere, ruining the spell for the entire class.",
+          "answer": "Careless"
+        }
+      }
+    },
+    {
+      "word": "Impartial",
+      "pronunciation": "im-PAR-shul",
+      "definition": "Treating everyone fairly and equally without favouring any one side.",
+      "sentence_usage": "The impartial referee awarded the penalty even though it went against the home team.",
+      "synonyms": [
+        "Fair",
+        "Unbiased",
+        "Neutral"
+      ],
+      "antonyms": [
+        "Biased",
+        "Prejudiced",
+        "Unfair"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Hearing both the noble and the peasant and judging the dispute without favouring either one.",
+        "word": "The impartial lord heard every witness before giving his verdict in the great hall.",
+        "sentence": "Both knights bowed their heads, trusting the _____ judge to settle their land dispute without prejudice.",
+        "synonym": {
+          "cloze": "A truly _____ ruler listens to the poorest farmer with the same attention given to a duke.",
+          "answer": "Fair"
+        },
+        "antonym": {
+          "cloze": "The _____ chamberlain always ruled in favour of noble families, ignoring every complaint from the village.",
+          "answer": "Biased"
+        }
+      }
+    },
+    {
+      "word": "Prudent",
+      "pronunciation": "PROO-dent",
+      "definition": "Showing careful thought and good sense when making decisions, especially about the future.",
+      "sentence_usage": "It was prudent to carry spare candles on a journey through the dark underground tunnels.",
+      "synonyms": [
+        "Sensible",
+        "Cautious",
+        "Wise"
+      ],
+      "antonyms": [
+        "Reckless",
+        "Foolish",
+        "Careless"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Making careful decisions at sea — checking the weather and the charts before raising a single sail.",
+        "word": "The prudent captain stored a week's extra rations before the voyage, just in case storms delayed them.",
+        "sentence": "The _____ navigator refused to enter the narrow strait until the fog had completely lifted.",
+        "synonym": {
+          "cloze": "It was _____ to tie down the cargo before the evening clouds turned dark and threatening.",
+          "answer": "Sensible"
+        },
+        "antonym": {
+          "cloze": "The _____ first mate pushed the ship into the storm, dismissing the lookout's worried cries.",
+          "answer": "Reckless"
+        }
+      }
+    },
+    {
+      "word": "Astute",
+      "pronunciation": "uh-STOOT",
+      "definition": "Having a sharp, clever understanding of situations and people; quick to notice what others miss.",
+      "sentence_usage": "The astute detective noticed the misplaced candle and realised someone had been in the room.",
+      "synonyms": [
+        "Shrewd",
+        "Perceptive",
+        "Clever"
+      ],
+      "antonyms": [
+        "Naive",
+        "Oblivious",
+        "Foolish"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Sharp enough to spot the dragon's hidden weakness before charging blindly into its lair.",
+        "word": "The astute knight noticed the dragon always turned its head before breathing fire, giving a vital moment to duck.",
+        "sentence": "Only the most _____ adventurer would see that the jewel in the dragon's hoard was actually a trap.",
+        "synonym": {
+          "cloze": "The _____ hero knew at once that the dragon's limp was deliberate — a lure to make them lower their guard.",
+          "answer": "Perceptive"
+        },
+        "antonym": {
+          "cloze": "The _____ squire did not notice the scorched footprints until the dragon was almost upon them.",
+          "answer": "Oblivious"
+        }
+      }
+    },
+    {
+      "word": "Candid",
+      "pronunciation": "KAN-did",
+      "definition": "Being honest and direct, saying exactly what you think without hiding anything.",
+      "sentence_usage": "She gave a candid reply, admitting she had no idea how to solve the puzzle.",
+      "synonyms": [
+        "Honest",
+        "Frank",
+        "Open"
+      ],
+      "antonyms": [
+        "Dishonest",
+        "Evasive",
+        "Guarded"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "Speaking the plain truth in the Fairy Glen, even when it might upset the fairy queen.",
+        "word": "The candid sprite told the queen that her enchantment was fading, even though it meant punishment.",
+        "sentence": "The _____ fairy admitted she had lost the moonstone — no excuses, just the simple truth spoken aloud.",
+        "synonym": {
+          "cloze": "The _____ elf confessed that she had never actually visited the Silver Stream before.",
+          "answer": "Honest"
+        },
+        "antonym": {
+          "cloze": "The _____ trickster dodged every question, never giving a straight answer about the missing seed.",
+          "answer": "Evasive"
+        }
+      }
+    },
+    {
+      "word": "Versatile",
+      "pronunciation": "VUR-suh-tyl",
+      "definition": "Able to adapt easily to many different situations or tasks; useful in lots of different ways.",
+      "sentence_usage": "A versatile writer can craft a funny story, a sad poem, and a persuasive letter with equal skill.",
+      "synonyms": [
+        "Adaptable",
+        "Flexible",
+        "Resourceful"
+      ],
+      "antonyms": [
+        "Limited",
+        "Inflexible",
+        "Specialised"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "Able to handle everything the forest throws at you — tracking, climbing, swimming, and fire-making alike.",
+        "word": "The versatile woodsman could build a shelter, catch fish, and read the stars all before sunrise.",
+        "sentence": "She was a _____ guide, equally at ease navigating river, cliff, and dense thicket with the same calm confidence.",
+        "synonym": {
+          "cloze": "The _____ ranger switched from tracker to healer to cartographer as each new danger appeared.",
+          "answer": "Adaptable"
+        },
+        "antonym": {
+          "cloze": "The _____ huntsman knew only one trail and was helpless when the river blocked his usual path.",
+          "answer": "Limited"
+        }
+      }
+    },
+    {
+      "word": "Equitable",
+      "pronunciation": "EK-wi-tuh-bul",
+      "definition": "Fair and just, giving everyone an equal and proper share or treatment.",
+      "sentence_usage": "The headteacher made an equitable rule that every pupil had to tidy the classroom on a rota.",
+      "synonyms": [
+        "Fair",
+        "Just",
+        "Balanced"
+      ],
+      "antonyms": [
+        "Unfair",
+        "Unjust",
+        "One-sided"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Dividing the harvest fairly so every family in the castle's village receives the same share.",
+        "word": "The steward devised an equitable system so that even the poorest tenant received grain before winter.",
+        "sentence": "The wise queen made an _____ law: every merchant, noble, and craftsman paid the same toll at the gate.",
+        "synonym": {
+          "cloze": "The _____ charter granted equal rights to all who lived within the castle walls, high or low.",
+          "answer": "Just"
+        },
+        "antonym": {
+          "cloze": "The _____ old law forced serfs to work twice as long as knights for half the reward.",
+          "answer": "Unfair"
+        }
+      }
+    },
+    {
+      "word": "Tangible",
+      "pronunciation": "TAN-jih-bul",
+      "definition": "Real and solid; able to be touched or clearly experienced, rather than just imagined or talked about.",
+      "sentence_usage": "After months of effort, it was wonderful to see a tangible result — the finished mural on the wall.",
+      "synonyms": [
+        "Real",
+        "Concrete",
+        "Physical"
+      ],
+      "antonyms": [
+        "Abstract",
+        "Imaginary",
+        "Intangible"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "Something in the forest that you can actually touch and hold, not just sense or imagine.",
+        "word": "The tangible silence of the forest felt almost solid, pressing against the children's ears.",
+        "sentence": "Beyond the legends, there was at last a _____ clue — a piece of carved bark pressed into the ranger's hand.",
+        "synonym": {
+          "cloze": "The explorer needed _____ proof before she would report the hidden valley to the council.",
+          "answer": "Concrete"
+        },
+        "antonym": {
+          "cloze": "The old map offered only _____ clues — whispers and feelings rather than distances and landmarks.",
+          "answer": "Abstract"
+        }
+      }
+    },
+    {
+      "word": "Plausible",
+      "pronunciation": "PLAW-zih-bul",
+      "definition": "Seeming reasonable and likely to be true, even if it has not yet been fully proven.",
+      "sentence_usage": "The detective found the suspect's alibi plausible but decided to check every detail anyway.",
+      "synonyms": [
+        "Believable",
+        "Credible",
+        "Reasonable"
+      ],
+      "antonyms": [
+        "Unlikely",
+        "Far-fetched",
+        "Implausible"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "A story in the Fairy Glen that could really have happened — not too wild, not too perfect.",
+        "word": "The fairy elder nodded; the young sprite's tale of a stolen moonbeam was perfectly plausible.",
+        "sentence": "Her _____ excuse — that the storm had swept away the message — was hard to argue with.",
+        "synonym": {
+          "cloze": "The _____ account of invisible wings satisfied the queen enough to let the sprite go free.",
+          "answer": "Believable"
+        },
+        "antonym": {
+          "cloze": "The gnome's _____ claim that he had drunk the entire enchanted lake was dismissed with laughter.",
+          "answer": "Far-fetched"
+        }
+      }
+    },
+    {
+      "word": "Methodical",
+      "pronunciation": "muh-THOD-ih-kul",
+      "definition": "Doing things in a careful, ordered, step-by-step way without missing anything out.",
+      "sentence_usage": "The methodical scientist repeated every experiment four times to be sure of the results.",
+      "synonyms": [
+        "Systematic",
+        "Orderly",
+        "Organised"
+      ],
+      "antonyms": [
+        "Disorganised",
+        "Haphazard",
+        "Random"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Planning and executing every step of a battle in strict order so nothing is left to chance.",
+        "word": "The methodical general assigned each unit a precise time and place before giving the order to advance.",
+        "sentence": "The _____ sergeant inspected every boot, buckle, and blade before allowing the troops to march.",
+        "synonym": {
+          "cloze": "The _____ commander drew up his battle plan grid by grid, leaving no terrain unaccounted for.",
+          "answer": "Systematic"
+        },
+        "antonym": {
+          "cloze": "The _____ charge — soldiers rushing in every direction — gave the enemy exactly the opening they needed.",
+          "answer": "Haphazard"
+        }
+      }
+    },
+    {
+      "word": "Tenuous",
+      "pronunciation": "TEN-yoo-us",
+      "definition": "Very thin, weak, or uncertain; barely holding together and easily broken.",
+      "sentence_usage": "Their only tenuous hope was that the rescue boat would arrive before the tide came in.",
+      "synonyms": [
+        "Weak",
+        "Fragile",
+        "Flimsy"
+      ],
+      "antonyms": [
+        "Strong",
+        "Firm",
+        "Solid"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "A fraying rope or a fading hope on the ship — something barely holding on as the sea grows rougher.",
+        "word": "The crew's tenuous grip on the mast was all that kept them from being swept overboard.",
+        "sentence": "Their _____ plan depended on the wind changing direction before dawn — and winds are rarely so obedient.",
+        "synonym": {
+          "cloze": "The _____ rope bridge swayed dangerously as the sailors crept across it one by one.",
+          "answer": "Fragile"
+        },
+        "antonym": {
+          "cloze": "Once the anchor was down and the lines were doubled, their position felt _____ at last.",
+          "answer": "Solid"
+        }
+      }
+    },
+    {
+      "word": "Empirical",
+      "pronunciation": "em-PIR-ih-kul",
+      "definition": "Based on careful observation and real evidence rather than guesses or untested theories.",
+      "sentence_usage": "The scientist made only empirical claims — every statement backed up by recorded results.",
+      "synonyms": [
+        "Observational",
+        "Evidence-based",
+        "Factual"
+      ],
+      "antonyms": [
+        "Theoretical",
+        "Speculative",
+        "Assumed"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Drawing conclusions from potions that were actually tested in the lab, not just read about in books.",
+        "word": "Professor Ashgrove demanded empirical proof before she would accept any student's theory about dragon-fire.",
+        "sentence": "She kept _____ records of every potion trial, noting the exact colour and smell before drawing any conclusion.",
+        "synonym": {
+          "cloze": "Only _____ results from the cauldron would convince the headmistress that the formula was safe.",
+          "answer": "Factual"
+        },
+        "antonym": {
+          "cloze": "The _____ claim that moonlight alone could cure a fever was dismissed without any test results to support it.",
+          "answer": "Speculative"
+        }
+      }
+    },
+    {
+      "word": "Innovative",
+      "pronunciation": "IN-uh-vay-tiv",
+      "definition": "Introducing new and clever ideas or methods that nobody has tried before.",
+      "sentence_usage": "The innovative architect designed a school that looked like a ship, with every room connected by rope bridges.",
+      "synonyms": [
+        "Creative",
+        "Original",
+        "Groundbreaking"
+      ],
+      "antonyms": [
+        "Traditional",
+        "Conventional",
+        "Unoriginal"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Coming up with a brand-new way of facing a dragon that no hero has ever dared to try.",
+        "word": "The innovative young knight used a polished shield as a mirror, dazzling the dragon with its own reflected fire.",
+        "sentence": "The crowd gasped at the _____ tactic — no one had ever thought of luring a dragon with sound before.",
+        "synonym": {
+          "cloze": "The _____ plan — riding the dragon's tail rather than fighting it — seemed impossible, yet it worked.",
+          "answer": "Original"
+        },
+        "antonym": {
+          "cloze": "The elder knights insisted on the _____ approach: charge with lances, as every hero had done for centuries.",
+          "answer": "Conventional"
+        }
+      }
+    },
+    {
+      "word": "Concise",
+      "pronunciation": "kun-SYS",
+      "definition": "Expressing ideas clearly and completely using as few words as possible, without any waste.",
+      "sentence_usage": "The teacher asked for a concise summary — no more than three sentences for the whole chapter.",
+      "synonyms": [
+        "Brief",
+        "Succinct",
+        "To the point"
+      ],
+      "antonyms": [
+        "Lengthy",
+        "Wordy",
+        "Rambling"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Giving a battle order so short and clear that every soldier understands it in an instant.",
+        "word": "The general's concise command — three words, no more — echoed across the field and launched the advance.",
+        "sentence": "In the chaos of battle, a _____ order could save lives; a rambling one could lose them.",
+        "synonym": {
+          "cloze": "The _____ dispatch took only four lines but told the general everything he needed to know.",
+          "answer": "Succinct"
+        },
+        "antonym": {
+          "cloze": "The _____ speech went on so long that some soldiers had already fallen asleep before the signal to march.",
+          "answer": "Rambling"
+        }
+      }
+    },
+    {
+      "word": "Lucid",
+      "pronunciation": "LOO-sid",
+      "definition": "Very clear and easy to understand; expressed in a way that makes perfect sense.",
+      "sentence_usage": "After her fever broke, she gave a lucid account of everything she had witnessed that evening.",
+      "synonyms": [
+        "Clear",
+        "Coherent",
+        "Intelligible"
+      ],
+      "antonyms": [
+        "Confused",
+        "Muddled",
+        "Unclear"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "Being able to think or speak with perfect clarity, even after a frightening night in the dark forest.",
+        "word": "By morning the traveller was calm and lucid, able to describe every strange sound she had heard.",
+        "sentence": "The _____ directions left no room for doubt; every turn and landmark was explained with crisp precision.",
+        "synonym": {
+          "cloze": "His _____ account of the creature's movements gave the rangers exactly the information they needed.",
+          "answer": "Coherent"
+        },
+        "antonym": {
+          "cloze": "The _____ ramblings of the lost hiker made it impossible to understand which path he had taken.",
+          "answer": "Muddled"
+        }
+      }
+    },
+    {
+      "word": "Agnostic",
+      "pronunciation": "ag-NOS-tik",
+      "definition": "Not sure about something and not willing to take a firm side until more is known.",
+      "sentence_usage": "The elder remained agnostic about which remedy would work, saying the results would reveal the answer.",
+      "synonyms": [
+        "Uncertain",
+        "Undecided",
+        "Open-minded"
+      ],
+      "antonyms": [
+        "Certain",
+        "Convinced",
+        "Decided"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "Keeping an open mind about which forest path is safe, refusing to guess until the scouts return with news.",
+        "word": "The wise guide was agnostic about the rumoured shortcut, determined to find real evidence before leading anyone down it.",
+        "sentence": "Remaining _____ about the creature's intentions, she watched in silence before deciding how to respond.",
+        "synonym": {
+          "cloze": "The tracker was _____ about the wolf's direction, preferring to wait for another print before committing.",
+          "answer": "Undecided"
+        },
+        "antonym": {
+          "cloze": "Unlike the cautious scout, the reckless hunter was fully _____ that the trail led east.",
+          "answer": "Convinced"
+        }
+      }
+    },
+    {
+      "word": "Analytical",
+      "pronunciation": "an-uh-LIT-ih-kul",
+      "definition": "Good at breaking a problem apart and examining each piece carefully to find the answer.",
+      "sentence_usage": "Her analytical approach helped her spot the one error hidden deep inside the calculation.",
+      "synonyms": [
+        "Logical",
+        "Systematic",
+        "Rational"
+      ],
+      "antonyms": [
+        "Instinctive",
+        "Impulsive",
+        "Disorganised"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Examining a spell's ingredients one by one to work out why it keeps going wrong.",
+        "word": "The analytical student tested each element of the potion separately until she found the faulty ingredient.",
+        "sentence": "Professor Vane rewarded _____ thinking, awarding extra marks to any student who could explain the 'why' behind a spell.",
+        "synonym": {
+          "cloze": "The _____ student drew up a table comparing every potion result before writing a single sentence of conclusion.",
+          "answer": "Systematic"
+        },
+        "antonym": {
+          "cloze": "The _____ apprentice threw ingredients into the cauldron on a whim, never pausing to consider the consequences.",
+          "answer": "Impulsive"
+        }
+      }
+    },
+    {
+      "word": "Cohesive",
+      "pronunciation": "koh-HEE-siv",
+      "definition": "Working well together as a united whole, where every part supports and connects with the others.",
+      "sentence_usage": "The squad played a cohesive game, every player moving as if they shared a single mind.",
+      "synonyms": [
+        "United",
+        "Unified",
+        "Harmonious"
+      ],
+      "antonyms": [
+        "Divided",
+        "Fragmented",
+        "Disjointed"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "All the fairies in the glen working together so perfectly that their magic feels like one great force.",
+        "word": "The cohesive fairy ring spun faster and faster, each fairy's wingbeat perfectly timed with the rest.",
+        "sentence": "The _____ troupe moved through the moonlit clearing as one shimmering cloud, never once breaking formation.",
+        "synonym": {
+          "cloze": "The _____ colony rebuilt the broken nest in a single night, each fairy knowing exactly what to do.",
+          "answer": "United"
+        },
+        "antonym": {
+          "cloze": "The _____ clan argued at every crossroads, each fairy pulling in a different direction.",
+          "answer": "Divided"
+        }
+      }
+    },
+    {
+      "word": "Credible",
+      "pronunciation": "KRED-ih-bul",
+      "definition": "Able to be trusted and believed; seeming honest and reliable.",
+      "sentence_usage": "The witness gave a credible account, and even the sternest juror found it impossible to doubt.",
+      "synonyms": [
+        "Believable",
+        "Trustworthy",
+        "Convincing"
+      ],
+      "antonyms": [
+        "Unbelievable",
+        "Doubtful",
+        "Unreliable"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "A fairy tale or report that the queen actually believes, because every detail checks out.",
+        "word": "The messenger fairy's account was so credible that the queen ordered an immediate search of the Silver Wood.",
+        "sentence": "Only a _____ witness would be allowed to speak before the fairy council — gossips and tricksters were turned away.",
+        "synonym": {
+          "cloze": "Her _____ report, full of precise details, convinced the elder fairies that the threat was real.",
+          "answer": "Convincing"
+        },
+        "antonym": {
+          "cloze": "The gnome's _____ story — full of contradictions — was dismissed before he had finished the first sentence.",
+          "answer": "Unreliable"
+        }
+      }
+    },
+    {
+      "word": "Decisive",
+      "pronunciation": "dih-SY-siv",
+      "definition": "Able to make firm, clear decisions quickly and confidently, without hesitating.",
+      "sentence_usage": "A decisive leader was exactly what the team needed when the plan began to fall apart.",
+      "synonyms": [
+        "Determined",
+        "Firm",
+        "Resolute"
+      ],
+      "antonyms": [
+        "Hesitant",
+        "Indecisive",
+        "Wavering"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Making a firm call at the peak of battle — advancing or retreating — before the moment slips away.",
+        "word": "The decisive commander raised her sword arm and the whole regiment moved as one without a word of argument.",
+        "sentence": "A _____ general seizes the moment; a hesitant one watches it dissolve into dust.",
+        "synonym": {
+          "cloze": "The _____ captain ordered the retreat at exactly the right moment, saving hundreds of lives.",
+          "answer": "Resolute"
+        },
+        "antonym": {
+          "cloze": "The _____ officer changed the plan three times in as many minutes, leaving every soldier baffled.",
+          "answer": "Indecisive"
+        }
+      }
+    },
+    {
+      "word": "Eloquent",
+      "pronunciation": "EL-uh-kwent",
+      "definition": "Expressing ideas in a clear, powerful, and beautiful way that truly moves the listener.",
+      "sentence_usage": "The eloquent ambassador silenced the whole court with a few perfectly chosen words.",
+      "synonyms": [
+        "Articulate",
+        "Persuasive",
+        "Fluent"
+      ],
+      "antonyms": [
+        "Inarticulate",
+        "Mumbling",
+        "Clumsy"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Speaking so beautifully in the great hall that even the king sets down his goblet to listen.",
+        "word": "The eloquent herald read the royal proclamation with such feeling that several knights were moved to tears.",
+        "sentence": "Her _____ plea for mercy echoed off the stone walls and changed the king's mind before the last word fell.",
+        "synonym": {
+          "cloze": "The _____ bard wove words so perfectly that the warring lords forgot their quarrel for the length of the song.",
+          "answer": "Articulate"
+        },
+        "antonym": {
+          "cloze": "The _____ squire stumbled over every word of the announcement, drawing impatient sighs from the court.",
+          "answer": "Inarticulate"
+        }
+      }
+    },
+    {
+      "word": "Objective",
+      "pronunciation": "ob-JEK-tiv",
+      "definition": "Based on facts and evidence rather than personal feelings or opinions.",
+      "sentence_usage": "A good scientist stays objective, setting aside personal wishes when looking at the results.",
+      "synonyms": [
+        "Impartial",
+        "Unbiased",
+        "Factual"
+      ],
+      "antonyms": [
+        "Subjective",
+        "Biased",
+        "Emotional"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Judging a potion by its actual effect, not by how much you liked the student who brewed it.",
+        "word": "Professor Coldwell prided herself on being objective: every potion was judged by colour, smell, and result alone.",
+        "sentence": "Remaining _____, the examiner awarded the potion its true mark — a seven — despite the headmaster's pointed glance.",
+        "synonym": {
+          "cloze": "The _____ assessment praised three spells and criticised two, based purely on measurable outcomes.",
+          "answer": "Factual"
+        },
+        "antonym": {
+          "cloze": "The _____ judge always awarded top marks to her own students, ignoring the evidence in front of her.",
+          "answer": "Biased"
+        }
+      }
+    },
+    {
+      "word": "Prolific",
+      "pronunciation": "pruh-LIF-ik",
+      "definition": "Producing a large amount of work, results, or creations; highly productive.",
+      "sentence_usage": "The prolific author had written forty novels before turning thirty-five.",
+      "synonyms": [
+        "Productive",
+        "Abundant",
+        "Fertile"
+      ],
+      "antonyms": [
+        "Unproductive",
+        "Scarce",
+        "Barren"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "A fisherman or cartographer at sea who produces far more maps, catches, or discoveries than anyone else.",
+        "word": "The prolific cartographer had charted more coastlines in one voyage than most sailors found in a lifetime.",
+        "sentence": "The _____ cook somehow turned three barrels of salted fish into a different dish every single evening.",
+        "synonym": {
+          "cloze": "The _____ navigator filled four journals with observations before the ship even reached open ocean.",
+          "answer": "Productive"
+        },
+        "antonym": {
+          "cloze": "After three weeks without wind, the once-busy crew grew _____, drifting and achieving nothing.",
+          "answer": "Unproductive"
+        }
+      }
     }
   ]
 }
