@@ -371,11 +371,18 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
       const st = state.beaconState[c];
       const tot = clusters[c].words.length;
       const prog = state.clusterProgress[c] || 0;
-      let txt;
-      if (st === 'cleared') txt = '✓ ' + clusters[c].name;
-      else if (st === 'locked') txt = '🔒 ' + clusters[c].name;
-      else txt = clusters[c].name + ' · ' + prog + '/' + tot;
-      if (el.textContent !== txt) el.textContent = txt;
+      let newHtml;
+      if (st === 'cleared') {
+        newHtml = '✓ ' + clusters[c].name;
+      } else if (st === 'locked') {
+        newHtml = '🔒 ' + clusters[c].name;
+      } else {
+        const remaining = tot - prog;
+        const thisVisit = Math.min(WORDS_PER_CLUSTER, remaining);
+        const sub = (prog > 0 ? prog + '/' + tot + ' captured · ' : '') + thisVisit + ' words this visit';
+        newHtml = clusters[c].name + '<br><span class="quest3d-label-sub">' + sub + '</span>';
+      }
+      if (el.innerHTML !== newHtml) el.innerHTML = newHtml;
       el.className = 'quest3d-label quest3d-label--' + st;
       el.style.display = 'block';
       el.style.transform = 'translate(-50%, -150%) translate(' + x + 'px, ' + y + 'px)';
