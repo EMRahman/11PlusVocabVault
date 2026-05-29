@@ -338,6 +338,10 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     });
   }
 
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function recycleLabels(needed) {
     while (three.labelEls.length < needed) {
       const el = document.createElement('div');
@@ -371,11 +375,19 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
       const st = state.beaconState[c];
       const tot = clusters[c].words.length;
       const prog = state.clusterProgress[c] || 0;
-      let txt;
-      if (st === 'cleared') txt = '✓ ' + clusters[c].name;
-      else if (st === 'locked') txt = '🔒 ' + clusters[c].name;
-      else txt = clusters[c].name + ' · ' + prog + '/' + tot;
-      if (el.textContent !== txt) el.textContent = txt;
+      const safeName = escHtml(clusters[c].name);
+      let newHtml;
+      if (st === 'cleared') {
+        newHtml = '✓ ' + safeName;
+      } else if (st === 'locked') {
+        newHtml = '🔒 ' + safeName;
+      } else {
+        const remaining = tot - prog;
+        const thisVisit = Math.min(WORDS_PER_CLUSTER, remaining);
+        const sub = (prog > 0 ? prog + '/' + tot + ' captured · ' : '') + thisVisit + ' words this visit';
+        newHtml = safeName + '<br><span class="quest3d-label-sub">' + sub + '</span>';
+      }
+      if (el.innerHTML !== newHtml) el.innerHTML = newHtml;
       el.className = 'quest3d-label quest3d-label--' + st;
       el.style.display = 'block';
       el.style.transform = 'translate(-50%, -150%) translate(' + x + 'px, ' + y + 'px)';
