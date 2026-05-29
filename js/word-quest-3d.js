@@ -204,7 +204,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     // On macOS, trackpad pinch arrives as ctrlKey+wheel with tiny deltaY values
     // that OrbitControls barely registers. Intercept and handle zoom directly.
     canvas.addEventListener('wheel', function(e) {
-      if (!e.ctrlKey) return;
+      if (!e.ctrlKey || !controls.enabled) return;
       e.preventDefault();
       e.stopImmediatePropagation();
       const offset = camera.position.clone().sub(controls.target);
