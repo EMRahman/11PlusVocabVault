@@ -24,6 +24,8 @@
   var SAVE_KEY = 'vocabVault_beastConstellation';
   var TAP_PIXEL_THRESHOLD = 12;
   var TAP_TIME_THRESHOLD = 600;
+  var START_NOTE = 'Uncover animals in the same group — tap a star to play!';
+  var START_NOTE_MS = 6000;   // how long the opening note lingers before fading
 
   // World coordinate space (the layout is computed once in these units and a
   // fit transform maps it onto the canvas).
@@ -127,6 +129,7 @@
     var focusedSegId = null;  // when a legend chip is selected
     var hoverStar = null;
     var rafId = 0;
+    var noteTimer = 0;        // auto-dismiss timer for the opening note
 
     // view transform: screen = world * scale + offset
     var view = { scale: 1, x: 0, y: 0 };
@@ -442,7 +445,23 @@
       renderLegend();
     }
 
-    function setStatus(text) { if (statusEl) statusEl.textContent = text; }
+    // Setting any deliberate status cancels a pending opening note so it can't
+    // wipe a segment pattern or discovery message out from under the player.
+    function setStatus(text) {
+      clearTimeout(noteTimer);
+      if (statusEl) statusEl.textContent = text;
+    }
+
+    // A brief note that appears, lingers, then clears itself (used on open).
+    function showStartNote() {
+      if (statusEl) statusEl.textContent = START_NOTE;
+      clearTimeout(noteTimer);
+      noteTimer = setTimeout(function () {
+        if (active && !focusedSegId && statusEl && statusEl.textContent === START_NOTE) {
+          statusEl.textContent = '';
+        }
+      }, START_NOTE_MS);
+    }
 
     // ── Quiz ─────────────────────────────────────────────────────────────
     var quizCtx = null; // { star, seg, order:[wordObj...], idx, answering }
@@ -675,7 +694,7 @@
         closeQuiz();
         renderLegend();
         updateProgress();
-        setStatus('');
+        showStartNote();
         resize();
         fitToView();
         cancelAnimationFrame(rafId);
@@ -685,6 +704,7 @@
 
     function close() {
       active = false;
+      clearTimeout(noteTimer);
       cancelAnimationFrame(rafId);
       overlay.classList.add('hidden');
       overlay.setAttribute('aria-hidden', 'true');

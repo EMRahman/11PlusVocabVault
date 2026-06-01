@@ -4616,18 +4616,6 @@ footer {
 }
 .beast-status:empty { display: none; }
 
-.beast-footer {
-  padding: 0.5rem 1rem;
-  background: rgba(8, 10, 24, 0.85);
-  border-top: 1px solid rgba(140, 150, 220, 0.18);
-}
-.beast-hint {
-  margin: 0;
-  font-size: 0.75rem;
-  color: #8b93b8;
-  text-align: center;
-}
-
 /* Quiz card (bright card over the dark sky) */
 .beast-quiz {
   position: absolute;
