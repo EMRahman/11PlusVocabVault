@@ -1,0 +1,315 @@
+{
+  "intro": "Look up at the animal kingdom as if it were a night sky. Each star is a creature, and each constellation is a survival superpower that evolution has invented again and again — in animals that are not even related. A fast cat and a fast fish belong to the same constellation of speed; a shark and a lion share the constellation of the hunter. Tap a star to discover its animal and answer a word puzzle inspired by it.",
+  "segments": [
+    {
+      "id": "speed",
+      "name": "The Swift",
+      "trait": "Speed",
+      "emoji": "☄️",
+      "hue": "#7dd3fc",
+      "neighbors": ["hunting", "endurance"],
+      "pattern": "Across unrelated branches of life the same answer to survival appears again and again: be faster than the rest. Cat, bird, fish and insect have each been sculpted by the race — light bones, long limbs and powerful hearts — because in the wild, a single second decides who eats and who is eaten.",
+      "animals": [
+        { "name": "Cheetah", "emoji": "🐆", "note": "The fastest land animal — 0 to 60 mph in three strides.", "words": [
+          { "word": "Swift", "word_type": "Adjective", "definition": "Moving or able to move very fast." },
+          { "word": "Nimble", "word_type": "Adjective", "definition": "Quick and light in movement; agile." }
+        ] },
+        { "name": "Peregrine Falcon", "emoji": "🦅", "note": "Dives at over 200 mph — the fastest creature alive.", "words": [
+          { "word": "Plummet", "word_type": "Verb", "definition": "To fall or drop straight downwards at great speed." },
+          { "word": "Velocity", "word_type": "Noun", "definition": "The speed of something moving in a particular direction." }
+        ] },
+        { "name": "Sailfish", "emoji": "🐠", "note": "The ocean's sprinter, slicing the water at racing-car speeds.", "words": [
+          { "word": "Streamlined", "word_type": "Adjective", "definition": "Shaped smoothly to move easily and quickly through air or water." },
+          { "word": "Propel", "word_type": "Verb", "definition": "To drive or push something forward." }
+        ] },
+        { "name": "Pronghorn", "emoji": "🦌", "note": "Built to outrun predators that no longer even exist.", "words": [
+          { "word": "Fleet", "word_type": "Adjective", "definition": "Fast and nimble in movement." },
+          { "word": "Bound", "word_type": "Verb", "definition": "To move forward with great leaping strides." }
+        ] },
+        { "name": "Dragonfly", "emoji": "🪰", "note": "Hovers, reverses and darts — an aerial acrobat.", "words": [
+          { "word": "Dart", "word_type": "Verb", "definition": "To move suddenly and rapidly in a particular direction." },
+          { "word": "Agile", "word_type": "Adjective", "definition": "Able to move quickly and easily." }
+        ] }
+      ]
+    },
+    {
+      "id": "hunting",
+      "name": "The Hunters",
+      "trait": "Hunting & Apex Predators",
+      "emoji": "🦁",
+      "hue": "#fbbf24",
+      "neighbors": ["speed", "stealth", "strength"],
+      "pattern": "The predator's blueprint — sharp senses, deadly weapons, and the patience to use them — has evolved over and over in cats, birds, fish and reptiles. To stand at the top of the food chain, an apex hunter shapes its entire body around the kill, and in doing so keeps every creature below it in balance.",
+      "animals": [
+        { "name": "Lion", "emoji": "🦁", "note": "Apex hunter of the savannah, hunting in coordinated prides.", "words": [
+          { "word": "Apex", "word_type": "Noun", "definition": "The highest point or top of something; the summit." },
+          { "word": "Ferocious", "word_type": "Adjective", "definition": "Savagely fierce, cruel or violent." }
+        ] },
+        { "name": "Tiger", "emoji": "🐅", "note": "The largest cat — a solitary ambusher of astonishing power.", "words": [
+          { "word": "Voracious", "word_type": "Adjective", "definition": "Wanting or devouring great amounts of food." },
+          { "word": "Lethal", "word_type": "Adjective", "definition": "Able to cause death; deadly." }
+        ] },
+        { "name": "Great White Shark", "emoji": "🦈", "note": "An ancient ocean hunter that senses a drop of blood from afar.", "words": [
+          { "word": "Relentless", "word_type": "Adjective", "definition": "Never stopping or giving up; persistent and harsh." },
+          { "word": "Formidable", "word_type": "Adjective", "definition": "Inspiring fear or respect through being powerful or impressive." }
+        ] },
+        { "name": "Bald Eagle", "emoji": "🦅", "note": "A keen-eyed raptor that snatches fish from the water's surface.", "words": [
+          { "word": "Piercing", "word_type": "Adjective", "definition": "Extremely sharp, penetrating or intense." },
+          { "word": "Talons", "word_type": "Noun", "definition": "The sharp, curved claws of a bird of prey." }
+        ] },
+        { "name": "Orca", "emoji": "🐬", "note": "The 'wolf of the sea' — hunting in clever, deadly pods.", "words": [
+          { "word": "Predatory", "word_type": "Adjective", "definition": "Living by hunting and killing other animals." },
+          { "word": "Coordinated", "word_type": "Adjective", "definition": "Organised so that different parts work smoothly together." }
+        ] }
+      ]
+    },
+    {
+      "id": "stealth",
+      "name": "The Stalkers",
+      "trait": "Stealth & Ambush",
+      "emoji": "🐈‍⬛",
+      "hue": "#a78bfa",
+      "neighbors": ["hunting", "camouflage", "venom", "cunning"],
+      "pattern": "Where speed fails, silence wins. Ambush hunters trade the long chase for the patient wait — creeping unseen and striking only once. Stealth is patience turned into a weapon, and it appears in creatures as different as a leopard, an owl and a praying mantis.",
+      "animals": [
+        { "name": "Leopard", "emoji": "🐆", "note": "Hauls prey up trees and moves like a shadow through the grass.", "words": [
+          { "word": "Stealthy", "word_type": "Adjective", "definition": "Moving quietly and secretly to avoid being noticed." },
+          { "word": "Furtive", "word_type": "Adjective", "definition": "Done quietly and secretly to avoid being seen." }
+        ] },
+        { "name": "Praying Mantis", "emoji": "🦗", "note": "Sits motionless, then strikes faster than the eye can follow.", "words": [
+          { "word": "Lunge", "word_type": "Verb", "definition": "To make a sudden, forceful forward movement." },
+          { "word": "Deceptive", "word_type": "Adjective", "definition": "Giving an appearance that misleads or tricks." }
+        ] },
+        { "name": "Owl", "emoji": "🦉", "note": "Flies in total silence on specially fringed feathers.", "words": [
+          { "word": "Nocturnal", "word_type": "Adjective", "definition": "Active at night rather than during the day." },
+          { "word": "Vigilant", "word_type": "Adjective", "definition": "Keeping careful watch for possible danger." }
+        ] },
+        { "name": "Anglerfish", "emoji": "🎣", "note": "Dangles a glowing lure in the deep dark to draw prey close.", "words": [
+          { "word": "Lure", "word_type": "Verb", "definition": "To tempt or attract, especially into a trap." },
+          { "word": "Obscure", "word_type": "Adjective", "definition": "Not easily seen, discovered or understood; hidden." }
+        ] },
+        { "name": "Crocodile", "emoji": "🐊", "note": "Waits submerged for hours, then erupts in a heartbeat.", "words": [
+          { "word": "Lurk", "word_type": "Verb", "definition": "To wait in hiding, especially in order to ambush." },
+          { "word": "Submerged", "word_type": "Adjective", "definition": "Hidden beneath the surface of water." }
+        ] }
+      ]
+    },
+    {
+      "id": "camouflage",
+      "name": "The Hidden",
+      "trait": "Camouflage & Disguise",
+      "emoji": "🦎",
+      "hue": "#34d399",
+      "neighbors": ["stealth", "venom"],
+      "pattern": "To vanish in plain sight is one of nature's oldest tricks. Skin that shifts colour, bodies shaped like leaves or twigs — camouflage shows how survival favours those who simply are not seen. The chameleon, the octopus and the stick insect are unrelated, yet evolution gave each the very same gift.",
+      "animals": [
+        { "name": "Chameleon", "emoji": "🦎", "note": "Shifts colour to blend in — and to signal its mood.", "words": [
+          { "word": "Concealed", "word_type": "Adjective", "definition": "Kept hidden or out of sight." },
+          { "word": "Disguise", "word_type": "Verb", "definition": "To change one's appearance in order to hide one's identity." }
+        ] },
+        { "name": "Octopus", "emoji": "🐙", "note": "Changes colour AND texture in an instant — a master mimic.", "words": [
+          { "word": "Mimic", "word_type": "Verb", "definition": "To imitate or copy something closely." },
+          { "word": "Versatile", "word_type": "Adjective", "definition": "Able to adapt or be used for many different purposes." }
+        ] },
+        { "name": "Stick Insect", "emoji": "🦗", "note": "Looks exactly like a twig, even swaying as if in the breeze.", "words": [
+          { "word": "Inconspicuous", "word_type": "Adjective", "definition": "Not clearly visible; not attracting attention." },
+          { "word": "Slender", "word_type": "Adjective", "definition": "Gracefully thin and narrow." }
+        ] },
+        { "name": "Cuttlefish", "emoji": "🦑", "note": "Hypnotises prey with shimmering, shifting skin patterns.", "words": [
+          { "word": "Shimmering", "word_type": "Adjective", "definition": "Shining with a soft, wavering light." },
+          { "word": "Subtle", "word_type": "Adjective", "definition": "So delicate or precise as to be difficult to notice." }
+        ] },
+        { "name": "Leaf Insect", "emoji": "🍃", "note": "An insect shaped, veined and coloured exactly like a leaf.", "words": [
+          { "word": "Foliage", "word_type": "Noun", "definition": "The leaves of a plant or tree, taken together." },
+          { "word": "Vanish", "word_type": "Verb", "definition": "To disappear suddenly and completely." }
+        ] }
+      ]
+    },
+    {
+      "id": "venom",
+      "name": "The Venomous",
+      "trait": "Venom & Poison",
+      "emoji": "🐍",
+      "hue": "#f472b6",
+      "neighbors": ["camouflage", "stealth", "senses"],
+      "pattern": "Some animals carry their weapon in their blood. Venom and poison evolve where a small creature must defend or kill far above its size — and the bright warning colours of a dart frog or jellyfish announce that danger to the whole world, a silent message all predators learn to obey.",
+      "animals": [
+        { "name": "King Cobra", "emoji": "🐍", "note": "The longest venomous snake; a single bite can fell an elephant.", "words": [
+          { "word": "Venomous", "word_type": "Adjective", "definition": "Producing a poison that is injected by biting or stinging." },
+          { "word": "Serpentine", "word_type": "Adjective", "definition": "Winding and twisting like a snake." }
+        ] },
+        { "name": "Box Jellyfish", "emoji": "🪼", "note": "Nearly invisible, trailing some of the deadliest venom known.", "words": [
+          { "word": "Translucent", "word_type": "Adjective", "definition": "Allowing light to pass through but not fully transparent." },
+          { "word": "Toxic", "word_type": "Adjective", "definition": "Containing or being poisonous material." }
+        ] },
+        { "name": "Poison Dart Frog", "emoji": "🐸", "note": "Tiny and dazzlingly bright — a walking warning sign.", "words": [
+          { "word": "Vivid", "word_type": "Adjective", "definition": "Producing strong, clear and bright images or colours." },
+          { "word": "Potent", "word_type": "Adjective", "definition": "Having great power, strength or effect." }
+        ] },
+        { "name": "Scorpion", "emoji": "🦂", "note": "Carries a stinging tail and glows eerily under ultraviolet light.", "words": [
+          { "word": "Noxious", "word_type": "Adjective", "definition": "Harmful, poisonous or very unpleasant." },
+          { "word": "Menacing", "word_type": "Adjective", "definition": "Suggesting the presence of danger; threatening." }
+        ] },
+        { "name": "Pufferfish", "emoji": "🐡", "note": "Inflates into a spiky ball packed with a deadly poison.", "words": [
+          { "word": "Inflate", "word_type": "Verb", "definition": "To swell or fill up with air or gas." },
+          { "word": "Pernicious", "word_type": "Adjective", "definition": "Having a harmful effect, often in a gradual or hidden way." }
+        ] }
+      ]
+    },
+    {
+      "id": "strength",
+      "name": "The Mighty",
+      "trait": "Brute Strength & Size",
+      "emoji": "🐘",
+      "hue": "#fb923c",
+      "neighbors": ["hunting", "group", "senses"],
+      "pattern": "Raw power is its own survival strategy. The giants of land and sea grew immense because sheer size deters almost every attacker — strength bought by a lifetime of eating, growing and standing firm. Yet the mightiest, like the elephant and gorilla, are often the gentlest of all.",
+      "animals": [
+        { "name": "Elephant", "emoji": "🐘", "note": "The largest land animal — and among the wisest and gentlest.", "words": [
+          { "word": "Immense", "word_type": "Adjective", "definition": "Extremely large or great in size or degree." },
+          { "word": "Venerable", "word_type": "Adjective", "definition": "Deserving great respect because of age, wisdom or character." }
+        ] },
+        { "name": "Gorilla", "emoji": "🦍", "note": "Immensely strong, yet a gentle and family-minded giant.", "words": [
+          { "word": "Robust", "word_type": "Adjective", "definition": "Strong, healthy and sturdy." },
+          { "word": "Imposing", "word_type": "Adjective", "definition": "Grand and impressive in size or appearance." }
+        ] },
+        { "name": "Rhinoceros", "emoji": "🦏", "note": "Charges on stocky legs behind a horn of solid keratin.", "words": [
+          { "word": "Charge", "word_type": "Verb", "definition": "To rush forward in a sudden attack." },
+          { "word": "Massive", "word_type": "Adjective", "definition": "Large, heavy and solid." }
+        ] },
+        { "name": "Hippopotamus", "emoji": "🦛", "note": "Deceptively huge and fiercely territorial in its river.", "words": [
+          { "word": "Territorial", "word_type": "Adjective", "definition": "Defending an area that one regards as one's own." },
+          { "word": "Belligerent", "word_type": "Adjective", "definition": "Hostile and aggressive; eager to fight." }
+        ] },
+        { "name": "Grizzly Bear", "emoji": "🐻", "note": "A powerful omnivore that fears almost nothing in its range.", "words": [
+          { "word": "Towering", "word_type": "Adjective", "definition": "Extremely tall or high; imposing." },
+          { "word": "Vigorous", "word_type": "Adjective", "definition": "Strong, healthy and full of energy." }
+        ] }
+      ]
+    },
+    {
+      "id": "cunning",
+      "name": "The Clever",
+      "trait": "Cunning & Intelligence",
+      "emoji": "🦊",
+      "hue": "#60a5fa",
+      "neighbors": ["stealth", "group"],
+      "pattern": "Brains can beat brawn. Problem-solvers, tool-users and tricksters thrive by out-thinking their rivals — a fox, a raven and a dolphin are proof that intelligence is one of evolution's sharpest weapons, letting the weak outwit the strong.",
+      "animals": [
+        { "name": "Fox", "emoji": "🦊", "note": "A quick-witted opportunist that thrives almost anywhere.", "words": [
+          { "word": "Cunning", "word_type": "Adjective", "definition": "Clever in a sly, crafty or deceitful way." },
+          { "word": "Resourceful", "word_type": "Adjective", "definition": "Able to find clever ways to overcome difficulties." }
+        ] },
+        { "name": "Raven", "emoji": "🐦‍⬛", "note": "Solves puzzles, plans ahead, and even plays for fun.", "words": [
+          { "word": "Ingenious", "word_type": "Adjective", "definition": "Clever, original and inventive." },
+          { "word": "Astute", "word_type": "Adjective", "definition": "Showing sharp, accurate judgement; perceptive." }
+        ] },
+        { "name": "Dolphin", "emoji": "🐬", "note": "Uses tools, names itself with whistles, and teaches its young.", "words": [
+          { "word": "Perceptive", "word_type": "Adjective", "definition": "Having or showing keen insight and understanding." },
+          { "word": "Sociable", "word_type": "Adjective", "definition": "Enjoying the company of others; friendly." }
+        ] },
+        { "name": "Chimpanzee", "emoji": "🐒", "note": "Fashions tools from twigs and learns customs from its troop.", "words": [
+          { "word": "Inventive", "word_type": "Adjective", "definition": "Having the ability to create new things; creative." },
+          { "word": "Adept", "word_type": "Adjective", "definition": "Very skilled or proficient at something." }
+        ] },
+        { "name": "Raccoon", "emoji": "🦝", "note": "A nimble-fingered burglar that can crack almost any latch.", "words": [
+          { "word": "Mischievous", "word_type": "Adjective", "definition": "Causing or inclined to cause trouble in a playful way." },
+          { "word": "Dexterous", "word_type": "Adjective", "definition": "Skilful and nimble, especially with the hands." }
+        ] }
+      ]
+    },
+    {
+      "id": "group",
+      "name": "The United",
+      "trait": "Group Living & Empathy",
+      "emoji": "🐺",
+      "hue": "#f87171",
+      "neighbors": ["strength", "cunning", "senses"],
+      "pattern": "No single wolf can bring down an elk; no lone bee can build a hive. Cooperation, loyalty and even empathy evolve because a group can do what an individual never could. From wolf packs to bee colonies, survival often means survival through togetherness.",
+      "animals": [
+        { "name": "Wolf", "emoji": "🐺", "note": "Hunts, raises pups and survives the winter as a devoted pack.", "words": [
+          { "word": "Loyal", "word_type": "Adjective", "definition": "Firm and faithful in support of someone or something." },
+          { "word": "Cohesive", "word_type": "Adjective", "definition": "Sticking or working together as a united whole." }
+        ] },
+        { "name": "Honeybee", "emoji": "🐝", "note": "Thousands work as one super-organism, dancing out directions.", "words": [
+          { "word": "Diligent", "word_type": "Adjective", "definition": "Showing careful and persistent effort in work." },
+          { "word": "Collective", "word_type": "Adjective", "definition": "Done by or belonging to all the members of a group." }
+        ] },
+        { "name": "Ant", "emoji": "🐜", "note": "Builds cities, farms fungus and carries many times its weight.", "words": [
+          { "word": "Industrious", "word_type": "Adjective", "definition": "Hard-working and steadily busy." },
+          { "word": "Unified", "word_type": "Adjective", "definition": "Made into a single, coordinated whole." }
+        ] },
+        { "name": "Meerkat", "emoji": "🐾", "note": "Takes turns as a lookout, barking warnings to the whole mob.", "words": [
+          { "word": "Sentinel", "word_type": "Noun", "definition": "A guard whose job is to keep watch." },
+          { "word": "Wary", "word_type": "Adjective", "definition": "Cautious and alert about possible dangers." }
+        ] },
+        { "name": "Emperor Penguin", "emoji": "🐧", "note": "Huddles by the thousand to survive the brutal polar winter.", "words": [
+          { "word": "Huddle", "word_type": "Verb", "definition": "To crowd or nestle closely together." },
+          { "word": "Devoted", "word_type": "Adjective", "definition": "Very loving, loyal or dedicated." }
+        ] }
+      ]
+    },
+    {
+      "id": "endurance",
+      "name": "The Voyagers",
+      "trait": "Endurance & Migration",
+      "emoji": "🦋",
+      "hue": "#c084fc",
+      "neighbors": ["speed", "senses"],
+      "pattern": "Some animals win not by speed or strength but by never stopping. Migration and endurance reveal a quiet superpower — bodies and instincts tuned to cross oceans, deserts and continents, following invisible maps written into their very cells.",
+      "animals": [
+        { "name": "Monarch Butterfly", "emoji": "🦋", "note": "Crosses a continent over several generations to one forest.", "words": [
+          { "word": "Migrate", "word_type": "Verb", "definition": "To move from one region or habitat to another, often seasonally." },
+          { "word": "Persistent", "word_type": "Adjective", "definition": "Continuing firmly despite difficulty or opposition." }
+        ] },
+        { "name": "Blue Whale", "emoji": "🐋", "note": "The largest animal ever to live, roaming every ocean on Earth.", "words": [
+          { "word": "Majestic", "word_type": "Adjective", "definition": "Having grandeur or dignity; impressively beautiful." },
+          { "word": "Roam", "word_type": "Verb", "definition": "To wander over a wide area without a fixed route." }
+        ] },
+        { "name": "Arctic Tern", "emoji": "🐦", "note": "Flies pole to pole each year — the longest migration of all.", "words": [
+          { "word": "Voyage", "word_type": "Noun", "definition": "A long journey, especially by sea or through space." },
+          { "word": "Navigate", "word_type": "Verb", "definition": "To plan and direct the route or course of a journey." }
+        ] },
+        { "name": "Salmon", "emoji": "🐟", "note": "Battles upstream against rapids to return to its birthplace.", "words": [
+          { "word": "Determined", "word_type": "Adjective", "definition": "Showing firm decision and a refusal to give up." },
+          { "word": "Tenacious", "word_type": "Adjective", "definition": "Holding firmly to a purpose; not easily stopped." }
+        ] },
+        { "name": "Wildebeest", "emoji": "🐃", "note": "Crosses crocodile-filled rivers in herds a million strong.", "words": [
+          { "word": "Trek", "word_type": "Noun", "definition": "A long and difficult journey, especially on foot." },
+          { "word": "Herd", "word_type": "Noun", "definition": "A large group of animals that live or travel together." }
+        ] }
+      ]
+    },
+    {
+      "id": "senses",
+      "name": "The Vigilant",
+      "trait": "Heightened Senses",
+      "emoji": "🦇",
+      "hue": "#22d3ee",
+      "neighbors": ["venom", "strength", "group", "endurance"],
+      "pattern": "Survival often comes down to who notices first. Heightened senses — sound, smell, heat and even electricity — let animals read a hidden world and feel danger long before it arrives. To be attuned to the slightest signal is, for prey and hunter alike, to stay alive.",
+      "animals": [
+        { "name": "Bat", "emoji": "🦇", "note": "Sees with sound, mapping the dark with echolocation.", "words": [
+          { "word": "Echolocation", "word_type": "Noun", "definition": "Locating objects by the sound waves they reflect back." },
+          { "word": "Acute", "word_type": "Adjective", "definition": "Highly developed, keen and sharp, especially of the senses." }
+        ] },
+        { "name": "Hare", "emoji": "🐇", "note": "Huge ears and wide-set eyes detect the faintest threat.", "words": [
+          { "word": "Alert", "word_type": "Adjective", "definition": "Quick to notice and respond to possible danger." },
+          { "word": "Skittish", "word_type": "Adjective", "definition": "Nervous, restless and easily frightened." }
+        ] },
+        { "name": "Mantis Shrimp", "emoji": "🦐", "note": "Has the most complex eyes in nature and a hammer-fast punch.", "words": [
+          { "word": "Perception", "word_type": "Noun", "definition": "The ability to see, hear or become aware of something." },
+          { "word": "Iridescent", "word_type": "Adjective", "definition": "Showing luminous, shifting rainbow colours." }
+        ] },
+        { "name": "Platypus", "emoji": "🦦", "note": "Hunts with its eyes shut, sensing prey by faint electric signals.", "words": [
+          { "word": "Detect", "word_type": "Verb", "definition": "To discover or notice the presence of something hidden." },
+          { "word": "Peculiar", "word_type": "Adjective", "definition": "Strange or unusual; distinctive to one thing." }
+        ] },
+        { "name": "Bloodhound", "emoji": "🐕", "note": "Follows a three-day-old scent trail with a record-breaking nose.", "words": [
+          { "word": "Keen", "word_type": "Adjective", "definition": "Highly sensitive or sharp, especially of the senses." },
+          { "word": "Discern", "word_type": "Verb", "definition": "To perceive, recognise or distinguish something clearly." }
+        ] }
+      ]
+    }
+  ]
+}

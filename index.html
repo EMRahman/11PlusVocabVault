@@ -109,7 +109,7 @@
           <button class="launch-group-toggle" aria-expanded="false" aria-controls="games-body">
             <span class="launch-group-label">Games</span>
             <span class="launch-group-preview" aria-hidden="true">
-              <span class="preview-icon">❓</span><span class="preview-icon">🔍</span><span class="preview-icon">🔤</span><span class="preview-icon">⚡</span><span class="preview-icon">🎭</span><span class="preview-icon">🗺️</span><span class="preview-icon">🌌</span>
+              <span class="preview-icon">❓</span><span class="preview-icon">🔍</span><span class="preview-icon">🔤</span><span class="preview-icon">⚡</span><span class="preview-icon">🎭</span><span class="preview-icon">🗺️</span><span class="preview-icon">🌌</span><span class="preview-icon">🦁</span>
             </span>
             <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -145,6 +145,10 @@
             <button class="quiz-launch-btn quest3d-launch-btn" id="quest3d-launch-btn" aria-label="Start Constellation Quest 3D game">
               <span aria-hidden="true">🌌</span>
               Constellation Quest
+            </button>
+            <button class="quiz-launch-btn beast-launch-btn" id="beast-launch-btn" aria-label="Open Beast Constellation game">
+              <span aria-hidden="true">🦁</span>
+              Beast Constellation
             </button>
           </div>
         </div>
@@ -1441,6 +1445,46 @@
     </div>
   </div>
 
+  <!-- Beast Constellation overlay -->
+  <div id="beast-overlay" class="modal-overlay beast-overlay hidden" aria-hidden="true">
+    <div class="beast-panel" role="dialog" aria-modal="true" aria-labelledby="beast-title">
+      <header class="beast-bar">
+        <h2 id="beast-title" class="beast-title">🦁 Beast Constellation</h2>
+        <div class="beast-controls">
+          <span id="beast-progress" class="beast-progress"></span>
+          <button id="beast-recenter" class="beast-btn" type="button" aria-label="Recenter the sky">Recenter</button>
+          <button id="beast-close" class="beast-btn beast-close" type="button" aria-label="Exit Beast Constellation" title="Exit">✕</button>
+        </div>
+      </header>
+      <div id="beast-legend" class="beast-legend" aria-label="Animal strengths — tap to focus a constellation"></div>
+      <div class="beast-stage">
+        <canvas id="beast-canvas" aria-label="Animal constellation map"></canvas>
+        <p id="beast-status" class="beast-status" role="status" aria-live="polite"></p>
+
+        <div id="beast-quiz" class="beast-quiz hidden" role="dialog" aria-modal="true" aria-labelledby="beast-quiz-name">
+          <button id="beast-quiz-close" class="beast-quiz-close" type="button" aria-label="Close quiz">✕</button>
+          <div class="beast-quiz-head">
+            <span id="beast-quiz-emoji" class="beast-quiz-emoji" aria-hidden="true"></span>
+            <div>
+              <h3 id="beast-quiz-name" class="beast-quiz-name"></h3>
+              <p id="beast-quiz-note" class="beast-quiz-note"></p>
+            </div>
+          </div>
+          <p id="beast-quiz-prompt" class="beast-quiz-prompt"></p>
+          <div id="beast-quiz-answers" class="beast-quiz-answers"></div>
+          <p id="beast-quiz-feedback" class="quiz-feedback beast-quiz-feedback"></p>
+          <div class="beast-quiz-actions">
+            <button id="beast-quiz-learn" class="beast-btn beast-quiz-learn hidden" type="button">Learn this word →</button>
+            <button id="beast-quiz-next" class="beast-btn beast-quiz-next hidden" type="button">Next ▸</button>
+          </div>
+        </div>
+      </div>
+      <footer class="beast-footer">
+        <p class="beast-hint">Tap a star to discover its animal · drag to pan · pinch or scroll to zoom · tap a strength below to focus its constellation</p>
+      </footer>
+    </div>
+  </div>
+
   <script type="importmap">
     {
       "imports": {
@@ -1454,6 +1498,7 @@
   <script src="js/mood-map.js?v=202606011049"></script>
   <script src="js/word-portrait.js?v=202606011049"></script>
   <script src="js/word-roots-garden.js?v=202606011049"></script>
+  <script src="js/animal-constellation.js?v=202606011049"></script>
   <script src="js/app.js?v=202606011049"></script>
   <script>
     (function () {
