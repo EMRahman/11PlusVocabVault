@@ -50,26 +50,25 @@
   }
   function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
 
-  // Longest common substring (case-insensitive) — used to spotlight the shared
-  // root fragment between the planted word and a cousin (e.g. "adver" in
-  // adversity / advertise, "horr" in abhorrent / horror, "phon" in cacophony /
-  // telephone). It naturally lands on whichever stem the two words share, even
-  // for compound roots like bene + volens (volunteer → "vol").
-  function longestCommonSubstring(a, b) {
-    a = String(a).toLowerCase(); b = String(b).toLowerCase();
-    var best = '', prevRow = [];
-    for (var i = 0; i < a.length; i++) {
-      var row = [];
-      for (var j = 0; j < b.length; j++) {
-        if (a.charAt(i) === b.charAt(j)) {
-          var len = (i && j ? (prevRow[j - 1] || 0) : 0) + 1;
-          row[j] = len;
-          if (len > best.length) best = a.substr(i - len + 1, len);
-        } else {
-          row[j] = 0;
-        }
+  // Longest substring (≥ minLen, case-insensitive) common to *all* of the given
+  // strings. We feed it the planted word, the cousin, AND the curated root, so
+  // we only ever spotlight a stem the etymology actually backs — e.g. "horr" in
+  // abhorrent / horror (root abhorrere), "unda" in abundant / redundant (root
+  // abundare), "phon" in cacophony / telephone (root kakos + phone). Requiring
+  // the root avoids teaching accidental overlaps as relationships, like
+  // vigilant / surveillance (only "lan", absent from the root "vigilare") or
+  // compassion / sympathy ("mpa") — those fall back to the generic label.
+  function commonStem(strings, minLen) {
+    var base = String(strings[0]).toLowerCase();
+    var others = strings.slice(1).map(function (s) { return String(s).toLowerCase(); });
+    var best = '';
+    for (var i = 0; i < base.length; i++) {
+      for (var j = i + (minLen || 1); j <= base.length; j++) {
+        var sub = base.slice(i, j);
+        if (sub.length <= best.length) continue;
+        var inAll = others.every(function (o) { return o.indexOf(sub) !== -1; });
+        if (inAll) best = sub;
       }
-      prevRow = row;
     }
     return best;
   }
@@ -490,10 +489,10 @@
       if (!pos) return;
       tooltipEl.innerHTML = '';
 
-      // The stem this cousin shares with the planted word (≥3 letters to be
-      // meaningful), highlighted in both so the family resemblance is obvious.
-      var frag = b.isHead ? '' : longestCommonSubstring(tree.word, b.label);
-      if (frag.length < 3) frag = '';
+      // The root-backed stem this cousin shares with the planted word (≥3
+      // letters, and present in the curated root so it's a real relationship),
+      // highlighted in both so the family resemblance is obvious.
+      var frag = (!b.isHead && tree.root) ? commonStem([tree.word, b.label, tree.root], 3) : '';
 
       var name = el('span', 'rootsgarden-tip-word');
       name.appendChild(highlightFragment(b.label, frag));
