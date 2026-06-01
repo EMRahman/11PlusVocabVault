@@ -1,5 +1,5 @@
 const BUILD_INFO = {
   date: '2026-06-01',
-  time: '15:31 UTC',
-  iso: '2026-06-01T15:31:17Z'
+  time: '16:46 UTC',
+  iso: '2026-06-01T16:46:26Z'
 };
