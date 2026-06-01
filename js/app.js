@@ -565,6 +565,7 @@
         initGloss();
         initStoryMode();
         initHistoryMode();
+        initAnimalsMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -1214,6 +1215,8 @@
       reopenNewsReading();
     } else if (returnTo === 'history') {
       reopenHistoryReading();
+    } else if (returnTo === 'animals') {
+      reopenAnimalsReading();
     } else if (returnTo === 'fable') {
       reopenFableReading();
     } else if (returnTo === 'proverbs') {
@@ -2629,6 +2632,240 @@
         }
       })
       .catch(function () { historyArticles = []; });
+  }
+
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ANIMALS MODE
+  // A library of hand-written animal articles — covering evolution, adaptations,
+  // and key features — each featuring vocabulary words in context, followed by a quiz.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var ANIMALS_PROGRESS_KEY = 'vocabVault_animalsProgress';
+  var animalArticles = [];
+  var animalsProgress = {};
+  var currentAnimalArticle = null;
+  var animalsTTSBar = null;
+
+  var animalsLaunchBtn      = document.getElementById('animals-launch-btn');
+  var animalsOverlay        = document.getElementById('animals-overlay');
+  var animalsLibraryScreen  = document.getElementById('animals-library-screen');
+  var animalsReadingScreen  = document.getElementById('animals-reading-screen');
+  var animalsCloseBtn       = document.getElementById('animals-close-btn');
+  var animalsBackBtn        = document.getElementById('animals-back-btn');
+  var animalsList           = document.getElementById('animals-list');
+  var animalsReadingEmoji   = document.getElementById('animals-reading-emoji');
+  var animalsReadingHabitat = document.getElementById('animals-reading-habitat');
+  var animalsReadingTitle   = document.getElementById('animals-reading-title');
+  var animalsReadingBody    = document.getElementById('animals-reading-body');
+  var animalsQuizBtn        = document.getElementById('animals-quiz-btn');
+
+  function loadAnimalsProgress() {
+    try {
+      var raw = localStorage.getItem(ANIMALS_PROGRESS_KEY);
+      animalsProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      animalsProgress = {};
+    }
+  }
+
+  function saveAnimalsProgress() {
+    try { localStorage.setItem(ANIMALS_PROGRESS_KEY, JSON.stringify(animalsProgress)); } catch (e) {}
+  }
+
+  function animalWordObjects(article) {
+    var out = [];
+    (article.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderAnimalsLibrary() {
+    animalsList.innerHTML = '';
+    if (!animalArticles.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'Animal articles are still loading — try again in a moment.';
+      animalsList.appendChild(empty);
+      return;
+    }
+    animalArticles.forEach(function (article) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = article.emoji + ' ' + article.title;
+
+      var habitat = document.createElement('span');
+      habitat.className = 'history-card-era';
+      habitat.textContent = article.habitat;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = article.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+      meta.appendChild(habitat);
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = animalWordObjects(article).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = animalsProgress[article.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openAnimalArticle(article); });
+      animalsList.appendChild(card);
+    });
+  }
+
+  function showAnimalsScreen(screenEl) {
+    [animalsLibraryScreen, animalsReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openAnimalArticle(article) {
+    currentAnimalArticle = article;
+    var prog = animalsProgress[article.id] || {};
+    prog.read = true;
+    animalsProgress[article.id] = prog;
+    saveAnimalsProgress();
+
+    animalsReadingEmoji.textContent = article.emoji;
+    animalsReadingHabitat.textContent = article.habitat;
+    animalsReadingTitle.textContent = article.title;
+    renderReadingBody(animalsReadingBody, article.paragraphs, animalWordObjects(article), animalsTTSBar);
+    showAnimalsScreen(animalsReadingScreen);
+    animalsReadingScreen.scrollTop = 0;
+    animalsBackBtn.focus();
+  }
+
+  function openAnimalsOverlay() {
+    renderAnimalsLibrary();
+    showAnimalsScreen(animalsLibraryScreen);
+    animalsOverlay.classList.remove('hidden');
+    animalsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    animalsCloseBtn.focus();
+  }
+
+  function closeAnimalsOverlay() {
+    ttsStop();
+    hideGloss();
+    animalsOverlay.classList.add('hidden');
+    animalsOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentAnimalArticle = null;
+    animalsLaunchBtn.focus();
+  }
+
+  function reopenAnimalsReading() {
+    if (!currentAnimalArticle) { closeAnimalsOverlay(); return; }
+    animalsOverlay.classList.remove('hidden');
+    animalsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showAnimalsScreen(animalsReadingScreen);
+    animalsQuizBtn.focus();
+  }
+
+  function recordAnimalResult(article, score, total) {
+    var prog = animalsProgress[article.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    animalsProgress[article.id] = prog;
+    saveAnimalsProgress();
+    if (score === total) return 'Article complete — perfect score! 🎉';
+    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initAnimalsMode() {
+    loadAnimalsProgress();
+
+    animalsLaunchBtn.addEventListener('click', openAnimalsOverlay);
+    animalsCloseBtn.addEventListener('click', closeAnimalsOverlay);
+
+    animalsBackBtn.addEventListener('click', function () {
+      ttsStop();
+      hideGloss();
+      renderAnimalsLibrary();
+      showAnimalsScreen(animalsLibraryScreen);
+      animalsCloseBtn.focus();
+    });
+
+    animalsQuizBtn.addEventListener('click', function () {
+      if (!currentAnimalArticle) return;
+      var words = animalWordObjects(currentAnimalArticle);
+      if (!words.length) return;
+      var article = currentAnimalArticle;
+      ttsStop();
+      hideGloss();
+      animalsOverlay.classList.add('hidden');
+      animalsOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'animals',
+        onComplete: function (score, total) {
+          return recordAnimalResult(article, score, total);
+        }
+      });
+    });
+
+    animalsOverlay.addEventListener('click', function (e) {
+      if (e.target === animalsOverlay) closeAnimalsOverlay();
+    });
+
+    animalsReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (animalsOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeAnimalsOverlay();
+    });
+
+    animalsTTSBar = initTTSBar(
+      document.getElementById('animals-tts-read-btn'),
+      document.getElementById('animals-tts-controls'),
+      document.getElementById('animals-tts-playpause'),
+      document.getElementById('animals-tts-stop'),
+      document.querySelectorAll('#animals-tts-controls .tts-speed-btn'),
+      document.getElementById('animals-tts-voice'),
+      document.querySelectorAll('#animals-tts-controls .tts-pitch-btn')
+    );
+
+    fetch('data/animals.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        animalArticles = (data && data.animals) || [];
+        if (!animalsOverlay.classList.contains('hidden') &&
+            !animalsLibraryScreen.classList.contains('hidden')) {
+          renderAnimalsLibrary();
+        }
+      })
+      .catch(function () { animalArticles = []; });
   }
 
 
