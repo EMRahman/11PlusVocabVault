@@ -572,6 +572,7 @@
         initStoryMode();
         initHistoryMode();
         initAnimalsMode();
+        initInsectsMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -1223,6 +1224,8 @@
       reopenHistoryReading();
     } else if (returnTo === 'animals') {
       reopenAnimalsReading();
+    } else if (returnTo === 'insects') {
+      reopenInsectsReading();
     } else if (returnTo === 'fable') {
       reopenFableReading();
     } else if (returnTo === 'proverbs') {
@@ -2872,6 +2875,240 @@
         }
       })
       .catch(function () { animalArticles = []; });
+  }
+
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // INSECTS MODE
+  // A library of hand-written insect articles — covering evolution, adaptations,
+  // and key features — each featuring vocabulary words in context, followed by a quiz.
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var INSECTS_PROGRESS_KEY = 'vocabVault_insectsProgress';
+  var insectArticles = [];
+  var insectsProgress = {};
+  var currentInsectArticle = null;
+  var insectsTTSBar = null;
+
+  var insectsLaunchBtn      = document.getElementById('insects-launch-btn');
+  var insectsOverlay        = document.getElementById('insects-overlay');
+  var insectsLibraryScreen  = document.getElementById('insects-library-screen');
+  var insectsReadingScreen  = document.getElementById('insects-reading-screen');
+  var insectsCloseBtn       = document.getElementById('insects-close-btn');
+  var insectsBackBtn        = document.getElementById('insects-back-btn');
+  var insectsList           = document.getElementById('insects-list');
+  var insectsReadingEmoji   = document.getElementById('insects-reading-emoji');
+  var insectsReadingHabitat = document.getElementById('insects-reading-habitat');
+  var insectsReadingTitle   = document.getElementById('insects-reading-title');
+  var insectsReadingBody    = document.getElementById('insects-reading-body');
+  var insectsQuizBtn        = document.getElementById('insects-quiz-btn');
+
+  function loadInsectsProgress() {
+    try {
+      var raw = localStorage.getItem(INSECTS_PROGRESS_KEY);
+      insectsProgress = raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      insectsProgress = {};
+    }
+  }
+
+  function saveInsectsProgress() {
+    try { localStorage.setItem(INSECTS_PROGRESS_KEY, JSON.stringify(insectsProgress)); } catch (e) {}
+  }
+
+  function insectWordObjects(article) {
+    var out = [];
+    (article.words || []).forEach(function (name) {
+      var w = findWordByName(name);
+      if (w) out.push(w);
+    });
+    return out;
+  }
+
+  function renderInsectsLibrary() {
+    insectsList.innerHTML = '';
+    if (!insectArticles.length) {
+      var empty = document.createElement('p');
+      empty.className = 'story-card-blurb';
+      empty.textContent = 'Insect articles are still loading — try again in a moment.';
+      insectsList.appendChild(empty);
+      return;
+    }
+    insectArticles.forEach(function (article) {
+      var card = document.createElement('button');
+      card.className = 'story-card';
+      card.type = 'button';
+
+      var title = document.createElement('span');
+      title.className = 'story-card-title';
+      title.textContent = article.emoji + ' ' + article.title;
+
+      var habitat = document.createElement('span');
+      habitat.className = 'history-card-era';
+      habitat.textContent = article.habitat;
+
+      var blurb = document.createElement('span');
+      blurb.className = 'story-card-blurb';
+      blurb.textContent = article.blurb;
+
+      var meta = document.createElement('span');
+      meta.className = 'story-card-meta';
+      meta.appendChild(habitat);
+
+      var wordsTag = document.createElement('span');
+      wordsTag.className = 'story-card-tag';
+      wordsTag.textContent = insectWordObjects(article).length + ' words';
+      meta.appendChild(wordsTag);
+
+      var prog = insectsProgress[article.id];
+      if (prog && typeof prog.bestScore === 'number') {
+        var scoreTag = document.createElement('span');
+        scoreTag.className = 'story-card-tag story-card-score';
+        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+        meta.appendChild(scoreTag);
+      } else if (prog && prog.read) {
+        var readTag = document.createElement('span');
+        readTag.className = 'story-card-tag story-card-score';
+        readTag.textContent = '✓ Read';
+        meta.appendChild(readTag);
+      }
+
+      card.appendChild(title);
+      card.appendChild(blurb);
+      card.appendChild(meta);
+      card.addEventListener('click', function () { openInsectArticle(article); });
+      insectsList.appendChild(card);
+    });
+  }
+
+  function showInsectsScreen(screenEl) {
+    [insectsLibraryScreen, insectsReadingScreen].forEach(function (s) {
+      s.classList.add('hidden');
+    });
+    screenEl.classList.remove('hidden');
+  }
+
+  function openInsectArticle(article) {
+    currentInsectArticle = article;
+    var prog = insectsProgress[article.id] || {};
+    prog.read = true;
+    insectsProgress[article.id] = prog;
+    saveInsectsProgress();
+
+    insectsReadingEmoji.textContent = article.emoji;
+    insectsReadingHabitat.textContent = article.habitat;
+    insectsReadingTitle.textContent = article.title;
+    renderReadingBody(insectsReadingBody, article.paragraphs, insectWordObjects(article), insectsTTSBar);
+    showInsectsScreen(insectsReadingScreen);
+    insectsReadingScreen.scrollTop = 0;
+    insectsBackBtn.focus();
+  }
+
+  function openInsectsOverlay() {
+    renderInsectsLibrary();
+    showInsectsScreen(insectsLibraryScreen);
+    insectsOverlay.classList.remove('hidden');
+    insectsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    insectsCloseBtn.focus();
+  }
+
+  function closeInsectsOverlay() {
+    ttsStop();
+    hideGloss();
+    insectsOverlay.classList.add('hidden');
+    insectsOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    currentInsectArticle = null;
+    insectsLaunchBtn.focus();
+  }
+
+  function reopenInsectsReading() {
+    if (!currentInsectArticle) { closeInsectsOverlay(); return; }
+    insectsOverlay.classList.remove('hidden');
+    insectsOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showInsectsScreen(insectsReadingScreen);
+    insectsQuizBtn.focus();
+  }
+
+  function recordInsectResult(article, score, total) {
+    var prog = insectsProgress[article.id] || {};
+    prog.read = true;
+    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+      prog.bestScore = score;
+      prog.total = total;
+    }
+    insectsProgress[article.id] = prog;
+    saveInsectsProgress();
+    if (score === total) return 'Article complete — perfect score! 🎉';
+    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
+  }
+
+  function initInsectsMode() {
+    loadInsectsProgress();
+
+    insectsLaunchBtn.addEventListener('click', openInsectsOverlay);
+    insectsCloseBtn.addEventListener('click', closeInsectsOverlay);
+
+    insectsBackBtn.addEventListener('click', function () {
+      ttsStop();
+      hideGloss();
+      renderInsectsLibrary();
+      showInsectsScreen(insectsLibraryScreen);
+      insectsCloseBtn.focus();
+    });
+
+    insectsQuizBtn.addEventListener('click', function () {
+      if (!currentInsectArticle) return;
+      var words = insectWordObjects(currentInsectArticle);
+      if (!words.length) return;
+      var article = currentInsectArticle;
+      ttsStop();
+      hideGloss();
+      insectsOverlay.classList.add('hidden');
+      insectsOverlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: 'insects',
+        onComplete: function (score, total) {
+          return recordInsectResult(article, score, total);
+        }
+      });
+    });
+
+    insectsOverlay.addEventListener('click', function (e) {
+      if (e.target === insectsOverlay) closeInsectsOverlay();
+    });
+
+    insectsReadingScreen.addEventListener('scroll', hideGloss);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (insectsOverlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeInsectsOverlay();
+    });
+
+    insectsTTSBar = initTTSBar(
+      document.getElementById('insects-tts-read-btn'),
+      document.getElementById('insects-tts-controls'),
+      document.getElementById('insects-tts-playpause'),
+      document.getElementById('insects-tts-stop'),
+      document.querySelectorAll('#insects-tts-controls .tts-speed-btn'),
+      document.getElementById('insects-tts-voice'),
+      document.querySelectorAll('#insects-tts-controls .tts-pitch-btn')
+    );
+
+    fetch('data/insects.json')
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        insectArticles = (data && data.insects) || [];
+        if (!insectsOverlay.classList.contains('hidden') &&
+            !insectsLibraryScreen.classList.contains('hidden')) {
+          renderInsectsLibrary();
+        }
+      })
+      .catch(function () { insectArticles = []; });
   }
 
 
