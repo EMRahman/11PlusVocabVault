@@ -187,7 +187,7 @@ main {
 }
 
 .launch-group--filters .launch-group-label {
-  color: var(--color-text-secondary);
+  color: #4338CA;
 }
 
 .launch-group-toggle {
@@ -279,7 +279,7 @@ main {
 }
 
 .launch-group--filters .collapse-chevron {
-  color: var(--color-text-secondary);
+  color: #4338CA;
 }
 
 .launch-group-toggle[aria-expanded="false"] .collapse-chevron {
