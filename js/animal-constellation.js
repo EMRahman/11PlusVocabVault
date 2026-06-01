@@ -1,4 +1,4 @@
-// Beast Constellation — the animal kingdom drawn as a night sky.
+// Animal Constellation — the animal kingdom drawn as a night sky.
 //
 // Each star is an animal; each constellation is an evolutionary "superpower"
 // (speed, hunting, stealth, camouflage, venom, brute strength, cunning, group
