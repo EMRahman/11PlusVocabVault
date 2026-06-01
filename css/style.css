@@ -4110,6 +4110,8 @@ footer {
   z-index: 5;
 }
 .rootsgarden-tooltip.visible { display: flex; }
+/* Flipped below the blossom (top-anchored) when there's no room above. */
+.rootsgarden-tooltip.below { transform: translate(-50%, 0); }
 .rootsgarden-tip-word { font-weight: 700; color: #f4f7ff; }
 .rootsgarden-tip-note { font-size: 0.72rem; color: #aab2d8; }
 .rootsgarden-tip-dim { font-size: 0.72rem; color: #7a82a8; font-style: italic; }

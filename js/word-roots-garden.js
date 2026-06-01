@@ -470,11 +470,28 @@
         tooltipEl.appendChild(el('span', 'rootsgarden-tip-dim', 'not in our word list'));
       }
       var rect = stage.getBoundingClientRect();
-      var tx = clamp(pos.x, 70, rect.width - 70);
-      var ty = clamp(pos.y - 70, 8, rect.height - 90);
-      tooltipEl.style.left = tx + 'px';
-      tooltipEl.style.top = ty + 'px';
+      // Make it visible so we can measure, then place it. The default style
+      // anchors the tooltip's bottom edge at `top` (transform -100% in Y), so
+      // for blossoms near the crown we flip it below the blossom instead — the
+      // stage clips overflow, and otherwise the Word-card button is cut off.
       tooltipEl.classList.add('visible');
+      tooltipEl.classList.remove('below');
+      var tipH = tooltipEl.offsetHeight || 80;
+      var tipW = tooltipEl.offsetWidth || 140;
+      var gap = 12;
+      var blossomR = b.isHead ? 22 : 16;
+      var halfW = tipW / 2 + 6;
+      var tx = clamp(pos.x, halfW, Math.max(halfW, rect.width - halfW));
+      var aboveBottom = pos.y - blossomR - gap;     // bottom edge if placed above
+      if (aboveBottom - tipH < 4) {
+        // Not enough room above — drop it below the blossom (top-anchored).
+        tooltipEl.classList.add('below');
+        var below = Math.min(pos.y + blossomR + gap, rect.height - tipH - 6);
+        tooltipEl.style.top = Math.max(6, below) + 'px';
+      } else {
+        tooltipEl.style.top = Math.min(aboveBottom, rect.height - 6) + 'px';
+      }
+      tooltipEl.style.left = tx + 'px';
       tooltipEl.setAttribute('aria-hidden', 'false');
     }
     function hideTooltip() {
