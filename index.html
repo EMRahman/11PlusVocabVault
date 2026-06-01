@@ -152,7 +152,7 @@
           <button class="launch-group-toggle" aria-expanded="false" aria-controls="explorer-body">
             <span class="launch-group-label">Word Explorer</span>
             <span class="launch-group-preview" aria-hidden="true">
-              <span class="preview-icon">🌌</span><span class="preview-icon">🎨</span><span class="preview-icon">🪞</span>
+              <span class="preview-icon">🌌</span><span class="preview-icon">🎨</span><span class="preview-icon">🪞</span><span class="preview-icon">🌱</span>
             </span>
             <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -168,6 +168,10 @@
             <button class="quiz-launch-btn portrait-launch-btn" id="portrait-launch-btn" aria-label="Open word portrait">
               <span aria-hidden="true">🪞</span>
               Word Portrait
+            </button>
+            <button class="quiz-launch-btn rootsgarden-launch-btn" id="rootsgarden-launch-btn" aria-label="Open word roots garden">
+              <span aria-hidden="true">🌱</span>
+              Roots Garden
             </button>
           </div>
         </div>
@@ -1408,6 +1412,35 @@
     </div>
   </div>
 
+  <!-- Word Roots Garden overlay -->
+  <div id="rootsgarden-overlay" class="modal-overlay explorer-overlay hidden" aria-hidden="true">
+    <div class="explorer-panel" role="dialog" aria-modal="true" aria-labelledby="rootsgarden-title">
+      <header class="explorer-bar">
+        <h2 id="rootsgarden-title" class="explorer-title">Word Roots Garden</h2>
+        <div class="explorer-controls">
+          <input id="rootsgarden-search" class="explorer-search" type="search" placeholder="Find a seed…" autocomplete="off" aria-label="Search seeds to plant" />
+          <button id="rootsgarden-surprise" class="explorer-btn" type="button" aria-label="Plant a random seed" title="Plant a random seed">🎲 Surprise</button>
+          <button id="rootsgarden-close" class="explorer-btn explorer-close" type="button" aria-label="Exit word roots garden" title="Exit garden">✕</button>
+        </div>
+      </header>
+      <div id="rootsgarden-tray" class="rootsgarden-tray" role="listbox" aria-label="Seeds to plant"></div>
+      <div class="explorer-stage rootsgarden-stage">
+        <canvas id="rootsgarden-canvas" aria-label="Animated word-roots tree"></canvas>
+        <div id="rootsgarden-caption" class="rootsgarden-caption" aria-hidden="true"></div>
+        <div id="rootsgarden-tooltip" class="rootsgarden-tooltip" role="status" aria-hidden="true"></div>
+        <div id="rootsgarden-empty" class="rootsgarden-empty">
+          <span class="rootsgarden-empty-emoji" aria-hidden="true">🌱</span>
+          <p>Pick a seed above — or hit <strong>Surprise</strong> — to grow its word-tree.</p>
+        </div>
+      </div>
+      <footer class="explorer-footer">
+        <div id="rootsgarden-legend" class="explorer-legend" aria-label="Origin colour key"></div>
+        <p id="rootsgarden-progress" class="rootsgarden-progress"></p>
+        <p class="explorer-hint">Tap a blossom to make it bloom and learn the word</p>
+      </footer>
+    </div>
+  </div>
+
   <script type="importmap">
     {
       "imports": {
@@ -1420,6 +1453,7 @@
   <script type="module" src="js/word-quest-3d.js?v=202606010922"></script>
   <script src="js/mood-map.js?v=202606010922"></script>
   <script src="js/word-portrait.js?v=202606010922"></script>
+  <script src="js/word-roots-garden.js?v=202606010922"></script>
   <script src="js/app.js?v=202606010922"></script>
   <script>
     (function () {

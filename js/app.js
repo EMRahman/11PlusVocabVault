@@ -548,6 +548,9 @@
     if (typeof window.initWordPortrait === 'function') {
       window.initWordPortrait(words, openModal);
     }
+    if (typeof window.initWordRootsGarden === 'function') {
+      window.initWordRootsGarden(words, openModal);
+    }
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
