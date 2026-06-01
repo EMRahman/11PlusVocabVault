@@ -148,6 +148,14 @@ main {
   background: #F0FFF4;
 }
 
+.launch-group--games {
+  background: #FFF8ED;
+}
+
+.launch-group--explorer {
+  background: #EDFCFA;
+}
+
 .launch-group-label {
   font-size: 0.7rem;
   font-weight: 800;
@@ -158,6 +166,14 @@ main {
 
 .launch-group--reading .launch-group-label {
   color: #16A34A;
+}
+
+.launch-group--games .launch-group-label {
+  color: #B45309;
+}
+
+.launch-group--explorer .launch-group-label {
+  color: #0E7490;
 }
 
 .launch-group-buttons {
@@ -252,6 +268,14 @@ main {
 
 .launch-group--reading .collapse-chevron {
   color: #16A34A;
+}
+
+.launch-group--games .collapse-chevron {
+  color: #B45309;
+}
+
+.launch-group--explorer .collapse-chevron {
+  color: #0E7490;
 }
 
 .launch-group--filters .collapse-chevron {
