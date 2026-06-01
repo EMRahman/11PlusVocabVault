@@ -437,7 +437,7 @@
       if (focusedSegId && seg) {
         setStatus(seg.emoji + ' ' + seg.name + ' — ' + seg.pattern);
       } else {
-        setStatus(data.intro);
+        setStatus('');
       }
       renderLegend();
     }
@@ -675,7 +675,7 @@
         closeQuiz();
         renderLegend();
         updateProgress();
-        setStatus(data.intro);
+        setStatus('');
         resize();
         fitToView();
         cancelAnimationFrame(rafId);
@@ -694,7 +694,7 @@
     // ── Wiring ──────────────────────────────────────────────────────────────
     launchBtn.addEventListener('click', open);
     if (closeBtn) closeBtn.addEventListener('click', close);
-    if (recenterBtn) recenterBtn.addEventListener('click', function () { focusedSegId = null; renderLegend(); setStatus(data.intro); fitToView(); });
+    if (recenterBtn) recenterBtn.addEventListener('click', function () { focusedSegId = null; renderLegend(); setStatus(''); fitToView(); });
     if (quizClose) quizClose.addEventListener('click', closeQuiz);
 
     canvas.addEventListener('pointerdown', onDown);
