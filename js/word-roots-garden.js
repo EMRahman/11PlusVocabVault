@@ -50,6 +50,42 @@
   }
   function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
 
+  // Longest common substring (case-insensitive) — used to spotlight the shared
+  // root fragment between the planted word and a cousin (e.g. "adver" in
+  // adversity / advertise, "horr" in abhorrent / horror, "phon" in cacophony /
+  // telephone). It naturally lands on whichever stem the two words share, even
+  // for compound roots like bene + volens (volunteer → "vol").
+  function longestCommonSubstring(a, b) {
+    a = String(a).toLowerCase(); b = String(b).toLowerCase();
+    var best = '', prevRow = [];
+    for (var i = 0; i < a.length; i++) {
+      var row = [];
+      for (var j = 0; j < b.length; j++) {
+        if (a.charAt(i) === b.charAt(j)) {
+          var len = (i && j ? (prevRow[j - 1] || 0) : 0) + 1;
+          row[j] = len;
+          if (len > best.length) best = a.substr(i - len + 1, len);
+        } else {
+          row[j] = 0;
+        }
+      }
+      prevRow = row;
+    }
+    return best;
+  }
+
+  // Build a span with the shared fragment wrapped in a highlight mark.
+  function highlightFragment(word, frag) {
+    var span = el('span');
+    var s = String(word);
+    var idx = frag ? s.toLowerCase().indexOf(frag.toLowerCase()) : -1;
+    if (idx < 0) { span.textContent = s; return span; }
+    span.appendChild(document.createTextNode(s.slice(0, idx)));
+    span.appendChild(el('mark', 'rootsgarden-frag', s.slice(idx, idx + frag.length)));
+    span.appendChild(document.createTextNode(s.slice(idx + frag.length)));
+    return span;
+  }
+
   function loadSave() {
     try {
       var raw = localStorage.getItem(SAVE_KEY);
@@ -453,11 +489,39 @@
       var pos = b._hit;
       if (!pos) return;
       tooltipEl.innerHTML = '';
-      var name = el('span', 'rootsgarden-tip-word', b.label);
+
+      // The stem this cousin shares with the planted word (≥3 letters to be
+      // meaningful), highlighted in both so the family resemblance is obvious.
+      var frag = b.isHead ? '' : longestCommonSubstring(tree.word, b.label);
+      if (frag.length < 3) frag = '';
+
+      var name = el('span', 'rootsgarden-tip-word');
+      name.appendChild(highlightFragment(b.label, frag));
       tooltipEl.appendChild(name);
-      var note = el('span', 'rootsgarden-tip-note',
-        b.isHead ? 'the word you planted' : 'cousin of “' + tree.word + '”');
-      tooltipEl.appendChild(note);
+
+      // Brief etymology — the ancient root the whole tree grew from.
+      if (tree.root) {
+        var ety = el('span', 'rootsgarden-tip-ety');
+        ety.appendChild(document.createTextNode('🌿 from '));
+        ety.appendChild(el('strong', null, tree.root));
+        if (tree.rootMeaning) ety.appendChild(document.createTextNode(' — “' + tree.rootMeaning + '”'));
+        tooltipEl.appendChild(ety);
+      }
+
+      if (b.isHead) {
+        tooltipEl.appendChild(el('span', 'rootsgarden-tip-note', 'the word you planted'));
+      } else if (frag) {
+        // Spotlight how the cousin echoes the planted word.
+        var rel = el('span', 'rootsgarden-tip-rel');
+        rel.appendChild(document.createTextNode('🔗 shares '));
+        rel.appendChild(el('mark', 'rootsgarden-frag', frag));
+        rel.appendChild(document.createTextNode(' with '));
+        rel.appendChild(highlightFragment(tree.word, frag));
+        tooltipEl.appendChild(rel);
+      } else {
+        tooltipEl.appendChild(el('span', 'rootsgarden-tip-note', 'cousin of “' + tree.word + '”'));
+      }
+
       if (b.corpus && typeof openWordDetail === 'function') {
         var btn = el('button', 'rootsgarden-tip-btn', '📇 Word card');
         btn.type = 'button';
