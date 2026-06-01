@@ -551,6 +551,9 @@
     if (typeof window.initWordRootsGarden === 'function') {
       window.initWordRootsGarden(words, openModal);
     }
+    if (typeof window.initAnimalConstellation === 'function') {
+      window.initAnimalConstellation(words, openModal);
+    }
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
