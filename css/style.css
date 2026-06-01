@@ -4007,6 +4007,128 @@ footer {
 .explorer-legend-swatch { width: 0.7rem; height: 0.7rem; border-radius: 50%; display: inline-block; }
 .explorer-hint { margin: 0; font-style: italic; }
 
+/* ── Word Roots Garden ────────────────────────────────────────────────── */
+.rootsgarden-stage { background: #05060f; }
+#rootsgarden-canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: pointer; }
+
+.rootsgarden-tray {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: rgba(8, 10, 24, 0.85);
+  border-bottom: 1px solid rgba(120, 130, 200, 0.15);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+.rootsgarden-seed {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(20, 24, 48, 0.9);
+  border: 1px solid rgba(140, 150, 220, 0.25);
+  color: #e6e9f5;
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.rootsgarden-seed:hover { background: rgba(40, 46, 86, 0.95); }
+.rootsgarden-seed.is-active {
+  border-color: var(--seed-color, #818cf8);
+  box-shadow: 0 0 0 1px var(--seed-color, #818cf8) inset;
+}
+.rootsgarden-seed-dot {
+  width: 0.6rem; height: 0.6rem; border-radius: 50%;
+  background: var(--seed-color, #cbd5e1);
+  flex: 0 0 auto;
+}
+.rootsgarden-seed.is-grown .rootsgarden-seed-name::after {
+  content: ' ✓';
+  color: #4ade80;
+  font-weight: 700;
+}
+.rootsgarden-tray-empty { color: #7a82a8; font-size: 0.82rem; padding: 0.3rem 0.4rem; }
+
+.rootsgarden-caption {
+  position: absolute;
+  left: 0.9rem; right: 0.9rem; bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  pointer-events: none;
+}
+.rootsgarden-cap-origin {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1a1205;
+}
+.rootsgarden-cap-root { font-size: 0.92rem; color: #e6e9f5; }
+.rootsgarden-cap-note { font-size: 0.78rem; color: #aab2d8; max-width: 38rem; }
+
+.rootsgarden-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  color: #9aa3c7;
+  padding: 1.5rem;
+  pointer-events: none;
+}
+.rootsgarden-empty.hidden { display: none; }
+.rootsgarden-empty-emoji { font-size: 2.6rem; }
+.rootsgarden-empty p { margin: 0; max-width: 22rem; }
+
+.rootsgarden-tooltip {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(12, 16, 36, 0.97);
+  border: 1px solid rgba(140, 150, 220, 0.4);
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  min-width: 7rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+.rootsgarden-tooltip.visible { display: flex; }
+/* Flipped below the blossom (top-anchored) when there's no room above. */
+.rootsgarden-tooltip.below { transform: translate(-50%, 0); }
+.rootsgarden-tip-word { font-weight: 700; color: #f4f7ff; }
+.rootsgarden-tip-note { font-size: 0.72rem; color: #aab2d8; }
+.rootsgarden-tip-dim { font-size: 0.72rem; color: #7a82a8; font-style: italic; }
+.rootsgarden-tip-btn {
+  margin-top: 0.15rem;
+  background: rgba(99, 102, 241, 0.3);
+  border: 1px solid rgba(165, 180, 252, 0.5);
+  color: #e0e7ff;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rootsgarden-tip-btn:hover { background: rgba(99, 102, 241, 0.5); }
+.rootsgarden-progress { margin: 0; color: #c7d2fe; font-weight: 600; }
+
 /* ── Mood Map ─────────────────────────────────────────────────────────── */
 .moodmap-stage { background: #05060f; }
 #moodmap-canvas {
