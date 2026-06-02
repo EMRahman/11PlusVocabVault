@@ -418,6 +418,31 @@
       return best;
     }
 
+    // Returns the nearest segment whose cluster area contains the screen point.
+    function segmentAt(sx, sy) {
+      var world = screenToWorld(sx, sy);
+      var best = null, bestD = Infinity;
+      var hitR = CLUSTER_R * 1.3;
+      segments.forEach(function (seg) {
+        var d = Math.hypot(world.x - seg.cx, world.y - seg.cy);
+        if (d < hitR && d < bestD) { bestD = d; best = seg; }
+      });
+      return best;
+    }
+
+    // Pan the view so seg is centred on the canvas (only when zoomed in).
+    function bringSegmentIntoView(seg) {
+      var w = canvas.clientWidth || canvas.width / dpr;
+      var h = canvas.clientHeight || canvas.height / dpr;
+      var margin = 70;
+      var fitScale = Math.min((w - margin * 2) / WORLD_W, (h - margin * 2) / WORLD_H);
+      if (view.scale <= fitScale * 1.15) return;
+      var p = worldToScreen(seg.cx, seg.cy);
+      if (Math.abs(p.x - w / 2) < w * 0.25 && Math.abs(p.y - h / 2) < h * 0.25) return;
+      view.x = w / 2 - seg.cx * view.scale;
+      view.y = h / 2 - seg.cy * view.scale;
+    }
+
     // ── Legend ───────────────────────────────────────────────────────────
     function renderLegend() {
       legendEl.innerHTML = '';
@@ -429,7 +454,10 @@
         if (focusedSegId === seg.id) chip.classList.add('active');
         chip.appendChild(el('span', 'beast-chip-emoji', seg.emoji));
         chip.appendChild(el('span', 'beast-chip-label', seg.trait));
-        chip.addEventListener('click', function () { toggleFocus(seg.id); });
+        chip.addEventListener('click', function () {
+          toggleFocus(seg.id);
+          if (focusedSegId === seg.id) bringSegmentIntoView(seg);
+        });
         legendEl.appendChild(chip);
       });
     }
@@ -661,9 +689,14 @@
         var s = starAt(p.x, p.y);
         if (s) {
           openQuiz(s);
-        } else if (focusedSegId) {
-          // tapping empty space clears focus
-          toggleFocus(focusedSegId);
+        } else {
+          var seg = segmentAt(p.x, p.y);
+          if (seg) {
+            toggleFocus(seg.id);
+          } else if (focusedSegId) {
+            // tapping empty space clears focus
+            toggleFocus(focusedSegId);
+          }
         }
       }
     }
