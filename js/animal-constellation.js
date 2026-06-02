@@ -133,6 +133,7 @@
 
     // view transform: screen = world * scale + offset
     var view = { scale: 1, x: 0, y: 0 };
+    var panAnim = null; // { tx, ty } smooth-pan target
 
     // ── Data ────────────────────────────────────────────────────────────────
     function ensureData() {
@@ -228,6 +229,7 @@
       return { x: (x - view.x) / view.scale, y: (y - view.y) / view.scale };
     }
     function fitToView() {
+      panAnim = null;
       var w = canvas.clientWidth || canvas.width;
       var h = canvas.clientHeight || canvas.height;
       var margin = 70;
@@ -252,6 +254,16 @@
     }
 
     function draw(now) {
+      // smooth pan animation — ease-out lerp towards target
+      if (panAnim) {
+        var LERP = 0.1;
+        view.x += (panAnim.tx - view.x) * LERP;
+        view.y += (panAnim.ty - view.y) * LERP;
+        if (Math.abs(panAnim.tx - view.x) < 0.5 && Math.abs(panAnim.ty - view.y) < 0.5) {
+          view.x = panAnim.tx; view.y = panAnim.ty; panAnim = null;
+        }
+      }
+
       var w = canvas.width, h = canvas.height;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var cw = w / dpr, ch = h / dpr;
@@ -430,7 +442,7 @@
       return best;
     }
 
-    // Pan the view so seg is centred on the canvas (only when zoomed in).
+    // Smoothly pan so seg is centred on the canvas (only when zoomed in).
     function bringSegmentIntoView(seg) {
       var w = canvas.clientWidth || canvas.width / dpr;
       var h = canvas.clientHeight || canvas.height / dpr;
@@ -439,8 +451,7 @@
       if (view.scale <= fitScale * 1.15) return;
       var p = worldToScreen(seg.cx, seg.cy);
       if (Math.abs(p.x - w / 2) < w * 0.25 && Math.abs(p.y - h / 2) < h * 0.25) return;
-      view.x = w / 2 - seg.cx * view.scale;
-      view.y = h / 2 - seg.cy * view.scale;
+      panAnim = { tx: w / 2 - seg.cx * view.scale, ty: h / 2 - seg.cy * view.scale };
     }
 
     // ── Legend ───────────────────────────────────────────────────────────
@@ -639,6 +650,7 @@
 
     function onDown(ev) {
       canvas.setPointerCapture && canvas.setPointerCapture(ev.pointerId);
+      panAnim = null; // user took control
       pointers[ev.pointerId] = localPos(ev);
       dragMoved = false;
       downAt = Date.now();
@@ -702,6 +714,7 @@
     }
 
     function zoomAt(cx, cy, factor) {
+      panAnim = null;
       var newScale = clamp(view.scale * factor, 0.3, 4);
       var f = newScale / view.scale;
       view.x = cx - (cx - view.x) * f;
