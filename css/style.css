@@ -1853,6 +1853,35 @@ footer {
   padding: 0.5rem 1.75rem 2rem;
 }
 
+/* Frozen reading header — keeps the back button, title and audio controls
+   pinned to the top while the article scrolls underneath, so the "Read to me"
+   controls and the return-to-articles button stay reachable. */
+.reading-sticky-head {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-card);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  /* Span the inner's horizontal padding so scrolling text passes fully
+     beneath the frozen header rather than peeking out at the edges. */
+  margin: -0.5rem -1.75rem 0;
+  padding: 0.5rem 1.75rem 0.7rem;
+  box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.25);
+}
+
+.reading-sticky-head .quiz-screen-actions {
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .reading-sticky-head {
+    margin: -0.5rem -1.25rem 0;
+    padding: 0.5rem 1.25rem 0.7rem;
+  }
+}
+
 .story-reading-header {
   display: flex;
   align-items: center;
