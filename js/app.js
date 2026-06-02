@@ -2187,6 +2187,7 @@
   // • hides the vocab gloss  • updates the right-side progress fill
   // • collapses/restores the article title in the sticky header
   function initReadingScrollBehaviour(scrollEl, fillEl, panelEl) {
+    scrollEl.setAttribute('tabindex', '0');
     scrollEl.addEventListener('scroll', function () {
       hideGloss();
       var max = scrollEl.scrollHeight - scrollEl.clientHeight;

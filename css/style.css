@@ -1890,6 +1890,10 @@ footer {
   min-height: 0;
 }
 
+.reading-scroll-content:focus {
+  outline: none;
+}
+
 .reading-scroll-nav {
   width: 5px;
   background: rgba(0, 0, 0, 0.08);
