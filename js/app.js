@@ -268,7 +268,7 @@
       var w = ttsWordData.words[idx];
       w.el.classList.add('tts-active');
       ttsSetActiveSentence(typeof w.sentenceIdx === 'number' ? w.sentenceIdx : -1);
-      w.el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      w.el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
   }
 
@@ -2183,6 +2183,30 @@
     });
   }
 
+  // Shared scroll behaviour for every reading panel:
+  // • hides the vocab gloss  • updates the right-side progress fill
+  // • collapses/restores the article title in the sticky header
+  function initReadingScrollBehaviour(scrollEl, fillEl, panelEl) {
+    scrollEl.setAttribute('tabindex', '0');
+    scrollEl.addEventListener('scroll', function () {
+      hideGloss();
+      var max = scrollEl.scrollHeight - scrollEl.clientHeight;
+      fillEl.style.height = (max > 0 ? (scrollEl.scrollTop / max * 100) : 0) + '%';
+      var head = panelEl.querySelector('.reading-sticky-head');
+      if (head) {
+        if (scrollEl.scrollTop > 40) head.classList.add('compact');
+        else if (scrollEl.scrollTop < 10) head.classList.remove('compact');
+      }
+    });
+  }
+
+  function resetReadingScroll(scrollEl, fillEl, panelEl) {
+    scrollEl.scrollTop = 0;
+    fillEl.style.height = '0%';
+    var head = panelEl.querySelector('.reading-sticky-head');
+    if (head) head.classList.remove('compact');
+  }
+
   // ═══════════════════════════════════════════════════════════════════════════
   // STORY MODE
   // A library of hand-written stories that use vocabulary words in context,
@@ -2206,6 +2230,8 @@
   var storyReadingTitle  = document.getElementById('story-reading-title');
   var storyReadingBody   = document.getElementById('story-reading-body');
   var storyQuizBtn       = document.getElementById('story-quiz-btn');
+  var storyScrollContent = document.getElementById('story-scroll-content');
+  var storyScrollFill    = document.getElementById('story-scroll-fill');
 
   function loadStoryProgress() {
     try {
@@ -2298,7 +2324,7 @@
     storyReadingTitle.textContent = story.title;
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
     showStoryScreen(storyReadingScreen);
-    storyReadingScreen.scrollTop = 0;
+    resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
     storyBackBtn.focus();
   }
 
@@ -2379,7 +2405,7 @@
       if (e.target === storyOverlay) closeStoryOverlay();
     });
 
-    storyReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(storyScrollContent, storyScrollFill, storyReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -2434,6 +2460,8 @@
   var historyReadingTitle   = document.getElementById('history-reading-title');
   var historyReadingBody    = document.getElementById('history-reading-body');
   var historyQuizBtn        = document.getElementById('history-quiz-btn');
+  var historyScrollContent  = document.getElementById('history-scroll-content');
+  var historyScrollFill     = document.getElementById('history-scroll-fill');
 
   function loadHistoryProgress() {
     try {
@@ -2532,7 +2560,7 @@
     historyReadingTitle.textContent = article.title;
     renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article), historyTTSBar);
     showHistoryScreen(historyReadingScreen);
-    historyReadingScreen.scrollTop = 0;
+    resetReadingScroll(historyScrollContent, historyScrollFill, historyReadingScreen);
     historyBackBtn.focus();
   }
 
@@ -2612,7 +2640,7 @@
       if (e.target === historyOverlay) closeHistoryOverlay();
     });
 
-    historyReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(historyScrollContent, historyScrollFill, historyReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -2668,6 +2696,8 @@
   var animalsReadingTitle   = document.getElementById('animals-reading-title');
   var animalsReadingBody    = document.getElementById('animals-reading-body');
   var animalsQuizBtn        = document.getElementById('animals-quiz-btn');
+  var animalsScrollContent  = document.getElementById('animals-scroll-content');
+  var animalsScrollFill     = document.getElementById('animals-scroll-fill');
 
   function loadAnimalsProgress() {
     try {
@@ -2766,7 +2796,7 @@
     animalsReadingTitle.textContent = article.title;
     renderReadingBody(animalsReadingBody, article.paragraphs, animalWordObjects(article), animalsTTSBar);
     showAnimalsScreen(animalsReadingScreen);
-    animalsReadingScreen.scrollTop = 0;
+    resetReadingScroll(animalsScrollContent, animalsScrollFill, animalsReadingScreen);
     animalsBackBtn.focus();
   }
 
@@ -2846,7 +2876,7 @@
       if (e.target === animalsOverlay) closeAnimalsOverlay();
     });
 
-    animalsReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(animalsScrollContent, animalsScrollFill, animalsReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -2902,6 +2932,8 @@
   var insectsReadingTitle   = document.getElementById('insects-reading-title');
   var insectsReadingBody    = document.getElementById('insects-reading-body');
   var insectsQuizBtn        = document.getElementById('insects-quiz-btn');
+  var insectsScrollContent  = document.getElementById('insects-scroll-content');
+  var insectsScrollFill     = document.getElementById('insects-scroll-fill');
 
   function loadInsectsProgress() {
     try {
@@ -3000,7 +3032,7 @@
     insectsReadingTitle.textContent = article.title;
     renderReadingBody(insectsReadingBody, article.paragraphs, insectWordObjects(article), insectsTTSBar);
     showInsectsScreen(insectsReadingScreen);
-    insectsReadingScreen.scrollTop = 0;
+    resetReadingScroll(insectsScrollContent, insectsScrollFill, insectsReadingScreen);
     insectsBackBtn.focus();
   }
 
@@ -3080,7 +3112,7 @@
       if (e.target === insectsOverlay) closeInsectsOverlay();
     });
 
-    insectsReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(insectsScrollContent, insectsScrollFill, insectsReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -3136,6 +3168,8 @@
   var fableReadingBody   = document.getElementById('fable-reading-body');
   var fableReadingMoral  = document.getElementById('fable-reading-moral');
   var fableQuizBtn       = document.getElementById('fable-quiz-btn');
+  var fableScrollContent = document.getElementById('fable-scroll-content');
+  var fableScrollFill    = document.getElementById('fable-scroll-fill');
 
   function loadFableProgress() {
     try {
@@ -3235,7 +3269,7 @@
       fableReadingMoral.classList.add('hidden');
     }
     showFableScreen(fableReadingScreen);
-    fableReadingScreen.scrollTop = 0;
+    resetReadingScroll(fableScrollContent, fableScrollFill, fableReadingScreen);
     fableBackBtn.focus();
   }
 
@@ -3315,7 +3349,7 @@
       if (e.target === fableOverlay) closeFableOverlay();
     });
 
-    fableReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(fableScrollContent, fableScrollFill, fableReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -3378,6 +3412,8 @@
   var proverbsListCards        = document.getElementById('proverbs-list-cards');
   var proverbsReadingBody      = document.getElementById('proverbs-reading-body');
   var proverbsQuizBtn          = document.getElementById('proverbs-quiz-btn');
+  var proverbsScrollContent    = document.getElementById('proverbs-scroll-content');
+  var proverbsScrollFill       = document.getElementById('proverbs-scroll-fill');
 
   var PROVERBS_CULTURE_META = [
     { name: 'Japanese',           emoji: '🎋',   tagline: 'Resilience, impermanence and the quiet joy of craft.' },
@@ -3593,7 +3629,7 @@
     renderProverbCards(proverbsListCards, collection.proverbs);
     renderReadingBody(proverbsReadingBody, collection.paragraphs, collectionWordObjects(collection), proverbsTTSBar);
     showProverbsScreen(proverbsReadingScreen);
-    proverbsReadingScreen.scrollTop = 0;
+    resetReadingScroll(proverbsScrollContent, proverbsScrollFill, proverbsReadingScreen);
     proverbsBackBtn.focus();
   }
 
@@ -3683,7 +3719,7 @@
       if (e.target === proverbsOverlay) closeProverbsOverlay();
     });
 
-    proverbsReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(proverbsScrollContent, proverbsScrollFill, proverbsReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;
@@ -3743,6 +3779,8 @@
   var newsShowBtn        = document.getElementById('news-show-btn');
   var newsReadingBody    = document.getElementById('news-reading-body');
   var newsQuizBtn        = document.getElementById('news-quiz-btn');
+  var newsScrollContent  = document.getElementById('news-scroll-content');
+  var newsScrollFill     = document.getElementById('news-scroll-fill');
 
   function dayKey(date) {
     return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
@@ -4031,7 +4069,7 @@
       saveNewsData();
       renderNewsReading();
       showNewsScreen(newsReadingScreen);
-      newsReadingScreen.scrollTop = 0;
+      resetReadingScroll(newsScrollContent, newsScrollFill, newsReadingScreen);
       newsEditBtn.focus();
     });
 
@@ -4061,7 +4099,7 @@
       if (e.target === newsOverlay) closeNewsOverlay();
     });
 
-    newsReadingScreen.addEventListener('scroll', hideGloss);
+    initReadingScrollBehaviour(newsScrollContent, newsScrollFill, newsReadingScreen);
 
     document.addEventListener('keydown', function (e) {
       if (e.key !== 'Escape') return;

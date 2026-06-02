@@ -396,9 +396,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="story-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="story-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="story-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="story-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="story-back-btn" type="button" aria-label="Back to story library">← Library</button>
         </div>
@@ -436,13 +435,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="story-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="story-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="story-quiz-btn">
+              Quiz me on this story
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="story-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="story-quiz-btn">
-          Quiz me on this story
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="story-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -467,9 +474,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="history-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="history-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="history-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="history-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="history-back-btn" type="button" aria-label="Back to history library">← Timeline</button>
         </div>
@@ -510,13 +516,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="history-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="history-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="history-quiz-btn">
+              Quiz me on this article
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="history-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="history-quiz-btn">
-          Quiz me on this article
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="history-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -541,9 +555,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="animals-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="animals-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="animals-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="animals-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="animals-back-btn" type="button" aria-label="Back to animals library">← Animals</button>
         </div>
@@ -584,13 +597,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="animals-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="animals-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="animals-quiz-btn">
+              Quiz me on this article
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="animals-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="animals-quiz-btn">
-          Quiz me on this article
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="animals-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -615,9 +636,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="insects-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="insects-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="insects-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="insects-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="insects-back-btn" type="button" aria-label="Back to insects library">← Insects</button>
         </div>
@@ -658,13 +678,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="insects-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="insects-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="insects-quiz-btn">
+              Quiz me on this article
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="insects-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="insects-quiz-btn">
-          Quiz me on this article
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="insects-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -689,9 +717,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="fable-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="fable-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="fable-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="fable-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="fable-back-btn" type="button" aria-label="Back to fable library">← Library</button>
         </div>
@@ -729,14 +756,22 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="fable-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="fable-reading-body"></div>
+            <p class="fable-moral" id="fable-reading-moral"></p>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="fable-quiz-btn">
+              Quiz me on this fable
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="fable-reading-body"></div>
-        <p class="fable-moral" id="fable-reading-moral"></p>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="fable-quiz-btn">
-          Quiz me on this fable
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="fable-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -774,9 +809,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="proverbs-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="proverbs-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="proverbs-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="proverbs-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="proverbs-back-btn" type="button" aria-label="Back to proverbs library">← Library</button>
         </div>
@@ -817,14 +851,22 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="proverbs-scroll-content">
+          <div class="story-reading-inner">
+            <div id="proverbs-list-cards" class="proverbs-cards"></div>
+            <div class="story-reading-body" id="proverbs-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="proverbs-quiz-btn">
+              Quiz me on these proverbs
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div id="proverbs-list-cards" class="proverbs-cards"></div>
-        <div class="story-reading-body" id="proverbs-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="proverbs-quiz-btn">
-          Quiz me on these proverbs
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="proverbs-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
@@ -884,9 +926,8 @@
     </div>
 
     <!-- Reading screen -->
-    <div id="news-reading-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="news-reading-title">
-      <div class="story-reading-inner">
-        <div class="reading-sticky-head">
+    <div id="news-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="news-reading-title">
+      <div class="reading-sticky-head">
         <div class="quiz-screen-actions">
           <button class="quiz-exit-btn" id="news-edit-btn" type="button" aria-label="Back to news setup">← Edit</button>
         </div>
@@ -924,13 +965,21 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="news-scroll-content">
+          <div class="story-reading-inner">
+            <div class="story-reading-body" id="news-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="news-quiz-btn">
+              Done reading — quiz me!
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
         </div>
-        <div class="story-reading-body" id="news-reading-body"></div>
-        <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
-        <button class="quiz-start-btn quiz-primary-start-btn" id="news-quiz-btn">
-          Done reading — quiz me!
-          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
-        </button>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="news-scroll-fill"></div>
+        </div>
       </div>
     </div>
 
