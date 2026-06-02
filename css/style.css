@@ -1853,32 +1853,66 @@ footer {
   padding: 0.5rem 1.75rem 2rem;
 }
 
-/* Frozen reading header — keeps the back button, title and audio controls
-   pinned to the top while the article scrolls underneath, so the "Read to me"
-   controls and the return-to-articles button stay reachable. */
+/* Frozen reading header — back button, title, and audio bar sit above the
+   scroll container so they stay reachable while the article scrolls. */
 .reading-sticky-head {
-  position: sticky;
-  top: 0;
-  z-index: 5;
   background: var(--color-card);
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-  /* Span the inner's horizontal padding so scrolling text passes fully
-     beneath the frozen header rather than peeking out at the edges. */
-  margin: -0.5rem -1.75rem 0;
-  padding: 0.5rem 1.75rem 0.7rem;
-  box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.25);
+  gap: 0;
+  padding: 0.75rem 1.75rem 0.65rem;
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.18);
+  flex-shrink: 0;
 }
 
 .reading-sticky-head .quiz-screen-actions {
   padding: 0;
+  margin-bottom: 0.45rem;
+}
+
+/* Reading panel — the quiz-panel itself no longer scrolls; the inner
+   reading-scroll-content handles scrolling instead. */
+.reading-panel {
+  overflow-y: hidden !important;
+}
+
+.reading-scroll-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.reading-scroll-content {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.reading-scroll-nav {
+  width: 5px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  margin: 0.75rem 0.45rem;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.reading-scroll-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: height 0.1s linear;
 }
 
 @media (max-width: 480px) {
   .reading-sticky-head {
-    margin: -0.5rem -1.25rem 0;
-    padding: 0.5rem 1.25rem 0.7rem;
+    padding: 0.75rem 1.25rem 0.65rem;
   }
 }
 
@@ -1886,6 +1920,18 @@ footer {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  overflow: hidden;
+  max-height: 120px;
+  opacity: 1;
+  margin-bottom: 0.45rem;
+  transition: max-height 0.28s ease, opacity 0.22s ease, margin-bottom 0.28s ease;
+}
+
+/* Collapse the title when scrolled down; back button + audio bar stay visible */
+.reading-sticky-head.compact .story-reading-header {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
 }
 
 .story-reading-emoji {
