@@ -229,6 +229,7 @@
       return { x: (x - view.x) / view.scale, y: (y - view.y) / view.scale };
     }
     function fitToView() {
+      panAnim = null;
       var w = canvas.clientWidth || canvas.width;
       var h = canvas.clientHeight || canvas.height;
       var margin = 70;
@@ -713,6 +714,7 @@
     }
 
     function zoomAt(cx, cy, factor) {
+      panAnim = null;
       var newScale = clamp(view.scale * factor, 0.3, 4);
       var f = newScale / view.scale;
       view.x = cx - (cx - view.x) * f;
