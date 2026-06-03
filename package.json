@@ -1,0 +1,11 @@
+{
+  "name": "11plus-vocab-vault",
+  "version": "1.0.0",
+  "description": "11+ Vocab Builder — a zero-build static vocabulary learning web app. This manifest is for dev tooling only (native ES modules + node --test); the app ships as static files with no build step or runtime dependencies.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}

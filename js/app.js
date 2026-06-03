@@ -1,72 +1,40 @@
-(function () {
-  'use strict';
+// 11+ Vocab Builder — main application (native ES module; no build step).
+// Loaded via <script type="module">, so it is deferred and module-scoped
+// (top-level var/function declarations are NOT globals), exactly as the
+// previous IIFE wrapper guaranteed.
+'use strict';
+
+import {
+  forEachNode,
+  closestByClass,
+  shuffle,
+  pickDistractors,
+  getSentenceBlank,
+  wordVariants,
+} from './dom-utils.js';
+
+import { setWords, findWordByName } from './data.js';
+import { viewCounts, mastery } from './store.js';
+import {
+  loadViewCounts,
+  incrementViewCount,
+  loadMastery,
+  getMasteryStatus,
+  recordAnswer,
+} from './storage.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
   var lastFocusedCard = null;
 
-  // ── View counts (persisted in localStorage) ────────────────────────────────
-  var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
+  // ── TTS preference keys (persisted in localStorage; used by the TTS code) ───
   var TTS_VOICE_KEY   = '11plus-tts-voice';
   var TTS_PITCH_KEY   = '11plus-tts-pitch';
-  var viewCounts = {};
+  // viewCounts state + load/save/increment → moved to js/store.js + js/storage.js.
 
-  function loadViewCounts() {
-    try {
-      var stored = localStorage.getItem(VIEW_COUNTS_KEY);
-      viewCounts = stored ? JSON.parse(stored) : {};
-    } catch (e) {
-      viewCounts = {};
-    }
-  }
-
-  function saveViewCounts() {
-    try {
-      localStorage.setItem(VIEW_COUNTS_KEY, JSON.stringify(viewCounts));
-    } catch (e) {}
-  }
-
-  function incrementViewCount(word) {
-    viewCounts[word] = (viewCounts[word] || 0) + 1;
-    saveViewCounts();
-  }
-
-  // ── Mastery (persisted in localStorage) ────────────────────────────────────
-  // For each word: { correct: n, incorrect: n, lastWrong: timestamp }
-  var MASTERY_KEY = 'vocabVault_mastery';
-  var mastery = {};
-
-  function loadMastery() {
-    try {
-      var stored = localStorage.getItem(MASTERY_KEY);
-      mastery = stored ? JSON.parse(stored) : {};
-    } catch (e) {
-      mastery = {};
-    }
-  }
-
-  function saveMastery() {
-    try { localStorage.setItem(MASTERY_KEY, JSON.stringify(mastery)); } catch (e) {}
-  }
-
-  function getMasteryStatus(wordName) {
-    var m = mastery[wordName];
-    if (!m || (m.correct === 0 && m.incorrect === 0)) return 'new';
-    if (m.correct >= 3 && (m.correct - m.incorrect) >= 2) return 'mastered';
-    return 'learning';
-  }
-
-  function recordAnswer(wordName, isCorrect) {
-    var m = mastery[wordName] || { correct: 0, incorrect: 0, lastWrong: 0 };
-    if (isCorrect) {
-      m.correct++;
-    } else {
-      m.incorrect++;
-      m.lastWrong = Date.now();
-    }
-    mastery[wordName] = m;
-    saveMastery();
-  }
+  // ── Mastery + view-count state and persistence ─────────────────────────────
+  // mastery state + load/save/getMasteryStatus/recordAnswer
+  // → moved to js/store.js + js/storage.js (imported above).
 
   // Bridge so the Constellation Quest game module (its own file) can feed the
   // shared mastery system when the player captures words.
@@ -493,28 +461,9 @@
   var wordCountEl     = document.getElementById('word-count');
   var totalWordsEl  = document.getElementById('total-words');
 
-  function forEachNode(list, callback) {
-    Array.prototype.forEach.call(list, callback);
-  }
+  // forEachNode, closestByClass → moved to js/dom-utils.js (imported above).
 
-  function closestByClass(element, className) {
-    while (element && element !== document) {
-      if (element.classList && element.classList.contains(className)) {
-        return element;
-      }
-      element = element.parentNode;
-    }
-    return null;
-  }
-
-  function findWordByName(name) {
-    for (var i = 0; i < allWords.length; i++) {
-      if (allWords[i].word === name) {
-        return allWords[i];
-      }
-    }
-    return null;
-  }
+  // findWordByName → moved to js/data.js (O(1) Map lookup; imported above).
 
 
   function wireWordUniverse(words) {
@@ -561,10 +510,51 @@
     loadViewCounts();
     loadMastery();
     initTapToJump();
+    loadWordData();
+  }
+
+  // Render a centred status message in the word grid (reuses .empty-state).
+  function showGridMessage(emoji, title, message, actionLabel, actionFn) {
+    if (!wordGrid) return;
+    var div = document.createElement('div');
+    div.className = 'empty-state';
+
+    var emojiEl = document.createElement('span');
+    emojiEl.className = 'empty-state-emoji';
+    emojiEl.textContent = emoji;
+    div.appendChild(emojiEl);
+
+    var heading = document.createElement('h3');
+    heading.textContent = title;
+    div.appendChild(heading);
+
+    var para = document.createElement('p');
+    para.textContent = message;
+    div.appendChild(para);
+
+    if (actionLabel && actionFn) {
+      var btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.type = 'button';
+      btn.textContent = actionLabel;
+      btn.addEventListener('click', actionFn);
+      div.appendChild(btn);
+    }
+
+    wordGrid.innerHTML = '';
+    wordGrid.appendChild(div);
+  }
+
+  function loadWordData() {
+    showGridMessage('📚', 'Loading words…', 'Just a moment while the word list loads.');
     fetch('data/words.json')
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load words (HTTP ' + res.status + ')');
+        return res.json();
+      })
       .then(function (data) {
         allWords = data.words;
+        setWords(allWords);
         updateWordCountDisplay(allWords.length);
         renderCards(allWords);
         attachEventListeners();
@@ -589,6 +579,15 @@
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
         }
+      })
+      .catch(function () {
+        showGridMessage(
+          '⚠️',
+          'Couldn’t load the words',
+          'Please check your internet connection and try again.',
+          'Try again',
+          loadWordData
+        );
       });
   }
 
@@ -966,7 +965,14 @@
   }
 
   // ── Boot ───────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', init);
+  // As a module this script is deferred, so DOMContentLoaded may already have
+  // fired by the time we reach this line. Run init() now if the DOM is ready,
+  // otherwise wait for the event.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
   // ═══════════════════════════════════════════════════════════════════════════
   // QUIZ MODE
@@ -1330,45 +1336,7 @@
   }
 
   // ── Question generation ────────────────────────────────────────────────────
-  function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
-  }
-
-  function pickDistractors(correctWord, pool, count) {
-    var candidates = pool.filter(function (w) { return w.word !== correctWord.word; });
-    var sameType = correctWord.word_type
-      ? candidates.filter(function (w) { return w.word_type === correctWord.word_type; })
-      : [];
-
-    var picks = [];
-    shuffle(sameType).forEach(function (w) {
-      if (picks.length < count) picks.push(w);
-    });
-    if (picks.length < count) {
-      var others = candidates.filter(function (w) { return picks.indexOf(w) === -1; });
-      shuffle(others).forEach(function (w) {
-        if (picks.length < count) picks.push(w);
-      });
-    }
-    return picks;
-  }
-
-  function getSentenceBlank(wordObj) {
-    var sentence = wordObj.sentence_usage || '';
-    var escapedWord = wordObj.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var wordPattern = new RegExp('\\b' + escapedWord + '\\b', 'i');
-
-    if (!wordPattern.test(sentence)) {
-      return null;
-    }
-
-    return sentence.replace(wordPattern, '_____');
-  }
+  // shuffle, pickDistractors, getSentenceBlank → moved to js/dom-utils.js.
 
   // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
   function getThemedQuest(wordObj) {
@@ -1951,22 +1919,7 @@
 
   // Common inflections so a featured word is still highlighted when the prose
   // uses a plural or a different tense.
-  function wordVariants(word) {
-    var w = word.toLowerCase();
-    var set = {};
-    set[w] = true;
-    set[w + 's'] = true;
-    set[w + 'es'] = true;
-    if (/[^aeiou]y$/.test(w)) set[w.slice(0, -1) + 'ies'] = true;
-    if (w.charAt(w.length - 1) === 'e') {
-      set[w + 'd'] = true;
-      set[w.slice(0, -1) + 'ing'] = true;
-    } else {
-      set[w + 'ed'] = true;
-      set[w + 'ing'] = true;
-    }
-    return Object.keys(set);
-  }
+  // wordVariants → moved to js/dom-utils.js.
 
   function buildHighlightMatcher(featuredWords) {
     var map = {};
@@ -7179,5 +7132,3 @@
       saveLaunchGroupState(saved);
     });
   });
-
-})();
