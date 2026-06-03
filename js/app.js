@@ -2941,11 +2941,14 @@
   var insectsCloseBtn       = document.getElementById('insects-close-btn');
   var insectsBackBtn        = document.getElementById('insects-back-btn');
   var insectsList           = document.getElementById('insects-list');
-  var insectsReadingEmoji   = document.getElementById('insects-reading-emoji');
-  var insectsReadingHabitat = document.getElementById('insects-reading-habitat');
-  var insectsReadingTitle   = document.getElementById('insects-reading-title');
-  var insectsReadingBody    = document.getElementById('insects-reading-body');
-  var insectsQuizBtn        = document.getElementById('insects-quiz-btn');
+  var insectsReadingEmoji        = document.getElementById('insects-reading-emoji');
+  var insectsReadingHabitat      = document.getElementById('insects-reading-habitat');
+  var insectsReadingTitle        = document.getElementById('insects-reading-title');
+  var insectsReadingBody         = document.getElementById('insects-reading-body');
+  var insectsReadingImageFigure  = document.getElementById('insects-reading-image-figure');
+  var insectsReadingImage        = document.getElementById('insects-reading-image');
+  var insectsReadingImageCaption = document.getElementById('insects-reading-image-caption');
+  var insectsQuizBtn             = document.getElementById('insects-quiz-btn');
   var insectsScrollContent  = document.getElementById('insects-scroll-content');
   var insectsScrollFill     = document.getElementById('insects-scroll-fill');
 
@@ -3044,6 +3047,17 @@
     insectsReadingEmoji.textContent = article.emoji;
     insectsReadingHabitat.textContent = article.habitat;
     insectsReadingTitle.textContent = article.title;
+    if (article.image) {
+      insectsReadingImage.src = article.image.url;
+      insectsReadingImage.alt = article.image.caption;
+      insectsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
+      insectsReadingImageFigure.classList.remove('hidden');
+    } else {
+      insectsReadingImage.src = '';
+      insectsReadingImage.alt = '';
+      insectsReadingImageCaption.textContent = '';
+      insectsReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(insectsReadingBody, article.paragraphs, insectWordObjects(article), insectsTTSBar);
     showInsectsScreen(insectsReadingScreen);
     resetReadingScroll(insectsScrollContent, insectsScrollFill, insectsReadingScreen);

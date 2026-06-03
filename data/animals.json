@@ -27,6 +27,11 @@
       "emoji": "🦈",
       "habitat": "Coastal and Open Oceans Worldwide",
       "blurb": "Far older than the dinosaurs, the great white shark is one of evolution's most perfect designs — a hunter refined over 450 million years and still ruling the ocean today.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/500px-White_shark.jpg",
+        "caption": "A great white shark near Isla Guadalupe, Mexico",
+        "credit": "© Terry Goss / Wikimedia Commons / CC BY 2.5"
+      },
       "words": ["Ferocious", "Apex", "Immense", "Voracious", "Savage", "Perilous", "Resilient", "Stealthy"],
       "paragraphs": [
         "The great white shark is one of the most famous animals in the ocean, and one of the most misunderstood. Often shown as a ferocious killer — violent, terrifying, and unstoppable — this magnificent fish has captured the imagination of millions through books and films. Yet the great white is far more fascinating than any scary story suggests. It is a living link to some of the most ancient creatures ever to swim on Earth, and studying it reveals how life in the ocean has been shaped across hundreds of millions of years.",
@@ -43,6 +48,11 @@
       "emoji": "🐙",
       "habitat": "Oceans Worldwide",
       "blurb": "With three hearts, blue blood, and the ability to change shape, colour, and texture in an instant, the octopus is one of the strangest and most brilliant animals ever to evolve.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Octopus_vulgaris_02.JPG/500px-Octopus_vulgaris_02.JPG",
+        "caption": "A common octopus (Octopus vulgaris) among rocks",
+        "credit": "Wikimedia Commons / CC BY-SA 3.0"
+      },
       "words": ["Peculiar", "Nimble", "Evasive", "Concealed", "Ingenious", "Stealthy", "Vivid", "Vigilant"],
       "paragraphs": [
         "The octopus is one of the strangest and most intelligent animals on Earth. With eight arms lined with suckers, three hearts pumping blue blood, and the ability to squeeze through any gap its beak can fit through, everything about the octopus is peculiar — curious, odd, and quite unlike any other creature. It belongs to a group called cephalopods, which includes squids and cuttlefish, and it has existed in one form or another for over 500 million years. Yet despite this ancient lineage, the octopus evolved its remarkable intelligence entirely separately from other clever animals — making it one of the most fascinating natural experiments in the history of life.",
@@ -59,6 +69,11 @@
       "emoji": "🐘",
       "habitat": "African and Asian Grasslands and Forests",
       "blurb": "The largest land animal alive, the elephant is also one of the most intelligent and emotionally complex — a creature that mourns, remembers, and shapes the landscape around it.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/African_Bush_Elephant.jpg/500px-African_Bush_Elephant.jpg",
+        "caption": "An African bush elephant in Mikumi National Park, Tanzania",
+        "credit": "© Muhammad Mahdi Karim / Wikimedia Commons / CC BY-SA 4.0"
+      },
       "words": ["Majestic", "Gargantuan", "Hierarchy", "Collective", "Compassion", "Vigilant", "Tenacious", "Resilient"],
       "paragraphs": [
         "The elephant is the largest land animal on Earth, a majestic creature — grand, awe-inspiring, and commanding — that has shaped the landscapes of Africa and Asia for millions of years. African elephants can weigh up to six tonnes and stand nearly four metres at the shoulder. Their gargantuan size — truly enormous, far beyond what most people expect up close — makes them impossible to ignore. Yet it is not their size that makes elephants so extraordinary: it is their intelligence, their memory, and the deep bonds they form with one another that set them apart as one of the most remarkable animals that has ever lived.",
@@ -75,6 +90,11 @@
       "emoji": "🦋",
       "habitat": "North America, Central America, and Mexico",
       "blurb": "Weighing less than a paperclip, the monarch butterfly somehow navigates thousands of miles across a continent it has never seen before — one of nature's most breathtaking mysteries.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Monarch_Butterfly_Danaus_plexippus_Milkweed.jpg/500px-Monarch_Butterfly_Danaus_plexippus_Milkweed.jpg",
+        "caption": "A monarch butterfly feeding on milkweed — the plant its survival depends on",
+        "credit": "Wikimedia Commons / CC BY-SA 3.0"
+      },
       "words": ["Vibrant", "Ephemeral", "Fragile", "Resilient", "Persistent", "Vast", "Tenacious", "Radiant"],
       "paragraphs": [
         "The monarch butterfly is one of the most recognisable insects in the world. Its wings are vibrant — bold, intense, and brilliantly coloured — in patterns of deep orange, jet black, and bright white that catch the eye from a great distance. These striking colours are not simply beautiful: they are a warning to predators. As a caterpillar, the monarch feeds on milkweed plants and absorbs their toxic chemicals, carrying that poison into its adult body. Most birds quickly learn to avoid the bitter-tasting monarch, and the vivid colouring is nature's way of advertising that lesson clearly.",
@@ -91,6 +111,11 @@
       "emoji": "🦦",
       "habitat": "Eastern Australian Rivers and Streams",
       "blurb": "When European scientists first saw a platypus, they thought it was a fake. A mammal with a duck's bill, a beaver's tail, and the ability to lay eggs — the platypus breaks almost every rule.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg/500px-Duck-billed_platypus_%28Ornithorhynchus_anatinus%29_Scottsdale.jpg",
+        "caption": "A platypus in the water in Scottsdale, Tasmania",
+        "credit": "Wikimedia Commons / CC BY-SA 4.0"
+      },
       "words": ["Peculiar", "Nocturnal", "Venerable", "Robust", "Tenacious", "Concealed", "Sparse"],
       "paragraphs": [
         "The platypus is perhaps the most peculiar animal in the world — strange, contradictory, and unlike anything else in the animal kingdom. When European scientists first received a preserved platypus specimen from Australia in 1799, many believed it was a hoax, stitched together from different animals as a joke. It has the bill and webbed feet of a duck, the dense fur and streamlined body of an otter, and the broad flat tail of a beaver. Even more astonishing, it is a mammal that lays eggs — one of only five egg-laying mammals on Earth, a group called monotremes. To understand the platypus is to understand one of evolution's oldest and most fascinating experiments.",
@@ -107,6 +132,11 @@
       "emoji": "🦅",
       "habitat": "North American Lakes, Rivers, and Coastlines",
       "blurb": "With eyesight eight times sharper than a human's and a wingspan stretching over two metres, the bald eagle has reigned over North American skies for millions of years.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Bald_eagle_FWS.jpg/500px-Bald_eagle_FWS.jpg",
+        "caption": "A bald eagle — the national symbol of the United States",
+        "credit": "US Fish & Wildlife Service / Wikimedia Commons / Public Domain"
+      },
       "words": ["Majestic", "Aloft", "Vigilant", "Poised", "Solemn", "Apex", "Graceful", "Spirited"],
       "paragraphs": [
         "The bald eagle is one of the most majestic birds on Earth — noble, commanding, and awe-inspiring in its presence — and holds a place of enormous importance as the national symbol of the United States. With a wingspan of up to two and a half metres, a brilliant white head and tail contrasting with dark brown wings, and a piercing yellow eye, the bald eagle is instantly recognisable. Found across North America wherever there are large bodies of water, it is a supreme hunter and one of the most impressive birds of prey the world has ever produced.",
@@ -123,6 +153,11 @@
       "emoji": "🐋",
       "habitat": "All of the World's Major Oceans",
       "blurb": "Heavier than 30 elephants and longer than three buses, the blue whale is the biggest creature that has ever existed on Earth — and it feeds on animals smaller than your little finger.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Blue_whale_tail.JPG/500px-Blue_whale_tail.JPG",
+        "caption": "The tail fluke of a blue whale as it dives",
+        "credit": "© Mike Baird / Wikimedia Commons / CC BY 2.0"
+      },
       "words": ["Gargantuan", "Immense", "Vast", "Majestic", "Arduous", "Resilient", "Persistent", "Magnificence"],
       "paragraphs": [
         "The blue whale is the largest animal that has ever lived on Earth — more gargantuan than any dinosaur, bigger than anything that has ever walked, swum, or flown. An adult can grow up to 30 metres in length and weigh as much as 200 tonnes: that is roughly the weight of 30 adult African elephants, or about 2,500 adult humans. Yet despite this immense, almost incomprehensible size — far beyond what the human mind can easily picture — the blue whale feeds almost entirely on krill, tiny shrimp-like animals that are no bigger than a human finger. This extraordinary contrast between size and prey is one of the most surprising facts in all of natural history.",
@@ -139,6 +174,11 @@
       "emoji": "🦎",
       "habitat": "Madagascar and Sub-Saharan African Forests",
       "blurb": "The chameleon doesn't change colour to hide — it changes colour to talk. Its skin is a living display screen broadcasting its mood, its health, and its intentions to the world.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Chameleon_on_a_plant_%282013%29.jpg/500px-Chameleon_on_a_plant_%282013%29.jpg",
+        "caption": "A chameleon perching on a plant",
+        "credit": "Wikimedia Commons / CC BY-SA 4.0"
+      },
       "words": ["Peculiar", "Sinuous", "Vivid", "Radiant", "Vigilant", "Evasive", "Nimble", "Timid"],
       "paragraphs": [
         "The chameleon is one of nature's most peculiar reptiles — strange, distinctive, and unlike any other creature that crawls or climbs. There are around 200 known species, living mainly on the island of Madagascar and across sub-Saharan Africa, with a handful found in southern Europe and Asia. They range from the tiny Brookesia micra — small enough to stand on the head of a match — to the giant Parson's chameleon, which can grow as long as a domestic cat. Every species has evolved into a remarkable specialist, shaped by the precise demands of life in forest canopies, scrublands, and mountain meadows over tens of millions of years.",
@@ -155,6 +195,11 @@
       "emoji": "🦍",
       "habitat": "Central African Rainforests and Mountain Highlands",
       "blurb": "Sharing 98% of their DNA with us, gorillas live in close-knit families led by a wise silverback — showing that intelligence, loyalty, and compassion did not begin with humans.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Silverback_of_Ntambara_group.JPG/500px-Silverback_of_Ntambara_group.JPG",
+        "caption": "A silverback mountain gorilla in Volcanoes National Park, Rwanda",
+        "credit": "© Azurfrog / Wikimedia Commons / CC BY-SA 4.0"
+      },
       "words": ["Towering", "Hierarchy", "Compassion", "Collective", "Vigilant", "Robust", "Tenacious", "Resolute"],
       "paragraphs": [
         "Gorillas are our closest relatives alongside chimpanzees, sharing approximately 98.3% of their DNA with humans. The western gorilla and eastern gorilla are the two main species, both living in the dense rainforests and highland regions of central Africa. A fully grown male, known as a silverback for the distinctive patch of silvery-grey fur that develops on his back in adulthood, is a towering animal — tall, broad, and powerfully built — standing up to 1.8 metres and weighing up to 230 kilograms. Despite their formidable appearance, gorillas are gentle herbivores and among the most emotionally complex, socially intelligent animals on the planet.",
