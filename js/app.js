@@ -1,5 +1,8 @@
-(function () {
-  'use strict';
+// 11+ Vocab Builder — main application (native ES module; no build step).
+// Loaded via <script type="module">, so it is deferred and module-scoped
+// (top-level var/function declarations are NOT globals), exactly as the
+// previous IIFE wrapper guaranteed.
+'use strict';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -966,7 +969,14 @@
   }
 
   // ── Boot ───────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', init);
+  // As a module this script is deferred, so DOMContentLoaded may already have
+  // fired by the time we reach this line. Run init() now if the DOM is ready,
+  // otherwise wait for the event.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
   // ═══════════════════════════════════════════════════════════════════════════
   // QUIZ MODE
@@ -7179,5 +7189,3 @@
       saveLaunchGroupState(saved);
     });
   });
-
-})();
