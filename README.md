@@ -52,9 +52,12 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 
 ## Tech Stack
 
-- Vanilla HTML, CSS, and JavaScript (no frameworks, no build step)
+- Vanilla HTML, CSS, and JavaScript — no frameworks, no bundler, no build step
+- Client-side code is organised as native ES modules (`<script type="module">`,
+  `import`/`export`), served directly
 - Word data loaded from `data/words.json` at runtime
 - Progress and mastery data persisted in `localStorage`
+- Unit / characterization tests run on Node's built-in test runner (no dependencies)
 - Hosted on GitHub Pages
 
 ## Getting Started
@@ -71,6 +74,21 @@ npx serve .        # or: python3 -m http.server 8080
 
 Then open `http://localhost:3000` (or whichever port the server reports).
 
+> A static server is required: the app loads `data/words.json` via `fetch` and
+> uses native ES modules, neither of which work from a `file://` URL.
+
+## Development
+
+No build step or dependencies are required. The client-side code is split into
+native ES modules under `js/`, loaded with `<script type="module">`.
+
+Run the unit / characterization tests with Node's built-in test runner (Node 18+,
+nothing to install):
+
+```bash
+node --test
+```
+
 ## Project Structure
 
 ```
@@ -78,10 +96,16 @@ Then open `http://localhost:3000` (or whichever port the server reports).
 ├── css/
 │   └── style.css     # All styling
 ├── js/
-│   └── app.js        # App logic
+│   ├── app.js        # Main application module (orchestrator + most modes)
+│   ├── dom-utils.js  # Pure DOM / array / text helpers
+│   ├── data.js       # Word-corpus Map index (O(1) lookup)
+│   ├── store.js      # Shared mutable progress state (singletons)
+│   ├── storage.js    # localStorage persistence + mastery logic
+│   └── …             # Visualisation modules (word-universe.js, etc.)
 ├── data/
 │   ├── words.json    # Word dataset
 │   └── stories.json  # Story Mode story library
+├── test/             # node --test characterization tests
 └── SPEC.md           # Original product specification
 ```
 
