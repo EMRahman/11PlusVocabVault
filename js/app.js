@@ -2185,6 +2185,9 @@ import {
   var storyQuizBtn       = document.getElementById('story-quiz-btn');
   var storyScrollContent = document.getElementById('story-scroll-content');
   var storyScrollFill    = document.getElementById('story-scroll-fill');
+  var storyReadingImageFigure  = document.getElementById('story-reading-image-figure');
+  var storyReadingImage        = document.getElementById('story-reading-image');
+  var storyReadingImageCaption = document.getElementById('story-reading-image-caption');
 
   function loadStoryProgress() {
     try {
@@ -2275,6 +2278,17 @@ import {
 
     storyReadingEmoji.textContent = story.emoji;
     storyReadingTitle.textContent = story.title;
+    if (story.image) {
+      storyReadingImage.src = story.image.url;
+      storyReadingImage.alt = story.image.caption;
+      storyReadingImageCaption.textContent = story.image.caption + ' — ' + story.image.credit;
+      storyReadingImageFigure.classList.remove('hidden');
+    } else {
+      storyReadingImage.src = '';
+      storyReadingImage.alt = '';
+      storyReadingImageCaption.textContent = '';
+      storyReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
