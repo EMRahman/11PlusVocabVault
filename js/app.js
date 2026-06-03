@@ -510,8 +510,48 @@ import {
     loadViewCounts();
     loadMastery();
     initTapToJump();
+    loadWordData();
+  }
+
+  // Render a centred status message in the word grid (reuses .empty-state).
+  function showGridMessage(emoji, title, message, actionLabel, actionFn) {
+    if (!wordGrid) return;
+    var div = document.createElement('div');
+    div.className = 'empty-state';
+
+    var emojiEl = document.createElement('span');
+    emojiEl.className = 'empty-state-emoji';
+    emojiEl.textContent = emoji;
+    div.appendChild(emojiEl);
+
+    var heading = document.createElement('h3');
+    heading.textContent = title;
+    div.appendChild(heading);
+
+    var para = document.createElement('p');
+    para.textContent = message;
+    div.appendChild(para);
+
+    if (actionLabel && actionFn) {
+      var btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.type = 'button';
+      btn.textContent = actionLabel;
+      btn.addEventListener('click', actionFn);
+      div.appendChild(btn);
+    }
+
+    wordGrid.innerHTML = '';
+    wordGrid.appendChild(div);
+  }
+
+  function loadWordData() {
+    showGridMessage('📚', 'Loading words…', 'Just a moment while the word list loads.');
     fetch('data/words.json')
-      .then(function (res) { return res.json(); })
+      .then(function (res) {
+        if (!res.ok) throw new Error('Failed to load words (HTTP ' + res.status + ')');
+        return res.json();
+      })
       .then(function (data) {
         allWords = data.words;
         setWords(allWords);
@@ -539,6 +579,15 @@ import {
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
         }
+      })
+      .catch(function () {
+        showGridMessage(
+          '⚠️',
+          'Couldn’t load the words',
+          'Please check your internet connection and try again.',
+          'Try again',
+          loadWordData
+        );
       });
   }
 
