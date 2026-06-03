@@ -14,73 +14,27 @@ import {
 } from './dom-utils.js';
 
 import { setWords, findWordByName } from './data.js';
+import { viewCounts, mastery } from './store.js';
+import {
+  loadViewCounts,
+  incrementViewCount,
+  loadMastery,
+  getMasteryStatus,
+  recordAnswer,
+} from './storage.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
   var lastFocusedCard = null;
 
-  // ── View counts (persisted in localStorage) ────────────────────────────────
-  var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
+  // ── TTS preference keys (persisted in localStorage; used by the TTS code) ───
   var TTS_VOICE_KEY   = '11plus-tts-voice';
   var TTS_PITCH_KEY   = '11plus-tts-pitch';
-  var viewCounts = {};
+  // viewCounts state + load/save/increment → moved to js/store.js + js/storage.js.
 
-  function loadViewCounts() {
-    try {
-      var stored = localStorage.getItem(VIEW_COUNTS_KEY);
-      viewCounts = stored ? JSON.parse(stored) : {};
-    } catch (e) {
-      viewCounts = {};
-    }
-  }
-
-  function saveViewCounts() {
-    try {
-      localStorage.setItem(VIEW_COUNTS_KEY, JSON.stringify(viewCounts));
-    } catch (e) {}
-  }
-
-  function incrementViewCount(word) {
-    viewCounts[word] = (viewCounts[word] || 0) + 1;
-    saveViewCounts();
-  }
-
-  // ── Mastery (persisted in localStorage) ────────────────────────────────────
-  // For each word: { correct: n, incorrect: n, lastWrong: timestamp }
-  var MASTERY_KEY = 'vocabVault_mastery';
-  var mastery = {};
-
-  function loadMastery() {
-    try {
-      var stored = localStorage.getItem(MASTERY_KEY);
-      mastery = stored ? JSON.parse(stored) : {};
-    } catch (e) {
-      mastery = {};
-    }
-  }
-
-  function saveMastery() {
-    try { localStorage.setItem(MASTERY_KEY, JSON.stringify(mastery)); } catch (e) {}
-  }
-
-  function getMasteryStatus(wordName) {
-    var m = mastery[wordName];
-    if (!m || (m.correct === 0 && m.incorrect === 0)) return 'new';
-    if (m.correct >= 3 && (m.correct - m.incorrect) >= 2) return 'mastered';
-    return 'learning';
-  }
-
-  function recordAnswer(wordName, isCorrect) {
-    var m = mastery[wordName] || { correct: 0, incorrect: 0, lastWrong: 0 };
-    if (isCorrect) {
-      m.correct++;
-    } else {
-      m.incorrect++;
-      m.lastWrong = Date.now();
-    }
-    mastery[wordName] = m;
-    saveMastery();
-  }
+  // ── Mastery + view-count state and persistence ─────────────────────────────
+  // mastery state + load/save/getMasteryStatus/recordAnswer
+  // → moved to js/store.js + js/storage.js (imported above).
 
   // Bridge so the Constellation Quest game module (its own file) can feed the
   // shared mastery system when the player captures words.
