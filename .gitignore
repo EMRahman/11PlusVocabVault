@@ -1,3 +1,7 @@
+# Google Cloud TTS service account key — never commit this.
+*.json.key
+service-account*.json
+
 # Intermediate generation artifacts for the themed-sentence pipeline.
 # The pipeline regenerates these; the final data lives in data/words.json.
 scripts/batches/
