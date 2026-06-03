@@ -4,6 +4,15 @@
 // previous IIFE wrapper guaranteed.
 'use strict';
 
+import {
+  forEachNode,
+  closestByClass,
+  shuffle,
+  pickDistractors,
+  getSentenceBlank,
+  wordVariants,
+} from './dom-utils.js';
+
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
   var lastFocusedCard = null;
@@ -496,19 +505,7 @@
   var wordCountEl     = document.getElementById('word-count');
   var totalWordsEl  = document.getElementById('total-words');
 
-  function forEachNode(list, callback) {
-    Array.prototype.forEach.call(list, callback);
-  }
-
-  function closestByClass(element, className) {
-    while (element && element !== document) {
-      if (element.classList && element.classList.contains(className)) {
-        return element;
-      }
-      element = element.parentNode;
-    }
-    return null;
-  }
+  // forEachNode, closestByClass → moved to js/dom-utils.js (imported above).
 
   function findWordByName(name) {
     for (var i = 0; i < allWords.length; i++) {
@@ -1340,45 +1337,7 @@
   }
 
   // ── Question generation ────────────────────────────────────────────────────
-  function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
-  }
-
-  function pickDistractors(correctWord, pool, count) {
-    var candidates = pool.filter(function (w) { return w.word !== correctWord.word; });
-    var sameType = correctWord.word_type
-      ? candidates.filter(function (w) { return w.word_type === correctWord.word_type; })
-      : [];
-
-    var picks = [];
-    shuffle(sameType).forEach(function (w) {
-      if (picks.length < count) picks.push(w);
-    });
-    if (picks.length < count) {
-      var others = candidates.filter(function (w) { return picks.indexOf(w) === -1; });
-      shuffle(others).forEach(function (w) {
-        if (picks.length < count) picks.push(w);
-      });
-    }
-    return picks;
-  }
-
-  function getSentenceBlank(wordObj) {
-    var sentence = wordObj.sentence_usage || '';
-    var escapedWord = wordObj.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var wordPattern = new RegExp('\\b' + escapedWord + '\\b', 'i');
-
-    if (!wordPattern.test(sentence)) {
-      return null;
-    }
-
-    return sentence.replace(wordPattern, '_____');
-  }
+  // shuffle, pickDistractors, getSentenceBlank → moved to js/dom-utils.js.
 
   // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
   function getThemedQuest(wordObj) {
@@ -1961,22 +1920,7 @@
 
   // Common inflections so a featured word is still highlighted when the prose
   // uses a plural or a different tense.
-  function wordVariants(word) {
-    var w = word.toLowerCase();
-    var set = {};
-    set[w] = true;
-    set[w + 's'] = true;
-    set[w + 'es'] = true;
-    if (/[^aeiou]y$/.test(w)) set[w.slice(0, -1) + 'ies'] = true;
-    if (w.charAt(w.length - 1) === 'e') {
-      set[w + 'd'] = true;
-      set[w.slice(0, -1) + 'ing'] = true;
-    } else {
-      set[w + 'ed'] = true;
-      set[w + 'ing'] = true;
-    }
-    return Object.keys(set);
-  }
+  // wordVariants → moved to js/dom-utils.js.
 
   function buildHighlightMatcher(featuredWords) {
     var map = {};
