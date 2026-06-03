@@ -2462,6 +2462,9 @@
   var historyQuizBtn        = document.getElementById('history-quiz-btn');
   var historyScrollContent  = document.getElementById('history-scroll-content');
   var historyScrollFill     = document.getElementById('history-scroll-fill');
+  var historyReadingImageFigure  = document.getElementById('history-reading-image-figure');
+  var historyReadingImage        = document.getElementById('history-reading-image');
+  var historyReadingImageCaption = document.getElementById('history-reading-image-caption');
 
   function loadHistoryProgress() {
     try {
@@ -2558,6 +2561,17 @@
     historyReadingEmoji.textContent = article.emoji;
     historyReadingEra.textContent = article.era;
     historyReadingTitle.textContent = article.title;
+    if (article.image) {
+      historyReadingImage.src = article.image.url;
+      historyReadingImage.alt = article.image.caption;
+      historyReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
+      historyReadingImageFigure.classList.remove('hidden');
+    } else {
+      historyReadingImage.src = '';
+      historyReadingImage.alt = '';
+      historyReadingImageCaption.textContent = '';
+      historyReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article), historyTTSBar);
     showHistoryScreen(historyReadingScreen);
     resetReadingScroll(historyScrollContent, historyScrollFill, historyReadingScreen);
