@@ -13,6 +13,8 @@ import {
   wordVariants,
 } from './dom-utils.js';
 
+import { setWords, findWordByName } from './data.js';
+
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
   var lastFocusedCard = null;
@@ -507,14 +509,7 @@ import {
 
   // forEachNode, closestByClass → moved to js/dom-utils.js (imported above).
 
-  function findWordByName(name) {
-    for (var i = 0; i < allWords.length; i++) {
-      if (allWords[i].word === name) {
-        return allWords[i];
-      }
-    }
-    return null;
-  }
+  // findWordByName → moved to js/data.js (O(1) Map lookup; imported above).
 
 
   function wireWordUniverse(words) {
@@ -565,6 +560,7 @@ import {
       .then(function (res) { return res.json(); })
       .then(function (data) {
         allWords = data.words;
+        setWords(allWords);
         updateWordCountDisplay(allWords.length);
         renderCards(allWords);
         attachEventListeners();
