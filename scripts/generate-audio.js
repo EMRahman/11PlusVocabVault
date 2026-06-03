@@ -4,8 +4,8 @@
 /**
  * scripts/generate-audio.js
  *
- * Pre-generates MP3 pronunciation files for all vocabulary words using
- * Google Cloud Text-to-Speech (Neural2 / WaveNet voices).
+ * Pre-generates MP3 audio files for all vocabulary words and reading articles
+ * using Google Cloud Text-to-Speech (Neural2 / WaveNet voices).
  *
  * ── Google Cloud Setup ───────────────────────────────────────────────────────
  * 1. Create (or reuse) a Google Cloud project:
@@ -25,10 +25,11 @@
  *    npm install @google-cloud/text-to-speech
  *
  * ── Usage ────────────────────────────────────────────────────────────────────
- *    node scripts/generate-audio.js
- *    node scripts/generate-audio.js --voice en-GB-Neural2-B   # male voice
- *    node scripts/generate-audio.js --force                   # regenerate all
- *    node scripts/generate-audio.js --words-only              # skip full files
+ *    node scripts/generate-audio.js                          # everything
+ *    node scripts/generate-audio.js --words-only             # skip articles
+ *    node scripts/generate-audio.js --articles-only          # skip words
+ *    node scripts/generate-audio.js --voice en-GB-Neural2-B  # male voice
+ *    node scripts/generate-audio.js --force                  # regenerate all
  *
  * ── Recommended voices (British English) ─────────────────────────────────────
  *    en-GB-Neural2-A  female  (default)
@@ -39,15 +40,14 @@
  *    en-GB-Wavenet-B  male
  *
  * ── Output ───────────────────────────────────────────────────────────────────
- *    audio/words/{slug}.mp3  — word pronunciation only (slow and clear)
- *    audio/full/{slug}.mp3   — word + definition + example sentence
- *
- *    Slug rule: lowercase, non-alphanumeric runs → "-", e.g. "Abhorrent" → "abhorrent"
+ *    audio/words/{slug}.mp3             — word pronunciation only (slow, clear)
+ *    audio/full/{slug}.mp3             — word + definition + example sentence
+ *    audio/articles/animals/{id}.mp3   — full animal article read-aloud
  *
  * ── Cost ─────────────────────────────────────────────────────────────────────
- *    437 words × ~140 chars avg ≈ 62 K total characters.
- *    Free tier: 1,000,000 chars/month for WaveNet and Neural2 voices.
- *    This entire run costs nothing.
+ *    437 words  × ~140 chars avg  ≈  62 K chars
+ *    10 articles × ~4 000 chars avg ≈  40 K chars
+ *    Grand total ≈ 102 K chars — well within the 1 M char/month free tier.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  */
@@ -71,22 +71,42 @@ try {
 }
 
 // ── CLI args ──────────────────────────────────────────────────────────────────
-const args       = process.argv.slice(2);
-const force      = args.includes('--force');
-const wordsOnly  = args.includes('--words-only');
-const voiceEq    = args.find(a => a.startsWith('--voice='));
-const voiceIdx   = args.indexOf('--voice');
-const VOICE      = voiceEq
+const args        = process.argv.slice(2);
+const force       = args.includes('--force');
+const wordsOnly   = args.includes('--words-only');    // skip articles
+const articlesOnly = args.includes('--articles-only'); // skip words
+const voiceEq     = args.find(a => a.startsWith('--voice='));
+const voiceIdx    = args.indexOf('--voice');
+const VOICE       = voiceEq
   ? voiceEq.slice('--voice='.length)
   : (voiceIdx !== -1 && args[voiceIdx + 1] && !args[voiceIdx + 1].startsWith('--'))
     ? args[voiceIdx + 1]
     : 'en-GB-Neural2-A';
 
+const doWords    = !articlesOnly;
+const doArticles = !wordsOnly;
+
 // ── Paths ─────────────────────────────────────────────────────────────────────
-const ROOT     = path.join(__dirname, '..');
-const WORDS    = path.join(ROOT, 'data', 'words.json');
-const WORD_DIR = path.join(ROOT, 'audio', 'words');
-const FULL_DIR = path.join(ROOT, 'audio', 'full');
+const ROOT = path.join(__dirname, '..');
+
+// ── Article sources ───────────────────────────────────────────────────────────
+// To add a new article type (insects, fables, history, etc.) add an entry here.
+const ARTICLE_SOURCES = [
+  {
+    key    : 'animals',
+    file   : path.join(ROOT, 'data', 'animals.json'),
+    outDir : path.join(ROOT, 'audio', 'articles', 'animals'),
+    // Returns the array of articles from the parsed JSON.
+    extract: data => data.animals,
+    // Filesystem-safe identifier used as the filename (already slug-ready).
+    id     : item => item.id,
+    // Full text sent to TTS: title, blurb, then each paragraph in order.
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
+  // { key: 'insects',  file: ..., outDir: ..., extract: d => d.insects,  id: i => i.id, toText: i => ... },
+  // { key: 'fables',   file: ..., outDir: ..., extract: d => d.fables,   id: i => i.id, toText: i => ... },
+  // { key: 'history',  file: ..., outDir: ..., extract: d => d.history,  id: i => i.id, toText: i => ... },
+];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function toSlug(word) {
@@ -97,7 +117,6 @@ function sleep(ms) {
   return new Promise(res => setTimeout(res, ms));
 }
 
-// Escape characters that are special inside XML text nodes.
 function xmlEscape(str) {
   return str
     .replace(/&/g, '&amp;')
@@ -115,47 +134,42 @@ async function synthesise(client, input, outPath) {
   fs.writeFileSync(outPath, response.audioContent, 'binary');
 }
 
-// ── Main ──────────────────────────────────────────────────────────────────────
-async function main() {
-  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    console.warn([
-      '',
-      'WARNING: GOOGLE_APPLICATION_CREDENTIALS is not set.',
-      'The SDK will try Application Default Credentials (gcloud auth login).',
-      'If that fails, export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json',
-      '',
-    ].join('\n'));
-  }
+function printSection(title) {
+  const line = '─'.repeat(42);
+  console.log(`\n${line}`);
+  console.log(`  ${title}`);
+  console.log(`${line}\n`);
+}
 
-  const words = JSON.parse(fs.readFileSync(WORDS, 'utf8')).words;
+function printSummary(label, generated, skipped, errors) {
+  console.log(`  ${label.padEnd(14)} generated: ${generated}  skipped: ${skipped}  errors: ${errors}`);
+}
 
-  fs.mkdirSync(WORD_DIR, { recursive: true });
-  if (!wordsOnly) fs.mkdirSync(FULL_DIR, { recursive: true });
+// ── Words ─────────────────────────────────────────────────────────────────────
+async function generateWords(client) {
+  const words   = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'words.json'), 'utf8')).words;
+  const wordDir = path.join(ROOT, 'audio', 'words');
+  const fullDir = path.join(ROOT, 'audio', 'full');
 
-  const client = new TextToSpeechClient();
+  fs.mkdirSync(wordDir, { recursive: true });
+  fs.mkdirSync(fullDir, { recursive: true });
 
   const pad = String(words.length).length;
-  console.log(`\nGoogle Cloud TTS  |  voice: ${VOICE}`);
-  console.log(`Generating audio for ${words.length} words…\n`);
-
-  let generated = 0;
-  let skipped   = 0;
-  let errors    = 0;
+  let generated = 0, skipped = 0, errors = 0;
 
   for (let i = 0; i < words.length; i++) {
     const w       = words[i];
     const s       = toSlug(w.word);
-    const wordOut = path.join(WORD_DIR, `${s}.mp3`);
-    const fullOut = path.join(FULL_DIR, `${s}.mp3`);
+    const wordOut = path.join(wordDir, `${s}.mp3`);
+    const fullOut = path.join(fullDir, `${s}.mp3`);
 
     const needWord = force || !fs.existsSync(wordOut);
-    const needFull = !wordsOnly && (force || !fs.existsSync(fullOut));
-
-    const label = `[${String(i + 1).padStart(pad)}/${words.length}] ${w.word}`;
+    const needFull = force || !fs.existsSync(fullOut);
+    const label    = `[${String(i + 1).padStart(pad)}/${words.length}] ${w.word}`;
 
     if (!needWord && !needFull) {
       skipped++;
-      console.log(`  ${label} — skipped (already exists)`);
+      console.log(`  ${label} — skipped`);
       continue;
     }
 
@@ -163,19 +177,15 @@ async function main() {
 
     try {
       if (needWord) {
-        // Slow, deliberate pronunciation of the word on its own.
         const ssml = `<speak><prosody rate="slow">${xmlEscape(w.word)}</prosody></speak>`;
         await synthesise(client, { ssml }, wordOut);
         await sleep(220);
       }
-
       if (needFull) {
-        // Natural reading pace: word, then definition, then example.
         const text = `${w.word}. ${w.definition}. Example: ${w.sentence_usage}`;
         await synthesise(client, { text }, fullOut);
         await sleep(220);
       }
-
       generated++;
       process.stdout.write(' ✓\n');
     } catch (err) {
@@ -184,21 +194,109 @@ async function main() {
     }
   }
 
+  return { generated, skipped, errors };
+}
+
+// ── Articles ──────────────────────────────────────────────────────────────────
+async function generateArticles(client) {
+  const totals = { generated: 0, skipped: 0, errors: 0 };
+
+  for (const source of ARTICLE_SOURCES) {
+    const items = source.extract(JSON.parse(fs.readFileSync(source.file, 'utf8')));
+    fs.mkdirSync(source.outDir, { recursive: true });
+
+    const pad = String(items.length).length;
+    console.log(`  ${source.key} (${items.length} articles)`);
+
+    for (let i = 0; i < items.length; i++) {
+      const item   = items[i];
+      const id     = source.id(item);
+      const outPath = path.join(source.outDir, `${id}.mp3`);
+      const label  = `  [${String(i + 1).padStart(pad)}/${items.length}] ${id}`;
+
+      if (!force && fs.existsSync(outPath)) {
+        totals.skipped++;
+        console.log(`${label} — skipped`);
+        continue;
+      }
+
+      process.stdout.write(`${label}…`);
+
+      try {
+        const text = source.toText(item);
+
+        // Google Cloud TTS plain-text input limit is 5 000 bytes.
+        // All current articles are ~3 700–4 400 chars, so we're comfortably inside.
+        // If a future article exceeds this, split it into paragraphs and concatenate
+        // the resulting audio buffers, or switch the input to SSML (25 000 byte limit).
+        if (Buffer.byteLength(text, 'utf8') > 4900) {
+          process.stdout.write(' SKIPPED — text exceeds 4 900 bytes (split required)\n');
+          totals.errors++;
+          continue;
+        }
+
+        await synthesise(client, { text }, outPath);
+        await sleep(220);
+        totals.generated++;
+        process.stdout.write(' ✓\n');
+      } catch (err) {
+        totals.errors++;
+        process.stdout.write(` FAILED — ${err.message}\n`);
+      }
+    }
+
+    console.log();
+  }
+
+  return totals;
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+async function main() {
+  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+    console.warn([
+      '',
+      'WARNING: GOOGLE_APPLICATION_CREDENTIALS is not set.',
+      'The SDK will try Application Default Credentials (gcloud auth login).',
+      'If that fails, set GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json',
+      '',
+    ].join('\n'));
+  }
+
+  const client = new TextToSpeechClient();
+  console.log(`\nGoogle Cloud TTS  |  voice: ${VOICE}`);
+
+  const results = {};
+
+  if (doWords) {
+    printSection('Vocabulary words');
+    results.words = await generateWords(client);
+  }
+
+  if (doArticles) {
+    printSection('Reading articles');
+    results.articles = await generateArticles(client);
+  }
+
+  // ── Final summary ──────────────────────────────────────────────────────────
   const line = '─'.repeat(42);
   console.log(`\n${line}`);
-  console.log(`  Generated : ${generated}`);
-  console.log(`  Skipped   : ${skipped}`);
-  console.log(`  Errors    : ${errors}`);
+  console.log('  Summary');
+  console.log(line);
+  let anyErrors = false;
+  for (const [label, r] of Object.entries(results)) {
+    printSummary(label, r.generated, r.skipped, r.errors);
+    if (r.errors > 0) anyErrors = true;
+  }
   console.log(line);
 
-  if (errors > 0) {
-    console.log('\n  Re-run without --force to retry only the failed words.');
+  if (anyErrors) {
+    console.log('\n  Re-run without --force to retry only failed items.\n');
     process.exit(1);
   }
 
-  console.log('\n  Next step: commit the audio/ directory and update app.js');
-  console.log('  to play audio/words/{slug}.mp3 before falling back to');
-  console.log('  speechSynthesis.\n');
+  console.log('\n  Done. Commit the audio/ directory, then wire app.js to');
+  console.log('  use these files before falling back to speechSynthesis.\n');
 }
 
 main().catch(err => {
