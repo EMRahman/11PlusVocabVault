@@ -5,49 +5,63 @@
  * scripts/generate-audio.js
  *
  * Pre-generates MP3 audio files for all vocabulary words and reading articles
- * using Google Cloud Text-to-Speech (Neural2 / WaveNet voices).
+ * using Google Cloud Text-to-Speech.
  *
  * ── Google Cloud Setup ───────────────────────────────────────────────────────
  * 1. Create (or reuse) a Google Cloud project:
  *    https://console.cloud.google.com/
  *
- * 2. Enable the Cloud Text-to-Speech API for that project:
+ * 2. Enable the Cloud Text-to-Speech API:
  *    https://console.cloud.google.com/apis/library/texttospeech.googleapis.com
  *
- * 3. Create a Service Account and download its JSON key:
- *    Console → IAM & Admin → Service Accounts → Create → "Text-to-Speech User"
- *    → Manage Keys → Add Key → JSON → Download
+ * 3. Create a Service Account, download its JSON key:
+ *    IAM & Admin → Service Accounts → Create → Manage Keys → Add Key → JSON
  *
- * 4. Tell the SDK where the key lives:
+ * 4. Export the credentials path:
  *    export GOOGLE_APPLICATION_CREDENTIALS=/path/to/key.json
  *
  * ── Local Setup ──────────────────────────────────────────────────────────────
  *    npm install @google-cloud/text-to-speech
  *
  * ── Usage ────────────────────────────────────────────────────────────────────
- *    node scripts/generate-audio.js                          # everything
- *    node scripts/generate-audio.js --words-only             # skip articles
- *    node scripts/generate-audio.js --articles-only          # skip words
- *    node scripts/generate-audio.js --voice en-GB-Neural2-B  # male voice
- *    node scripts/generate-audio.js --force                  # regenerate all
+ *    node scripts/generate-audio.js                           # all sections
+ *    node scripts/generate-audio.js --section animals         # one section
+ *    node scripts/generate-audio.js --section animals,insects # multiple
+ *    node scripts/generate-audio.js --dry-run                 # cost preview only
+ *    node scripts/generate-audio.js --dry-run --section fables
+ *    node scripts/generate-audio.js --force                   # regenerate all
+ *    node scripts/generate-audio.js --voice en-GB-Neural2-A   # override voice
+ *    node scripts/generate-audio.js --price 16.00             # override $/1M chars
  *
- * ── Recommended voices (British English) ─────────────────────────────────────
- *    en-GB-Neural2-A  female  (default)
- *    en-GB-Neural2-B  male
- *    en-GB-Neural2-C  female
- *    en-GB-Neural2-D  male
- *    en-GB-Wavenet-A  female  (slightly cheaper, still very natural)
- *    en-GB-Wavenet-B  male
+ * ── Available sections ───────────────────────────────────────────────────────
+ *    words      vocabulary pronunciations  (audio/words/ + audio/full/)
+ *    animals    animal articles            (audio/articles/animals/)
+ *    insects    insect articles            (audio/articles/insects/)
+ *    history    history articles           (audio/articles/history/)
+ *    fables     fable articles             (audio/articles/fables/)
+ *    stories    story articles             (audio/articles/stories/)
+ *    proverbs   proverb collections        (audio/articles/proverbs/)
  *
- * ── Output ───────────────────────────────────────────────────────────────────
- *    audio/words/{slug}.mp3             — word pronunciation only (slow, clear)
- *    audio/full/{slug}.mp3             — word + definition + example sentence
- *    audio/articles/animals/{id}.mp3   — full animal article read-aloud
+ * ── Voice ────────────────────────────────────────────────────────────────────
+ *    Default: en-GB-Chirp3-HD-Achernar  (Chirp 3 HD, British English, Female)
+ *    This is the Chirp 3 / Gemini Flash TTS preview voice named Achernar.
+ *    Verify the exact API name at: https://cloud.google.com/text-to-speech/docs/voices
  *
- * ── Cost ─────────────────────────────────────────────────────────────────────
- *    437 words  × ~140 chars avg  ≈  62 K chars
- *    10 articles × ~4 000 chars avg ≈  40 K chars
- *    Grand total ≈ 102 K chars — well within the 1 M char/month free tier.
+ *    Other good British English options:
+ *      en-GB-Chirp3-HD-Aoede    female
+ *      en-GB-Chirp3-HD-Charon   male
+ *      en-GB-Chirp3-HD-Fenrir   male
+ *      en-GB-Neural2-A          female  (older, confirmed pricing)
+ *      en-GB-Neural2-B          male    (older, confirmed pricing)
+ *
+ * ── Pricing ──────────────────────────────────────────────────────────────────
+ *    Chirp 3 HD / Gemini Flash TTS (Preview):  estimated ~$30.00/1M chars
+ *    Neural2 / WaveNet:                         confirmed  $16.00/1M chars
+ *    Standard:                                  confirmed   $4.00/1M chars
+ *
+ *    IMPORTANT: Verify Chirp 3 / Gemini TTS pricing before a large run:
+ *    https://cloud.google.com/text-to-speech/pricing
+ *    Override with --price <usd-per-million-chars>  e.g. --price 30.00
  *
  * ─────────────────────────────────────────────────────────────────────────────
  */
@@ -71,41 +85,79 @@ try {
 }
 
 // ── CLI args ──────────────────────────────────────────────────────────────────
-const args        = process.argv.slice(2);
-const force       = args.includes('--force');
-const wordsOnly   = args.includes('--words-only');    // skip articles
-const articlesOnly = args.includes('--articles-only'); // skip words
-const voiceEq     = args.find(a => a.startsWith('--voice='));
-const voiceIdx    = args.indexOf('--voice');
-const VOICE       = voiceEq
-  ? voiceEq.slice('--voice='.length)
-  : (voiceIdx !== -1 && args[voiceIdx + 1] && !args[voiceIdx + 1].startsWith('--'))
-    ? args[voiceIdx + 1]
-    : 'en-GB-Neural2-A';
+const args    = process.argv.slice(2);
+const force   = args.includes('--force');
+const dryRun  = args.includes('--dry-run');
 
-const doWords    = !articlesOnly;
-const doArticles = !wordsOnly;
+function argVal(flag) {
+  const eq  = args.find(a => a.startsWith(`${flag}=`));
+  if (eq) return eq.slice(flag.length + 1);
+  const idx = args.indexOf(flag);
+  return (idx !== -1 && args[idx + 1] && !args[idx + 1].startsWith('--'))
+    ? args[idx + 1] : null;
+}
+
+const VOICE         = argVal('--voice') || 'en-GB-Chirp3-HD-Achernar';
+const PRICE_PER_M   = parseFloat(argVal('--price') || '30.00'); // USD per 1M chars
+const sectionArg    = argVal('--section');
+const onlySections  = sectionArg ? new Set(sectionArg.split(',').map(s => s.trim())) : null;
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const ROOT = path.join(__dirname, '..');
 
 // ── Article sources ───────────────────────────────────────────────────────────
-// To add a new article type (insects, fables, history, etc.) add an entry here.
+// To add a new section, add one entry here — nothing else needs to change.
 const ARTICLE_SOURCES = [
   {
     key    : 'animals',
-    file   : path.join(ROOT, 'data', 'animals.json'),
+    file   : 'animals.json',
+    dataKey: 'animals',
     outDir : path.join(ROOT, 'audio', 'articles', 'animals'),
-    // Returns the array of articles from the parsed JSON.
-    extract: data => data.animals,
-    // Filesystem-safe identifier used as the filename (already slug-ready).
     id     : item => item.id,
-    // Full text sent to TTS: title, blurb, then each paragraph in order.
     toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
   },
-  // { key: 'insects',  file: ..., outDir: ..., extract: d => d.insects,  id: i => i.id, toText: i => ... },
-  // { key: 'fables',   file: ..., outDir: ..., extract: d => d.fables,   id: i => i.id, toText: i => ... },
-  // { key: 'history',  file: ..., outDir: ..., extract: d => d.history,  id: i => i.id, toText: i => ... },
+  {
+    key    : 'insects',
+    file   : 'insects.json',
+    dataKey: 'insects',
+    outDir : path.join(ROOT, 'audio', 'articles', 'insects'),
+    id     : item => item.id,
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
+  {
+    key    : 'history',
+    file   : 'history.json',
+    dataKey: 'articles',
+    outDir : path.join(ROOT, 'audio', 'articles', 'history'),
+    id     : item => item.id,
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
+  {
+    key    : 'fables',
+    file   : 'fables.json',
+    dataKey: 'fables',
+    outDir : path.join(ROOT, 'audio', 'articles', 'fables'),
+    id     : item => item.id,
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
+  {
+    key    : 'stories',
+    file   : 'stories.json',
+    dataKey: 'stories',
+    outDir : path.join(ROOT, 'audio', 'articles', 'stories'),
+    id     : item => item.id,
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
+  {
+    key    : 'proverbs',
+    file   : 'proverbs.json',
+    dataKey: 'collections',
+    outDir : path.join(ROOT, 'audio', 'articles', 'proverbs'),
+    id     : item => item.id,
+    // English paragraphs only — the `proverbs` array contains native-language
+    // text (Japanese, Arabic, etc.) which is intentionally skipped here.
+    toText : item => [item.title + '.', item.blurb, ...item.paragraphs].join(' '),
+  },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -113,19 +165,20 @@ function toSlug(word) {
   return word.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
-function sleep(ms) {
-  return new Promise(res => setTimeout(res, ms));
-}
+function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
 
 function xmlEscape(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function fmtCost(chars) {
+  return `$${(chars / 1_000_000 * PRICE_PER_M).toFixed(4)}`;
+}
+
+function fmtChars(n) { return n.toLocaleString(); }
+
 async function synthesise(client, input, outPath) {
+  if (dryRun) return; // don't call the API in dry-run mode
   const [response] = await client.synthesizeSpeech({
     input,
     voice      : { languageCode: 'en-GB', name: VOICE },
@@ -134,15 +187,12 @@ async function synthesise(client, input, outPath) {
   fs.writeFileSync(outPath, response.audioContent, 'binary');
 }
 
-function printSection(title) {
-  const line = '─'.repeat(42);
-  console.log(`\n${line}`);
-  console.log(`  ${title}`);
-  console.log(`${line}\n`);
-}
+// ── Per-section result tracking ───────────────────────────────────────────────
+// Each section returns { generated, skipped, errors, chars }
+const sectionResults = [];
 
-function printSummary(label, generated, skipped, errors) {
-  console.log(`  ${label.padEnd(14)} generated: ${generated}  skipped: ${skipped}  errors: ${errors}`);
+function shouldRun(key) {
+  return !onlySections || onlySections.has(key);
 }
 
 // ── Words ─────────────────────────────────────────────────────────────────────
@@ -151,11 +201,13 @@ async function generateWords(client) {
   const wordDir = path.join(ROOT, 'audio', 'words');
   const fullDir = path.join(ROOT, 'audio', 'full');
 
-  fs.mkdirSync(wordDir, { recursive: true });
-  fs.mkdirSync(fullDir, { recursive: true });
+  if (!dryRun) {
+    fs.mkdirSync(wordDir, { recursive: true });
+    fs.mkdirSync(fullDir, { recursive: true });
+  }
 
   const pad = String(words.length).length;
-  let generated = 0, skipped = 0, errors = 0;
+  let generated = 0, skipped = 0, errors = 0, chars = 0;
 
   for (let i = 0; i < words.length; i++) {
     const w       = words[i];
@@ -163,97 +215,148 @@ async function generateWords(client) {
     const wordOut = path.join(wordDir, `${s}.mp3`);
     const fullOut = path.join(fullDir, `${s}.mp3`);
 
-    const needWord = force || !fs.existsSync(wordOut);
-    const needFull = force || !fs.existsSync(fullOut);
+    const needWord = dryRun || force || !fs.existsSync(wordOut);
+    const needFull = dryRun || force || !fs.existsSync(fullOut);
     const label    = `[${String(i + 1).padStart(pad)}/${words.length}] ${w.word}`;
 
     if (!needWord && !needFull) {
       skipped++;
-      console.log(`  ${label} — skipped`);
+      if (!dryRun) console.log(`  ${label} — skipped`);
       continue;
     }
 
-    process.stdout.write(`  ${label}…`);
+    if (!dryRun) process.stdout.write(`  ${label}…`);
 
     try {
       if (needWord) {
-        const ssml = `<speak><prosody rate="slow">${xmlEscape(w.word)}</prosody></speak>`;
+        const ssml     = `<speak><prosody rate="slow">${xmlEscape(w.word)}</prosody></speak>`;
+        const wordChars = Buffer.byteLength(w.word, 'utf8');
         await synthesise(client, { ssml }, wordOut);
-        await sleep(220);
+        chars += wordChars;
+        if (needWord && !dryRun) await sleep(220);
       }
       if (needFull) {
-        const text = `${w.word}. ${w.definition}. Example: ${w.sentence_usage}`;
+        const text     = `${w.word}. ${w.definition}. Example: ${w.sentence_usage}`;
+        const fullChars = Buffer.byteLength(text, 'utf8');
         await synthesise(client, { text }, fullOut);
-        await sleep(220);
+        chars += fullChars;
+        if (!dryRun) await sleep(220);
       }
       generated++;
-      process.stdout.write(' ✓\n');
+      if (!dryRun) process.stdout.write(' ✓\n');
     } catch (err) {
       errors++;
-      process.stdout.write(` FAILED — ${err.message}\n`);
+      if (!dryRun) process.stdout.write(` FAILED — ${err.message}\n`);
     }
   }
 
-  return { generated, skipped, errors };
+  return { label: 'words', generated, skipped, errors, chars };
 }
 
 // ── Articles ──────────────────────────────────────────────────────────────────
 async function generateArticles(client) {
-  const totals = { generated: 0, skipped: 0, errors: 0 };
+  const totals = { label: 'articles', generated: 0, skipped: 0, errors: 0, chars: 0 };
+  const bySection = [];
 
   for (const source of ARTICLE_SOURCES) {
-    const items = source.extract(JSON.parse(fs.readFileSync(source.file, 'utf8')));
-    fs.mkdirSync(source.outDir, { recursive: true });
+    if (!shouldRun(source.key)) continue;
+
+    const items = JSON.parse(
+      fs.readFileSync(path.join(ROOT, 'data', source.file), 'utf8')
+    )[source.dataKey];
+
+    if (!dryRun) fs.mkdirSync(source.outDir, { recursive: true });
 
     const pad = String(items.length).length;
-    console.log(`  ${source.key} (${items.length} articles)`);
+    let gen = 0, skip = 0, err = 0, sectionChars = 0;
+
+    if (!dryRun) console.log(`\n  ── ${source.key} (${items.length} articles) ──`);
 
     for (let i = 0; i < items.length; i++) {
-      const item   = items[i];
-      const id     = source.id(item);
+      const item    = items[i];
+      const id      = source.id(item);
       const outPath = path.join(source.outDir, `${id}.mp3`);
-      const label  = `  [${String(i + 1).padStart(pad)}/${items.length}] ${id}`;
+      const text    = source.toText(item);
+      const bytes   = Buffer.byteLength(text, 'utf8');
+      const label   = `  [${String(i + 1).padStart(pad)}/${items.length}] ${id}`;
 
-      if (!force && fs.existsSync(outPath)) {
-        totals.skipped++;
+      if (!dryRun && !force && fs.existsSync(outPath)) {
+        skip++;
         console.log(`${label} — skipped`);
         continue;
       }
 
-      process.stdout.write(`${label}…`);
+      if (!dryRun) process.stdout.write(`${label}…`);
+
+      // Google Cloud TTS plain-text limit is 5 000 bytes.
+      if (bytes > 4900) {
+        if (!dryRun) process.stdout.write(` SKIPPED — ${bytes} bytes exceeds 4 900 limit\n`);
+        err++;
+        continue;
+      }
 
       try {
-        const text = source.toText(item);
-
-        // Google Cloud TTS plain-text input limit is 5 000 bytes.
-        // All current articles are ~3 700–4 400 chars, so we're comfortably inside.
-        // If a future article exceeds this, split it into paragraphs and concatenate
-        // the resulting audio buffers, or switch the input to SSML (25 000 byte limit).
-        if (Buffer.byteLength(text, 'utf8') > 4900) {
-          process.stdout.write(' SKIPPED — text exceeds 4 900 bytes (split required)\n');
-          totals.errors++;
-          continue;
-        }
-
         await synthesise(client, { text }, outPath);
-        await sleep(220);
-        totals.generated++;
-        process.stdout.write(' ✓\n');
-      } catch (err) {
-        totals.errors++;
-        process.stdout.write(` FAILED — ${err.message}\n`);
+        sectionChars += bytes;
+        gen++;
+        if (!dryRun) {
+          await sleep(220);
+          process.stdout.write(' ✓\n');
+        }
+      } catch (e) {
+        err++;
+        if (!dryRun) process.stdout.write(` FAILED — ${e.message}\n`);
       }
     }
 
-    console.log();
+    bySection.push({ key: source.key, items: items.length, chars: sectionChars, gen, skip, err });
+    totals.generated += gen;
+    totals.skipped   += skip;
+    totals.errors    += err;
+    totals.chars     += sectionChars;
   }
 
-  return totals;
+  return { totals, bySection };
+}
+
+// ── Summary table ─────────────────────────────────────────────────────────────
+function printCostSummary(rows) {
+  const LINE = '─'.repeat(70);
+  const isGemini = /chirp3|journey|gemini/i.test(VOICE);
+  const priceNote = isGemini
+    ? '  ⚠  Gemini/Chirp3 pricing is ESTIMATED. Confirm at cloud.google.com/text-to-speech/pricing'
+    : '  Pricing confirmed for Neural2/WaveNet voices.';
+
+  console.log(`\n${LINE}`);
+  console.log(`  Cost summary`);
+  console.log(`  Voice: ${VOICE}`);
+  console.log(`  Rate:  $${PRICE_PER_M.toFixed(2)} / 1M chars${isGemini ? ' (estimated — use --price to override)' : ''}`);
+  console.log(`${LINE}`);
+  console.log(`  ${'Section'.padEnd(24)} ${'Items'.padStart(6)} ${'Chars'.padStart(10)} ${'Est. cost'.padStart(12)}`);
+  console.log(`  ${'-'.repeat(56)}`);
+
+  let totalChars = 0, totalItems = 0;
+  for (const r of rows) {
+    console.log(`  ${r.label.padEnd(24)} ${String(r.items).padStart(6)} ${fmtChars(r.chars).padStart(10)} ${fmtCost(r.chars).padStart(12)}`);
+    totalChars += r.chars;
+    totalItems += r.items;
+  }
+
+  console.log(`  ${'-'.repeat(56)}`);
+  console.log(`  ${'TOTAL'.padEnd(24)} ${String(totalItems).padStart(6)} ${fmtChars(totalChars).padStart(10)} ${fmtCost(totalChars).padStart(12)}`);
+  console.log(LINE);
+  console.log(priceNote);
+
+  const freeRemaining = Math.max(0, 1_000_000 - totalChars);
+  if (/neural2|wavenet/i.test(VOICE)) {
+    console.log(`  Free tier remaining: ${fmtChars(freeRemaining)} of 1,000,000 chars`);
+  }
+  console.log();
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
-  if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+  if (!dryRun && !process.env.GOOGLE_APPLICATION_CREDENTIALS) {
     console.warn([
       '',
       'WARNING: GOOGLE_APPLICATION_CREDENTIALS is not set.',
@@ -263,40 +366,44 @@ async function main() {
     ].join('\n'));
   }
 
-  const client = new TextToSpeechClient();
-  console.log(`\nGoogle Cloud TTS  |  voice: ${VOICE}`);
+  const client = dryRun ? null : new TextToSpeechClient();
 
-  const results = {};
+  console.log(`\nGoogle Cloud TTS  |  voice: ${VOICE}${dryRun ? '  [DRY RUN — no API calls]' : ''}`);
 
-  if (doWords) {
-    printSection('Vocabulary words');
-    results.words = await generateWords(client);
-  }
-
-  if (doArticles) {
-    printSection('Reading articles');
-    results.articles = await generateArticles(client);
-  }
-
-  // ── Final summary ──────────────────────────────────────────────────────────
-  const line = '─'.repeat(42);
-  console.log(`\n${line}`);
-  console.log('  Summary');
-  console.log(line);
+  const summaryRows = [];
   let anyErrors = false;
-  for (const [label, r] of Object.entries(results)) {
-    printSummary(label, r.generated, r.skipped, r.errors);
+
+  // Words
+  if (shouldRun('words')) {
+    if (!dryRun) {
+      const LINE = '─'.repeat(42);
+      console.log(`\n${LINE}\n  Vocabulary words\n${LINE}\n`);
+    }
+    const r = await generateWords(client);
+    summaryRows.push({ label: 'words (pronounce)', items: 437, chars: r.chars, ...r });
     if (r.errors > 0) anyErrors = true;
   }
-  console.log(line);
 
-  if (anyErrors) {
-    console.log('\n  Re-run without --force to retry only failed items.\n');
-    process.exit(1);
+  // Articles
+  const articleSections = ARTICLE_SOURCES.filter(s => shouldRun(s.key));
+  if (articleSections.length > 0) {
+    if (!dryRun) {
+      const LINE = '─'.repeat(42);
+      console.log(`\n${LINE}\n  Reading articles\n${LINE}`);
+    }
+    const { totals, bySection } = await generateArticles(client);
+    for (const s of bySection) {
+      summaryRows.push({ label: s.key, items: s.items, chars: s.chars });
+    }
+    if (totals.errors > 0) anyErrors = true;
   }
 
-  console.log('\n  Done. Commit the audio/ directory, then wire app.js to');
-  console.log('  use these files before falling back to speechSynthesis.\n');
+  printCostSummary(summaryRows);
+
+  if (!dryRun && anyErrors) {
+    console.log('  Re-run without --force to retry only failed items.\n');
+    process.exit(1);
+  }
 }
 
 main().catch(err => {
