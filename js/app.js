@@ -2691,10 +2691,13 @@
   var animalsCloseBtn       = document.getElementById('animals-close-btn');
   var animalsBackBtn        = document.getElementById('animals-back-btn');
   var animalsList           = document.getElementById('animals-list');
-  var animalsReadingEmoji   = document.getElementById('animals-reading-emoji');
-  var animalsReadingHabitat = document.getElementById('animals-reading-habitat');
-  var animalsReadingTitle   = document.getElementById('animals-reading-title');
-  var animalsReadingBody    = document.getElementById('animals-reading-body');
+  var animalsReadingEmoji       = document.getElementById('animals-reading-emoji');
+  var animalsReadingHabitat     = document.getElementById('animals-reading-habitat');
+  var animalsReadingTitle       = document.getElementById('animals-reading-title');
+  var animalsReadingBody        = document.getElementById('animals-reading-body');
+  var animalsReadingImageFigure = document.getElementById('animals-reading-image-figure');
+  var animalsReadingImage       = document.getElementById('animals-reading-image');
+  var animalsReadingImageCaption = document.getElementById('animals-reading-image-caption');
   var animalsQuizBtn        = document.getElementById('animals-quiz-btn');
   var animalsScrollContent  = document.getElementById('animals-scroll-content');
   var animalsScrollFill     = document.getElementById('animals-scroll-fill');
@@ -2794,6 +2797,17 @@
     animalsReadingEmoji.textContent = article.emoji;
     animalsReadingHabitat.textContent = article.habitat;
     animalsReadingTitle.textContent = article.title;
+    if (article.image) {
+      animalsReadingImage.src = article.image.url;
+      animalsReadingImage.alt = article.image.caption;
+      animalsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
+      animalsReadingImageFigure.classList.remove('hidden');
+    } else {
+      animalsReadingImage.src = '';
+      animalsReadingImage.alt = '';
+      animalsReadingImageCaption.textContent = '';
+      animalsReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(animalsReadingBody, article.paragraphs, animalWordObjects(article), animalsTTSBar);
     showAnimalsScreen(animalsReadingScreen);
     resetReadingScroll(animalsScrollContent, animalsScrollFill, animalsReadingScreen);

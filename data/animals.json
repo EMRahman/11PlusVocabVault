@@ -6,6 +6,11 @@
       "emoji": "🐆",
       "habitat": "African Savannah",
       "blurb": "The fastest land animal on Earth, the cheetah's entire body is a masterpiece of speed — shaped by millions of years of evolution into the ultimate sprinting machine.",
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Cheetah_%28Acinonyx_jubatus%29_female_2.jpg/640px-Cheetah_%28Acinonyx_jubatus%29_female_2.jpg",
+        "caption": "A cheetah on the African savannah",
+        "credit": "© Charles J. Sharp / Wikimedia Commons / CC BY-SA 4.0"
+      },
       "words": ["Swift", "Apex", "Nimble", "Ferocious", "Vigilant", "Resilient", "Stealthy", "Voracious"],
       "paragraphs": [
         "The cheetah is the fastest land animal on Earth, famous for being able to sprint at up to 70 miles per hour. It is swift — quick and rapid in a way almost nothing else can match — reaching top speed in just a few seconds from a standing start, faster than a sports car accelerating on a motorway. Found mainly on the open grasslands and savannahs of Africa, the cheetah has captured the imagination of people everywhere as one of nature's most breathtaking spectacles.",
