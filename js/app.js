@@ -3210,8 +3210,11 @@
   var fableReadingBody   = document.getElementById('fable-reading-body');
   var fableReadingMoral  = document.getElementById('fable-reading-moral');
   var fableQuizBtn       = document.getElementById('fable-quiz-btn');
-  var fableScrollContent = document.getElementById('fable-scroll-content');
-  var fableScrollFill    = document.getElementById('fable-scroll-fill');
+  var fableScrollContent        = document.getElementById('fable-scroll-content');
+  var fableScrollFill           = document.getElementById('fable-scroll-fill');
+  var fableReadingImageFigure   = document.getElementById('fable-reading-image-figure');
+  var fableReadingImage         = document.getElementById('fable-reading-image');
+  var fableReadingImageCaption  = document.getElementById('fable-reading-image-caption');
 
   function loadFableProgress() {
     try {
@@ -3302,6 +3305,17 @@
 
     fableReadingEmoji.textContent = fable.emoji;
     fableReadingTitle.textContent = fable.title;
+    if (fable.image) {
+      fableReadingImage.src = fable.image.url;
+      fableReadingImage.alt = fable.image.caption;
+      fableReadingImageCaption.textContent = fable.image.caption + ' — ' + fable.image.credit;
+      fableReadingImageFigure.classList.remove('hidden');
+    } else {
+      fableReadingImage.src = '';
+      fableReadingImage.alt = '';
+      fableReadingImageCaption.textContent = '';
+      fableReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(fableReadingBody, fable.paragraphs, fableWordObjects(fable), fableTTSBar);
     if (fable.moral) {
       fableReadingMoral.textContent = 'Moral: ' + fable.moral;
