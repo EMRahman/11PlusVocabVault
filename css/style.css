@@ -1978,8 +1978,6 @@ footer {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 280px;
-  object-fit: cover;
 }
 
 .article-image__caption {
