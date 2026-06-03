@@ -6,12 +6,26 @@
       "emoji": "🐢",
       "moral": "Slow and steady wins the race.",
       "blurb": "A proud hare mocks a slow tortoise — and learns a lesson about patience and persistence.",
-      "words": ["Proud", "Swift", "Astonished", "Determined", "Persistent", "Reluctant", "Weary", "Triumphant"],
+      "words": [
+        "Proud",
+        "Swift",
+        "Astonished",
+        "Determined",
+        "Persistent",
+        "Reluctant",
+        "Weary",
+        "Triumphant"
+      ],
       "paragraphs": [
         "Long ago, in a green meadow, lived a proud hare who loved to brag about how swift he was. He laughed at the tortoise, who plodded along on stumpy legs. \"You could never beat me,\" he said. The tortoise, calm and determined, simply replied, \"Let us race and see.\"",
         "The hare bounded ahead and was soon far in front. Feeling sure of victory, he lay down beneath a shady tree for a nap. The tortoise, persistent and steady, never paused. He passed the sleeping hare without a sound and kept on going, one slow step after another.",
         "When the hare woke, the sun was low. He bolted toward the finish line, but it was too late. The tortoise, weary but triumphant, was already there. The hare stood astonished, suddenly reluctant to meet anyone's eye."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/The_Tortoise_and_the_Hare_-_Project_Gutenberg_etext_19994.jpg/500px-The_Tortoise_and_the_Hare_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The tortoise reaches the finish line as the hare sleeps under a tree",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-boy-who-cried-wolf",
@@ -19,12 +33,24 @@
       "emoji": "🐺",
       "moral": "Liars are not believed even when they speak the truth.",
       "blurb": "A shepherd boy plays a mischievous trick once too often — and pays a wretched price.",
-      "words": ["Mischievous", "Frantic", "Bewildered", "Petrified", "Wretched", "Defiant"],
+      "words": [
+        "Mischievous",
+        "Frantic",
+        "Bewildered",
+        "Petrified",
+        "Wretched",
+        "Defiant"
+      ],
       "paragraphs": [
         "A young shepherd grew bored watching his sheep on the lonely hillside. To amuse himself, he played a mischievous trick. He ran down to the village shouting, \"Wolf! Wolf!\" The villagers came racing up, frantic and breathless, only to find the boy laughing. They went home bewildered and cross.",
         "He played the same trick the next day, and again the villagers came running. This time their faces were stern and defiant. \"Do not call us again unless it is true,\" they warned.",
         "On the third day a real wolf crept from the woods. The boy, petrified, screamed for help — but no one came. By evening, he sat among the scattered flock, wretched and alone, with no one left to believe him."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/The_Boy_Who_Cried_Wolf_-_Project_Gutenberg_etext_19994.jpg/500px-The_Boy_Who_Cried_Wolf_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The boy calls out to the village below from his hillside post",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-fox-grapes",
@@ -32,12 +58,26 @@
       "emoji": "🦊",
       "moral": "It is easy to despise what you cannot have.",
       "blurb": "A hungry fox tries to reach a tempting cluster of grapes — and discovers a curious way to feel better about failure.",
-      "words": ["Ravenous", "Eager", "Determined", "Faltered", "Weary", "Defiant", "Glistening", "Muttered"],
+      "words": [
+        "Ravenous",
+        "Eager",
+        "Determined",
+        "Faltered",
+        "Weary",
+        "Defiant",
+        "Glistening",
+        "Muttered"
+      ],
       "paragraphs": [
         "One hot afternoon, a fox padded through a vineyard. He was ravenous, and high on a trellis he spotted a cluster of plump, purple grapes, glistening in the sun. Eager and determined, he leapt up — but his paws missed by a whisker.",
         "He tried again, and again, and again. With every jump his strength faltered a little more, and at last he sank back, weary and panting on the dusty ground.",
         "The fox lifted his nose in the air, defiant. \"They are sour anyway,\" he muttered, and trotted off as if the grapes had never mattered at all."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/The_Fox_and_the_Grapes_-_Project_Gutenberg_etext_19994.jpg/500px-The_Fox_and_the_Grapes_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The fox leaps for the tempting cluster of grapes on the vine",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-north-wind-sun",
@@ -45,12 +85,24 @@
       "emoji": "☀️",
       "moral": "Gentleness often wins where force fails.",
       "blurb": "The bullying North Wind and the warm Sun argue over which of them is stronger.",
-      "words": ["Tempestuous", "Belligerent", "Stubborn", "Placid", "Serene", "Reluctant"],
+      "words": [
+        "Tempestuous",
+        "Belligerent",
+        "Stubborn",
+        "Placid",
+        "Serene",
+        "Reluctant"
+      ],
       "paragraphs": [
         "The North Wind and the Sun once quarrelled about which of them was stronger. The Wind was tempestuous and belligerent, boasting of all the trees he could uproot. The Sun smiled placidly. \"Let us settle it,\" he said. \"Whichever can make that traveller down there remove his cloak is the stronger.\"",
         "The Wind blew first. He howled and roared, hurling icy gusts at the traveller. But the more fiercely he blew, the more stubbornly the man wrapped his cloak about him.",
         "At last the Wind gave up, exhausted. Then the Sun shone — gently at first, then warmer and warmer. The air grew serene and golden. Soon the traveller, reluctant no longer, loosened his cloak and slung it gladly over one arm."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/The_North_Wind_and_the_Sun_-_Wind_-_Project_Gutenberg_etext_19994.jpg/500px-The_North_Wind_and_the_Sun_-_Wind_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The North Wind blows fiercely at the traveller wrapped in his cloak",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-lion-mouse",
@@ -58,12 +110,24 @@
       "emoji": "🦁",
       "moral": "No act of kindness, however small, is ever wasted.",
       "blurb": "A tiny mouse repays a great lion's mercy in a way nobody expected.",
-      "words": ["Ferocious", "Puny", "Compassion", "Enraged", "Valiant", "Compel"],
+      "words": [
+        "Ferocious",
+        "Puny",
+        "Compassion",
+        "Enraged",
+        "Valiant",
+        "Compel"
+      ],
       "paragraphs": [
         "A lion was dozing in the sun when a puny mouse scampered across his great paw. The lion woke with a snarl, ferocious and enraged, and pinned the tiny creature beneath one claw. \"Spare me!\" squeaked the mouse. \"One day I may repay you.\" The lion laughed at such a notion, but out of compassion he let the trembling mouse go.",
         "Some weeks later, the lion was caught fast in a hunter's net. He roared, but no strength could compel the ropes to loosen. The little mouse heard him and came running.",
         "With patient, valiant teeth, she gnawed through cord after cord until the great beast was free. The lion bowed his shaggy head. \"You spoke the truth,\" he said softly."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/The_Lion_and_the_Mouse_-_Project_Gutenberg_etext_19994.jpg/500px-The_Lion_and_the_Mouse_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The tiny mouse gnaws through the ropes of the hunter's net to free the lion",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-ant-grasshopper",
@@ -71,12 +135,25 @@
       "emoji": "🐜",
       "moral": "There is a time to work and a time to play.",
       "blurb": "While the ant works through the summer, the carefree grasshopper sings — until winter arrives.",
-      "words": ["Diligent", "Thrifty", "Lavish", "Ravenous", "Lament", "Provision", "Weary"],
+      "words": [
+        "Diligent",
+        "Thrifty",
+        "Lavish",
+        "Ravenous",
+        "Lament",
+        "Provision",
+        "Weary"
+      ],
       "paragraphs": [
         "All through the long summer, the ant was diligent and thrifty. She carried grains of wheat one by one to her nest, building a hidden store of provision for the cold months to come. The grasshopper watched her with amusement. He spent his days in lavish song, leaping among the warm grass.",
         "\"Why work so hard?\" he chirped. \"Come and sing with me.\" The ant only shook her head and kept on carrying.",
         "When winter came, the fields lay bare and white. The grasshopper, ravenous and weary, came to the ant's door. He began to lament his foolishness, but the ant simply said, \"In summer you sang. Now you may dance.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/The_Ant_and_the_Grasshopper_-_Project_Gutenberg_etext_19994.jpg/500px-The_Ant_and_the_Grasshopper_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The carefree grasshopper watches the industrious ant carry grain through the summer",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-town-country-mouse",
@@ -84,12 +161,25 @@
       "emoji": "🐭",
       "moral": "A simple life with peace is better than a rich one with fear.",
       "blurb": "A country mouse visits her cousin in the city — and learns that fine food has a price.",
-      "words": ["Tranquil", "Lavish", "Opulent", "Bustling", "Quaint", "Frantic", "Serene"],
+      "words": [
+        "Tranquil",
+        "Lavish",
+        "Opulent",
+        "Bustling",
+        "Quaint",
+        "Frantic",
+        "Serene"
+      ],
       "paragraphs": [
         "A country mouse lived in a quaint little burrow under a hedge. Her life was simple but tranquil. One day her cousin from town came to visit and turned up her nose at the plain crusts on offer. \"Come and stay with me,\" she said. \"You shall see how mice ought to live.\"",
         "The town mouse's home was opulent — a grand pantry of cheeses, cakes, and jellies. The city itself was bustling and bright. But just as the country mouse began her first lavish meal, a great dog burst in. The mice fled in a frantic scramble for cover.",
         "Trembling behind a jar, the country mouse said, \"Cousin, keep your feasts. I would rather nibble a crust in serene safety than dine on cake in fear.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/The_Town_Mouse_and_the_Country_Mouse_-_town_mice_-_Project_Gutenberg_etext_19994.jpg/500px-The_Town_Mouse_and_the_Country_Mouse_-_town_mice_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The two mice feast in the opulent city pantry before danger arrives",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-wolf-sheep-clothing",
@@ -97,12 +187,24 @@
       "emoji": "🐑",
       "moral": "Appearances are not always what they seem.",
       "blurb": "A cunning wolf disguises himself to slip in among the flock — but every plan can unravel.",
-      "words": ["Clandestine", "Concealed", "Stealthy", "Cautious", "Vigilant", "Evasive"],
+      "words": [
+        "Clandestine",
+        "Concealed",
+        "Stealthy",
+        "Cautious",
+        "Vigilant",
+        "Evasive"
+      ],
       "paragraphs": [
         "A hungry wolf longed to feast on the shepherd's sheep, but the shepherd's dogs were vigilant and would not let him near. So the wolf hatched a clandestine plan. He found an old sheepskin and pulled it over himself, then crept into the flock, stealthy and concealed.",
         "The sheep, cautious by nature, did not notice the stranger among them. The wolf grew bold and evasive, choosing his moment carefully.",
         "But that very evening, the shepherd needed mutton for supper. Reaching in among his flock, he took hold of the very first creature he touched — and a great surprise it was for everyone, the wolf most of all."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Wolf_sheeps_clothing_barlow.jpg/500px-Wolf_sheeps_clothing_barlow.jpg",
+        "caption": "The wolf disguised in a sheepskin creeps among the unsuspecting flock",
+        "credit": "Francis Barlow / Public Domain (1687)"
+      }
     },
     {
       "id": "fable-golden-eggs",
@@ -110,12 +212,26 @@
       "emoji": "🥚",
       "moral": "Greed often loses what it already has.",
       "blurb": "A farmer with an extraordinary goose grows greedy — and lives to regret his haste.",
-      "words": ["Abundant", "Voracious", "Impatient", "Reckless", "Wretched", "Lament", "Haste", "Muttered"],
+      "words": [
+        "Abundant",
+        "Voracious",
+        "Impatient",
+        "Reckless",
+        "Wretched",
+        "Lament",
+        "Haste",
+        "Muttered"
+      ],
       "paragraphs": [
         "A poor farmer once owned a goose that laid a single golden egg each morning. Before long his life was abundant in comforts he had never dreamed of. But the more he had, the more voracious his desire became.",
         "\"Why wait one egg a day?\" he muttered, growing impatient. \"There must be a whole heap inside her.\" In reckless haste, he seized a knife.",
         "Inside the goose, of course, was nothing at all unusual. He stood over her body, wretched and silent. From that day on, he had only the long years ahead in which to lament his foolish hurry."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/The_Goose_That_Laid_the_Golden_Eggs_-_Project_Gutenberg_etext_19994.jpg/500px-The_Goose_That_Laid_the_Golden_Eggs_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The farmer holds up a gleaming golden egg laid by his remarkable goose",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-dog-manger",
@@ -123,12 +239,24 @@
       "emoji": "🐕",
       "moral": "Do not begrudge others what you cannot use yourself.",
       "blurb": "A dog refuses to share the hay he cannot even eat — and the oxen lose their patience.",
-      "words": ["Stubborn", "Hostile", "Defiant", "Enraged", "Reluctant", "Budge"],
+      "words": [
+        "Stubborn",
+        "Hostile",
+        "Defiant",
+        "Enraged",
+        "Reluctant",
+        "Budge"
+      ],
       "paragraphs": [
         "A farm dog crept into the manger of the ox-stall and made himself a bed of soft, sweet hay. When the oxen returned, tired and hungry from a day's labour, the dog leapt up, hostile and defiant. He growled and snapped, refusing to budge.",
         "The oxen were enraged. \"You cannot eat the hay yourself,\" said the eldest, \"yet you forbid us to eat it. You are stubborn and unkind.\"",
         "The dog only bared his teeth, reluctant to give up his prize. The oxen turned away, hungry — but they spoke of him afterwards in every barn and field."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/The_Dog_in_the_Manger_-_Project_Gutenberg_etext_19994.jpg/500px-The_Dog_in_the_Manger_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The dog snarls from the manger, keeping the hungry oxen from their hay",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-crow-pitcher",
@@ -136,12 +264,23 @@
       "emoji": "🪶",
       "moral": "Necessity is the mother of invention.",
       "blurb": "A thirsty crow finds a pitcher of water just out of reach — and thinks her way to a clever solution.",
-      "words": ["Weary", "Ingenious", "Persistent", "Determined", "Triumphant"],
+      "words": [
+        "Weary",
+        "Ingenious",
+        "Persistent",
+        "Determined",
+        "Triumphant"
+      ],
       "paragraphs": [
         "On a hot, dusty day, a weary crow found a pitcher with a little water at the bottom. She thrust in her beak, but the water lay too low to reach. She pushed harder. She tipped the pitcher. Nothing worked.",
         "Then her sharp eye fell on a heap of pebbles beside the road. An ingenious idea took shape. One by one, she dropped pebbles into the pitcher. Slowly, patiently, persistently, the water rose.",
         "Soon the cool drink reached the brim, and the crow drank her fill — triumphant, and determined to remember the lesson always: a clever mind is worth a sharp beak any day."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/The_Crow_and_the_Pitcher_-_Project_Gutenberg_etext_19994.jpg/500px-The_Crow_and_the_Pitcher_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The clever crow drops pebbles into the pitcher to raise the water level",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-milkmaid-pail",
@@ -149,12 +288,25 @@
       "emoji": "🥛",
       "moral": "Do not count your chickens before they hatch.",
       "blurb": "A young milkmaid daydreams of fortune as she carries her pail home — and learns to keep her feet on the ground.",
-      "words": ["Whimsical", "Anticipation", "Reckless", "Lament", "Calamity", "Elated", "Proud"],
+      "words": [
+        "Whimsical",
+        "Anticipation",
+        "Reckless",
+        "Lament",
+        "Calamity",
+        "Elated",
+        "Proud"
+      ],
       "paragraphs": [
         "A milkmaid carried a full pail of fresh milk balanced on her head, walking home along a country lane. As she walked, whimsical thoughts began to dance in her mind. \"I shall sell the milk and buy eggs. From the eggs I shall raise chickens. With the chickens I shall buy a fine new gown.\"",
         "Her anticipation grew with every step. She imagined herself elated at the village fair, with all the lads asking her to dance, and she would toss her head proudly — like so!",
         "In her reckless excitement, she tossed her head in earnest. Down splashed the milk into the dust. There was nothing left to do but lament her little calamity all the long walk home."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/The_Milkmaid_and_Her_Pail_-_Project_Gutenberg_etext_19994.jpg/500px-The_Milkmaid_and_Her_Pail_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The milkmaid carries her pail, lost in daydreams of the fortune it will bring",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-bundle-sticks",
@@ -162,12 +314,24 @@
       "emoji": "🌿",
       "moral": "In unity there is strength.",
       "blurb": "An old farmer teaches his quarrelling sons a quiet lesson about standing together.",
-      "words": ["Contentious", "Fragile", "Robust", "Resilient", "Collective", "Stubborn"],
+      "words": [
+        "Contentious",
+        "Fragile",
+        "Robust",
+        "Resilient",
+        "Collective",
+        "Stubborn"
+      ],
       "paragraphs": [
         "An old farmer had four sons who were forever contentious, arguing over every little thing. As he lay dying, he called them to his bedside. He held out a bundle of sticks tied tightly together. \"Break this,\" he said.",
         "Each son tried in turn. They pushed and pulled, but the bundle was robust and would not break. Then their father untied the cord and handed them the sticks one by one. Each single stick was fragile, and each son snapped his easily.",
         "\"You see,\" said the old man softly. \"Alone you are easily broken. But your collective strength is resilient. Stand together, however stubborn the trouble, and nothing will overcome you.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/The_Bundle_of_Sticks_-_Project_Gutenberg_etext_19994.jpg/500px-The_Bundle_of_Sticks_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The old farmer demonstrates to his quarrelling sons the strength of unity",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-fox-crow",
@@ -175,12 +339,24 @@
       "emoji": "🧀",
       "moral": "Do not trust flatterers.",
       "blurb": "A cunning fox uses sweet words to coax a meal out of a vain crow.",
-      "words": ["Proud", "Captivating", "Astonished", "Eager", "Stealthy", "Lament"],
+      "words": [
+        "Proud",
+        "Captivating",
+        "Astonished",
+        "Eager",
+        "Stealthy",
+        "Lament"
+      ],
       "paragraphs": [
         "A crow perched in a tree with a fine piece of cheese in her beak. A fox, padding by below, looked up with stealthy eyes and grew very hungry. He came beneath the branch and spoke in his most captivating voice.",
         "\"What glossy feathers!\" he said. \"What a noble shape! Surely such a bird must have the sweetest voice in all the wood. Will you not sing for me?\" The crow, proud and eager to be admired, opened her beak to sing.",
         "Down dropped the cheese, straight into the fox's waiting jaws. The crow sat astonished on her branch, with nothing left to do but lament her silly pride."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Aesops_Fables-Rackham-008.jpg/500px-Aesops_Fables-Rackham-008.jpg",
+        "caption": "The cunning fox flatters the vain crow sitting in the tree above him",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-frog-ox",
@@ -188,12 +364,24 @@
       "emoji": "🐸",
       "moral": "Trying to outdo your betters can end badly.",
       "blurb": "A small frog meets a great ox — and refuses to accept that anything could be bigger than herself.",
-      "words": ["Proud", "Astonished", "Stupendous", "Collapse", "Yearned", "Bellowed"],
+      "words": [
+        "Proud",
+        "Astonished",
+        "Stupendous",
+        "Collapse",
+        "Yearned",
+        "Bellowed"
+      ],
       "paragraphs": [
         "A little frog hopped to the meadow and saw, for the first time, a great ox grazing in the sun. She was astonished. Such a stupendous creature she had never imagined. She hopped home and told her family all about him.",
         "Her father, a proud and pompous frog, refused to believe any creature could be larger than himself. He puffed himself up. \"Was he this big?\" he asked. \"Bigger,\" said his daughter. He puffed and puffed, and yearned to look grander still. \"This big?\" he bellowed.",
         "His daughter shook her head — and just as she did, the old frog gave one last great puff and burst with a small wet pop. So he collapsed in the grass, a lesson in trying to be what one is not."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Wenceslas_Hollar_-_Ox_and_frog.jpg/500px-Wenceslas_Hollar_-_Ox_and_frog.jpg",
+        "caption": "The puffed-up frog swells to rival the great ox standing before him",
+        "credit": "Wenceslas Hollar / Public Domain"
+      }
     },
     {
       "id": "fable-belling-cat",
@@ -201,12 +389,24 @@
       "emoji": "🔔",
       "moral": "It is easy to suggest a plan, harder to carry it out.",
       "blurb": "The mice agree on a clever idea to keep themselves safe — but no one is brave enough to act on it.",
-      "words": ["Cautious", "Clandestine", "Vigilant", "Daunt", "Hesitant", "Bewildered"],
+      "words": [
+        "Cautious",
+        "Clandestine",
+        "Vigilant",
+        "Daunt",
+        "Hesitant",
+        "Bewildered"
+      ],
       "paragraphs": [
         "The mice held a clandestine meeting in the cellar to decide what to do about the cat. He crept so quietly that even the most vigilant mouse never knew he was near until it was too late. Every mouse was cautious, but cautious was not enough.",
         "A clever young mouse stood up. \"Let us tie a bell around the cat's neck,\" he said. \"Then we shall hear him coming.\" The room erupted in cheers — a perfect plan!",
         "Then an old grey mouse spoke from the corner. \"And which of us,\" he asked gently, \"will tie it on?\" The cheers stopped. The mice looked at one another, hesitant, bewildered, and quite unable to daunt the great task they had only just praised."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Conseil_Tenu_par_les_Rats.jpg/500px-Conseil_Tenu_par_les_Rats.jpg",
+        "caption": "The mice assemble in solemn council to debate how to bell the dreaded cat",
+        "credit": "Gustave Doré / Public Domain"
+      }
     },
     {
       "id": "fable-hare-friends",
@@ -214,12 +414,24 @@
       "emoji": "🐇",
       "moral": "Many friends can mean no friends at all.",
       "blurb": "A friendly hare counts on her many companions in time of need — but help is harder to find than she thought.",
-      "words": ["Amiable", "Hospitality", "Reluctant", "Forsake", "Wretched", "Frantic"],
+      "words": [
+        "Amiable",
+        "Hospitality",
+        "Reluctant",
+        "Forsake",
+        "Wretched",
+        "Frantic"
+      ],
       "paragraphs": [
         "A hare was amiable to every creature in the wood. She offered hospitality to all who passed her burrow, and she counted dozens upon dozens as her friends.",
         "One morning the hounds were heard in the distance. The hare ran, frantic, to the horse. \"Carry me away!\" she begged. The horse shook his mane. \"Ask the bull,\" he said. The bull was busy. The goat was reluctant to bruise his back. The ram thought hounds might chase him too. One by one, every friend found a reason to forsake her.",
         "The hare stood alone, wretched and trembling, with the baying growing closer. She had counted her friends, but never thought to ask which ones were true."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Houghton_15459.615.33_-_Howitt,_hare_and_many_friends.jpg/500px-Houghton_15459.615.33_-_Howitt,_hare_and_many_friends.jpg",
+        "caption": "The hare pleads with her many fair-weather friends for help as the hounds approach",
+        "credit": "Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "fable-lions-share",
@@ -227,12 +439,24 @@
       "emoji": "🦁",
       "moral": "Power makes its own rules.",
       "blurb": "The lion goes hunting with three smaller animals — and shows them how shares are divided when he is in charge.",
-      "words": ["Ferocious", "Hostile", "Reluctant", "Astonished", "Daunt", "Eager"],
+      "words": [
+        "Ferocious",
+        "Hostile",
+        "Reluctant",
+        "Astonished",
+        "Daunt",
+        "Eager"
+      ],
       "paragraphs": [
         "A lion went hunting with a fox, a jackal, and a wolf. Together they brought down a great stag. The fox, eager to be fair, began to divide the meat into four equal parts.",
         "The lion sprang forward, ferocious and hostile. \"The first portion is mine, for I am king. The second is mine, for I am strongest. The third is mine, for I helped the most.\" He paused and bared his teeth. \"As for the fourth — let him who dares lay a paw on it.\"",
         "The three smaller hunters, daunted and reluctant, slunk away with empty bellies, astonished at how quickly a fair share could shrink to nothing at all."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/The_Lions_Share_-_Project_Gutenberg_etext_19994.jpg/500px-The_Lions_Share_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The lion claims every portion of the hunt's spoils, leaving nothing for his companions",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-oak-reeds",
@@ -240,12 +464,27 @@
       "emoji": "🌳",
       "moral": "Sometimes bending is wiser than standing firm.",
       "blurb": "A mighty oak mocks the slender reeds — until a great storm reveals which of them was truly strong.",
-      "words": ["Towering", "Supple", "Resilient", "Stubborn", "Tempestuous", "Collapse", "Contented", "Proud", "Thunderous"],
+      "words": [
+        "Towering",
+        "Supple",
+        "Resilient",
+        "Stubborn",
+        "Tempestuous",
+        "Collapse",
+        "Contented",
+        "Proud",
+        "Thunderous"
+      ],
       "paragraphs": [
         "A towering oak grew beside a river where slender reeds also lived. The oak looked down on the reeds. \"How weak you are,\" he said, \"bowing at every breath of wind.\" The reeds answered nothing, only swaying gently in the breeze. They were supple, and quite content.",
         "One night a tempestuous storm tore through the valley. The wind howled. The reeds bent low to the water and let the gusts pass over them, resilient and unbroken.",
         "But the oak stood stubborn and proud. Crack went his great trunk, and down he came with a thunderous collapse. The reeds rose again the next morning, dripping and whole, while the mighty oak lay still."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Aesops_Fables-Rackham-083.jpg/500px-Aesops_Fables-Rackham-083.jpg",
+        "caption": "The proud oak stands rigid while the slender reeds bend gracefully in the gale",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-mountain-labour",
@@ -253,12 +492,25 @@
       "emoji": "⛰️",
       "moral": "Great promises often produce small results.",
       "blurb": "A vast mountain heaves and groans, and the whole valley waits to see what wonder will appear.",
-      "words": ["Immense", "Towering", "Vast", "Astonished", "Puny", "Anticipation", "Stupendous"],
+      "words": [
+        "Immense",
+        "Towering",
+        "Vast",
+        "Astonished",
+        "Puny",
+        "Anticipation",
+        "Stupendous"
+      ],
       "paragraphs": [
         "Long ago, an immense, towering mountain began to groan. Smoke poured from its peak. The earth trembled. People from the vast valley below gathered in great crowds, full of anticipation.",
         "\"Something stupendous is coming,\" they whispered. \"Perhaps a new river. Perhaps a city of gold. Perhaps a beast no eye has ever seen.\"",
         "The mountain shuddered and groaned all day. At last, with one final tremor, it split open — and out crept a single, puny mouse. The crowd stood astonished. They had waited so long, only to find that great noise does not always mean great things."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/The_Mountain_in_Labour_-_Project_Gutenberg_etext_19994.jpg/500px-The_Mountain_in_Labour_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The crowd waits in anticipation as the great groaning mountain splits apart",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-hercules-wagoner",
@@ -266,12 +518,24 @@
       "emoji": "🛞",
       "moral": "Heaven helps those who help themselves.",
       "blurb": "A wagoner whose cart is stuck in the mud cries out for divine help — and gets advice he was not expecting.",
-      "words": ["Lament", "Sulky", "Passive", "Vigorous", "Determined", "Faltered"],
+      "words": [
+        "Lament",
+        "Sulky",
+        "Passive",
+        "Vigorous",
+        "Determined",
+        "Faltered"
+      ],
       "paragraphs": [
         "A wagoner was driving his cart along a muddy country road when the wheels sank deep into a rut. He stood beside it sulky and passive, gazing at the trouble, then began to lament loudly to the heavens. \"Hercules! Great Hercules, come and help me!\"",
         "To his great surprise, the mighty Hercules himself appeared on the road. But he did not lift a finger to help. \"Put your shoulder to the wheel,\" he said firmly. \"Whip up your horses. Push with all the vigorous strength you have.\"",
         "The wagoner, determined now, did as he was told. Where his courage had faltered, his work succeeded. The wheels turned free, and Hercules walked on, smiling."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Hercules_and_the_Wagoner_-_Project_Gutenberg_etext_19994.jpg/500px-Hercules_and_the_Wagoner_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "Hercules tells the idle wagoner to put his own shoulder to the mired wheel",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-two-pots",
@@ -279,12 +543,25 @@
       "emoji": "🏺",
       "moral": "Choose your companions to match your strength.",
       "blurb": "A brass pot and a clay pot are swept along a river together — with very different prospects.",
-      "words": ["Fragile", "Robust", "Cautious", "Reluctant", "Calamity", "Collision", "Drifted"],
+      "words": [
+        "Fragile",
+        "Robust",
+        "Cautious",
+        "Reluctant",
+        "Calamity",
+        "Collision",
+        "Drifted"
+      ],
       "paragraphs": [
         "A great flood swept down a river, carrying with it a pot of strong brass and a pot of fragile clay. The brass pot, robust and confident, called out kindly to his companion. \"Float along beside me, friend! Together we shall reach safety sooner.\"",
         "The clay pot was reluctant. \"You mean me well,\" he said, \"but I am cautious, and I beg you keep your distance. If we strike one another, the calamity will all be mine.\"",
         "The brass pot insisted. They drifted close. A single collision in the rushing current was enough — and the clay pot was lost, leaving the brass pot to sail on alone."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Aesops_Fables-Rackham-165.jpg/500px-Aesops_Fables-Rackham-165.jpg",
+        "caption": "The sturdy brass pot and the fragile clay pot are swept along the flooded river",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-boys-frogs",
@@ -292,12 +569,23 @@
       "emoji": "🐸",
       "moral": "What is fun for one may be misery for another.",
       "blurb": "A pond of frogs pleads with a band of stone-throwing boys to consider how their game feels from below.",
-      "words": ["Mischievous", "Reckless", "Lament", "Compassion", "Wretched"],
+      "words": [
+        "Mischievous",
+        "Reckless",
+        "Lament",
+        "Compassion",
+        "Wretched"
+      ],
       "paragraphs": [
         "A group of mischievous boys gathered at the edge of a pond. For fun, they began to throw stones at the frogs, laughing each time one was struck. They were reckless and did not think of harm.",
         "At last an old frog rose to the surface, gasping and wretched. He looked at the boys with great sad eyes. \"Children,\" he said, \"this is sport to you, but to us it is death. Have a little compassion, for we lament every stone you throw.\"",
         "The boys grew quiet, the stones falling from their hands. They had never thought, until that moment, how a game could feel from the other side."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/The_Boys_and_the_Frogs_-_Project_Gutenberg_etext_19994.jpg/500px-The_Boys_and_the_Frogs_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "An old frog rises from the pond to appeal to the stone-throwing boys",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-cat-mice",
@@ -305,12 +593,24 @@
       "emoji": "🐈",
       "moral": "Old foxes are not caught twice in the same trap.",
       "blurb": "An old cat tries clever tricks to lure mice from their holes — but the wise mice are not so easily fooled.",
-      "words": ["Clandestine", "Stealthy", "Evasive", "Cautious", "Vigilant", "Concealed"],
+      "words": [
+        "Clandestine",
+        "Stealthy",
+        "Evasive",
+        "Cautious",
+        "Vigilant",
+        "Concealed"
+      ],
       "paragraphs": [
         "An old cat had grown so famous for catching mice that the mice of the house held a clandestine meeting and resolved never to come down from the rafters again. They lived above the kitchen, cautious and vigilant, and the cat began to grow thin.",
         "So the cat tried a stealthy trick. He hung himself upside down from a peg as if dead. But the mice were not fooled. They peered down, evasive, and stayed where they were.",
         "Next, he rolled himself in flour and lay concealed in the meal-bin. An old mouse peered over the edge and called out, \"Friend, you may pretend to be many things, but I will trust you only when you are nothing but a sack of bones.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/The_Cat_and_the_Mice_-_Project_Gutenberg_etext_19994.jpg/500px-The_Cat_and_the_Mice_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The crafty cat plays dead while the cautious mice watch from the rafters above",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-miser-gold",
@@ -318,12 +618,24 @@
       "emoji": "💰",
       "moral": "What is the use of riches you never use?",
       "blurb": "A miser hides his gold in a hole and counts it every day — until the day it is gone.",
-      "words": ["Concealed", "Lament", "Wretched", "Forsake", "Opulent", "Forlorn"],
+      "words": [
+        "Concealed",
+        "Lament",
+        "Wretched",
+        "Forsake",
+        "Opulent",
+        "Forlorn"
+      ],
       "paragraphs": [
         "A miser sold all that he owned and bought a great lump of gold. He concealed it in a hole at the foot of an old wall. Each morning he came to look at it and count it, never letting anyone forsake him long enough to share his secret.",
         "One day the gold was gone. A neighbour had watched and dug it up in the night. The miser tore his hair and began to lament, wretched and forlorn.",
         "A passer-by listened. \"Why so sad?\" he asked. \"You never spent the gold. Put a stone in the hole instead and look at it each morning. It will serve you just as well — for what is opulent wealth that is never used?\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Aesops_Fables-Rackham-295.jpg/500px-Aesops_Fables-Rackham-295.jpg",
+        "caption": "The miser discovers his hidden gold has vanished, leaving him wretched and forlorn",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-eagle-arrow",
@@ -331,12 +643,24 @@
       "emoji": "🦅",
       "moral": "We often give our enemies the weapons that destroy us.",
       "blurb": "An eagle, struck by an arrow, sees with sad surprise where its sharp feathers came from.",
-      "words": ["Majestic", "Aloft", "Perilous", "Lament", "Wretched", "Petrified"],
+      "words": [
+        "Majestic",
+        "Aloft",
+        "Perilous",
+        "Lament",
+        "Wretched",
+        "Petrified"
+      ],
       "paragraphs": [
         "A majestic eagle wheeled high aloft above a rocky cliff, gazing down on the world below. Suddenly an arrow flew up and struck her wing. She tumbled, perilous and gasping, onto a ledge of stone.",
         "Lying there, wretched and petrified by pain, the eagle looked at the shaft that had brought her down. To her great sorrow, she saw a single brown feather fixed to the arrow's tail — one of her very own, taken long ago from a fallen comrade.",
         "She lifted her head one last time to the sky and began to lament. \"It is hard to be struck,\" she whispered, \"but harder still by one's own feather.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/The_Eagle_and_the_Arrow_-_Project_Gutenberg_etext_19994.jpg/500px-The_Eagle_and_the_Arrow_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The wounded eagle recognises her own feather fletching the arrow that struck her",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-stag-pool",
@@ -344,12 +668,25 @@
       "emoji": "🦌",
       "moral": "What is useful is worth more than what is beautiful.",
       "blurb": "A handsome stag admires his fine antlers and scorns his thin legs — until danger reveals which truly matters.",
-      "words": ["Proud", "Elegant", "Graceful", "Faltered", "Ferocious", "Forsake", "Swift"],
+      "words": [
+        "Proud",
+        "Elegant",
+        "Graceful",
+        "Faltered",
+        "Ferocious",
+        "Forsake",
+        "Swift"
+      ],
       "paragraphs": [
         "A stag bent to drink at a still pool and caught sight of himself in the water. He was very proud of his great spreading antlers, elegant and branching like a crown. \"How magnificent I am!\" he said. Then his eye fell on his legs. \"How thin and ugly,\" he sighed. \"Such graceful antlers, such poor legs.\"",
         "Just then he heard the ferocious baying of hounds. He sprang away, and his slender legs carried him swiftly across the open ground. Soon the dogs were left far behind.",
         "But the stag's pace faltered as he entered a thicket. His proud antlers caught fast in the branches. The legs he had scorned could not forsake him, but the antlers he had loved held him there until the hunters came."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Stag_at_the_Pool_-_Project_Gutenberg_etext_19994.jpg/500px-The_Stag_at_the_Pool_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The stag admires his magnificent antlers in the still water of the pool",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-fox-stork",
@@ -357,12 +694,24 @@
       "emoji": "🦩",
       "moral": "One bad turn deserves another.",
       "blurb": "The fox invites the stork to dinner and plays a mean trick — but the stork is not without her own ideas.",
-      "words": ["Lavish", "Hospitality", "Mischievous", "Frantic", "Bewildered", "Eager"],
+      "words": [
+        "Lavish",
+        "Hospitality",
+        "Mischievous",
+        "Frantic",
+        "Bewildered",
+        "Eager"
+      ],
       "paragraphs": [
         "The fox invited the stork to a lavish dinner, all warm and welcoming with great show of hospitality. But when the meal was served, it was thin soup in flat, shallow dishes. The fox lapped his up at once. The stork, with her long beak, could only dip and dip and grow frantic — and went home hungry.",
         "A week later the stork returned the invitation. The fox arrived eagerly, expecting another easy meal. But the stork served the dinner in tall, narrow jars. She lowered her long beak inside and ate happily.",
         "The fox could only sniff at the rim, bewildered and growling. The mischievous trick he had begun came back to bite him — as such tricks usually do."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Aesops_Fables-Rackham-065-1.jpg/500px-Aesops_Fables-Rackham-065-1.jpg",
+        "caption": "The stork dips her long beak into the tall jar while the fox can only sniff at the rim",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-dog-shadow",
@@ -370,12 +719,23 @@
       "emoji": "🦴",
       "moral": "Grasp at all, lose all.",
       "blurb": "A greedy dog crosses a bridge with a fine bone — and meets his own reflection in the water below.",
-      "words": ["Voracious", "Glistening", "Reckless", "Lament", "Wretched"],
+      "words": [
+        "Voracious",
+        "Glistening",
+        "Reckless",
+        "Lament",
+        "Wretched"
+      ],
       "paragraphs": [
         "A dog had stolen a fine, fat bone from the butcher and was carrying it home across a wooden bridge. He was voracious and very pleased with himself. Halfway across, he glanced down into the glistening water below.",
         "There, in the river, was another dog with another bone — and that bone looked even bigger. In reckless greed, he opened his jaws to snatch it.",
         "Down dropped his own bone into the river with a splash. The reflection vanished. The dog sat wretched on the bridge and began to lament, with nothing in his mouth but the bitter taste of his own foolishness."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aesops_Fables-Rackham-137.jpg/500px-Aesops_Fables-Rackham-137.jpg",
+        "caption": "The greedy dog drops his bone into the river, snatching at his own reflection",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-ass-lion-skin",
@@ -383,12 +743,23 @@
       "emoji": "🦁",
       "moral": "Borrowed feathers do not make the bird.",
       "blurb": "A donkey finds an old lion's skin and tries to play the king of the forest — but a single sound undoes him.",
-      "words": ["Concealed", "Proud", "Bellowed", "Astonished", "Wretched"],
+      "words": [
+        "Concealed",
+        "Proud",
+        "Bellowed",
+        "Astonished",
+        "Wretched"
+      ],
       "paragraphs": [
         "An ass found an old lion's skin abandoned at the edge of the forest. He wrapped it around himself and crept out, concealed beneath the great mane. The other animals saw him coming and fled in every direction. The ass swelled with pride.",
         "He stomped through the woods, proud and pleased with the fear he caused. He thought himself quite the king. To enjoy his glory all the more, he threw back his head and bellowed.",
         "But the bellow was no lion's roar — only an ass's bray. The animals stopped, listened, and turned. They came back at a run, and the wretched ass discovered that no borrowed skin can hide a foolish voice. They stood astonished at how nearly they had been fooled."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Aesops_Fables-Rackham-103.jpg/500px-Aesops_Fables-Rackham-103.jpg",
+        "caption": "The donkey in the lion's skin is exposed by his unmistakeable bray",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-bat-birds-beasts",
@@ -396,12 +767,23 @@
       "emoji": "🦇",
       "moral": "Those who try to please everyone end up pleasing no one.",
       "blurb": "When the birds and the beasts go to war, a clever bat tries to join the winning side again and again.",
-      "words": ["Evasive", "Hostile", "Forsake", "Wretched", "Reluctant"],
+      "words": [
+        "Evasive",
+        "Hostile",
+        "Forsake",
+        "Wretched",
+        "Reluctant"
+      ],
       "paragraphs": [
         "Long ago, the birds and the beasts went to war. The bat, who was both furry and winged, watched carefully. When the beasts seemed to win, he flew down and called himself a beast. When the birds seemed to win, he climbed up and called himself a bird. He was always evasive, never quite on either side.",
         "At last the two sides made peace. They compared notes about the strange creature who had changed his colours. Both grew hostile.",
         "The birds forsook him. The beasts forsook him. And so the bat became reluctant to come out at all, hiding by day in dark corners and only stirring at night — a wretched companion to neither tribe."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/The_Bat_the_Birds_and_the_Beasts_-_Project_Gutenberg_etext_19994.jpg/500px-The_Bat_the_Birds_and_the_Beasts_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The evasive bat switches allegiance between the birds and beasts as the battle turns",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-bear-travellers",
@@ -409,12 +791,24 @@
       "emoji": "🐻",
       "moral": "A true friend stands by you in trouble.",
       "blurb": "Two friends walking through a forest meet a great bear — and one of them learns a lasting lesson about loyalty.",
-      "words": ["Petrified", "Cautious", "Forsake", "Frantic", "Timid", "Wandered"],
+      "words": [
+        "Petrified",
+        "Cautious",
+        "Forsake",
+        "Frantic",
+        "Timid",
+        "Wandered"
+      ],
       "paragraphs": [
         "Two friends were walking through a deep forest when, all at once, a great bear came lumbering out from the trees. The first traveller, frantic and timid, scrambled at once into a tree without a thought for his companion. The second man, with no time to climb, fell flat on the ground and lay petrified, holding his breath.",
         "He had heard that bears will not touch the dead, so he stayed perfectly still and cautious. The bear sniffed at his ear and at his neck — then, satisfied, wandered off into the trees.",
         "His friend climbed down. \"What did the bear whisper to you?\" he asked, smiling weakly. The other looked at him steadily. \"He told me,\" he said, \"never to travel again with a friend who would forsake me at the first sign of danger.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/The_Bear_and_the_Travellers_-_Project_Gutenberg_etext_19994.jpg/500px-The_Bear_and_the_Travellers_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "One traveller hides in the tree while the other plays dead as the bear approaches",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-old-man-death",
@@ -422,12 +816,24 @@
       "emoji": "🪦",
       "moral": "We complain of our troubles, but cling to life.",
       "blurb": "A weary old woodcutter calls for Death to take him — and finds he does not really want her to come.",
-      "words": ["Weary", "Wretched", "Lament", "Hesitant", "Reluctant", "Forsake"],
+      "words": [
+        "Weary",
+        "Wretched",
+        "Lament",
+        "Hesitant",
+        "Reluctant",
+        "Forsake"
+      ],
       "paragraphs": [
         "An old man trudged home through the snow with a heavy bundle of sticks on his back. He was weary and wretched, and at last he could go no further. He let the bundle fall and sat upon a stone, beginning to lament his long, hard life.",
         "\"Death!\" he cried out. \"Come and forsake me from this misery. I would gladly go with you.\"",
         "To his great surprise, Death herself appeared at once. \"You called me?\" she asked gently. The old man went pale and hesitant. \"Oh — only,\" he stammered, suddenly reluctant, \"only to help me lift my bundle back upon my shoulders.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/The_Old_Man_and_Death_-_Project_Gutenberg_etext_19994.jpg/500px-The_Old_Man_and_Death_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "Death appears before the startled old woodcutter who called out in despair",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-fisherman-little-fish",
@@ -435,12 +841,24 @@
       "emoji": "🎣",
       "moral": "A small certainty is worth more than a large hope.",
       "blurb": "A tiny fish caught on a line begs for its freedom, promising to grow much larger if released.",
-      "words": ["Puny", "Cautious", "Lavish", "Resolute", "Hesitant", "Lament"],
+      "words": [
+        "Puny",
+        "Cautious",
+        "Lavish",
+        "Resolute",
+        "Hesitant",
+        "Lament"
+      ],
       "paragraphs": [
         "A poor fisherman cast his line into the sea, and after waiting all morning he caught a single small fish. He held it up, a puny silver thing flashing in the sun. The fish began to lament its fate. \"Please, kind sir, throw me back! I am no meal at all. Wait a year, and I shall be lavish and fat. Then catch me again.\"",
         "The fisherman thought for a moment, then shook his head, cautious and resolute. He was not hesitant for long.",
         "\"A small fish in my hand is worth more,\" he said, \"than a great fish in the sea.\" And home he went with his catch."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/The_Fisherman_and_the_Little_Fish_-_Project_Gutenberg_etext_19994.jpg/500px-The_Fisherman_and_the_Little_Fish_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The fisherman holds the tiny silver fish that begs to be thrown back and grow larger",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-wolf-crane",
@@ -448,12 +866,24 @@
       "emoji": "🪿",
       "moral": "Do not expect thanks from those who never give them.",
       "blurb": "A wolf with a bone stuck in his throat begs a long-necked crane for help — and learns what gratitude costs.",
-      "words": ["Ravenous", "Frantic", "Compassion", "Reluctant", "Wretched", "Compel"],
+      "words": [
+        "Ravenous",
+        "Frantic",
+        "Compassion",
+        "Reluctant",
+        "Wretched",
+        "Compel"
+      ],
       "paragraphs": [
         "A wolf was eating in his usual ravenous way when a sharp bone stuck fast in his throat. He ran here and there, frantic, but could not dislodge it. At last he met the crane, with her long, slender neck. \"Help me!\" he begged, his eyes brimming. \"Reach in and pull it out, and I shall reward you handsomely.\"",
         "The crane, full of compassion, was still reluctant. The wolf's promises at last compelled her. She thrust her long beak down his throat and drew out the bone.",
         "When she asked for her reward, the wolf only laughed, his teeth gleaming. \"Your reward, foolish bird, is that you put your head between a wolf's jaws and drew it out again.\" And he trotted off, leaving her wretched on the bank."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Milo_Winter_-_Aesop_for_Children_-_Wolf_and_Crane.jpg/500px-Milo_Winter_-_Aesop_for_Children_-_Wolf_and_Crane.jpg",
+        "caption": "The crane reaches her long neck into the wolf's throat to remove the lodged bone",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-lion-love",
@@ -461,12 +891,25 @@
       "emoji": "🦁",
       "moral": "Love can disarm even the strongest.",
       "blurb": "A great lion falls in love with a woodcutter's daughter — and gives away the very thing that made him great.",
-      "words": ["Majestic", "Tender", "Hesitant", "Petrified", "Clandestine", "Delicate", "Stout"],
+      "words": [
+        "Majestic",
+        "Tender",
+        "Hesitant",
+        "Petrified",
+        "Clandestine",
+        "Delicate",
+        "Stout"
+      ],
       "paragraphs": [
         "A majestic lion fell in love with the daughter of a poor woodcutter and went to her father to ask for her hand. The woodcutter was petrified. He could not refuse outright, so he spoke gently. \"My daughter is delicate. Your great teeth and claws would frighten her. If only you would let me trim them, then perhaps…\"",
         "The lion, tender and besotted, agreed at once. There was no clandestine plot in his heart, only love. He sat patiently while the woodcutter clipped his claws and filed his great teeth.",
         "Then the woodcutter, no longer hesitant, drove the lion away with a stout stick. The lion, now harmless, slunk into the woods — and learned, far too late, what love can cost the unwary."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Le_Lion_Amoureux.jpg/500px-Le_Lion_Amoureux.jpg",
+        "caption": "The lovesick lion surrenders his claws and teeth to win the woodcutter's daughter",
+        "credit": "Gustave Doré / Public Domain"
+      }
     },
     {
       "id": "fable-mice-council",
@@ -474,12 +917,23 @@
       "emoji": "🐭",
       "moral": "Plans need people willing to carry them out.",
       "blurb": "When the mice gather to choose a leader, they discover that talk is the easiest part of any plan.",
-      "words": ["Belligerent", "Cautious", "Hesitant", "Daunt", "Bewildered"],
+      "words": [
+        "Belligerent",
+        "Cautious",
+        "Hesitant",
+        "Daunt",
+        "Bewildered"
+      ],
       "paragraphs": [
         "The mice of an old house held a great council. The owl in the rafters had grown belligerent, and every night more of their kind were carried off. The boldest mouse rose to speak. \"We must drive the owl out!\" he cried. The others cheered.",
         "Then a cautious old mouse spoke. \"And how, exactly, shall we do this?\" The cheering stopped. Hesitant glances passed around the room.",
         "One mouse suggested a bell. Another suggested traps. Another simply suggested moving house. Every plan seemed to daunt the next mouse who heard it. They sat there bewildered until dawn, having decided nothing at all — for plans are easy to make and hard to do."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/The_Mice_in_Council_-_Project_Gutenberg_etext_19994.jpg/500px-The_Mice_in_Council_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The mice hold their great council and debate how to outwit the owl in the rafters",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-mercury-woodman",
@@ -487,12 +941,24 @@
       "emoji": "🪓",
       "moral": "Honesty is the best policy.",
       "blurb": "A poor woodman drops his axe into a river, and the god Mercury tests how truthful a man in trouble can be.",
-      "words": ["Devout", "Wretched", "Lament", "Astonished", "Voracious", "Forsake"],
+      "words": [
+        "Devout",
+        "Wretched",
+        "Lament",
+        "Astonished",
+        "Voracious",
+        "Forsake"
+      ],
       "paragraphs": [
         "A poor woodman was chopping at the edge of a deep river when his axe slipped from his hand and sank with a splash. He was wretched. The axe was his only living, and he began to lament loudly. He was a devout man, and he prayed for help. Suddenly Mercury rose from the water, holding up an axe of pure gold. \"Is this yours?\" he asked.",
         "The woodman shook his head, though he was tempted. Mercury raised an axe of silver. Again the woodman said no. At last Mercury raised the plain old iron axe. \"That one is mine,\" said the man, astonished and relieved.",
         "Mercury, pleased by such honesty, gave him all three. A voracious neighbour heard the story and threw his own axe into the river on purpose, hoping for the same reward. But Mercury, who does not forsake honest men, gave the greedy one nothing at all."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Mercury_and_the_Woodman_-_Project_Gutenberg_etext_19994.jpg/500px-Mercury_and_the_Woodman_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "Mercury rises from the river holding a golden axe to test the honest woodman",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-wolf-lamb",
@@ -500,12 +966,24 @@
       "emoji": "🐑",
       "moral": "A tyrant will always find an excuse.",
       "blurb": "A wolf finds a small lamb at the stream and looks for any reason — true or not — to call her his enemy.",
-      "words": ["Belligerent", "Defiant", "Timid", "Wretched", "Ferocious", "Lament"],
+      "words": [
+        "Belligerent",
+        "Defiant",
+        "Timid",
+        "Wretched",
+        "Ferocious",
+        "Lament"
+      ],
       "paragraphs": [
         "A wolf came to a stream to drink and saw a small lamb sipping water far downstream. He was belligerent and looking for a quarrel. \"How dare you muddy my drinking water!\" he growled.",
         "The lamb, timid but truthful, lifted her head. \"Please, sir, I cannot have done so. The water runs from you to me, not the other way.\" The wolf snarled, his eyes growing ferocious. He tried excuse after excuse. The lamb, growing braver, answered each in turn, almost defiant.",
         "At last the wolf gave up his arguing. \"In any case,\" he said, \"someone in your family insulted me last year — and that is reason enough.\" The little lamb had only time to lament before he sprang upon her, wretched and alone."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Oudry_wolf_%26_lamb.JPG/500px-Oudry_wolf_%26_lamb.JPG",
+        "caption": "The belligerent wolf confronts the innocent lamb drinking at the stream",
+        "credit": "Jean-Baptiste Oudry / Public Domain"
+      }
     },
     {
       "id": "fable-trumpeter",
@@ -513,12 +991,24 @@
       "emoji": "🎺",
       "moral": "Those who urge others to wrong are as guilty as those who do it.",
       "blurb": "A captured trumpeter begs for mercy, claiming he never fought — but his captors see his guilt clearly.",
-      "words": ["Lament", "Reluctant", "Forsake", "Belligerent", "Petrified", "Frantic"],
+      "words": [
+        "Lament",
+        "Reluctant",
+        "Forsake",
+        "Belligerent",
+        "Petrified",
+        "Frantic"
+      ],
       "paragraphs": [
         "A trumpeter, captured in battle, began to lament loudly before his captors. \"Spare me, I beg you! I am no warrior. I never raised a sword. I bore no weapon at all — only this brass trumpet. Surely you would not forsake mercy for a man with no blade?\"",
         "He was petrified, frantic to be saved. The soldiers, however, were not moved. One of them stepped forward and shook his head.",
         "\"That is why we punish you all the more,\" he said. \"You did not strike a single blow yourself, but with your belligerent music you stirred the courage of those who did. You were reluctant only to fight — never to send others into harm.\""
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Trumpeter_Taken_Prisoner2.jpg/500px-Trumpeter_Taken_Prisoner2.jpg",
+        "caption": "The captured trumpeter pleads for mercy, insisting he never wielded a sword",
+        "credit": "Walter Crane / Public Domain"
+      }
     },
     {
       "id": "fable-crab-mother",
@@ -526,12 +1016,24 @@
       "emoji": "🦀",
       "moral": "Lead by example, not by words.",
       "blurb": "A mother crab scolds her child for walking sideways — without noticing how she walks herself.",
-      "words": ["Stubborn", "Defiant", "Faltered", "Lament", "Reluctant", "Lurched"],
+      "words": [
+        "Stubborn",
+        "Defiant",
+        "Faltered",
+        "Lament",
+        "Reluctant",
+        "Lurched"
+      ],
       "paragraphs": [
         "A young crab scuttled across the wet sand, walking sideways as crabs always do. His mother watched him from a rock and grew cross. \"How awkwardly you walk!\" she snapped. \"Walk forwards, like a respectable creature.\"",
         "The young crab was reluctant. \"I would,\" he said softly. \"But Mother, will you show me how?\"",
         "The old crab stepped down onto the sand, stubborn and a little defiant. She tried to walk forwards. She lurched. She faltered. She tipped right onto her back. She began to lament her own foolish demand, and the young crab quietly went on walking the only way he knew."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/The_Crab_and_Its_Mother_-_Project_Gutenberg_etext_19994.jpg/500px-The_Crab_and_Its_Mother_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The mother crab tries and fails to walk forwards after scolding her young one",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     },
     {
       "id": "fable-frogs-king",
@@ -539,12 +1041,23 @@
       "emoji": "🐸",
       "moral": "Be careful what you wish for.",
       "blurb": "The frogs of a quiet pond decide they want a king to rule them — and get more rulers than they expected.",
-      "words": ["Agitated", "Reluctant", "Lament", "Ferocious", "Wretched"],
+      "words": [
+        "Agitated",
+        "Reluctant",
+        "Lament",
+        "Ferocious",
+        "Wretched"
+      ],
       "paragraphs": [
         "The frogs of a quiet pond grew agitated. \"We have no leader!\" they cried. \"Send us a king!\" The great god Jupiter, amused, threw down a heavy log. It landed with a splash. At first the frogs were terrified and hid in the mud. Then, finding it never moved, they grew bold and even sat upon their new king. Soon they were grumbling again.",
         "\"This king is too quiet,\" they complained. \"Send us a real one!\" Jupiter, reluctant but tired of their whining, sent down a great stork instead.",
         "The stork waded into the pond on long pink legs and began at once to eat them, one by one — ferocious and tireless. The frogs hid in the reeds, wretched, beginning to lament the very wish they had so loudly made."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Aesops_Fables-Rackham-121.jpg/500px-Aesops_Fables-Rackham-121.jpg",
+        "caption": "The fearsome stork devours the frogs who wished so loudly for a real king",
+        "credit": "Arthur Rackham / Public Domain (1912)"
+      }
     },
     {
       "id": "fable-bear-bees",
@@ -552,12 +1065,23 @@
       "emoji": "🐝",
       "moral": "Better to bear one wrong quietly than to make many.",
       "blurb": "A bear is stung by a single bee — and his fury turns a small hurt into a great one.",
-      "words": ["Enraged", "Frantic", "Reckless", "Lament", "Faltered"],
+      "words": [
+        "Enraged",
+        "Frantic",
+        "Reckless",
+        "Lament",
+        "Faltered"
+      ],
       "paragraphs": [
         "A bear nosing about for honey was stung sharply on the snout by one little bee. The bear was enraged. With a great roar he reared up and struck the hive a mighty blow, reckless and not thinking what would come next.",
         "Out poured a humming cloud of bees — hundreds upon hundreds of them. The bear was soon frantic, running this way and that as the bees stung him a thousand times over.",
         "He stumbled into the river, faltered, and lay there panting. There was nothing left to do but lament. One small sting he could have borne; in his fury, he had earned himself a forest's worth."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Jan_van_Kessel_%28I%29_-_Four_scenes_from_Aesop%27s_fables%2C_The_bear_and_the_bees.jpg/500px-Jan_van_Kessel_%28I%29_-_Four_scenes_from_Aesop%27s_fables%2C_The_bear_and_the_bees.jpg",
+        "caption": "The reckless bear swipes at the hive and is engulfed in a furious cloud of bees",
+        "credit": "Jan van Kessel (I) / Public Domain"
+      }
     },
     {
       "id": "fable-vain-jackdaw",
@@ -565,12 +1089,26 @@
       "emoji": "🪶",
       "moral": "Borrowed beauty fools no one for long.",
       "blurb": "A plain jackdaw dresses himself in peacock feathers — and discovers that fine clothes do not make fine friends.",
-      "words": ["Proud", "Elegant", "Captivating", "Wretched", "Forsake", "Astonished", "Lament", "Dazzling"],
+      "words": [
+        "Proud",
+        "Elegant",
+        "Captivating",
+        "Wretched",
+        "Forsake",
+        "Astonished",
+        "Lament",
+        "Dazzling"
+      ],
       "paragraphs": [
         "A jackdaw found a heap of bright peacock feathers dropped by the proud birds in the garden. He fixed them carefully to his own black feathers and stepped out, elegant and dazzling, as if he had been a peacock all along. He felt sure he would be captivating to everyone.",
         "He marched into the peacocks' grand parade. But the peacocks were astonished, then offended. They pecked sharply at him and pulled away every borrowed feather. He fled, wretched and bare.",
         "He returned to his own kind, but the other jackdaws would not forsake their old anger. \"You scorned us when you thought yourself fine,\" they said. He could only lament — twice rejected, by a vanity all his own."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/The_Raven_Robbed_of_the_Feathers_He_Wore_to_Adorn_Himself_by_Melchior_d%27Hondecoeter_Mauritshuis_59.jpg/500px-The_Raven_Robbed_of_the_Feathers_He_Wore_to_Adorn_Himself_by_Melchior_d%27Hondecoeter_Mauritshuis_59.jpg",
+        "caption": "The jackdaw is stripped of his borrowed peacock feathers by the outraged birds",
+        "credit": "Melchior d'Hondecoeter / Public Domain"
+      }
     },
     {
       "id": "fable-ant-dove",
@@ -578,12 +1116,24 @@
       "emoji": "🕊️",
       "moral": "Kindness is never wasted.",
       "blurb": "An ant rescued from drowning finds a way to repay the dove who saved her.",
-      "words": ["Compassion", "Frantic", "Valiant", "Diligent", "Astonished", "Tranquil"],
+      "words": [
+        "Compassion",
+        "Frantic",
+        "Valiant",
+        "Diligent",
+        "Astonished",
+        "Tranquil"
+      ],
       "paragraphs": [
         "An ant came down to a tranquil stream for a drink and was swept into the water. She struggled, frantic and small, sure she would drown. A dove sitting in a tree saw her and was filled with compassion. She plucked a leaf and let it fall onto the surface. The ant climbed on board and floated safely to the bank.",
         "Later that day, a hunter crept beneath the tree and raised his bow at the dove. The ant, diligent in her gratitude, ran up his bare foot and bit him sharply.",
         "The hunter yelped. His shot went wild. The dove flew up unhurt, astonished, and the ant, valiant in her tiny way, had paid back her debt in full."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/The_Ant_and_the_Dove_-_Project_Gutenberg_etext_19994.jpg/500px-The_Ant_and_the_Dove_-_Project_Gutenberg_etext_19994.jpg",
+        "caption": "The grateful ant bites the hunter's foot, saving the dove who once rescued her",
+        "credit": "Milo Winter / Public Domain (1919)"
+      }
     }
   ]
 }
