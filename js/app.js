@@ -2185,6 +2185,9 @@ import {
   var storyQuizBtn       = document.getElementById('story-quiz-btn');
   var storyScrollContent = document.getElementById('story-scroll-content');
   var storyScrollFill    = document.getElementById('story-scroll-fill');
+  var storyReadingImageFigure  = document.getElementById('story-reading-image-figure');
+  var storyReadingImage        = document.getElementById('story-reading-image');
+  var storyReadingImageCaption = document.getElementById('story-reading-image-caption');
 
   function loadStoryProgress() {
     try {
@@ -2275,6 +2278,19 @@ import {
 
     storyReadingEmoji.textContent = story.emoji;
     storyReadingTitle.textContent = story.title;
+    if (story.image) {
+      storyReadingImage.onerror = function () { storyReadingImageFigure.classList.add('hidden'); };
+      storyReadingImage.src = story.image.url;
+      storyReadingImage.alt = story.image.caption;
+      storyReadingImageCaption.textContent = story.image.caption + ' — ' + story.image.credit;
+      storyReadingImageFigure.classList.remove('hidden');
+    } else {
+      storyReadingImage.onerror = null;
+      storyReadingImage.src = '';
+      storyReadingImage.alt = '';
+      storyReadingImageCaption.textContent = '';
+      storyReadingImageFigure.classList.add('hidden');
+    }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
@@ -2515,11 +2531,13 @@ import {
     historyReadingEra.textContent = article.era;
     historyReadingTitle.textContent = article.title;
     if (article.image) {
+      historyReadingImage.onerror = function () { historyReadingImageFigure.classList.add('hidden'); };
       historyReadingImage.src = article.image.url;
       historyReadingImage.alt = article.image.caption;
       historyReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
       historyReadingImageFigure.classList.remove('hidden');
     } else {
+      historyReadingImage.onerror = null;
       historyReadingImage.src = '';
       historyReadingImage.alt = '';
       historyReadingImageCaption.textContent = '';
@@ -2765,11 +2783,13 @@ import {
     animalsReadingHabitat.textContent = article.habitat;
     animalsReadingTitle.textContent = article.title;
     if (article.image) {
+      animalsReadingImage.onerror = function () { animalsReadingImageFigure.classList.add('hidden'); };
       animalsReadingImage.src = article.image.url;
       animalsReadingImage.alt = article.image.caption;
       animalsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
       animalsReadingImageFigure.classList.remove('hidden');
     } else {
+      animalsReadingImage.onerror = null;
       animalsReadingImage.src = '';
       animalsReadingImage.alt = '';
       animalsReadingImageCaption.textContent = '';
@@ -3015,11 +3035,13 @@ import {
     insectsReadingHabitat.textContent = article.habitat;
     insectsReadingTitle.textContent = article.title;
     if (article.image) {
+      insectsReadingImage.onerror = function () { insectsReadingImageFigure.classList.add('hidden'); };
       insectsReadingImage.src = article.image.url;
       insectsReadingImage.alt = article.image.caption;
       insectsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
       insectsReadingImageFigure.classList.remove('hidden');
     } else {
+      insectsReadingImage.onerror = null;
       insectsReadingImage.src = '';
       insectsReadingImage.alt = '';
       insectsReadingImageCaption.textContent = '';
@@ -3259,11 +3281,13 @@ import {
     fableReadingEmoji.textContent = fable.emoji;
     fableReadingTitle.textContent = fable.title;
     if (fable.image) {
+      fableReadingImage.onerror = function () { fableReadingImageFigure.classList.add('hidden'); };
       fableReadingImage.src = fable.image.url;
       fableReadingImage.alt = fable.image.caption;
       fableReadingImageCaption.textContent = fable.image.caption + ' — ' + fable.image.credit;
       fableReadingImageFigure.classList.remove('hidden');
     } else {
+      fableReadingImage.onerror = null;
       fableReadingImage.src = '';
       fableReadingImage.alt = '';
       fableReadingImageCaption.textContent = '';
