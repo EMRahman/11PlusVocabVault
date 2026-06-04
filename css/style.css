@@ -4839,3 +4839,126 @@ footer {
   .beast-quiz { bottom: 0.5rem; padding: 0.9rem 0.95rem 1rem; }
   .beast-status { font-size: 0.76rem; }
 }
+
+/* ===========================
+   Word in the Wild Mode
+   =========================== */
+
+.wild-launch-btn {
+  background: linear-gradient(135deg, #052e16 0%, #166534 60%, #16a34a 100%);
+}
+.wild-launch-btn:hover { filter: brightness(1.1); }
+
+.wild-game-inner {
+  padding: 1rem 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wild-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wild-phase-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #166534;
+}
+
+.wild-phase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.wild-target-word {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.wild-word-type {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.wild-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.wild-sentence {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: #f0fdf4;
+  border-left: 3px solid #16a34a;
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 0.9rem;
+  margin: 0;
+}
+
+.wild-word-highlight {
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 800;
+  border-radius: 4px;
+  padding: 0.05em 0.2em;
+  border-bottom: 2px solid #16a34a;
+}
+
+.wild-blank-sentence {
+  font-size: clamp(1rem, 3.2vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.55;
+  color: var(--color-text);
+  background: #f9fafb;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.25rem;
+  margin: 0;
+}
+
+.wild-phase3-prompt {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.wild-phase3-prompt strong {
+  color: var(--color-text);
+}
+
+.wild-definition-reveal {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  border-radius: var(--radius-card);
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+
+.wild-next-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 480px) {
+  .wild-game-inner { padding: 0.85rem 1rem 1.25rem; }
+}
