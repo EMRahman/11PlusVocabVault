@@ -69,9 +69,11 @@ README.md SPEC.md   # Human/product-facing (may have stale counts; don't trust n
 
 Word schema (`words.json`): `word, word_type, pronunciation, definition,
 sentence_usage, synonyms[], antonyms[], usefulness_rating (1–5)`, plus a
-pipeline-baked `themed_quest` used by Story Quest. Schemas are enforced by
-`test/data-integrity.test.js` — **update that test when you add a data file or
-collection.**
+pipeline-baked `themed_quest` used by Story Quest (its `theme`, `word`, and
+pre-blanked `sentence` are required; `synonym`/`antonym` are optional). The word
+schema, the `themed_quest` payload, and every content-collection key are
+enforced by `test/data-integrity.test.js` — **update that test when you add a
+data file or collection.**
 
 ## Key patterns (read before editing app.js)
 

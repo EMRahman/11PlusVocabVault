@@ -56,6 +56,24 @@ test('synonyms and antonyms are non-empty arrays of non-empty strings', () => {
   }
 });
 
+test('every word has a usable pre-baked themed_quest for Story Quest', () => {
+  // Story Quest (app.js) reads wordObj.themed_quest at runtime: `theme` selects
+  // the world, `sentence` is the pre-blanked cloze, and `word` is the answer. A
+  // word shipped without it passes the other checks but silently degrades the
+  // mode. synonym/antonym are intentionally optional — Story Quest falls back to
+  // the sentence cloze when a themed relation is absent.
+  const { words } = readJSON('words.json');
+  for (const w of words) {
+    const tq = w.themed_quest;
+    assert.ok(tq && typeof tq === 'object', `${w.word}: missing themed_quest`);
+    for (const field of ['theme', 'word', 'sentence']) {
+      assert.equal(typeof tq[field], 'string', `${w.word}: themed_quest.${field} must be a string`);
+      assert.notEqual(tq[field].trim(), '', `${w.word}: themed_quest.${field} must not be empty`);
+    }
+    assert.ok(/_/.test(tq.sentence), `${w.word}: themed_quest.sentence must contain a "_____" cloze blank`);
+  }
+});
+
 test('word names are unique (duplicates are silently hidden by findWordByName)', () => {
   const { words } = readJSON('words.json');
   const seen = new Set();
