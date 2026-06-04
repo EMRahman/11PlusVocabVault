@@ -30,7 +30,10 @@ function scan() {
     const src = readFileSync(join(TEST_DIR, f), 'utf8');
     tests += (src.match(/(?<!\.)\btest\(/g) || []).length; // exclude RegExp .test(
     asserts += (src.match(/\bassert(?:\.\w+)?\(/g) || []).length;
-    if (/\.(?:skip|only|todo)\(|\b(?:skip|only):\s*true/.test(src)) disabled.push(f);
+    // Catch every disable form node:test accepts: method (`.skip()`/`.only()`/
+    // `.todo()`, incl. context `t.skip()`) and options (`{ skip|todo|only: true }`
+    // or a string reason `{ skip: 'why' }`). All keep the `test(` count intact.
+    if (/\.(?:skip|only|todo)\(|\b(?:skip|only|todo)\s*:\s*(?:true|['"])/.test(src)) disabled.push(f);
   }
   return { tests, asserts, disabled };
 }
