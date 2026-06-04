@@ -30,6 +30,28 @@ node --check js/app.js # syntax-check any file you edited (esp. the big ones)
 - CI = `.github/workflows/test.yml` (just `node --test`). A second workflow,
   `update-build-info.yml`, runs on push to `main` (see Gotchas).
 
+## Test & CI governance
+
+The tests are the **only** automated safety net — there are no browser/DOM tests
+and you can't run the app, so `node --test` is the sole check that a change is
+correct. Treat `test/` and `.github/workflows/` as load-bearing.
+
+- **Adding or strengthening tests is always welcome — no approval needed.** When
+  you fix a bug or add behaviour, add coverage in the same PR.
+- **Never weaken the safety net to get a green build.** Do not delete tests, skip
+  or disable them (`test.skip`, `.only`, `.todo`, `skip: true`, commenting out,
+  early `return`), loosen or remove assertions, relax the `data-integrity`
+  checks, or disable/relax CI in `.github/workflows/`. Each of these needs
+  **explicit human approval** and must be called out prominently in the PR
+  description with the reason.
+- **If a test fails, fix the code, not the test.** If a test is genuinely wrong
+  or obsolete, don't quietly change it — flag it in the PR and get explicit human
+  sign-off, with the reasoning.
+- `test/coverage-floor.test.js` enforces this mechanically: it fails if the
+  test/assertion count drops below a committed baseline, or if any test is
+  skipped. Lowering a baseline there is itself a weakening change — same approval
+  rule applies.
+
 ## Layout
 
 ```
