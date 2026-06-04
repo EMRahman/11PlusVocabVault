@@ -83,6 +83,7 @@ test('content collections expose their expected non-empty array', () => {
     'history.json': 'articles',
     'proverbs.json': 'collections',
     'stories.json': 'stories',
+    'comics.json': 'comics',
   };
   for (const [file, key] of Object.entries(collections)) {
     const data = readJSON(file);
@@ -91,4 +92,35 @@ test('content collections expose their expected non-empty array', () => {
       `${file}: expected a non-empty "${key}" array`,
     );
   }
+});
+
+test('every comic has a title, blurb, glossary words, and renderable panels', () => {
+  // The comic renderer (js/app.js) reads these fields directly; a missing one
+  // would break Comic Mode at runtime. `char` must match a known SVG generator
+  // (COMIC_SVG keys) — an unknown value silently falls back to Star-Sloth and
+  // would mask an authoring typo.
+  const KNOWN_CHARS = new Set(['starSloth', 'jolt', 'admiral', 'overClock']);
+  const { comics } = readJSON('comics.json');
+  comics.forEach((comic, i) => {
+    const label = comic.title || `comic #${i}`;
+    for (const field of ['title', 'blurb']) {
+      assert.equal(typeof comic[field], 'string', `${label}: ${field} must be a string`);
+      assert.notEqual(comic[field].trim(), '', `${label}: ${field} must not be empty`);
+    }
+
+    assert.ok(Array.isArray(comic.words) && comic.words.length > 0, `${label}: words must be a non-empty array`);
+    for (const w of comic.words) {
+      assert.equal(typeof w.word, 'string', `${label}: a word entry is missing its word`);
+      assert.notEqual(w.word.trim(), '', `${label}: a word entry has an empty word`);
+      assert.equal(typeof w.definition, 'string', `${label}: "${w.word}" is missing a definition`);
+      assert.notEqual(w.definition.trim(), '', `${label}: "${w.word}" has an empty definition`);
+    }
+
+    assert.ok(Array.isArray(comic.panels) && comic.panels.length > 0, `${label}: panels must be a non-empty array`);
+    comic.panels.forEach((p, j) => {
+      assert.ok(KNOWN_CHARS.has(p.char), `${label}: panel ${j} has unknown char ${JSON.stringify(p.char)}`);
+      assert.equal(typeof p.pose, 'string', `${label}: panel ${j} must have a string pose`);
+      assert.notEqual(p.pose.trim(), '', `${label}: panel ${j} has an empty pose`);
+    });
+  });
 });
