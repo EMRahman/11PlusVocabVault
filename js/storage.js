@@ -5,7 +5,7 @@
 // bindings are imported read-only elsewhere.
 'use strict';
 
-import { viewCounts, mastery } from './store.js?v=202606041001';
+import { viewCounts, mastery } from './store.js';
 
 var VIEW_COUNTS_KEY = 'vocabVault_viewCounts';
 var MASTERY_KEY = 'vocabVault_mastery';

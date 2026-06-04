@@ -11,17 +11,17 @@ import {
   pickDistractors,
   getSentenceBlank,
   wordVariants,
-} from './dom-utils.js?v=202606041001';
+} from './dom-utils.js';
 
-import { setWords, findWordByName } from './data.js?v=202606041001';
-import { viewCounts, mastery } from './store.js?v=202606041001';
+import { setWords, findWordByName } from './data.js';
+import { viewCounts, mastery } from './store.js';
 import {
   loadViewCounts,
   incrementViewCount,
   loadMastery,
   getMasteryStatus,
   recordAnswer,
-} from './storage.js?v=202606041001';
+} from './storage.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
