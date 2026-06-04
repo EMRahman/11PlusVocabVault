@@ -1226,16 +1226,10 @@ import {
       reopenStoryReading();
     } else if (returnTo === 'news') {
       reopenNewsReading();
-    } else if (returnTo === 'history') {
-      reopenHistoryReading();
-    } else if (returnTo === 'animals') {
-      reopenAnimalsReading();
-    } else if (returnTo === 'insects') {
-      reopenInsectsReading();
-    } else if (returnTo === 'fable') {
-      reopenFableReading();
     } else if (returnTo === 'proverbs') {
       reopenProverbsReading();
+    } else if (readingReturnHandlers[returnTo]) {
+      readingReturnHandlers[returnTo]();
     } else {
       quizLaunchBtn.focus();
     }
@@ -2406,1011 +2400,318 @@ import {
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // HISTORY MODE
-  // A timeline of hand-written history articles — from the Big Bang to today —
-  // each featuring vocabulary words in context, followed by a quiz.
+  // READING MODES — History · Animals · Insects · Fable
+  // These four share one two-screen flow (library → reading → scoped quiz);
+  // createReadingMode() builds each from a small config. Per-mode quirks are
+  // just config fields: subtitleField (the card/reading subtitle — history='era',
+  // animals/insects='habitat') and moralField (fable's "Moral: …" footer).
+  // Proverbs Mode is deliberately NOT folded in here — it has a culture-picker
+  // layer, a third screen, and native-script proverb cards.
   // ═══════════════════════════════════════════════════════════════════════════
 
-  var HISTORY_PROGRESS_KEY = 'vocabVault_historyProgress';
-  var historyArticles = [];
-  var historyProgress = {};
-  var currentArticle = null;
-  var historyTTSBar = null;
+  // returnTo id -> a fn that reopens that mode's reading view, so the quiz can
+  // send the reader back where they launched it from (see closeQuizOverlay).
+  var readingReturnHandlers = {};
 
-  var historyLaunchBtn      = document.getElementById('history-launch-btn');
-  var historyOverlay        = document.getElementById('history-overlay');
-  var historyLibraryScreen  = document.getElementById('history-library-screen');
-  var historyReadingScreen  = document.getElementById('history-reading-screen');
-  var historyCloseBtn       = document.getElementById('history-close-btn');
-  var historyBackBtn        = document.getElementById('history-back-btn');
-  var historyList           = document.getElementById('history-list');
-  var historyReadingEmoji   = document.getElementById('history-reading-emoji');
-  var historyReadingEra     = document.getElementById('history-reading-era');
-  var historyReadingTitle   = document.getElementById('history-reading-title');
-  var historyReadingBody    = document.getElementById('history-reading-body');
-  var historyQuizBtn        = document.getElementById('history-quiz-btn');
-  var historyScrollContent  = document.getElementById('history-scroll-content');
-  var historyScrollFill     = document.getElementById('history-scroll-fill');
-  var historyReadingImageFigure  = document.getElementById('history-reading-image-figure');
-  var historyReadingImage        = document.getElementById('history-reading-image');
-  var historyReadingImageCaption = document.getElementById('history-reading-image-caption');
+  function createReadingMode(config) {
+    var prefix    = config.prefix;
+    var itemNoun  = config.itemNoun;                 // 'article' | 'fable'
+    var itemTitle = itemNoun.charAt(0).toUpperCase() + itemNoun.slice(1);
 
-  function loadHistoryProgress() {
-    try {
-      var raw = localStorage.getItem(HISTORY_PROGRESS_KEY);
-      historyProgress = raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      historyProgress = {};
+    var items    = [];
+    var progress = {};
+    var current  = null;
+    var ttsBar   = null;
+
+    function el(suffix) { return document.getElementById(prefix + '-' + suffix); }
+
+    var launchBtn     = el('launch-btn');
+    var overlay       = el('overlay');
+    var libraryScreen = el('library-screen');
+    var readingScreen = el('reading-screen');
+    var closeBtn      = el('close-btn');
+    var backBtn       = el('back-btn');
+    var listEl        = el('list');
+    var readingEmoji  = el('reading-emoji');
+    var readingTitle  = el('reading-title');
+    var readingBody   = el('reading-body');
+    var quizBtn       = el('quiz-btn');
+    var scrollContent = el('scroll-content');
+    var scrollFill    = el('scroll-fill');
+    var imageFigure   = el('reading-image-figure');
+    var image         = el('reading-image');
+    var imageCaption  = el('reading-image-caption');
+    var subtitleEl    = config.subtitleField ? el('reading-' + config.subtitleField) : null;
+    var moralEl       = config.moralField ? el('reading-' + config.moralField) : null;
+
+    function loadProgress() {
+      try {
+        var raw = localStorage.getItem(config.progressKey);
+        progress = raw ? JSON.parse(raw) : {};
+      } catch (e) {
+        progress = {};
+      }
     }
-  }
 
-  function saveHistoryProgress() {
-    try { localStorage.setItem(HISTORY_PROGRESS_KEY, JSON.stringify(historyProgress)); } catch (e) {}
-  }
-
-  function articleWordObjects(article) {
-    var out = [];
-    (article.words || []).forEach(function (name) {
-      var w = findWordByName(name);
-      if (w) out.push(w);
-    });
-    return out;
-  }
-
-  function renderHistoryLibrary() {
-    historyList.innerHTML = '';
-    if (!historyArticles.length) {
-      var empty = document.createElement('p');
-      empty.className = 'story-card-blurb';
-      empty.textContent = 'History articles are still loading — try again in a moment.';
-      historyList.appendChild(empty);
-      return;
+    function saveProgress() {
+      try { localStorage.setItem(config.progressKey, JSON.stringify(progress)); } catch (e) {}
     }
-    historyArticles.forEach(function (article) {
-      var card = document.createElement('button');
-      card.className = 'story-card';
-      card.type = 'button';
 
-      var title = document.createElement('span');
-      title.className = 'story-card-title';
-      title.textContent = article.emoji + ' ' + article.title;
+    function wordObjects(item) {
+      var out = [];
+      (item.words || []).forEach(function (name) {
+        var w = findWordByName(name);
+        if (w) out.push(w);
+      });
+      return out;
+    }
 
-      var era = document.createElement('span');
-      era.className = 'history-card-era';
-      era.textContent = article.era;
+    function renderLibrary() {
+      listEl.innerHTML = '';
+      if (!items.length) {
+        var empty = document.createElement('p');
+        empty.className = 'story-card-blurb';
+        empty.textContent = config.loadingMessage;
+        listEl.appendChild(empty);
+        return;
+      }
+      items.forEach(function (item) {
+        var card = document.createElement('button');
+        card.className = 'story-card';
+        card.type = 'button';
 
-      var blurb = document.createElement('span');
-      blurb.className = 'story-card-blurb';
-      blurb.textContent = article.blurb;
+        var title = document.createElement('span');
+        title.className = 'story-card-title';
+        title.textContent = item.emoji + ' ' + item.title;
 
-      var meta = document.createElement('span');
-      meta.className = 'story-card-meta';
-      meta.appendChild(era);
+        var blurb = document.createElement('span');
+        blurb.className = 'story-card-blurb';
+        blurb.textContent = item.blurb;
 
-      var wordsTag = document.createElement('span');
-      wordsTag.className = 'story-card-tag';
-      wordsTag.textContent = articleWordObjects(article).length + ' words';
-      meta.appendChild(wordsTag);
+        var meta = document.createElement('span');
+        meta.className = 'story-card-meta';
 
-      var prog = historyProgress[article.id];
-      if (prog && typeof prog.bestScore === 'number') {
-        var scoreTag = document.createElement('span');
-        scoreTag.className = 'story-card-tag story-card-score';
-        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
-        meta.appendChild(scoreTag);
-      } else if (prog && prog.read) {
-        var readTag = document.createElement('span');
-        readTag.className = 'story-card-tag story-card-score';
-        readTag.textContent = '✓ Read';
-        meta.appendChild(readTag);
+        if (config.subtitleField) {
+          var sub = document.createElement('span');
+          sub.className = 'history-card-era';
+          sub.textContent = item[config.subtitleField];
+          meta.appendChild(sub);
+        }
+
+        var wordsTag = document.createElement('span');
+        wordsTag.className = 'story-card-tag';
+        wordsTag.textContent = wordObjects(item).length + ' words';
+        meta.appendChild(wordsTag);
+
+        var prog = progress[item.id];
+        if (prog && typeof prog.bestScore === 'number') {
+          var scoreTag = document.createElement('span');
+          scoreTag.className = 'story-card-tag story-card-score';
+          scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
+          meta.appendChild(scoreTag);
+        } else if (prog && prog.read) {
+          var readTag = document.createElement('span');
+          readTag.className = 'story-card-tag story-card-score';
+          readTag.textContent = '✓ Read';
+          meta.appendChild(readTag);
+        }
+
+        card.appendChild(title);
+        card.appendChild(blurb);
+        card.appendChild(meta);
+        card.addEventListener('click', function () { openItem(item); });
+        listEl.appendChild(card);
+      });
+    }
+
+    function showScreen(screenEl) {
+      [libraryScreen, readingScreen].forEach(function (s) { s.classList.add('hidden'); });
+      screenEl.classList.remove('hidden');
+    }
+
+    function openItem(item) {
+      current = item;
+      var prog = progress[item.id] || {};
+      prog.read = true;
+      progress[item.id] = prog;
+      saveProgress();
+
+      readingEmoji.textContent = item.emoji;
+      readingTitle.textContent = item.title;
+      if (subtitleEl) subtitleEl.textContent = item[config.subtitleField];
+
+      if (item.image) {
+        image.onerror = function () { imageFigure.classList.add('hidden'); };
+        image.src = item.image.url;
+        image.alt = item.image.caption;
+        imageCaption.textContent = item.image.caption + ' — ' + item.image.credit;
+        imageFigure.classList.remove('hidden');
+      } else {
+        image.onerror = null;
+        image.src = '';
+        image.alt = '';
+        imageCaption.textContent = '';
+        imageFigure.classList.add('hidden');
       }
 
-      card.appendChild(title);
-      card.appendChild(blurb);
-      card.appendChild(meta);
-      card.addEventListener('click', function () { openArticle(article); });
-      historyList.appendChild(card);
-    });
-  }
+      renderReadingBody(readingBody, item.paragraphs, wordObjects(item), ttsBar);
 
-  function showHistoryScreen(screenEl) {
-    [historyLibraryScreen, historyReadingScreen].forEach(function (s) {
-      s.classList.add('hidden');
-    });
-    screenEl.classList.remove('hidden');
-  }
+      if (moralEl) {
+        if (item[config.moralField]) {
+          moralEl.textContent = 'Moral: ' + item[config.moralField];
+          moralEl.classList.remove('hidden');
+        } else {
+          moralEl.textContent = '';
+          moralEl.classList.add('hidden');
+        }
+      }
 
-  function openArticle(article) {
-    currentArticle = article;
-    var prog = historyProgress[article.id] || {};
-    prog.read = true;
-    historyProgress[article.id] = prog;
-    saveHistoryProgress();
-
-    historyReadingEmoji.textContent = article.emoji;
-    historyReadingEra.textContent = article.era;
-    historyReadingTitle.textContent = article.title;
-    if (article.image) {
-      historyReadingImage.onerror = function () { historyReadingImageFigure.classList.add('hidden'); };
-      historyReadingImage.src = article.image.url;
-      historyReadingImage.alt = article.image.caption;
-      historyReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
-      historyReadingImageFigure.classList.remove('hidden');
-    } else {
-      historyReadingImage.onerror = null;
-      historyReadingImage.src = '';
-      historyReadingImage.alt = '';
-      historyReadingImageCaption.textContent = '';
-      historyReadingImageFigure.classList.add('hidden');
+      showScreen(readingScreen);
+      resetReadingScroll(scrollContent, scrollFill, readingScreen);
+      backBtn.focus();
     }
-    renderReadingBody(historyReadingBody, article.paragraphs, articleWordObjects(article), historyTTSBar);
-    showHistoryScreen(historyReadingScreen);
-    resetReadingScroll(historyScrollContent, historyScrollFill, historyReadingScreen);
-    historyBackBtn.focus();
-  }
 
-  function openHistoryOverlay() {
-    renderHistoryLibrary();
-    showHistoryScreen(historyLibraryScreen);
-    historyOverlay.classList.remove('hidden');
-    historyOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    historyCloseBtn.focus();
-  }
-
-  function closeHistoryOverlay() {
-    ttsStop();
-    hideGloss();
-    historyOverlay.classList.add('hidden');
-    historyOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    currentArticle = null;
-    historyLaunchBtn.focus();
-  }
-
-  function reopenHistoryReading() {
-    if (!currentArticle) { closeHistoryOverlay(); return; }
-    historyOverlay.classList.remove('hidden');
-    historyOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    showHistoryScreen(historyReadingScreen);
-    historyQuizBtn.focus();
-  }
-
-  function recordArticleResult(article, score, total) {
-    var prog = historyProgress[article.id] || {};
-    prog.read = true;
-    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
-      prog.bestScore = score;
-      prog.total = total;
+    function openOverlay() {
+      renderLibrary();
+      showScreen(libraryScreen);
+      overlay.classList.remove('hidden');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
     }
-    historyProgress[article.id] = prog;
-    saveHistoryProgress();
-    if (score === total) return 'Article complete — perfect score! 🎉';
-    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
+
+    function closeOverlay() {
+      ttsStop();
+      hideGloss();
+      overlay.classList.add('hidden');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      current = null;
+      launchBtn.focus();
+    }
+
+    function reopenReading() {
+      if (!current) { closeOverlay(); return; }
+      overlay.classList.remove('hidden');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      showScreen(readingScreen);
+      quizBtn.focus();
+    }
+
+    function recordResult(item, score, total) {
+      var prog = progress[item.id] || {};
+      prog.read = true;
+      if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
+        prog.bestScore = score;
+        prog.total = total;
+      }
+      progress[item.id] = prog;
+      saveProgress();
+      if (score === total) return itemTitle + ' complete — perfect score! 🎉';
+      return 'Best for this ' + itemNoun + ': ' + prog.bestScore + ' / ' + prog.total;
+    }
+
+    loadProgress();
+    readingReturnHandlers[config.returnTo] = reopenReading;
+
+    launchBtn.addEventListener('click', openOverlay);
+    closeBtn.addEventListener('click', closeOverlay);
+
+    backBtn.addEventListener('click', function () {
+      ttsStop();
+      hideGloss();
+      renderLibrary();
+      showScreen(libraryScreen);
+      closeBtn.focus();
+    });
+
+    quizBtn.addEventListener('click', function () {
+      if (!current) return;
+      var words = wordObjects(current);
+      if (!words.length) return;
+      var item = current;
+      ttsStop();
+      hideGloss();
+      overlay.classList.add('hidden');
+      overlay.setAttribute('aria-hidden', 'true');
+      startScopedQuiz(words, {
+        returnTo: config.returnTo,
+        onComplete: function (score, total) {
+          return recordResult(item, score, total);
+        }
+      });
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeOverlay();
+    });
+
+    initReadingScrollBehaviour(scrollContent, scrollFill, readingScreen);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if (overlay.classList.contains('hidden')) return;
+      if (glossIsOpen()) { hideGloss(); return; }
+      closeOverlay();
+    });
+
+    ttsBar = initTTSBar(
+      el('tts-read-btn'),
+      el('tts-controls'),
+      el('tts-playpause'),
+      el('tts-stop'),
+      document.querySelectorAll('#' + prefix + '-tts-controls .tts-speed-btn'),
+      el('tts-voice'),
+      document.querySelectorAll('#' + prefix + '-tts-controls .tts-pitch-btn')
+    );
+
+    fetch(config.dataFile)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        items = (data && data[config.dataKey]) || [];
+        if (!overlay.classList.contains('hidden') &&
+            !libraryScreen.classList.contains('hidden')) {
+          renderLibrary();
+        }
+      })
+      .catch(function () { items = []; });
   }
 
   function initHistoryMode() {
-    loadHistoryProgress();
-
-    historyLaunchBtn.addEventListener('click', openHistoryOverlay);
-    historyCloseBtn.addEventListener('click', closeHistoryOverlay);
-
-    historyBackBtn.addEventListener('click', function () {
-      ttsStop();
-      hideGloss();
-      renderHistoryLibrary();
-      showHistoryScreen(historyLibraryScreen);
-      historyCloseBtn.focus();
+    createReadingMode({
+      prefix: 'history', progressKey: 'vocabVault_historyProgress',
+      dataFile: 'data/history.json', dataKey: 'articles',
+      returnTo: 'history', itemNoun: 'article', subtitleField: 'era',
+      loadingMessage: 'History articles are still loading — try again in a moment.'
     });
-
-    historyQuizBtn.addEventListener('click', function () {
-      if (!currentArticle) return;
-      var words = articleWordObjects(currentArticle);
-      if (!words.length) return;
-      var article = currentArticle;
-      ttsStop();
-      hideGloss();
-      historyOverlay.classList.add('hidden');
-      historyOverlay.setAttribute('aria-hidden', 'true');
-      startScopedQuiz(words, {
-        returnTo: 'history',
-        onComplete: function (score, total) {
-          return recordArticleResult(article, score, total);
-        }
-      });
-    });
-
-    historyOverlay.addEventListener('click', function (e) {
-      if (e.target === historyOverlay) closeHistoryOverlay();
-    });
-
-    initReadingScrollBehaviour(historyScrollContent, historyScrollFill, historyReadingScreen);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      if (historyOverlay.classList.contains('hidden')) return;
-      if (glossIsOpen()) { hideGloss(); return; }
-      closeHistoryOverlay();
-    });
-
-    historyTTSBar = initTTSBar(
-      document.getElementById('history-tts-read-btn'),
-      document.getElementById('history-tts-controls'),
-      document.getElementById('history-tts-playpause'),
-      document.getElementById('history-tts-stop'),
-      document.querySelectorAll('#history-tts-controls .tts-speed-btn'),
-      document.getElementById('history-tts-voice'),
-      document.querySelectorAll('#history-tts-controls .tts-pitch-btn')
-    );
-
-    fetch('data/history.json')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        historyArticles = (data && data.articles) || [];
-        if (!historyOverlay.classList.contains('hidden') &&
-            !historyLibraryScreen.classList.contains('hidden')) {
-          renderHistoryLibrary();
-        }
-      })
-      .catch(function () { historyArticles = []; });
-  }
-
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // ANIMALS MODE
-  // A library of hand-written animal articles — covering evolution, adaptations,
-  // and key features — each featuring vocabulary words in context, followed by a quiz.
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  var ANIMALS_PROGRESS_KEY = 'vocabVault_animalsProgress';
-  var animalArticles = [];
-  var animalsProgress = {};
-  var currentAnimalArticle = null;
-  var animalsTTSBar = null;
-
-  var animalsLaunchBtn      = document.getElementById('animals-launch-btn');
-  var animalsOverlay        = document.getElementById('animals-overlay');
-  var animalsLibraryScreen  = document.getElementById('animals-library-screen');
-  var animalsReadingScreen  = document.getElementById('animals-reading-screen');
-  var animalsCloseBtn       = document.getElementById('animals-close-btn');
-  var animalsBackBtn        = document.getElementById('animals-back-btn');
-  var animalsList           = document.getElementById('animals-list');
-  var animalsReadingEmoji       = document.getElementById('animals-reading-emoji');
-  var animalsReadingHabitat     = document.getElementById('animals-reading-habitat');
-  var animalsReadingTitle       = document.getElementById('animals-reading-title');
-  var animalsReadingBody        = document.getElementById('animals-reading-body');
-  var animalsReadingImageFigure = document.getElementById('animals-reading-image-figure');
-  var animalsReadingImage       = document.getElementById('animals-reading-image');
-  var animalsReadingImageCaption = document.getElementById('animals-reading-image-caption');
-  var animalsQuizBtn        = document.getElementById('animals-quiz-btn');
-  var animalsScrollContent  = document.getElementById('animals-scroll-content');
-  var animalsScrollFill     = document.getElementById('animals-scroll-fill');
-
-  function loadAnimalsProgress() {
-    try {
-      var raw = localStorage.getItem(ANIMALS_PROGRESS_KEY);
-      animalsProgress = raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      animalsProgress = {};
-    }
-  }
-
-  function saveAnimalsProgress() {
-    try { localStorage.setItem(ANIMALS_PROGRESS_KEY, JSON.stringify(animalsProgress)); } catch (e) {}
-  }
-
-  function animalWordObjects(article) {
-    var out = [];
-    (article.words || []).forEach(function (name) {
-      var w = findWordByName(name);
-      if (w) out.push(w);
-    });
-    return out;
-  }
-
-  function renderAnimalsLibrary() {
-    animalsList.innerHTML = '';
-    if (!animalArticles.length) {
-      var empty = document.createElement('p');
-      empty.className = 'story-card-blurb';
-      empty.textContent = 'Animal articles are still loading — try again in a moment.';
-      animalsList.appendChild(empty);
-      return;
-    }
-    animalArticles.forEach(function (article) {
-      var card = document.createElement('button');
-      card.className = 'story-card';
-      card.type = 'button';
-
-      var title = document.createElement('span');
-      title.className = 'story-card-title';
-      title.textContent = article.emoji + ' ' + article.title;
-
-      var habitat = document.createElement('span');
-      habitat.className = 'history-card-era';
-      habitat.textContent = article.habitat;
-
-      var blurb = document.createElement('span');
-      blurb.className = 'story-card-blurb';
-      blurb.textContent = article.blurb;
-
-      var meta = document.createElement('span');
-      meta.className = 'story-card-meta';
-      meta.appendChild(habitat);
-
-      var wordsTag = document.createElement('span');
-      wordsTag.className = 'story-card-tag';
-      wordsTag.textContent = animalWordObjects(article).length + ' words';
-      meta.appendChild(wordsTag);
-
-      var prog = animalsProgress[article.id];
-      if (prog && typeof prog.bestScore === 'number') {
-        var scoreTag = document.createElement('span');
-        scoreTag.className = 'story-card-tag story-card-score';
-        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
-        meta.appendChild(scoreTag);
-      } else if (prog && prog.read) {
-        var readTag = document.createElement('span');
-        readTag.className = 'story-card-tag story-card-score';
-        readTag.textContent = '✓ Read';
-        meta.appendChild(readTag);
-      }
-
-      card.appendChild(title);
-      card.appendChild(blurb);
-      card.appendChild(meta);
-      card.addEventListener('click', function () { openAnimalArticle(article); });
-      animalsList.appendChild(card);
-    });
-  }
-
-  function showAnimalsScreen(screenEl) {
-    [animalsLibraryScreen, animalsReadingScreen].forEach(function (s) {
-      s.classList.add('hidden');
-    });
-    screenEl.classList.remove('hidden');
-  }
-
-  function openAnimalArticle(article) {
-    currentAnimalArticle = article;
-    var prog = animalsProgress[article.id] || {};
-    prog.read = true;
-    animalsProgress[article.id] = prog;
-    saveAnimalsProgress();
-
-    animalsReadingEmoji.textContent = article.emoji;
-    animalsReadingHabitat.textContent = article.habitat;
-    animalsReadingTitle.textContent = article.title;
-    if (article.image) {
-      animalsReadingImage.onerror = function () { animalsReadingImageFigure.classList.add('hidden'); };
-      animalsReadingImage.src = article.image.url;
-      animalsReadingImage.alt = article.image.caption;
-      animalsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
-      animalsReadingImageFigure.classList.remove('hidden');
-    } else {
-      animalsReadingImage.onerror = null;
-      animalsReadingImage.src = '';
-      animalsReadingImage.alt = '';
-      animalsReadingImageCaption.textContent = '';
-      animalsReadingImageFigure.classList.add('hidden');
-    }
-    renderReadingBody(animalsReadingBody, article.paragraphs, animalWordObjects(article), animalsTTSBar);
-    showAnimalsScreen(animalsReadingScreen);
-    resetReadingScroll(animalsScrollContent, animalsScrollFill, animalsReadingScreen);
-    animalsBackBtn.focus();
-  }
-
-  function openAnimalsOverlay() {
-    renderAnimalsLibrary();
-    showAnimalsScreen(animalsLibraryScreen);
-    animalsOverlay.classList.remove('hidden');
-    animalsOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    animalsCloseBtn.focus();
-  }
-
-  function closeAnimalsOverlay() {
-    ttsStop();
-    hideGloss();
-    animalsOverlay.classList.add('hidden');
-    animalsOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    currentAnimalArticle = null;
-    animalsLaunchBtn.focus();
-  }
-
-  function reopenAnimalsReading() {
-    if (!currentAnimalArticle) { closeAnimalsOverlay(); return; }
-    animalsOverlay.classList.remove('hidden');
-    animalsOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    showAnimalsScreen(animalsReadingScreen);
-    animalsQuizBtn.focus();
-  }
-
-  function recordAnimalResult(article, score, total) {
-    var prog = animalsProgress[article.id] || {};
-    prog.read = true;
-    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
-      prog.bestScore = score;
-      prog.total = total;
-    }
-    animalsProgress[article.id] = prog;
-    saveAnimalsProgress();
-    if (score === total) return 'Article complete — perfect score! 🎉';
-    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
   }
 
   function initAnimalsMode() {
-    loadAnimalsProgress();
-
-    animalsLaunchBtn.addEventListener('click', openAnimalsOverlay);
-    animalsCloseBtn.addEventListener('click', closeAnimalsOverlay);
-
-    animalsBackBtn.addEventListener('click', function () {
-      ttsStop();
-      hideGloss();
-      renderAnimalsLibrary();
-      showAnimalsScreen(animalsLibraryScreen);
-      animalsCloseBtn.focus();
+    createReadingMode({
+      prefix: 'animals', progressKey: 'vocabVault_animalsProgress',
+      dataFile: 'data/animals.json', dataKey: 'animals',
+      returnTo: 'animals', itemNoun: 'article', subtitleField: 'habitat',
+      loadingMessage: 'Animal articles are still loading — try again in a moment.'
     });
-
-    animalsQuizBtn.addEventListener('click', function () {
-      if (!currentAnimalArticle) return;
-      var words = animalWordObjects(currentAnimalArticle);
-      if (!words.length) return;
-      var article = currentAnimalArticle;
-      ttsStop();
-      hideGloss();
-      animalsOverlay.classList.add('hidden');
-      animalsOverlay.setAttribute('aria-hidden', 'true');
-      startScopedQuiz(words, {
-        returnTo: 'animals',
-        onComplete: function (score, total) {
-          return recordAnimalResult(article, score, total);
-        }
-      });
-    });
-
-    animalsOverlay.addEventListener('click', function (e) {
-      if (e.target === animalsOverlay) closeAnimalsOverlay();
-    });
-
-    initReadingScrollBehaviour(animalsScrollContent, animalsScrollFill, animalsReadingScreen);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      if (animalsOverlay.classList.contains('hidden')) return;
-      if (glossIsOpen()) { hideGloss(); return; }
-      closeAnimalsOverlay();
-    });
-
-    animalsTTSBar = initTTSBar(
-      document.getElementById('animals-tts-read-btn'),
-      document.getElementById('animals-tts-controls'),
-      document.getElementById('animals-tts-playpause'),
-      document.getElementById('animals-tts-stop'),
-      document.querySelectorAll('#animals-tts-controls .tts-speed-btn'),
-      document.getElementById('animals-tts-voice'),
-      document.querySelectorAll('#animals-tts-controls .tts-pitch-btn')
-    );
-
-    fetch('data/animals.json')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        animalArticles = (data && data.animals) || [];
-        if (!animalsOverlay.classList.contains('hidden') &&
-            !animalsLibraryScreen.classList.contains('hidden')) {
-          renderAnimalsLibrary();
-        }
-      })
-      .catch(function () { animalArticles = []; });
-  }
-
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // INSECTS MODE
-  // A library of hand-written insect articles — covering evolution, adaptations,
-  // and key features — each featuring vocabulary words in context, followed by a quiz.
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  var INSECTS_PROGRESS_KEY = 'vocabVault_insectsProgress';
-  var insectArticles = [];
-  var insectsProgress = {};
-  var currentInsectArticle = null;
-  var insectsTTSBar = null;
-
-  var insectsLaunchBtn      = document.getElementById('insects-launch-btn');
-  var insectsOverlay        = document.getElementById('insects-overlay');
-  var insectsLibraryScreen  = document.getElementById('insects-library-screen');
-  var insectsReadingScreen  = document.getElementById('insects-reading-screen');
-  var insectsCloseBtn       = document.getElementById('insects-close-btn');
-  var insectsBackBtn        = document.getElementById('insects-back-btn');
-  var insectsList           = document.getElementById('insects-list');
-  var insectsReadingEmoji        = document.getElementById('insects-reading-emoji');
-  var insectsReadingHabitat      = document.getElementById('insects-reading-habitat');
-  var insectsReadingTitle        = document.getElementById('insects-reading-title');
-  var insectsReadingBody         = document.getElementById('insects-reading-body');
-  var insectsReadingImageFigure  = document.getElementById('insects-reading-image-figure');
-  var insectsReadingImage        = document.getElementById('insects-reading-image');
-  var insectsReadingImageCaption = document.getElementById('insects-reading-image-caption');
-  var insectsQuizBtn             = document.getElementById('insects-quiz-btn');
-  var insectsScrollContent  = document.getElementById('insects-scroll-content');
-  var insectsScrollFill     = document.getElementById('insects-scroll-fill');
-
-  function loadInsectsProgress() {
-    try {
-      var raw = localStorage.getItem(INSECTS_PROGRESS_KEY);
-      insectsProgress = raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      insectsProgress = {};
-    }
-  }
-
-  function saveInsectsProgress() {
-    try { localStorage.setItem(INSECTS_PROGRESS_KEY, JSON.stringify(insectsProgress)); } catch (e) {}
-  }
-
-  function insectWordObjects(article) {
-    var out = [];
-    (article.words || []).forEach(function (name) {
-      var w = findWordByName(name);
-      if (w) out.push(w);
-    });
-    return out;
-  }
-
-  function renderInsectsLibrary() {
-    insectsList.innerHTML = '';
-    if (!insectArticles.length) {
-      var empty = document.createElement('p');
-      empty.className = 'story-card-blurb';
-      empty.textContent = 'Insect articles are still loading — try again in a moment.';
-      insectsList.appendChild(empty);
-      return;
-    }
-    insectArticles.forEach(function (article) {
-      var card = document.createElement('button');
-      card.className = 'story-card';
-      card.type = 'button';
-
-      var title = document.createElement('span');
-      title.className = 'story-card-title';
-      title.textContent = article.emoji + ' ' + article.title;
-
-      var habitat = document.createElement('span');
-      habitat.className = 'history-card-era';
-      habitat.textContent = article.habitat;
-
-      var blurb = document.createElement('span');
-      blurb.className = 'story-card-blurb';
-      blurb.textContent = article.blurb;
-
-      var meta = document.createElement('span');
-      meta.className = 'story-card-meta';
-      meta.appendChild(habitat);
-
-      var wordsTag = document.createElement('span');
-      wordsTag.className = 'story-card-tag';
-      wordsTag.textContent = insectWordObjects(article).length + ' words';
-      meta.appendChild(wordsTag);
-
-      var prog = insectsProgress[article.id];
-      if (prog && typeof prog.bestScore === 'number') {
-        var scoreTag = document.createElement('span');
-        scoreTag.className = 'story-card-tag story-card-score';
-        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
-        meta.appendChild(scoreTag);
-      } else if (prog && prog.read) {
-        var readTag = document.createElement('span');
-        readTag.className = 'story-card-tag story-card-score';
-        readTag.textContent = '✓ Read';
-        meta.appendChild(readTag);
-      }
-
-      card.appendChild(title);
-      card.appendChild(blurb);
-      card.appendChild(meta);
-      card.addEventListener('click', function () { openInsectArticle(article); });
-      insectsList.appendChild(card);
-    });
-  }
-
-  function showInsectsScreen(screenEl) {
-    [insectsLibraryScreen, insectsReadingScreen].forEach(function (s) {
-      s.classList.add('hidden');
-    });
-    screenEl.classList.remove('hidden');
-  }
-
-  function openInsectArticle(article) {
-    currentInsectArticle = article;
-    var prog = insectsProgress[article.id] || {};
-    prog.read = true;
-    insectsProgress[article.id] = prog;
-    saveInsectsProgress();
-
-    insectsReadingEmoji.textContent = article.emoji;
-    insectsReadingHabitat.textContent = article.habitat;
-    insectsReadingTitle.textContent = article.title;
-    if (article.image) {
-      insectsReadingImage.onerror = function () { insectsReadingImageFigure.classList.add('hidden'); };
-      insectsReadingImage.src = article.image.url;
-      insectsReadingImage.alt = article.image.caption;
-      insectsReadingImageCaption.textContent = article.image.caption + ' — ' + article.image.credit;
-      insectsReadingImageFigure.classList.remove('hidden');
-    } else {
-      insectsReadingImage.onerror = null;
-      insectsReadingImage.src = '';
-      insectsReadingImage.alt = '';
-      insectsReadingImageCaption.textContent = '';
-      insectsReadingImageFigure.classList.add('hidden');
-    }
-    renderReadingBody(insectsReadingBody, article.paragraphs, insectWordObjects(article), insectsTTSBar);
-    showInsectsScreen(insectsReadingScreen);
-    resetReadingScroll(insectsScrollContent, insectsScrollFill, insectsReadingScreen);
-    insectsBackBtn.focus();
-  }
-
-  function openInsectsOverlay() {
-    renderInsectsLibrary();
-    showInsectsScreen(insectsLibraryScreen);
-    insectsOverlay.classList.remove('hidden');
-    insectsOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    insectsCloseBtn.focus();
-  }
-
-  function closeInsectsOverlay() {
-    ttsStop();
-    hideGloss();
-    insectsOverlay.classList.add('hidden');
-    insectsOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    currentInsectArticle = null;
-    insectsLaunchBtn.focus();
-  }
-
-  function reopenInsectsReading() {
-    if (!currentInsectArticle) { closeInsectsOverlay(); return; }
-    insectsOverlay.classList.remove('hidden');
-    insectsOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    showInsectsScreen(insectsReadingScreen);
-    insectsQuizBtn.focus();
-  }
-
-  function recordInsectResult(article, score, total) {
-    var prog = insectsProgress[article.id] || {};
-    prog.read = true;
-    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
-      prog.bestScore = score;
-      prog.total = total;
-    }
-    insectsProgress[article.id] = prog;
-    saveInsectsProgress();
-    if (score === total) return 'Article complete — perfect score! 🎉';
-    return 'Best for this article: ' + prog.bestScore + ' / ' + prog.total;
   }
 
   function initInsectsMode() {
-    loadInsectsProgress();
-
-    insectsLaunchBtn.addEventListener('click', openInsectsOverlay);
-    insectsCloseBtn.addEventListener('click', closeInsectsOverlay);
-
-    insectsBackBtn.addEventListener('click', function () {
-      ttsStop();
-      hideGloss();
-      renderInsectsLibrary();
-      showInsectsScreen(insectsLibraryScreen);
-      insectsCloseBtn.focus();
+    createReadingMode({
+      prefix: 'insects', progressKey: 'vocabVault_insectsProgress',
+      dataFile: 'data/insects.json', dataKey: 'insects',
+      returnTo: 'insects', itemNoun: 'article', subtitleField: 'habitat',
+      loadingMessage: 'Insect articles are still loading — try again in a moment.'
     });
-
-    insectsQuizBtn.addEventListener('click', function () {
-      if (!currentInsectArticle) return;
-      var words = insectWordObjects(currentInsectArticle);
-      if (!words.length) return;
-      var article = currentInsectArticle;
-      ttsStop();
-      hideGloss();
-      insectsOverlay.classList.add('hidden');
-      insectsOverlay.setAttribute('aria-hidden', 'true');
-      startScopedQuiz(words, {
-        returnTo: 'insects',
-        onComplete: function (score, total) {
-          return recordInsectResult(article, score, total);
-        }
-      });
-    });
-
-    insectsOverlay.addEventListener('click', function (e) {
-      if (e.target === insectsOverlay) closeInsectsOverlay();
-    });
-
-    initReadingScrollBehaviour(insectsScrollContent, insectsScrollFill, insectsReadingScreen);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      if (insectsOverlay.classList.contains('hidden')) return;
-      if (glossIsOpen()) { hideGloss(); return; }
-      closeInsectsOverlay();
-    });
-
-    insectsTTSBar = initTTSBar(
-      document.getElementById('insects-tts-read-btn'),
-      document.getElementById('insects-tts-controls'),
-      document.getElementById('insects-tts-playpause'),
-      document.getElementById('insects-tts-stop'),
-      document.querySelectorAll('#insects-tts-controls .tts-speed-btn'),
-      document.getElementById('insects-tts-voice'),
-      document.querySelectorAll('#insects-tts-controls .tts-pitch-btn')
-    );
-
-    fetch('data/insects.json')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        insectArticles = (data && data.insects) || [];
-        if (!insectsOverlay.classList.contains('hidden') &&
-            !insectsLibraryScreen.classList.contains('hidden')) {
-          renderInsectsLibrary();
-        }
-      })
-      .catch(function () { insectArticles = []; });
-  }
-
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // FABLE MODE
-  // A library of classic Aesop's fables — short stories with morals — that use
-  // vocabulary words in context, followed by a quiz scoped to that fable.
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  var FABLE_PROGRESS_KEY = 'vocabVault_fableProgress';
-  var fables = [];
-  var fableProgress = {};
-  var currentFable = null;
-  var fableTTSBar = null;
-
-  var fableLaunchBtn     = document.getElementById('fable-launch-btn');
-  var fableOverlay       = document.getElementById('fable-overlay');
-  var fableLibraryScreen = document.getElementById('fable-library-screen');
-  var fableReadingScreen = document.getElementById('fable-reading-screen');
-  var fableCloseBtn      = document.getElementById('fable-close-btn');
-  var fableBackBtn       = document.getElementById('fable-back-btn');
-  var fableList          = document.getElementById('fable-list');
-  var fableReadingEmoji  = document.getElementById('fable-reading-emoji');
-  var fableReadingTitle  = document.getElementById('fable-reading-title');
-  var fableReadingBody   = document.getElementById('fable-reading-body');
-  var fableReadingMoral  = document.getElementById('fable-reading-moral');
-  var fableQuizBtn       = document.getElementById('fable-quiz-btn');
-  var fableScrollContent        = document.getElementById('fable-scroll-content');
-  var fableScrollFill           = document.getElementById('fable-scroll-fill');
-  var fableReadingImageFigure   = document.getElementById('fable-reading-image-figure');
-  var fableReadingImage         = document.getElementById('fable-reading-image');
-  var fableReadingImageCaption  = document.getElementById('fable-reading-image-caption');
-
-  function loadFableProgress() {
-    try {
-      var raw = localStorage.getItem(FABLE_PROGRESS_KEY);
-      fableProgress = raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      fableProgress = {};
-    }
-  }
-
-  function saveFableProgress() {
-    try { localStorage.setItem(FABLE_PROGRESS_KEY, JSON.stringify(fableProgress)); } catch (e) {}
-  }
-
-  function fableWordObjects(fable) {
-    var out = [];
-    (fable.words || []).forEach(function (name) {
-      var w = findWordByName(name);
-      if (w) out.push(w);
-    });
-    return out;
-  }
-
-  function renderFableLibrary() {
-    fableList.innerHTML = '';
-    if (!fables.length) {
-      var empty = document.createElement('p');
-      empty.className = 'story-card-blurb';
-      empty.textContent = 'Fables are still loading — try again in a moment.';
-      fableList.appendChild(empty);
-      return;
-    }
-    fables.forEach(function (fable) {
-      var card = document.createElement('button');
-      card.className = 'story-card';
-      card.type = 'button';
-
-      var title = document.createElement('span');
-      title.className = 'story-card-title';
-      title.textContent = fable.emoji + ' ' + fable.title;
-
-      var blurb = document.createElement('span');
-      blurb.className = 'story-card-blurb';
-      blurb.textContent = fable.blurb;
-
-      var meta = document.createElement('span');
-      meta.className = 'story-card-meta';
-
-      var wordsTag = document.createElement('span');
-      wordsTag.className = 'story-card-tag';
-      wordsTag.textContent = fableWordObjects(fable).length + ' words';
-      meta.appendChild(wordsTag);
-
-      var prog = fableProgress[fable.id];
-      if (prog && typeof prog.bestScore === 'number') {
-        var scoreTag = document.createElement('span');
-        scoreTag.className = 'story-card-tag story-card-score';
-        scoreTag.textContent = 'Best ' + prog.bestScore + '/' + prog.total;
-        meta.appendChild(scoreTag);
-      } else if (prog && prog.read) {
-        var readTag = document.createElement('span');
-        readTag.className = 'story-card-tag story-card-score';
-        readTag.textContent = '✓ Read';
-        meta.appendChild(readTag);
-      }
-
-      card.appendChild(title);
-      card.appendChild(blurb);
-      card.appendChild(meta);
-      card.addEventListener('click', function () { openFable(fable); });
-      fableList.appendChild(card);
-    });
-  }
-
-  function showFableScreen(screenEl) {
-    [fableLibraryScreen, fableReadingScreen].forEach(function (s) {
-      s.classList.add('hidden');
-    });
-    screenEl.classList.remove('hidden');
-  }
-
-  function openFable(fable) {
-    currentFable = fable;
-    var prog = fableProgress[fable.id] || {};
-    prog.read = true;
-    fableProgress[fable.id] = prog;
-    saveFableProgress();
-
-    fableReadingEmoji.textContent = fable.emoji;
-    fableReadingTitle.textContent = fable.title;
-    if (fable.image) {
-      fableReadingImage.onerror = function () { fableReadingImageFigure.classList.add('hidden'); };
-      fableReadingImage.src = fable.image.url;
-      fableReadingImage.alt = fable.image.caption;
-      fableReadingImageCaption.textContent = fable.image.caption + ' — ' + fable.image.credit;
-      fableReadingImageFigure.classList.remove('hidden');
-    } else {
-      fableReadingImage.onerror = null;
-      fableReadingImage.src = '';
-      fableReadingImage.alt = '';
-      fableReadingImageCaption.textContent = '';
-      fableReadingImageFigure.classList.add('hidden');
-    }
-    renderReadingBody(fableReadingBody, fable.paragraphs, fableWordObjects(fable), fableTTSBar);
-    if (fable.moral) {
-      fableReadingMoral.textContent = 'Moral: ' + fable.moral;
-      fableReadingMoral.classList.remove('hidden');
-    } else {
-      fableReadingMoral.textContent = '';
-      fableReadingMoral.classList.add('hidden');
-    }
-    showFableScreen(fableReadingScreen);
-    resetReadingScroll(fableScrollContent, fableScrollFill, fableReadingScreen);
-    fableBackBtn.focus();
-  }
-
-  function openFableOverlay() {
-    renderFableLibrary();
-    showFableScreen(fableLibraryScreen);
-    fableOverlay.classList.remove('hidden');
-    fableOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    fableCloseBtn.focus();
-  }
-
-  function closeFableOverlay() {
-    ttsStop();
-    hideGloss();
-    fableOverlay.classList.add('hidden');
-    fableOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    currentFable = null;
-    fableLaunchBtn.focus();
-  }
-
-  function reopenFableReading() {
-    if (!currentFable) { closeFableOverlay(); return; }
-    fableOverlay.classList.remove('hidden');
-    fableOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    showFableScreen(fableReadingScreen);
-    fableQuizBtn.focus();
-  }
-
-  function recordFableResult(fable, score, total) {
-    var prog = fableProgress[fable.id] || {};
-    prog.read = true;
-    if (typeof prog.bestScore !== 'number' || score > prog.bestScore) {
-      prog.bestScore = score;
-      prog.total = total;
-    }
-    fableProgress[fable.id] = prog;
-    saveFableProgress();
-    if (score === total) return 'Fable complete — perfect score! 🎉';
-    return 'Best for this fable: ' + prog.bestScore + ' / ' + prog.total;
   }
 
   function initFableMode() {
-    loadFableProgress();
-
-    fableLaunchBtn.addEventListener('click', openFableOverlay);
-    fableCloseBtn.addEventListener('click', closeFableOverlay);
-
-    fableBackBtn.addEventListener('click', function () {
-      ttsStop();
-      hideGloss();
-      renderFableLibrary();
-      showFableScreen(fableLibraryScreen);
-      fableCloseBtn.focus();
+    createReadingMode({
+      prefix: 'fable', progressKey: 'vocabVault_fableProgress',
+      dataFile: 'data/fables.json', dataKey: 'fables',
+      returnTo: 'fable', itemNoun: 'fable', moralField: 'moral',
+      loadingMessage: 'Fables are still loading — try again in a moment.'
     });
-
-    fableQuizBtn.addEventListener('click', function () {
-      if (!currentFable) return;
-      var words = fableWordObjects(currentFable);
-      if (!words.length) return;
-      var fable = currentFable;
-      ttsStop();
-      hideGloss();
-      fableOverlay.classList.add('hidden');
-      fableOverlay.setAttribute('aria-hidden', 'true');
-      startScopedQuiz(words, {
-        returnTo: 'fable',
-        onComplete: function (score, total) {
-          return recordFableResult(fable, score, total);
-        }
-      });
-    });
-
-    fableOverlay.addEventListener('click', function (e) {
-      if (e.target === fableOverlay) closeFableOverlay();
-    });
-
-    initReadingScrollBehaviour(fableScrollContent, fableScrollFill, fableReadingScreen);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape') return;
-      if (fableOverlay.classList.contains('hidden')) return;
-      if (glossIsOpen()) { hideGloss(); return; }
-      closeFableOverlay();
-    });
-
-    fableTTSBar = initTTSBar(
-      document.getElementById('fable-tts-read-btn'),
-      document.getElementById('fable-tts-controls'),
-      document.getElementById('fable-tts-playpause'),
-      document.getElementById('fable-tts-stop'),
-      document.querySelectorAll('#fable-tts-controls .tts-speed-btn'),
-      document.getElementById('fable-tts-voice'),
-      document.querySelectorAll('#fable-tts-controls .tts-pitch-btn')
-    );
-
-    fetch('data/fables.json')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        fables = (data && data.fables) || [];
-        if (!fableOverlay.classList.contains('hidden') &&
-            !fableLibraryScreen.classList.contains('hidden')) {
-          renderFableLibrary();
-        }
-      })
-      .catch(function () { fables = []; });
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
