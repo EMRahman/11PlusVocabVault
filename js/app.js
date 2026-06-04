@@ -22,6 +22,7 @@ import {
   getMasteryStatus,
   recordAnswer,
 } from './storage.js';
+import { pickDailyWords, buildWeakestPool } from './selection.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -1464,40 +1465,9 @@ import {
     };
   }
 
-  function buildWeakestPool(basePool) {
-    // Words that have at least one wrong answer, sorted by miss-margin desc
-    // then most recent miss. Falls back to filling with random words from base.
-    var withMisses = basePool.filter(function (w) {
-      var m = mastery[w.word];
-      return m && m.incorrect > 0 && (m.incorrect - m.correct) >= 0;
-    });
-    withMisses.sort(function (a, b) {
-      var ma = mastery[a.word];
-      var mb = mastery[b.word];
-      var diffA = ma.incorrect - ma.correct;
-      var diffB = mb.incorrect - mb.correct;
-      if (diffB !== diffA) return diffB - diffA;
-      return (mb.lastWrong || 0) - (ma.lastWrong || 0);
-    });
-
-    if (withMisses.length >= quizState.length) return withMisses;
-
-    // Pad with non-mastered words so the quiz can run.
-    var seen = {};
-    withMisses.forEach(function (w) { seen[w.word] = true; });
-    var pad = shuffle(basePool.filter(function (w) {
-      return !seen[w.word] && getMasteryStatus(w.word) !== 'mastered';
-    }));
-    var combined = withMisses.concat(pad);
-
-    // If everything is mastered (or basePool empty), fall back to a shuffled
-    // copy of basePool so the user can keep practising rather than seeing the
-    // overlay crash with no questions to render.
-    if (combined.length === 0) {
-      return shuffle(basePool);
-    }
-    return combined;
-  }
+  // buildWeakestPool → moved to js/selection.js (pure + unit-tested). It is
+  // called below as buildWeakestPool(allWords, mastery, getMasteryStatus,
+  // quizState.length, shuffle).
 
   function buildQuizSession() {
     var basePool;
@@ -1525,7 +1495,7 @@ import {
     }
 
     var pool = quizState.scope === 'weakest'
-      ? buildWeakestPool(allWords)
+      ? buildWeakestPool(allWords, mastery, getMasteryStatus, quizState.length, shuffle)
       : basePool;
 
     var questionPool = pool;
@@ -3161,35 +3131,9 @@ import {
     try { localStorage.setItem(NEWS_KEY, JSON.stringify(newsData)); } catch (e) {}
   }
 
-  // Stable 32-bit string hash; seeds the daily word picker so the chosen set
-  // is deterministic for a given calendar day.
-  function hashString(str) {
-    var h = 0;
-    for (var i = 0; i < str.length; i++) {
-      h = ((h << 5) - h + str.charCodeAt(i)) | 0;
-    }
-    return Math.abs(h);
-  }
-
-  // Deterministic 0..1 generator (LCG) so the daily word set is stable within
-  // a calendar day but rotates from one day to the next.
-  function seededRandom(seed) {
-    var s = seed >>> 0;
-    return function () {
-      s = (s * 1664525 + 1013904223) >>> 0;
-      return s / 4294967296;
-    };
-  }
-
-  function pickDailyWords(n) {
-    var rng = seededRandom(hashString(todayKey()));
-    var tier = { 'new': 3, learning: 2, mastered: 1 };
-    var scored = allWords.map(function (w) {
-      return { word: w, score: (tier[getMasteryStatus(w.word)] || 1) + rng() };
-    });
-    scored.sort(function (a, b) { return b.score - a.score; });
-    return scored.slice(0, Math.min(n, scored.length)).map(function (x) { return x.word; });
-  }
+  // hashString, seededRandom, pickDailyWords → moved to js/selection.js (pure +
+  // unit-tested). pickDailyWords is called below as
+  // pickDailyWords(allWords, getMasteryStatus, todayKey(), wordCount).
 
   // Returns today's word objects, caching the chosen set in the edition so the
   // selection does not shift as mastery changes during the day.
@@ -3204,7 +3148,7 @@ import {
       });
       if (objs.length) return objs;
     }
-    var picked = pickDailyWords(newsData.wordCount);
+    var picked = pickDailyWords(allWords, getMasteryStatus, todayKey(), newsData.wordCount);
     newsData.edition = {
       date: todayKey(),
       wordCount: newsData.wordCount,
