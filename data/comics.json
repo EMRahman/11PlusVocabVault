@@ -1,0 +1,2220 @@
+{
+  "comics": [
+    {
+      "title": "💥 Haste Makes Space-Waste",
+      "blurb": "Jolt destroys the generator trying to fix it. Star-Sloth fixes it with one wire and one cautious minute.",
+      "words": [
+        {
+          "word": "haste",
+          "definition": "Excessive speed that can cause mistakes."
+        },
+        {
+          "word": "reckless",
+          "definition": "Doing dangerous things without thinking."
+        },
+        {
+          "word": "cautious",
+          "definition": "Careful to avoid danger or mistakes."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "The oxygen generator on their ship will fail in twelve minutes. I have ensured it. Their haste will DESTROY them! MWAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "🚨 RED ALERT — ABOARD THE SHIP 🚨",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "Oxygen generator failing! Twelve minutes! We must be cautious! Haste makes mistakes! STAY CALM!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "I AM CALM. THIS IS MY CALM FACE. WE HAVE ELEVEN MINUTES.",
+          "bubbleType": "shout",
+          "sfx": "SLAM"
+        },
+        {
+          "caption": "JOLT MAKES THE CALCULATION: 50 WIRES × 0.006 SECONDS = FIXED.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": true,
+          "bg": "#EEEEFF",
+          "bubble": "Connecting all 50 wires at once is NOT reckless. It is EFFICIENCY. Stand back.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "0.003 SECONDS LATER...",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "I may have been... reckless. No time to be cautious — haste was the only option!",
+          "bubbleType": "speech",
+          "sfx": "ZZZAP!!!"
+        },
+        {
+          "caption": "JOLT CONNECTS THE BACKUP WIRES. ALL AT ONCE. AGAIN.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "KA-BOOM!"
+        },
+        {
+          "caption": "OVER-CLOCK SMILES.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "Sending a repair-saboteur drone. Just to make this more entertaining.",
+          "bubbleType": "speech",
+          "sfx": "DEPLOY"
+        },
+        {
+          "caption": "🤖 SABOTEUR DRONE ENTERS THE ENGINE ROOM! 🤖",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": true,
+          "bg": "#FFE0C8",
+          "bubble": "A DRONE?! I AM VERY FAST AND NOT AT ALL RECKLESS RIGHT NOW!",
+          "bubbleType": "shout",
+          "sfx": "CLANG CLANG"
+        },
+        {
+          "caption": "THE DRONE SWATS JOLT INTO THE WALL.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "OW. THAT WAS RECKLESS OF IT.",
+          "bubbleType": "speech",
+          "sfx": "WHAM!"
+        },
+        {
+          "caption": "THE DRONE SMASHES INTO THE CONTROL PANEL.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "PERFECT CHAOS! Nobody cautious enough to fix this even exists! Six minutes left!",
+          "bubbleType": "shout",
+          "sfx": "CRUNCH!"
+        },
+        {
+          "caption": "FOUR MINUTES PASS. STAR-SLOTH READS.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...page twelve... wiring diagram... one wire controls the rest...",
+          "bubbleType": "whisper",
+          "sfx": "...tick..."
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "He cannot possibly— the cautious approach takes HOURS! Not one minute! IMPOSSIBLE!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH CONNECTS ONE WIRE.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "click."
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "...the drone just... stopped.",
+          "bubbleType": "speech",
+          "sfx": "fzzt..."
+        },
+        {
+          "caption": "THE GENERATOR HUMS BACK TO LIFE.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "...cautious works.",
+          "bubbleType": "thought",
+          "sfx": "HMMMM"
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "HOW?! RECKLESS FAILED! HASTE FAILED! HOW DID CAUTIOUS WIN IN ONE MINUTE?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "Two reckless attempts made it worse. One cautious minute fixed everything. I need to sit down.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OXYGEN RESTORED. GALAXY SAFE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "Haste caused the disaster. Reckless speed made it worse. Being cautious — truly cautious — fixed everything. Star-Sloth wins. Over-Clock loses. Again.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "⏰ The Late Hero",
+      "blurb": "Over-Clock's perfect trap detonates itself because Star-Sloth took a six-hour nap. The most opportune victory required zero effort.",
+      "words": [
+        {
+          "word": "opportune",
+          "definition": "Happening at a particularly suitable or favourable time."
+        },
+        {
+          "word": "vigilant",
+          "definition": "Watchful and alert for danger."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR. 6:00 AM.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "My trap is perfectly opportune — timed to the EXACT moment Star-Sloth's ship lands! In twelve hours, they are FINISHED! MWAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "I have been vigilant for months. The opportune moment will arrive. And Star-Sloth will be... Star-Sloth.",
+          "bubbleType": "speech",
+          "sfx": "tick tick tick"
+        },
+        {
+          "caption": "ABOARD THE SHIP. STAR-SLOTH'S FLIGHT PLAN.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "...zz..."
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "STAR-SLOTH! We are scheduled to arrive at 6:00 PM! Lift off NOW!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH DOES NOT LIFT OFF.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...nap first...",
+          "bubbleType": "whisper",
+          "sfx": "...zz... zz..."
+        },
+        {
+          "caption": "9:00 AM.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "STAR-SLOTH! THE MISSION! STAR-SLOTH! PLEASE!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "11:00 AM. OVER-CLOCK IS VIGILANT.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "He will arrive soon. I am vigilant. I have been vigilant for five hours. That is fine. I am fine.",
+          "bubbleType": "speech",
+          "sfx": "tick tick tick"
+        },
+        {
+          "caption": "12:00 PM. THE ADMIRAL JOINS JOLT.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "WE ARE SIX HOURS LATE! Over-Clock will be vigilant! HE WILL BE WAITING!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "2:00 PM. OVER-CLOCK PACES.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "I am being vigilant. He WILL arrive. My timing is opportune. The most opportune!",
+          "bubbleType": "speech",
+          "sfx": "tick tick tick"
+        },
+        {
+          "caption": "4:00 PM. OVER-CLOCK HITS HIS CONSOLE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "WHY IS HE NOT HERE YET?! HOW SLOW CAN ONE SLOTH POSSIBLY BE?!",
+          "bubbleType": "rage",
+          "sfx": "BANG BANG BANG"
+        },
+        {
+          "caption": "5:00 PM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "He will arrive. He WILL. I will be vigilant for one more hour. I have been vigilant for ELEVEN HOURS.",
+          "bubbleType": "speech",
+          "sfx": "tick... tick..."
+        },
+        {
+          "caption": "ABOARD THE SHIP. STAR-SLOTH FINALLY WAKES.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...opportune time to leave...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "5:59 PM. ONE MINUTE TO DETONATION.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "ONE MINUTE! PLEASE JUST ARRIVE! THIS WAS OPPORTUNE! THE MOST OPPORTUNE!",
+          "bubbleType": "rage",
+          "sfx": "BEEP BEEP BEEP"
+        },
+        {
+          "caption": "6:00 PM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "NOOOOOO!",
+          "bubbleType": "rage",
+          "sfx": "KA-BOOM"
+        },
+        {
+          "caption": "OVER-CLOCK DESTROYS HIS OWN BASE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "My perfectly timed, most opportune trap in the galaxy... detonated... on an empty field.",
+          "bubbleType": "speech",
+          "sfx": "CRUMBLE..."
+        },
+        {
+          "caption": "6:40 PM. STAR-SLOTH ARRIVES AND SURVEYS THE SMOULDERING CRATER.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...interesting...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "The trap is GONE. It blew up on its own. Star-Sloth — you saved us by napping.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK DEPLOYS ATTACK DRONES TO INTERCEPT THEM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "ATTACK DRONES! They will FORCE the ship to arrive early! Come on, come on!",
+          "bubbleType": "rage",
+          "sfx": "LAUNCH"
+        },
+        {
+          "caption": "JOLT FIGHTS OFF THE DRONES USING THE EMERGENCY BRAKES.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "IF WE ARRIVE EARLY THE TRAP FIRES! I MUST SLOW US DOWN! MUST! SLOW! DOWN!",
+          "bubbleType": "shout",
+          "sfx": "CLANG POW CRASH"
+        },
+        {
+          "caption": "OVER-CLOCK CANNOT BELIEVE IT.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "HE IS FIGHTING MY DRONES TO STAY LATE?! WHY WOULD ANYONE WANT TO ARRIVE LATE?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK PRESSES THE ABORT BUTTON. IT IS LOCKED.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "Abort! ABORT! I locked it for dramatic effect! WHY DID I LOCK IT?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "The trap detonated. We are forty minutes away. Star-Sloth is asleep. Over-Clock locked his own abort button for dramatic effect.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK, IN HIS RUINED LAIR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "I was vigilant for TWELVE HOURS. He was ASLEEP for twelve hours. And HE won.",
+          "bubbleType": "speech",
+          "sfx": "drip..."
+        },
+        {
+          "caption": "GALAXY SAVED. WITHOUT TRYING.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "His late arrival was the most opportune moment in history. Over-Clock was vigilant for twelve hours for absolutely nothing. The trap defeated itself. Star-Sloth is baffling.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🎨 The Canvas of the Cosmos",
+      "blurb": "Over-Clock sends Blur-Bunnies to eat the ship. Star-Sloth paints a tunnel. They run into it. Art wins.",
+      "words": [
+        {
+          "word": "contemplate",
+          "definition": "To think deeply about something."
+        },
+        {
+          "word": "frantic",
+          "definition": "Wild with worry, fear, or hurry."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "I have released the Blur-Bunnies onto their hull! They eat through metal at 50 centimetres a minute! MWAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "They cannot be stopped by frantic swatting. Anyone foolish enough to contemplate them will be far too slow. MWEHE HEE.",
+          "bubbleType": "speech",
+          "sfx": "MWEHE HEE"
+        },
+        {
+          "caption": "🐰 BLUR-BUNNIES ON THE HULL! 🐰",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "They are eating through the WALLS! Don't contemplate it — DO something!",
+          "bubbleType": "shout",
+          "sfx": "MUNCH MUNCH MUNCH"
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#FFD0D0",
+          "bubble": "Frantic swatting is NOT working. They are BOUNCY.",
+          "bubbleType": "speech",
+          "sfx": "BONK — OOF"
+        },
+        {
+          "caption": "MORE BLUR-BUNNIES APPEAR.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "Releasing Blur-Bunny Wave Two! Forty more bunnies! They are frantic creatures — perfect for defeating frantic enemies!",
+          "bubbleType": "shout",
+          "sfx": "DEPLOY"
+        },
+        {
+          "caption": "JOLT DEPLOYS THE STATIC CANNON.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "STATIC FIELD ACTIVATED! EAT ELECTRICITY, BUNNIES!",
+          "bubbleType": "shout",
+          "sfx": "FZZZT"
+        },
+        {
+          "caption": "THE BUNNIES LOVE ELECTRICITY. THEY ARE FLUFFIER NOW.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "They... absorbed it. They are BIGGER now. I made it worse.",
+          "bubbleType": "speech",
+          "sfx": "MUNCH MUNCH MUNCH"
+        },
+        {
+          "caption": "THE BUNNIES BOUNCE OFF THE ICE. FASTER NOW.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "Five things tried. They are frantic AND slidey. We have made it worse.",
+          "bubbleType": "speech",
+          "sfx": "BOING BOING BOING"
+        },
+        {
+          "caption": "STAR-SLOTH WALKS TO THE SUPPLY CUPBOARD.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...I will contemplate this...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH RETURNS WITH PAINT AND A BRUSH.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...I have contemplated...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "THREE HOURS LATER. STAR-SLOTH HAS BEEN PAINTING.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "WHY IS THE SLOTH PAINTING?! THE HULL IS BEING EATEN! WHY IS NOBODY FRANTIC?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "...STAR-SLOTH CONTINUES PAINTING...",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...almost done contemplating... just the shadows...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "A HYPER-REALISTIC 3D TUNNEL APPEARS ON THE BLAST DOOR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "WHY ARE THEY RUNNING INTO A WALL?! THIS WAS NOT PART OF THE PLAN!",
+          "bubbleType": "shout",
+          "sfx": "BONK BONK BONK"
+        },
+        {
+          "caption": "BLUR-BUNNIES PILE UP AGAINST THE BLAST DOOR. DAZED.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "They are all stunned. They all hit the painted wall. At full bunny speed.",
+          "bubbleType": "speech",
+          "sfx": "bonk... bonk..."
+        },
+        {
+          "caption": "OVER-CLOCK SENDS REINFORCEMENT BUNNIES. WAVE THREE.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "ONE HUNDRED MORE BUNNIES! This is not a painting problem! This is a QUANTITY problem! Release wave three!",
+          "bubbleType": "shout",
+          "sfx": "RELEASE"
+        },
+        {
+          "caption": "ONE HUNDRED BUNNIES HIT THE TUNNEL PAINTING.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": true,
+          "bg": "#FFF0E0",
+          "bubble": "THE PAINTING IS HOLDING THEM ALL. EVERY. SINGLE. BUNNY. IS STUCK ON THE PAINTING.",
+          "bubbleType": "shout",
+          "sfx": "BONK BONK BONK"
+        },
+        {
+          "caption": "OVER-CLOCK DEPLOYS A VACUUM CANNON TO SUCK IN THE PAINTING.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "VACUUM CANNON! Suck in the painting! No painting, no trap!",
+          "bubbleType": "shout",
+          "sfx": "WHOOOOSH"
+        },
+        {
+          "caption": "THE VACUUM SUCKS IN THE BUNNY PILE. AND THE CANNON.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY CANNON! MY BUNNIES! MY— where are they all going?!",
+          "bubbleType": "rage",
+          "sfx": "SLURP SLURP"
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "The vacuum sucked in its own bunnies. Over-Clock has defeated himself twice.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK FIRES A HEAT RAY AT THE PAINTING.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "HEAT RAY! Melt the painting! Melt the tunnel! Melt everything!",
+          "bubbleType": "rage",
+          "sfx": "FZZZZZT"
+        },
+        {
+          "caption": "THE HEAT RAY BAKES THE BUNNIES INTO THE PAINTING. PERMANENTLY.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "THEY ARE STUCK IN IT NOW?! I MADE A BUNNY MOSAIC?! THIS WAS NOT THE PLAN!",
+          "bubbleType": "rage",
+          "sfx": "bonk... bonk..."
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "We were frantic and achieved nothing for three hours. He contemplated and painted for three hours. Same time. Different result.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "BUNNIES COLLECTED AND RETURNED TO SPACE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "My frantic chaos versus his quiet contemplation. And he won. I hate art.",
+          "bubbleType": "speech",
+          "sfx": "sigh..."
+        },
+        {
+          "caption": "HULL SAVED. OVER-CLOCK DEFEATED.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "He stopped to contemplate when we were all frantic. Then he painted his way to victory against sixty Blur-Bunnies. With a brush. Over-Clock has been defeated by art.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "⚡ The Fast-Forward Fiasco",
+      "blurb": "Over-Clock's Caffeine-Cannon forces Star-Sloth to scurry. The chaos destroys the villain and everything he owns.",
+      "words": [
+        {
+          "word": "scurried",
+          "definition": "Moved quickly with short, hurried steps."
+        },
+        {
+          "word": "meandered",
+          "definition": "Moved or followed a path with many gentle bends."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "Star-Sloth always meandered gracefully. But my Caffeine-Cannon will make him SCURRY! He will crash into everything! ZAP!",
+          "bubbleType": "shout",
+          "sfx": "ZAP"
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "A sloth who scurried has never been seen. When he scurried into the control room — the ship destroys itself! FOOLPROOF!",
+          "bubbleType": "speech",
+          "sfx": "MWEHE HEE"
+        },
+        {
+          "caption": "THE CAFFEINE CANNON FIRES.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...I normally meander at a pace that is—",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH IS MOVING AT SPEEDS NEVER RECORDED IN SLOTH HISTORY.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": true,
+          "bg": "#FFE0C8",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "CRASH!"
+        },
+        {
+          "caption": "STAR-SLOTH SCURRIED LEFT, RIGHT, LEFT, INTO A CEILING.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "BONK CRASH WHAM"
+        },
+        {
+          "caption": "OVER-CLOCK ADVANCES, EXPECTING EASY VICTORY.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "He always meandered so gracefully! Now he has scurried INTO my base! PERFECT!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK DEPLOYS HIS BODYGUARD BOTS.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "Bodyguard Bots activate! A scurrying sloth is still a sloth! Catch him!",
+          "bubbleType": "shout",
+          "sfx": "ACTIVATE"
+        },
+        {
+          "caption": "STAR-SLOTH SCURRIED INTO THE BODYGUARD BOTS.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "POW! WHAM! CRASH!"
+        },
+        {
+          "caption": "BOTS DOWN. STAR-SLOTH SCURRIES ON.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "He is running through Over-Clock's base and destroying everything IN IT! By accident!",
+          "bubbleType": "shout",
+          "sfx": "CRASH BANG BOOM"
+        },
+        {
+          "caption": "STAR-SLOTH SCURRIED THROUGH THE TROPHY ROOM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "MY TROPHIES! MY THRONE! MY EVIL DESK CHAIR! HE SCURRIED THROUGH ALL OF IT!",
+          "bubbleType": "rage",
+          "sfx": "CRASH CRASH CRASH"
+        },
+        {
+          "caption": "EXPERIMENTS AND INVENTIONS EVERYWHERE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY SHRINK RAY! MY GROW RAY! MY SLIGHTLY-SIDEWAYS RAY! HE SCURRIED THROUGH ALL OF THEM!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK'S ENTIRE POWER GRID FLICKERS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY LIGHTS! MY SCREENS! MY VILLAIN SPOTLIGHT! IT IS DARK IN HERE! I CANNOT LOOK MENACING IN THE DARK!",
+          "bubbleType": "rage",
+          "sfx": "fzzzt... fzzzt..."
+        },
+        {
+          "caption": "STAR-SLOTH SCURRIED INTO THE HALL OF TROPHIES.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": true,
+          "bg": "#FFD0D0",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "POW! WHAM! CRASH! CLATTER!"
+        },
+        {
+          "caption": "JOLT WATCHES OPEN-MOUTHED.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "He meandered everywhere before. Always meandering. And now he scurried. And this is what happens. THIS IS WHAT HAPPENS.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "ALL SEVEN ESCAPE PODS LAUNCH SIMULTANEOUSLY.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY ESCAPE PODS! ALL SEVEN! GONE! NOW I CANNOT ESCAPE! FROM MY OWN BASE!",
+          "bubbleType": "rage",
+          "sfx": "LAUNCH LAUNCH LAUNCH"
+        },
+        {
+          "caption": "STAR-SLOTH SCURRIED INTO THE MAIN VILLAIN CONTROL ROOM.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": true,
+          "bg": "#FFD0D0",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "CRASH BANG CRASH CRASH CRASH"
+        },
+        {
+          "caption": "THE ENTIRE BASE GOES DARK. THEN RED. THEN DARK AGAIN.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "I have... nothing. Nothing works. He scurried through EVERYTHING.",
+          "bubbleType": "speech",
+          "sfx": "click... click... click"
+        },
+        {
+          "caption": "THE CAFFEINE WEARS OFF. STAR-SLOTH COMES TO A HALT.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...I appear to have scurried...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH MEANDERED HOME THROUGH OVER-CLOCK'S RUINED BASE.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "...I have meandered home...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "My Caffeine-Cannon made him scurry into MY base and destroy MY things. I did this to myself.",
+          "bubbleType": "speech",
+          "sfx": "drip..."
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "He normally meandered. Over-Clock forced him to scurry. The scurrying destroyed Over-Clock's base. The plan worked. Not how Over-Clock planned.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK DEFEATED. ACCIDENTALLY.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "He meandered to victory via accidental scurrying. He always meandered. The scurrying was the plan — just not Star-Sloth's plan. Over-Clock's base is rubble. Star-Sloth is already asleep again.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🤫 The Silent Treatment",
+      "blurb": "Over-Clock's spy won't crack under pressure. Star-Sloth sits silently until the spy begs him to stop.",
+      "words": [
+        {
+          "word": "stealthy",
+          "definition": "Quiet and careful so nobody notices."
+        },
+        {
+          "word": "scrutinise",
+          "definition": "To examine something very carefully."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "I have placed a stealthy spy aboard their ship! He has the passcode to my fortress! They will NEVER crack him!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "My agent is stealthy and uncrackable. The Admiral will try to scrutinise him. The Admiral cannot scrutinise a sandwich. MWAHAHA.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "🕵️ A SPY HAS BEEN CAPTURED! 🕵️",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "SCRUTINISE HIM! Get the passcode! Use every technique! EVERY TECHNIQUE!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "THE ADMIRAL SCRUTINISES THE SPY. SPY SAYS NOTHING.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "TELL ME THE PASSCODE! I AM SCRUTINISING YOU VERY HARD RIGHT NOW!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "JOLT DEPLOYS THE TRUTH SCANNER.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "TRUTH SCANNER ACTIVATED! NOBODY CAN RESIST THIS! NOBODY!",
+          "bubbleType": "shout",
+          "sfx": "BZZZT"
+        },
+        {
+          "caption": "THE SPY YAWNS.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#EEEEFF",
+          "bubble": "He yawned. At my truth scanner. He yawned AT it.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "JOLT TRIES THE TICKLE PROTOCOL. THE SPY IS NOT TICKLISH.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "He is not ticklish. He is a stealthy spy. Of course he is not ticklish.",
+          "bubbleType": "speech",
+          "sfx": "sigh..."
+        },
+        {
+          "caption": "JOLT DEPLOYS THE NOISE MACHINE.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "THE NOISE MACHINE! IT PLAYS THE MOST ANNOYING SOUND IN THE UNIVERSE!",
+          "bubbleType": "shout",
+          "sfx": "WEEEE-WOOOO-WEEEE"
+        },
+        {
+          "caption": "THE ADMIRAL CRACKS. COLLAPSES INTO A CHAIR.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "I cannot scrutinise him. He is too stealthy. Nothing worked. We are doomed.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH IS SHOWN IN.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "What is he going to DO? He is just... sitting there. That is NOT how you scrutinise someone!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "TWO HOURS. STAR-SLOTH BLINKS ONCE.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK WATCHES IN GROWING HORROR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "WHY IS NOTHING HAPPENING?! SAY SOMETHING! SCRUTINISE HIM! DO ANYTHING!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "THREE HOURS. STAR-SLOTH HAS NOT MOVED.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "..."
+        },
+        {
+          "caption": "THE SPY'S EYE TWITCHES.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "No no no. He is trained for THIS. He IS stealthy. Stay silent, agent! STAY SILENT!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "THREE HOURS OF SILENCE. THE SPY CRACKS.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "FINE! Here is the passcode! Please DO something! Make a noise! ANYTHING!"
+        },
+        {
+          "caption": "OVER-CLOCK DEPLOYS A RESCUE BOT.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "RESCUE BOT! Break the agent out! He is in an interrogation room with a SLOTH! Save him!",
+          "bubbleType": "rage",
+          "sfx": "DEPLOY"
+        },
+        {
+          "caption": "THE RESCUE BOT FREEZES UNDER STAR-SLOTH'S GAZE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "The rescue bot has... stopped. It is just looking at Star-Sloth looking at it. This is the most serene standoff in history.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "THREE HOURS AND TEN MINUTES. THE RESCUE BOT ALSO CRACKS.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "The rescue bot just... surrendered. A robot. Surrendered. To a sloth. Sitting in silence.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK STARES AT HIS SCREEN IN HORROR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "My agent, my rescue bot, and possibly my own willpower are all cracking. I cannot scrutinise this.",
+          "bubbleType": "speech",
+          "sfx": "drip..."
+        },
+        {
+          "caption": "PASSCODE RETRIEVED.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "He cracked. My stealthy, uncrackable agent... cracked... because of a sloth sitting still for three hours.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "He defeated a trained spy by doing NOTHING. I tried noise, scanning, and shouting. He tried silence. He won.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "PASSCODE RETRIEVED. GALAXY SAFE. OVER-CLOCK CANNOT BELIEVE IT.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "He was stealthier than any spy. He scrutinised everything by scrutinising nothing. Pure genius. Over-Clock must be furious.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🍲 The Slow-Cooked Trap",
+      "blurb": "Over-Clock sends space-pirates. Star-Sloth's four-hour oatmeal floods the corridors and traps them all.",
+      "words": [
+        {
+          "word": "lingered",
+          "definition": "Stayed longer than expected."
+        },
+        {
+          "word": "drifted",
+          "definition": "Moved slowly and lightly."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "I have dispatched FORTY space-pirates! They have already drifted through every airlock! The ship is theirs in minutes! MWAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "The pirates drifted in silently. They linger near every corridor. Nothing can stop forty pirates who have already drifted inside. MWEHE HEE.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "6:00 AM. STAR-SLOTH MAKES OATMEAL.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...the aroma lingered... so nicely...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": "JOLT BURSTS IN.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "STAR-SLOTH! PIRATES HAVE DRIFTED THROUGH EVERY AIRLOCK! FORTY PIRATES! DO SOMETHING!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "THE PIRATES STORM THE CORRIDORS.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": true,
+          "bg": "#FFF0E0",
+          "bubble": "PIRATES IN CORRIDOR A! PIRATES IN CORRIDOR B! PIRATES EVERYWHERE! WE ARE OVERWHELMED!",
+          "bubbleType": "shout",
+          "sfx": "CLANG CLANG CLANG"
+        },
+        {
+          "caption": "ONE PIRATE SWATS JOLT ASIDE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "OW.",
+          "bubbleType": "speech",
+          "sfx": "WHAM"
+        },
+        {
+          "caption": "JOLT FIRES THE STATIC CANNON AT THE PIRATES.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "STATIC CANNON! NOBODY RESISTS THE STATIC CANNON!",
+          "bubbleType": "shout",
+          "sfx": "FZZZZT"
+        },
+        {
+          "caption": "THE CANNON HITS THE CEILING. THE PIRATES LAUGH.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#EEEEFF",
+          "bubble": "I missed. Forty pirates. The pirates lingered in every corridor and I missed ALL FORTY.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "10:00 AM. THE OATMEAL HAS LINGERED ON THE HEAT FOR FOUR HOURS.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "GLORP GLORP GLORP"
+        },
+        {
+          "caption": "STAR-SLOTH TIPS THE POT.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "SPLOOOOOSH"
+        },
+        {
+          "caption": "OATMEAL DRIFTED DOWN EVERY CORRIDOR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "WHAT IS THAT?! WHAT IS DRIFTING DOWN THE CORRIDORS?! IT IS— PORRIDGE?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "STICKY PORRIDGE DRIFTED INTO EVERY CORRIDOR. PIRATES STUCK.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "The pirates have stopped. They are all stuck in... oatmeal?",
+          "bubbleType": "speech",
+          "sfx": "SQUELCH SQUELCH"
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY PIRATES! They drifted into a PORRIDGE TRAP?! THIS STUFF IS EVERYWHERE! MY BOOTS! AGAIN!",
+          "bubbleType": "rage",
+          "sfx": "SQUELCH"
+        },
+        {
+          "caption": "THE PIRATES WALK AROUND THE ICE PATCH.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "They... went around it. My ice covered six square metres. They went around six square metres.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "THE ADMIRAL RUNS INTO THE TANGLE WIRE.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "JOLT! I AM IN THE WIRE! I AM TANGLED! THE PIRATES ARE STEPPING OVER ME!",
+          "bubbleType": "shout",
+          "sfx": "OOF"
+        },
+        {
+          "caption": "OVER-CLOCK IS GLEEFUL.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "My pirates have lingered in every corridor for four hours and Jolt has achieved nothing. NOTHING. MWAHAHA.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "THE OATMEAL HAS ALSO BEEN LINGERING FOR FOUR HOURS.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "GLORP... GLORP..."
+        },
+        {
+          "caption": "THE PIRATES WERE COLLECTED AND REMOVED.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "Forty pirates. Defeated by breakfast. He just lingered on making oatmeal for four hours. And it worked.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "SHIP SECURED. OVER-CLOCK DEFEATED BY BREAKFAST.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "The pirates drifted in through every airlock. The oatmeal drifted into every corridor. One drifted in. The other drifted them out. Star-Sloth saved the ship with porridge.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🔐 The Password Panic",
+      "blurb": "Over-Clock triggers the self-destruct. Jolt panics through two wrong guesses. Star-Sloth is resolute to the last second.",
+      "words": [
+        {
+          "word": "rational",
+          "definition": "Based on reason and clear thinking, rather than emotion."
+        },
+        {
+          "word": "resolute",
+          "definition": "Very determined and sure."
+        },
+        {
+          "word": "agitated",
+          "definition": "Upset and unable to stay calm."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "I have triggered their self-destruct REMOTELY! Ten minutes! Three attempts! The passcode is 47 characters long! MWAHAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "Nobody can be rational under this pressure. Nobody can stay resolute. They will become agitated. They will panic. And then— BOOM.",
+          "bubbleType": "speech",
+          "sfx": "MWEHE HEE"
+        },
+        {
+          "caption": "💥 SELF-DESTRUCT INITIATED. 10:00. 3 ATTEMPTS. 💥",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "Stay rational, everyone! We MUST be rational! Stay rational! BE RATIONAL! NOW!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "JOLT TYPES THE FIRST ATTEMPT.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "PASSWORD ONE TWO THREE! OBVIOUSLY!",
+          "bubbleType": "shout",
+          "sfx": "BZZT — WRONG"
+        },
+        {
+          "caption": "JOLT TYPES THE SECOND ATTEMPT.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "1 2 3 4 5 6 7 8! SURELY THAT IS IT!",
+          "bubbleType": "shout",
+          "sfx": "BZZT — WRONG"
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#FFD0D0",
+          "bubble": "ONE TRY LEFT. I AM NOT RATIONAL. I AM AGITATED. I HAVE NEVER BEEN THIS AGITATED.",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK IS CERTAIN OF VICTORY.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "One attempt remaining! Five minutes! They will be too agitated to be rational! VICTORY IS MINE!",
+          "bubbleType": "shout",
+          "sfx": "BEEP BEEP BEEP"
+        },
+        {
+          "caption": "STAR-SLOTH SLOWLY PUSHES JOLT ASIDE AND SITS AT THE CONSOLE.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...resolute...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "ONE CHARACTER. PER SECOND. RESOLUTE.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "click... click... click"
+        },
+        {
+          "caption": "TEN SECONDS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "Ten... nine... eight... even the resolute break at the end! Seven... six... COME ON!",
+          "bubbleType": "rage",
+          "sfx": "BEEP BEEP BEEP"
+        },
+        {
+          "caption": "THREE SECONDS. STAR-SLOTH PRESSES THE FINAL KEY.",
+          "char": "starSloth",
+          "pose": "action",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "click."
+        },
+        {
+          "caption": "OVER-CLOCK WATCHES THE SCREEN. TWO SECONDS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "Two seconds. One. Zero— wait. Zero. ZERO?! It DEACTIVATED?! HOW?!",
+          "bubbleType": "rage",
+          "sfx": "BEEP... silence"
+        },
+        {
+          "caption": "THE SELF-DESTRUCT SCREEN READS: DEACTIVATED.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "DEACTIVATED! STAR-SLOTH GOT IT! AT ZERO! AT LITERALLY ZERO SECONDS! HE GOT IT!",
+          "bubbleType": "shout",
+          "sfx": "YESSS!"
+        },
+        {
+          "caption": "OVER-CLOCK CHECKS THE LOG. STAR-SLOTH ENTERED 47 CHARACTERS IN 47 SECONDS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "One. Character. Per. Second. For forty-seven seconds. While agitated screaming surrounded him. While MY drone blared. While the timer hit zero.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "DEACTIVATED.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "RESOLUTE?! HE WAS RESOLUTE?! HOW IS A SLOTH MORE RESOLUTE THAN ME?!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "I was agitated. The Admiral was agitated. Over-Clock was certain. Star-Sloth was resolute. One of us got it right.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK, ALONE IN HIS LAIR.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "I built a system to make them agitated. And one of them was so rational... so resolute... it did not matter.",
+          "bubbleType": "speech",
+          "sfx": "sigh..."
+        },
+        {
+          "caption": "EVERYONE LIVES.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "He was rational when I was agitated. Resolute when I was screaming. One character per second. He typed through the chaos and the countdown. Over-Clock is defeated. Again.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🪨 The Slow and Steady Stroll",
+      "blurb": "Over-Clock fires everything at the ship. Going 1 mph means the shields absorb every hit and his ammo runs out.",
+      "words": [
+        {
+          "word": "diligent",
+          "definition": "Hard-working and careful."
+        },
+        {
+          "word": "reckless",
+          "definition": "Doing dangerous things without thinking."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "They MUST cross the Criss-Cross Asteroid Field! Every reckless pilot who sped through it was destroyed! EVERY ONE!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "I will be waiting with my cannon array! Speed through and hit asteroids! Diligent slowness? My cannons auto-target anything still. FOOLPROOF!",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "THE SHIP REACHES THE ASTEROID FIELD. JOLT GRABS THE CONTROLS.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "We need to be reckless and FAST! Being diligent wastes time! FULL SPEED AHEAD!",
+          "bubbleType": "shout",
+          "sfx": "SCRAPE SCRAPE CRUNCH"
+        },
+        {
+          "caption": "JOLT HITS THREE ASTEROIDS IN TWO SECONDS.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "Okay, three asteroids. That is a normal amount to hit immediately.",
+          "bubbleType": "speech",
+          "sfx": "CLANG CLANG BONK"
+        },
+        {
+          "caption": "STAR-SLOTH TAKES THE WHEEL.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...diligent... and careful...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH DROPS SPEED TO 1 MPH.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "ONE MILE PER HOUR?! WE WILL BE SITTING DUCKS! RECKLESS SPEED IS THE ONLY OPTION!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK FIRES EVERYTHING.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "CANNON ARRAY FIRE! They are moving too slowly to dodge! DESTROY THEM!",
+          "bubbleType": "shout",
+          "sfx": "BOOM BOOM BOOM"
+        },
+        {
+          "caption": "DILIGENT SLOWNESS. SHIELDS ABSORB EVERY TAP.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "Why. Will. They. Not. HIT?! FIRE THE BACKUP! FIRE IT ALL!",
+          "bubbleType": "rage",
+          "sfx": "boing boing boing"
+        },
+        {
+          "caption": "ALL OF IT BOUNCES OFF THE SLOW-MOVING SHIELDS.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "Every single shot bounces off. Because we are going one mile per hour. The shields are not even trying.",
+          "bubbleType": "speech",
+          "sfx": "bonk... bonk..."
+        },
+        {
+          "caption": "OVER-CLOCK'S AMMUNITION RUNS OUT.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "EMPTY?! I wasted EVERYTHING on a diligent sloth going ONE MILE PER HOUR?!",
+          "bubbleType": "rage",
+          "sfx": "click click click"
+        },
+        {
+          "caption": "OVER-CLOCK, SURROUNDED BY EMPTY AMMO CASINGS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "I built a TRAP for reckless pilots. And a diligent sloth at one mile per hour walked straight through it. I hate diligent sloths.",
+          "bubbleType": "speech",
+          "sfx": "sigh..."
+        },
+        {
+          "caption": "OVER-CLOCK DEPLOYS HIS COMBAT BOTS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "COMBAT BOTS! Fly out and STOP THEM! They cannot be diligent through combat bots!",
+          "bubbleType": "rage",
+          "sfx": "DEPLOY"
+        },
+        {
+          "caption": "JOLT DEFENDS THE SHIP AGAINST THE BOTS.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "I WILL FIGHT THEM! I AM VERY RECKLESS ABOUT THIS AND THAT IS FINE!",
+          "bubbleType": "shout",
+          "sfx": "POW WHAM CRASH"
+        },
+        {
+          "caption": "OVER-CLOCK RAMS HIS OWN SHIP INTO THE PATH.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "I WILL BLOCK THEM MYSELF! MY OWN SHIP! RIGHT IN THE PATH! THEY CANNOT GO AROUND ME!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "We are almost out. Over-Clock has used every cannon. Every bot. His own ship. Everything. And we are still going. One. Mile. Per. Hour.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK RUNS OUT OF SHIP FUEL TRYING TO BLOCK THEM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "EMPTY?! I am out of fuel?! I rammed my own ship into their path so many times I ran OUT?! I HATE DILIGENT SLOTHS.",
+          "bubbleType": "rage",
+          "sfx": "sputter... sputter..."
+        },
+        {
+          "caption": "LAST ASTEROID CLEARED. FULL CLEAR.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "CLEAR! WE ARE THROUGH! THROUGH! NOT A SCRATCH! ONE MILE PER HOUR! CLEAR!",
+          "bubbleType": "shout",
+          "sfx": "YESSS!"
+        },
+        {
+          "caption": "THROUGH WITHOUT A SCRATCH.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "Reckless speed would have destroyed us. Diligent slowness meant Over-Clock wasted all his ammunition on a ship moving at walking pace. Beautiful. Star-Sloth wins.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🎯 The Pre-Emptive Strike",
+      "blurb": "Over-Clock's laser fires at noon. Star-Sloth's ship drifts into the barrel by accident at 11:59. Victory by mistake.",
+      "words": [
+        {
+          "word": "drifted",
+          "definition": "Moved slowly and lightly."
+        },
+        {
+          "word": "opportune",
+          "definition": "Happening at a particularly suitable or favourable time."
+        },
+        {
+          "word": "wandered",
+          "definition": "Moved around without a clear plan."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR. 6:00 AM.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "My laser fires at NOON — the most opportune moment in galactic history! Six hours of charging! NOTHING CAN STOP IT! MWAHAHA!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "The target is locked. The moment is so opportune. They could never get in my way in time. Not even that wandering sloth.",
+          "bubbleType": "speech",
+          "sfx": "tick tick"
+        },
+        {
+          "caption": "7:00 AM. STAR-SLOTH LEANS ON THE LAUNCH LEVER. BY ACCIDENT.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": null,
+          "bubbleType": null,
+          "sfx": "...zz..."
+        },
+        {
+          "caption": "THE SHIP ENTERS A LAUNCH SEQUENCE.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "THE SHIP HAS WANDERED INTO A LAUNCH SEQUENCE! STAR-SLOTH?! STAR-SLOTH?!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "THE SHIP DRIFTED. AT 1 MPH. HEADING NOWHERE IN PARTICULAR.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...I appear to have wandered... peaceful...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "WE ARE DRIFTING TOWARD OVER-CLOCK'S SECTOR! TURN AROUND! STAR-SLOTH! WAKE UP!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "9:00 AM. OVER-CLOCK NOTICES SOMETHING ON HIS SCANNER.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "Something has wandered into my sector. Tiny. Slow. One mile per hour. Nothing to worry about.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "THE SHIP HAS DRIFTED INTO OVER-CLOCK'S OUTER DEFENCES.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": true,
+          "bg": "#FFF0E0",
+          "bubble": "WE HAVE DRIFTED INTO HIS OUTER DEFENCES! HOW?! WHY?! TURN AROUND!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "11:58 AM.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "It has drifted INTO the cannon barrel approach. That cannot be intentional. THAT CANNOT BE INTENTIONAL.",
+          "bubbleType": "speech",
+          "sfx": "BEEP BEEP"
+        },
+        {
+          "caption": "11:59. THE SHIP DRIFTED DIRECTLY INTO THE CANNON BARREL.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "We have drifted into the barrel. We have drifted. INTO. THE BARREL.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...opportune position...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "11:59:59.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "IF I FIRE — I DESTROY MY OWN BARREL! IF I DON'T FIRE — I MISS THE OPPORTUNE MOMENT! AAAAAH!",
+          "bubbleType": "rage",
+          "sfx": "BEEP BEEP BEEP"
+        },
+        {
+          "caption": "NOON.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "MY OWN BASE! MY OWN OPPORTUNE MOMENT! RUINED BY A WANDERING SLOTH WHO DRIFTED IN BY ACCIDENT!",
+          "bubbleType": "rage",
+          "sfx": "KA-BLOOOM"
+        },
+        {
+          "caption": "OVER-CLOCK'S CANNON DESTROYS ITSELF.",
+          "char": "jolt",
+          "pose": "zoom",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "The base is destroyed. We are fine. He wandered in. And Over-Clock's own weapon destroyed his own base.",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "HE SAVED THE GALAXY BY FALLING ASLEEP ON THE LAUNCH LEVER?!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK TRIES EVERYTHING. UNPLUGS THE BASE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": true,
+          "bg": "#FFE8E8",
+          "bubble": "SELF-DESTRUCT ABORT! POWER DOWN! UNPLUGGING EVERYTHING! The backup is... also the cannon. Of course.",
+          "bubbleType": "rage",
+          "sfx": "BZZT CRASH CLANG"
+        },
+        {
+          "caption": "JOLT CALCULATES THE ANGLE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "We wandered 4.3 metres into the barrel. The cannon fires OUTWARD — we are at the safe end. Over-Clock cannot fire without destroying his own base. We drifted into the safest spot.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK, SITTING IN HIS RUINED BASE.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "The most opportune moment in history. Ruined. Because a sloth wandered and drifted into my cannon barrel. BY ACCIDENT.",
+          "bubbleType": "speech",
+          "sfx": "drip..."
+        },
+        {
+          "caption": "STAR-SLOTH THOUGHT HE WAS GOING FOR A DRIVE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "His wandering and drifting was the most opportune thing in galactic history. Over-Clock aimed for the most opportune moment. Star-Sloth wandered into it first. By mistake. Star-Sloth wins.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    },
+    {
+      "title": "🏅 The Un-Chase Scene",
+      "blurb": "Over-Clock's swift thief steals the Admiral's medal. Everyone chases. Star-Sloth waits. The thief runs into his hand.",
+      "words": [
+        {
+          "word": "serene",
+          "definition": "Calm and peaceful."
+        },
+        {
+          "word": "placid",
+          "definition": "Calm and peaceful, without strong movement or emotion."
+        },
+        {
+          "word": "swift",
+          "definition": "Very fast."
+        }
+      ],
+      "panels": [
+        {
+          "caption": "IN OVER-CLOCK'S LAIR...",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": true,
+          "bg": "#FFE8F8",
+          "bubble": "I have sent my most swift thief! He is the swiftest creature in the galaxy! He will steal the Admiral's medal and nobody can catch him! TOO SWIFT!",
+          "bubbleType": "shout",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "He is swift. He runs laps around any pursuer. No serene, placid creature can catch something swift. Nobody is more swift than my thief. MWAHAHA.",
+          "bubbleType": "speech",
+          "sfx": "ZOOOOOM"
+        },
+        {
+          "caption": "THE ADMIRAL'S MEDAL HAS BEEN STOLEN!",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "A SWIFT THIEF! HE IS TOO SWIFT! AFTER HIM! ALL UNITS — AFTER HIM!",
+          "bubbleType": "shout",
+          "sfx": "ZOOOOOM"
+        },
+        {
+          "caption": "JOLT GIVES CHASE.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "I AM ALSO SWIFT! I AM ALMOST AS SWIFT! ...I am not catching him.",
+          "bubbleType": "speech",
+          "sfx": "SLIP"
+        },
+        {
+          "caption": "THE THIEF RUNS LAPS AROUND THE CIRCULAR STATION.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": true,
+          "bg": "#FFF0E0",
+          "bubble": "HE IS LAPPING US! HE IS LAPPING THE CHASERS! A THIEF IS LAPPING THE SPACE NAVY!",
+          "bubbleType": "shout",
+          "sfx": "WHOOOOSH"
+        },
+        {
+          "caption": "LAP 2. THE THIEF DODGES THE NET. IT CATCHES THE ADMIRAL.",
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "JOLT! I AM IN THE NET! THE WRONG ONE IS IN THE NET! JOLT!",
+          "bubbleType": "shout",
+          "sfx": "OOF"
+        },
+        {
+          "caption": "LAP 3. OVER-CLOCK WATCHES, CONFIDENT.",
+          "char": "overClock",
+          "pose": "smug",
+          "fullWidth": false,
+          "bg": "#FFE8F8",
+          "bubble": "A serene, placid sloth cannot catch a swift thief. This is mathematically impossible. I checked.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH DOES NOT CHASE. ONE STEP FORWARD. HAND OUTSTRETCHED.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...serene...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": "LAP 4. JOLT TRIES THE SLIPPERY FLOOR PROTOCOL.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#FFD0D0",
+          "bubble": "SLIPPERY FLOOR! ...I forgot the floor was slippery. OW.",
+          "bubbleType": "speech",
+          "sfx": "SLIP CRASH OOF"
+        },
+        {
+          "caption": "LAP 7. JOLT WHEEZES.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#EEEEFF",
+          "bubble": "Star-Sloth is so placid! HOW is he so serene while I am collapsing?! HOW?!",
+          "bubbleType": "shout",
+          "sfx": "wheeze wheeze"
+        },
+        {
+          "caption": "STAR-SLOTH REMAINS SERENE. HAND OUTSTRETCHED.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...placid...",
+          "bubbleType": "whisper",
+          "sfx": null
+        },
+        {
+          "caption": "LAP 8. THE SWIFT THIEF RUNS A FULL CIRCLE AND SPRINTS INTO STAR-SLOTH'S OPEN HAND.",
+          "char": "starSloth",
+          "pose": "blink",
+          "fullWidth": false,
+          "bg": "#FFFDE7",
+          "bubble": "...I simply stayed serene...",
+          "bubbleType": "thought",
+          "sfx": "BONK"
+        },
+        {
+          "caption": "THE MEDAL RETURNS TO THE ADMIRAL.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "HE STOOD STILL! HE STOOD STILL AND THE THIEF RAN INTO HIM! MY SWIFT THIEF! DEFEATED BY STANDING STILL!",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": null,
+          "char": "admiral",
+          "pose": "exploding",
+          "fullWidth": false,
+          "bg": "#FFF0E0",
+          "bubble": "He caught the thief by not chasing. He was serene. He was placid. He just waited.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK CANNOT ACCEPT THIS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "He ran into a HAND. My SWIFT thief ran into a HAND that was STANDING STILL. Mathematically impossible.",
+          "bubbleType": "rage",
+          "sfx": null
+        },
+        {
+          "caption": "THE THIEF IS ESCORTED OUT.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": false,
+          "bg": "#E8FFE8",
+          "bubble": "The thief said, and I quote: \"I have been defeated by a sloth who was just standing there.\" Swift enough to run eight laps. Not swift enough to see a calm sloth.",
+          "bubbleType": "speech",
+          "sfx": null
+        },
+        {
+          "caption": "STAR-SLOTH SITS BACK IN HIS CHAIR.",
+          "char": "starSloth",
+          "pose": "zen",
+          "fullWidth": true,
+          "bg": "#FFFDE7",
+          "bubble": "...I was simply serene and placid...",
+          "bubbleType": "thought",
+          "sfx": null
+        },
+        {
+          "caption": "OVER-CLOCK, IN HIS LAIR. FURIOUS.",
+          "char": "overClock",
+          "pose": "meltdown",
+          "fullWidth": false,
+          "bg": "#FFE8E8",
+          "bubble": "The serene, placid sloth caught my swift thief by being neither swift nor chasing. This should not be possible.",
+          "bubbleType": "speech",
+          "sfx": "sigh..."
+        },
+        {
+          "caption": "MEDAL RETURNED. OVER-CLOCK FURIOUS. NOT A DROP OF SWEAT.",
+          "char": "jolt",
+          "pose": "translating",
+          "fullWidth": true,
+          "bg": "#E8FFE8",
+          "bubble": "Serene. Placid. Correct. The swift thief was stopped by the stillest hero. Star-Sloth stood in one spot, raised one hand, and caught a creature running at sixty miles per hour. Over-Clock is baffled again. We all are.",
+          "bubbleType": "speech",
+          "sfx": null
+        }
+      ]
+    }
+  ]
+}
