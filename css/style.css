@@ -3467,7 +3467,7 @@ footer {
   letter-spacing: 0.03em;
   background: #FFFEF0;
   color: #1a1a1a;
-  padding: 12px 14px;
+  padding: 16px 22px;
   border-radius: 0;
   box-shadow: none;
   clip-path: polygon(
@@ -3530,7 +3530,7 @@ footer {
   position: absolute;
   top: 14%;
   right: 4%;
-  z-index: 3;
+  z-index: 0;
   pointer-events: none;
   transform: rotate(var(--sfx-rotate, -8deg));
   width: 90px;
