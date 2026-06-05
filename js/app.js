@@ -4758,27 +4758,36 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
     wildState.answered     = false;
 
     document.getElementById('wild-phase-label').textContent = 'Phase 2 of 3 — Use It ✏️';
+    document.getElementById('wild-phase2-word').textContent = wordObj.word;
 
-    var blankSentence = (wordObj.themed_quest && wordObj.themed_quest.sentence)
+    var correctSentence = (wordObj.themed_quest && wordObj.themed_quest.sentence)
       || getSentenceBlank(wordObj);
-    if (!blankSentence) {
+    if (!correctSentence) {
       showWildPhase3(wordObj);
       return;
     }
-    document.getElementById('wild-blank-sentence').textContent = blankSentence;
+
+    var distractors = pickDistractors(wordObj, allWords, 3);
+    var sentencePairs = shuffle([{ sentence: correctSentence, correct: true }].concat(
+      distractors.map(function (d) {
+        return {
+          sentence: (d.themed_quest && d.themed_quest.sentence) || getSentenceBlank(d) || d.sentence_usage,
+          correct: false
+        };
+      })
+    ));
 
     var grid = document.getElementById('wild-phase2-choices');
     grid.innerHTML = '';
-    var distractors = pickDistractors(wordObj, allWords, 3);
-    var choices = shuffle([wordObj].concat(distractors));
-    choices.forEach(function (choice) {
+    sentencePairs.forEach(function (pair) {
       var btn = document.createElement('button');
       btn.className = 'quiz-answer-btn';
       btn.type = 'button';
-      btn.textContent = choice.word;
-      (function (c, b) {
-        b.addEventListener('click', function () { wildPhase2Answer(c === wordObj, b, wordObj); });
-      }(choice, btn));
+      btn.textContent = pair.sentence;
+      if (pair.correct) btn.dataset.correct = 'true';
+      (function (p, b) {
+        b.addEventListener('click', function () { wildPhase2Answer(p.correct, b, wordObj); });
+      }(pair, btn));
       grid.appendChild(btn);
     });
 
@@ -4814,9 +4823,9 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
         wildState.answered = true;
         allBtns.forEach(function (b) {
           b.disabled = true;
-          if (b.textContent === wordObj.word) b.classList.add('correct');
+          if (b.dataset.correct === 'true') b.classList.add('correct');
         });
-        fb.textContent = '✗ The answer was "' + wordObj.word + '"';
+        fb.textContent = '✗ See the highlighted sentence above';
         fb.className = 'quiz-feedback visible feedback-wrong';
         setTimeout(function () { showWildPhase3(wordObj); }, 1600);
       } else {
