@@ -113,7 +113,7 @@
           <button class="launch-group-toggle" aria-expanded="false" aria-controls="games-body">
             <span class="launch-group-label">Games</span>
             <span class="launch-group-preview" aria-hidden="true">
-              <span class="preview-icon">❓</span><span class="preview-icon">🔍</span><span class="preview-icon">🔤</span><span class="preview-icon">⚡</span><span class="preview-icon">🎭</span><span class="preview-icon">🗺️</span><span class="preview-icon">🌌</span><span class="preview-icon">🦁</span>
+              <span class="preview-icon">❓</span><span class="preview-icon">🔍</span><span class="preview-icon">🔤</span><span class="preview-icon">⚡</span><span class="preview-icon">🎭</span><span class="preview-icon">🗺️</span><span class="preview-icon">🌌</span><span class="preview-icon">🦁</span><span class="preview-icon">🌿</span>
             </span>
             <svg class="collapse-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
@@ -153,6 +153,10 @@
             <button class="quiz-launch-btn beast-launch-btn" id="beast-launch-btn" aria-label="Open Animal Constellation game">
               <span aria-hidden="true">🦁</span>
               Animal Constellation
+            </button>
+            <button class="quiz-launch-btn wild-launch-btn" id="wild-launch-btn" aria-label="Open Word in the Wild mode">
+              <span aria-hidden="true">🌿</span>
+              Word in the Wild
             </button>
           </div>
         </div>
@@ -1639,6 +1643,89 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Word in the Wild overlay -->
+  <div id="wild-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Setup screen -->
+    <div id="wild-setup" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="wild-setup-title">
+      <button class="close-btn" id="wild-close" aria-label="Close Word in the Wild">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🌿</span>
+        <h2 id="wild-setup-title" class="quiz-setup-title">Word in the Wild</h2>
+        <p class="quiz-setup-subtitle">Spot the word in action, use it in a sentence, then nail the definition — 3 phases per word!</p>
+        <div class="quiz-options-grid">
+          <div class="quiz-option-group" role="group" aria-labelledby="wild-length-label">
+            <p id="wild-length-label" class="quiz-scope-label">How many words?</p>
+            <button class="quiz-option-btn active" data-wild-length="5" aria-pressed="true">5 words</button>
+            <button class="quiz-option-btn" data-wild-length="10" aria-pressed="false">10 words</button>
+          </div>
+        </div>
+        <div id="wild-personal-best" class="quiz-personal-best hidden"></div>
+        <button class="quiz-start-btn quiz-primary-start-btn" id="wild-start-btn">
+          Head into the Wild!
+          <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Game screen -->
+    <div id="wild-game-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="wild-word-label">
+      <div class="quiz-screen-actions">
+        <button class="quiz-exit-btn" id="wild-exit-btn" type="button">Exit</button>
+      </div>
+      <div class="wild-game-inner">
+        <div class="wild-header">
+          <span id="wild-word-label" class="detective-case-label">Word 1 of 5</span>
+          <span id="wild-score-display" class="quiz-score-display">Score: 0</span>
+        </div>
+        <p id="wild-phase-label" class="wild-phase-label"></p>
+
+        <!-- Phase 1: Spot It -->
+        <div id="wild-phase1-card" class="wild-phase-card">
+          <p class="wild-target-word" id="wild-word-heading"></p>
+          <p class="wild-word-type" id="wild-word-type"></p>
+          <div id="wild-sentences" class="wild-sentences" aria-label="Example sentences"></div>
+          <button class="quiz-start-btn" id="wild-got-it-btn" type="button">Got it? Use it! →</button>
+        </div>
+
+        <!-- Phase 2: Use It -->
+        <div id="wild-phase2-card" class="wild-phase-card hidden">
+          <p id="wild-blank-sentence" class="wild-blank-sentence"></p>
+          <div id="wild-phase2-choices" class="quiz-answers-grid" role="group" aria-label="Word choices"></div>
+        </div>
+
+        <!-- Phase 3: Define It -->
+        <div id="wild-phase3-card" class="wild-phase-card hidden">
+          <p class="wild-phase3-prompt">What does <strong id="wild-phase3-word"></strong> mean?</p>
+          <div id="wild-phase3-choices" class="quiz-answers-grid" role="group" aria-label="Definition choices"></div>
+          <p id="wild-definition-reveal" class="wild-definition-reveal hidden"></p>
+          <div class="wild-next-wrap hidden" id="wild-next-wrap">
+            <button class="quiz-start-btn" id="wild-next-btn" type="button">Next word →</button>
+          </div>
+        </div>
+
+        <div id="wild-feedback" class="quiz-feedback" aria-live="assertive" aria-atomic="true"></div>
+      </div>
+    </div>
+
+    <!-- End screen -->
+    <div id="wild-end-screen" class="quiz-panel hidden" role="dialog" aria-modal="true" aria-labelledby="wild-end-title">
+      <div class="quiz-end-inner">
+        <span class="quiz-end-emoji" id="wild-end-emoji" aria-hidden="true"></span>
+        <h2 class="quiz-end-title" id="wild-end-title"></h2>
+        <p class="quiz-end-score" id="wild-end-score"></p>
+        <p class="quiz-end-best" id="wild-end-best"></p>
+        <div class="quiz-end-actions">
+          <button class="quiz-start-btn" id="wild-play-again-btn">Play again!</button>
+          <button class="quiz-back-btn" id="wild-done-btn">Back to words</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script type="importmap">

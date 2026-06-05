@@ -573,6 +573,7 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
         initScrambleMode();
         initFlashBlitz();
         initSynonymSnap();
+        initWildMode();
         wireWordUniverse(allWords);
         wireConstellationQuest(allWords);
         wireExplorerExtras(allWords);
@@ -4603,6 +4604,327 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
     } else {
       reviewEl.classList.add('hidden');
     }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // WORD IN THE WILD MODE — Inductive learning: Spot It → Use It → Define It
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  var WILD_BESTS_KEY = 'vocabVault_wildBests';
+
+  var wildState = {
+    words         : [],
+    index         : 0,
+    score         : 0,
+    sessionLength : 5,
+    phase         : 1,
+    phase2Penalty : 0,
+    answered      : false,
+    bests         : {}
+  };
+
+  function initWildMode() {
+    try { wildState.bests = JSON.parse(localStorage.getItem(WILD_BESTS_KEY) || '{}'); } catch (e) { wildState.bests = {}; }
+
+    document.getElementById('wild-launch-btn').addEventListener('click', openWild);
+    document.getElementById('wild-close').addEventListener('click', closeWild);
+    document.getElementById('wild-start-btn').addEventListener('click', startWild);
+    document.getElementById('wild-exit-btn').addEventListener('click', function () { showWildScreen('setup'); });
+    document.getElementById('wild-got-it-btn').addEventListener('click', function () {
+      showWildPhase2(wildState.words[wildState.index]);
+    });
+    document.getElementById('wild-next-btn').addEventListener('click', wildAdvance);
+    document.getElementById('wild-play-again-btn').addEventListener('click', function () { showWildScreen('setup'); });
+    document.getElementById('wild-done-btn').addEventListener('click', closeWild);
+
+    document.querySelectorAll('[data-wild-length]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('[data-wild-length]').forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        wildState.sessionLength = parseInt(btn.dataset.wildLength, 10);
+        updateWildBestDisplay();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var overlay = document.getElementById('wild-overlay');
+        if (overlay && !overlay.classList.contains('hidden')) closeWild();
+      }
+    });
+  }
+
+  function openWild() {
+    var overlay = document.getElementById('wild-overlay');
+    overlay.classList.remove('hidden');
+    overlay.setAttribute('aria-hidden', 'false');
+    showWildScreen('setup');
+    updateWildBestDisplay();
+  }
+
+  function closeWild() {
+    var overlay = document.getElementById('wild-overlay');
+    overlay.classList.add('hidden');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  function showWildScreen(name) {
+    var map = { setup: 'wild-setup', game: 'wild-game-screen', end: 'wild-end-screen' };
+    Object.keys(map).forEach(function (k) {
+      var el = document.getElementById(map[k]);
+      if (el) el.classList.toggle('hidden', k !== name);
+    });
+  }
+
+  function updateWildBestDisplay() {
+    var el   = document.getElementById('wild-personal-best');
+    var best = wildState.bests[wildState.sessionLength];
+    if (best) {
+      el.textContent = 'Personal best (' + wildState.sessionLength + ' words): ' + best + ' pts';
+      el.classList.remove('hidden');
+    } else {
+      el.classList.add('hidden');
+    }
+  }
+
+  function startWild() {
+    wildState.words = shuffle(allWords).slice(0, wildState.sessionLength);
+    wildState.index = 0;
+    wildState.score = 0;
+    showWildScreen('game');
+    showWildPhase1();
+  }
+
+  function buildHighlightedSentence(sentence, word) {
+    var p = document.createElement('p');
+    p.className = 'wild-sentence';
+    var escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var re = new RegExp('\\b(' + escaped + ')\\b', 'gi');
+    var lastIndex = 0;
+    var match;
+    re.lastIndex = 0;
+    while ((match = re.exec(sentence)) !== null) {
+      if (match.index > lastIndex) {
+        p.appendChild(document.createTextNode(sentence.slice(lastIndex, match.index)));
+      }
+      var mark = document.createElement('mark');
+      mark.className = 'wild-word-highlight';
+      mark.textContent = match[0];
+      p.appendChild(mark);
+      lastIndex = re.lastIndex;
+    }
+    if (lastIndex < sentence.length) {
+      p.appendChild(document.createTextNode(sentence.slice(lastIndex)));
+    }
+    return p;
+  }
+
+  function showWildPhase1() {
+    var wordObj = wildState.words[wildState.index];
+    wildState.phase    = 1;
+    wildState.answered = false;
+
+    document.getElementById('wild-word-label').textContent =
+      'Word ' + (wildState.index + 1) + ' of ' + wildState.sessionLength;
+    document.getElementById('wild-score-display').textContent = 'Score: ' + wildState.score;
+    document.getElementById('wild-phase-label').textContent  = 'Phase 1 of 3 — Spot It 👀';
+    document.getElementById('wild-word-heading').textContent = wordObj.word;
+    document.getElementById('wild-word-type').textContent    = wordObj.word_type;
+
+    var container = document.getElementById('wild-sentences');
+    container.innerHTML = '';
+    var sent1 = wordObj.sentence_usage;
+    var sent2 = (wordObj.themed_quest && wordObj.themed_quest.word) || '';
+    var sentences = (sent1 === sent2 || !sent2) ? [sent1] : [sent1, sent2];
+    sentences.forEach(function (s) {
+      container.appendChild(buildHighlightedSentence(s, wordObj.word));
+    });
+
+    document.getElementById('wild-phase1-card').classList.remove('hidden');
+    document.getElementById('wild-phase2-card').classList.add('hidden');
+    document.getElementById('wild-phase3-card').classList.add('hidden');
+    var fb = document.getElementById('wild-feedback');
+    fb.textContent = '';
+    fb.className = 'quiz-feedback';
+  }
+
+  function showWildPhase2(wordObj) {
+    wildState.phase        = 2;
+    wildState.phase2Penalty = 0;
+    wildState.answered     = false;
+
+    document.getElementById('wild-phase-label').textContent = 'Phase 2 of 3 — Use It ✏️';
+
+    var blankSentence = (wordObj.themed_quest && wordObj.themed_quest.sentence)
+      || getSentenceBlank(wordObj);
+    if (!blankSentence) {
+      showWildPhase3(wordObj);
+      return;
+    }
+    document.getElementById('wild-blank-sentence').textContent = blankSentence;
+
+    var grid = document.getElementById('wild-phase2-choices');
+    grid.innerHTML = '';
+    var distractors = pickDistractors(wordObj, allWords, 3);
+    var choices = shuffle([wordObj].concat(distractors));
+    choices.forEach(function (choice) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer-btn';
+      btn.type = 'button';
+      btn.textContent = choice.word;
+      (function (c, b) {
+        b.addEventListener('click', function () { wildPhase2Answer(c === wordObj, b, wordObj); });
+      }(choice, btn));
+      grid.appendChild(btn);
+    });
+
+    document.getElementById('wild-phase1-card').classList.add('hidden');
+    document.getElementById('wild-phase2-card').classList.remove('hidden');
+    document.getElementById('wild-phase3-card').classList.add('hidden');
+    var fb = document.getElementById('wild-feedback');
+    fb.textContent = '';
+    fb.className = 'quiz-feedback';
+  }
+
+  function wildPhase2Answer(isCorrect, btn, wordObj) {
+    if (wildState.answered) return;
+
+    var allBtns = document.querySelectorAll('#wild-phase2-choices .quiz-answer-btn');
+    var fb = document.getElementById('wild-feedback');
+
+    if (isCorrect) {
+      wildState.answered = true;
+      var pts = Math.max(100, 300 - wildState.phase2Penalty * 100);
+      wildState.score += pts;
+      document.getElementById('wild-score-display').textContent = 'Score: ' + wildState.score;
+      allBtns.forEach(function (b) { b.disabled = true; });
+      btn.classList.add('correct');
+      fb.textContent = '✓ Correct! +' + pts + ' pts';
+      fb.className = 'quiz-feedback visible feedback-correct';
+      setTimeout(function () { showWildPhase3(wordObj); }, 1600);
+    } else {
+      wildState.phase2Penalty++;
+      btn.disabled = true;
+      btn.classList.add('wrong');
+      if (wildState.phase2Penalty >= 2) {
+        wildState.answered = true;
+        allBtns.forEach(function (b) {
+          b.disabled = true;
+          if (b.textContent === wordObj.word) b.classList.add('correct');
+        });
+        fb.textContent = '✗ The answer was "' + wordObj.word + '"';
+        fb.className = 'quiz-feedback visible feedback-wrong';
+        setTimeout(function () { showWildPhase3(wordObj); }, 1600);
+      } else {
+        fb.textContent = 'Not quite — try again!';
+        fb.className = 'quiz-feedback visible feedback-wrong';
+        setTimeout(function () {
+          fb.textContent = '';
+          fb.className = 'quiz-feedback';
+        }, 800);
+      }
+    }
+  }
+
+  function showWildPhase3(wordObj) {
+    wildState.phase    = 3;
+    wildState.answered = false;
+
+    document.getElementById('wild-phase-label').textContent  = 'Phase 3 of 3 — Define It 📚';
+    document.getElementById('wild-phase3-word').textContent  = wordObj.word;
+
+    var isLast = wildState.index === wildState.sessionLength - 1;
+    document.getElementById('wild-next-btn').textContent = isLast ? 'See results →' : 'Next word →';
+
+    var grid = document.getElementById('wild-phase3-choices');
+    grid.innerHTML = '';
+    var distractors3 = pickDistractors(wordObj, allWords, 3);
+    var defs = shuffle([wordObj.definition].concat(distractors3.map(function (d) { return d.definition; })));
+    defs.forEach(function (def) {
+      var btn = document.createElement('button');
+      btn.className = 'quiz-answer-btn';
+      btn.type = 'button';
+      btn.textContent = def;
+      (function (d, b) {
+        b.addEventListener('click', function () { wildPhase3Answer(d === wordObj.definition, b, wordObj); });
+      }(def, btn));
+      grid.appendChild(btn);
+    });
+
+    document.getElementById('wild-definition-reveal').classList.add('hidden');
+    document.getElementById('wild-next-wrap').classList.add('hidden');
+    document.getElementById('wild-phase1-card').classList.add('hidden');
+    document.getElementById('wild-phase2-card').classList.add('hidden');
+    document.getElementById('wild-phase3-card').classList.remove('hidden');
+    var fb = document.getElementById('wild-feedback');
+    fb.textContent = '';
+    fb.className = 'quiz-feedback';
+  }
+
+  function wildPhase3Answer(isCorrect, btn, wordObj) {
+    if (wildState.answered) return;
+    wildState.answered = true;
+
+    var allBtns = document.querySelectorAll('#wild-phase3-choices .quiz-answer-btn');
+    var fb = document.getElementById('wild-feedback');
+
+    allBtns.forEach(function (b) {
+      b.disabled = true;
+      if (b.textContent === wordObj.definition) b.classList.add('correct');
+    });
+    if (!isCorrect) { btn.classList.add('wrong'); }
+
+    if (isCorrect) {
+      wildState.score += 200;
+      document.getElementById('wild-score-display').textContent = 'Score: ' + wildState.score;
+      fb.textContent = '✓ Correct! +200 pts';
+      fb.className = 'quiz-feedback visible feedback-correct';
+    } else {
+      fb.textContent = '✗ Not quite!';
+      fb.className = 'quiz-feedback visible feedback-wrong';
+    }
+
+    recordAnswer(wordObj.word, isCorrect);
+
+    var revealEl = document.getElementById('wild-definition-reveal');
+    revealEl.textContent = 'Definition: ' + wordObj.definition;
+    revealEl.classList.remove('hidden');
+    document.getElementById('wild-next-wrap').classList.remove('hidden');
+  }
+
+  function wildAdvance() {
+    wildState.index++;
+    if (wildState.index >= wildState.sessionLength) {
+      showWildEnd();
+    } else {
+      showWildPhase1();
+    }
+  }
+
+  function showWildEnd() {
+    showWildScreen('end');
+    var score  = wildState.score;
+    var len    = wildState.sessionLength;
+    var best   = wildState.bests[len] || 0;
+    var isNew  = score > best;
+    if (isNew) {
+      wildState.bests[len] = score;
+      try { localStorage.setItem(WILD_BESTS_KEY, JSON.stringify(wildState.bests)); } catch (e) {}
+    }
+    var maxPts = len * 500;
+    var pct    = score / maxPts;
+    document.getElementById('wild-end-emoji').textContent =
+      pct >= 0.8 ? '🌿' : pct >= 0.5 ? '🌱' : '🪴';
+    document.getElementById('wild-end-title').textContent =
+      pct >= 0.8 ? 'Word Explorer!' : pct >= 0.5 ? 'Nature Spotter!' : 'Keep Growing!';
+    document.getElementById('wild-end-score').textContent =
+      score + ' pts out of ' + maxPts + ' possible';
+    document.getElementById('wild-end-best').textContent =
+      isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
