@@ -154,7 +154,38 @@
           "cloze": "The frightened pupil did _____ the truth about the broken potion bottle.",
           "answer": "Deny"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To accept or admit that something is true or exists.",
+          "sentence_usage": "She paused to acknowledge the help from her team.",
+          "synonyms": [
+            "Admit",
+            "Recognize",
+            "Confirm"
+          ],
+          "antonyms": [
+            "Deny",
+            "Ignore",
+            "Reject"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To show with a word or gesture that you have noticed someone.",
+          "sentence_usage": "It is polite to acknowledge people when you walk into a room.",
+          "synonyms": [
+            "Greet",
+            "Recognise",
+            "Salute"
+          ],
+          "antonyms": [
+            "Ignore",
+            "Snub"
+          ]
+        }
+      ]
     },
     {
       "word": "Acrimonious",
@@ -627,7 +658,38 @@
           "cloze": "The sailors tried to _____ the sound of the storm with heavy curtains.",
           "answer": "Soften"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To make something louder, stronger, or greater.",
+          "sentence_usage": "The microphone will amplify your voice in the hall.",
+          "synonyms": [
+            "Increase",
+            "Boost",
+            "Magnify"
+          ],
+          "antonyms": [
+            "Reduce",
+            "Diminish",
+            "Soften"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To add more detail to a statement or story.",
+          "sentence_usage": "The teacher asked her to amplify her very brief answer.",
+          "synonyms": [
+            "Expand",
+            "Elaborate",
+            "Develop"
+          ],
+          "antonyms": [
+            "Shorten",
+            "Condense"
+          ]
+        }
+      ]
     },
     {
       "word": "Analogy",
@@ -1824,7 +1886,37 @@
           "cloze": "The thick fog seemed to _____ near the shore, trapping the sailors inside its damp walls.",
           "answer": "Stagnate"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To move around continuously in a system or area.",
+          "sentence_usage": "Fresh air must circulate through the classroom.",
+          "synonyms": [
+            "Flow",
+            "Move",
+            "Spread"
+          ],
+          "antonyms": [
+            "Stagnate",
+            "Stop",
+            "Settle"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To move around a room speaking to many different guests.",
+          "sentence_usage": "The host began to circulate among her many dinner guests.",
+          "synonyms": [
+            "Mingle",
+            "Mix",
+            "Socialise"
+          ],
+          "antonyms": [
+            "Withdraw"
+          ]
+        }
+      ]
     },
     {
       "word": "Circumstance",
@@ -2012,7 +2104,38 @@
           "cloze": "The wicked goblin would never _____ a moth from its leaf, choosing instead to shake the whole tree without warning.",
           "answer": "Bully"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To gently persuade someone to do something.",
+          "sentence_usage": "Granny had to coax the kitten down from the top of the curtain rail.",
+          "synonyms": [
+            "Persuade",
+            "Cajole",
+            "Wheedle"
+          ],
+          "antonyms": [
+            "Bully",
+            "Force",
+            "Compel"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To gently work or guide something into the position you want.",
+          "sentence_usage": "She had to coax the stiff key to turn in the lock.",
+          "synonyms": [
+            "Manoeuvre",
+            "Ease",
+            "Nudge"
+          ],
+          "antonyms": [
+            "Force",
+            "Wrench"
+          ]
+        }
+      ]
     },
     {
       "word": "Collapse",
@@ -2164,7 +2287,38 @@
           "cloze": "By skilful dodging, the knight managed swift _____ of the enemy's sword blows.",
           "answer": "Avoidance"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "An impact between moving objects.",
+          "sentence_usage": "Two bikes were damaged in the collision.",
+          "synonyms": [
+            "Crash",
+            "Impact",
+            "Smash"
+          ],
+          "antonyms": [
+            "Avoidance",
+            "Separation",
+            "Evasion"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A strong clash between opposing ideas, interests, or people.",
+          "sentence_usage": "The debate ended in a collision between two opposing points of view.",
+          "synonyms": [
+            "Clash",
+            "Conflict",
+            "Disagreement"
+          ],
+          "antonyms": [
+            "Agreement",
+            "Harmony"
+          ]
+        }
+      ]
     },
     {
       "word": "Commotion",
@@ -3459,7 +3613,38 @@
           "cloze": "The kind teacher would _____ all her pupils equally and fairly in class.",
           "answer": "Treat equally"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To treat people unfairly based on group differences.",
+          "sentence_usage": "It is illegal to discriminate in hiring.",
+          "synonyms": [
+            "Differentiate unfairly",
+            "Prejudge",
+            "Bias against"
+          ],
+          "antonyms": [
+            "Treat equally",
+            "Include",
+            "Respect"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To notice or judge the difference between two or more things.",
+          "sentence_usage": "A skilled chef can discriminate between many very similar herbs.",
+          "synonyms": [
+            "Distinguish",
+            "Differentiate",
+            "Separate"
+          ],
+          "antonyms": [
+            "Confuse",
+            "Muddle"
+          ]
+        }
+      ]
     },
     {
       "word": "Disperse",
@@ -3523,7 +3708,37 @@
           "cloze": "The determined captain would _____ along the same route across the sea.",
           "answer": "Continue"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To change direction away from the usual course.",
+          "sentence_usage": "Police diverted traffic after the accident.",
+          "synonyms": [
+            "Redirect",
+            "Reroute",
+            "Deflect"
+          ],
+          "antonyms": [
+            "Continue",
+            "Maintain",
+            "Keep"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To entertain someone and keep them happily occupied.",
+          "sentence_usage": "Funny stories can divert a restless child for hours.",
+          "synonyms": [
+            "Entertain",
+            "Amuse",
+            "Distract"
+          ],
+          "antonyms": [
+            "Bore"
+          ]
+        }
+      ]
     },
     {
       "word": "Domestic",
@@ -4031,7 +4246,35 @@
           "cloze": "In winter, the Forest of Clues lost its sparkle and became pale and _____.",
           "answer": "Dull"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A rich, deep green colour.",
+          "sentence_usage": "Emerald light filtered through the leaves and painted the path below.",
+          "synonyms": [
+            "Green",
+            "Jewel-like",
+            "Verdant"
+          ],
+          "antonyms": [
+            "Colourless",
+            "Dull",
+            "Grey"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A bright green precious stone used to make jewellery.",
+          "sentence_usage": "The crown held one enormous, glittering green emerald.",
+          "synonyms": [
+            "Gem",
+            "Jewel",
+            "Gemstone"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Eminent",
@@ -4219,7 +4462,35 @@
           "cloze": "The _____ of the crew's illness meant they could finally continue sailing the Sea Journey Isles.",
           "answer": "Recovery"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A widespread outbreak of disease in a community or region.",
+          "sentence_usage": "Health officials acted quickly to control the epidemic.",
+          "synonyms": [
+            "Outbreak",
+            "Plague",
+            "Wave"
+          ],
+          "antonyms": [
+            "Containment",
+            "Recovery",
+            "Health"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A sudden, fast spread of something unwanted through a group.",
+          "sentence_usage": "The school had an epidemic of lost jumpers this term.",
+          "synonyms": [
+            "Wave",
+            "Outbreak",
+            "Surge"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Equilibrium",
@@ -6394,7 +6665,38 @@
           "cloze": "The kind forest guardian decided to _____ all the trapped fairies from their chains.",
           "answer": "Release"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To put or keep someone in prison.",
+          "sentence_usage": "The judge decided to imprison the thief for two years.",
+          "synonyms": [
+            "Incarcerate",
+            "Confine",
+            "Detain"
+          ],
+          "antonyms": [
+            "Release",
+            "Free",
+            "Liberate"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To trap or shut something in so it cannot get out.",
+          "sentence_usage": "Thick winter ice can imprison a ship for many cold weeks.",
+          "synonyms": [
+            "Trap",
+            "Confine",
+            "Enclose"
+          ],
+          "antonyms": [
+            "Free",
+            "Release"
+          ]
+        }
+      ]
     },
     {
       "word": "Incandescent",
@@ -8652,7 +8954,38 @@
           "cloze": "Shouting orders into the camp at midnight would only _____ the soldiers further and start fresh quarrels by every fire.",
           "answer": "Provoke"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To calm down someone who is angry or upset.",
+          "sentence_usage": "A spoonful of yoghurt usually helps pacify the baby when she starts to wail.",
+          "synonyms": [
+            "Calm",
+            "Soothe",
+            "Appease"
+          ],
+          "antonyms": [
+            "Provoke",
+            "Anger",
+            "Enrage"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To bring peace and order to a place, sometimes by force.",
+          "sentence_usage": "Troops were sent to pacify the rebellious border towns.",
+          "synonyms": [
+            "Subdue",
+            "Quell",
+            "Tame"
+          ],
+          "antonyms": [
+            "Provoke",
+            "Inflame"
+          ]
+        }
+      ]
     },
     {
       "word": "Palm",
@@ -13152,7 +13485,35 @@
           "cloze": "His rude words and _____ toward the crew showed no respect for their bravery.",
           "answer": "Disrespect"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "Something said, done, or given to show respect or admiration.",
+          "sentence_usage": "The performance was a tribute to the famous composer on his hundredth birthday.",
+          "synonyms": [
+            "Homage",
+            "Honour",
+            "Acknowledgement"
+          ],
+          "antonyms": [
+            "Disrespect",
+            "Insult",
+            "Criticism"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A payment a weaker country is forced to give a stronger one.",
+          "sentence_usage": "The conquered cities sent gold as tribute to the emperor.",
+          "synonyms": [
+            "Levy",
+            "Tax",
+            "Payment"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Triumphant",
