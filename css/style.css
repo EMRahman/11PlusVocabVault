@@ -4920,16 +4920,26 @@ footer {
   border-bottom: 2px solid #16a34a;
 }
 
-.wild-blank-sentence {
-  font-size: clamp(1rem, 3.2vw, 1.2rem);
+.wild-phase2-prompt {
+  font-size: 1.05rem;
   font-weight: 700;
-  line-height: 1.55;
-  color: var(--color-text);
-  background: #f9fafb;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-card);
-  padding: 1rem 1.25rem;
+  color: var(--color-text-secondary);
   margin: 0;
+}
+
+.wild-phase2-prompt strong {
+  color: var(--color-text);
+}
+
+.wild-sentence-choices {
+  grid-template-columns: 1fr;
+}
+
+.wild-sentence-choices .quiz-answer-btn {
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  min-height: 52px;
 }
 
 .wild-phase3-prompt {
