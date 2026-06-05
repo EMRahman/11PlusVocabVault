@@ -91,7 +91,17 @@ function validateSense(gen, word) {
   if (synonyms.length === 0) return null;            // schema requires >= 1 synonym
   const antonyms = cleanList(gen.antonyms, word, 4); // may be empty
 
-  return { word_type, definition, sentence_usage, synonyms, antonyms };
+  // Optional: a per-meaning pronunciation, for heteronyms whose sense is said
+  // differently from the word-level pronunciation (e.g. the noun "abuse").
+  const pronunciation = String(gen.pronunciation || '').trim();
+
+  const sense = { word_type };
+  if (pronunciation) sense.pronunciation = pronunciation;
+  sense.definition = definition;
+  sense.sentence_usage = sentence_usage;
+  sense.synonyms = synonyms;
+  sense.antonyms = antonyms;
+  return sense;
 }
 
 // Build the merged meanings[] for `word`: primary first, then any existing extras,
@@ -114,13 +124,13 @@ function buildMeanings(word, generatedSenses) {
     const key = (m.word_type || '').toLowerCase() + '|' + norm(m.definition);
     if (seen.has(key) || extras.length >= MAX_MEANINGS - 1) return;
     seen.add(key);
-    extras.push({
-      word_type: m.word_type,
-      definition: m.definition,
-      sentence_usage: m.sentence_usage,
-      synonyms: Array.isArray(m.synonyms) ? m.synonyms : [],
-      antonyms: Array.isArray(m.antonyms) ? m.antonyms : [],
-    });
+    const extra = { word_type: m.word_type };
+    if (m.pronunciation) extra.pronunciation = m.pronunciation;
+    extra.definition = m.definition;
+    extra.sentence_usage = m.sentence_usage;
+    extra.synonyms = Array.isArray(m.synonyms) ? m.synonyms : [];
+    extra.antonyms = Array.isArray(m.antonyms) ? m.antonyms : [];
+    extras.push(extra);
   });
 
   return extras.length === 0 ? null : [primary].concat(extras);

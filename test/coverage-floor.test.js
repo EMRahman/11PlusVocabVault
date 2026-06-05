@@ -18,8 +18,8 @@ const SELF = basename(fileURLToPath(import.meta.url));
 
 // Baselines = current counts across the other test/*.js files (this file is
 // excluded from the scan, so new test files still count toward the floor).
-const TEST_FLOOR = 51;    // total `test(...)` declarations
-const ASSERT_FLOOR = 146; // total `assert(...)` / `assert.x(...)` calls
+const TEST_FLOOR = 52;    // total `test(...)` declarations
+const ASSERT_FLOOR = 150; // total `assert(...)` / `assert.x(...)` calls
 
 function scan() {
   let tests = 0;

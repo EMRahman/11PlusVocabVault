@@ -109,6 +109,11 @@ test('meanings[] (when present) is well-formed and mirrors the primary sense', (
         assert.equal(typeof item, 'string', `${label}: synonym/antonym entries must be strings`);
         assert.notEqual(item.trim(), '', `${label}: synonym/antonym entries must not be empty`);
       }
+      // Optional per-meaning pronunciation (heteronyms like the noun "abuse").
+      if (m.pronunciation !== undefined) {
+        assert.equal(typeof m.pronunciation, 'string', `${label}: pronunciation must be a string when present`);
+        assert.notEqual(m.pronunciation.trim(), '', `${label}: pronunciation must not be empty when present`);
+      }
 
       const key = m.word_type.toLowerCase() + '|' + norm(m.definition);
       assert.ok(!seen.has(key), `${label}: duplicate sense (same word_type + definition)`);

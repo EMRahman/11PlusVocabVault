@@ -724,6 +724,15 @@ import { getMeanings, additionalMeanings } from './meanings.js';
     head.appendChild(document.createTextNode(' ' + m.definition));
     block.appendChild(head);
 
+    // Heteronyms (e.g. the noun "abuse") carry their own pronunciation, since the
+    // word-level one shown above belongs to the primary sense.
+    if (m.pronunciation) {
+      var pron = document.createElement('p');
+      pron.className = 'extra-meaning-pron';
+      pron.textContent = 'Said: ' + m.pronunciation;
+      block.appendChild(pron);
+    }
+
     if (m.sentence_usage) {
       var ex = document.createElement('p');
       ex.className = 'extra-meaning-example';

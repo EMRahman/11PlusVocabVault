@@ -930,6 +930,15 @@ main {
   line-height: 1.55;
 }
 
+.extra-meaning-pron {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.75;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  margin-top: 0.2rem;
+}
+
 .extra-meaning-pos {
   display: inline-block;
   font-size: 0.68rem;
