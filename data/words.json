@@ -2440,7 +2440,7 @@
     {
       "word": "Convention",
       "pronunciation": "kun-VEN-shun",
-      "definition": "A widely accepted way of doing something or a large meeting.",
+      "definition": "A widely accepted way of doing something; a custom or usual practice.",
       "sentence_usage": "By convention, we start the meeting at nine.",
       "synonyms": [
         "Custom",
@@ -2471,7 +2471,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A widely accepted way of doing something or a large meeting.",
+          "definition": "A widely accepted way of doing something; a custom or usual practice.",
           "sentence_usage": "By convention, we start the meeting at nine.",
           "synonyms": [
             "Custom",
@@ -2500,7 +2500,7 @@
     {
       "word": "Conviction",
       "pronunciation": "kun-VIK-shun",
-      "definition": "A strong belief or a formal declaration of guilt in court.",
+      "definition": "A strong, firmly held belief or opinion.",
       "sentence_usage": "She spoke with conviction about climate action.",
       "synonyms": [
         "Belief",
@@ -2531,7 +2531,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A strong belief or a formal declaration of guilt in court.",
+          "definition": "A strong, firmly held belief or opinion.",
           "sentence_usage": "She spoke with conviction about climate action.",
           "synonyms": [
             "Belief",
@@ -2561,7 +2561,7 @@
     {
       "word": "Cosmetic",
       "pronunciation": "koz-MET-ik",
-      "definition": "Related to beauty treatment or superficial appearance.",
+      "definition": "Affecting only the surface or outward look of something; not deep or important.",
       "sentence_usage": "The damage was cosmetic and did not affect safety.",
       "synonyms": [
         "Aesthetic",
@@ -2592,7 +2592,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Related to beauty treatment or superficial appearance.",
+          "definition": "Affecting only the surface or outward look of something; not deep or important.",
           "sentence_usage": "The damage was cosmetic and did not affect safety.",
           "synonyms": [
             "Aesthetic",
@@ -2607,15 +2607,13 @@
         },
         {
           "word_type": "Adjective",
-          "definition": "Affecting only the outside appearance; not changing anything deep or important.",
-          "sentence_usage": "The repairs were only cosmetic, so the engine still did not work.",
+          "definition": "Relating to treatments or products that improve the beauty of the face, skin, or hair.",
+          "sentence_usage": "The clinic offered cosmetic treatments to make people's skin look smoother.",
           "synonyms": [
-            "Superficial",
-            "Surface"
+            "Beautifying",
+            "Aesthetic"
           ],
-          "antonyms": [
-            "Fundamental"
-          ]
+          "antonyms": []
         }
       ]
     },
@@ -3897,7 +3895,7 @@
     {
       "word": "Encapsulate",
       "pronunciation": "en-KAP-syoo-layt",
-      "definition": "To express the main idea briefly or to enclose something.",
+      "definition": "To express or capture the main idea of something in a brief form.",
       "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
       "synonyms": [
         "Summarize",
@@ -3928,7 +3926,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To express the main idea briefly or to enclose something.",
+          "definition": "To express or capture the main idea of something in a brief form.",
           "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
           "synonyms": [
             "Summarize",
@@ -6374,7 +6372,7 @@
     {
       "word": "Infuse",
       "pronunciation": "in-FYOOZ",
-      "definition": "To fill something with a quality or to soak a substance to extract its flavour.",
+      "definition": "To soak a substance in liquid so that its flavour or qualities pass into it.",
       "sentence_usage": "She left the herbs to infuse in hot water to make a soothing tea.",
       "synonyms": [
         "Steep",
@@ -6405,7 +6403,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To fill something with a quality or to soak a substance to extract its flavour.",
+          "definition": "To soak a substance in liquid so that its flavour or qualities pass into it.",
           "sentence_usage": "She left the herbs to infuse in hot water to make a soothing tea.",
           "synonyms": [
             "Steep",
@@ -6420,11 +6418,12 @@
         },
         {
           "word_type": "Verb",
-          "definition": "To soak something in liquid so its flavour or quality slowly spreads into it.",
-          "sentence_usage": "Leave the herbs to infuse in the hot water for five minutes.",
+          "definition": "To fill someone or something with a particular quality, feeling, or idea.",
+          "sentence_usage": "The captain tried to infuse the team with fresh hope before the match.",
           "synonyms": [
-            "Steep",
-            "Soak"
+            "Imbue",
+            "Instil",
+            "Fill"
           ],
           "antonyms": []
         }
@@ -8316,7 +8315,7 @@
     {
       "word": "Palm",
       "pronunciation": "PAHM",
-      "definition": "The inner surface of the hand; also a tropical tree.",
+      "definition": "The flat inner surface of the hand, between the wrist and the fingers.",
       "sentence_usage": "She held the small bird gently in the palm of her hand.",
       "synonyms": [
         "Hand",
@@ -8343,7 +8342,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "The inner surface of the hand; also a tropical tree.",
+          "definition": "The flat inner surface of the hand, between the wrist and the fingers.",
           "sentence_usage": "She held the small bird gently in the palm of her hand.",
           "synonyms": [
             "Hand",
@@ -8754,7 +8753,7 @@
     {
       "word": "Plateau",
       "pronunciation": "PLAT-oh",
-      "definition": "A flat area of high land; also a period when there is no progress.",
+      "definition": "A large, flat area of high, level ground.",
       "sentence_usage": "The explorers reached a wide plateau after climbing the steep slope.",
       "synonyms": [
         "Plain",
@@ -8785,7 +8784,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A flat area of high land; also a period when there is no progress.",
+          "definition": "A large, flat area of high, level ground.",
           "sentence_usage": "The explorers reached a wide plateau after climbing the steep slope.",
           "synonyms": [
             "Plain",
@@ -9069,7 +9068,7 @@
     {
       "word": "Progressive",
       "pronunciation": "pruh-GRES-iv",
-      "definition": "Happening or developing gradually over time; favouring new ideas.",
+      "definition": "Favouring new ideas, modern methods, or social change rather than old ways.",
       "sentence_usage": "The school took a progressive approach to teaching, using technology in every lesson.",
       "synonyms": [
         "Advancing",
@@ -9100,7 +9099,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Happening or developing gradually over time; favouring new ideas.",
+          "definition": "Favouring new ideas, modern methods, or social change rather than old ways.",
           "sentence_usage": "The school took a progressive approach to teaching, using technology in every lesson.",
           "synonyms": [
             "Advancing",
@@ -9115,15 +9114,15 @@
         },
         {
           "word_type": "Adjective",
-          "definition": "Favouring new ideas, modern methods, or social change rather than old ways.",
-          "sentence_usage": "The progressive school let pupils choose many of their own projects.",
+          "definition": "Happening or developing gradually, step by step, over a period of time.",
+          "sentence_usage": "The patient made a progressive recovery, growing a little stronger each day.",
           "synonyms": [
-            "Modern",
-            "Reforming"
+            "Gradual",
+            "Steady",
+            "Continuing"
           ],
           "antonyms": [
-            "Conservative",
-            "Traditional"
+            "Sudden"
           ]
         }
       ]
@@ -9195,7 +9194,7 @@
     {
       "word": "Provision",
       "pronunciation": "pruh-VIZH-un",
-      "definition": "The action of supplying something; also a condition in an agreement.",
+      "definition": "The act of supplying or providing something that people need.",
       "sentence_usage": "The charity focused on the provision of food to those in need.",
       "synonyms": [
         "Supply",
@@ -9226,7 +9225,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "The action of supplying something; also a condition in an agreement.",
+          "definition": "The act of supplying or providing something that people need.",
           "sentence_usage": "The charity focused on the provision of food to those in need.",
           "synonyms": [
             "Supply",
@@ -9607,7 +9606,7 @@
     {
       "word": "Realm",
       "pronunciation": "RELM",
-      "definition": "A kingdom or a field of activity or knowledge.",
+      "definition": "A kingdom or country ruled by a king or queen.",
       "sentence_usage": "The wizard was the most powerful sorcerer in the realm.",
       "synonyms": [
         "Kingdom",
@@ -9638,7 +9637,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A kingdom or a field of activity or knowledge.",
+          "definition": "A kingdom or country ruled by a king or queen.",
           "sentence_usage": "The wizard was the most powerful sorcerer in the realm.",
           "synonyms": [
             "Kingdom",
@@ -9827,7 +9826,7 @@
     {
       "word": "Regime",
       "pronunciation": "ruh-ZHEEM",
-      "definition": "A system of government; also a set of rules or a routine.",
+      "definition": "A government or system of rule, especially a strict or harsh one.",
       "sentence_usage": "The country suffered under a harsh military regime for many years.",
       "synonyms": [
         "Government",
@@ -9858,7 +9857,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A system of government; also a set of rules or a routine.",
+          "definition": "A government or system of rule, especially a strict or harsh one.",
           "sentence_usage": "The country suffered under a harsh military regime for many years.",
           "synonyms": [
             "Government",
@@ -10143,7 +10142,7 @@
     {
       "word": "Rigour",
       "pronunciation": "RIG-er",
-      "definition": "The quality of being thorough and careful; also harsh conditions.",
+      "definition": "The quality of being extremely thorough, careful, and demanding.",
       "sentence_usage": "The rigour of the training programme prepared the athletes for competition.",
       "synonyms": [
         "Thoroughness",
@@ -10174,7 +10173,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "The quality of being thorough and careful; also harsh conditions.",
+          "definition": "The quality of being extremely thorough, careful, and demanding.",
           "sentence_usage": "The rigour of the training programme prepared the athletes for competition.",
           "synonyms": [
             "Thoroughness",
@@ -10458,7 +10457,7 @@
     {
       "word": "Scout",
       "pronunciation": "SKOWT",
-      "definition": "To search an area for information; a person sent to gather information.",
+      "definition": "To go ahead and search or explore an area in order to gather information.",
       "sentence_usage": "She was sent to scout the area ahead before the rest of the team moved forward.",
       "synonyms": [
         "Explore",
@@ -10489,7 +10488,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To search an area for information; a person sent to gather information.",
+          "definition": "To go ahead and search or explore an area in order to gather information.",
           "sentence_usage": "She was sent to scout the area ahead before the rest of the team moved forward.",
           "synonyms": [
             "Explore",
@@ -10581,7 +10580,7 @@
     {
       "word": "Secrete",
       "pronunciation": "sih-KREET",
-      "definition": "To produce and release a substance; also to hide something.",
+      "definition": "To produce and release a liquid or substance, especially from a gland.",
       "sentence_usage": "Certain glands secrete hormones that regulate the body's functions.",
       "synonyms": [
         "Produce",
@@ -10612,7 +10611,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To produce and release a substance; also to hide something.",
+          "definition": "To produce and release a liquid or substance, especially from a gland.",
           "sentence_usage": "Certain glands secrete hormones that regulate the body's functions.",
           "synonyms": [
             "Produce",
@@ -11251,7 +11250,7 @@
     {
       "word": "Specimen",
       "pronunciation": "SPES-ih-men",
-      "definition": "A sample taken for examination; an example of something.",
+      "definition": "A small sample of something, taken so that it can be studied or tested.",
       "sentence_usage": "The scientist collected a specimen of the rare plant for analysis.",
       "synonyms": [
         "Sample",
@@ -11282,7 +11281,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A sample taken for examination; an example of something.",
+          "definition": "A small sample of something, taken so that it can be studied or tested.",
           "sentence_usage": "The scientist collected a specimen of the rare plant for analysis.",
           "synonyms": [
             "Sample",
@@ -12139,7 +12138,7 @@
     {
       "word": "Temperate",
       "pronunciation": "TEM-per-ut",
-      "definition": "Mild and moderate, not extreme; also showing self-restraint.",
+      "definition": "Mild and moderate, without extremes of heat, cold, or weather.",
       "sentence_usage": "Britain has a temperate climate, with warm summers and mild winters.",
       "synonyms": [
         "Mild",
@@ -12170,7 +12169,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Mild and moderate, not extreme; also showing self-restraint.",
+          "definition": "Mild and moderate, without extremes of heat, cold, or weather.",
           "sentence_usage": "Britain has a temperate climate, with warm summers and mild winters.",
           "synonyms": [
             "Mild",
@@ -12548,7 +12547,7 @@
     {
       "word": "Transparent",
       "pronunciation": "tranz-PAIR-ent",
-      "definition": "Allowing light to pass through; also easy to see through or understand.",
+      "definition": "Clear enough to let light pass through, so that things behind can be seen.",
       "sentence_usage": "The glass was completely transparent, giving a clear view of the garden.",
       "synonyms": [
         "Clear",
@@ -12579,7 +12578,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Allowing light to pass through; also easy to see through or understand.",
+          "definition": "Clear enough to let light pass through, so that things behind can be seen.",
           "sentence_usage": "The glass was completely transparent, giving a clear view of the garden.",
           "synonyms": [
             "Clear",
@@ -13154,7 +13153,7 @@
     {
       "word": "Vault",
       "pronunciation": "VAWLT",
-      "definition": "An arched roof or ceiling; a secure room for valuables; to jump over something.",
+      "definition": "To jump over something, especially by pushing off with your hands or a pole.",
       "sentence_usage": "The athlete vaulted over the bar with ease.",
       "synonyms": [
         "Leap",
@@ -13185,7 +13184,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "An arched roof or ceiling; a secure room for valuables; to jump over something.",
+          "definition": "To jump over something, especially by pushing off with your hands or a pole.",
           "sentence_usage": "The athlete vaulted over the bar with ease.",
           "synonyms": [
             "Leap",
@@ -13245,7 +13244,7 @@
     {
       "word": "Verge",
       "pronunciation": "VERJ",
-      "definition": "The edge or border of something; to be on the point of.",
+      "definition": "The edge or border of something, such as the strip of grass beside a road.",
       "sentence_usage": "She was on the verge of tears as she read the sad letter.",
       "synonyms": [
         "Edge",
@@ -13276,7 +13275,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "The edge or border of something; to be on the point of.",
+          "definition": "The edge or border of something, such as the strip of grass beside a road.",
           "sentence_usage": "She was on the verge of tears as she read the sad letter.",
           "synonyms": [
             "Edge",
