@@ -13916,6 +13916,34 @@
       ],
       "usefulness_rating": 4,
       "word_type": "Adjective",
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Based on facts and evidence rather than personal feelings or opinions.",
+          "sentence_usage": "A good scientist stays objective, setting aside personal wishes when looking at the results.",
+          "synonyms": [
+            "Impartial",
+            "Unbiased",
+            "Factual"
+          ],
+          "antonyms": [
+            "Subjective",
+            "Biased",
+            "Emotional"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A goal or aim that you are trying to achieve.",
+          "sentence_usage": "Our main objective was to reach the mountain summit before the afternoon storm.",
+          "synonyms": [
+            "Goal",
+            "Aim",
+            "Target"
+          ],
+          "antonyms": []
+        }
+      ],
       "themed_quest": {
         "theme": "wizard-school",
         "definition": "Judging a potion by its actual effect, not by how much you liked the student who brewed it.",

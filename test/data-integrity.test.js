@@ -74,6 +74,64 @@ test('every word has a usable pre-baked themed_quest for Story Quest', () => {
   }
 });
 
+test('meanings[] (when present) is well-formed and mirrors the primary sense', () => {
+  // meanings[] is OPTIONAL: single-sense / legacy words omit it and js/meanings.js
+  // falls back to the flat fields. When a word DOES carry meanings[], it must:
+  //  - be a non-empty array whose [0] mirrors the flat primary fields exactly
+  //    (the mirror invariant js/meanings.js and the display code rely on);
+  //  - hold only distinct senses — identity is word_type + normalised definition,
+  //    matching scripts/merge-meanings.js, so same-part-of-speech polysemy (two
+  //    noun senses) IS allowed but exact duplicates are not;
+  //  - give every sense a non-empty word_type/definition/sentence_usage and a
+  //    non-empty synonyms array (antonyms is an array that may be empty); and
+  //  - each ADDED (non-primary) sense's sentence must contain the word, since
+  //    those are authored/validated to demonstrate the word in use.
+  const { words } = readJSON('words.json');
+  const norm = (s) => s.trim().toLowerCase().replace(/\s+/g, ' ');
+  for (const w of words) {
+    if (w.meanings === undefined) continue;
+    assert.ok(
+      Array.isArray(w.meanings) && w.meanings.length > 0,
+      `${w.word}: meanings must be a non-empty array when present`,
+    );
+
+    const seen = new Set();
+    w.meanings.forEach((m, i) => {
+      const label = `${w.word} meaning #${i}`;
+      assert.ok(m && typeof m === 'object', `${label}: must be an object`);
+      for (const field of ['word_type', 'definition', 'sentence_usage']) {
+        assert.equal(typeof m[field], 'string', `${label}: ${field} must be a string`);
+        assert.notEqual(m[field].trim(), '', `${label}: ${field} must not be empty`);
+      }
+      assert.ok(Array.isArray(m.synonyms) && m.synonyms.length > 0, `${label}: synonyms must be a non-empty array`);
+      assert.ok(Array.isArray(m.antonyms), `${label}: antonyms must be an array (may be empty)`);
+      for (const item of m.synonyms.concat(m.antonyms)) {
+        assert.equal(typeof item, 'string', `${label}: synonym/antonym entries must be strings`);
+        assert.notEqual(item.trim(), '', `${label}: synonym/antonym entries must not be empty`);
+      }
+
+      const key = m.word_type.toLowerCase() + '|' + norm(m.definition);
+      assert.ok(!seen.has(key), `${label}: duplicate sense (same word_type + definition)`);
+      seen.add(key);
+
+      if (i === 0) {
+        // Mirror invariant: meanings[0] equals the flat primary fields.
+        assert.equal(m.word_type, w.word_type, `${label}: must mirror flat word_type`);
+        assert.equal(m.definition, w.definition, `${label}: must mirror flat definition`);
+        assert.equal(m.sentence_usage, w.sentence_usage, `${label}: must mirror flat sentence_usage`);
+        assert.deepEqual(m.synonyms, w.synonyms, `${label}: must mirror flat synonyms`);
+        assert.deepEqual(m.antonyms, w.antonyms, `${label}: must mirror flat antonyms`);
+      } else {
+        const esc = w.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        assert.ok(
+          new RegExp('\\b' + esc + '\\b', 'i').test(m.sentence_usage),
+          `${label}: sentence_usage must contain "${w.word}"`,
+        );
+      }
+    });
+  }
+});
+
 test('word names are unique (duplicates are silently hidden by findWordByName)', () => {
   const { words } = readJSON('words.json');
   const seen = new Set();

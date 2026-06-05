@@ -1,9 +1,15 @@
 # Plan — Multiple Meanings per Word
 
-Status: **proposal / not yet implemented.** This document is the design + impact
-review for letting a word carry its **main meanings** (each with its own example
-sentence), instead of the single sense the app stores today. No app code or data
-is changed by this document.
+Status: **Phases A–C implemented; Phase D deferred.** This document is the design +
+impact review for letting a word carry its **main meanings** (each with its own
+example sentence), instead of the single sense the app stores today.
+
+Implementation note: during build, `meanings[]` was made **optional** (rather than
+materialised onto all 437 words). `js/meanings.js` `getMeanings()` falls back to the
+flat fields for single-sense words, and the integrity test validates `meanings[]`
+*when present* (incl. the `meanings[0]` mirror invariant). This keeps the data diff
+small and "add a word" friction-free while preserving the safety guarantee. "Objective"
+is seeded with its noun sense; the Haiku bulk run (Phase C) remains human-in-the-loop.
 
 ## Decisions captured (from the requester)
 
