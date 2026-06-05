@@ -248,7 +248,10 @@ grow with the schema. All changes here **add** coverage — they never weaken it
      non-empty `synonyms` array; `antonyms` is an array (may be **empty** for
      non-primary senses — many nouns have no natural antonym);
    - `meanings[0]` deep-equals the flat primary fields (the mirror invariant);
-   - `word_type`s within one word are distinct (no duplicate senses);
+   - meanings are distinct, but the **sense identity is `word_type` plus
+     normalised `definition`** (matching the §6 merge dedupe) — **not `word_type`
+     alone**, so same-part-of-speech polysemy is allowed (e.g. two noun senses
+     like *bank* = river edge / money store, or *bat* = animal / sports gear);
    - each meaning's `sentence_usage` actually contains the word.
    - The existing rule that the **primary** (flat) `synonyms`/`antonyms` are
      non-empty is **unchanged** — not relaxed.
