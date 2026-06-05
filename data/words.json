@@ -94,7 +94,35 @@
           "cloze": "The kind wizard teacher will _____ every young student within the school towers.",
           "answer": "Protect"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To use something wrongly or to treat someone cruelly.",
+          "sentence_usage": "You should not abuse your privileges at school.",
+          "synonyms": [
+            "Mistreat",
+            "Misuse",
+            "Maltreat"
+          ],
+          "antonyms": [
+            "Protect",
+            "Respect",
+            "Care"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "pronunciation": "uh-BYOOS",
+          "definition": "Cruel or violent treatment, or rude and insulting language.",
+          "sentence_usage": "The referee suffered shouted abuse from the angry crowd.",
+          "synonyms": [
+            "Mistreatment",
+            "Insults"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Acknowledge",
@@ -506,7 +534,36 @@
           "cloze": "The _____ dragon slayer had defeated a hundred fierce beasts on Dragon Mountain.",
           "answer": "Professional"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A person who does something for enjoyment rather than as a profession.",
+          "sentence_usage": "Although an amateur, she played the violin beautifully.",
+          "synonyms": [
+            "Beginner",
+            "Novice",
+            "Nonprofessional"
+          ],
+          "antonyms": [
+            "Professional",
+            "Expert",
+            "Specialist"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Doing something for enjoyment rather than as a paid job; not professional.",
+          "sentence_usage": "The amateur footballers played every Sunday just for fun.",
+          "synonyms": [
+            "Non-professional",
+            "Recreational"
+          ],
+          "antonyms": [
+            "Professional"
+          ]
+        }
+      ]
     },
     {
       "word": "Amiable",
@@ -826,7 +883,35 @@
           "cloze": "The broken spell would _____ their attempts to escape the dark forest.",
           "answer": "Hinder"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To help or be of use.",
+          "sentence_usage": "All our planning will avail little without teamwork.",
+          "synonyms": [
+            "Help",
+            "Benefit",
+            "Assist"
+          ],
+          "antonyms": [
+            "Hinder",
+            "Obstruct",
+            "Harm"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "Use, benefit, or positive result that comes from an effort.",
+          "sentence_usage": "They searched the woods all night, but to no avail.",
+          "synonyms": [
+            "Use",
+            "Benefit",
+            "Help"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Avatar",
@@ -950,7 +1035,37 @@
           "cloze": "The dragon's treasure chamber had a narrow _____ guarded by golden statues.",
           "answer": "Opening"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A barrier built to block movement or protect an area.",
+          "sentence_usage": "Workers set up a barricade around the unsafe stairs.",
+          "synonyms": [
+            "Barrier",
+            "Blockade",
+            "Obstruction"
+          ],
+          "antonyms": [
+            "Opening",
+            "Passage",
+            "Gap"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To block or defend a place by putting up a barrier.",
+          "sentence_usage": "They tried to barricade the door against the howling wind.",
+          "synonyms": [
+            "Block",
+            "Obstruct",
+            "Fortify"
+          ],
+          "antonyms": [
+            "Clear"
+          ]
+        }
+      ]
     },
     {
       "word": "Belligerent",
@@ -1929,7 +2044,36 @@
           "cloze": "Though battered and worn, the stone fortress continued to _____ tall against all the storms.",
           "answer": "Stand"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To suddenly fall down.",
+          "sentence_usage": "With a groan of splintering wood, the old shed began to collapse.",
+          "synonyms": [
+            "Fall",
+            "Crumble",
+            "Topple"
+          ],
+          "antonyms": [
+            "Stand",
+            "Rise",
+            "Remain"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To fold down into a smaller, flatter shape for storing or carrying.",
+          "sentence_usage": "You can collapse the pushchair to fit it neatly in the boot.",
+          "synonyms": [
+            "Fold",
+            "Fold up"
+          ],
+          "antonyms": [
+            "Unfold"
+          ]
+        }
+      ]
     },
     {
       "word": "Collective",
@@ -2263,6 +2407,7 @@
         },
         {
           "word_type": "Verb",
+          "pronunciation": "kuhn-STRUKT",
           "definition": "To build something by putting parts together, such as a wall, bridge, or machine.",
           "sentence_usage": "The engineers will construct a new bridge across the river.",
           "synonyms": [
@@ -3826,7 +3971,35 @@
           "cloze": "The new queen ordered her stewards to _____ the throne room and remove every golden curtain and shining trinket.",
           "answer": "Strip"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To make something more attractive by adding extra details.",
+          "sentence_usage": "Grandad likes to embellish his old fishing stories with bigger catches every year.",
+          "synonyms": [
+            "Decorate",
+            "Adorn",
+            "Ornament"
+          ],
+          "antonyms": [
+            "Mar",
+            "Strip",
+            "Simplify"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To make a story more exciting by adding details that are not strictly true.",
+          "sentence_usage": "He likes to embellish his fishing tales with huge, invented sharks.",
+          "synonyms": [
+            "Exaggerate",
+            "Embroider",
+            "Overstate"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Emerald",
@@ -4522,7 +4695,34 @@
           "cloze": "The new headmaster was a true _____ with full power over all at Wizard School Towers.",
           "answer": "Authority"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A person who holds a title but little real power.",
+          "sentence_usage": "The chairperson became a figurehead after the merger.",
+          "synonyms": [
+            "Nominal leader",
+            "Front",
+            "Symbol"
+          ],
+          "antonyms": [
+            "Decision-maker",
+            "Authority",
+            "Power holder"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A carved figure, often of a person, fixed to the front of an old sailing ship.",
+          "sentence_usage": "A fierce wooden figurehead stared out from the front of the ship.",
+          "synonyms": [
+            "Carving",
+            "Ornament"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Finite",
@@ -4618,7 +4818,34 @@
           "cloze": "Without sunlight, the flowers started to _____ in the dark depths of the Forest of Clues.",
           "answer": "Wither"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To grow or do very well.",
+          "sentence_usage": "With sunshine and patience, the tiny seedlings began to flourish in the school garden.",
+          "synonyms": [
+            "Thrive",
+            "Prosper",
+            "Bloom"
+          ],
+          "antonyms": [
+            "Fail",
+            "Decline",
+            "Wither"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A bold, sweeping movement or an eye-catching, showy detail.",
+          "sentence_usage": "With a grand flourish, the magician pulled a rabbit from his hat.",
+          "synonyms": [
+            "Gesture",
+            "Sweep"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Forfeit",
@@ -5063,7 +5290,35 @@
           "cloze": "The scholar lit a candle to push back the thick _____ that filled the tower cellar.",
           "answer": "Darkness"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A faint, small light.",
+          "sentence_usage": "A glimmer of gold shone beneath the dusty floorboards.",
+          "synonyms": [
+            "Flicker",
+            "Spark",
+            "Twinkle"
+          ],
+          "antonyms": [
+            "Darkness",
+            "Blackness",
+            "Shadow"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A faint sign or small trace of something, such as hope.",
+          "sentence_usage": "Even after the bad news, she held on to a glimmer of hope.",
+          "synonyms": [
+            "Trace",
+            "Hint",
+            "Flicker"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Glistening",
@@ -5571,7 +5826,35 @@
           "cloze": "The _____ barrel was packed tight with fresh bread for the long voyage ahead.",
           "answer": "Full"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Empty inside or echoing.",
+          "sentence_usage": "A hollow knock came from the trapdoor beneath the carpet.",
+          "synonyms": [
+            "Empty",
+            "Echoing",
+            "Vacant"
+          ],
+          "antonyms": [
+            "Solid",
+            "Full",
+            "Filled"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A hole or empty space inside something, or a small sheltered valley.",
+          "sentence_usage": "The squirrel hid its nuts in a hollow in the old tree trunk.",
+          "synonyms": [
+            "Hole",
+            "Cavity",
+            "Dip"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Hospitality",
@@ -7254,7 +7537,35 @@
           "cloze": "The wise owl made a _____ to hunt at night but left it up to the others.",
           "answer": "Suggestion"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "An official order or authority to do something.",
+          "sentence_usage": "The government was given a mandate by voters to reform the health service.",
+          "synonyms": [
+            "Directive",
+            "Command",
+            "Authority"
+          ],
+          "antonyms": [
+            "Suggestion",
+            "Option",
+            "Veto"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To officially order or require that something must be done.",
+          "sentence_usage": "The new rules mandate that every cyclist must wear a helmet.",
+          "synonyms": [
+            "Require",
+            "Order",
+            "Decree"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Mantra",
@@ -8054,7 +8365,38 @@
           "cloze": "The professor kept her _____ knowledge in a secret vault within the towers.",
           "answer": "Vague"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Hard to see, notice, or understand.",
+          "sentence_usage": "An obscure symbol was scratched into the wall behind the curtain.",
+          "synonyms": [
+            "Hidden",
+            "Unclear",
+            "Vague"
+          ],
+          "antonyms": [
+            "Clear",
+            "Obvious",
+            "Famous"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To hide something or make it difficult to see or understand.",
+          "sentence_usage": "Thick grey fog began to obscure the top of the mountain.",
+          "synonyms": [
+            "Conceal",
+            "Hide",
+            "Block"
+          ],
+          "antonyms": [
+            "Reveal",
+            "Expose"
+          ]
+        }
+      ]
     },
     {
       "word": "Obsession",
@@ -10073,7 +10415,35 @@
           "cloze": "Her _____ about which spell to cast left her helpless in the tower.",
           "answer": "Indecision"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A firm decision to do or not to do something; the quality of being determined.",
+          "sentence_usage": "She made a New Year's resolution to read one book every month.",
+          "synonyms": [
+            "Decision",
+            "Determination",
+            "Commitment"
+          ],
+          "antonyms": [
+            "Indecision",
+            "Wavering",
+            "Hesitation"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "The amount of detail and sharpness in a picture, photo, or screen.",
+          "sentence_usage": "The new camera takes photos at an amazingly high resolution.",
+          "synonyms": [
+            "Sharpness",
+            "Clarity",
+            "Detail"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Revelation",
@@ -10670,7 +11040,35 @@
           "cloze": "The _____ of the forest was damaged, not just one small part.",
           "answer": "Entirety"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A distinct part or branch of something, such as an economy or area.",
+          "sentence_usage": "The technology sector has grown rapidly over the past decade.",
+          "synonyms": [
+            "Division",
+            "Area",
+            "Industry"
+          ],
+          "antonyms": [
+            "Whole",
+            "Entirety",
+            "Unity"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A part of a circle shaped like a slice of pie, between two straight lines from the centre.",
+          "sentence_usage": "We shaded one sector of the circle bright red.",
+          "synonyms": [
+            "Slice",
+            "Wedge",
+            "Segment"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Sentiment",
@@ -12258,7 +12656,35 @@
           "cloze": "The thorn-pricked wing was too _____ to fly further through the midnight glade.",
           "answer": "Harsh"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Gentle, soft, and caring.",
+          "sentence_usage": "With tender hands, she bandaged the robin's tiny wing.",
+          "synonyms": [
+            "Gentle",
+            "Soft",
+            "Kind"
+          ],
+          "antonyms": [
+            "Harsh",
+            "Rough",
+            "Cruel"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Sore or painful when touched.",
+          "sentence_usage": "The bruise on his knee was still tender days after the fall.",
+          "synonyms": [
+            "Sore",
+            "Painful",
+            "Sensitive"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Tense",
@@ -12290,7 +12716,33 @@
           "cloze": "Even in danger, the captain remained _____ and guided the ship through the waves.",
           "answer": "Relaxed"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Stiff or worried because something might happen.",
+          "sentence_usage": "A tense silence gripped the courtroom before the verdict was read.",
+          "synonyms": [
+            "Nervous",
+            "Strained",
+            "Uneasy"
+          ],
+          "antonyms": [
+            "Relaxed",
+            "Calm",
+            "Loose"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "In grammar, the form of a verb that shows when an action happens: past, present, or future.",
+          "sentence_usage": "Change the verb into the past tense to complete the sentence.",
+          "synonyms": [
+            "Verb form"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Thrifty",

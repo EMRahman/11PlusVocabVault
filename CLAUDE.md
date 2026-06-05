@@ -97,8 +97,10 @@ pre-blanked `sentence` are required; `synonym`/`antonym` are optional).
 
 **Multiple meanings.** A polysemous word (e.g. *Objective* = adjective + noun) may
 also carry an OPTIONAL `meanings[]` array — each sense is `{ word_type, definition,
-sentence_usage, synonyms[], antonyms[] }`, primary first. `meanings[0]` mirrors the
-flat fields exactly (the "mirror invariant"), so single-sense / legacy words can
+sentence_usage, synonyms[], antonyms[] }` (plus an OPTIONAL `pronunciation` for a
+heteronym whose sense is said differently, e.g. the noun *abuse* `uh-BYOOS` vs the
+verb `uh-BYOOZ`), primary first. `meanings[0]` mirrors the flat fields exactly (the
+"mirror invariant"), so single-sense / legacy words can
 omit `meanings[]` entirely and every consumer reads one shape via `js/meanings.js`
 `getMeanings()`. **Display surfaces** (word card, modal "Other meanings",
 Flash-Blitz) show all senses; **quizzes/games and the visualisations stay on the

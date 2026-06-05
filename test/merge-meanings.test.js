@@ -35,6 +35,13 @@ test('validateSense accepts a good sense and maps example -> sentence_usage', ()
   assert.deepEqual(m.antonyms, []);
 });
 
+test('validateSense carries an optional per-meaning pronunciation', () => {
+  const withPron = validateSense(Object.assign({}, GOOD_NOUN, { pronunciation: 'uh-BYOOS' }), 'Objective');
+  assert.equal(withPron.pronunciation, 'uh-BYOOS');
+  // omitted entirely when not supplied (so single-pronunciation senses stay clean)
+  assert.equal('pronunciation' in validateSense(GOOD_NOUN, 'Objective'), false);
+});
+
 test('validateSense rejects an unknown word_type', () => {
   assert.equal(validateSense(Object.assign({}, GOOD_NOUN, { word_type: 'Thing' }), 'Objective'), null);
 });
