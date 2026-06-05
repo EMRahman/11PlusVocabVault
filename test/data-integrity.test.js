@@ -137,6 +137,40 @@ test('meanings[] (when present) is well-formed and mirrors the primary sense', (
   }
 });
 
+test('known heteronyms keep a distinct per-sense pronunciation', () => {
+  // A few words are pronounced differently depending on sense — e.g. the verb
+  // "abuse" (uh-BYOOZ) vs the noun (uh-BYOOS), or the noun "construct"
+  // (KON-strukt) vs the verb (kuhn-STRUKT). For those, the non-primary sense
+  // MUST declare its own pronunciation that differs from the word-level
+  // (primary) one, or the app would teach that sense's example sentence under
+  // the wrong pronunciation. The per-meaning `pronunciation` field is optional
+  // in general (most senses share one pronunciation), so this pins the known
+  // heteronyms — verified against UK dictionaries — so a future meanings[]
+  // regeneration pass can't silently drop the distinction. Add a row here when
+  // a new heteronym sense is introduced.
+  const { words } = readJSON('words.json');
+  const HETERONYMS = { Abuse: 'Noun', Construct: 'Verb' };
+  for (const [name, senseType] of Object.entries(HETERONYMS)) {
+    const w = words.find((x) => x.word === name);
+    assert.ok(w, `heteronym "${name}" must exist in words.json`);
+    assert.ok(Array.isArray(w.meanings), `${name}: must carry a meanings[] array`);
+    const sense = w.meanings.find((m) => m.word_type === senseType);
+    assert.ok(sense, `${name}: must have a ${senseType} sense`);
+    assert.equal(
+      typeof sense.pronunciation, 'string',
+      `${name} (${senseType}): heteronym sense must declare its own pronunciation`,
+    );
+    assert.notEqual(
+      sense.pronunciation.trim(), '',
+      `${name} (${senseType}): per-sense pronunciation must not be empty`,
+    );
+    assert.notEqual(
+      sense.pronunciation, w.pronunciation,
+      `${name} (${senseType}): per-sense pronunciation must differ from the primary "${w.pronunciation}"`,
+    );
+  }
+});
+
 test('word names are unique (duplicates are silently hidden by findWordByName)', () => {
   const { words } = readJSON('words.json');
   const seen = new Set();
