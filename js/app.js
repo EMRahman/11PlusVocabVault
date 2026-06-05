@@ -23,6 +23,7 @@ import {
   recordAnswer,
 } from './storage.js';
 import { pickDailyWords, buildWeakestPool } from './selection.js';
+import { getMeanings, additionalMeanings } from './meanings.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -644,6 +645,23 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
     article.appendChild(header);
     article.appendChild(definition);
 
+    var extraMeanings = additionalMeanings(word);
+    if (extraMeanings.length > 0) {
+      var more = document.createElement('div');
+      more.className = 'card-more-meanings';
+      extraMeanings.forEach(function (m) {
+        var row = document.createElement('p');
+        row.className = 'card-more-meaning';
+        var pos = document.createElement('span');
+        pos.className = 'card-more-pos';
+        pos.textContent = m.word_type;
+        row.appendChild(pos);
+        row.appendChild(document.createTextNode(' ' + m.definition));
+        more.appendChild(row);
+      });
+      article.appendChild(more);
+    }
+
     var count = viewCounts[word.word] || 0;
     var masteryStatus = getMasteryStatus(word.word);
 
@@ -689,6 +707,40 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
       return wordObj.word_type;
     }
     return 'Word';
+  }
+
+  // Build a DOM block for one sense (part-of-speech + definition + example +
+  // synonyms/antonyms), used by the modal's "Other meanings" section.
+  function buildMeaningBlock(m) {
+    var block = document.createElement('div');
+    block.className = 'extra-meaning';
+
+    var head = document.createElement('p');
+    head.className = 'extra-meaning-head';
+    var pos = document.createElement('span');
+    pos.className = 'extra-meaning-pos';
+    pos.textContent = m.word_type;
+    head.appendChild(pos);
+    head.appendChild(document.createTextNode(' ' + m.definition));
+    block.appendChild(head);
+
+    if (m.sentence_usage) {
+      var ex = document.createElement('p');
+      ex.className = 'extra-meaning-example';
+      ex.textContent = m.sentence_usage;
+      block.appendChild(ex);
+    }
+
+    var rel = [];
+    if (m.synonyms && m.synonyms.length) rel.push('Synonyms: ' + m.synonyms.join(', '));
+    if (m.antonyms && m.antonyms.length) rel.push('Antonyms: ' + m.antonyms.join(', '));
+    if (rel.length) {
+      var relEl = document.createElement('p');
+      relEl.className = 'extra-meaning-rel';
+      relEl.textContent = rel.join('   ·   ');
+      block.appendChild(relEl);
+    }
+    return block;
   }
 
   function buildEmptyState() {
@@ -821,6 +873,16 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
       li.textContent = a;
       modalAntonyms.appendChild(li);
     });
+
+    // "Other meanings": the senses beyond the primary (which is shown above).
+    var extraSection = document.getElementById('modal-extra-meanings');
+    var extraList = document.getElementById('modal-extra-meanings-list');
+    if (extraSection && extraList) {
+      extraList.innerHTML = '';
+      var extra = additionalMeanings(wordObj);
+      extra.forEach(function (m) { extraList.appendChild(buildMeaningBlock(m)); });
+      extraSection.classList.toggle('hidden', extra.length === 0);
+    }
 
     if (modalViewCount) {
       var count = viewCounts[wordObj.word];
@@ -4130,7 +4192,15 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
     document.getElementById('blitz-word-type').textContent = wordObj.word_type || '';
     document.getElementById('blitz-word').textContent = wordObj.word;
     document.getElementById('blitz-back-word').textContent = wordObj.word;
-    document.getElementById('blitz-definition').textContent = wordObj.definition;
+    var blitzDef = document.getElementById('blitz-definition');
+    blitzDef.textContent = wordObj.definition;
+    additionalMeanings(wordObj).forEach(function (m) {
+      blitzDef.appendChild(document.createElement('br'));
+      var span = document.createElement('span');
+      span.className = 'blitz-extra-meaning';
+      span.textContent = '(' + m.word_type + ') ' + m.definition;
+      blitzDef.appendChild(span);
+    });
     document.getElementById('blitz-sentence').textContent = wordObj.sentence_usage || '';
     var syns = (wordObj.synonyms || []).join(', ');
     var synLabel = document.getElementById('blitz-synonyms-label');
