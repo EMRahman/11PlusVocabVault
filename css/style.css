@@ -3446,7 +3446,7 @@ footer {
 
 .panel-sfx-burst {
   position: absolute;
-  top: 8%;
+  top: 14%;
   right: 4%;
   z-index: 3;
   pointer-events: none;
@@ -3455,9 +3455,9 @@ footer {
   height: auto;
 }
 
-.panel-sfx-burst.sfx-bottom-left {
-  top: auto; right: auto;
-  bottom: 10%; left: 6%;
+.panel-sfx-burst.sfx-left {
+  right: auto;
+  left: 6%;
 }
 
 .panel-sfx-burst svg {

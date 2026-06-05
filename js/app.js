@@ -5640,7 +5640,7 @@ import { pickDailyWords, buildWeakestPool } from './selection.js';
       if (kind === 'soft') {
         sfxHtml = '<div class="panel-sfx">' + panelDef.sfx + '</div>';
       } else {
-        var corner = (idx % 2 === 0) ? '' : ' sfx-bottom-left';
+        var corner = (isSplash || idx % 2 !== 0) ? ' sfx-left' : '';
         var rot = ((idx * 37) % 30) - 15;
         sfxHtml = '<div class="panel-sfx-burst' + corner + '" style="--sfx-rotate:' + rot + 'deg">' +
           svgSfx(panelDef.sfx, kind) + '</div>';
