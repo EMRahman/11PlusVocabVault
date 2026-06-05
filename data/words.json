@@ -890,7 +890,35 @@
           "cloze": "After the _____ of magic, a peaceful silence filled the tower halls.",
           "answer": "Pause"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A concentrated outpouring, such as of criticism or gunfire.",
+          "sentence_usage": "The minister faced a barrage of questions from reporters.",
+          "synonyms": [
+            "Onslaught",
+            "Flood",
+            "Volley"
+          ],
+          "antonyms": [
+            "Lull",
+            "Pause",
+            "Calm"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A large wall or dam built across a river to control or hold back water.",
+          "sentence_usage": "The river barrage held back the floodwater during the heavy storm.",
+          "synonyms": [
+            "Dam",
+            "Weir",
+            "Barrier"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Barricade",
@@ -1082,7 +1110,35 @@
           "cloze": "The fair _____ of the wise captain earned respect from all soldiers.",
           "answer": "Impartiality"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "An unfair preference for or against something.",
+          "sentence_usage": "Good research tries to remove personal bias.",
+          "synonyms": [
+            "Prejudice",
+            "Partiality",
+            "Favoritism"
+          ],
+          "antonyms": [
+            "Fairness",
+            "Neutrality",
+            "Impartiality"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To unfairly influence someone or something towards one side.",
+          "sentence_usage": "Loud advertising can bias shoppers towards one particular brand.",
+          "synonyms": [
+            "Influence",
+            "Sway",
+            "Prejudice"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Bleak",
@@ -1178,7 +1234,34 @@
           "cloze": "In autumn, the beautiful flowers _____ until nothing but bare branches remain.",
           "answer": "Wither"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To burst into flowers or grow beautifully.",
+          "sentence_usage": "With a splash of spring rain, the orchard began to blossom overnight.",
+          "synonyms": [
+            "Bloom",
+            "Flower",
+            "Flourish"
+          ],
+          "antonyms": [
+            "Wither",
+            "Fade",
+            "Wilt"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A flower, or the mass of flowers, that appears on a tree or bush in spring.",
+          "sentence_usage": "A single pink blossom drifted down from the apple tree.",
+          "synonyms": [
+            "Flower",
+            "Bloom"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Brisk",
@@ -1754,7 +1837,35 @@
           "cloze": "Unlike the other trees, the ancient oak was the _____, the very first of its kind in the forest.",
           "answer": "Original"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "An exact copy of a living thing or digital system.",
+          "sentence_usage": "Scientists produced a clone of the plant.",
+          "synonyms": [
+            "Duplicate",
+            "Replica",
+            "Copy"
+          ],
+          "antonyms": [
+            "Original",
+            "Prototype",
+            "Unique"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To make an exact genetic or digital copy of a living thing or system.",
+          "sentence_usage": "Scientists managed to clone a sheep that was identical to its parent.",
+          "synonyms": [
+            "Copy",
+            "Duplicate",
+            "Replicate"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Coax",
@@ -1850,7 +1961,34 @@
           "cloze": "Each wizard preferred their _____ work, casting spells alone in their private chambers.",
           "answer": "Individual"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Shared or done by a group together.",
+          "sentence_usage": "The team made a collective decision.",
+          "synonyms": [
+            "Joint",
+            "Shared",
+            "Common"
+          ],
+          "antonyms": [
+            "Individual",
+            "Personal",
+            "Separate"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A group of people who work together and share ownership or control.",
+          "sentence_usage": "The farmers formed a collective to sell their vegetables together.",
+          "synonyms": [
+            "Cooperative",
+            "Group"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Collision",
@@ -2106,7 +2244,38 @@
           "cloze": "Years of neglect left the abandoned tower in complete _____, with shattered spellbooks scattered across every cold stone floor.",
           "answer": "Ruin"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A thing that has been built or formed, such as a structure.",
+          "sentence_usage": "The video game's construct fooled the player into thinking it was real.",
+          "synonyms": [
+            "Structure",
+            "Framework",
+            "Edifice"
+          ],
+          "antonyms": [
+            "Ruin",
+            "Wreckage",
+            "Demolition"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To build something by putting parts together, such as a wall, bridge, or machine.",
+          "sentence_usage": "The engineers will construct a new bridge across the river.",
+          "synonyms": [
+            "Build",
+            "Assemble",
+            "Erect"
+          ],
+          "antonyms": [
+            "Demolish",
+            "Destroy"
+          ]
+        }
+      ]
     },
     {
       "word": "Consumerism",
@@ -2298,7 +2467,35 @@
           "cloze": "The young wizard broke with _____ and invented a completely new spell that no one had seen before.",
           "answer": "Novelty"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A widely accepted way of doing something or a large meeting.",
+          "sentence_usage": "By convention, we start the meeting at nine.",
+          "synonyms": [
+            "Custom",
+            "Practice",
+            "Tradition"
+          ],
+          "antonyms": [
+            "Innovation",
+            "Novelty",
+            "Deviation"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A large, organised meeting where many people who share an interest or job gather together.",
+          "sentence_usage": "Thousands of comic-book fans travelled to the city for the annual convention.",
+          "synonyms": [
+            "Conference",
+            "Gathering",
+            "Assembly"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Conviction",
@@ -2330,7 +2527,36 @@
           "cloze": "His _____ about the path ahead meant he questioned every decision and moved forward slowly.",
           "answer": "Doubt"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A strong belief or a formal declaration of guilt in court.",
+          "sentence_usage": "She spoke with conviction about climate action.",
+          "synonyms": [
+            "Belief",
+            "Certainty",
+            "Sentence"
+          ],
+          "antonyms": [
+            "Doubt",
+            "Uncertainty",
+            "Acquittal"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "An official decision by a court that a person is guilty of committing a crime.",
+          "sentence_usage": "After the trial, the jury's conviction meant the thief would go to prison.",
+          "synonyms": [
+            "Verdict",
+            "Judgement"
+          ],
+          "antonyms": [
+            "Acquittal"
+          ]
+        }
+      ]
     },
     {
       "word": "Cosmetic",
@@ -2362,7 +2588,36 @@
           "cloze": "The castle's _____ stone walls kept the knights safe and protected from attacks.",
           "answer": "Structural"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Related to beauty treatment or superficial appearance.",
+          "sentence_usage": "The damage was cosmetic and did not affect safety.",
+          "synonyms": [
+            "Aesthetic",
+            "Surface",
+            "Decorative"
+          ],
+          "antonyms": [
+            "Functional",
+            "Essential",
+            "Structural"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Affecting only the outside appearance; not changing anything deep or important.",
+          "sentence_usage": "The repairs were only cosmetic, so the engine still did not work.",
+          "synonyms": [
+            "Superficial",
+            "Surface"
+          ],
+          "antonyms": [
+            "Fundamental"
+          ]
+        }
+      ]
     },
     {
       "word": "Courageous",
@@ -2490,7 +2745,34 @@
           "cloze": "The autumn morning was wonderfully _____ and clean in the Forest of Clues.",
           "answer": "Fresh"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Fresh, cool, and pleasantly sharp.",
+          "sentence_usage": "A crisp autumn breeze scattered gold leaves across the playground.",
+          "synonyms": [
+            "Fresh",
+            "Cool",
+            "Sharp"
+          ],
+          "antonyms": [
+            "Stale",
+            "Damp",
+            "Soft"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A thin, crunchy slice of fried potato, sold in packets as a salty snack.",
+          "sentence_usage": "She opened the packet and offered me a single salty crisp.",
+          "synonyms": [
+            "Chip",
+            "Snack"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Daunt",
@@ -3642,7 +3924,35 @@
           "cloze": "The fairies chose to _____ their secrets rather than keep them hidden in the Fairy Glen.",
           "answer": "Expose"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To express the main idea briefly or to enclose something.",
+          "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
+          "synonyms": [
+            "Summarize",
+            "Enclose",
+            "Capture"
+          ],
+          "antonyms": [
+            "Expand",
+            "Expose",
+            "Unpack"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To enclose or contain something completely within a covering or shell.",
+          "sentence_usage": "Tiny capsules encapsulate the medicine so it dissolves slowly inside you.",
+          "synonyms": [
+            "Enclose",
+            "Encase",
+            "Contain"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Enraged",
@@ -4342,7 +4652,36 @@
           "cloze": "The crew fought hard to _____ their treasure on the Sea Journey Isles.",
           "answer": "Keep"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To lose or give up something as a penalty.",
+          "sentence_usage": "The team may forfeit the match if they arrive late.",
+          "synonyms": [
+            "Surrender",
+            "Relinquish",
+            "Lose"
+          ],
+          "antonyms": [
+            "Keep",
+            "Retain",
+            "Win"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A penalty; something that must be given up as punishment for a mistake or broken rule.",
+          "sentence_usage": "If you miss the deadline, the forfeit is losing ten points.",
+          "synonyms": [
+            "Penalty",
+            "Fine"
+          ],
+          "antonyms": [
+            "Reward"
+          ]
+        }
+      ]
     },
     {
       "word": "Forlorn",
@@ -4950,7 +5289,35 @@
           "cloze": "The wise headmaster worked to _____ the Wizard School towers against magical intruders.",
           "answer": "Protect"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To gain unauthorized access to a computer system.",
+          "sentence_usage": "Criminals tried to hack the school database.",
+          "synonyms": [
+            "Break into",
+            "Crack",
+            "Compromise"
+          ],
+          "antonyms": [
+            "Secure",
+            "Protect",
+            "Safeguard"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To cut or chop something roughly with heavy, uneven strokes.",
+          "sentence_usage": "The explorers had to hack a path through the tangled jungle.",
+          "synonyms": [
+            "Chop",
+            "Slash",
+            "Hew"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Haste",
@@ -6034,7 +6401,34 @@
           "cloze": "After drinking, they would _____ the cup completely and prepare it for the next round.",
           "answer": "Empty"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To fill something with a quality or to soak a substance to extract its flavour.",
+          "sentence_usage": "She left the herbs to infuse in hot water to make a soothing tea.",
+          "synonyms": [
+            "Steep",
+            "Saturate",
+            "Imbue"
+          ],
+          "antonyms": [
+            "Drain",
+            "Empty",
+            "Remove"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To soak something in liquid so its flavour or quality slowly spreads into it.",
+          "sentence_usage": "Leave the herbs to infuse in the hot water for five minutes.",
+          "synonyms": [
+            "Steep",
+            "Soak"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Ingenious",
@@ -6322,7 +6716,34 @@
           "cloze": "The crew began to _____ their safe return and successful journey when they reached home.",
           "answer": "Celebrate"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To show sadness about a loss.",
+          "sentence_usage": "The villagers gathered to lament the great oak that had fallen in the storm.",
+          "synonyms": [
+            "Mourn",
+            "Grieve",
+            "Regret"
+          ],
+          "antonyms": [
+            "Celebrate",
+            "Rejoice",
+            "Praise"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A song, poem, or piece of music that expresses deep sadness or grief.",
+          "sentence_usage": "The singer performed a sorrowful lament for the fallen heroes.",
+          "synonyms": [
+            "Elegy",
+            "Dirge"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Lapse",
@@ -7918,7 +8339,33 @@
           "cloze": "The woodland creature held the nut in its furry _____ before cracking it open.",
           "answer": "Hand"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "The inner surface of the hand; also a tropical tree.",
+          "sentence_usage": "She held the small bird gently in the palm of her hand.",
+          "synonyms": [
+            "Hand",
+            "Grasp",
+            "Tree"
+          ],
+          "antonyms": [
+            "Back",
+            "Fist",
+            "Knuckle"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A tall tropical tree with a straight trunk and large fan-shaped or feathery leaves.",
+          "sentence_usage": "We sat in the shade of a tall palm on the sandy beach.",
+          "synonyms": [
+            "Tropical tree"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Panorama",
@@ -8334,7 +8781,34 @@
           "cloze": "The path led down into a steep _____ before climbing back up at Wizard School Towers.",
           "answer": "Valley"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A flat area of high land; also a period when there is no progress.",
+          "sentence_usage": "The explorers reached a wide plateau after climbing the steep slope.",
+          "synonyms": [
+            "Plain",
+            "Flatland",
+            "Levelling"
+          ],
+          "antonyms": [
+            "Valley",
+            "Slope",
+            "Progress"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A period during which something stays at the same level, with little or no change.",
+          "sentence_usage": "After months of fast learning, his progress reached a plateau.",
+          "synonyms": [
+            "Standstill",
+            "Levelling-off"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Poised",
@@ -8622,7 +9096,37 @@
           "cloze": "The _____ wizard refused to learn any new magic at Wizard School Towers.",
           "answer": "Conservative"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Happening or developing gradually over time; favouring new ideas.",
+          "sentence_usage": "The school took a progressive approach to teaching, using technology in every lesson.",
+          "synonyms": [
+            "Advancing",
+            "Modern",
+            "Forward-thinking"
+          ],
+          "antonyms": [
+            "Conservative",
+            "Regressive",
+            "Traditional"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Favouring new ideas, modern methods, or social change rather than old ways.",
+          "sentence_usage": "The progressive school let pupils choose many of their own projects.",
+          "synonyms": [
+            "Modern",
+            "Reforming"
+          ],
+          "antonyms": [
+            "Conservative",
+            "Traditional"
+          ]
+        }
+      ]
     },
     {
       "word": "Prominent",
@@ -8718,7 +9222,35 @@
           "cloze": "The _____ of weapons from the castle stores weakened the kingdom's defence.",
           "answer": "Withdrawal"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "The action of supplying something; also a condition in an agreement.",
+          "sentence_usage": "The charity focused on the provision of food to those in need.",
+          "synonyms": [
+            "Supply",
+            "Arrangement",
+            "Allocation"
+          ],
+          "antonyms": [
+            "Withdrawal",
+            "Deprivation",
+            "Removal"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A condition or rule that is included as part of a law, contract, or agreement.",
+          "sentence_usage": "The new law has a special provision to protect very young workers.",
+          "synonyms": [
+            "Clause",
+            "Condition",
+            "Term"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Proximity",
@@ -9102,7 +9634,35 @@
           "cloze": "The wizard escaped from the _____ of spells into a peaceful forest.",
           "answer": "Chaos"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A kingdom or a field of activity or knowledge.",
+          "sentence_usage": "The wizard was the most powerful sorcerer in the realm.",
+          "synonyms": [
+            "Kingdom",
+            "Domain",
+            "Territory"
+          ],
+          "antonyms": [
+            "Chaos",
+            "Disorder",
+            "Exile"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A particular area of activity, interest, or knowledge.",
+          "sentence_usage": "In the realm of science, new discoveries are made every day.",
+          "synonyms": [
+            "Field",
+            "Domain",
+            "Area"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Reassuring",
@@ -9294,7 +9854,35 @@
           "cloze": "In the chaos of _____, nobody followed rules at Wizard School Towers anymore.",
           "answer": "Anarchy"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A system of government; also a set of rules or a routine.",
+          "sentence_usage": "The country suffered under a harsh military regime for many years.",
+          "synonyms": [
+            "Government",
+            "Authority",
+            "System"
+          ],
+          "antonyms": [
+            "Anarchy",
+            "Democracy",
+            "Freedom"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A fixed routine or regular plan, especially for exercise, diet, or treatment.",
+          "sentence_usage": "The athlete followed a strict training regime every single morning.",
+          "synonyms": [
+            "Routine",
+            "Regimen",
+            "Plan"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Rehabilitate",
@@ -9582,7 +10170,34 @@
           "cloze": "The soldiers' _____ during practice made them lose every battle.",
           "answer": "Carelessness"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "The quality of being thorough and careful; also harsh conditions.",
+          "sentence_usage": "The rigour of the training programme prepared the athletes for competition.",
+          "synonyms": [
+            "Thoroughness",
+            "Precision",
+            "Strictness"
+          ],
+          "antonyms": [
+            "Carelessness",
+            "Laxity",
+            "Sloppiness"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "Harsh, severe, or difficult conditions that are hard to bear.",
+          "sentence_usage": "The explorers were not ready for the rigour of the Arctic winter.",
+          "synonyms": [
+            "Harshness",
+            "Severity"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Rippling",
@@ -9870,7 +10485,34 @@
           "cloze": "To _____ the approaching danger would be foolish for the crew.",
           "answer": "Ignore"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To search an area for information; a person sent to gather information.",
+          "sentence_usage": "She was sent to scout the area ahead before the rest of the team moved forward.",
+          "synonyms": [
+            "Explore",
+            "Reconnoitre",
+            "Investigate"
+          ],
+          "antonyms": [
+            "Ignore",
+            "Overlook",
+            "Retreat"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A person sent ahead to explore an area and bring back useful information.",
+          "sentence_usage": "The army sent a scout to check whether the bridge was safe.",
+          "synonyms": [
+            "Lookout",
+            "Spy"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Scrutinise",
@@ -9966,7 +10608,38 @@
           "cloze": "The treasure hunter would _____ every secret of the cave's location.",
           "answer": "Reveal"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To produce and release a substance; also to hide something.",
+          "sentence_usage": "Certain glands secrete hormones that regulate the body's functions.",
+          "synonyms": [
+            "Produce",
+            "Release",
+            "Conceal"
+          ],
+          "antonyms": [
+            "Absorb",
+            "Reveal",
+            "Expose"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To hide something carefully in a place where others will not find it.",
+          "sentence_usage": "The squirrel tried to secrete its acorns beneath the fallen leaves.",
+          "synonyms": [
+            "Conceal",
+            "Stash",
+            "Hide"
+          ],
+          "antonyms": [
+            "Reveal",
+            "Expose"
+          ]
+        }
+      ]
     },
     {
       "word": "Sector",
@@ -10605,7 +11278,35 @@
           "cloze": "The _____ of every creature in the Forest of Clues would fill ten libraries.",
           "answer": "Whole"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A sample taken for examination; an example of something.",
+          "sentence_usage": "The scientist collected a specimen of the rare plant for analysis.",
+          "synonyms": [
+            "Sample",
+            "Example",
+            "Instance"
+          ],
+          "antonyms": [
+            "Whole",
+            "Collection",
+            "Entirety"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A single example or instance of something, used to represent a whole group.",
+          "sentence_usage": "He was a fine specimen of a champion racehorse.",
+          "synonyms": [
+            "Example",
+            "Sample",
+            "Instance"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Spectacular",
@@ -11053,7 +11754,35 @@
           "cloze": "The sailors wanted their _____ captain back after so many months at sea.",
           "answer": "Original"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A person or thing that takes the place of another.",
+          "sentence_usage": "When the striker was injured, the manager brought on a substitute.",
+          "synonyms": [
+            "Replacement",
+            "Stand-in",
+            "Alternative"
+          ],
+          "antonyms": [
+            "Original",
+            "Permanent",
+            "Mainstay"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To put a person or thing in place of another; to swap one for a different one.",
+          "sentence_usage": "You can substitute butter for oil when you bake this cake.",
+          "synonyms": [
+            "Replace",
+            "Swap",
+            "Exchange"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Subtle",
@@ -11437,7 +12166,36 @@
           "cloze": "The sailors faced _____ weather with towering waves and fierce winds that threatened the ship.",
           "answer": "Extreme"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Mild and moderate, not extreme; also showing self-restraint.",
+          "sentence_usage": "Britain has a temperate climate, with warm summers and mild winters.",
+          "synonyms": [
+            "Mild",
+            "Moderate",
+            "Restrained"
+          ],
+          "antonyms": [
+            "Extreme",
+            "Harsh",
+            "Excessive"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Showing self-control; calm and sensible, not given to extreme behaviour.",
+          "sentence_usage": "Even when teased, she stayed temperate and never lost her cool.",
+          "synonyms": [
+            "Moderate",
+            "Restrained"
+          ],
+          "antonyms": [
+            "Excessive"
+          ]
+        }
+      ]
     },
     {
       "word": "Tempestuous",
@@ -11817,7 +12575,37 @@
           "cloze": "The _____ fog rolled through the woodland, hiding the path from all the travellers.",
           "answer": "Opaque"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Allowing light to pass through; also easy to see through or understand.",
+          "sentence_usage": "The glass was completely transparent, giving a clear view of the garden.",
+          "synonyms": [
+            "Clear",
+            "See-through",
+            "Open"
+          ],
+          "antonyms": [
+            "Opaque",
+            "Unclear",
+            "Secretive"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Open and honest, with nothing hidden; easy to see the truth of.",
+          "sentence_usage": "The teacher was transparent about exactly how the marks were given.",
+          "synonyms": [
+            "Open",
+            "Honest",
+            "Clear"
+          ],
+          "antonyms": [
+            "Secretive"
+          ]
+        }
+      ]
     },
     {
       "word": "Tremulous",
@@ -12393,7 +13181,34 @@
           "cloze": "The tired knight began to _____ slowly into his chair after the long battle.",
           "answer": "Sink"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "An arched roof or ceiling; a secure room for valuables; to jump over something.",
+          "sentence_usage": "The athlete vaulted over the bar with ease.",
+          "synonyms": [
+            "Leap",
+            "Spring",
+            "Jump"
+          ],
+          "antonyms": [
+            "Crawl",
+            "Lower",
+            "Sink"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A strong, secure room or container where money, jewels, or important items are kept safe.",
+          "sentence_usage": "The bank kept its gold locked inside a thick steel vault.",
+          "synonyms": [
+            "Strongroom",
+            "Safe"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Venerable",
@@ -12457,7 +13272,34 @@
           "cloze": "The spell floated in the _____ of the grand hall, far from all the walls.",
           "answer": "Centre"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "The edge or border of something; to be on the point of.",
+          "sentence_usage": "She was on the verge of tears as she read the sad letter.",
+          "synonyms": [
+            "Edge",
+            "Brink",
+            "Threshold"
+          ],
+          "antonyms": [
+            "Centre",
+            "Middle",
+            "Distance"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To be very close to a particular state, feeling, or condition; to border on.",
+          "sentence_usage": "Exhausted and tearful, she seemed to verge on giving up completely.",
+          "synonyms": [
+            "Approach",
+            "Border"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Vibrant",
