@@ -2466,11 +2466,7 @@ footer {
 }
 
 .detective-clue-hidden {
-  background: #1A1A2E;
-  color: #1A1A2E;
-  border: 2px dashed #374151;
-  opacity: 0.35;
-  pointer-events: none;
+  display: none;
 }
 
 .detective-clue-next {
