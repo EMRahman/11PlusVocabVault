@@ -565,6 +565,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         initHistoryMode();
         initAnimalsMode();
         initInsectsMode();
+        initSpaceMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -2744,6 +2745,15 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       dataFile: 'data/insects.json', dataKey: 'insects',
       returnTo: 'insects', itemNoun: 'article', subtitleField: 'habitat',
       loadingMessage: 'Insect articles are still loading — try again in a moment.'
+    });
+  }
+
+  function initSpaceMode() {
+    createReadingMode({
+      prefix: 'space', progressKey: 'vocabVault_spaceProgress',
+      dataFile: 'data/space.json', dataKey: 'space',
+      returnTo: 'space', itemNoun: 'article', subtitleField: 'region',
+      loadingMessage: 'Space articles are still loading — try again in a moment.'
     });
   }
 
