@@ -566,6 +566,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         initAnimalsMode();
         initInsectsMode();
         initSpaceMode();
+        initTechMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -2754,6 +2755,15 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       dataFile: 'data/space.json', dataKey: 'space',
       returnTo: 'space', itemNoun: 'article', subtitleField: 'region',
       loadingMessage: 'Space articles are still loading — try again in a moment.'
+    });
+  }
+
+  function initTechMode() {
+    createReadingMode({
+      prefix: 'tech', progressKey: 'vocabVault_technologyProgress',
+      dataFile: 'data/technology.json', dataKey: 'technology',
+      returnTo: 'tech', itemNoun: 'article', subtitleField: 'era',
+      loadingMessage: 'Inventions are still loading — try again in a moment.'
     });
   }
 

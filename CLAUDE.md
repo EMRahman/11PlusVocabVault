@@ -69,7 +69,7 @@ README.md SPEC.md   # Human/product-facing (may have stale counts; don't trust n
 
 | File | Lines | Role | Loaded by |
 |------|------:|------|-----------|
-| `app.js` | ~5.5k | **Orchestrator.** One big module-scoped closure holding ~15 "modes" (browse/filter, quiz, story, history, animals, insects, space, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap) + TTS + reading view. | `<script type="module">` (entry) |
+| `app.js` | ~5.5k | **Orchestrator.** One big module-scoped closure holding ~15 "modes" (browse/filter, quiz, story, history, animals, insects, space, inventions/technology, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
@@ -87,7 +87,7 @@ README.md SPEC.md   # Human/product-facing (may have stale counts; don't trust n
 | `stories.json` | `stories` | `comics.json` | `comics` |
 | `history.json` | `articles` | `animals.json` | `animals` |
 | `insects.json` | `insects` | `fables.json` | `fables` |
-| `space.json` | `space` | | |
+| `space.json` | `space` | `technology.json` | `technology` |
 | `word-positions.json` | `positions`,… (Word Universe layout) | `animal-constellations.json` | `segments` |
 | `word-explorer.json` | `mood`,`etymology`,… | | |
 

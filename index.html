@@ -103,6 +103,10 @@
               <span aria-hidden="true">🚀</span>
               Space
             </button>
+            <button class="quiz-launch-btn tech-launch-btn" id="tech-launch-btn" aria-label="Open inventions and technology">
+              <span aria-hidden="true">🤖</span>
+              Inventions
+            </button>
             <button class="quiz-launch-btn comic-launch-btn" id="comic-launch-btn" aria-label="Open Star-Sloth Comics">
               <span aria-hidden="true">🚀</span>
               Comics
@@ -805,6 +809,91 @@
         </div>
         <div class="reading-scroll-nav" aria-hidden="true">
           <div class="reading-scroll-fill" id="space-scroll-fill"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Inventions & Technology Mode overlay -->
+  <div id="tech-overlay" class="modal-overlay hidden" aria-hidden="true">
+
+    <!-- Library screen -->
+    <div id="tech-library-screen" class="quiz-panel" role="dialog" aria-modal="true" aria-labelledby="tech-library-title">
+      <button class="close-btn" id="tech-close-btn" aria-label="Close inventions and technology mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="quiz-setup-inner">
+        <span class="quiz-setup-emoji" aria-hidden="true">🤖</span>
+        <h2 id="tech-library-title" class="quiz-setup-title">Inventions &amp; Technology</h2>
+        <p class="quiz-setup-subtitle">Discover the world-changing inventions — from the wheel to the internet — and meet the vocabulary words that bring their stories to life.</p>
+        <div id="tech-list" class="story-list history-list"></div>
+      </div>
+    </div>
+
+    <!-- Reading screen -->
+    <div id="tech-reading-screen" class="quiz-panel reading-panel hidden" role="dialog" aria-modal="true" aria-labelledby="tech-reading-title">
+      <div class="reading-sticky-head">
+        <div class="quiz-screen-actions">
+          <button class="quiz-exit-btn" id="tech-back-btn" type="button" aria-label="Back to inventions library">← Inventions</button>
+        </div>
+        <div class="story-reading-header">
+          <span class="story-reading-emoji" id="tech-reading-emoji" aria-hidden="true"></span>
+          <div>
+            <p class="history-reading-era" id="tech-reading-era"></p>
+            <h2 class="story-reading-title" id="tech-reading-title"></h2>
+          </div>
+        </div>
+        <div class="tts-bar" id="tech-tts-bar">
+          <button class="tts-read-btn" id="tech-tts-read-btn" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            Read to me
+          </button>
+          <div class="tts-controls hidden" id="tech-tts-controls">
+            <div class="tts-action-row">
+              <button class="tts-action-btn" id="tech-tts-playpause" type="button" aria-label="Pause reading">⏸ Pause</button>
+              <button class="tts-action-btn tts-stop-btn" id="tech-tts-stop" type="button" aria-label="Stop reading">⏹ Stop</button>
+            </div>
+            <div class="tts-speed-group" role="group" aria-label="Reading speed">
+              <span class="tts-speed-label">Speed:</span>
+              <button class="tts-speed-btn" data-rate="0.5" type="button">0.5×</button>
+              <button class="tts-speed-btn" data-rate="0.75" type="button">0.75×</button>
+              <button class="tts-speed-btn tts-speed-active" data-rate="1" type="button">1×</button>
+              <button class="tts-speed-btn" data-rate="1.25" type="button">1.25×</button>
+              <button class="tts-speed-btn" data-rate="1.5" type="button">1.5×</button>
+            </div>
+            <div class="tts-speed-group" role="group" aria-label="Pitch">
+              <span class="tts-speed-label">Pitch:</span>
+              <button class="tts-speed-btn tts-pitch-btn" data-pitch="0.85" type="button">Low</button>
+              <button class="tts-speed-btn tts-pitch-btn tts-speed-active" data-pitch="1" type="button">Normal</button>
+              <button class="tts-speed-btn tts-pitch-btn" data-pitch="1.15" type="button">High</button>
+            </div>
+            <div class="tts-voice-row">
+              <label class="tts-speed-label" for="tech-tts-voice">Voice:</label>
+              <select class="tts-voice-select" id="tech-tts-voice" aria-label="Select reading voice"><option value="">Default</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reading-scroll-layout">
+        <div class="reading-scroll-content" id="tech-scroll-content">
+          <div class="story-reading-inner">
+            <figure class="article-image hidden" id="tech-reading-image-figure">
+              <img class="article-image__img" id="tech-reading-image" alt="">
+              <figcaption class="article-image__caption" id="tech-reading-image-caption"></figcaption>
+            </figure>
+            <div class="story-reading-body" id="tech-reading-body"></div>
+            <p class="story-reading-hint">Tap any <span class="vocab-highlight-sample">highlighted word</span> to see what it means. Tap any other word to start reading from there.</p>
+            <button class="quiz-start-btn quiz-primary-start-btn" id="tech-quiz-btn">
+              Quiz me on this article
+              <span class="quiz-start-btn-icon" aria-hidden="true">▶</span>
+            </button>
+          </div>
+        </div>
+        <div class="reading-scroll-nav" aria-hidden="true">
+          <div class="reading-scroll-fill" id="tech-scroll-fill"></div>
         </div>
       </div>
     </div>
