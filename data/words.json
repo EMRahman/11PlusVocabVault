@@ -3743,12 +3743,11 @@
     {
       "word": "Domestic",
       "pronunciation": "duh-MES-tik",
-      "definition": "Related to the home or to one’s own country.",
+      "definition": "Relating to your own country rather than to foreign countries.",
       "sentence_usage": "Domestic flights are usually shorter than international ones.",
       "synonyms": [
-        "Household",
-        "Internal",
-        "National"
+        "National",
+        "Internal"
       ],
       "antonyms": [
         "Foreign",
@@ -3770,7 +3769,34 @@
           "cloze": "Merchants brought _____ goods from distant lands across the sea.",
           "answer": "Foreign"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Relating to your own country rather than to foreign countries.",
+          "sentence_usage": "Domestic flights are usually shorter than international ones.",
+          "synonyms": [
+            "National",
+            "Internal"
+          ],
+          "antonyms": [
+            "Foreign",
+            "International",
+            "External"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Relating to the home, family, or running of a household.",
+          "sentence_usage": "Washing, cooking, and cleaning are everyday domestic chores.",
+          "synonyms": [
+            "Household",
+            "Home",
+            "Family"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Drastic",
@@ -5406,7 +5432,7 @@
     {
       "word": "Furnish",
       "pronunciation": "FER-nish",
-      "definition": "To provide furniture or to supply what is needed.",
+      "definition": "To provide a room or building with furniture and equipment.",
       "sentence_usage": "They will furnish the flat before renting it.",
       "synonyms": [
         "Provide",
@@ -5433,7 +5459,37 @@
           "cloze": "When they retreated, the soldiers had to _____ themselves of their heavy armour to run faster.",
           "answer": "Strip"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To provide a room or building with furniture and equipment.",
+          "sentence_usage": "They will furnish the flat before renting it.",
+          "synonyms": [
+            "Provide",
+            "Equip",
+            "Supply"
+          ],
+          "antonyms": [
+            "Strip",
+            "Remove",
+            "Withhold"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To supply or give something, such as information or proof.",
+          "sentence_usage": "The witness was able to furnish the police with vital details.",
+          "synonyms": [
+            "Supply",
+            "Provide",
+            "Give"
+          ],
+          "antonyms": [
+            "Withhold"
+          ]
+        }
+      ]
     },
     {
       "word": "Furtive",
@@ -6925,7 +6981,7 @@
     {
       "word": "Inflection",
       "pronunciation": "in-FLEK-shun",
-      "definition": "A change in the tone or pitch of the voice; also a change in word form.",
+      "definition": "A change in the tone or pitch of the voice.",
       "sentence_usage": "She used different inflections to show whether she was asking a question or making a statement.",
       "synonyms": [
         "Intonation",
@@ -6952,7 +7008,34 @@
           "cloze": "She spoke in a boring _____ that never changed, making her story sound dull.",
           "answer": "Monotone"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A change in the tone or pitch of the voice.",
+          "sentence_usage": "She used different inflections to show whether she was asking a question or making a statement.",
+          "synonyms": [
+            "Intonation",
+            "Modulation",
+            "Cadence"
+          ],
+          "antonyms": [
+            "Monotone",
+            "Flatness",
+            "Uniformity"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A change in the ending or form of a word to show its grammar.",
+          "sentence_usage": "Adding the ending '-ed' to a verb is an inflection that shows past tense.",
+          "synonyms": [
+            "Ending",
+            "Conjugation"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Infuse",
@@ -7332,7 +7415,7 @@
     {
       "word": "Lapse",
       "pronunciation": "LAPS",
-      "definition": "A temporary failure or a period of time passing.",
+      "definition": "A short slip or failure, especially in attention or behaviour.",
       "sentence_usage": "A momentary lapse in concentration caused him to make the mistake.",
       "synonyms": [
         "Slip",
@@ -7359,7 +7442,35 @@
           "cloze": "The brave knight's _____ in reaching the treasure chest made him a legend.",
           "answer": "Success"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A short slip or failure, especially in attention or behaviour.",
+          "sentence_usage": "A momentary lapse in concentration caused him to make the mistake.",
+          "synonyms": [
+            "Slip",
+            "Failure",
+            "Interval"
+          ],
+          "antonyms": [
+            "Success",
+            "Continuation",
+            "Improvement"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A passing of time, or a gap during which something stops.",
+          "sentence_usage": "After a lapse of several years, the two old friends finally met again.",
+          "synonyms": [
+            "Interval",
+            "Gap",
+            "Break"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Lavish",
@@ -7904,7 +8015,7 @@
     {
       "word": "Matrix",
       "pronunciation": "MAY-triks",
-      "definition": "An environment or framework in which something develops; also a grid of numbers.",
+      "definition": "A grid or arrangement of things set out in rows and columns.",
       "sentence_usage": "The city's road network formed a complex matrix of routes.",
       "synonyms": [
         "Framework",
@@ -7931,7 +8042,35 @@
           "cloze": "After the storm, leaves scattered in _____ with no pattern anywhere in sight.",
           "answer": "Chaos"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A grid or arrangement of things set out in rows and columns.",
+          "sentence_usage": "The city's road network formed a complex matrix of routes.",
+          "synonyms": [
+            "Framework",
+            "Grid",
+            "Structure"
+          ],
+          "antonyms": [
+            "Chaos",
+            "Disorder",
+            "Randomness"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A surrounding substance or setting in which something grows or develops.",
+          "sentence_usage": "Rich volcanic soil was the matrix in which the rainforest flourished.",
+          "synonyms": [
+            "Medium",
+            "Setting",
+            "Environment"
+          ],
+          "antonyms": []
+        }
+      ]
     },
     {
       "word": "Meandered",
@@ -10561,7 +10700,7 @@
     {
       "word": "Rehabilitate",
       "pronunciation": "ree-huh-BIL-ih-tayt",
-      "definition": "To restore someone to good health or a normal life; to restore something to good condition.",
+      "definition": "To restore someone to good health or a normal life.",
       "sentence_usage": "The charity worked to rehabilitate injured birds before releasing them into the wild.",
       "synonyms": [
         "Restore",
@@ -10588,7 +10727,38 @@
           "cloze": "The winter storm would only _____ the forest's weakened branches.",
           "answer": "Worsen"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To restore someone to good health or a normal life.",
+          "sentence_usage": "The charity worked to rehabilitate injured birds before releasing them into the wild.",
+          "synonyms": [
+            "Restore",
+            "Reform",
+            "Recover"
+          ],
+          "antonyms": [
+            "Harm",
+            "Damage",
+            "Worsen"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To return a building, place, or object to good condition again.",
+          "sentence_usage": "The council spent millions to rehabilitate the crumbling old harbour.",
+          "synonyms": [
+            "Renovate",
+            "Repair",
+            "Restore"
+          ],
+          "antonyms": [
+            "Neglect",
+            "Damage"
+          ]
+        }
+      ]
     },
     {
       "word": "Reluctant",
@@ -11757,7 +11927,7 @@
     {
       "word": "Smother",
       "pronunciation": "SMUTH-er",
-      "definition": "To suffocate; to cover thickly; to suppress.",
+      "definition": "To stop something from breathing or burning by cutting off its air.",
       "sentence_usage": "She tried to smother the flames with a damp cloth before they spread.",
       "synonyms": [
         "Suffocate",
@@ -11784,7 +11954,49 @@
           "cloze": "The brave knights began to _____ the treasure from the dragon's hoard.",
           "answer": "Uncover"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To stop something from breathing or burning by cutting off its air.",
+          "sentence_usage": "She tried to smother the flames with a damp cloth before they spread.",
+          "synonyms": [
+            "Suffocate",
+            "Stifle",
+            "Suppress"
+          ],
+          "antonyms": [
+            "Uncover",
+            "Release",
+            "Expose"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To cover something thickly with a large amount of another thing.",
+          "sentence_usage": "Grandpa loves to smother his toast in thick layers of jam.",
+          "synonyms": [
+            "Cover",
+            "Coat",
+            "Drench"
+          ],
+          "antonyms": []
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To hold back or hide a feeling, sound, or reaction.",
+          "sentence_usage": "She had to smother a laugh during the very serious assembly.",
+          "synonyms": [
+            "Stifle",
+            "Suppress",
+            "Hold back"
+          ],
+          "antonyms": [
+            "Release",
+            "Express"
+          ]
+        }
+      ]
     },
     {
       "word": "Smouldering",
