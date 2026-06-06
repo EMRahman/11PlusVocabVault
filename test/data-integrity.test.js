@@ -194,6 +194,7 @@ test('content collections expose their expected non-empty array', () => {
   const collections = {
     'animals.json': 'animals',
     'insects.json': 'insects',
+    'space.json': 'space',
     'fables.json': 'fables',
     'history.json': 'articles',
     'proverbs.json': 'collections',
@@ -237,5 +238,38 @@ test('every comic has a title, blurb, glossary words, and renderable panels', ()
       assert.equal(typeof p.pose, 'string', `${label}: panel ${j} must have a string pose`);
       assert.notEqual(p.pose.trim(), '', `${label}: panel ${j} has an empty pose`);
     });
+  });
+});
+
+test('every space article is renderable and only references real vocabulary words', () => {
+  // Space Mode is built by createReadingMode (js/app.js), which reads each of
+  // these fields directly and resolves item.words against words.json via
+  // findWordByName. A missing field would break the reading view, and a word
+  // name with no match in words.json would render an unclickable highlight and
+  // break "Quiz me". This article-level check is stronger than the existing
+  // animals/insects coverage on purpose — it guards the "reuse existing words
+  // only" contract for this collection mechanically.
+  const knownWords = new Set(readJSON('words.json').words.map((w) => w.word));
+  const { space } = readJSON('space.json');
+  const seenIds = new Set();
+  space.forEach((article, i) => {
+    const label = article.title || `space article #${i}`;
+    for (const field of ['id', 'title', 'emoji', 'region', 'blurb']) {
+      assert.equal(typeof article[field], 'string', `${label}: ${field} must be a string`);
+      assert.notEqual(article[field].trim(), '', `${label}: ${field} must not be empty`);
+    }
+    assert.ok(!seenIds.has(article.id), `${label}: duplicate id "${article.id}"`);
+    seenIds.add(article.id);
+
+    assert.ok(Array.isArray(article.paragraphs) && article.paragraphs.length > 0, `${label}: paragraphs must be a non-empty array`);
+    for (const p of article.paragraphs) {
+      assert.equal(typeof p, 'string', `${label}: every paragraph must be a string`);
+      assert.notEqual(p.trim(), '', `${label}: paragraphs must not contain an empty string`);
+    }
+
+    assert.ok(Array.isArray(article.words) && article.words.length > 0, `${label}: words must be a non-empty array`);
+    for (const w of article.words) {
+      assert.ok(knownWords.has(w), `${label}: word "${w}" is not present in words.json`);
+    }
   });
 });
