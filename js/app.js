@@ -4713,6 +4713,9 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       showWildPhase2(wildState.words[wildState.index]);
     });
     document.getElementById('wild-next-btn').addEventListener('click', wildAdvance);
+    document.getElementById('wild-phase2-next-btn').addEventListener('click', function () {
+      showWildPhase3(wildState.words[wildState.index]);
+    });
     document.getElementById('wild-play-again-btn').addEventListener('click', function () { showWildScreen('setup'); });
     document.getElementById('wild-done-btn').addEventListener('click', closeWild);
 
@@ -4870,6 +4873,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       grid.appendChild(btn);
     });
 
+    document.getElementById('wild-phase2-next-wrap').classList.add('hidden');
     document.getElementById('wild-phase1-card').classList.add('hidden');
     document.getElementById('wild-phase2-card').classList.remove('hidden');
     document.getElementById('wild-phase3-card').classList.add('hidden');
@@ -4906,7 +4910,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         });
         fb.textContent = '✗ See the highlighted sentence above';
         fb.className = 'quiz-feedback visible feedback-wrong';
-        setTimeout(function () { showWildPhase3(wordObj); }, 1600);
+        document.getElementById('wild-phase2-next-wrap').classList.remove('hidden');
       } else {
         fb.textContent = 'Not quite — try again!';
         fb.className = 'quiz-feedback visible feedback-wrong';
