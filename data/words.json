@@ -3758,12 +3758,12 @@
       "word_type": "Adjective",
       "themed_quest": {
         "theme": "castle",
-        "definition": "The king's duties involved caring for the castle's household tasks and internal affairs.",
-        "word": "The servants managed domestic chores while the knights prepared for battle outside.",
-        "sentence": "The great hall was filled with _____ warmth, servants carrying steaming dishes from the kitchens far below.",
+        "definition": "Belonging to your own kingdom or country, rather than to foreign lands across the sea.",
+        "word": "The king cared more for domestic matters in his own realm than for distant foreign wars.",
+        "sentence": "The council met to discuss _____ affairs within the kingdom, leaving foreign treaties for later.",
         "synonym": {
-          "cloze": "The queen kept _____ animals inside the castle gardens for companionship.",
-          "answer": "Household"
+          "cloze": "The king's _____ laws applied across the whole kingdom, from the castle to every village.",
+          "answer": "National"
         },
         "antonym": {
           "cloze": "Merchants brought _____ goods from distant lands across the sea.",
@@ -5448,15 +5448,15 @@
       "word_type": "Verb",
       "themed_quest": {
         "theme": "army-battle",
-        "definition": "The captain decided to give each soldier a shield and banner.",
-        "word": "The generals furnish all troops with armour and weapons.",
-        "sentence": "The quartermaster worked all night to _____ each soldier with enough food for three days of hard marching.",
+        "definition": "To fit out a room or building with the furniture and equipment it needs.",
+        "word": "Carpenters worked to furnish the new barracks with sturdy bunks, tables, and lanterns.",
+        "sentence": "The fort's stewards rushed to _____ the empty officers' quarters with beds, desks, and warm rugs.",
         "synonym": {
-          "cloze": "The army captains would _____ their soldiers with shields and swords before battle on the Fields.",
-          "answer": "Provide"
+          "cloze": "Soldiers helped _____ the watchtower with bunks and benches before winter set in.",
+          "answer": "Equip"
         },
         "antonym": {
-          "cloze": "When they retreated, the soldiers had to _____ themselves of their heavy armour to run faster.",
+          "cloze": "When the camp was abandoned, they had to _____ every tent of its furniture and beds.",
           "answer": "Strip"
         }
       },
@@ -7419,8 +7419,7 @@
       "sentence_usage": "A momentary lapse in concentration caused him to make the mistake.",
       "synonyms": [
         "Slip",
-        "Failure",
-        "Interval"
+        "Failure"
       ],
       "antonyms": [
         "Success",
@@ -7431,15 +7430,15 @@
       "word_type": "Noun",
       "themed_quest": {
         "theme": "dragon",
-        "definition": "A temporary pause or mistake where something stops working or you forget something important.",
-        "word": "A lapse in concentration caused the dragon to miss the sneaky thief in the shadows.",
-        "sentence": "During a _____ in the dragon's fury, the champion dashed forward with the silver horn raised high.",
+        "definition": "A brief slip in attention or focus, when your mind wanders for just a moment.",
+        "word": "A single lapse in the young knight's focus let the dragon slip past the gate.",
+        "sentence": "One careless _____ in concentration, and the dragon-watcher missed the beast creeping closer.",
         "synonym": {
-          "cloze": "There was a brief _____ in the dragon's guard, giving the knight a chance to escape.",
-          "answer": "Interval"
+          "cloze": "A momentary _____ in the guard's attention let the dragon's egg roll away unseen.",
+          "answer": "Slip"
         },
         "antonym": {
-          "cloze": "The brave knight's _____ in reaching the treasure chest made him a legend.",
+          "cloze": "Not a single mistake — only _____ as the knight tamed every dragon flawlessly.",
           "answer": "Success"
         }
       },
@@ -7450,8 +7449,7 @@
           "sentence_usage": "A momentary lapse in concentration caused him to make the mistake.",
           "synonyms": [
             "Slip",
-            "Failure",
-            "Interval"
+            "Failure"
           ],
           "antonyms": [
             "Success",
@@ -10716,15 +10714,15 @@
       "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
-        "definition": "The forest creatures worked together to heal the ancient oak and restore its branches.",
-        "word": "The woodland healers helped rehabilitate the injured squirrel back to health.",
-        "sentence": "The fox seemed to be trying to _____ an old burrow, clearing out debris and rebuilding its entrance.",
+        "definition": "To nurse a hurt creature back to health and strength so it can live freely again.",
+        "word": "The woodland healers worked gently to rehabilitate the injured fawn until it could run again.",
+        "sentence": "The kind elves promised to _____ the wounded owl, feeding it until its strength returned.",
         "synonym": {
-          "cloze": "The woodland elves worked to _____ the damaged ancient tree in the Forest of Clues.",
+          "cloze": "The forest healers used warm herbs to _____ the sickly badger to full health.",
           "answer": "Restore"
         },
         "antonym": {
-          "cloze": "The winter storm would only _____ the forest's weakened branches.",
+          "cloze": "Leaving the fawn alone in the frost would only _____ its fragile health.",
           "answer": "Worsen"
         }
       },
@@ -11931,8 +11929,7 @@
       "sentence_usage": "She tried to smother the flames with a damp cloth before they spread.",
       "synonyms": [
         "Suffocate",
-        "Stifle",
-        "Suppress"
+        "Stifle"
       ],
       "antonyms": [
         "Uncover",
@@ -11962,8 +11959,7 @@
           "sentence_usage": "She tried to smother the flames with a damp cloth before they spread.",
           "synonyms": [
             "Suffocate",
-            "Stifle",
-            "Suppress"
+            "Stifle"
           ],
           "antonyms": [
             "Uncover",
