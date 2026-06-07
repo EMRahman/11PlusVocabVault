@@ -71,7 +71,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 
 | File | Lines | Role | Loaded by |
 |------|------:|------|-----------|
-| `app.js` | ~5.9k | **Orchestrator.** One big module-scoped closure holding 18 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
+| `app.js` | ~5.9k | **Orchestrator.** One big module-scoped closure holding 19 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
@@ -91,7 +91,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `history.json` | `articles` | `animals.json` | `animals` |
 | `insects.json` | `insects` | `fables.json` | `fables` |
 | `space.json` | `space` | `technology.json` | `technology` |
-| `money.json` | `money` | | |
+| `money.json` | `money` | `forces.json` | `forces` |
 | `word-positions.json` | `positions`,… (Word Universe layout) | `animal-constellations.json` | `segments` |
 | `word-explorer.json` | `mood`,`etymology`,… | | |
 

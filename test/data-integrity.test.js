@@ -196,6 +196,7 @@ test('content collections expose their expected non-empty array', () => {
     'insects.json': 'insects',
     'space.json': 'space',
     'technology.json': 'technology',
+    'forces.json': 'forces',
     'fables.json': 'fables',
     'history.json': 'articles',
     'money.json': 'money',
@@ -244,7 +245,7 @@ test('every comic has a title, blurb, glossary words, and renderable panels', ()
 });
 
 test('every science/tech article is renderable and only references real vocabulary words', () => {
-  // Space and Inventions & Technology Modes are built by createReadingMode
+  // Space, Inventions & Technology, Money, and Forces of Nature Modes are built by createReadingMode
   // (js/app.js), which reads each of these fields directly and resolves
   // item.words against words.json via findWordByName. A missing field would
   // break the reading view, and a word name with no match in words.json would
@@ -252,12 +253,13 @@ test('every science/tech article is renderable and only references real vocabula
   // check is stronger than the existing animals/insects coverage on purpose —
   // it guards the "reuse existing words only" contract for these collections
   // mechanically. `subtitleField` is the per-item field createReadingMode shows
-  // as the card/reading subtitle (Space: region, Inventions: era).
+  // as the card/reading subtitle (Space: region, Inventions/Money: era, Forces: element).
   const knownWords = new Set(readJSON('words.json').words.map((w) => w.word));
   const collections = [
     { file: 'space.json', key: 'space', subtitleField: 'region' },
     { file: 'technology.json', key: 'technology', subtitleField: 'era' },
     { file: 'money.json', key: 'money', subtitleField: 'era' },
+    { file: 'forces.json', key: 'forces', subtitleField: 'element' },
   ];
   for (const { file, key, subtitleField } of collections) {
     const articles = readJSON(file)[key];

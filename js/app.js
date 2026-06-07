@@ -568,6 +568,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         initInsectsMode();
         initSpaceMode();
         initTechMode();
+        initForcesMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -2774,6 +2775,15 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       dataFile: 'data/technology.json', dataKey: 'technology',
       returnTo: 'tech', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'Inventions are still loading — try again in a moment.'
+    });
+  }
+
+  function initForcesMode() {
+    createReadingMode({
+      prefix: 'forces', progressKey: 'vocabVault_forcesProgress',
+      dataFile: 'data/forces.json', dataKey: 'forces',
+      returnTo: 'forces', itemNoun: 'article', subtitleField: 'element',
+      loadingMessage: 'Forces of nature are still loading — try again in a moment.'
     });
   }
 
