@@ -1,0 +1,154 @@
+{
+  "forces": [
+    {
+      "id": "forces-volcanoes",
+      "title": "Volcanoes: Mountains of Fire",
+      "emoji": "🌋",
+      "element": "Earth & Fire",
+      "blurb": "Deep beneath our feet lies molten rock hot enough to melt stone. When it bursts to the surface, a volcano is born — one of the most spectacular forces on Earth.",
+      "words": ["Volatile", "Incandescent", "Smouldering", "Surged", "Scarlet", "Menacing", "Thunderous"],
+      "paragraphs": [
+        "Far below the ground you walk on, the rock is so hot that it has melted into a thick, glowing liquid called magma. A volcano is a mountain with an opening that lets this fiery rock escape to the surface. When it does, it can light up the sky, shake the earth, and reshape the land in a single day.",
+        "Volcanoes are volatile — likely to change suddenly and behave in dangerous, unpredictable ways. One may sleep quietly for hundreds of years and then, with almost no warning, roar back to life. Scientists watch them closely, because a peaceful-looking mountain can turn into a menacing threat — dangerous and frighteningly powerful, not to be taken lightly.",
+        "When a volcano finally erupts, molten rock surged upward — rushed up suddenly and with great force — and burst from the opening at the top. Rivers of incandescent lava — so hot that it glows white and orange with its own light — pour down the slopes, while a scarlet — bright, fiery red — glow lights up the clouds above the crater.",
+        "An eruption can be astonishingly loud. The biggest ones make a thunderous boom — a deep, booming roar like rolling thunder — that can be heard for hundreds of miles. Ash and smoke are flung high into the air, sometimes blotting out the Sun and drifting right around the world on the wind.",
+        "After the eruption ends, a volcano is rarely truly finished. For months or years it may keep smouldering — burning slowly and quietly, with heat and wisps of smoke but no roaring flames. Yet volcanoes also create life: their cooled ash makes some of the richest farmland on Earth, and whole islands, like Hawaii, were built entirely by their fire."
+      ]
+    },
+    {
+      "id": "forces-earthquakes",
+      "title": "Earthquakes: When the Ground Shakes",
+      "emoji": "🌍",
+      "element": "The Restless Earth",
+      "blurb": "The solid ground beneath us is not as still as it seems. Now and then it lurches and trembles, reminding us that the Earth itself is always on the move.",
+      "words": ["Collapse", "Calamity", "Stupendous", "Drastic", "Precarious", "Tumultuous", "Resilient"],
+      "paragraphs": [
+        "The surface of the Earth is not one solid shell. It is cracked into enormous pieces called tectonic plates that fit together like a giant jigsaw and drift very slowly, grinding against one another. When two plates suddenly slip past each other, the ground shudders, and we feel an earthquake.",
+        "Most earthquakes are so gentle that no one even notices them. But a few are stupendous — amazingly great in size and power — releasing more energy in a few seconds than a thousand bombs. The strongest quakes can make a drastic difference — a sudden, extreme, and far-reaching change — to the land, splitting roads, twisting railway lines, and even shifting the course of rivers.",
+        "During a violent earthquake, tall buildings may collapse — suddenly fall down in a heap — if they have not been built to bend and sway. This is why a great quake can become a true calamity — a terrible, disastrous event that brings widespread suffering and loss — especially in crowded cities full of people.",
+        "Those few tumultuous seconds — wildly noisy, violent, and full of confusion — are terrifying. The ground rolls like the deck of a ship, windows shatter, and anything not fixed down is thrown about. Afterwards, weakened walls and bridges are left in a precarious state — dangerously unsteady and likely to fall at any moment.",
+        "Yet people are remarkably resilient — able to recover quickly and bounce back after hardship. Engineers now design clever buildings that flex instead of breaking, scientists build sensors to give early warnings, and communities rebuild stronger than before. We cannot stop the Earth from shaking, but we are always learning to live with it more safely."
+      ]
+    },
+    {
+      "id": "forces-hurricanes",
+      "title": "Hurricanes: The Giant Storms",
+      "emoji": "🌀",
+      "element": "Sky & Sea",
+      "blurb": "Spinning across warm oceans, a hurricane is the largest and most powerful storm on the planet — a swirling giant hundreds of miles wide.",
+      "words": ["Ferocious", "Tempestuous", "Turbulent", "Ceaseless", "Ominous", "Whirling", "Vast"],
+      "paragraphs": [
+        "A hurricane is a colossal spinning storm that forms over warm tropical seas. As the ocean heats the air, that warm, damp air rises and begins to twist, gathering more and more energy until a vast — enormous and sprawling — wheel of cloud is turning over the water, sometimes wider than a whole country.",
+        "Seen from a satellite high in space, a hurricane is a beautiful whirling — spinning round and round at great speed — spiral of white cloud. But down on the ground it is anything but gentle. Its winds are ferocious — fierce, wild, and violent — strong enough to tear roofs from houses and snap thick trees in two.",
+        "The sea beneath a hurricane becomes wildly tempestuous — stormy, raging, and lashed by violent wind. Huge turbulent waves — rough, churning, and full of disorder — crash against the coast, and the storm can push a great mound of seawater inland, flooding everything in its path.",
+        "For hour after hour the rain comes down in a ceaseless — never-stopping, going on and on without pause — torrent. Days before it arrives, the sky often takes on an ominous look — a dark, threatening appearance that warns something bad is coming — as the first high clouds race ahead of the storm.",
+        "Strangely, the very centre of a hurricane — called the eye — is calm and clear. All around it the storm rages, yet in the middle the wind drops and the Sun may even shine. Today, satellites and aircraft track these giants closely, giving people precious days of warning to reach safety before the storm makes landfall."
+      ]
+    },
+    {
+      "id": "forces-tornadoes",
+      "title": "Tornadoes: Twisters from the Sky",
+      "emoji": "🌪️",
+      "element": "The Sky",
+      "blurb": "A tornado is a furious spinning column of air that drops from a storm cloud to the ground — narrow, fast, and astonishingly destructive.",
+      "words": ["Whirling", "Savage", "Swift", "Ferocious", "Menacing", "Looming", "Chaotic"],
+      "paragraphs": [
+        "A tornado is a violently spinning funnel of air that reaches down from a towering thundercloud and touches the ground. Unlike a hurricane, which is hundreds of miles wide, a tornado may be only a few hundred metres across — but within that narrow column hide some of the fastest winds anywhere on Earth.",
+        "The tell-tale sign is a dark, whirling — spinning round and round at tremendous speed — funnel dropping from the clouds. As it forms, you can often see it looming — appearing large, dark, and threatening on the horizon — a menacing — dangerous and frightening in appearance — shape sweeping across the land.",
+        "Tornadoes are savage — fierce, wild, and brutally violent. The strongest can lift cars into the air, flatten houses, and drive a blade of straw straight into a wooden post. What makes them so dangerous is how swift — extremely fast — they are, racing across the ground quicker than a car can drive away.",
+        "Inside the funnel the air is utterly chaotic — wildly disordered and out of all control — flinging dust, debris, and wreckage in every direction at once. A ferocious — fierce and violent — tornado can destroy one house completely while leaving the one next door barely touched, which is part of what makes them so unpredictable.",
+        "The central United States sees so many that one region is nicknamed 'Tornado Alley'. Brave scientists called storm chasers drive towards these twisters to study them, placing sensors in their path. Thanks to their work and to weather radar, warnings now give families precious minutes to take shelter underground."
+      ]
+    },
+    {
+      "id": "forces-lightning",
+      "title": "Lightning and Thunder",
+      "emoji": "⚡",
+      "element": "The Sky",
+      "blurb": "In the heart of a storm, nature unleashes a giant spark hotter than the surface of the Sun, followed by a crash loud enough to rattle windows.",
+      "words": ["Dazzling", "Thunderous", "Cacophony", "Incandescent", "Radiant", "Ominous", "Electrocute"],
+      "paragraphs": [
+        "Lightning is a giant spark of electricity that leaps between the clouds and the ground during a storm. As a storm cloud churns, tiny bits of ice rub together and build up a huge electrical charge, until it suddenly jumps free in a flash so powerful it lights up the whole sky.",
+        "A lightning bolt is dazzling — so bright and brilliant that it almost blinds the eye. For a split second the flash is incandescent — glowing white-hot with its own fierce light — and radiant — shining out brilliantly in every direction. Astonishingly, that thin streak of lightning is about five times hotter than the surface of the Sun.",
+        "The flash heats the air around it so violently that the air explodes outwards, and that is what makes thunder. A nearby strike gives a single thunderous — deep, booming, and tremendously loud — crack, while a distant one rolls and grumbles. A long storm can fill the sky with a cacophony — a harsh, jarring jumble of loud noises — of booms and rumbles.",
+        "Before a big storm arrives, the sky often turns dark and an ominous — threatening, warning that something dangerous is near — stillness settles over everything. Then the first flickers appear on the horizon, and the rumbling slowly draws closer as the storm rolls in.",
+        "Lightning is beautiful but deadly: a direct strike carries enough power to electrocute — kill or badly injure with a violent electric shock — a person or split a tree in two. The safest place in a storm is indoors or inside a car. Counting the seconds between the flash and the bang tells you how far away the storm is — three seconds for every kilometre."
+      ]
+    },
+    {
+      "id": "forces-tsunamis",
+      "title": "Tsunamis: Waves That Swallow Coasts",
+      "emoji": "🌊",
+      "element": "The Sea",
+      "blurb": "Born from an earthquake far out at sea, a tsunami is not one wave but a wall of water that can race across an entire ocean.",
+      "words": ["Immense", "Surged", "Towering", "Calamity", "Ceaseless", "Stupendous", "Perilous"],
+      "paragraphs": [
+        "A tsunami is a giant wave, or series of waves, set off when the sea floor moves suddenly — usually because of an undersea earthquake. The quake shoves a huge amount of water upwards, and that water spreads outward as waves carrying an immense — enormous, almost unimaginable — amount of energy.",
+        "Out in the deep ocean, a tsunami is barely noticeable, only a gentle rise passing under a ship. But it travels as fast as a jet plane, and when it reaches shallow water near the coast the wave slows, bunches up, and rears into a towering — extremely tall and rising high overhead — wall of water.",
+        "As the tsunami reached the shore, the sea surged — rushed forward suddenly and with overwhelming force — far inland, swallowing beaches, streets, and fields. A stupendous — amazingly huge and powerful — tsunami can sweep away cars, boats, and even buildings as though they weighed nothing at all.",
+        "What makes a tsunami so perilous — extremely dangerous and full of risk — is that it is not a single wave. It arrives as a ceaseless — relentless, one after another without pause — series of surges, and the second or third can be larger than the first, catching out anyone who returns too soon believing the danger has passed.",
+        "A great tsunami can become a terrible calamity — a disastrous event causing widespread destruction and loss. After devastating waves struck the Indian Ocean in 2004 and Japan in 2011, nations built warning systems of sea-floor sensors and sirens, so that today a tsunami detected far out at sea can send a warning racing to the coast ahead of the wave."
+      ]
+    },
+    {
+      "id": "forces-floods",
+      "title": "Floods: When Waters Rise",
+      "emoji": "🌧️",
+      "element": "Water",
+      "blurb": "Too much rain with nowhere to go turns gentle rivers into a powerful force that can cover whole towns in muddy water.",
+      "words": ["Turbulent", "Murky", "Vast", "Persistent", "Desolate", "Calamity", "Perilous"],
+      "paragraphs": [
+        "A flood happens when water spreads over land that is usually dry. It may come from days of heavy rain, from melting snow, or from a river bursting its banks. When water has nowhere left to drain away, it rises higher and higher until it covers roads, fields, and homes.",
+        "Floods are often caused by persistent — going on steadily and refusing to stop — rain that falls for days on end. The ground soaks up as much as it can, but once it is full the rest gathers and runs together, until a vast — enormous and wide-spreading — sheet of water stretches as far as the eye can see.",
+        "Floodwater is rarely clean and calm. It is usually murky — dark, muddy, and impossible to see through — and turbulent — rough, churning, and swirling violently — as it rushes downhill. Hidden beneath that brown water lie broken glass, sharp wreckage, and deep holes, which makes wading through it extremely perilous — dangerous and full of hidden risk.",
+        "When the water finally drains away, it can leave a desolate — bleak, empty, and abandoned — scene behind: ruined furniture caked in mud, drowned crops, and homes families can no longer live in. A severe flood can become a real calamity — a disastrous event bringing hardship to thousands of people at once.",
+        "People have battled floods for thousands of years and learned many clever defences: high banks called levees along rivers, great barriers that can be raised across estuaries, and wetlands left wild to soak up extra water like a sponge. Planting trees and protecting marshes helps the land hold water back before it ever becomes a flood."
+      ]
+    },
+    {
+      "id": "forces-wildfires",
+      "title": "Wildfires: Flames on the Loose",
+      "emoji": "🔥",
+      "element": "Fire",
+      "blurb": "A single spark in a dry forest can grow into a roaring wall of flame that races across the land faster than a person can run.",
+      "words": ["Ferocious", "Smouldering", "Incandescent", "Scarlet", "Ceaseless", "Savage", "Eradicate"],
+      "paragraphs": [
+        "A wildfire is a fire that burns out of control across forests, grasslands, or bush. It may be started by a bolt of lightning, by a hot dry spell, or by a careless spark from people. Once it takes hold in dry plants, it can spread with frightening speed, leaping from tree to tree.",
+        "A big wildfire is ferocious — fierce, wild, and raging — throwing out so much heat that it creates its own gusts of wind. At its heart the flames are incandescent — glowing white-hot — and a scarlet — bright fiery red — wall of fire can stretch for miles, lighting the night sky with an angry orange glow.",
+        "Driven by the wind, a savage — brutally fierce and merciless — fire can race downhill and across valleys faster than a person can run. Its ceaseless — never-stopping, burning on and on — advance can eat through a forest in hours and almost eradicate — completely wipe out and destroy — every plant and home in its path.",
+        "Even after the main blaze has passed, danger remains. Tree stumps and roots can keep smouldering — burning slowly and quietly underground, with heat and smoke but no open flame — for days, and a single gust of wind can fan them back into life, starting the whole fire over again.",
+        "Surprisingly, fire is also part of how nature works. Some trees actually need the heat of a wildfire to crack open their cones and release their seeds, and the ash feeds the soil for the next generation of plants. Firefighters work to protect homes and lives, while scientists study how to live alongside fire in the wild places that depend on it."
+      ]
+    },
+    {
+      "id": "forces-avalanches",
+      "title": "Avalanches and Blizzards",
+      "emoji": "❄️",
+      "element": "Ice & Snow",
+      "blurb": "High in the mountains, snow can turn from a soft white blanket into a thundering river of ice — or a blinding storm that swallows the world in white.",
+      "words": ["Bleak", "Swift", "Perilous", "Desolate", "Ferocious", "Ceaseless", "Petrified"],
+      "paragraphs": [
+        "High on a steep mountain, layer upon layer of snow piles up all winter long. Most of the time it stays put, but if the layers do not bind firmly together, a whole slab can suddenly break loose and come thundering down the slope. This roaring river of snow and ice is called an avalanche.",
+        "An avalanche is astonishingly swift — extremely fast — reaching the speed of a racing car within seconds of breaking free. That speed makes it desperately perilous — full of deadly danger — for anyone caught on the mountainside, because there is almost no time to escape once the snow begins to move.",
+        "A blizzard is a different mountain danger: a ceaseless — never-stopping, going on and on without pause — snowstorm driven by howling wind. The blowing snow turns the world into a bleak — cold, grey, and cheerless — blur, and the high ground becomes a desolate — empty, lonely, and abandoned — white wilderness where it is easy to lose your way.",
+        "Caught out in such a storm, even experienced climbers can be left petrified — frozen still with fear and cold — unable to see more than a step ahead. The freezing wind is a ferocious — fierce, wild, and violent — foe, and the safest choice is often to dig into the snow and shelter until the storm blows itself out.",
+        "People who live and work in snowy mountains have learned to respect these forces. Experts study the layers of snow to judge when slopes are unsafe, and sometimes set off small avalanches on purpose, in a safe and controlled way, so that dangerous snow comes down before anyone is near it."
+      ]
+    },
+    {
+      "id": "forces-wind",
+      "title": "The Power of Wind",
+      "emoji": "💨",
+      "element": "The Air",
+      "blurb": "You cannot see it, yet wind can fill a sail, carve a desert, topple a tree, or quietly turn a giant turbine to power a city.",
+      "words": ["Ferocious", "Ceaseless", "Brisk", "Whirling", "Persistent", "Tenacious", "Rustling"],
+      "paragraphs": [
+        "Wind is simply air on the move, yet it is one of the most powerful forces in nature. It is created by the Sun: as the Sun warms some parts of the Earth more than others, warm air rises and cooler air rushes in to take its place. That endless flow of air is the wind we feel on our faces.",
+        "Wind comes in every strength imaginable. A brisk — fresh, quick, and lively — breeze is just enough to fly a kite or set the leaves rustling — making a soft, swishing whisper as they brush together. But the very same force, grown strong, can become ferocious — fierce and violent — uprooting ancient trees and ripping the tiles from a roof.",
+        "Over a long time, even a gentle wind is a tenacious — holding on firmly and refusing to give up — sculptor. Its persistent — steady and refusing to stop — work carries grains of sand that slowly carve rock into strange shapes, and a ceaseless — never-ending — desert wind can pile up sand dunes as tall as buildings, then move them across the land.",
+        "Sometimes the wind starts whirling — spinning round and round at speed — gathering dust and leaves into little twisting columns, or, over the desert, into towering spirals of sand. The same spinning motion, on a giant scale and full of energy, is what powers tornadoes and hurricanes.",
+        "Humans have harnessed the wind for thousands of years. Its push once drove sailing ships across whole oceans and turned the sails of windmills to grind grain. Today, tall wind turbines use that same ceaseless force to spin and make clean electricity, turning one of nature's oldest powers into energy for our homes."
+      ]
+    }
+  ]
+}
