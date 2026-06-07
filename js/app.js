@@ -2319,7 +2319,8 @@ import { getMeanings, additionalMeanings } from './meanings.js';
     storyReadingEmoji.textContent = story.emoji;
     storyReadingTitle.textContent = story.title;
     if (story.image) {
-      storyReadingImage.onerror = function () { storyReadingImageFigure.classList.add('hidden'); };
+      storyReadingImageFigure.classList.remove('article-image--broken');
+      storyReadingImage.onerror = function () { storyReadingImageFigure.classList.add('article-image--broken'); };
       storyReadingImage.src = story.image.url;
       storyReadingImage.alt = story.image.caption;
       storyReadingImageCaption.textContent = story.image.caption + ' — ' + story.image.credit;
@@ -2329,6 +2330,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       storyReadingImage.src = '';
       storyReadingImage.alt = '';
       storyReadingImageCaption.textContent = '';
+      storyReadingImageFigure.classList.remove('article-image--broken');
       storyReadingImageFigure.classList.add('hidden');
     }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
@@ -2587,7 +2589,8 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       if (subtitleEl) subtitleEl.textContent = item[config.subtitleField];
 
       if (item.image) {
-        image.onerror = function () { imageFigure.classList.add('hidden'); };
+        imageFigure.classList.remove('article-image--broken');
+        image.onerror = function () { imageFigure.classList.add('article-image--broken'); };
         image.src = item.image.url;
         image.alt = item.image.caption;
         imageCaption.textContent = item.image.caption + ' — ' + item.image.credit;
@@ -2597,6 +2600,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         image.src = '';
         image.alt = '';
         imageCaption.textContent = '';
+        imageFigure.classList.remove('article-image--broken');
         imageFigure.classList.add('hidden');
       }
 
