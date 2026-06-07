@@ -563,6 +563,7 @@ import { getMeanings, additionalMeanings } from './meanings.js';
         initGloss();
         initStoryMode();
         initHistoryMode();
+        initMoneyMode();
         initAnimalsMode();
         initInsectsMode();
         initSpaceMode();
@@ -2728,6 +2729,15 @@ import { getMeanings, additionalMeanings } from './meanings.js';
       dataFile: 'data/history.json', dataKey: 'articles',
       returnTo: 'history', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'History articles are still loading — try again in a moment.'
+    });
+  }
+
+  function initMoneyMode() {
+    createReadingMode({
+      prefix: 'money', progressKey: 'vocabVault_moneyProgress',
+      dataFile: 'data/money.json', dataKey: 'money',
+      returnTo: 'money', itemNoun: 'article', subtitleField: 'era',
+      loadingMessage: 'Money articles are still loading — try again in a moment.'
     });
   }
 

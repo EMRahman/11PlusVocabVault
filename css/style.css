@@ -1753,6 +1753,13 @@ footer {
 
 .history-launch-btn:hover { filter: brightness(1.1); }
 
+.money-launch-btn {
+  background: linear-gradient(135deg, #064e3b 0%, #047857 55%, #d4af37 100%);
+  border-color: #047857;
+}
+
+.money-launch-btn:hover { filter: brightness(1.1); }
+
 .fable-launch-btn {
   background: linear-gradient(135deg, #042f2e 0%, #0f4c47 60%, #0d9488 100%);
   border-color: #0d9488;
