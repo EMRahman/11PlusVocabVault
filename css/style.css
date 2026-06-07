@@ -2069,6 +2069,24 @@ footer {
   height: auto;
 }
 
+.article-image--broken .article-image__img {
+  display: none;
+}
+
+.article-image--broken::before {
+  content: '🖼️ Image unavailable';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 140px;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  text-align: center;
+}
+
 .article-image__caption {
   padding: 0.45rem 0.9rem;
   font-size: 0.78rem;
