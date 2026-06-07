@@ -13,7 +13,12 @@
         "When a volcano finally erupts, molten rock surged upward — rushed up suddenly and with great force — and burst from the opening at the top. Rivers of incandescent lava — so hot that it glows white and orange with its own light — pour down the slopes, while a scarlet — bright, fiery red — glow lights up the clouds above the crater.",
         "An eruption can be astonishingly loud. The biggest ones make a thunderous boom — a deep, booming roar like rolling thunder — that can be heard for hundreds of miles. Ash and smoke are flung high into the air, sometimes blotting out the Sun and drifting right around the world on the wind.",
         "After the eruption ends, a volcano is rarely truly finished. For months or years it may keep smouldering — burning slowly and quietly, with heat and wisps of smoke but no roaring flames. Yet volcanoes also create life: their cooled ash makes some of the richest farmland on Earth, and whole islands, like Hawaii, were built entirely by their fire."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pahoeoe_fountain_original.jpg/500px-Pahoeoe_fountain_original.jpg",
+        "caption": "A lava fountain erupts from Kīlauea volcano, Hawaiʻi",
+        "credit": "USGS / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "forces-earthquakes",
@@ -28,7 +33,12 @@
         "During a violent earthquake, tall buildings may collapse — suddenly fall down in a heap — if they have not been built to bend and sway. This is why a great quake can become a true calamity — a terrible, disastrous event that brings widespread suffering and loss — especially in crowded cities full of people.",
         "Those few tumultuous seconds — wildly noisy, violent, and full of confusion — are terrifying. The ground rolls like the deck of a ship, windows shatter, and anything not fixed down is thrown about. Afterwards, weakened walls and bridges are left in a precarious state — dangerously unsteady and likely to fall at any moment.",
         "Yet people are remarkably resilient — able to recover quickly and bounce back after hardship. Engineers now design clever buildings that flex instead of breaking, scientists build sensors to give early warnings, and communities rebuild stronger than before. We cannot stop the Earth from shaking, but we are always learning to live with it more safely."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Chinatown_after_San_Francisco_Earthquake_1906.jpg/500px-Chinatown_after_San_Francisco_Earthquake_1906.jpg",
+        "caption": "San Francisco's Chinatown reduced to rubble after the devastating 1906 earthquake",
+        "credit": "Edith Irvine / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "forces-hurricanes",
@@ -43,7 +53,12 @@
         "The sea beneath a hurricane becomes wildly tempestuous — stormy, raging, and lashed by violent wind. Huge turbulent waves — rough, churning, and full of disorder — crash against the coast, and the storm can push a great mound of seawater inland, flooding everything in its path.",
         "For hour after hour the rain comes down in a ceaseless — never-stopping, going on and on without pause — torrent. Days before it arrives, the sky often takes on an ominous look — a dark, threatening appearance that warns something bad is coming — as the first high clouds race ahead of the storm.",
         "Strangely, the very centre of a hurricane — called the eye — is calm and clear. All around it the storm rages, yet in the middle the wind drops and the Sun may even shine. Today, satellites and aircraft track these giants closely, giving people precious days of warning to reach safety before the storm makes landfall."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hurricane_Isabel_from_ISS.jpg/500px-Hurricane_Isabel_from_ISS.jpg",
+        "caption": "Hurricane Isabel photographed from the International Space Station, September 2003",
+        "credit": "NASA / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "forces-tornadoes",
@@ -58,7 +73,12 @@
         "Tornadoes are savage — fierce, wild, and brutally violent. The strongest can lift cars into the air, flatten houses, and drive a blade of straw straight into a wooden post. What makes them so dangerous is how swift — extremely fast — they are, racing across the ground quicker than a car can drive away.",
         "Inside the funnel the air is utterly chaotic — wildly disordered and out of all control — flinging dust, debris, and wreckage in every direction at once. A ferocious — fierce and violent — tornado can destroy one house completely while leaving the one next door barely touched, which is part of what makes them so unpredictable.",
         "The central United States sees so many that one region is nicknamed 'Tornado Alley'. Brave scientists called storm chasers drive towards these twisters to study them, placing sensors in their path. Thanks to their work and to weather radar, warnings now give families precious minutes to take shelter underground."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Dszpics1.jpg/500px-Dszpics1.jpg",
+        "caption": "A large F3 tornado sweeps across open farmland near Dimmitt, Texas, 1995",
+        "credit": "NOAA / National Severe Storms Laboratory / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "forces-lightning",
@@ -73,7 +93,12 @@
         "The flash heats the air around it so violently that the air explodes outwards, and that is what makes thunder. A nearby strike gives a single thunderous — deep, booming, and tremendously loud — crack, while a distant one rolls and grumbles. A long storm can fill the sky with a cacophony — a harsh, jarring jumble of loud noises — of booms and rumbles.",
         "Before a big storm arrives, the sky often turns dark and an ominous — threatening, warning that something dangerous is near — stillness settles over everything. Then the first flickers appear on the horizon, and the rumbling slowly draws closer as the storm rolls in.",
         "Lightning is beautiful but deadly: a direct strike carries enough power to electrocute — kill or badly injure with a violent electric shock — a person or split a tree in two. The safest place in a storm is indoors or inside a car. Counting the seconds between the flash and the bang tells you how far away the storm is — three seconds for every kilometre."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Lightning_over_Oradea_Romania_3.jpg/500px-Lightning_over_Oradea_Romania_3.jpg",
+        "caption": "Lightning bolts illuminate the night sky over Oradea, Romania",
+        "credit": "Mircea Madau / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "forces-tsunamis",
@@ -88,7 +113,12 @@
         "As the tsunami reached the shore, the sea surged — rushed forward suddenly and with overwhelming force — far inland, swallowing beaches, streets, and fields. A stupendous — amazingly huge and powerful — tsunami can sweep away cars, boats, and even buildings as though they weighed nothing at all.",
         "What makes a tsunami so perilous — extremely dangerous and full of risk — is that it is not a single wave. It arrives as a ceaseless — relentless, one after another without pause — series of surges, and the second or third can be larger than the first, catching out anyone who returns too soon believing the danger has passed.",
         "A great tsunami can become a terrible calamity — a disastrous event causing widespread destruction and loss. After devastating waves struck the Indian Ocean in 2004 and Japan in 2011, nations built warning systems of sea-floor sensors and sirens, so that today a tsunami detected far out at sea can send a warning racing to the coast ahead of the wave."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/2011_Earthquake_and_Tsunami_near_Sendai%2C_Japan.jpg/500px-2011_Earthquake_and_Tsunami_near_Sendai%2C_Japan.jpg",
+        "caption": "NASA satellite image showing the 2011 Tōhoku tsunami flooding the coastline near Sendai, Japan",
+        "credit": "NASA Earth Observatory / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "forces-floods",
@@ -103,7 +133,12 @@
         "Floodwater is rarely clean and calm. It is usually murky — dark, muddy, and impossible to see through — and turbulent — rough, churning, and swirling violently — as it rushes downhill. Hidden beneath that brown water lie broken glass, sharp wreckage, and deep holes, which makes wading through it extremely perilous — dangerous and full of hidden risk.",
         "When the water finally drains away, it can leave a desolate — bleak, empty, and abandoned — scene behind: ruined furniture caked in mud, drowned crops, and homes families can no longer live in. A severe flood can become a real calamity — a disastrous event bringing hardship to thousands of people at once.",
         "People have battled floods for thousands of years and learned many clever defences: high banks called levees along rivers, great barriers that can be raised across estuaries, and wetlands left wild to soak up extra water like a sponge. Planting trees and protecting marshes helps the land hold water back before it ever becomes a flood."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Owego_Flooding_from_Tropical_Storm_Lee_in_2011.jpg/500px-Owego_Flooding_from_Tropical_Storm_Lee_in_2011.jpg",
+        "caption": "Streets submerged by floodwaters from Tropical Storm Lee in Owego, New York, 2011",
+        "credit": "Nicholas A. Tonelli / Wikimedia Commons / CC BY 2.0"
+      }
     },
     {
       "id": "forces-wildfires",
@@ -118,7 +153,12 @@
         "Driven by the wind, a savage — brutally fierce and merciless — fire can race downhill and across valleys faster than a person can run. Its ceaseless — never-stopping, burning on and on — advance can eat through a forest in hours and almost eradicate — completely wipe out and destroy — every plant and home in its path.",
         "Even after the main blaze has passed, danger remains. Tree stumps and roots can keep smouldering — burning slowly and quietly underground, with heat and smoke but no open flame — for days, and a single gust of wind can fan them back into life, starting the whole fire over again.",
         "Surprisingly, fire is also part of how nature works. Some trees actually need the heat of a wildfire to crack open their cones and release their seeds, and the ash feeds the soil for the next generation of plants. Firefighters work to protect homes and lives, while scientists study how to live alongside fire in the wild places that depend on it."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Bush_fire_at_Captain_Creek_central_Queensland_Australia..JPG/500px-Bush_fire_at_Captain_Creek_central_Queensland_Australia..JPG",
+        "caption": "A bushfire burns through dry scrubland at Captain Creek, central Queensland, Australia",
+        "credit": "Richard Humphrey / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "forces-avalanches",
@@ -133,7 +173,12 @@
         "A blizzard is a different mountain danger: a ceaseless — never-stopping, going on and on without pause — snowstorm driven by howling wind. The blowing snow turns the world into a bleak — cold, grey, and cheerless — blur, and the high ground becomes a desolate — empty, lonely, and abandoned — white wilderness where it is easy to lose your way.",
         "Caught out in such a storm, even experienced climbers can be left petrified — frozen still with fear and cold — unable to see more than a step ahead. The freezing wind is a ferocious — fierce, wild, and violent — foe, and the safest choice is often to dig into the snow and shelter until the storm blows itself out.",
         "People who live and work in snowy mountains have learned to respect these forces. Experts study the layers of snow to judge when slopes are unsafe, and sometimes set off small avalanches on purpose, in a safe and controlled way, so that dangerous snow comes down before anyone is near it."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Avalanche_on_Everest.JPG/500px-Avalanche_on_Everest.JPG",
+        "caption": "A powder snow avalanche cascades down the slopes near Mount Everest base camp",
+        "credit": "Ilan Adler / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "forces-wind",
@@ -148,7 +193,12 @@
         "Over a long time, even a gentle wind is a tenacious — holding on firmly and refusing to give up — sculptor. Its persistent — steady and refusing to stop — work carries grains of sand that slowly carve rock into strange shapes, and a ceaseless — never-ending — desert wind can pile up sand dunes as tall as buildings, then move them across the land.",
         "Sometimes the wind starts whirling — spinning round and round at speed — gathering dust and leaves into little twisting columns, or, over the desert, into towering spirals of sand. The same spinning motion, on a giant scale and full of energy, is what powers tornadoes and hurricanes.",
         "Humans have harnessed the wind for thousands of years. Its push once drove sailing ships across whole oceans and turned the sails of windmills to grind grain. Today, tall wind turbines use that same ceaseless force to spin and make clean electricity, turning one of nature's oldest powers into energy for our homes."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Windmills_D1-D4_(Thornton_Bank).jpg/500px-Windmills_D1-D4_(Thornton_Bank).jpg",
+        "caption": "Offshore wind turbines at the Thornton Bank wind farm in the North Sea",
+        "credit": "Hans Hillewaert / Wikimedia Commons / CC BY-SA 4.0"
+      }
     }
   ]
 }
