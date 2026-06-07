@@ -13,7 +13,12 @@
         "Part of the wheel's genius is that it is wonderfully versatile — useful in a huge variety of different ways. A potter spins clay on one, a miller grinds grain with one, a clockmaker measures time with tiny ones, and a car wheel carries families along motorways. The same basic round idea has been borrowed again and again for thousands of different jobs.",
         "To do all this work, a wheel must be robust — strong, sturdy, and able to take heavy strain without breaking. Early wheels were solid discs of heavy wood, but inventors gradually learned to construct — to carefully build and put together — lighter, stronger wheels using spokes, metal rims, and finally air-filled rubber tyres that cushion every bump in the road.",
         "The legacy of the wheel — the lasting mark it has left for those who came after — is almost impossible to measure. It made an immense difference — an enormous, far-reaching change — to trade, farming, building, and travel across every age that followed. From the first wooden cart to the wheels spinning inside a spacecraft, this humble circle remains one of the greatest ideas humanity ever had."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Wheelbarrow_at_RHS_Wisley.jpg/500px-Wheelbarrow_at_RHS_Wisley.jpg",
+        "caption": "A wooden spoked wheel — the simple round invention that changed how people move and work",
+        "credit": "Acabashi / Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "tech-printing-press",
@@ -28,7 +33,12 @@
         "As printed books began to circulate — to pass from hand to hand and move freely among people — ideas travelled faster than ever in human history. A discovery made in one country could reach scholars hundreds of miles away within weeks. Each printed inscription — words carefully marked and set down to be read — could now be shared by thousands of readers instead of a precious few.",
         "For many people, cheap printed books were a true revelation — a sudden, eye-opening discovery that changed how they saw the world. Ordinary people could now learn to read, study new ideas, and question old ones. Setting the type for each page was meticulous work — done with great care and attention to the smallest detail — because a single letter placed wrongly would be repeated on every copy.",
         "The legacy of the printing press — the lasting mark it left for everyone who came after — is one of the greatest in all of history. It helped spread learning, science, and stories until books became ubiquitous — found everywhere and owned by almost everyone. Every library, newspaper, and schoolbook today is a descendant of Gutenberg's wonderful machine."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/PrintMus_038.jpg/500px-PrintMus_038.jpg",
+        "caption": "A replica of Gutenberg's printing press, showing the lever and type-bed used to print pages",
+        "credit": "Zachary Korb / Wikimedia Commons / CC BY-SA 2.0"
+      }
     },
     {
       "id": "tech-electricity",
@@ -43,7 +53,12 @@
         "When electric light finally worked, it illuminated — lit up and brightened — homes, streets, and shops as never before. A single bulb could be more luminous — far more brightly shining — than a whole row of candles, and it gave off no smoke or smell. For the first time, people could read, work, and play long after dark in clean, steady light.",
         "Electricity is wonderful but also dangerous, and a careless touch can electrocute a person — give them a violent, sometimes deadly electric shock. As power surged — rushed suddenly and powerfully — through the new wires running into people's homes, inventors had to design switches, fuses, and safe coverings to keep families protected from harm.",
         "Soon whole cities glowed with dazzling light — so bright and brilliant that it almost amazed the eye. Streets that had once flickered dimly under gas lamps — shone unsteadily with a weak, trembling light — now blazed steadily through the night. Electric light changed not just how we see, but when we work and rest, transforming the rhythm of everyday life forever."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gluehlampe_01_KMJ.png/500px-Gluehlampe_01_KMJ.png",
+        "caption": "A cross-section of an incandescent light bulb, showing the glowing filament inside",
+        "credit": "Matthias Kabel / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "tech-telephone",
@@ -58,7 +73,12 @@
         "What made the telephone so astonishing was that conversation became simultaneous — happening at the very same moment for both people. Two people, even on opposite sides of a country, could talk back and forth in real time, their words bright and vibrant — full of life, warmth, and energy — instead of waiting days for a letter to arrive.",
         "For the people who first heard it, the telephone was a revelation — a sudden, eye-opening wonder that changed how they understood distance itself. Building the vast networks of wires and exchanges needed to connect everyone took persistent effort — steady, determined work that refused to give up — by armies of engineers over many decades.",
         "Today the telephone is ubiquitous — found absolutely everywhere — and most of us carry one in our pockets that also takes photos, plays music, and reaches across the whole planet. Yet every smartphone is a descendant of Bell's first crackly call. The simple wish to hear a loved one's voice helped shrink the entire world."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Alexander_Graham_Bell%27s_large_box_telephone%2C_1876_-_Smithsonian.jpg/500px-Alexander_Graham_Bell%27s_large_box_telephone%2C_1876_-_Smithsonian.jpg",
+        "caption": "Alexander Graham Bell's original large box telephone from 1876, the world's first working phone",
+        "credit": "Smithsonian Institution / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "tech-flight",
@@ -73,7 +93,12 @@
         "Early aircraft were fragile, but engineers quickly learned to build machines that were robust — strong, sturdy, and able to survive the strains of flight. They studied how a bird's wing curves to lift it, and they shaped metal wings to do the same. As planes grew stronger, they could fly higher, carry more, and travel ever more swift — quick and rapid — across the sky.",
         "Over the following decades, flight surged forward — rushed ahead suddenly and powerfully. Tiny wooden biplanes gave way to roaring metal airliners that could carry hundreds of passengers across oceans in a single day. Valiant pilots — brave and heroic in the face of great danger — pushed each new machine faster, higher, and further than anyone had thought possible.",
         "Today, flight is so ordinary that we barely look up as jets cross the sky. Yet every aeroplane is the result of that audacious dream and the ingenious work of countless inventors. In little more than a single lifetime, humans went from never having flown at all to walking on the surface of the Moon."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/First_flight2.jpg/500px-First_flight2.jpg",
+        "caption": "The Wright brothers' first powered flight at Kitty Hawk, North Carolina, on 17 December 1903",
+        "credit": "Library of Congress / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "tech-steam-engine",
@@ -88,7 +113,12 @@
         "The most exciting use of all was the railway locomotive. With a thunderous roar — a deep, booming sound that shook the ground and rattled the windows — these gargantuan machines — colossal and towering in size — pulled long trains of carriages along iron rails. Black smoke poured from their funnels as fire and steam drove them forward.",
         "As the engine built up power, the whole train surged ahead — rushed forward suddenly and powerfully — faster than any horse could gallop. Laying thousands of miles of track across hills, rivers, and valleys took persistent effort — steady, determined work that never gave up — by huge gangs of labourers toiling for years in every kind of weather.",
         "The railways made an immense difference — an enormous, far-reaching change — to ordinary life. Goods, post, and passengers could travel between distant cities in hours instead of days. Towns grew up around the stations, fresh food reached faraway markets, and for the first time families separated by great distances could visit one another with ease."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG/500px-Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG",
+        "caption": "Stephenson's Rocket, the pioneering steam locomotive that proved railways could transform travel",
+        "credit": "Mike Peel / Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "tech-computers",
@@ -103,7 +133,12 @@
         "A computer works in a strictly methodical way — carefully ordered, step by step, and following clear rules. It races through lists of instructions called programs, doing exactly what it is told, billions of times every second, without ever growing bored or tired. Behind the screen, it can decipher — work out and make sense of — typed words, spoken commands, and even photographs.",
         "Inside a computer's memory, information is often arranged in a matrix — a neat grid of rows and columns — that the machine can read at lightning speed. The wiring on a single chip can look labyrinthine — as winding, twisting, and maze-like as a tangled puzzle — with millions of microscopic pathways packed into a space smaller than a fingernail.",
         "What makes computers so powerful is that they are extraordinarily versatile — useful in an enormous variety of different ways. The very same machine can help write a story, fly an aeroplane, forecast tomorrow's weather, or let you talk to a friend across the world. From room-sized giants to the phone in your pocket, computers have reshaped almost everything humans do."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Eniac.jpg/500px-Eniac.jpg",
+        "caption": "ENIAC, one of the world's first electronic computers, which filled an entire room at the University of Pennsylvania",
+        "credit": "US Army / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "tech-internet",
@@ -118,7 +153,12 @@
         "The internet never sleeps; its work is ceaseless — never stopping, going on day and night without pause. While one half of the world is asleep, the other half is busy sending messages, watching videos, and searching for answers. Countless machines keep the signals flowing every second of every day, all year round.",
         "Unlike a book or a television programme, the internet is interactive — it responds and lets you join in rather than just watch. You can ask it questions, play games with friends far away, and add your own words and pictures for others to see. Millions of people can be doing all these things simultaneously — at the very same moment.",
         "Today the internet is ubiquitous — found almost everywhere — woven into phones, watches, cars, and even doorbells. It lets people learn, shop, work, and stay close to faraway family without ever leaving home. In just a few decades, this invisible web has connected humanity more tightly than any invention before it."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Internet_map_1024.jpg/500px-Internet_map_1024.jpg",
+        "caption": "A visualisation of the internet in 2005, showing thousands of interconnected networks across the world",
+        "credit": "The Opte Project / Wikimedia Commons / CC BY 2.5"
+      }
     },
     {
       "id": "tech-robots",
@@ -133,7 +173,12 @@
         "A robot works in a strictly methodical way — carefully ordered, step by step, and following clear instructions. This makes it perfect for meticulous tasks — work needing great care and attention to the tiniest detail — such as placing thousands of microscopic parts onto a computer chip, far more precisely than any human hand could manage.",
         "Many robots must be robust — strong, sturdy, and able to survive harsh conditions — so they can work in places people cannot easily go: deep underwater, inside volcanoes, or out in the freezing vacuum of space. Their tireless, ceaseless effort — never stopping, going on without pause — lets them labour day and night where humans would quickly tire.",
         "Before a new robot is ever built, engineers often test it inside a simulation — a pretend, computer-made version of the real world — to see how it will behave and to catch mistakes safely. The most ingenious robots — the cleverest and most brilliantly designed — can now learn from what they see, slowly getting better at their jobs, hinting at an extraordinary future still to come."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg/500px-Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg",
+        "caption": "NASA's Curiosity rover, a car-sized robot exploring the surface of Mars entirely on its own",
+        "credit": "NASA / JPL-Caltech / MSSS / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "tech-vaccines",
@@ -148,7 +193,12 @@
         "Vaccines have done something almost unbelievable: they have helped eradicate — completely wipe out and destroy — diseases that once killed millions. Smallpox, a horror that plagued humanity for thousands of years, was banished from the entire world by a global vaccination effort, the first disease ever to be defeated in this way.",
         "Modern medicine does far more than prevent illness; it also works to alleviate suffering — to ease and lessen pain and distress — when people do fall sick. Doctors can now mend broken bones, replace failing hearts, and help patients rehabilitate — recover their strength and return to health — after serious injuries that would once have been hopeless.",
         "Thanks to these inventions, the human body has become more resilient — better able to recover from hardship and bounce back from illness. Building robust — strong and reliable — hospitals, and developing safe new medicines, takes persistent effort — steady, determined work that never gives up — by scientists and doctors over many patient years. Their quiet inventions have saved more lives than almost anything else in history."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/The_cow_pock.jpg/500px-The_cow_pock.jpg",
+        "caption": "An 1802 cartoon depicting Edward Jenner's smallpox vaccination — the discovery that launched modern medicine",
+        "credit": "James Gillray / Wikimedia Commons / Public domain"
+      }
     }
   ]
 }
