@@ -41,23 +41,23 @@
       }
     },
     {
-      "id": "tech-electricity",
-      "title": "Electricity and the Light Bulb",
-      "emoji": "💡",
-      "era": "The Age of Invention",
-      "blurb": "The power to banish the dark at the flick of a switch transformed homes, cities, and the way people live both day and night.",
-      "words": ["Incandescent", "Illuminated", "Luminous", "Electrocute", "Surged", "Dazzling", "Flickered"],
+      "id": "tech-steam-engine",
+      "title": "The Steam Engine and the Railways",
+      "emoji": "🚂",
+      "era": "The Industrial Age",
+      "blurb": "The thundering, fire-breathing machine that powered factories and pulled the first trains, shrinking distances and changing the world forever.",
+      "words": ["Thunderous", "Surged", "Vigorous", "Gargantuan", "Persistent", "Robust", "Immense"],
       "paragraphs": [
-        "For almost all of history, when the Sun went down the world went dark. People lit smoky candles and flickering oil lamps that gave only a faint, wavering glow. Then, in the late 1800s, inventors learned to tame one of nature's most powerful forces — electricity — and used it to create light at the simple flick of a switch.",
-        "The breakthrough was the incandescent light bulb — one that glows white-hot to give off light. Inside it, a thin wire is heated by electricity until it shines brilliantly. The American inventor Thomas Edison and the British inventor Joseph Swan both worked for years to find a wire that would glow brightly without instantly burning away, testing thousands of materials.",
-        "When electric light finally worked, it illuminated — lit up and brightened — homes, streets, and shops as never before. A single bulb could be more luminous — far more brightly shining — than a whole row of candles, and it gave off no smoke or smell. For the first time, people could read, work, and play long after dark in clean, steady light.",
-        "Electricity is wonderful but also dangerous, and a careless touch can electrocute a person — give them a violent, sometimes deadly electric shock. As power surged — rushed suddenly and powerfully — through the new wires running into people's homes, inventors had to design switches, fuses, and safe coverings to keep families protected from harm.",
-        "Soon whole cities glowed with dazzling light — so bright and brilliant that it almost amazed the eye. Streets that had once flickered dimly under gas lamps — shone unsteadily with a weak, trembling light — now blazed steadily through the night. Electric light changed not just how we see, but when we work and rest, transforming the rhythm of everyday life forever."
+        "In the 1700s, inventors discovered how to turn the power of boiling water into the power of movement, and it changed the world forever. Their creation was the steam engine. By heating water until it became steam, then trapping that steam to push a piston back and forth, these machines could do the work of hundreds of horses without ever growing tired.",
+        "Steam engines were robust — strong, sturdy, and built to take heavy strain — and they could run for hour after hour. Factories filled with them, their great wheels turning with a vigorous power — full of strength, force, and energy — driving looms, hammers, and pumps. For the first time, machines rather than muscles powered the work of the world.",
+        "The most exciting use of all was the railway locomotive. With a thunderous roar — a deep, booming sound that shook the ground and rattled the windows — these gargantuan machines — colossal and towering in size — pulled long trains of carriages along iron rails. Black smoke poured from their funnels as fire and steam drove them forward.",
+        "As the engine built up power, the whole train surged ahead — rushed forward suddenly and powerfully — faster than any horse could gallop. Laying thousands of miles of track across hills, rivers, and valleys took persistent effort — steady, determined work that never gave up — by huge gangs of labourers toiling for years in every kind of weather.",
+        "The railways made an immense difference — an enormous, far-reaching change — to ordinary life. Goods, post, and passengers could travel between distant cities in hours instead of days. Towns grew up around the stations, fresh food reached faraway markets, and for the first time families separated by great distances could visit one another with ease."
       ],
       "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gluehlampe_01_KMJ.png/500px-Gluehlampe_01_KMJ.png",
-        "caption": "A cross-section of an incandescent light bulb, showing the glowing filament inside",
-        "credit": "Matthias Kabel / Wikimedia Commons / CC BY-SA 3.0"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG/500px-Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG",
+        "caption": "Stephenson's Rocket, the pioneering steam locomotive that proved railways could transform travel",
+        "credit": "Mike Peel / Wikimedia Commons / CC BY-SA 4.0"
       }
     },
     {
@@ -81,6 +81,26 @@
       }
     },
     {
+      "id": "tech-electricity",
+      "title": "Electricity and the Light Bulb",
+      "emoji": "💡",
+      "era": "The Age of Invention",
+      "blurb": "The power to banish the dark at the flick of a switch transformed homes, cities, and the way people live both day and night.",
+      "words": ["Incandescent", "Illuminated", "Luminous", "Electrocute", "Surged", "Dazzling", "Flickered"],
+      "paragraphs": [
+        "For almost all of history, when the Sun went down the world went dark. People lit smoky candles and flickering oil lamps that gave only a faint, wavering glow. Then, in the late 1800s, inventors learned to tame one of nature's most powerful forces — electricity — and used it to create light at the simple flick of a switch.",
+        "The breakthrough was the incandescent light bulb — one that glows white-hot to give off light. Inside it, a thin wire is heated by electricity until it shines brilliantly. The American inventor Thomas Edison and the British inventor Joseph Swan both worked for years to find a wire that would glow brightly without instantly burning away, testing thousands of materials.",
+        "When electric light finally worked, it illuminated — lit up and brightened — homes, streets, and shops as never before. A single bulb could be more luminous — far more brightly shining — than a whole row of candles, and it gave off no smoke or smell. For the first time, people could read, work, and play long after dark in clean, steady light.",
+        "Electricity is wonderful but also dangerous, and a careless touch can electrocute a person — give them a violent, sometimes deadly electric shock. As power surged — rushed suddenly and powerfully — through the new wires running into people's homes, inventors had to design switches, fuses, and safe coverings to keep families protected from harm.",
+        "Soon whole cities glowed with dazzling light — so bright and brilliant that it almost amazed the eye. Streets that had once flickered dimly under gas lamps — shone unsteadily with a weak, trembling light — now blazed steadily through the night. Electric light changed not just how we see, but when we work and rest, transforming the rhythm of everyday life forever."
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Gluehlampe_01_KMJ.png/500px-Gluehlampe_01_KMJ.png",
+        "caption": "A cross-section of an incandescent light bulb, showing the glowing filament inside",
+        "credit": "Matthias Kabel / Wikimedia Commons / CC BY-SA 3.0"
+      }
+    },
+    {
       "id": "tech-flight",
       "title": "Flight: How Humans Took to the Sky",
       "emoji": "✈️",
@@ -98,26 +118,6 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/First_flight2.jpg/500px-First_flight2.jpg",
         "caption": "The Wright brothers' first powered flight at Kitty Hawk, North Carolina, on 17 December 1903",
         "credit": "Library of Congress / Wikimedia Commons / Public domain"
-      }
-    },
-    {
-      "id": "tech-steam-engine",
-      "title": "The Steam Engine and the Railways",
-      "emoji": "🚂",
-      "era": "The Industrial Age",
-      "blurb": "The thundering, fire-breathing machine that powered factories and pulled the first trains, shrinking distances and changing the world forever.",
-      "words": ["Thunderous", "Surged", "Vigorous", "Gargantuan", "Persistent", "Robust", "Immense"],
-      "paragraphs": [
-        "In the 1700s, inventors discovered how to turn the power of boiling water into the power of movement, and it changed the world forever. Their creation was the steam engine. By heating water until it became steam, then trapping that steam to push a piston back and forth, these machines could do the work of hundreds of horses without ever growing tired.",
-        "Steam engines were robust — strong, sturdy, and built to take heavy strain — and they could run for hour after hour. Factories filled with them, their great wheels turning with a vigorous power — full of strength, force, and energy — driving looms, hammers, and pumps. For the first time, machines rather than muscles powered the work of the world.",
-        "The most exciting use of all was the railway locomotive. With a thunderous roar — a deep, booming sound that shook the ground and rattled the windows — these gargantuan machines — colossal and towering in size — pulled long trains of carriages along iron rails. Black smoke poured from their funnels as fire and steam drove them forward.",
-        "As the engine built up power, the whole train surged ahead — rushed forward suddenly and powerfully — faster than any horse could gallop. Laying thousands of miles of track across hills, rivers, and valleys took persistent effort — steady, determined work that never gave up — by huge gangs of labourers toiling for years in every kind of weather.",
-        "The railways made an immense difference — an enormous, far-reaching change — to ordinary life. Goods, post, and passengers could travel between distant cities in hours instead of days. Towns grew up around the stations, fresh food reached faraway markets, and for the first time families separated by great distances could visit one another with ease."
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG/500px-Stephenson%27s_Rocket%2C_Science_Museum%2C_London.JPG",
-        "caption": "Stephenson's Rocket, the pioneering steam locomotive that proved railways could transform travel",
-        "credit": "Mike Peel / Wikimedia Commons / CC BY-SA 4.0"
       }
     },
     {
@@ -161,26 +161,6 @@
       }
     },
     {
-      "id": "tech-robots",
-      "title": "Robots: Machines That Do the Work",
-      "emoji": "🤖",
-      "era": "The Modern Age",
-      "blurb": "From factory arms to planet-roving explorers, robots are machines that can sense, move, and carry out tasks all on their own.",
-      "words": ["Versatile", "Methodical", "Robust", "Simulation", "Ceaseless", "Ingenious", "Meticulous"],
-      "paragraphs": [
-        "A robot is a machine built to carry out tasks by itself, often ones that are too dull, too dangerous, or too difficult for people. Some look like mechanical arms bolted to a factory floor; others roll, walk, or even fly. What they share is the ability to sense the world around them, decide what to do, and then act, all without someone holding the controls.",
-        "Robots are wonderfully versatile — useful in a huge variety of different ways. The same basic ideas can build a robot that welds cars, one that vacuums a living room, one that performs delicate surgery, and one that explores the surface of Mars millions of miles from home. Few inventions can be adapted to so many completely different jobs.",
-        "A robot works in a strictly methodical way — carefully ordered, step by step, and following clear instructions. This makes it perfect for meticulous tasks — work needing great care and attention to the tiniest detail — such as placing thousands of microscopic parts onto a computer chip, far more precisely than any human hand could manage.",
-        "Many robots must be robust — strong, sturdy, and able to survive harsh conditions — so they can work in places people cannot easily go: deep underwater, inside volcanoes, or out in the freezing vacuum of space. Their tireless, ceaseless effort — never stopping, going on without pause — lets them labour day and night where humans would quickly tire.",
-        "Before a new robot is ever built, engineers often test it inside a simulation — a pretend, computer-made version of the real world — to see how it will behave and to catch mistakes safely. The most ingenious robots — the cleverest and most brilliantly designed — can now learn from what they see, slowly getting better at their jobs, hinting at an extraordinary future still to come."
-      ],
-      "image": {
-        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg/500px-Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg",
-        "caption": "NASA's Curiosity rover, a car-sized robot exploring the surface of Mars entirely on its own",
-        "credit": "NASA / JPL-Caltech / MSSS / Wikimedia Commons / Public domain"
-      }
-    },
-    {
       "id": "tech-vaccines",
       "title": "Vaccines and Modern Medicine",
       "emoji": "💉",
@@ -198,6 +178,26 @@
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/The_cow_pock.jpg/500px-The_cow_pock.jpg",
         "caption": "An 1802 cartoon depicting Edward Jenner's smallpox vaccination — the discovery that launched modern medicine",
         "credit": "James Gillray / Wikimedia Commons / Public domain"
+      }
+    },
+    {
+      "id": "tech-robots",
+      "title": "Robots: Machines That Do the Work",
+      "emoji": "🤖",
+      "era": "The Modern Age",
+      "blurb": "From factory arms to planet-roving explorers, robots are machines that can sense, move, and carry out tasks all on their own.",
+      "words": ["Versatile", "Methodical", "Robust", "Simulation", "Ceaseless", "Ingenious", "Meticulous"],
+      "paragraphs": [
+        "A robot is a machine built to carry out tasks by itself, often ones that are too dull, too dangerous, or too difficult for people. Some look like mechanical arms bolted to a factory floor; others roll, walk, or even fly. What they share is the ability to sense the world around them, decide what to do, and then act, all without someone holding the controls.",
+        "Robots are wonderfully versatile — useful in a huge variety of different ways. The same basic ideas can build a robot that welds cars, one that vacuums a living room, one that performs delicate surgery, and one that explores the surface of Mars millions of miles from home. Few inventions can be adapted to so many completely different jobs.",
+        "A robot works in a strictly methodical way — carefully ordered, step by step, and following clear instructions. This makes it perfect for meticulous tasks — work needing great care and attention to the tiniest detail — such as placing thousands of microscopic parts onto a computer chip, far more precisely than any human hand could manage.",
+        "Many robots must be robust — strong, sturdy, and able to survive harsh conditions — so they can work in places people cannot easily go: deep underwater, inside volcanoes, or out in the freezing vacuum of space. Their tireless, ceaseless effort — never stopping, going on without pause — lets them labour day and night where humans would quickly tire.",
+        "Before a new robot is ever built, engineers often test it inside a simulation — a pretend, computer-made version of the real world — to see how it will behave and to catch mistakes safely. The most ingenious robots — the cleverest and most brilliantly designed — can now learn from what they see, slowly getting better at their jobs, hinting at an extraordinary future still to come."
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg/500px-Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg",
+        "caption": "NASA's Curiosity rover, a car-sized robot exploring the surface of Mars entirely on its own",
+        "credit": "NASA / JPL-Caltech / MSSS / Wikimedia Commons / Public domain"
       }
     }
   ]
