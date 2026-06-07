@@ -13,7 +13,12 @@
         "That energy travels outwards as a radiant flood of light — beaming brightly in every direction — crossing 150 million kilometres of empty space to reach us in just over eight minutes. The Sun is the most luminous object we ever see, so brilliantly bright that we must never look straight at it. Its light gives us daytime, warms our planet, and allows plants to grow, which in turn feeds nearly every creature alive.",
         "The Sun is far from calm and still. Its surface is volatile — restless and likely to erupt without warning — throwing out towering loops of fiery gas and sudden, explosive bursts called solar flares. These eruptions are so powerful that they can disturb satellites and radios on Earth, and they paint beautiful glowing curtains of light, the auroras, near our planet's poles.",
         "The Sun's work is ceaseless — never stopping, never pausing for even a moment. It has been shining steadily for about four and a half billion years and has enough fuel to keep burning for billions more. Without this faithful, blazing star, Earth would be a frozen, lifeless rock drifting in the dark. The Sun is, quite simply, the reason our world is alive."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/500px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg",
+        "caption": "The Sun captured in ultraviolet light by NASA's Solar Dynamics Observatory",
+        "credit": "NASA / SDO / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "space-moon",
@@ -28,7 +33,12 @@
         "Although the Moon looks luminous — softly shining in the dark — it makes no light of its own at all. Instead it works like an enormous mirror, catching sunlight and bouncing it back towards Earth. As the Moon travels around us, we see different amounts of its sunlit side, which is why it appears to change shape, growing from a thin sliver into a full silver circle and shrinking away again over about a month.",
         "Standing on the Moon would feel eerie — strange and unsettling in a way that sends a shiver down your spine. The sky is always pitch black, even in daytime, and the silence is total because sound cannot travel without air. In 1969, astronauts first walked on this venerable world — one so ancient and worthy of respect that it had watched over the Earth long before any human existed — and their footprints still sit undisturbed in the dust today.",
         "The Moon does far more than decorate our nights. Its gentle pull tugs on Earth's oceans, creating the tides that rise and fall along our coasts, and it helps keep our planet's tilt steady so the seasons stay reliable. On a clear, tranquil evening — calm, still, and quiet — the Moon remains the most beautiful sight in the sky, a faithful friend that has lit humanity's way through countless ages."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/500px-FullMoon2010.jpg",
+        "caption": "The full Moon, showing its cratered surface in brilliant detail",
+        "credit": "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "space-mars",
@@ -43,7 +53,12 @@
         "Yet Mars is also a world of vast and astonishing landscapes — enormous in scale and stretching further than the eye can see. It boasts the tallest volcano in the entire solar system, Olympus Mons, which rises almost three times higher than Mount Everest. It also has a canyon so huge, Valles Marineris, that it would stretch right across an entire continent on Earth, dwarfing anything our own planet can offer.",
         "Scientists believe that long ago Mars was warmer and wetter, with rivers, lakes, and perhaps even a sparse — thinly scattered and far apart — covering of simple living things. Today, robot explorers called rovers trundle across its surface, drilling into rocks and searching for any clue that life once existed there. Frozen water still hides beneath the soil and at the icy poles.",
         "Many scientists dream of sending astronauts to Mars within our lifetimes. Living there would demand people who are remarkably resilient — tough and able to recover from hardship — surviving inside sealed habitats, growing their own food, and shielding themselves from dangerous radiation. If humans ever succeed, the Red Planet could become the first world beyond Earth that our species has ever called home."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/500px-OSIRIS_Mars_true_color.jpg",
+        "caption": "Mars in true colour, showing its characteristic red surface from orbit",
+        "credit": "ESA / Wikimedia Commons / CC BY-SA 3.0 IGO"
+      }
     },
     {
       "id": "space-saturn",
@@ -58,7 +73,12 @@
         "Seen up close by passing spacecraft, the rings are shimmering — glowing with a soft, wavering, watery light — and divided into thousands of fine, delicate bands. This makes Saturn look wonderfully ornate — richly decorated and beautifully detailed — as though some cosmic artist had wrapped the planet in an elaborate ribbon. Scientists think the rings may be the shattered remains of a moon or comet that wandered too close and was torn apart.",
         "Saturn itself is a vast and stormy giant — enormous beyond imagining and many times wider than Earth. Powerful winds race around it faster than any hurricane on our planet, and a strange six-sided storm, shaped like a perfect hexagon, swirls forever around its north pole. The planet is also surrounded by a busy family of more than a hundred moons, including Titan, a misty world with rivers and lakes made of liquid gas.",
         "When the Cassini spacecraft spent years studying Saturn, it sent back spectacular pictures — dramatic, jaw-dropping views that thrilled scientists and schoolchildren alike. Saturn reminds us that the universe is full of beauty waiting to be discovered, and for many young stargazers, the first glimpse of those glorious rings through a telescope is a moment they never forget."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/500px-Saturn_during_Equinox.jpg",
+        "caption": "Saturn and its magnificent rings, photographed by the Cassini spacecraft",
+        "credit": "NASA / JPL / Space Science Institute / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "space-black-holes",
@@ -73,7 +93,12 @@
         "A black hole can be voracious — greedily devouring everything within reach — pulling in gas, dust, and even whole stars that drift too near. As this material spirals in, it whirls around faster and faster and heats up until it blazes with light, forming a glowing ring that lets astronomers spot a black hole even though the hole itself stays obscure — hidden, dark, and impossible to see directly.",
         "At the centre of our own galaxy lurks a gargantuan black hole — colossal beyond all comparison — called Sagittarius A-star. It weighs as much as four million Suns, yet it is so far away that it poses no danger to us at all. Its ominous presence — threatening and full of menace — sits quietly at the heart of the Milky Way, holding billions of stars in its powerful grip.",
         "Studying black holes takes persistent effort — steady, determined work that never gives up — and in 2019 scientists finally captured the first ever photograph of one. By linking telescopes all over the world into a single giant 'eye', they revealed a fiery orange ring circling a perfect circle of black. It was proof that these astonishing objects, once only imagined, truly exist out there in the dark."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/500px-Black_hole_-_Messier_87_crop_max_res.jpg",
+        "caption": "The first ever photograph of a black hole, at the centre of galaxy Messier 87",
+        "credit": "Event Horizon Telescope Collaboration / Wikimedia Commons / CC BY 4.0"
+      }
     },
     {
       "id": "space-comets",
@@ -88,7 +113,12 @@
         "A bright comet in the night sky is an ephemeral wonder — lasting only a short time before it fades away. For a few precious weeks it may hang among the stars, sometimes shining with a vivid glow — bright, bold, and richly coloured — before swinging back out into the darkness. Some comets will not return for hundreds or even thousands of years, making each visit a rare and special event.",
         "People have watched comets for thousands of years, and these visitors are venerable signs in the sky — ancient and treated with deep respect — that once filled our ancestors with wonder and sometimes fear. The most famous, Halley's Comet, returns about every seventy-six years, and even a faint comet can be spotted as a soft glimmer — a weak, flickering shine — low on the horizon.",
         "Comets are also swift — moving with tremendous speed — racing through space at many kilometres every second as they whip around the Sun. Their orbits can be capricious — unpredictable and quick to change — easily tugged off course by the gravity of giant planets like Jupiter. Scientists treasure comets because their frozen ice is almost unchanged since the solar system began, making each one a deep-frozen message from the dawn of time."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Comet_Hale_Bopp_1995O1.jpg/500px-Comet_Hale_Bopp_1995O1.jpg",
+        "caption": "Comet Hale-Bopp blazing across the night sky with its brilliant twin tails",
+        "credit": "E. Kolmhofer, H. Raab / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "space-rockets",
@@ -103,7 +133,12 @@
         "Many rockets are gargantuan — colossal and towering in size — standing taller than a tall building when they sit on the launch pad. The famous Saturn V, which carried astronauts to the Moon, was as tall as a thirty-storey tower and weighed nearly three thousand tonnes, most of which was fuel. Almost all of that giant machine is simply tanks holding the fuel needed to escape the Earth.",
         "A rocket must be extraordinarily robust — strong, sturdy, and able to survive enormous strain — because launch is a violent, fiery, shaking ordeal. Engineers build them in sections called stages: as each stage empties its fuel, it falls away, making the rocket lighter so the rest can keep climbing. Modern rockets can even fly their lower stages back down to land upright, ready to be used again.",
         "Sending humans into space is an audacious adventure — daring, bold, and bravely ambitious — and it takes years of careful planning to do it safely. Yet thanks to rockets, we have lifted satellites, telescopes, robot explorers, and brave astronauts aloft — high up into the sky and far beyond it. Every launch is a reminder of how far human cleverness and courage can carry us."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Apollo_11_Saturn_V_lifting_off_on_July_16%2C_1969.jpg/500px-Apollo_11_Saturn_V_lifting_off_on_July_16%2C_1969.jpg",
+        "caption": "The Saturn V rocket lifting off on 16 July 1969, carrying the Apollo 11 crew to the Moon",
+        "credit": "NASA / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "space-astronauts",
@@ -118,7 +153,12 @@
         "Every task an astronaut performs is meticulous — done with great care and attention to the smallest detail — because in space a tiny mistake can become a serious danger. Spacewalks outside the craft are especially perilous, so astronauts rehearse each movement again and again in giant water tanks back on Earth until they can do it perfectly, even while wearing a bulky, stiff spacesuit.",
         "Out in orbit, astronauts must stay vigilant — alert and watchful at all times — checking their equipment, monitoring the air they breathe, and keeping a constant eye on the systems that keep them alive. They are resolute people — firmly determined and not easily put off — who carry on with their work calmly even when far from family, friends, and everything familiar about home.",
         "Becoming an astronaut is an audacious dream — bold and daringly ambitious — yet ordinary people from all over the world have achieved it through courageous, determined effort. Brave, fearless, and willing to face the unknown, astronauts carry out experiments, repair satellites, and gaze down at our beautiful blue planet, gathering knowledge that helps everyone back on Earth understand the universe a little better."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Astronaut-EVA.jpg/500px-Astronaut-EVA.jpg",
+        "caption": "An astronaut on a spacewalk, floating in the vacuum of space above the Earth",
+        "credit": "NASA / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "space-iss",
@@ -133,7 +173,12 @@
         "Aboard the station, work is ceaseless — never stopping, going on day and night without pause. Because the ISS orbits so fast, the crew see a sunrise and a sunset roughly every forty-five minutes, so they keep to careful clocks instead. The station's machinery is robust — strong, sturdy, and built to keep working reliably — recycling the air the astronauts breathe and even turning their wastewater back into clean drinking water.",
         "Everything aboard runs in a methodical way — carefully ordered, step by step, and well planned out. Astronauts follow detailed timetables for their experiments, exercise, repairs, and meals, all floating weightlessly as they go. The station is really a giant laboratory, where innovative research — fresh, inventive, and full of new ideas — explores how plants grow, how materials behave, and how the human body copes far from the gravity of home.",
         "High above the swirling blue vault of the sky — the great curved dome stretching overhead — the Space Station glides on, a shining symbol of what people can build when they cooperate. For more than twenty years it has been continuously lived in, never once empty of humans. It stands as proof that, working together, the nations of Earth can achieve something truly extraordinary among the stars."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/International_Space_Station_after_undocking_of_STS-132.jpg/500px-International_Space_Station_after_undocking_of_STS-132.jpg",
+        "caption": "The International Space Station photographed from the departing Space Shuttle Atlantis",
+        "credit": "NASA / Wikimedia Commons / Public domain"
+      }
     },
     {
       "id": "space-milky-way",
@@ -148,7 +193,12 @@
         "If you could rise far above the galaxy and look back, you would see a breathtaking panorama — a wide, sweeping view stretching in every direction — of glittering spiral arms slowly turning like a colossal cosmic pinwheel. The sheer magnificence of it — its grandeur, beauty, and splendour — has inspired stargazers, painters, and storytellers for as long as human beings have looked upward in wonder.",
         "Our own Sun sits about halfway out along one of these spiral arms, never reaching the bright, crowded zenith — the very highest, central point — of the galaxy where stars cluster most thickly. Together with all its planets, the Sun sweeps around the galaxy's centre once every two hundred and thirty million years, a single galactic 'year' so long that we have completed only a handful since the Sun was born.",
         "Beyond the Milky Way lies an even greater realm — a whole kingdom or domain — of countless other galaxies, stretching on for billions of light years. The universe is teeming with them — utterly crowded and overflowing — each one a swirling island of stars like our own. When we gaze up at the Milky Way, we are looking at our true home address in the universe: one ordinary star, in one spiral arm, of one galaxy, among billions."
-      ]
+      ],
+      "image": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Milky_Way_Night_Sky_Black_Rock_Desert_HAAP_Media_Ltd.jpg/500px-Milky_Way_Night_Sky_Black_Rock_Desert_HAAP_Media_Ltd.jpg",
+        "caption": "The Milky Way arching across the desert night sky, revealing our home galaxy edge-on",
+        "credit": "Haap Media Ltd / Wikimedia Commons / CC BY-SA 3.0"
+      }
     }
   ]
 }
