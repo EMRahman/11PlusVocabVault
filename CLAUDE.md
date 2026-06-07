@@ -77,6 +77,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
 | `dom-utils.js` | ~87 | Pure helpers (`shuffle`, `pickDistractors`, `getSentenceBlank`, `wordVariants`). | imported |
 | `selection.js` | ~79 | Pure selection algorithms (`pickDailyWords`, `buildWeakestPool`, `hashString`, `seededRandom`). | imported |
+| `quiz.js` | ~85 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |

@@ -24,6 +24,14 @@ import {
 } from './storage.js';
 import { pickDailyWords, buildWeakestPool } from './selection.js';
 import { getMeanings, additionalMeanings } from './meanings.js';
+import {
+  caseInsensitiveSet,
+  getThemedQuest,
+  getQuestSentenceBlank,
+  getThemedRelation,
+  hasUsableThemedRelation,
+  getQuestionTypesForWord as getQuestionTypesForWordPure,
+} from './quiz.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -1410,67 +1418,12 @@ import { getMeanings, additionalMeanings } from './meanings.js';
   // shuffle, pickDistractors, getSentenceBlank → moved to js/dom-utils.js.
 
   // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
-  function getThemedQuest(wordObj) {
-    return wordObj && wordObj.themed_quest ? wordObj.themed_quest : null;
-  }
-
-  // In Story Quest the cloze sentence is pre-themed and pre-blanked in the
-  // word data; elsewhere fall back to blanking the static example sentence.
-  function getQuestSentenceBlank(wordObj) {
-    var themed = getThemedQuest(wordObj);
-    if (themed && themed.sentence) return themed.sentence;
-    return getSentenceBlank(wordObj);
-  }
-
+  // Question-eligibility helpers (getThemedQuest, getQuestSentenceBlank,
+  // getThemedRelation, hasUsableThemedRelation, caseInsensitiveSet, and the pure
+  // getQuestionTypesForWord) → moved to js/quiz.js (pure + unit-tested). This
+  // wrapper threads the live quest-mode flag into the pure version.
   function getQuestionTypesForWord(wordObj) {
-    // Story Quest plays only themed fill-in-the-blank clozes: the word, one of
-    // its synonyms, or one of its antonyms completing a themed sentence.
-    if (quizState.isQuestMode) {
-      var questTypes = [];
-      if (getQuestSentenceBlank(wordObj)) questTypes.push('sentence');
-      if (hasUsableThemedRelation(wordObj, 'synonym')) questTypes.push('synonym');
-      if (hasUsableThemedRelation(wordObj, 'antonym')) questTypes.push('antonym');
-      return questTypes.length ? questTypes : ['sentence'];
-    }
-
-    var types = ['definition', 'word'];
-    if (getSentenceBlank(wordObj)) {
-      types.push('sentence');
-    }
-    if (wordObj.synonyms && wordObj.synonyms.length) {
-      types.push('synonym');
-    }
-    if (wordObj.antonyms && wordObj.antonyms.length) {
-      types.push('antonym');
-    }
-    return types;
-  }
-
-  function caseInsensitiveSet(items) {
-    var set = {};
-    items.forEach(function (s) { if (s) set[s.toLowerCase()] = true; });
-    return set;
-  }
-
-  // In Story Quest, a synonym/antonym question is a themed fill-in-the-blank:
-  // returns { cloze, answer } when the word has a valid themed relation cloze.
-  function getThemedRelation(wordObj, kind) {
-    var themed = getThemedQuest(wordObj);
-    var relation = themed && themed[kind];
-    if (relation && typeof relation.cloze === 'string' && relation.answer) {
-      return relation;
-    }
-    return null;
-  }
-
-  // True when a word's themed synonym/antonym cloze is usable as a quest
-  // question: its answer must be one of the word's own synonyms/antonyms,
-  // matching the gate buildRelationQuestion applies.
-  function hasUsableThemedRelation(wordObj, kind) {
-    var relation = getThemedRelation(wordObj, kind);
-    if (!relation) return false;
-    var positives = (kind === 'synonym' ? wordObj.synonyms : wordObj.antonyms) || [];
-    return positives.indexOf(relation.answer) !== -1;
+    return getQuestionTypesForWordPure(wordObj, quizState.isQuestMode);
   }
 
   function buildRelationQuestion(wordObj, pool, kind) {
