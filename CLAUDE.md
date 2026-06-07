@@ -162,6 +162,14 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
 - **Add a content collection / reading mode:** new `data/<x>.json` → add to the
   `collections` map in `test/data-integrity.test.js` → add markup + a
   `createReadingMode({...})` (or a bespoke init for non-reading shapes).
+- **Add an article/story image:** every `image` is `{ url, caption, credit }`
+  (all non-empty; the UI prints caption + credit under the picture and shows a
+  "🖼️ Image unavailable" placeholder on load error). For Wikimedia Commons
+  pictures, **use the hotlink-stable reuse endpoint**
+  `https://commons.wikimedia.org/wiki/Special:FilePath/<File_Name>?width=500` —
+  NOT a direct `upload.wikimedia.org/.../thumb/<hash>/...` URL, which 404s on any
+  file rename or wrong MD5 hash prefix (that caused mass "image unavailable"
+  breakage). The integrity test enforces this shape.
 - **Extract/refactor logic out of app.js:** move *pure* logic to a small ES
   module (state passed in as args, like `selection.js`), import it, and add
   characterization tests with golden values. This is the preferred way to make

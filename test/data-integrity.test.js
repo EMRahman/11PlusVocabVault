@@ -213,6 +213,49 @@ test('content collections expose their expected non-empty array', () => {
   }
 });
 
+test('every image in the content data is well-formed and uses a hotlink-stable URL', () => {
+  // Reading/story modes (js/app.js) render item.image as { url, caption, credit }
+  // and flag the figure `article-image--broken` (showing the "Image unavailable"
+  // placeholder) when the <img> errors. The fragile form is a direct
+  // upload.wikimedia.org/.../thumb/<hash>/<file>/<w>px-... hotlink: it 404s the
+  // moment the file is renamed on Commons or the MD5 hash prefix is even slightly
+  // off, which is what produced the mass "image unavailable" breakage. Wikimedia's
+  // documented reuse endpoint — commons.wikimedia.org/wiki/Special:FilePath/<file>?width=<w>
+  // — redirects to the current thumbnail by filename and survives renames, so we
+  // pin every image to that stable shape (and require non-empty caption/credit,
+  // which the UI prints verbatim under the picture).
+  const files = readdirSync(DATA_DIR).filter((f) => f.endsWith('.json'));
+  let imagesChecked = 0;
+  const visit = (node, where) => {
+    if (Array.isArray(node)) {
+      node.forEach((v, i) => visit(v, `${where}[${i}]`));
+      return;
+    }
+    if (!node || typeof node !== 'object') return;
+    if (node.image !== undefined) {
+      const img = node.image;
+      const at = `${where}.image`;
+      assert.ok(img && typeof img === 'object', `${at}: must be an object`);
+      for (const field of ['url', 'caption', 'credit']) {
+        assert.equal(typeof img[field], 'string', `${at}: ${field} must be a string`);
+        assert.notEqual(img[field].trim(), '', `${at}: ${field} must not be empty`);
+      }
+      assert.ok(/^https:\/\//.test(img.url), `${at}: url must be https`);
+      assert.ok(
+        !/upload\.wikimedia\.org\/wikipedia\/commons\/thumb\//.test(img.url),
+        `${at}: must not hotlink a fragile upload.wikimedia.org thumb URL — use ` +
+          `https://commons.wikimedia.org/wiki/Special:FilePath/<file>?width=<w>`,
+      );
+      imagesChecked++;
+    }
+    for (const [k, v] of Object.entries(node)) {
+      if (k !== 'image' && v && typeof v === 'object') visit(v, `${where}.${k}`);
+    }
+  };
+  for (const file of files) visit(readJSON(file), file);
+  assert.ok(imagesChecked > 0, 'expected to find at least one image to validate');
+});
+
 test('every comic has a title, blurb, glossary words, and renderable panels', () => {
   // The comic renderer (js/app.js) reads these fields directly; a missing one
   // would break Comic Mode at runtime. `char` must match a known SVG generator
