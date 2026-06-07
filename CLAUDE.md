@@ -69,7 +69,7 @@ README.md SPEC.md   # Human/product-facing (may have stale counts; don't trust n
 
 | File | Lines | Role | Loaded by |
 |------|------:|------|-----------|
-| `app.js` | ~5.5k | **Orchestrator.** One big module-scoped closure holding ~15 "modes" (browse/filter, quiz, story, history, animals, insects, space, inventions/technology, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap) + TTS + reading view. | `<script type="module">` (entry) |
+| `app.js` | ~5.5k | **Orchestrator.** One big module-scoped closure holding ~16 "modes" (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
@@ -88,6 +88,7 @@ README.md SPEC.md   # Human/product-facing (may have stale counts; don't trust n
 | `history.json` | `articles` | `animals.json` | `animals` |
 | `insects.json` | `insects` | `fables.json` | `fables` |
 | `space.json` | `space` | `technology.json` | `technology` |
+| `money.json` | `money` | | |
 | `word-positions.json` | `positions`,… (Word Universe layout) | `animal-constellations.json` | `segments` |
 | `word-explorer.json` | `mood`,`etymology`,… | | |
 
@@ -124,7 +125,7 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   Every mode has an `init<Mode>()` wired in **`loadWordData()`'s `.then`** (the
   authoritative list of active modes). Modes load their content via `fetch()`
   and re-render if their overlay is already open.
-- **Reading modes share a factory.** History/Animals/Insects/Fable are built by
+- **Reading modes share a factory.** History/Money/Animals/Insects/Fable are built by
   `createReadingMode(config)` in app.js (config = prefix, progressKey, dataFile,
   dataKey, returnTo, itemNoun, optional `subtitleField`/`moralField`,
   loadingMessage). DOM ids follow `<prefix>-...`. Proverbs is **not** folded in

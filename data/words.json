@@ -15852,6 +15852,1926 @@
           "answer": "Unproductive"
         }
       }
+    },
+    {
+      "word": "Barter",
+      "pronunciation": "BAR-ter",
+      "definition": "To swap goods or services for other goods without using money.",
+      "sentence_usage": "In the market the farmer would barter a sack of grain for a new pair of boots.",
+      "synonyms": [
+        "Swap",
+        "Trade",
+        "Exchange"
+      ],
+      "antonyms": [
+        "Buy",
+        "Sell",
+        "Purchase"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Sailors with no coins simply swapped one cargo for another at each port.",
+        "word": "At every harbour the crew would barter barrels of fish for fresh fruit and rope.",
+        "sentence": "With no coins aboard, the sailors had to _____ their spare sailcloth for fresh water.",
+        "synonym": {
+          "cloze": "The traders agreed to _____ a crate of spices for a roll of fine silk.",
+          "answer": "Swap"
+        },
+        "antonym": {
+          "cloze": "Instead of swapping, the rich captain chose to _____ the whole cargo with a chest of coins.",
+          "answer": "Buy"
+        }
+      }
+    },
+    {
+      "word": "Currency",
+      "pronunciation": "KUH-ruhn-see",
+      "definition": "The system of money that a country uses, such as coins and notes.",
+      "sentence_usage": "When travelling abroad she swapped her pounds for the local currency.",
+      "synonyms": [
+        "Money",
+        "Cash",
+        "Legal tender"
+      ],
+      "antonyms": [
+        "Barter",
+        "Goods",
+        "Worthlessness"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Each kingdom stamped its own coins that every merchant agreed to accept.",
+        "word": "The king's new currency carried his face on every silver coin in the realm.",
+        "sentence": "Traders from far lands trusted the kingdom's _____ because every coin held real silver.",
+        "synonym": {
+          "cloze": "Merchants preferred a single trusted _____ to carrying sacks of different coins.",
+          "answer": "Money"
+        },
+        "antonym": {
+          "cloze": "Before coins, the villagers relied on clumsy _____ instead of any agreed money.",
+          "answer": "Barter"
+        }
+      }
+    },
+    {
+      "word": "Commodity",
+      "pronunciation": "kuh-MOD-i-tee",
+      "definition": "A useful raw material or product that can be bought and sold, like salt or grain.",
+      "sentence_usage": "Salt was once such a valuable commodity that it was used to pay workers.",
+      "synonyms": [
+        "Good",
+        "Product",
+        "Ware"
+      ],
+      "antonyms": [
+        "Service",
+        "Luxury",
+        "Rarity"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Ships carried whatever goods each island most wanted to buy.",
+        "word": "The most prized commodity in the cargo hold was a single chest of rare spices.",
+        "sentence": "On the islands, salt was a precious _____ that every cook was desperate to buy.",
+        "synonym": {
+          "cloze": "Pepper was the one _____ every trader on the voyage hoped to sell at a profit.",
+          "answer": "Product"
+        },
+        "antonym": {
+          "cloze": "A kind word costs nothing and is a _____, not a good you can weigh and sell.",
+          "answer": "Service"
+        }
+      }
+    },
+    {
+      "word": "Merchant",
+      "pronunciation": "MER-chuhnt",
+      "definition": "A person who buys and sells goods to make money, especially in large amounts.",
+      "sentence_usage": "The merchant filled his stall with silk and spices brought from distant lands.",
+      "synonyms": [
+        "Trader",
+        "Dealer",
+        "Seller"
+      ],
+      "antonyms": [
+        "Customer",
+        "Buyer",
+        "Shopper"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Wealthy traders sailed from port to port selling whatever they had bought cheaply.",
+        "word": "The merchant unloaded crates of silk, certain he could sell each one for double.",
+        "sentence": "A shrewd _____ bought spices in one port and sold them for far more in the next.",
+        "synonym": {
+          "cloze": "The busy _____ knew exactly which islands would pay the highest price.",
+          "answer": "Trader"
+        },
+        "antonym": {
+          "cloze": "She was not a seller at all but a careful _____ choosing what to take home.",
+          "answer": "Customer"
+        }
+      }
+    },
+    {
+      "word": "Surplus",
+      "pronunciation": "SER-pluhs",
+      "definition": "An amount of something that is more than you need or use.",
+      "sentence_usage": "After a good harvest the village had a surplus of wheat to sell at the market.",
+      "synonyms": [
+        "Excess",
+        "Extra",
+        "Glut"
+      ],
+      "antonyms": [
+        "Shortage",
+        "Deficit",
+        "Lack"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "forest",
+        "definition": "When the orchard gave far more apples than anyone could eat, the rest was sold.",
+        "word": "The good harvest left such a surplus of pears that baskets spilled across the lane.",
+        "sentence": "After weeks of rain the orchard produced a huge _____ of fruit no one could eat in time.",
+        "synonym": {
+          "cloze": "A wet spring gave the woodland farmers a welcome _____ of berries to take to market.",
+          "answer": "Excess"
+        },
+        "antonym": {
+          "cloze": "After the long drought there was a painful _____ rather than any extra fruit to spare.",
+          "answer": "Shortage"
+        }
+      }
+    },
+    {
+      "word": "Scarcity",
+      "pronunciation": "SKAIR-si-tee",
+      "definition": "A situation where there is not enough of something that people want.",
+      "sentence_usage": "The scarcity of clean water during the long summer worried the whole town.",
+      "synonyms": [
+        "Shortage",
+        "Lack",
+        "Dearth"
+      ],
+      "antonyms": [
+        "Abundance",
+        "Plenty",
+        "Surplus"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "When the dragon hoarded all the gold, almost none was left for anyone else.",
+        "word": "The scarcity of treasure after the dragon's raid left the village with empty chests.",
+        "sentence": "Because the dragon had seized every coin, the _____ of gold made it priceless.",
+        "synonym": {
+          "cloze": "The terrible _____ of water near the smoking mountain made each drop precious.",
+          "answer": "Shortage"
+        },
+        "antonym": {
+          "cloze": "Once the beast was gone, gold flowed back and _____ replaced every shortage.",
+          "answer": "Abundance"
+        }
+      }
+    },
+    {
+      "word": "Inflation",
+      "pronunciation": "in-FLAY-shuhn",
+      "definition": "A general rise in prices over time, so that money buys less than it used to.",
+      "sentence_usage": "Because of inflation, the sweets that once cost a penny now cost far more.",
+      "synonyms": [
+        "Price rise",
+        "Devaluation",
+        "Increase"
+      ],
+      "antonyms": [
+        "Deflation",
+        "Stability",
+        "Steadiness"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "When too many coins flooded the kingdom, every loaf of bread cost more.",
+        "word": "Rapid inflation meant a single gold coin now bought only half a sack of flour.",
+        "sentence": "As prices crept higher each month, _____ slowly ate away at the value of every coin.",
+        "synonym": {
+          "cloze": "The endless _____ in the kingdom meant yesterday's wages bought far less today.",
+          "answer": "Price rise"
+        },
+        "antonym": {
+          "cloze": "After the wise queen's reforms, steady prices and even _____ calmed the worried traders.",
+          "answer": "Deflation"
+        }
+      }
+    },
+    {
+      "word": "Mint",
+      "pronunciation": "MINT",
+      "definition": "To make coins officially by stamping metal.",
+      "sentence_usage": "The royal workshop was allowed to mint new gold coins for the whole kingdom.",
+      "synonyms": [
+        "Coin",
+        "Stamp",
+        "Produce"
+      ],
+      "antonyms": [
+        "Destroy",
+        "Melt",
+        "Withdraw"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Only the king's own workshop was trusted to press metal into official coins.",
+        "word": "The royal smiths would mint a thousand silver coins before the harvest festival.",
+        "sentence": "Only the king's workshop was allowed to _____ coins stamped with the royal crown.",
+        "synonym": {
+          "cloze": "Each spring the castle smiths would _____ fresh coins to pay the loyal guards.",
+          "answer": "Coin"
+        },
+        "antonym": {
+          "cloze": "Forgers tried to _____ the old worn coins rather than make any new ones.",
+          "answer": "Melt"
+        }
+      }
+    },
+    {
+      "word": "Bullion",
+      "pronunciation": "BUUL-yuhn",
+      "definition": "Gold or silver in the form of bars or lumps, valued by its weight.",
+      "sentence_usage": "The bank kept heavy bars of gold bullion locked deep inside its vault.",
+      "synonyms": [
+        "Gold bars",
+        "Ingots",
+        "Precious metal"
+      ],
+      "antonyms": [
+        "Trinket",
+        "Counterfeit",
+        "Scrap"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "The dragon's hoard was not coins but huge bars of solid gold.",
+        "word": "Beneath the mountain lay stacks of bullion so heavy no single knight could lift one bar.",
+        "sentence": "Deep in the cave the heroes found bars of gleaming _____ piled higher than their heads.",
+        "synonym": {
+          "cloze": "The dragon prized solid _____ far more than any handful of loose coins.",
+          "answer": "Ingots"
+        },
+        "antonym": {
+          "cloze": "What glittered turned out to be worthless _____ rather than any real gold.",
+          "answer": "Counterfeit"
+        }
+      }
+    },
+    {
+      "word": "Prosperity",
+      "pronunciation": "pross-PERR-i-tee",
+      "definition": "The state of being successful and having plenty of money.",
+      "sentence_usage": "Years of good trade brought great prosperity to the busy harbour town.",
+      "synonyms": [
+        "Wealth",
+        "Success",
+        "Affluence"
+      ],
+      "antonyms": [
+        "Poverty",
+        "Hardship",
+        "Ruin"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "When trade flowed freely through the harbour, the whole island grew rich.",
+        "word": "The islanders enjoyed such prosperity that every cottage had a full larder and a new boat.",
+        "sentence": "Years of busy trade brought such _____ that the harbour town gleamed with fresh paint.",
+        "synonym": {
+          "cloze": "Brisk trade and calm seas filled the islands with _____ and cheerful, well-fed crews.",
+          "answer": "Wealth"
+        },
+        "antonym": {
+          "cloze": "When the storms closed the port, _____ quickly turned to hunger and empty nets.",
+          "answer": "Poverty"
+        }
+      }
+    },
+    {
+      "word": "Affluent",
+      "pronunciation": "AF-loo-uhnt",
+      "definition": "Having a lot of money and a comfortable life; wealthy.",
+      "sentence_usage": "The affluent family owned three houses and a stable full of horses.",
+      "synonyms": [
+        "Wealthy",
+        "Rich",
+        "Well-off"
+      ],
+      "antonyms": [
+        "Poor",
+        "Needy",
+        "Impoverished"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The richest nobles lived in grand halls with feasts every single night.",
+        "word": "The affluent duke wore velvet robes and dined from plates of solid silver.",
+        "sentence": "The _____ noble owned more land, horses and gold than anyone else at court.",
+        "synonym": {
+          "cloze": "Only the most _____ lords could afford such a banquet of roast swan and spiced wine.",
+          "answer": "Wealthy"
+        },
+        "antonym": {
+          "cloze": "Once his gold ran out, the formerly grand lord became as _____ as the stable boys.",
+          "answer": "Poor"
+        }
+      }
+    },
+    {
+      "word": "Lucrative",
+      "pronunciation": "LOO-kruh-tiv",
+      "definition": "Producing a lot of money; very profitable.",
+      "sentence_usage": "Selling spices turned out to be a lucrative business for the young trader.",
+      "synonyms": [
+        "Profitable",
+        "Rewarding",
+        "Money-making"
+      ],
+      "antonyms": [
+        "Unprofitable",
+        "Worthless",
+        "Loss-making"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The spice route earned its traders more gold than any other voyage.",
+        "word": "The lucrative spice voyage filled the captain's chest with coins by the time he reached home.",
+        "sentence": "Carrying pepper across the sea proved so _____ that the captain bought a second ship.",
+        "synonym": {
+          "cloze": "The _____ silk trade made even the youngest sailor wealthy within a single year.",
+          "answer": "Profitable"
+        },
+        "antonym": {
+          "cloze": "Hauling worthless sand across the ocean was a slow, _____ waste of a fine ship.",
+          "answer": "Unprofitable"
+        }
+      }
+    },
+    {
+      "word": "Frugal",
+      "pronunciation": "FROO-guhl",
+      "definition": "Careful with money and not wasteful; spending only on what is needed.",
+      "sentence_usage": "Being frugal, she mended her old coat instead of buying a new one.",
+      "synonyms": [
+        "Thrifty",
+        "Economical",
+        "Careful"
+      ],
+      "antonyms": [
+        "Wasteful",
+        "Extravagant",
+        "Lavish"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The careful pupil spent her few coins only on ink and never on sweets.",
+        "word": "The frugal scholar saved every spare coin to buy one more precious spellbook.",
+        "sentence": "Being _____, the young wizard repaired her cracked wand rather than buy a new one.",
+        "synonym": {
+          "cloze": "A _____ apprentice spent only on candles and ink, saving the rest for important books.",
+          "answer": "Thrifty"
+        },
+        "antonym": {
+          "cloze": "The _____ prince wasted gold on enchanted toys he forgot by the very next morning.",
+          "answer": "Wasteful"
+        }
+      }
+    },
+    {
+      "word": "Economy",
+      "pronunciation": "i-KON-uh-mee",
+      "definition": "The system by which a country makes, buys and sells goods and money.",
+      "sentence_usage": "When factories closed, the whole country's economy began to struggle.",
+      "synonyms": [
+        "Market",
+        "Trade system",
+        "Financial system"
+      ],
+      "antonyms": [
+        "Standstill",
+        "Collapse",
+        "Stagnation"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "When farms, smiths and traders all did well, the whole kingdom thrived.",
+        "word": "A strong economy kept the kingdom's markets busy and every workshop ringing with work.",
+        "sentence": "When harvests failed, the kingdom's _____ slowed and the busy markets fell silent.",
+        "synonym": {
+          "cloze": "A healthy _____ kept coins flowing between farmers, smiths and merchants alike.",
+          "answer": "Market"
+        },
+        "antonym": {
+          "cloze": "War and ruin brought a complete _____ rather than the thriving trade of old.",
+          "answer": "Collapse"
+        }
+      }
+    },
+    {
+      "word": "Bankrupt",
+      "pronunciation": "BANK-rupt",
+      "definition": "Having no money left and unable to pay what you owe.",
+      "sentence_usage": "After his shop failed, the trader was left completely bankrupt.",
+      "synonyms": [
+        "Penniless",
+        "Ruined",
+        "Insolvent"
+      ],
+      "antonyms": [
+        "Wealthy",
+        "Solvent",
+        "Prosperous"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "When his ship sank with all its cargo, the trader could pay no one.",
+        "word": "The storm left the once-rich merchant bankrupt, unable to pay even his loyal crew.",
+        "sentence": "When the cargo sank, the merchant was left _____ and could not pay a single sailor.",
+        "synonym": {
+          "cloze": "After three lost voyages the captain was utterly _____, his money chest quite empty.",
+          "answer": "Penniless"
+        },
+        "antonym": {
+          "cloze": "A lucky cargo of gold made the captain _____ again, his debts paid in a single day.",
+          "answer": "Wealthy"
+        }
+      }
+    },
+    {
+      "word": "Revenue",
+      "pronunciation": "REV-uh-nyoo",
+      "definition": "The money that a business or government receives, especially from sales or taxes.",
+      "sentence_usage": "The king's revenue came mostly from taxes on grain and wool.",
+      "synonyms": [
+        "Income",
+        "Earnings",
+        "Takings"
+      ],
+      "antonyms": [
+        "Loss",
+        "Expense",
+        "Outgoings"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Most of the king's gold came from the taxes paid by farmers and traders.",
+        "word": "The kingdom's revenue rose sharply once the new bridge brought traders to the market.",
+        "sentence": "The crown's yearly _____ came mostly from the taxes paid at every busy market gate.",
+        "synonym": {
+          "cloze": "A new harbour boosted the king's _____, filling the treasury with fresh gold coins.",
+          "answer": "Income"
+        },
+        "antonym": {
+          "cloze": "A year of waste turned the treasury's profit into nothing but _____ and empty chests.",
+          "answer": "Loss"
+        }
+      }
+    },
+    {
+      "word": "Profit",
+      "pronunciation": "PROF-it",
+      "definition": "The money you gain when you sell something for more than it cost you.",
+      "sentence_usage": "She bought apples cheaply and sold them in town for a tidy profit.",
+      "synonyms": [
+        "Gain",
+        "Earnings",
+        "Return"
+      ],
+      "antonyms": [
+        "Loss",
+        "Deficit",
+        "Debt"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Buying cheaply in one port and selling dearly in the next earned extra coins.",
+        "word": "The captain made a fat profit by selling for double what the spices had cost him.",
+        "sentence": "By selling the silk for twice its price, the trader made a handsome _____ on the voyage.",
+        "synonym": {
+          "cloze": "A clever bargain at the docks turned a small _____ into a chest full of gold.",
+          "answer": "Gain"
+        },
+        "antonym": {
+          "cloze": "Selling below what he paid earned the careless sailor only a heavy _____.",
+          "answer": "Loss"
+        }
+      }
+    },
+    {
+      "word": "Ledger",
+      "pronunciation": "LEJ-er",
+      "definition": "A book in which money received and money spent are carefully recorded.",
+      "sentence_usage": "The shopkeeper wrote every sale into a thick leather ledger.",
+      "synonyms": [
+        "Account book",
+        "Record",
+        "Register"
+      ],
+      "antonyms": [
+        "Guesswork",
+        "Estimate",
+        "Muddle"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Every coin spent on ink or candles was written down in a careful book.",
+        "word": "The school's keeper noted each payment in a heavy ledger bound in cracked leather.",
+        "sentence": "The careful clerk recorded every coin the school spent in a great leather _____.",
+        "synonym": {
+          "cloze": "Each fee and fine was entered neatly in the _____ so nothing was ever lost.",
+          "answer": "Record"
+        },
+        "antonym": {
+          "cloze": "Without a proper _____, the school's spending became a hopeless muddle of guesses.",
+          "answer": "Muddle"
+        }
+      }
+    },
+    {
+      "word": "Counterfeit",
+      "pronunciation": "KOWN-ter-fit",
+      "definition": "Made to look real in order to trick people; fake.",
+      "sentence_usage": "The shopkeeper spotted the counterfeit coin because it was too light.",
+      "synonyms": [
+        "Fake",
+        "Forged",
+        "Imitation"
+      ],
+      "antonyms": [
+        "Genuine",
+        "Real",
+        "Authentic"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Crooks tried to pass off fake coins that had no real silver inside.",
+        "word": "The guard bit the coin and found it counterfeit, made of cheap painted lead.",
+        "sentence": "The sharp-eyed guard knew the shiny coin was _____ because it weighed far too little.",
+        "synonym": {
+          "cloze": "A clever forger filled the market with _____ coins that looked exactly like real silver.",
+          "answer": "Fake"
+        },
+        "antonym": {
+          "cloze": "Only after weighing it did the merchant trust the coin was _____ and not a forgery.",
+          "answer": "Genuine"
+        }
+      }
+    },
+    {
+      "word": "Hoard",
+      "pronunciation": "HORD",
+      "definition": "To gather and hide away a large amount of something, especially money.",
+      "sentence_usage": "The miser would hoard every coin he earned beneath the floorboards.",
+      "synonyms": [
+        "Stockpile",
+        "Stash",
+        "Amass"
+      ],
+      "antonyms": [
+        "Share",
+        "Distribute",
+        "Spend"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "The great beast piled all the kingdom's gold inside its mountain cave.",
+        "word": "The dragon liked to hoard every coin and gem, guarding the pile day and night.",
+        "sentence": "The greedy dragon would _____ every gold coin deep inside its smouldering cave.",
+        "synonym": {
+          "cloze": "Night after night the beast crept out to _____ yet more treasure beneath the mountain.",
+          "answer": "Stockpile"
+        },
+        "antonym": {
+          "cloze": "A kinder dragon chose to _____ its gold among the villagers instead of hiding it away.",
+          "answer": "Share"
+        }
+      }
+    },
+    {
+      "word": "Accumulate",
+      "pronunciation": "uh-KYOO-myuh-late",
+      "definition": "To gather or build up a larger and larger amount over time.",
+      "sentence_usage": "By saving a little each week, she began to accumulate a useful sum.",
+      "synonyms": [
+        "Gather",
+        "Build up",
+        "Amass"
+      ],
+      "antonyms": [
+        "Scatter",
+        "Squander",
+        "Disperse"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Coin by coin, the beast's pile of treasure grew larger every year.",
+        "word": "It took centuries for the dragon to accumulate such a towering mountain of gold.",
+        "sentence": "Over many long years the dragon began to _____ a hoard taller than the cave itself.",
+        "synonym": {
+          "cloze": "Slowly the beast would _____ more gems, adding a few to the glittering pile each night.",
+          "answer": "Gather"
+        },
+        "antonym": {
+          "cloze": "A foolish dragon would _____ its treasure across the hills rather than build a hoard.",
+          "answer": "Scatter"
+        }
+      }
+    },
+    {
+      "word": "Negotiate",
+      "pronunciation": "ni-GOH-shee-ate",
+      "definition": "To talk with others in order to reach an agreement, such as on a price.",
+      "sentence_usage": "The traders spent an hour trying to negotiate a fair price for the wool.",
+      "synonyms": [
+        "Bargain",
+        "Haggle",
+        "Discuss"
+      ],
+      "antonyms": [
+        "Demand",
+        "Dictate",
+        "Refuse"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Two captains talked back and forth until they agreed on a price for the cargo.",
+        "word": "It took all morning to negotiate a price both the trader and the island chief would accept.",
+        "sentence": "The captains had to _____ for hours before they agreed on a fair price for the silk.",
+        "synonym": {
+          "cloze": "A patient trader will _____ calmly until both sides leave the deal feeling happy.",
+          "answer": "Bargain"
+        },
+        "antonym": {
+          "cloze": "Rather than _____, the proud admiral chose to simply demand the cargo for nothing.",
+          "answer": "Demand"
+        }
+      }
+    },
+    {
+      "word": "Obsolete",
+      "pronunciation": "OB-suh-leet",
+      "definition": "No longer used because something newer or better has replaced it.",
+      "sentence_usage": "Once coins arrived, swapping goods began to seem slow and obsolete.",
+      "synonyms": [
+        "Outdated",
+        "Old-fashioned",
+        "Outmoded"
+      ],
+      "antonyms": [
+        "Modern",
+        "Current",
+        "Up-to-date"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Once new spells were written, the dusty old scrolls were never used again.",
+        "word": "The clumsy old wand became obsolete the moment the school invented a lighter design.",
+        "sentence": "The cracked old wand was now _____, replaced by a sleek new model from the workshop.",
+        "synonym": {
+          "cloze": "Older spellbooks soon felt _____ beside the clever new editions on the shelf.",
+          "answer": "Outdated"
+        },
+        "antonym": {
+          "cloze": "The newest charm was anything but _____; every pupil wanted to learn it at once.",
+          "answer": "Modern"
+        }
+      }
+    },
+    {
+      "word": "Transaction",
+      "pronunciation": "tran-ZAK-shuhn",
+      "definition": "An act of buying or selling, where money or goods change hands.",
+      "sentence_usage": "Every transaction at the stall was written down in the shopkeeper's book.",
+      "synonyms": [
+        "Deal",
+        "Exchange",
+        "Sale"
+      ],
+      "antonyms": [
+        "Gift",
+        "Donation",
+        "Theft"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Each time a coin was paid for goods, a small deal was completed.",
+        "word": "The fair clerk recorded every transaction so no merchant could be cheated.",
+        "sentence": "Each _____ at the busy market gate was noted carefully by the watchful clerk.",
+        "synonym": {
+          "cloze": "A simple _____ took only a moment: the coin went one way, the bread the other.",
+          "answer": "Deal"
+        },
+        "antonym": {
+          "cloze": "The kind baker handed over the loaf as a _____, asking for no coin at all.",
+          "answer": "Gift"
+        }
+      }
+    },
+    {
+      "word": "Portable",
+      "pronunciation": "POR-tuh-buhl",
+      "definition": "Easy to carry or move from place to place.",
+      "sentence_usage": "Coins were popular because they were small, hard-wearing and portable.",
+      "synonyms": [
+        "Movable",
+        "Light",
+        "Handy"
+      ],
+      "antonyms": [
+        "Bulky",
+        "Cumbersome",
+        "Immovable"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "Light coins were far easier to carry aboard than heavy sacks of grain.",
+        "word": "A pouch of portable coins weighed nothing compared with a cartload of salt.",
+        "sentence": "Sailors loved coins because they were _____ and slipped easily into a small pouch.",
+        "synonym": {
+          "cloze": "Money had to be _____ so a trader could carry his whole fortune in one belt.",
+          "answer": "Movable"
+        },
+        "antonym": {
+          "cloze": "A chest of grain was far too _____ to lug up the steep harbour steps.",
+          "answer": "Cumbersome"
+        }
+      }
+    },
+    {
+      "word": "Durable",
+      "pronunciation": "DYOOR-uh-buhl",
+      "definition": "Tough and able to last a long time without wearing out.",
+      "sentence_usage": "Metal coins were chosen because they were durable and did not rot like grain.",
+      "synonyms": [
+        "Long-lasting",
+        "Hard-wearing",
+        "Sturdy"
+      ],
+      "antonyms": [
+        "Fragile",
+        "Flimsy",
+        "Perishable"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Gold lasted forever in the cave while wood and cloth crumbled to dust.",
+        "word": "Gold proved so durable that the dragon's hoard shone as brightly after a thousand years.",
+        "sentence": "Gold made _____ coins that survived fire, water and a thousand years in the cave.",
+        "synonym": {
+          "cloze": "The smiths wanted a _____ metal that would not crack however roughly it was handled.",
+          "answer": "Long-lasting"
+        },
+        "antonym": {
+          "cloze": "A coin of dried mud was too _____ to survive even a single rainy market day.",
+          "answer": "Fragile"
+        }
+      }
+    },
+    {
+      "word": "Credit",
+      "pronunciation": "KRED-it",
+      "definition": "An arrangement to receive money or goods now and pay for them later.",
+      "sentence_usage": "The shop let her buy the boots on credit and pay at the end of the month.",
+      "synonyms": [
+        "Loan",
+        "Lending",
+        "Advance"
+      ],
+      "antonyms": [
+        "Cash",
+        "Debt",
+        "Savings"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The trusted merchant let loyal customers take goods now and pay after harvest.",
+        "word": "Because the baker offered credit, hungry villagers could eat before the harvest was sold.",
+        "sentence": "The kindly baker offered _____ so families could eat now and pay once the crops were sold.",
+        "synonym": {
+          "cloze": "Trusted by all, the merchant gave _____ to anyone certain to repay after the fair.",
+          "answer": "Lending"
+        },
+        "antonym": {
+          "cloze": "He demanded only _____ on the spot, refusing to let anyone pay a single day later.",
+          "answer": "Cash"
+        }
+      }
+    },
+    {
+      "word": "Debt",
+      "pronunciation": "DET",
+      "definition": "Money that one person or country owes to another.",
+      "sentence_usage": "He worked all summer to pay off the debt he owed the blacksmith.",
+      "synonyms": [
+        "Owing",
+        "Arrears",
+        "Liability"
+      ],
+      "antonyms": [
+        "Savings",
+        "Wealth",
+        "Credit"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The young knight had borrowed gold and now owed the lord a great sum.",
+        "word": "The knight's debt grew heavier each month until he feared he could never repay it.",
+        "sentence": "The young knight's _____ to the lord grew until he owed more gold than he could ever earn.",
+        "synonym": {
+          "cloze": "Unable to clear his _____, the squire toiled in the stables to work off what he owed.",
+          "answer": "Owing"
+        },
+        "antonym": {
+          "cloze": "After years of hard work he cleared every coin and turned his _____ into healthy savings.",
+          "answer": "Savings"
+        }
+      }
+    },
+    {
+      "word": "Loan",
+      "pronunciation": "LOHN",
+      "definition": "A sum of money that is borrowed and must be paid back, often with extra.",
+      "sentence_usage": "The bank gave the farmer a loan to buy seeds for the spring.",
+      "synonyms": [
+        "Advance",
+        "Credit",
+        "Lending"
+      ],
+      "antonyms": [
+        "Gift",
+        "Repayment",
+        "Donation"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The school lent a poor pupil the coins she needed for her first wand.",
+        "word": "The kind headmaster offered a loan so the orphan could buy her books and quill.",
+        "sentence": "The headmaster gave the poor pupil a _____ so she could buy a wand and repay it later.",
+        "synonym": {
+          "cloze": "A small _____ from the school let the apprentice buy ink now and pay it back by spring.",
+          "answer": "Advance"
+        },
+        "antonym": {
+          "cloze": "The coins were a _____ to keep forever, not money she ever had to pay back.",
+          "answer": "Gift"
+        }
+      }
+    },
+    {
+      "word": "Lender",
+      "pronunciation": "LEN-der",
+      "definition": "A person or bank that lends money, expecting to be paid back.",
+      "sentence_usage": "The lender agreed to wait one more year before the loan was repaid.",
+      "synonyms": [
+        "Creditor",
+        "Financier",
+        "Backer"
+      ],
+      "antonyms": [
+        "Borrower",
+        "Debtor",
+        "Buyer"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The wealthy noble handed out gold and waited to be repaid with a little extra.",
+        "word": "As the village lender, the old duke trusted only those certain to repay him.",
+        "sentence": "The cautious _____ would only hand over gold to those he was sure would pay him back.",
+        "synonym": {
+          "cloze": "A fair _____ lends gold gladly but always expects every coin to be returned.",
+          "answer": "Creditor"
+        },
+        "antonym": {
+          "cloze": "The eager _____ asked the duke for gold, promising to repay him after the harvest.",
+          "answer": "Borrower"
+        }
+      }
+    },
+    {
+      "word": "Creditor",
+      "pronunciation": "KRED-i-ter",
+      "definition": "A person, bank or country that is owed money by someone else.",
+      "sentence_usage": "When the shop closed, its creditors lined up to ask for their money back.",
+      "synonyms": [
+        "Lender",
+        "Financier",
+        "Claimant"
+      ],
+      "antonyms": [
+        "Debtor",
+        "Borrower",
+        "Buyer"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Those who had lent the duke gold came to claim what they were owed.",
+        "word": "As the chief creditor, the merchant was first to be repaid from the duke's chest.",
+        "sentence": "Each _____ arrived at the castle to collect the gold the spendthrift duke owed them.",
+        "synonym": {
+          "cloze": "The patient _____ waited a year, certain the honest knight would repay every coin.",
+          "answer": "Lender"
+        },
+        "antonym": {
+          "cloze": "The unlucky _____ owed gold to half the realm and dreaded every knock at the door.",
+          "answer": "Debtor"
+        }
+      }
+    },
+    {
+      "word": "Debtor",
+      "pronunciation": "DET-er",
+      "definition": "A person, business or country that owes money to someone else.",
+      "sentence_usage": "As a debtor, the young lord owed gold to nearly everyone in the town.",
+      "synonyms": [
+        "Borrower",
+        "Ower",
+        "Mortgagor"
+      ],
+      "antonyms": [
+        "Creditor",
+        "Lender",
+        "Saver"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The young lord had borrowed from many and now owed them all.",
+        "word": "As a debtor to half the court, the lord hid whenever a lender came near.",
+        "sentence": "The nervous _____ owed coins to so many lords that he dared not show his face at court.",
+        "synonym": {
+          "cloze": "Once a wealthy _____, the squire now had to repay every noble he had borrowed from.",
+          "answer": "Borrower"
+        },
+        "antonym": {
+          "cloze": "Having lent gold to all, the duke was a _____ to no one and feared no knock.",
+          "answer": "Creditor"
+        }
+      }
+    },
+    {
+      "word": "Interest",
+      "pronunciation": "IN-truhst",
+      "definition": "An extra charge paid for borrowing money, on top of the amount borrowed.",
+      "sentence_usage": "The bank lent him a pound but charged interest, so he repaid a little more.",
+      "synonyms": [
+        "Charge",
+        "Fee",
+        "Premium"
+      ],
+      "antonyms": [
+        "Refund",
+        "Discount",
+        "Principal"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The lender asked for the gold back plus a few extra coins for the favour.",
+        "word": "The duke charged interest, so a loan of ten coins had to be repaid with twelve.",
+        "sentence": "The lender added _____ to the loan, so the knight repaid more gold than he first borrowed.",
+        "synonym": {
+          "cloze": "For every ten coins lent, the careful banker asked one coin of _____ in return.",
+          "answer": "Charge"
+        },
+        "antonym": {
+          "cloze": "As a kindness the abbot gave a _____ on the loan, asking back less than was borrowed.",
+          "answer": "Discount"
+        }
+      }
+    },
+    {
+      "word": "Collateral",
+      "pronunciation": "kuh-LAT-uh-ruhl",
+      "definition": "Something valuable promised to a lender, to be taken if a loan is not repaid.",
+      "sentence_usage": "He offered his horse as collateral so the merchant would lend him the gold.",
+      "synonyms": [
+        "Security",
+        "Pledge",
+        "Guarantee"
+      ],
+      "antonyms": [
+        "Risk",
+        "Gift",
+        "Trust"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "To get the loan, the knight left his fine sword with the lender as a promise.",
+        "word": "The knight handed over his silver shield as collateral until the debt was fully repaid.",
+        "sentence": "As _____ for the loan, the knight left his prized sword in the lender's safe keeping.",
+        "synonym": {
+          "cloze": "The merchant kept the horse as _____ so he would lose nothing if the loan went unpaid.",
+          "answer": "Security"
+        },
+        "antonym": {
+          "cloze": "Trusting his friend completely, the duke asked for no _____ at all before lending the gold.",
+          "answer": "Trust"
+        }
+      }
+    },
+    {
+      "word": "Mortgage",
+      "pronunciation": "MOR-gij",
+      "definition": "A long loan used to buy a house, paid back slowly over many years.",
+      "sentence_usage": "It took her parents twenty years to pay off the mortgage on their home.",
+      "synonyms": [
+        "Home loan",
+        "Property loan",
+        "Lending"
+      ],
+      "antonyms": [
+        "Savings",
+        "Cash",
+        "Ownership"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "A family borrowed gold to buy a cottage and repaid it slowly for years.",
+        "word": "The blacksmith took a mortgage to buy his forge, paying a little gold every season.",
+        "sentence": "The young couple needed a _____ to buy their cottage, repaying the gold year by year.",
+        "synonym": {
+          "cloze": "A long _____ let the smith own his forge now and pay for it slowly over many winters.",
+          "answer": "Home loan"
+        },
+        "antonym": {
+          "cloze": "Having saved for decades, the elder paid in full and needed no _____ at all.",
+          "answer": "Savings"
+        }
+      }
+    },
+    {
+      "word": "Solvent",
+      "pronunciation": "SOL-vuhnt",
+      "definition": "Having enough money to pay all that you owe.",
+      "sentence_usage": "Careful saving kept the small shop solvent through a difficult winter.",
+      "synonyms": [
+        "Debt-free",
+        "Stable",
+        "Sound"
+      ],
+      "antonyms": [
+        "Insolvent",
+        "Bankrupt",
+        "Ruined"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The trading company had enough gold to pay every sailor and supplier.",
+        "word": "Wise saving kept the shipping company solvent even when two cargoes were lost.",
+        "sentence": "Careful saving kept the trading house _____, able to pay every debt when it fell due.",
+        "synonym": {
+          "cloze": "A full money chest left the company _____ and ready to settle all its bills on time.",
+          "answer": "Stable"
+        },
+        "antonym": {
+          "cloze": "Three lost ships left the company _____, unable to pay the wages it owed.",
+          "answer": "Insolvent"
+        }
+      }
+    },
+    {
+      "word": "Insolvent",
+      "pronunciation": "in-SOL-vuhnt",
+      "definition": "Not having enough money to pay what you owe.",
+      "sentence_usage": "After the harvest failed, the farm became insolvent and could not pay its workers.",
+      "synonyms": [
+        "Bankrupt",
+        "Ruined",
+        "Broke"
+      ],
+      "antonyms": [
+        "Solvent",
+        "Wealthy",
+        "Stable"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "When every ship sank, the company could not pay the gold it owed.",
+        "word": "The lost fleet left the company insolvent, unable to repay a single waiting lender.",
+        "sentence": "With its ships at the bottom of the sea, the company was _____ and could pay no one.",
+        "synonym": {
+          "cloze": "Three disasters left the trading house _____, owing far more gold than it held.",
+          "answer": "Bankrupt"
+        },
+        "antonym": {
+          "cloze": "A lucky cargo of pearls made the firm _____ once more, with gold to spare.",
+          "answer": "Solvent"
+        }
+      }
+    },
+    {
+      "word": "Default",
+      "pronunciation": "di-FAWLT",
+      "definition": "To fail to pay back money that you owe as promised.",
+      "sentence_usage": "If a country cannot repay its loans, it may default on its debt.",
+      "synonyms": [
+        "Fail to pay",
+        "Welsh",
+        "Renege"
+      ],
+      "antonyms": [
+        "Repay",
+        "Settle",
+        "Honour"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The reckless lord could not find the gold and broke his promise to repay.",
+        "word": "When the lord chose to default, the angry lenders refused to trust him ever again.",
+        "sentence": "If the spendthrift lord cannot find the gold, he will _____ and break his solemn promise.",
+        "synonym": {
+          "cloze": "A ruler who must _____ on a loan will struggle to borrow a single coin again.",
+          "answer": "Fail to pay"
+        },
+        "antonym": {
+          "cloze": "The honourable knight would never _____; he sold his lands to repay every coin.",
+          "answer": "Repay"
+        }
+      }
+    },
+    {
+      "word": "Bond",
+      "pronunciation": "BOND",
+      "definition": "A paper promise from a government or company to repay borrowed money with interest.",
+      "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
+      "synonyms": [
+        "IOU",
+        "Loan note",
+        "Certificate"
+      ],
+      "antonyms": [
+        "Debt",
+        "Share",
+        "Loan"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The king sold written promises, swearing to repay each one with extra gold.",
+        "word": "Each royal bond promised its holder ten coins back for every nine they lent the crown.",
+        "sentence": "The king sold a _____ to every merchant, promising to repay the gold with interest.",
+        "synonym": {
+          "cloze": "A royal _____ was simply a written vow to pay the lender back after seven harvests.",
+          "answer": "IOU"
+        },
+        "antonym": {
+          "cloze": "Rather than a written promise, the trader demanded a heavy _____ he could carry away.",
+          "answer": "Debt"
+        }
+      }
+    },
+    {
+      "word": "Liability",
+      "pronunciation": "ly-uh-BIL-i-tee",
+      "definition": "Money that a person, business or country owes; a debt or responsibility to pay.",
+      "sentence_usage": "The factory's biggest liability was the huge loan it still had to repay.",
+      "synonyms": [
+        "Debt",
+        "Obligation",
+        "Burden"
+      ],
+      "antonyms": [
+        "Asset",
+        "Benefit",
+        "Advantage"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The unpaid loan hung over the company like a heavy weight to be settled.",
+        "word": "The shipyard's greatest liability was the gold it still owed for its newest vessel.",
+        "sentence": "The company's largest _____ was the loan it had to repay before the next voyage set sail.",
+        "synonym": {
+          "cloze": "Every unpaid debt was a _____ the captain had to clear before he could sail again.",
+          "answer": "Obligation"
+        },
+        "antonym": {
+          "cloze": "The new ship was no burden but a valuable _____ that earned gold on every voyage.",
+          "answer": "Asset"
+        }
+      }
+    },
+    {
+      "word": "Asset",
+      "pronunciation": "AS-et",
+      "definition": "Something valuable that a person or business owns, such as money, land or goods.",
+      "sentence_usage": "The company's most valuable asset was the busy harbour it owned.",
+      "synonyms": [
+        "Possession",
+        "Resource",
+        "Holding"
+      ],
+      "antonyms": [
+        "Liability",
+        "Debt",
+        "Burden"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The company's fleet of fine ships was worth a fortune.",
+        "word": "The trading house counted its fastest ship as its most precious asset.",
+        "sentence": "The company's greatest _____ was its swift ship, worth more than all its gold combined.",
+        "synonym": {
+          "cloze": "A well-stocked warehouse was a valuable _____ the merchant could sell in hard times.",
+          "answer": "Possession"
+        },
+        "antonym": {
+          "cloze": "The leaking, debt-ridden boat was a _____ rather than anything worth owning.",
+          "answer": "Liability"
+        }
+      }
+    },
+    {
+      "word": "Sovereign",
+      "pronunciation": "SOV-rin",
+      "definition": "Belonging to or controlled by an independent country and its government.",
+      "sentence_usage": "The sovereign nation printed its own money and set its own taxes.",
+      "synonyms": [
+        "National",
+        "State",
+        "Governmental"
+      ],
+      "antonyms": [
+        "Private",
+        "Personal",
+        "Foreign"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The free kingdom answered to no other ruler and made its own laws.",
+        "word": "The sovereign realm minted its own coins and bowed to no foreign king.",
+        "sentence": "The _____ kingdom set its own taxes and answered to no ruler beyond its borders.",
+        "synonym": {
+          "cloze": "As a _____ state, the realm printed its own money and decided its own laws.",
+          "answer": "National"
+        },
+        "antonym": {
+          "cloze": "The debt belonged to one merchant alone; it was a _____ matter, not the crown's.",
+          "answer": "Private"
+        }
+      }
+    },
+    {
+      "word": "Speculate",
+      "pronunciation": "SPEK-yuh-late",
+      "definition": "To buy something risky in the hope its value will rise and bring profit.",
+      "sentence_usage": "He chose to speculate by buying land he hoped would soon be worth more.",
+      "synonyms": [
+        "Gamble",
+        "Invest",
+        "Venture"
+      ],
+      "antonyms": [
+        "Save",
+        "Hoard",
+        "Secure"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "dragon",
+        "definition": "Brave adventurers bought maps to the cave, hoping the gold would make them rich.",
+        "word": "Those willing to speculate bought a share of the quest, gambling on the dragon's hoard.",
+        "sentence": "Bold treasure-hunters chose to _____, betting their savings on finding the dragon's gold.",
+        "synonym": {
+          "cloze": "To _____ on the hidden hoard, the merchant spent all his coins on a single old map.",
+          "answer": "Gamble"
+        },
+        "antonym": {
+          "cloze": "The cautious villager preferred to _____ his coins safely in a chest beneath his bed.",
+          "answer": "Save"
+        }
+      }
+    },
+    {
+      "word": "Dividend",
+      "pronunciation": "DIV-i-dend",
+      "definition": "A share of a company's profits paid to the people who own part of it.",
+      "sentence_usage": "Each year the shopkeepers received a small dividend from the trading company.",
+      "synonyms": [
+        "Payout",
+        "Share of profit",
+        "Return"
+      ],
+      "antonyms": [
+        "Loss",
+        "Debt",
+        "Charge"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "When the voyage made gold, everyone who had paid for a share got a slice.",
+        "word": "After the profitable trip, each owner collected a dividend from the captain's heavy chest.",
+        "sentence": "When the voyage made a profit, every shareholder received a generous _____ of gold coins.",
+        "synonym": {
+          "cloze": "Each part-owner of the ship waited eagerly for a _____ once the cargo was sold.",
+          "answer": "Payout"
+        },
+        "antonym": {
+          "cloze": "After the ship sank, the owners shared only a _____ instead of any profit.",
+          "answer": "Loss"
+        }
+      }
+    },
+    {
+      "word": "Repay",
+      "pronunciation": "ri-PAY",
+      "definition": "To pay back money that you have borrowed.",
+      "sentence_usage": "She promised to repay the loan in full by the end of the year.",
+      "synonyms": [
+        "Pay back",
+        "Settle",
+        "Refund"
+      ],
+      "antonyms": [
+        "Borrow",
+        "Owe",
+        "Default"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "The honest knight returned every coin he had borrowed from the lord.",
+        "word": "The knight worked all year to repay the gold, returning each coin he had borrowed.",
+        "sentence": "The honourable knight toiled all winter to _____ every gold coin the lord had lent him.",
+        "synonym": {
+          "cloze": "A trustworthy borrower will always _____ the loan, returning more than was lent.",
+          "answer": "Pay back"
+        },
+        "antonym": {
+          "cloze": "Rather than repay, the dishonest squire would simply _____ yet more gold from another lord.",
+          "answer": "Borrow"
+        }
+      }
+    },
+    {
+      "word": "Pledge",
+      "pronunciation": "PLEJ",
+      "definition": "To promise firmly to do something, such as to pay or give money.",
+      "sentence_usage": "The merchants pledged to give gold towards building the new bridge.",
+      "synonyms": [
+        "Promise",
+        "Vow",
+        "Guarantee"
+      ],
+      "antonyms": [
+        "Refuse",
+        "Deny",
+        "Withhold"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "Each soldier swore solemnly to defend the banner to the very end.",
+        "word": "The captain made the troops pledge their loyalty before the great march began.",
+        "sentence": "Before the march, every soldier had to _____ their loyalty to the captain and the banner.",
+        "synonym": {
+          "cloze": "The brave knights would _____ to defend the bridge, swearing the oath with raised swords.",
+          "answer": "Promise"
+        },
+        "antonym": {
+          "cloze": "The frightened recruit chose to _____ his help and slip quietly away in the night.",
+          "answer": "Refuse"
+        }
+      }
+    },
+    {
+      "word": "Investor",
+      "pronunciation": "in-VES-ter",
+      "definition": "A person who puts money into a business or scheme hoping to make more money.",
+      "sentence_usage": "An investor gave the inventor gold to build his new machine.",
+      "synonyms": [
+        "Backer",
+        "Financier",
+        "Shareholder"
+      ],
+      "antonyms": [
+        "Spender",
+        "Saver",
+        "Borrower"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "A wealthy backer paid for the voyage, expecting a share of the profits.",
+        "word": "Each investor handed the captain gold and waited for a slice of the cargo's sale.",
+        "sentence": "A hopeful _____ paid for half the voyage, expecting a fat share of the spice profits.",
+        "synonym": {
+          "cloze": "The clever _____ funded three ships, certain that at least one would return with gold.",
+          "answer": "Backer"
+        },
+        "antonym": {
+          "cloze": "Unlike an _____, the cautious miser simply hid his coins and risked nothing at all.",
+          "answer": "Saver"
+        }
+      }
+    },
+    {
+      "word": "Recession",
+      "pronunciation": "ri-SESH-uhn",
+      "definition": "A time when a country's trade and business shrink and many people lose work.",
+      "sentence_usage": "During the recession, shops closed and many workers lost their jobs.",
+      "synonyms": [
+        "Downturn",
+        "Slump",
+        "Decline"
+      ],
+      "antonyms": [
+        "Boom",
+        "Growth",
+        "Recovery"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "When trade dried up, workshops closed and the busy markets emptied.",
+        "word": "The long recession left the kingdom's markets silent and its workshops cold and dark.",
+        "sentence": "During the bitter _____, half the market stalls closed and many traders lost their work.",
+        "synonym": {
+          "cloze": "A deep _____ gripped the realm, and even the busiest blacksmith ran out of orders.",
+          "answer": "Downturn"
+        },
+        "antonym": {
+          "cloze": "A roaring _____ followed, with new shops opening and gold flowing through every street.",
+          "answer": "Boom"
+        }
+      }
+    },
+    {
+      "word": "Fluctuate",
+      "pronunciation": "FLUK-choo-ate",
+      "definition": "To rise and fall again and again in an irregular way.",
+      "sentence_usage": "The price of gold can fluctuate from one day to the next.",
+      "synonyms": [
+        "Vary",
+        "Waver",
+        "Swing"
+      ],
+      "antonyms": [
+        "Steady",
+        "Stabilise",
+        "Fix"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "sea-journey",
+        "definition": "The price of spices rose and fell each time a new ship reached the port.",
+        "word": "Spice prices fluctuate so wildly that a fortune one week is worth far less the next.",
+        "sentence": "Spice prices _____ so sharply that traders never knew what their cargo would fetch.",
+        "synonym": {
+          "cloze": "Prices at the harbour _____ daily, climbing high one morning and sinking by dusk.",
+          "answer": "Vary"
+        },
+        "antonym": {
+          "cloze": "After the new law, prices held firm and ceased to _____ from day to day.",
+          "answer": "Steady"
+        }
+      }
+    },
+    {
+      "word": "Instalment",
+      "pronunciation": "in-STAWL-muhnt",
+      "definition": "One of several smaller payments made over time to pay off a larger sum.",
+      "sentence_usage": "She paid for the bicycle in monthly instalments instead of all at once.",
+      "synonyms": [
+        "Payment",
+        "Part-payment",
+        "Portion"
+      ],
+      "antonyms": [
+        "Lump sum",
+        "Total",
+        "Whole"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "castle",
+        "definition": "Unable to pay all at once, the smith repaid the loan a little each month.",
+        "word": "The blacksmith cleared his debt in small instalments, paying a few coins every season.",
+        "sentence": "The smith repaid the loan in a small _____ each month rather than all in one go.",
+        "synonym": {
+          "cloze": "Each _____ chipped a little more off the debt until at last it was fully cleared.",
+          "answer": "Payment"
+        },
+        "antonym": {
+          "cloze": "The wealthy lord paid the whole sum as a single _____, owing nothing afterwards.",
+          "answer": "Lump sum"
+        }
+      }
+    },
+    {
+      "word": "Digital",
+      "pronunciation": "DIJ-i-tuhl",
+      "definition": "Stored or sent as electronic information, rather than as physical objects.",
+      "sentence_usage": "These days much of our money is digital, kept as numbers on a computer.",
+      "synonyms": [
+        "Electronic",
+        "Computerised",
+        "Virtual"
+      ],
+      "antonyms": [
+        "Physical",
+        "Analogue",
+        "Manual"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The school's new enchanted slates stored every record as glowing symbols.",
+        "word": "The digital ledger glowed on a magic screen, holding the school's accounts as numbers.",
+        "sentence": "The school kept its records on a _____ slate that glowed with numbers instead of ink.",
+        "synonym": {
+          "cloze": "A clever _____ charm stored each pupil's marks as light, needing no paper at all.",
+          "answer": "Electronic"
+        },
+        "antonym": {
+          "cloze": "The oldest master still trusted a _____ book of paper over any glowing screen.",
+          "answer": "Physical"
+        }
+      }
+    },
+    {
+      "word": "Electronic",
+      "pronunciation": "i-lek-TRON-ik",
+      "definition": "Working by means of electricity and tiny circuits, like computers and phones.",
+      "sentence_usage": "An electronic payment moves money in seconds without any coins changing hands.",
+      "synonyms": [
+        "Computerised",
+        "Digital",
+        "Automated"
+      ],
+      "antonyms": [
+        "Manual",
+        "Mechanical",
+        "Physical"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Sparks of magic carried messages instantly between the school's towers.",
+        "word": "An electronic spark sent the payment between towers faster than any messenger could run.",
+        "sentence": "An _____ pulse of magic carried the gold's value between towers in the blink of an eye.",
+        "synonym": {
+          "cloze": "The _____ ledger updated itself the instant a single coin was spent anywhere in the school.",
+          "answer": "Digital"
+        },
+        "antonym": {
+          "cloze": "The old porter preferred a _____ cart and his own two hands to any sparking machine.",
+          "answer": "Manual"
+        }
+      }
+    },
+    {
+      "word": "Encrypt",
+      "pronunciation": "in-KRIPT",
+      "definition": "To turn information into a secret code so that only the right person can read it.",
+      "sentence_usage": "Banks encrypt your details so thieves cannot read them online.",
+      "synonyms": [
+        "Encode",
+        "Scramble",
+        "Cipher"
+      ],
+      "antonyms": [
+        "Decode",
+        "Reveal",
+        "Decipher"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The wizards hid their secret messages in a code only they could unlock.",
+        "word": "The headmaster would encrypt each spell so rival schools could never steal it.",
+        "sentence": "The wise wizard chose to _____ the secret spell so no rival could ever read it.",
+        "synonym": {
+          "cloze": "To keep the recipe safe, the potions master would _____ it into a tangle of symbols.",
+          "answer": "Encode"
+        },
+        "antonym": {
+          "cloze": "Only the trusted few could _____ the message and read the hidden words within.",
+          "answer": "Decode"
+        }
+      }
+    },
+    {
+      "word": "Decentralised",
+      "pronunciation": "dee-SEN-truh-lyzd",
+      "definition": "Spread out among many people or places rather than controlled from one centre.",
+      "sentence_usage": "A decentralised system has no single boss; everyone keeps a copy of the records.",
+      "synonyms": [
+        "Distributed",
+        "Spread-out",
+        "Dispersed"
+      ],
+      "antonyms": [
+        "Centralised",
+        "Concentrated",
+        "Unified"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "Instead of one queen, every fairy kept a copy of the glittering record.",
+        "word": "The decentralised glen had no single ruler; each fairy shared in every decision.",
+        "sentence": "In the _____ glen no single fairy was in charge; every one kept the same record.",
+        "synonym": {
+          "cloze": "Their _____ magic was shared among all the fairies, with no one tiny ruler in command.",
+          "answer": "Distributed"
+        },
+        "antonym": {
+          "cloze": "A _____ kingdom keeps all its power with one mighty queen in a single palace.",
+          "answer": "Centralised"
+        }
+      }
+    },
+    {
+      "word": "Transfer",
+      "pronunciation": "trans-FER",
+      "definition": "To move money or something else from one place or person to another.",
+      "sentence_usage": "With one tap she could transfer money to her friend across the country.",
+      "synonyms": [
+        "Move",
+        "Send",
+        "Shift"
+      ],
+      "antonyms": [
+        "Keep",
+        "Retain",
+        "Withhold"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "A flick of a wand sent the sparkling coins straight to another fairy's purse.",
+        "word": "The fairy could transfer her glowing coins to a friend across the glen in an instant.",
+        "sentence": "With a wave of her wand, the fairy could _____ her coins to a friend far across the glen.",
+        "synonym": {
+          "cloze": "A single sparkle let the pixies _____ gold dust from one tiny purse to another.",
+          "answer": "Move"
+        },
+        "antonym": {
+          "cloze": "The selfish goblin chose to _____ every coin and never send a single one away.",
+          "answer": "Keep"
+        }
+      }
+    },
+    {
+      "word": "Virtual",
+      "pronunciation": "VER-choo-uhl",
+      "definition": "Existing on a computer rather than in the real, physical world.",
+      "sentence_usage": "In the game she spent virtual coins that did not exist outside the screen.",
+      "synonyms": [
+        "Online",
+        "Digital",
+        "Simulated"
+      ],
+      "antonyms": [
+        "Real",
+        "Physical",
+        "Actual"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "Inside the enchanted mirror, pupils explored a world that was not truly there.",
+        "word": "The virtual classroom inside the mirror felt real, yet no brick of it truly existed.",
+        "sentence": "Inside the magic mirror lay a _____ library that felt real but held no real books.",
+        "synonym": {
+          "cloze": "The pupils met in a _____ hall conjured by magic, with no true walls at all.",
+          "answer": "Online"
+        },
+        "antonym": {
+          "cloze": "Stepping outside, they returned to the _____ stone courtyard they could actually touch.",
+          "answer": "Real"
+        }
+      }
+    },
+    {
+      "word": "Verify",
+      "pronunciation": "VERR-i-fy",
+      "definition": "To check carefully that something is true or correct.",
+      "sentence_usage": "The bank must verify who you are before letting you take out money.",
+      "synonyms": [
+        "Confirm",
+        "Check",
+        "Prove"
+      ],
+      "antonyms": [
+        "Doubt",
+        "Question",
+        "Dispute"
+      ],
+      "usefulness_rating": 5,
+      "word_type": "Verb",
+      "themed_quest": {
+        "theme": "army-battle",
+        "definition": "The gate guards checked each soldier's badge before letting them pass.",
+        "word": "The captain would verify every order, checking the seal before the troops would march.",
+        "sentence": "The watchful guard had to _____ each soldier's badge before opening the heavy gate.",
+        "synonym": {
+          "cloze": "Scouts were sent to _____ the report before the general trusted a word of it.",
+          "answer": "Confirm"
+        },
+        "antonym": {
+          "cloze": "A careless sentry would _____ the stranger's story rather than check it at all.",
+          "answer": "Doubt"
+        }
+      }
+    },
+    {
+      "word": "Anonymous",
+      "pronunciation": "uh-NON-i-muhs",
+      "definition": "Done or given by someone whose name is not known.",
+      "sentence_usage": "An anonymous donor gave gold to the school but never said who they were.",
+      "synonyms": [
+        "Nameless",
+        "Unnamed",
+        "Unknown"
+      ],
+      "antonyms": [
+        "Named",
+        "Identified",
+        "Known"
+      ],
+      "usefulness_rating": 4,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "A mystery gift of gold dust appeared with no fairy's name attached.",
+        "word": "The anonymous gift of glittering coins arrived at dawn with no note and no name.",
+        "sentence": "An _____ fairy left a purse of gold dust by the toadstool, telling no one her name.",
+        "synonym": {
+          "cloze": "The kind but _____ giver slipped away before anyone could ask who she was.",
+          "answer": "Nameless"
+        },
+        "antonym": {
+          "cloze": "The proud donor was anything but _____, carving her name across the gift in gold.",
+          "answer": "Named"
+        }
+      }
+    },
+    {
+      "word": "Cryptocurrency",
+      "pronunciation": "KRIP-toh-kuh-ruhn-see",
+      "definition": "A kind of digital money that uses codes and computers instead of banks.",
+      "sentence_usage": "Bitcoin was the first famous cryptocurrency, kept safe by clever codes.",
+      "synonyms": [
+        "Digital money",
+        "Virtual coin",
+        "Crypto"
+      ],
+      "antonyms": [
+        "Cash",
+        "Coin",
+        "Banknote"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Noun",
+      "themed_quest": {
+        "theme": "wizard-school",
+        "definition": "The pupils invented coins of pure code that needed no bank to guard them.",
+        "word": "Their cryptocurrency was protected by riddles so tricky no thief could ever unlock it.",
+        "sentence": "The clever pupils created a _____ made only of code, guarded by unbreakable riddles.",
+        "synonym": {
+          "cloze": "A new _____ flickered on the screens, money made of numbers rather than metal.",
+          "answer": "Digital money"
+        },
+        "antonym": {
+          "cloze": "The old wizard distrusted code and kept his wealth as solid _____ in a wooden chest.",
+          "answer": "Coin"
+        }
+      }
+    },
+    {
+      "word": "Intangible",
+      "pronunciation": "in-TAN-ji-buhl",
+      "definition": "Unable to be touched or held; existing only as an idea or as information.",
+      "sentence_usage": "Digital money is intangible, since you can never hold a single coin of it.",
+      "synonyms": [
+        "Untouchable",
+        "Immaterial",
+        "Abstract"
+      ],
+      "antonyms": [
+        "Tangible",
+        "Solid",
+        "Physical"
+      ],
+      "usefulness_rating": 3,
+      "word_type": "Adjective",
+      "themed_quest": {
+        "theme": "fairies",
+        "definition": "The fairies' wealth was a glow of light that could never be held in a hand.",
+        "word": "Their intangible riches shimmered in the air, real yet impossible to grasp.",
+        "sentence": "The fairies' _____ gold was only a shimmer of light no hand could ever close around.",
+        "synonym": {
+          "cloze": "Trust between the pixies was _____, a feeling worth more than any coin yet held by none.",
+          "answer": "Immaterial"
+        },
+        "antonym": {
+          "cloze": "Unlike their glowing magic, the goblin's hoard was solid, heavy and quite _____.",
+          "answer": "Tangible"
+        }
+      }
     }
   ]
 }

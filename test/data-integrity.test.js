@@ -198,6 +198,7 @@ test('content collections expose their expected non-empty array', () => {
     'technology.json': 'technology',
     'fables.json': 'fables',
     'history.json': 'articles',
+    'money.json': 'money',
     'proverbs.json': 'collections',
     'stories.json': 'stories',
     'comics.json': 'comics',
@@ -256,6 +257,7 @@ test('every science/tech article is renderable and only references real vocabula
   const collections = [
     { file: 'space.json', key: 'space', subtitleField: 'region' },
     { file: 'technology.json', key: 'technology', subtitleField: 'era' },
+    { file: 'money.json', key: 'money', subtitleField: 'era' },
   ];
   for (const { file, key, subtitleField } of collections) {
     const articles = readJSON(file)[key];
