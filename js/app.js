@@ -2348,7 +2348,7 @@ import {
       renderStoryLibrary();
       showStoryScreen(storyLibraryScreen);
       storyLibraryScreen.scrollTop = storyLibraryScroll;
-      storyCloseBtn.focus();
+      storyCloseBtn.focus({ preventScroll: true });
     });
 
     storyQuizBtn.addEventListener('click', function () {
@@ -2632,7 +2632,7 @@ import {
       renderLibrary();
       showScreen(libraryScreen);
       libraryScreen.scrollTop = libraryScroll;
-      closeBtn.focus();
+      closeBtn.focus({ preventScroll: true });
     });
 
     quizBtn.addEventListener('click', function () {
@@ -3068,7 +3068,7 @@ import {
       renderProverbsLibrary();
       showProverbsScreen(proverbsLibraryScreen);
       proverbsLibraryScreen.scrollTop = proverbsLibraryScroll;
-      proverbsLibraryBackBtn.focus();
+      proverbsLibraryBackBtn.focus({ preventScroll: true });
     });
 
     proverbsLibraryBackBtn.addEventListener('click', function () {
