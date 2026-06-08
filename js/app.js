@@ -2347,8 +2347,9 @@ import {
       hideGloss();
       renderStoryLibrary();
       showStoryScreen(storyLibraryScreen);
-      storyLibraryScreen.scrollTop = storyLibraryScroll;
+      // Focusing the top control can scroll the panel up, so restore scroll last.
       storyCloseBtn.focus();
+      storyLibraryScreen.scrollTop = storyLibraryScroll;
     });
 
     storyQuizBtn.addEventListener('click', function () {
@@ -2631,8 +2632,9 @@ import {
       hideGloss();
       renderLibrary();
       showScreen(libraryScreen);
-      libraryScreen.scrollTop = libraryScroll;
+      // Focusing the top control can scroll the panel up, so restore scroll last.
       closeBtn.focus();
+      libraryScreen.scrollTop = libraryScroll;
     });
 
     quizBtn.addEventListener('click', function () {
@@ -3067,8 +3069,9 @@ import {
       hideGloss();
       renderProverbsLibrary();
       showProverbsScreen(proverbsLibraryScreen);
-      proverbsLibraryScreen.scrollTop = proverbsLibraryScroll;
+      // Focusing the top control can scroll the panel up, so restore scroll last.
       proverbsLibraryBackBtn.focus();
+      proverbsLibraryScreen.scrollTop = proverbsLibraryScroll;
     });
 
     proverbsLibraryBackBtn.addEventListener('click', function () {
@@ -5825,6 +5828,8 @@ import {
     comicCloseBtn.addEventListener('click', closeComicOverlay);
     comicViewerCloseBtn.addEventListener('click', closeComicOverlay);
     comicBackBtn.addEventListener('click', function () {
+      // showComicLibrary() focuses the top control (which can scroll the panel
+      // up), so restore scroll after it.
       showComicLibrary();
       comicLibraryScreen.scrollTop = comicLibraryScroll;
     });
