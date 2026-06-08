@@ -2164,6 +2164,7 @@ import {
   var storyProgress = {};
   var currentStory = null;
   var storyTTSBar = null;
+  var storyLibraryScroll = 0;  // remember story list scroll while reading a story
 
   var storyLaunchBtn     = document.getElementById('story-launch-btn');
   var storyOverlay       = document.getElementById('story-overlay');
@@ -2287,6 +2288,7 @@ import {
       storyReadingImageFigure.classList.add('hidden');
     }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
+    storyLibraryScroll = storyLibraryScreen.scrollTop;
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
     storyBackBtn.focus();
@@ -2345,6 +2347,7 @@ import {
       hideGloss();
       renderStoryLibrary();
       showStoryScreen(storyLibraryScreen);
+      storyLibraryScreen.scrollTop = storyLibraryScroll;
       storyCloseBtn.focus();
     });
 
@@ -2423,6 +2426,7 @@ import {
     var progress = {};
     var current  = null;
     var ttsBar   = null;
+    var libraryScroll = 0;  // remember list scroll position while reading an item
 
     function el(suffix) { return document.getElementById(prefix + '-' + suffix); }
 
@@ -2569,6 +2573,7 @@ import {
         }
       }
 
+      libraryScroll = libraryScreen.scrollTop;
       showScreen(readingScreen);
       resetReadingScroll(scrollContent, scrollFill, readingScreen);
       backBtn.focus();
@@ -2626,6 +2631,7 @@ import {
       hideGloss();
       renderLibrary();
       showScreen(libraryScreen);
+      libraryScreen.scrollTop = libraryScroll;
       closeBtn.focus();
     });
 
@@ -2764,6 +2770,7 @@ import {
   var proverbCollections = [];
   var proverbProgress = {};
   var currentCollection = null;
+  var proverbsLibraryScroll = 0;  // remember proverbs list scroll while reading a collection
   var proverbsTTSBar = null;
 
   var proverbsLaunchBtn        = document.getElementById('proverbs-launch-btn');
@@ -3001,6 +3008,7 @@ import {
     proverbsReadingTitle.textContent = collection.title;
     renderProverbCards(proverbsListCards, collection.proverbs);
     renderReadingBody(proverbsReadingBody, collection.paragraphs, collectionWordObjects(collection), proverbsTTSBar);
+    proverbsLibraryScroll = proverbsLibraryScreen.scrollTop;
     showProverbsScreen(proverbsReadingScreen);
     resetReadingScroll(proverbsScrollContent, proverbsScrollFill, proverbsReadingScreen);
     proverbsBackBtn.focus();
@@ -3059,6 +3067,7 @@ import {
       hideGloss();
       renderProverbsLibrary();
       showProverbsScreen(proverbsLibraryScreen);
+      proverbsLibraryScreen.scrollTop = proverbsLibraryScroll;
       proverbsLibraryBackBtn.focus();
     });
 
@@ -5476,6 +5485,7 @@ import {
   // The authored stories live in data/comics.json (loaded in initComicMode).
   // enhanceComicStory() below derives each panel's visual treatment.
   var COMIC_STORIES = [];
+  var comicLibraryScroll = 0;  // remember comic list scroll while viewing a comic
 
   function enhanceComicStory(story) {
     var hasPatience = story.words.some(function (w) { return String(w.word).toLowerCase() === 'patience'; });
@@ -5769,6 +5779,7 @@ import {
   function showComic(idx) {
     var story = COMIC_STORIES[idx];
     renderComicPanels(story.panels, story.words);
+    comicLibraryScroll = comicLibraryScreen.scrollTop;
     comicLibraryScreen.classList.add('hidden');
     comicViewingScreen.classList.remove('hidden');
     comicScrollContent.scrollTop = 0;
@@ -5815,6 +5826,7 @@ import {
     comicViewerCloseBtn.addEventListener('click', closeComicOverlay);
     comicBackBtn.addEventListener('click', function () {
       showComicLibrary();
+      comicLibraryScreen.scrollTop = comicLibraryScroll;
     });
     comicScrollContent.addEventListener('scroll', function () {
       var max = comicScrollContent.scrollHeight - comicScrollContent.clientHeight;
