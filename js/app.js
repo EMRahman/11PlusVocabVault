@@ -577,6 +577,7 @@ import {
         initSpaceMode();
         initTechMode();
         initForcesMode();
+        initStreetSmartsMode();
         initFableMode();
         initProverbsMode();
         initDailyNews();
@@ -2747,6 +2748,15 @@ import {
       dataFile: 'data/forces.json', dataKey: 'forces',
       returnTo: 'forces', itemNoun: 'article', subtitleField: 'element',
       loadingMessage: 'Forces of nature are still loading — try again in a moment.'
+    });
+  }
+
+  function initStreetSmartsMode() {
+    createReadingMode({
+      prefix: 'street', progressKey: 'vocabVault_streetSmartsProgress',
+      dataFile: 'data/street-smarts.json', dataKey: 'streetSmarts',
+      returnTo: 'street', itemNoun: 'article', subtitleField: 'topic',
+      loadingMessage: 'Street Smarts articles are still loading — try again in a moment.'
     });
   }
 

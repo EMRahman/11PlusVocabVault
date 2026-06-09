@@ -71,7 +71,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 
 | File | Lines | Role | Loaded by |
 |------|------:|------|-----------|
-| `app.js` | ~5.9k | **Orchestrator.** One big module-scoped closure holding 19 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
+| `app.js` | ~5.9k | **Orchestrator.** One big module-scoped closure holding 20 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, street smarts, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
@@ -93,6 +93,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `insects.json` | `insects` | `fables.json` | `fables` |
 | `space.json` | `space` | `technology.json` | `technology` |
 | `money.json` | `money` | `forces.json` | `forces` |
+| `street-smarts.json` | `streetSmarts` | | |
 | `word-positions.json` | `positions`,… (Word Universe layout) | `animal-constellations.json` | `segments` |
 | `word-explorer.json` | `mood`,`etymology`,… | | |
 
@@ -207,8 +208,13 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
 moved to `data/comics.json`; History/Animals/Insects/Fable/Space/Tech/Money unified into
 `createReadingMode`; daily-news/weakest-words logic extracted to tested
 `selection.js`. Recent additions: Money reading mode (16 articles), Space and Tech
-reading modes with Wikimedia Commons images. Continue this arc — extract
-self-contained modes into their own modules and back them with tests.
+reading modes with Wikimedia Commons images, and a Street Smarts reading mode
+(33 life-skills articles: money, scams/online safety, psychology, power &
+influence, truth & trust, game theory, tech) reusing only existing vocabulary.
+Street Smarts articles currently ship without `image` fields (the factory hides
+the figure when `item.image` is absent) — images are a deliberate follow-up.
+Continue this arc — extract self-contained modes into their own modules and back
+them with tests.
 
 Words can now carry multiple senses via an optional `meanings[]` array (helper:
 `js/meanings.js`; pipeline: `scripts/build-meanings-prompts.js` +
