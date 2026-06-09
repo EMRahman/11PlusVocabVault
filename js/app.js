@@ -2173,6 +2173,8 @@ import {
   var storyReadingScreen = document.getElementById('story-reading-screen');
   var storyCloseBtn      = document.getElementById('story-close-btn');
   var storyBackBtn       = document.getElementById('story-back-btn');
+  var storyPrevBtn       = document.getElementById('story-prev-btn');
+  var storyNextBtn       = document.getElementById('story-next-btn');
   var storyList          = document.getElementById('story-list');
   var storyReadingEmoji  = document.getElementById('story-reading-emoji');
   var storyReadingTitle  = document.getElementById('story-reading-title');
@@ -2264,6 +2266,12 @@ import {
     screenEl.classList.remove('hidden');
   }
 
+  function updateStoryNavBtns() {
+    var idx = stories.indexOf(currentStory);
+    storyPrevBtn.disabled = (idx <= 0);
+    storyNextBtn.disabled = (idx < 0 || idx >= stories.length - 1);
+  }
+
   function openStory(story) {
     currentStory = story;
     var prog = storyProgress[story.id] || {};
@@ -2292,6 +2300,7 @@ import {
     storyLibraryScroll = storyLibraryScreen.scrollTop;
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
+    updateStoryNavBtns();
     storyBackBtn.focus();
   }
 
@@ -2350,6 +2359,16 @@ import {
       showStoryScreen(storyLibraryScreen);
       storyLibraryScreen.scrollTop = storyLibraryScroll;
       storyCloseBtn.focus({ preventScroll: true });
+    });
+
+    storyPrevBtn.addEventListener('click', function () {
+      var idx = stories.indexOf(currentStory);
+      if (idx > 0) { ttsStop(); openStory(stories[idx - 1]); }
+    });
+
+    storyNextBtn.addEventListener('click', function () {
+      var idx = stories.indexOf(currentStory);
+      if (idx >= 0 && idx < stories.length - 1) { ttsStop(); openStory(stories[idx + 1]); }
     });
 
     storyQuizBtn.addEventListener('click', function () {
@@ -2437,6 +2456,8 @@ import {
     var readingScreen = el('reading-screen');
     var closeBtn      = el('close-btn');
     var backBtn       = el('back-btn');
+    var prevBtn       = el('prev-btn');
+    var nextBtn       = el('next-btn');
     var listEl        = el('list');
     var readingEmoji  = el('reading-emoji');
     var readingTitle  = el('reading-title');
@@ -2535,6 +2556,12 @@ import {
       screenEl.classList.remove('hidden');
     }
 
+    function updateNavBtns() {
+      var idx = items.indexOf(current);
+      prevBtn.disabled = (idx <= 0);
+      nextBtn.disabled = (idx < 0 || idx >= items.length - 1);
+    }
+
     function openItem(item) {
       current = item;
       var prog = progress[item.id] || {};
@@ -2577,6 +2604,7 @@ import {
       libraryScroll = libraryScreen.scrollTop;
       showScreen(readingScreen);
       resetReadingScroll(scrollContent, scrollFill, readingScreen);
+      updateNavBtns();
       backBtn.focus();
     }
 
@@ -2634,6 +2662,16 @@ import {
       showScreen(libraryScreen);
       libraryScreen.scrollTop = libraryScroll;
       closeBtn.focus({ preventScroll: true });
+    });
+
+    prevBtn.addEventListener('click', function () {
+      var idx = items.indexOf(current);
+      if (idx > 0) { ttsStop(); openItem(items[idx - 1]); }
+    });
+
+    nextBtn.addEventListener('click', function () {
+      var idx = items.indexOf(current);
+      if (idx >= 0 && idx < items.length - 1) { ttsStop(); openItem(items[idx + 1]); }
     });
 
     quizBtn.addEventListener('click', function () {

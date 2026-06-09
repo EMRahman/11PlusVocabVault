@@ -1957,6 +1957,43 @@ footer {
 .reading-sticky-head .quiz-screen-actions {
   padding: 0;
   margin-bottom: 0.45rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reading-nav-group {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.reading-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.reading-nav-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.reading-nav-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.reading-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 /* Reading panel — the quiz-panel itself no longer scrolls; the inner
