@@ -6,14 +6,28 @@
       "emoji": "🏷️",
       "topic": "Money",
       "blurb": "One toy costs a few pounds, another costs fifty. The secret behind every price tag is a tug-of-war between how rare a thing is and how badly people want it.",
-      "words": ["Scarcity", "Surplus", "Abundant", "Commodity", "Merchant", "Fluctuate", "Economy", "Eager"],
+      "words": [
+        "Scarcity",
+        "Surplus",
+        "Abundant",
+        "Commodity",
+        "Merchant",
+        "Fluctuate",
+        "Economy",
+        "Eager"
+      ],
       "paragraphs": [
         "Have you ever wondered why one toy costs a few pounds while another costs fifty? The price of almost anything comes down to two forces pulling against each other: how much of it there is, and how many people want it. Understanding this tug-of-war is one of the most useful secrets in the whole economy.",
         "When something is rare, we say there is scarcity — there simply isn't enough to go around. If only ten copies of a football sticker exist and hundreds of children are eager to own it, the price shoots up. But when a shop has a surplus, far more than anyone needs, the price drops so the merchant can clear the shelves.",
         "Think about strawberries. In summer they are abundant, growing in every field, so they are cheap. In winter they are scarce and must travel from far away, so the same little punnet costs much more. The strawberry hasn't changed — only how easy it is to find has.",
         "Prices also fluctuate from day to day, rising and falling as supply and demand shift. A commodity like oil or wheat can change price every single hour as buyers and sellers around the world make their deals.",
         "So next time something seems oddly expensive, ask yourself: is it rare, or is everyone suddenly wanting it? Once you can spot scarcity and surplus, you will never look at a price tag the same way again."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Supply-and-demand.svg?width=500",
+        "caption": "A supply-and-demand diagram — when supply shrinks or demand grows, prices rise; when supply overflows, prices fall",
+        "credit": "Paweł Zdziarski & Astarot / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "the-trick-of-free",
@@ -21,14 +35,27 @@
       "emoji": "🎮",
       "topic": "Money",
       "blurb": "If a game is free, how does the company make money? Spoiler: someone is always paying — and it might be you, in ways you barely notice.",
-      "words": ["Lucrative", "Revenue", "Consumerism", "Subtle", "Coax", "Virtual", "Persistent"],
+      "words": [
+        "Lucrative",
+        "Revenue",
+        "Consumerism",
+        "Subtle",
+        "Coax",
+        "Virtual",
+        "Persistent"
+      ],
       "paragraphs": [
         "When a game or an app says it is free, a clever question to ask is: then how does the company make money? Nothing that takes hundreds of people years to build is truly free. Someone, somewhere, is earning revenue from you — just not in a way you might notice at first.",
         "Often the money comes from adverts, or from selling tiny extras: a virtual sword, a special outfit, a handful of shiny coins. Each purchase seems small, but added together they are hugely lucrative for the company. A game can earn far more from these little buys than it ever could by charging once at the start.",
         "These games are designed to coax you, gently and steadily, toward spending. A pop-up appears just as you run out of lives. A timer says a deal ends soon. The nudges are subtle, so you barely realise you are being steered.",
         "This is the engine of consumerism — the constant, persistent encouragement to buy more, even things we did not know we wanted. Knowing the trick does not mean you can never spend; it means you spend on purpose, not by accident.",
         "So enjoy your free games — but remember the golden rule. If you are not paying with money, the company has found another way to profit. Spotting how keeps you in charge of your own pocket."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Smartphone.jpg?width=500",
+        "caption": "A smartphone — apps that are free to download earn their money through adverts and in-app purchases you barely notice",
+        "credit": "彭嘉傑 / Wikimedia Commons / CC BY 2.5"
+      }
     },
     {
       "id": "wants-vs-needs",
@@ -36,14 +63,27 @@
       "emoji": "⚖️",
       "topic": "Money",
       "blurb": "Every pound you spend on one thing is a pound you can't spend on another. Learning to tell a want from a need is how money stops vanishing.",
-      "words": ["Frugal", "Thrifty", "Sufficient", "Allocate", "Prudent", "Forfeit", "Contemplate"],
+      "words": [
+        "Frugal",
+        "Thrifty",
+        "Sufficient",
+        "Allocate",
+        "Prudent",
+        "Forfeit",
+        "Contemplate"
+      ],
       "paragraphs": [
         "Every time you spend money, you are really making a choice — and choosing one thing means giving up another. If you spend your birthday money on sweets, you forfeit the book you might have bought instead. Grown-ups call this hidden cost the price of the path not taken.",
         "That is why it helps to contemplate the difference between a want and a need before you buy. A need is something you truly cannot do without; a want is something that would simply be nice. Both are fine — but mixing them up is how money disappears fast.",
         "A prudent spender pauses and asks: do I have sufficient money left for the things I actually need? Being thrifty does not mean being mean or never having fun. It means being thoughtful, so your money stretches further.",
         "One handy trick is to allocate your money into little jars or pots: some to spend now, some to save, some to give away. When each pound has a job, you are far less likely to waste it on something you will forget by next week.",
         "Living a frugal life is not about having less joy — it is about making sure the money you have goes to what matters most to you. The best spenders are not the ones with the most money, but the ones who think before they reach for their purse."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Piggy_bank.jpg?width=500",
+        "caption": "A piggy bank — putting money aside instead of spending it now is the first step in knowing a want from a need",
+        "credit": "Reaedna / Wikimedia Commons / CC BY 4.0"
+      }
     },
     {
       "id": "too-good-to-be-true",
@@ -51,14 +91,27 @@
       "emoji": "🤥",
       "topic": "Money",
       "blurb": "A brand-new phone for a tenth of the price? Exciting — but a wise shopper knows that when a deal seems perfect, there is usually a catch hiding nearby.",
-      "words": ["Suspicious", "Sceptical", "Cautious", "Counterfeit", "Plausible", "Warily", "Negotiate"],
+      "words": [
+        "Suspicious",
+        "Sceptical",
+        "Cautious",
+        "Counterfeit",
+        "Plausible",
+        "Warily",
+        "Negotiate"
+      ],
       "paragraphs": [
         "Imagine someone offers to sell you the newest phone for a tenth of its normal price. Exciting? Maybe. But a wise shopper feels a little suspicious whenever a deal seems far too good. There is usually a catch hiding just out of sight.",
         "The safest habit is to stay sceptical — to not simply believe a claim because you want it to be true. Ask questions. Why is it so cheap? Is it broken, stolen, or counterfeit — a fake made to look like the real thing? A genuine bargain can survive a few careful questions; a trick usually cannot.",
         "Approach surprising offers warily, the way you would step onto ice you are not sure about. Being cautious costs you nothing, while rushing in can cost you everything in your pocket. Real sellers do not mind you taking your time.",
         "Sometimes a deal really is fair, and it is perfectly sensible to negotiate — to politely talk the price down or ask what is included. An honest seller will explain; a dishonest one will push you to decide right now, before you can think.",
         "Here is a saying worth remembering for life: if something sounds too good to be true, it probably is. That single, plausible-sounding sentence has saved careful people a great deal of money — and disappointment."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Magnifying_glass.jpg?width=500",
+        "caption": "A magnifying glass — the right tool for closely examining any offer that sounds suspiciously perfect",
+        "credit": "Tomomarusan / Wikimedia Commons / CC BY 2.5"
+      }
     },
     {
       "id": "the-magic-of-waiting",
@@ -66,14 +119,27 @@
       "emoji": "🌱",
       "topic": "Money",
       "blurb": "Real magic: money can grow all by itself, just by waiting. Meet the quiet power of saving — and the snowball that builds when you don't touch it.",
-      "words": ["Interest", "Accumulate", "Thrifty", "Prosperity", "Dwindle", "Frugal", "Impatient"],
+      "words": [
+        "Interest",
+        "Accumulate",
+        "Thrifty",
+        "Prosperity",
+        "Dwindle",
+        "Frugal",
+        "Impatient"
+      ],
       "paragraphs": [
         "Here is a kind of magic that is completely real: money can grow all by itself, simply by waiting. When you put savings in a bank, the bank pays you a little extra called interest — a reward for letting your money rest there.",
         "The clever part is that next year you earn interest on your interest too. Slowly, the amount begins to accumulate, building on itself like a snowball rolling downhill. Wait long enough and a small, frugal saving can grow into a surprisingly large one.",
         "The enemy of this magic is being impatient. If you keep dipping in and spending, your savings dwindle away before they ever get the chance to grow. Patience, here, is quite literally worth money.",
         "This is why thrifty people who start saving young often end up far better off than those who earn much more but spend it all. It is not about being rich today; it is about giving small amounts of money the time to work for you.",
         "Real prosperity rarely arrives in a sudden burst. It usually creeps up quietly, one saved coin at a time, rewarding the person who was willing to wait."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Compound_interest.svg?width=500",
+        "caption": "Compound interest over time — a small saving grows faster and faster as earned interest then earns interest of its own",
+        "credit": "Autopilot / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "youve-won-online-scams",
@@ -81,14 +147,28 @@
       "emoji": "🎁",
       "topic": "Staying Safe",
       "blurb": "A message says you've won a prize you never entered for. That jolt of excitement is exactly what a scammer is fishing for — here's how the hook works.",
-      "words": ["Nefarious", "Suspicious", "Coax", "Illicit", "Anonymous", "Verify", "Lucrative", "Notorious"],
+      "words": [
+        "Nefarious",
+        "Suspicious",
+        "Coax",
+        "Illicit",
+        "Anonymous",
+        "Verify",
+        "Lucrative",
+        "Notorious"
+      ],
       "paragraphs": [
         "A message flashes up: Congratulations, you've won a brand-new games console! Just tap here to claim it. Your heart leaps — until you remember you never entered any competition. That flash of excitement is exactly what a scammer is hoping for.",
         "Online scams are a nefarious trick: they dangle something wonderful to coax you into handing over money, passwords, or personal details. The prize does not exist. The whole illicit scheme is built to fool you in the heat of the moment.",
         "Scammers love to hide. Many work behind anonymous accounts and fake names, which is why this kind of crime can be so lucrative for them and so hard to stop. The notorious ones send the same trick to millions of people, knowing a few will fall for it.",
         "The cure is simple: become suspicious of any message that promises something for nothing. Real prizes do not arrive out of nowhere, and real companies never ask for your password in a pop-up.",
         "Before you ever tap, verify. Show the message to a trusted grown-up and ask, does this look real to you? A scam relies on you acting alone and acting fast. Slowing down and checking is how you beat it every single time."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/PhishingTrustedBank.png?width=500",
+        "caption": "A phishing email pretending to be from a trusted bank — designed to steal your passwords and personal details",
+        "credit": "Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "the-hurry-trick",
@@ -96,14 +176,27 @@
       "emoji": "⏰",
       "topic": "Staying Safe",
       "blurb": "Only two left! Offer ends now! When someone pushes you to hurry, that pressure is a trick — and the pause is your secret weapon.",
-      "words": ["Frantic", "Haste", "Hastily", "Compel", "Coax", "Cautious", "Rational"],
+      "words": [
+        "Frantic",
+        "Haste",
+        "Hastily",
+        "Compel",
+        "Coax",
+        "Cautious",
+        "Rational"
+      ],
       "paragraphs": [
         "If you ever notice someone trying to make you hurry, pause. That rushed, frantic feeling is one of the oldest tricks there is. Scammers and pushy sellers know that people make worse choices in a hurry than they ever would calmly.",
         "Only one left! Offer ends in two minutes! Decide now! These messages are designed to compel you to act in haste, before your sensible, rational mind has a chance to catch up. Hurry is the enemy of good thinking.",
         "When we act hastily, we skip the questions we would normally ask. A trickster uses that gap. By making you panic about missing out, they coax you past your own good sense and straight toward a yes.",
         "A cautious person has a secret weapon: the pause. Real, fair offers can wait five minutes while you think or ask someone you trust. Anything that cannot survive a short pause was probably never a good deal.",
         "So make this your rule: the more someone rushes you, the more slowly you should go. Calm beats clever pressure nearly every time."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wooden_hourglass_3.jpg?width=500",
+        "caption": "Sand running through a wooden hourglass — artificial time pressure is a classic tactic to rush you past your own good sense",
+        "credit": "S. Sepp / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "whos-really-on-the-other-side",
@@ -111,14 +204,28 @@
       "emoji": "🎭",
       "topic": "Staying Safe",
       "blurb": "Online, a friendly avatar can hide anyone. Most people are kind — but you can't see who's behind the screen, so here's how to stay safe.",
-      "words": ["Anonymous", "Avatar", "Concealed", "Furtive", "Suspicious", "Evasive", "Vigilant", "Virtual"],
+      "words": [
+        "Anonymous",
+        "Avatar",
+        "Concealed",
+        "Furtive",
+        "Suspicious",
+        "Evasive",
+        "Vigilant",
+        "Virtual"
+      ],
       "paragraphs": [
         "In the virtual world of games and chats, you can talk to people from all over the planet. But there is something important to remember: you usually cannot see who is really on the other side of the screen.",
         "A friendly avatar and a cheerful username can hide anything. The person behind an anonymous account might be a child your age — or a grown-up whose true self is carefully concealed. Most people online are perfectly kind, but you simply cannot tell for certain.",
         "Stay a little suspicious if a stranger online becomes too friendly too fast, asks for secrets, or wants to keep your chats hidden from your parents. Anyone who is furtive — sneaky about who they are — or evasive when you ask normal questions is waving a quiet warning flag.",
         "Being vigilant does not mean being scared of everyone. It means keeping a sensible guard up: never share your real address, school, or photos with people you only know online, no matter how nice they seem.",
         "The rule that keeps you safest is the easiest one: if a person online ever makes you feel uneasy, or asks you to keep a secret, tell a trusted adult straight away. A true friend would never ask you to hide them."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Comedy_and_tragedy_masks_without_background.svg?width=500",
+        "caption": "Comedy and tragedy masks — online, anyone can wear a different face and hide who they truly are",
+        "credit": "Booyabazooka / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "secrets-and-strong-passwords",
@@ -126,14 +233,27 @@
       "emoji": "🔐",
       "topic": "Staying Safe",
       "blurb": "A password is a digital key to your own front door. Here's why a strong one matters, and how clever websites keep your secrets even from themselves.",
-      "words": ["Encrypt", "Digital", "Verify", "Concealed", "Robust", "Vigilant", "Electronic"],
+      "words": [
+        "Encrypt",
+        "Digital",
+        "Verify",
+        "Concealed",
+        "Robust",
+        "Vigilant",
+        "Electronic"
+      ],
       "paragraphs": [
         "A password is a digital key. Just as you would not hand the key to your front door to a stranger, you should keep your passwords carefully concealed — even from your closest friends.",
         "A weak password is easy to guess: the word password, the numbers 1234, or your own name. A robust one is long, mixes letters and numbers, and means nothing to anyone but you. The stronger the key, the harder it is for anyone to break in.",
         "Behind the scenes, good websites encrypt your password — they scramble it into a secret code so that even the website itself cannot read it plainly. This clever electronic trick keeps your details safe even if someone tries to steal them.",
         "Stay vigilant about where you type your passwords. Real websites do not email or message you asking for them. If something asks you to verify your password through a link you did not expect, stop and check with a grown-up first.",
         "Treat every password like a secret only you should know. Use different ones for different places, and never let anyone watch you type. A good digital lock is one of the simplest ways to keep your online life your own."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Padlock.svg?width=500",
+        "caption": "A padlock — the symbol of a strong password, the digital lock guarding your personal information",
+        "credit": "AJ Ashton / Wikimedia Commons / CC0 (Public Domain)"
+      }
     },
     {
       "id": "fakes-and-counterfeits",
@@ -141,14 +261,27 @@
       "emoji": "🪙",
       "topic": "Staying Safe",
       "blurb": "For centuries, forgers have copied money and goods to fool buyers. Here's how experts spot a fake — and why a too-cheap bargain is often a forgery.",
-      "words": ["Counterfeit", "Mint", "Bullion", "Scrutinise", "Verify", "Illicit", "Durable"],
+      "words": [
+        "Counterfeit",
+        "Mint",
+        "Bullion",
+        "Scrutinise",
+        "Verify",
+        "Illicit",
+        "Durable"
+      ],
       "paragraphs": [
         "Some things in the world are fakes — copies made to look exactly like the real thing so that someone can sell them for real money. A counterfeit might be a fake banknote, a fake pair of trainers, or a toy that only pretends to be the famous brand.",
         "For hundreds of years, the people who make money at a mint have fought a quiet war against forgers. Real coins were once made of precious bullion — solid gold or silver — and cheats would try to copy them using cheap metal painted to shine.",
         "How do experts catch a fake? They scrutinise it closely, hunting for tiny mistakes: a blurry logo, a wrong colour, stitching that falls apart. A genuine product is usually durable and carefully made, while a counterfeit often feels flimsy the moment you look hard.",
         "Selling fakes is an illicit business — against the law — because it tricks people into paying for something that is not what they were promised. A deal that seems amazingly cheap for a famous brand is often too cheap to be honest.",
         "The lesson travels everywhere: before you trust that something is the real thing, take a moment to verify it. Look closely, ask where it came from, and remember that genuine quality rarely sells for almost nothing."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Old_coins.jpg?width=500",
+        "caption": "Old coins — for centuries, forgers have copied valuable currency, passing cheap imitations off as the real thing",
+        "credit": "Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "snap-judgements",
@@ -156,14 +289,27 @@
       "emoji": "⚡",
       "topic": "Psychology",
       "blurb": "Your brain decides if it likes someone in under a second — long before you've spoken. Useful once, but often wrong. Here's why first impressions fool us.",
-      "words": ["Perception", "Bias", "Subjective", "Misinterpret", "Hastily", "Rational", "Astute"],
+      "words": [
+        "Perception",
+        "Bias",
+        "Subjective",
+        "Misinterpret",
+        "Hastily",
+        "Rational",
+        "Astute"
+      ],
       "paragraphs": [
         "Your brain is astonishingly fast. In less than a second of meeting someone, it has already formed an opinion — friendly or scary, clever or silly. This snap perception happens before you have even spoken a word to them.",
         "These instant judgements were useful long ago, when deciding quickly could keep our ancestors safe. But today they often lead us astray. We judge people hastily by their clothes, their accent, or their face, and we are wrong more often than we think.",
         "A snap judgement is deeply subjective — it comes from inside you, shaped by your mood and your past, not from real facts about the other person. This tilt is called a bias, and everyone has them, even the kindest and most astute people.",
         "The danger is that we misinterpret someone the moment we meet them, then stop noticing all the ways they prove us wrong. The quiet child we decided was unfriendly might simply be shy.",
         "The rational move is to treat first impressions as a rough guess, not the final answer. Give people a real chance to show who they are. Some of the best friends you will ever make would fail a one-second test."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Cognitive_bias_codex_en.svg?width=500",
+        "caption": "The cognitive bias codex maps 188 ways our thinking can go wrong — snap judgements are just one of many",
+        "credit": "John Manoogian III / Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "everyone-is-doing-it",
@@ -171,14 +317,27 @@
       "emoji": "🐑",
       "topic": "Psychology",
       "blurb": "Why do we want something more the moment it's selling out, or when everyone seems to agree? Meet the powerful pull of the crowd — and how to resist it.",
-      "words": ["Consensus", "Collective", "Scarcity", "Coax", "Compel", "Passive", "Sceptical"],
+      "words": [
+        "Consensus",
+        "Collective",
+        "Scarcity",
+        "Coax",
+        "Compel",
+        "Passive",
+        "Sceptical"
+      ],
       "paragraphs": [
         "Why do we want a toy more the moment we hear it is selling out? Why does a video seem better once millions have liked it? Our minds take powerful shortcuts, and clever people have learned exactly how to use them.",
         "One of the strongest is the pull of the crowd. When there seems to be a consensus — when everyone appears to agree — we feel a quiet pressure to agree too. This collective tug can coax us into wanting things we would never have chosen alone.",
         "Another trick is scarcity. Only three left! Offer ends today! The fear of missing out can compel us to grab something fast, simply because it might run out. Sellers create that fear on purpose.",
         "These tricks work best on a passive mind — one that goes along without questioning. The cure is to become a little sceptical and ask yourself: do I actually want this, or do I just want it because others seem to?",
         "Noticing the trick takes away most of its power. Everyone doing something does not make it right, or wise, or good for you. The most interesting people in history were often the ones brave enough not to follow the crowd."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Flock_of_sheep.jpg?width=500",
+        "caption": "A research flock of sheep — the pull of the crowd is powerful, but every individual is capable of thinking for themselves",
+        "credit": "Keith Weller / USDA / Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "saying-no-to-peer-pressure",
@@ -186,14 +345,27 @@
       "emoji": "🙅",
       "topic": "Psychology",
       "blurb": "When friends push you to do something you know is wrong, a calm, firm no is one of the bravest things a person can say. Here's how to find it.",
-      "words": ["Defiant", "Resolute", "Steadfast", "Adamant", "Reluctant", "Courageous", "Conviction"],
+      "words": [
+        "Defiant",
+        "Resolute",
+        "Steadfast",
+        "Adamant",
+        "Reluctant",
+        "Courageous",
+        "Conviction"
+      ],
       "paragraphs": [
         "Sometimes friends want you to do something you know is wrong, unkind, or unsafe. Maybe they laugh, maybe they call you boring, maybe they say everyone else is doing it. That squeeze is called peer pressure, and even brave people feel it.",
         "Saying no does not mean being defiant or rude. You can be perfectly friendly and still be resolute — firm and steady about your choice. A calm I would rather not is often far stronger than a shout.",
         "The trick is to decide who you are before the moment arrives. If you are already adamant that you will not do certain things, you will not have to wrestle with the choice while everyone is watching. Your mind is made up in advance.",
         "It is normal to feel reluctant, even a little wobbly, when friends push. Standing steadfast in that moment is genuinely courageous — sometimes more courageous than anything that wins a medal. Quiet bravery rarely gets applause.",
         "Real friends respect a no. Anyone who keeps pushing after you have answered is testing your conviction, not valuing your friendship. Holding your ground today builds a strength you will be glad of for the rest of your life."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/No_sign.svg?width=500",
+        "caption": "A prohibition sign — sometimes the most courageous and powerful word you can say is a calm, clear 'no'",
+        "credit": "Fibonacci / Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "reading-faces-and-feelings",
@@ -201,14 +373,28 @@
       "emoji": "😊",
       "topic": "Psychology",
       "blurb": "People tell you how they feel without saying a word — in a slumped shoulder or a glance away. Learning to read feelings makes you a kinder, wiser friend.",
-      "words": ["Perception", "Insight", "Compassion", "Sentiment", "Subtle", "Despondent", "Agitated", "Jovial"],
+      "words": [
+        "Perception",
+        "Insight",
+        "Compassion",
+        "Sentiment",
+        "Subtle",
+        "Despondent",
+        "Agitated",
+        "Jovial"
+      ],
       "paragraphs": [
         "People are always telling you how they feel — but often without saying a single word. A slumped shoulder, a forced smile, a quick glance away: faces and bodies leak feelings constantly, if you learn to look.",
         "Sharpening this perception is a real skill. A friend might say I'm fine in a jovial, cheerful voice while their eyes look despondent and low. The words and the feeling do not match, and the subtle truth is hidden in the gap between them.",
         "When you notice someone is agitated — restless, fidgety, snappy — that is your cue to slow down and be gentle. Reacting with compassion instead of annoyance can completely change how a tense moment unfolds.",
         "Reading feelings gives you insight into what people actually need, not just what they say. A person who has gone quiet may not want advice at all; they may simply want someone to sit beside them.",
         "This kind of understanding makes you a better friend, a calmer sibling, and a kinder human being. When you tune in to the unspoken sentiment around you, you start to see the whole person — not just their words."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Emotions.png?width=500",
+        "caption": "Emotion diagrams — learning to read the feelings behind a face makes you a kinder and more perceptive friend",
+        "credit": "Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "we-believe-what-we-want-to",
@@ -216,14 +402,27 @@
       "emoji": "🧠",
       "topic": "Psychology",
       "blurb": "Here's a strange truth: we don't simply believe what's true — we believe what we want to be true. Our wishes quietly bend how we see the world.",
-      "words": ["Bias", "Delusion", "Subjective", "Objective", "Rational", "Sceptical", "Impartial"],
+      "words": [
+        "Bias",
+        "Delusion",
+        "Subjective",
+        "Objective",
+        "Rational",
+        "Sceptical",
+        "Impartial"
+      ],
       "paragraphs": [
         "Here is a strange truth about the human mind: we do not simply believe what is true. Very often, we believe what we want to be true. Our wishes quietly bend the way we see the world.",
         "Suppose you are sure a new film will be brilliant. You will notice every good review and brush aside every bad one. This tilt is called a bias, and it makes our thinking subjective — coloured by hope rather than by cold, objective facts.",
         "Taken too far, this becomes a kind of delusion: believing something so firmly that no evidence can shift it. People can convince themselves of almost anything if they want it badly enough.",
         "The cure is to be a little sceptical of your own first thoughts. A rational thinker asks, what if I'm wrong? and actually goes looking for the answer, instead of only collecting reasons they are right.",
         "Trying to be impartial — weighing both sides fairly, even when one side is the one you are rooting for — is hard. But it is the difference between truly understanding the world and simply decorating it with your wishes."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/The_Thinker,_Rodin.jpg?width=500",
+        "caption": "Rodin's The Thinker at the Musée Rodin, Paris — even the deepest thinker must guard against believing only what they wish were true",
+        "credit": "Andrew Horne / Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "how-bullies-actually-work",
@@ -231,14 +430,27 @@
       "emoji": "🛡️",
       "topic": "Power & Influence",
       "blurb": "Most bullies are fishing for one thing: a reaction. Understanding what they're really after changes everything about how you handle them.",
-      "words": ["Hostile", "Belligerent", "Menacing", "Malevolent", "Truculent", "Placid", "Indignant"],
+      "words": [
+        "Hostile",
+        "Belligerent",
+        "Menacing",
+        "Malevolent",
+        "Truculent",
+        "Placid",
+        "Indignant"
+      ],
       "paragraphs": [
         "Most bullies are after one thing above all: a reaction. The tears, the fear, the flash of anger — that response is the prize they are fishing for. Understanding this changes everything about how you handle them.",
         "A bully often acts belligerent and menacing not because they are truly powerful, but because they are hoping to feel powerful by making someone else feel small. Their hostile behaviour is frequently a mask over their own unhappiness.",
         "When you react with a big, indignant outburst, you accidentally hand them exactly what they wanted. A truculent, fiery response feeds the fire. Staying outwardly placid — calm and unbothered — starves it instead.",
         "This does not mean you should suffer in silence. A malevolent bully who keeps going needs to be reported to an adult who can step in. Telling someone is not weakness; it is the smartest, strongest move you can make.",
         "Remember: a bully's power lives almost entirely in your reaction. Stay calm, walk away, and tell a trusted grown-up. Take away the reaction, and you take away most of the game."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Bullying.jpg?width=500",
+        "caption": "Bullying relies on getting a reaction — once you understand this, you can take away much of the bully's power",
+        "credit": "Dalia098 / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "standing-up-without-fighting",
@@ -246,14 +458,28 @@
       "emoji": "🤝",
       "topic": "Power & Influence",
       "blurb": "The bravest response to unfairness is rarely your fists. When one person steps forward, a whole crowd can find its courage — that's real power.",
-      "words": ["Courageous", "Valiant", "Pacify", "Quell", "Compassion", "Collective", "Passive", "Resolute"],
+      "words": [
+        "Courageous",
+        "Valiant",
+        "Pacify",
+        "Quell",
+        "Compassion",
+        "Collective",
+        "Passive",
+        "Resolute"
+      ],
       "paragraphs": [
         "Standing up to unfairness almost never means using your fists. The most courageous thing you can do is usually quieter — and far more powerful — than fighting.",
         "Imagine someone being picked on in the playground. If everyone stays passive and looks away, the bully feels free to continue. But the moment one person steps forward, something shifts. Often others find the courage to join in, and a collective stand quells the bullying far faster than any single hero could.",
         "You do not have to be loud or valiant to help. Sometimes simply standing beside the person, or saying come on, let's go, is enough to pacify a tense moment and break the spell. Including someone is a kind of quiet rescue.",
         "Showing compassion to the person being hurt — and telling a trusted adult — is real strength. Walking away from a fight while still doing the right thing takes more nerve than throwing a punch ever could.",
         "Be resolute about the kind of person you want to be: the one who notices, the one who acts, the one who refuses to just watch. A crowd that decides to be kind is one of the strongest forces on earth."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Solidarity.jpg?width=500",
+        "caption": "A concept diagram of solidarity — when one person steps forward and others join, collective action is stronger than any individual hero",
+        "credit": "Brymlee / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "words-that-calm-vs-words-that-burn",
@@ -261,14 +487,27 @@
       "emoji": "🔥",
       "topic": "Power & Influence",
       "blurb": "The very same situation gets better or worse depending only on the words you choose. Knowing which words cool a moment and which set it alight is real power.",
-      "words": ["Pacify", "Quell", "Inflammatory", "Acrimonious", "Reassuring", "Rebuke", "Tender"],
+      "words": [
+        "Pacify",
+        "Quell",
+        "Inflammatory",
+        "Acrimonious",
+        "Reassuring",
+        "Rebuke",
+        "Tender"
+      ],
       "paragraphs": [
         "Words are tiny but mighty. The very same situation can be made better or worse depending only on the words someone chooses. Learning which words calm and which words burn is a power you will use every single day.",
         "Some words are inflammatory — they pour petrol on a flame. Shouting you always ruin everything turns a small disagreement into an acrimonious, bitter row. Once those words are out, they are very hard to take back.",
         "Other words pacify and quell trouble before it grows. A gentle, reassuring I can see you're upset, let's sort it out can melt anger that a harsh reply would have doubled. Calm words are like cool water on a spark.",
         "Even when you need to rebuke someone — to tell them they did wrong — you can choose tender, respectful words over cruel ones. Being honest and being kind are not opposites; the best people manage both at once.",
         "Before you speak in a heated moment, take one breath and ask: will these words calm this or burn it? That single second of thought has saved countless friendships."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Speech_bubble.svg?width=500",
+        "caption": "A speech bubble — every word you choose can either cool a tense moment down or pour fuel onto a flame",
+        "credit": "Amada44 / Wikimedia Commons / Public Domain"
+      }
     },
     {
       "id": "leading-without-bossing",
@@ -276,14 +515,27 @@
       "emoji": "⭐",
       "topic": "Power & Influence",
       "blurb": "A bossy person gives orders; a real leader makes others want to follow. Influence can't be grabbed — it's earned. Here's the difference that changes everything.",
-      "words": ["Benevolent", "Magnanimous", "Figurehead", "Hierarchy", "Eminent", "Prominent", "Collective"],
+      "words": [
+        "Benevolent",
+        "Magnanimous",
+        "Figurehead",
+        "Hierarchy",
+        "Eminent",
+        "Prominent",
+        "Collective"
+      ],
       "paragraphs": [
         "There is a big difference between a boss and a leader. A bossy person orders people around and is often disliked. A true leader makes others want to follow — and that is a far greater power.",
         "In any group there is a kind of hierarchy, with some people more prominent or eminent than others. But the person with the loudest voice or the fanciest title is not always the real leader. Sometimes the title-holder is only a figurehead, while someone quieter actually inspires the group.",
         "Real leaders are usually benevolent — they genuinely care about the people they lead. They listen, they share credit, and they are magnanimous in victory, lifting others up rather than showing off. People work hardest for someone who clearly wants them to succeed.",
         "The secret is that influence is given, not grabbed. You cannot force people to respect you, but you can earn it by being fair, brave, and kind. A collective that trusts its leader will follow them through almost anything.",
         "So if you ever want to lead — a team, a club, a group of friends — do not try to boss. Try to serve. The people who help everyone else shine are the ones others most want to follow."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Chess_pieces.jpg?width=500",
+        "caption": "Chess pieces ready for play — a real leader places each person where they can do their best, not just where the leader wants them",
+        "credit": "Wikimedia Commons / CC BY 2.0"
+      }
     },
     {
       "id": "reputation-slow-to-build",
@@ -291,14 +543,27 @@
       "emoji": "🏅",
       "topic": "Power & Influence",
       "blurb": "Your reputation is the story that walks into the room ahead of you. It takes years to build and can be lost in an afternoon — which is why small choices matter.",
-      "words": ["Notorious", "Eminent", "Venerable", "Credible", "Legacy", "Virtuous", "Prominent"],
+      "words": [
+        "Notorious",
+        "Eminent",
+        "Venerable",
+        "Credible",
+        "Legacy",
+        "Virtuous",
+        "Prominent"
+      ],
       "paragraphs": [
         "Your reputation is what people expect of you before you even arrive — the story that walks into the room ahead of you. It is built slowly, one action at a time, and it can be one of your most valuable possessions.",
         "A person known for being honest and kind becomes credible: people believe them and want to work with them. Over many years this can grow into something venerable and respected — even eminent. But here is the catch that surprises people.",
         "A reputation that took years to build can be lost in a single afternoon. One mean act, one broken promise, one lie that gets found out, and a once-prominent good name can turn notorious — known for the wrong reasons entirely.",
         "This is why small, everyday choices matter more than they seem. Each time you keep a promise or tell the truth, you add a brick to a virtuous reputation. Each time you cheat or betray, you knock several bricks down.",
         "Think of your reputation as a legacy you are building every day. Guard it the way you would guard something precious, because rebuilding a broken one is far harder than keeping a good one whole."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Gold_medal.svg?width=500",
+        "caption": "A gold medal — a reputation takes years of consistent good action to earn, and only moments of bad choices to lose",
+        "credit": "B1mbo / Wikimedia Commons / CC BY-SA 2.5"
+      }
     },
     {
       "id": "spotting-fake-news",
@@ -306,14 +571,28 @@
       "emoji": "📰",
       "topic": "Truth & Trust",
       "blurb": "Not everything online is true — some of it is invented to shock or fool you. Telling real news from fake is one of the most important skills of your life.",
-      "words": ["Credible", "Plausible", "Allege", "Refute", "Scrutinise", "Verify", "Sceptical", "Bias"],
+      "words": [
+        "Credible",
+        "Plausible",
+        "Allege",
+        "Refute",
+        "Scrutinise",
+        "Verify",
+        "Sceptical",
+        "Bias"
+      ],
       "paragraphs": [
         "Not everything you read online is true. Some stories are mistakes; some are invented on purpose to shock you, fool you, or make you angry. Learning to tell real news from fake news is one of the most important skills of your whole life.",
         "Start by being a little sceptical. A wild headline that makes you gasp is exactly the kind that deserves a second look. Just because a story sounds plausible — believable — does not mean it actually happened.",
         "Next, scrutinise the source. Is it a credible newspaper or website with a name you recognise, or an anonymous account you have never heard of? A trustworthy source will say where its facts came from, so you can verify them yourself.",
         "Watch out for bias too — a slant that pushes one side and hides the other. A fair report explains what different people allege and lets you decide. A fake one only wants you to feel a certain way.",
         "The golden habit is simple: before you believe or share, check. See if other trusted sources report the same thing, or whether they refute it. A few seconds of checking stops you from spreading something untrue — and from being fooled yourself."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Fake_news.jpg?width=500",
+        "caption": "A fake-news headline — checking whether a trustworthy source reports the same story is the fastest way to spot a lie",
+        "credit": "Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "facts-vs-opinions",
@@ -321,14 +600,27 @@
       "emoji": "💭",
       "topic": "Truth & Trust",
       "blurb": "Some statements can be tested and proved; others are just how someone feels. Telling these two apart keeps your thinking clear and stops you being fooled.",
-      "words": ["Objective", "Subjective", "Empirical", "Impartial", "Analytical", "Tangible", "Sentiment"],
+      "words": [
+        "Objective",
+        "Subjective",
+        "Empirical",
+        "Impartial",
+        "Analytical",
+        "Tangible",
+        "Sentiment"
+      ],
       "paragraphs": [
         "Some statements can be tested and proved; others are simply how someone feels. Telling these two apart — facts from opinions — keeps you from being fooled, and keeps your own thinking clear.",
         "A fact is objective: true whether you like it or not. Water boils at one hundred degrees. That is empirical — you can measure it, test it, and get the same tangible result every time, anywhere in the world.",
         "An opinion is subjective: it lives inside a person. Chocolate is the best flavour is not a fact, it is a sentiment — a feeling. It cannot be proved right or wrong, no matter how strongly someone believes it.",
         "The confusion starts when opinions are dressed up to sound like facts. This is the best phone ever made mixes a measurable claim with a personal feeling. An analytical thinker gently pulls the two apart and asks, which part can actually be tested?",
         "Being impartial means respecting that people are allowed different opinions, while still insisting that facts are facts. You can disagree about the best song in the world forever — but two plus two will always be four."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Scientific_method.svg?width=500",
+        "caption": "The scientific method — a reliable framework for testing claims and separating verifiable facts from personal opinion",
+        "credit": "Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "ice-cream-and-sunburn",
@@ -336,14 +628,27 @@
       "emoji": "🍦",
       "topic": "Truth & Trust",
       "blurb": "On days when more ice cream is sold, more people get sunburned. Does ice cream cause sunburn? Seeing why the answer is no makes you a sharper thinker for life.",
-      "words": ["Analogy", "Hypothesis", "Rational", "Analytical", "Empirical", "Misinterpret", "Scrutinise"],
+      "words": [
+        "Analogy",
+        "Hypothesis",
+        "Rational",
+        "Analytical",
+        "Empirical",
+        "Misinterpret",
+        "Scrutinise"
+      ],
       "paragraphs": [
         "Here is a puzzle. On days when more ice cream is sold, more people get sunburned. Does eating ice cream cause sunburn? It certainly looks connected — but the answer is no, and seeing why will make you a sharper thinker for life.",
         "The truth is that a third thing — hot, sunny weather — causes both. The sun burns skin, and the heat makes people crave ice cream. The ice cream and the sunburn rise together, but neither one causes the other. To blame the ice cream is to misinterpret the whole picture.",
         "This is one of the most common thinking traps there is: just because two things happen together does not mean one made the other happen. An analytical mind always asks whether something else might be quietly causing both.",
         "Imagine a different analogy: tall children read better than short children. Does being tall make you clever? No — older children are both taller and more practised at reading. Age is the hidden cause once again.",
         "So when someone claims A causes B, do not just nod. Be rational, scrutinise the claim, and test the hypothesis by asking, is there a third thing behind both? Real proof is empirical and careful, never just two things that happen to move together."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Correlation_examples2.svg?width=500",
+        "caption": "Scatter plots showing different kinds of correlation — two things moving together does not mean one is causing the other",
+        "credit": "DenisBoigelot / Wikimedia Commons / CC0 (Public Domain)"
+      }
     },
     {
       "id": "who-can-you-trust",
@@ -351,14 +656,27 @@
       "emoji": "🤔",
       "topic": "Truth & Trust",
       "blurb": "Trust is precious and the decision is hard. The best clue isn't what someone promises — it's what they've actually done, again and again, over time.",
-      "words": ["Credible", "Inconsistent", "Candid", "Transparent", "Sceptical", "Steadfast", "Verify"],
+      "words": [
+        "Credible",
+        "Inconsistent",
+        "Candid",
+        "Transparent",
+        "Sceptical",
+        "Steadfast",
+        "Verify"
+      ],
       "paragraphs": [
         "Trust is one of the most valuable things you can give another person — and one of the hardest decisions you will ever make. How do you know who actually deserves it?",
         "The best clue is not what someone promises, but what they have actually done. A credible person has a track record: again and again, they have kept their word. Trust is earned slowly, by being steadfast over time, not won in a single charming speech.",
         "Watch for people who are inconsistent — kind one day, cruel the next, saying one thing and doing another. Someone whose words and actions keep clashing is hard to rely on, however nice they sound in the moment.",
         "Look instead for people who are candid and transparent — honest even when the truth is awkward, with nothing sneaky hidden away. A person willing to admit a mistake is usually far more trustworthy than one who claims to be perfect.",
         "It is wise to be a little sceptical at first and let people earn your trust step by step. You can verify small things before you rely on big ones. Give trust the way you would lend something precious — carefully, and to those who have shown they will look after it."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Handshake.jpg?width=500",
+        "caption": "A handshake has long symbolised agreement — but real trust is built slowly through consistent actions, not a single gesture",
+        "credit": "Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "how-adverts-try-to-fool-you",
@@ -366,14 +684,28 @@
       "emoji": "📺",
       "topic": "Truth & Trust",
       "blurb": "Every advert has one job: to make you want something. Once you can see their tricks — the polish, the happy faces, the catchy tune — they lose their grip.",
-      "words": ["Consumerism", "Embellish", "Coax", "Subtle", "Captivating", "Sceptical", "Lucrative", "Extravagant"],
+      "words": [
+        "Consumerism",
+        "Embellish",
+        "Coax",
+        "Subtle",
+        "Captivating",
+        "Sceptical",
+        "Lucrative",
+        "Extravagant"
+      ],
       "paragraphs": [
         "Adverts are everywhere — on screens, on walls, sneaking between your videos. Every one of them has a single job: to coax you into wanting something. Once you understand their tricks, they lose much of their grip on you.",
         "Adverts almost never lie outright, but they embellish — they polish and exaggerate until an ordinary thing looks extravagant and magical. The drink looks impossibly refreshing; the toy looks ten times more fun than it really is.",
         "Many of the tricks are subtle. Happy, beautiful people, catchy music, a captivating story — none of it tells you anything about whether the product is actually good. It is all designed to attach a warm feeling to the brand.",
         "Remember that advertising is a lucrative business built on consumerism — on getting you to keep buying. The advert is not your friend giving honest advice; it is a paid message trying to open your wallet.",
         "The smart response is to stay sceptical. Enjoy a clever advert the way you enjoy a cartoon, but separate the fun from the facts. Ask, do I really want this, or do I just want the happy feeling the advert glued onto it?"
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Times_Square_at_night.jpg?width=500",
+        "caption": "Times Square at night, New York City — an ocean of adverts, each one designed to coax you into wanting something",
+        "credit": "Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "win-win-vs-win-lose",
@@ -381,14 +713,27 @@
       "emoji": "🍊",
       "topic": "Smart Choices",
       "blurb": "Two children fight over one orange — until they discover one wanted the juice and the other the peel. Often the pie doesn't have to be fought over; it can be made bigger.",
-      "words": ["Equitable", "Collective", "Negotiate", "Consensus", "Magnanimous", "Forfeit", "Pragmatic"],
+      "words": [
+        "Equitable",
+        "Collective",
+        "Negotiate",
+        "Consensus",
+        "Magnanimous",
+        "Forfeit",
+        "Pragmatic"
+      ],
       "paragraphs": [
         "Imagine two children fighting over an orange. They could grab and pull until it splits and both end up cross — or they could talk. It turns out one wanted the juice and the other wanted the peel for baking. By sharing cleverly, both could get everything they needed.",
         "This is the difference between win–lose and win–win. In win–lose, one person triumphs and the other must forfeit what they wanted. In win–win, people negotiate until both walk away happy. The pie does not have to be fought over — sometimes it can be made bigger.",
         "Reaching a win–win takes a little patience. Instead of demanding, you ask what the other person actually wants. Often it is not the same thing you want at all, and an equitable, fair answer appears that neither of you saw at first.",
         "Being pragmatic means caring more about a good result than about winning the argument. And being magnanimous — generous even when you could have grabbed more — builds a collective trust that pays you back again and again.",
         "Whenever you reach a genuine consensus where everyone is satisfied, you have not just solved one problem. You have shown people you are someone worth working with — and that reputation is worth more than any single orange."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Orange.jpg?width=500",
+        "caption": "An orange — one child wants the juice, another wants the peel; a short conversation turns a fight into a win for both",
+        "credit": "Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "the-two-friends-caught",
@@ -396,14 +741,27 @@
       "emoji": "🔒",
       "topic": "Smart Choices",
       "blurb": "A famous puzzle: two friends questioned in separate rooms, each tempted to blame the other. It reveals why trusting each other is often the cleverest choice too.",
-      "words": ["Predicament", "Rational", "Steadfast", "Collective", "Forfeit", "Adversary", "Suspicious"],
+      "words": [
+        "Predicament",
+        "Rational",
+        "Steadfast",
+        "Collective",
+        "Forfeit",
+        "Adversary",
+        "Suspicious"
+      ],
       "paragraphs": [
         "Here is a famous puzzle that grown-up thinkers love. Two friends are caught doing something wrong and questioned in separate rooms. Each is offered a deal: blame your friend and go free, while your friend takes all the punishment.",
         "It is a tricky predicament. If both stay silent and loyal, they each get only a small punishment. But if one betrays the other, the betrayer escapes and the loyal one is left to forfeit everything. Neither can see what the other is choosing.",
         "Here is the twist. Acting alone, the seemingly rational move is to betray — just in case the other does it first. Yet if both think that way, both betray, and both end up far worse off than if they had simply trusted each other.",
         "The puzzle shows something deep: when people treat each other as an adversary and grow suspicious, everyone loses. When they cooperate and stay steadfast, the collective result is better for both. Trust is not just kind — it is often the cleverest choice too.",
         "Real life is full of these moments, from sharing chores to keeping a friend's secret. The lesson is that we usually win more by working together than by trying to win at someone else's expense."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Prisoners_dilemma.svg?width=500",
+        "caption": "The prisoner's dilemma payoff matrix — when both players choose trust over self-interest, both come out ahead",
+        "credit": "cmglee / Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "why-being-kind-usually-wins",
@@ -411,14 +769,27 @@
       "emoji": "💚",
       "topic": "Smart Choices",
       "blurb": "Scientists who study how people behave found something remarkable: over the long run, being kind usually works out better than being selfish. Kindness is also clever.",
-      "words": ["Benevolent", "Magnanimous", "Compassion", "Collective", "Virtuous", "Amiable", "Tolerant"],
+      "words": [
+        "Benevolent",
+        "Magnanimous",
+        "Compassion",
+        "Collective",
+        "Virtuous",
+        "Amiable",
+        "Tolerant"
+      ],
       "paragraphs": [
         "It might sound like a fairy-tale rule, but scientists who study how people behave have found something remarkable: in the long run, being kind usually works out better than being selfish. Kindness is not only good — it is often clever.",
         "Imagine a game played over and over with the same people. The player who is benevolent and helpful builds friends who help them back. The selfish player wins once, then finds nobody willing to work with them again. Their early gain becomes a lasting loss.",
         "The winning strategy thinkers discovered was beautifully simple: start by being friendly and amiable, and then treat others the way they treat you. Be magnanimous and forgiving, but do not let yourself be walked over forever.",
         "This is why compassion and a tolerant, patient attitude are not just nice — they are powerful. People remember how you treat them, and a collective of people who trust you will lift you higher than you could ever climb alone.",
         "So the virtuous path and the smart path often turn out to be the very same road. Be kind, keep your promises, and forgive small mistakes. More often than not, the world quietly pays that kindness back."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Kindness.jpg?width=500",
+        "caption": "Boys playing with a baby goat — simple acts of kindness build lasting bonds, and in the long run pay back more than selfishness ever could",
+        "credit": "Mr Myo Minn Aung / Wikimedia Commons / CC BY-SA 4.0"
+      }
     },
     {
       "id": "splitting-the-cake-fairly",
@@ -426,14 +797,27 @@
       "emoji": "🍰",
       "topic": "Smart Choices",
       "blurb": "Two children, one cake, both want the biggest slice. One cuts, the other chooses first — and suddenly fairness happens all by itself. A clever idea for big arguments too.",
-      "words": ["Equitable", "Impartial", "Allocate", "Negotiate", "Consensus", "Sufficient", "Surplus"],
+      "words": [
+        "Equitable",
+        "Impartial",
+        "Allocate",
+        "Negotiate",
+        "Consensus",
+        "Sufficient",
+        "Surplus"
+      ],
       "paragraphs": [
         "Two children, one cake, and both want the biggest slice. How do you split it so nobody feels cheated? This little problem hides a clever idea that grown-ups use to settle far bigger arguments fairly.",
         "Here is the trick: let one child cut the cake, but let the other child choose their slice first. Suddenly the cutter has every reason to be impartial and to allocate the cake into two equal halves. If they cut greedily, they will be handed the smaller piece themselves.",
         "This is what an equitable solution looks like — one where the rules make fairness the smartest choice for everyone. Nobody has to trust the other to be nice; the clever system does the fairness for them.",
         "The same idea helps when there is a surplus to share or a chore nobody wants. Instead of arguing, people negotiate a rule that feels fair before they know who gets what. With the rule agreed in advance, reaching a consensus becomes far easier.",
         "Real fairness is rarely about everyone getting exactly the same. It is about everyone feeling they had a sufficient, honest chance. Design the rules well, and fair sharing can happen almost by itself."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Birthday_cake.jpg?width=500",
+        "caption": "A birthday cake — letting one person cut and the other choose first makes fairness happen almost automatically",
+        "credit": "Fir0002 / Wikimedia Commons / CC BY-SA 3.0"
+      }
     },
     {
       "id": "why-your-feed-shows-you-that",
@@ -441,14 +825,27 @@
       "emoji": "📱",
       "topic": "Technology",
       "blurb": "Watch one video and your screen fills with more like it. That's no accident — a hidden algorithm is choosing what keeps you watching. Here's how to take back charge.",
-      "words": ["Digital", "Virtual", "Ubiquitous", "Simulation", "Persistent", "Stimulate", "Matrix"],
+      "words": [
+        "Digital",
+        "Virtual",
+        "Ubiquitous",
+        "Simulation",
+        "Persistent",
+        "Stimulate",
+        "Matrix"
+      ],
       "paragraphs": [
         "Have you noticed how, after you watch one video about a topic, your screen suddenly fills with more just like it? That is no accident. Behind every app is a hidden set of rules, called an algorithm, deciding what to show you next.",
         "These digital systems watch what you tap, like, and linger on. From that matrix of tiny clues, they build a picture of what keeps you watching, then feed you more of it. Their goal is to stimulate your interest so you stay on the app as long as possible.",
         "It can feel almost like a clever simulation built just for you — a virtual world shaped around your habits. But remember, it is not showing you what is most true or most important. It is showing you what is most likely to keep you scrolling.",
         "These apps are now ubiquitous, woven into daily life everywhere you look. Their persistent stream is designed never to end, so there is always one more video, one more post, just out of reach.",
         "Knowing this puts you back in charge. When your feed seems to read your mind, it is really just doing maths on your behaviour. You can always decide, on purpose, to put the screen down — something no algorithm wants you to remember."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Social_network.svg?width=500",
+        "caption": "A social network icon — the invisible algorithm behind every feed is constantly mapping your habits to choose what you see next",
+        "credit": "PICOL / Wikimedia Commons / CC BY 3.0"
+      }
     },
     {
       "id": "the-internet-never-forgets",
@@ -456,14 +853,27 @@
       "emoji": "👣",
       "topic": "Technology",
       "blurb": "A message can feel as light as a spoken word — but digital things behave very differently. Once something is online, a copy may last for years. Here's why that matters.",
-      "words": ["Digital", "Circulate", "Disperse", "Ubiquitous", "Concealed", "Residual", "Vigilant"],
+      "words": [
+        "Digital",
+        "Circulate",
+        "Disperse",
+        "Ubiquitous",
+        "Concealed",
+        "Residual",
+        "Vigilant"
+      ],
       "paragraphs": [
         "When you write a message, post a photo, or send a comment online, it can feel as light and temporary as a spoken word. But digital things behave very differently from spoken ones — and forgetting this catches many people out.",
         "Once something is online, copies can circulate and disperse far beyond your control. A photo you delete may already have been saved or shared by someone else. The original is gone, yet a residual trail lingers, sometimes for years.",
         "Screens are ubiquitous, and so are the records they leave behind. Even things you thought were private or concealed can resurface at the most awkward moment — when you apply for a school, a club, or one day a job.",
         "This is why it pays to be vigilant about what you put online. A good test before posting is to ask: would I be happy for my parents, my teacher, and my future self to see this? If the answer is no, it is best not to send it.",
         "The internet is wonderful, but it has a very long memory. Treat everything you type as though it might last forever — because, somewhere, a copy just might."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Footprints_in_sand.jpg?width=500",
+        "caption": "Footprints in sand in Marinha Grande, Portugal — like a digital trail, even when they seem to disappear a copy may linger for years",
+        "credit": "Júlio Reis / Wikimedia Commons / CC BY-SA 2.5"
+      }
     },
     {
       "id": "apps-built-to-hook-you",
@@ -471,14 +881,27 @@
       "emoji": "⏳",
       "topic": "Technology",
       "blurb": "Meant to watch one video and looked up an hour later? That's not a weakness in you — many apps are carefully designed to hold you. Here's how to stay in charge.",
-      "words": ["Obsession", "Persistent", "Compel", "Stimulate", "Captivating", "Ceaseless", "Divert"],
+      "words": [
+        "Obsession",
+        "Persistent",
+        "Compel",
+        "Stimulate",
+        "Captivating",
+        "Ceaseless",
+        "Divert"
+      ],
       "paragraphs": [
         "Have you ever meant to watch one video and looked up an hour later, wondering where the time went? That is not a weakness in you. Many apps are carefully designed to be captivating — to hook you and hold you for as long as possible.",
         "Clever tricks keep you scrolling. The feed never ends, rewards arrive at surprising moments, and bright colours and sounds stimulate your brain just enough to compel one more tap. Each feature has a single job: to divert your attention back to the screen.",
         "The ceaseless stream is designed so there is never a natural place to stop. Without a clear ending, minutes slide into hours, and what felt like a quick look becomes a persistent habit that is hard to break.",
         "Left unchecked, this can grow into a genuine obsession, crowding out sleep, friends, sport, and homework. The apps are not evil — but their goal is your time, and your time is precious and limited.",
         "The way to stay in charge is to set your own limits before you start: a timer, a cut-off, a plan for what comes next. Decide when to stop in advance, so a machine designed to hook you does not get to decide for you."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Screen_time.jpg?width=500",
+        "caption": "People absorbed in their phones while walking — apps are carefully designed to hold your attention, so setting your own limits keeps you in charge",
+        "credit": "Rawpixel / Wikimedia Commons / CC0 (Public Domain)"
+      }
     },
     {
       "id": "using-ai-and-search-smartly",
@@ -486,14 +909,27 @@
       "emoji": "🤖",
       "topic": "Technology",
       "blurb": "Search engines and AI helpers are amazing — but they can be confidently wrong. To use them well, you need to stay the clever one in charge. Here's how.",
-      "words": ["Analytical", "Scrutinise", "Verify", "Sceptical", "Credible", "Interactive", "Decipher"],
+      "words": [
+        "Analytical",
+        "Scrutinise",
+        "Verify",
+        "Sceptical",
+        "Credible",
+        "Interactive",
+        "Decipher"
+      ],
       "paragraphs": [
         "Search engines and AI helpers are amazing tools. In seconds they can answer questions, explain ideas, and help you learn almost anything. But to use them well, you need to be the clever one in charge — not the machine.",
         "The first rule is that these tools can be confidently wrong. An AI can give you a smooth, believable answer that is simply not true. So stay a little sceptical, and treat what you get as a helpful first draft, not the final word.",
         "Whenever something matters, verify it. Check the claim against a credible source — a trusted website, a book, or a knowledgeable adult. An analytical thinker does not just accept an answer; they scrutinise it and ask where it came from.",
         "These tools are interactive, which is their superpower. If an answer is confusing, ask again in a different way. The better your question, the better the help — and learning to ask clearly is a skill all by itself.",
         "Think of AI and search as a brilliant but sometimes careless assistant. They can help you decipher hard ideas and explore the world, but the thinking, checking, and final judgement should always stay with you."
-      ]
+      ],
+      "image": {
+        "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Machine_learning.jpg?width=500",
+        "caption": "A machine-learning input/output diagram — AI tools are powerful helpers, but the thinking and checking must always stay with you",
+        "credit": "Wikimedia Commons / CC BY 4.0"
+      }
     }
   ]
 }
