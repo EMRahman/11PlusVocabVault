@@ -209,13 +209,16 @@ moved to `data/comics.json`; History/Animals/Insects/Fable/Space/Tech/Money unif
 `createReadingMode`; daily-news/weakest-words logic extracted to tested
 `selection.js`. Recent additions: Money reading mode (16 articles), Space and Tech
 reading modes with Wikimedia Commons images, and a Street Smarts reading mode
-(34 life-skills articles: money, scams/online safety, psychology, power &
+(28 life-skills articles: money, scams/online safety, psychology, power &
 influence, truth & trust, game theory, tech) reusing only existing vocabulary.
-Street Smarts articles now all carry `image` fields (the factory still hides the
-figure when `item.image` is absent). A realism editing pass rewrote the four most
-idealistic articles (kindness, leadership, bullies, bystanders) around incentives
-rather than moral reassurance and added `charm-is-a-tool` — keep that register
-(mechanisms over platitudes) when adding Street Smarts content.
+Street Smarts articles all carry `image` fields (the factory still hides the
+figure when `item.image` is absent). A scope decision (June 2026): the six
+interpersonal-conduct articles (kindness strategy, leadership, bullies,
+bystanders, peer pressure, reading feelings) were **removed as too contentious**
+— Street Smarts covers only verifiable mechanics (prices, scams, cognitive
+biases, media literacy, game theory, persuasion-technique recognition like
+`charm-is-a-tool`, tech). Keep new articles in that register; no conduct
+coaching, no virtue claims.
 Continue this arc — extract self-contained modes into their own modules and back
 them with tests.
 
