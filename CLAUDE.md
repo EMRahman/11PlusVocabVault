@@ -209,10 +209,13 @@ moved to `data/comics.json`; History/Animals/Insects/Fable/Space/Tech/Money unif
 `createReadingMode`; daily-news/weakest-words logic extracted to tested
 `selection.js`. Recent additions: Money reading mode (16 articles), Space and Tech
 reading modes with Wikimedia Commons images, and a Street Smarts reading mode
-(33 life-skills articles: money, scams/online safety, psychology, power &
+(34 life-skills articles: money, scams/online safety, psychology, power &
 influence, truth & trust, game theory, tech) reusing only existing vocabulary.
-Street Smarts articles currently ship without `image` fields (the factory hides
-the figure when `item.image` is absent) — images are a deliberate follow-up.
+Street Smarts articles now all carry `image` fields (the factory still hides the
+figure when `item.image` is absent). A realism editing pass rewrote the four most
+idealistic articles (kindness, leadership, bullies, bystanders) around incentives
+rather than moral reassurance and added `charm-is-a-tool` — keep that register
+(mechanisms over platitudes) when adding Street Smarts content.
 Continue this arc — extract self-contained modes into their own modules and back
 them with tests.
 
