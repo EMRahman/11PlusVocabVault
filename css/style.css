@@ -113,6 +113,136 @@ main {
 }
 
 /* ===========================
+   Home Dashboard (progress at a glance)
+   =========================== */
+.home-dashboard {
+  background: #FFFFFF;
+  background: var(--color-card);
+  border-radius: 14px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.12);
+  box-shadow: 0 4px 16px var(--color-shadow);
+  padding: 1.1rem 1.4rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.home-dashboard.hidden { display: none; }
+
+.dash-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.dash-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+}
+
+.dash-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+/* Display numerals only — labels stay Nunito to keep the identity clean. */
+.dash-num {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.dash-num--mastered { color: #16A34A; }
+.dash-num--learning { color: #B45309; }
+
+.dash-stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.dash-streak {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #B45309;
+}
+
+.dash-progress-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #EEF0FF;
+  background: var(--color-primary-light);
+  overflow: hidden;
+}
+
+.dash-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6C63FF 0%, #8B83FF 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, #8B83FF 100%);
+  transition: width 0.6s ease;
+}
+
+.dash-progress-label {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.dash-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+
+.dash-cta-row.hidden { display: none; }
+
+.dash-cta-chip {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid #6C63FF;
+  border: 2px solid var(--color-primary);
+  background: #EEF0FF;
+  background: var(--color-primary-light);
+  color: #4B44CC;
+  color: var(--color-primary-dark);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-align: left;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.dash-cta-chip:hover {
+  background: #6C63FF;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.dash-cta-chip:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .home-dashboard { padding: 0.9rem 1rem 1rem; }
+  .dash-num { font-size: 1.6rem; }
+  .dash-cta-chip { font-size: 0.82rem; }
+}
+
+/* ===========================
    Controls (Search + Filter)
    =========================== */
 .controls {

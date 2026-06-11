@@ -23,6 +23,27 @@
   </header>
 
   <main>
+    <section class="home-dashboard hidden" id="home-dashboard" aria-label="Your progress">
+      <div class="dash-top-row">
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span class="dash-num dash-num--mastered" id="dash-mastered-count">0</span>
+            <span class="dash-stat-label">mastered</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-num dash-num--learning" id="dash-learning-count">0</span>
+            <span class="dash-stat-label">learning</span>
+          </div>
+        </div>
+        <div class="dash-streak" id="dash-streak"></div>
+      </div>
+      <div class="dash-progress-track" id="dash-progress-track" role="progressbar" aria-label="Words mastered" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="dash-progress-fill" id="dash-progress-fill"></div>
+      </div>
+      <p class="dash-progress-label" id="dash-progress-label"></p>
+      <div class="dash-cta-row hidden" id="dash-cta-row"></div>
+    </section>
+
     <section class="controls">
       <div class="controls-launch">
         <div class="launch-group launch-group--filters">

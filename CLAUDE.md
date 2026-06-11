@@ -81,6 +81,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
 | `game-feedback.js` | ~90 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier`/`getBlitzTier`/`getBlitzScore` end-screen tiers & scoring). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
 | `celebrate.js` | ~150 | Visual celebration layer: pure `buildParticleSpecs` + DOM `celebrateBurst` (CSS-keyframe confetti) and `celebrateToast`. All DOM access is inside function bodies (Node-import safe); both respect `prefers-reduced-motion`. **No sound, no mascot — by owner decision.** | imported |
+| `progress-stats.js` | ~135 | Pure home-dashboard stats: `computeMasteryCounts`, `wordsReadyToMaster`, `summarizeCollection`, `effectiveStreak`/`bumpDailyStreak` (cross-game daily streak), `buildCtaSuggestions`, `estimateReadMinutes`. | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |
 | `mood-map.js`, `word-portrait.js`, `word-roots-garden.js`, `animal-constellation.js` | 260–790 each | Standalone visualisations. | **plain `<script>` (globals)** |
@@ -157,6 +158,18 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   `recordAnswerCelebrated` (toast + confetti burst on the →mastered edge) and
   exposes **that wrapper** as `window.vaultRecordAnswer` for the 3D games. New
   mastery-recording call sites should use the wrapper, not raw `recordAnswer`.
+- **Home dashboard.** `#home-dashboard` (markup in index.html, rendered by
+  `renderHomeDashboard()` in app.js) shows mastered/learning counts, a progress
+  bar, the cross-game daily streak (`vocabVault_activityStreak`, bumped via
+  `markActivityToday()` from every game's end-screen fn — "finished any game
+  today"; separate from the Daily News streak), and up to two CTA chips
+  (`buildCtaSuggestions`). Reading modes register in the `homeCollections`
+  registry (`registerHomeCollection` — the factory does this automatically;
+  stories registers bespoke; proverbs/news/comics are not registered). It
+  re-renders via `applyFilters()` (every overlay close) and on each mode's
+  data fetch. **Launch-group defaults:** Reading Tools and Games start OPEN
+  unless the user explicitly collapsed them (`launchGroupOpen` semantics:
+  explicit true/false wins, `reading-body`/`games-body` default open).
 
 ## Common tasks
 

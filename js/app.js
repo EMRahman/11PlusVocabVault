@@ -34,6 +34,14 @@ import {
 } from './quiz.js';
 import { pickPraise, buildWrongFeedback, getScoreTier, getBlitzTier, getBlitzScore } from './game-feedback.js';
 import { celebrateBurst, celebrateToast } from './celebrate.js';
+import {
+  computeMasteryCounts,
+  wordsReadyToMaster,
+  summarizeCollection,
+  effectiveStreak as effectiveStreakPure,
+  bumpDailyStreak,
+  buildCtaSuggestions,
+} from './progress-stats.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -63,6 +71,100 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   // Bridge so the Constellation Quest game module (its own file) can feed the
   // shared mastery system when the player captures words.
   window.vaultRecordAnswer = recordAnswerCelebrated;
+
+  // ── Home dashboard (progress at a glance + cross-game daily streak) ─────────
+  // Reading modes register here so the dashboard can offer "Continue <mode>"
+  // chips and (Phase 4) per-collection badges. The activity streak is separate
+  // from the Daily News streak: it means "finished any game today".
+  var ACTIVITY_STREAK_KEY = 'vocabVault_activityStreak';
+  var activityData = { streak: 0, lastDate: null };
+  var homeCollections = [];
+
+  function loadActivityStreak() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(ACTIVITY_STREAK_KEY));
+      if (parsed && typeof parsed.streak === 'number') {
+        activityData = { streak: parsed.streak, lastDate: parsed.lastDate || null };
+      }
+    } catch (e) {}
+  }
+
+  // Called from every game's end screen; only persists once per day.
+  function markActivityToday() {
+    var r = bumpDailyStreak(activityData, todayKey(), yesterdayKey());
+    if (!r.bumped) return;
+    activityData = { streak: r.streak, lastDate: r.lastDate };
+    try { localStorage.setItem(ACTIVITY_STREAK_KEY, JSON.stringify(activityData)); } catch (e) {}
+    renderHomeDashboard();
+  }
+
+  function registerHomeCollection(entry) {
+    homeCollections.push(entry);
+  }
+
+  function findHomeCollection(id) {
+    for (var i = 0; i < homeCollections.length; i++) {
+      if (homeCollections[i].id === id) return homeCollections[i];
+    }
+    return null;
+  }
+
+  function renderHomeDashboard() {
+    var dash = document.getElementById('home-dashboard');
+    if (!dash || !allWords.length) return;
+    dash.classList.remove('hidden');
+
+    var counts = computeMasteryCounts(allWords, getMasteryStatus);
+    document.getElementById('dash-mastered-count').textContent = counts.mastered;
+    document.getElementById('dash-learning-count').textContent = counts.learning;
+    document.getElementById('dash-progress-fill').style.width = counts.pct + '%';
+    document.getElementById('dash-progress-label').textContent =
+      counts.mastered + ' of ' + counts.total + ' words mastered';
+    var track = document.getElementById('dash-progress-track');
+    track.setAttribute('aria-valuemax', counts.total);
+    track.setAttribute('aria-valuenow', counts.mastered);
+
+    var streak = effectiveStreakPure(activityData, todayKey(), yesterdayKey());
+    document.getElementById('dash-streak').textContent = streak > 0
+      ? '🔥 ' + streak + '-day streak'
+      : 'Finish any game today to start a streak!';
+
+    var readyCount = wordsReadyToMaster(allWords, mastery).length;
+    var collections = homeCollections.map(function (c) {
+      var s = c.summarize();
+      return {
+        id: c.id,
+        label: c.label,
+        read: s.read,
+        total: s.total,
+        nextTitle: s.next ? s.next.title : null
+      };
+    });
+    var ctas = buildCtaSuggestions({ collections: collections, readyCount: readyCount });
+
+    var row = document.getElementById('dash-cta-row');
+    row.innerHTML = '';
+    ctas.forEach(function (cta) {
+      var chip = document.createElement('button');
+      chip.className = 'dash-cta-chip';
+      chip.type = 'button';
+      chip.textContent = cta.label;
+      if (cta.kind === 'quiz') {
+        chip.addEventListener('click', function () {
+          // Recompute on click — mastery may have moved since render.
+          var ready = shuffle(wordsReadyToMaster(allWords, mastery)).slice(0, 8);
+          if (ready.length) startScopedQuiz(ready, {});
+        });
+      } else {
+        chip.addEventListener('click', function () {
+          var entry = findHomeCollection(cta.id);
+          if (entry) entry.openNext();
+        });
+      }
+      row.appendChild(chip);
+    });
+    row.classList.toggle('hidden', ctas.length === 0);
+  }
 
   // ── Audio pronunciation ────────────────────────────────────────────────────
   function speakWord(word) {
@@ -533,6 +635,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   function init() {
     loadViewCounts();
     loadMastery();
+    loadActivityStreak();
     initTapToJump();
     loadWordData();
   }
@@ -605,6 +708,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
         wireWordUniverse(allWords);
         wireConstellationQuest(allWords);
         wireExplorerExtras(allWords);
+        renderHomeDashboard();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
@@ -846,6 +950,10 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
     updateFilterSummary();
 
     renderCards(results);
+
+    // Every overlay-close path funnels through here, so the dashboard's
+    // mastery numbers stay fresh after any game or reading session.
+    renderHomeDashboard();
   }
 
   // ── Modal ──────────────────────────────────────────────────────────────────
@@ -1727,6 +1835,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   // ── End screen ─────────────────────────────────────────────────────────────
   function showEndScreen() {
+    markActivityToday();
     quizProgressFill.style.width = '100%';
     var score = quizState.score;
     var total = quizState.questions.length;
@@ -2426,6 +2535,19 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   function initStoryMode() {
     loadStoryProgress();
 
+    // Bespoke twin of the factory's dashboard registration.
+    registerHomeCollection({
+      id: 'story',
+      label: 'Stories',
+      launchBtn: storyLaunchBtn,
+      summarize: function () { return summarizeCollection(stories, storyProgress); },
+      openNext: function () {
+        var s = summarizeCollection(stories, storyProgress);
+        openStoryOverlay();
+        if (s.next) openStory(s.next);
+      }
+    });
+
     storyLaunchBtn.addEventListener('click', openStoryOverlay);
     storyCloseBtn.addEventListener('click', closeStoryOverlay);
 
@@ -2496,6 +2618,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
             !storyLibraryScreen.classList.contains('hidden')) {
           renderStoryLibrary();
         }
+        renderHomeDashboard(); // collection totals just became known
       })
       .catch(function () { stories = []; });
   }
@@ -2729,6 +2852,21 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
     loadProgress();
     readingReturnHandlers[config.returnTo] = reopenReading;
 
+    // Home-dashboard registration: summaries recompute from the live
+    // items/progress closures, and openNext jumps straight to the first
+    // unread item ("Continue History: …" chip).
+    registerHomeCollection({
+      id: prefix,
+      label: config.label,
+      launchBtn: launchBtn,
+      summarize: function () { return summarizeCollection(items, progress); },
+      openNext: function () {
+        var s = summarizeCollection(items, progress);
+        openOverlay();
+        if (s.next) openItem(s.next);
+      }
+    });
+
     launchBtn.addEventListener('click', openOverlay);
     closeBtn.addEventListener('click', closeOverlay);
 
@@ -2799,13 +2937,14 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
             !libraryScreen.classList.contains('hidden')) {
           renderLibrary();
         }
+        renderHomeDashboard(); // collection totals just became known
       })
       .catch(function () { items = []; });
   }
 
   function initHistoryMode() {
     createReadingMode({
-      prefix: 'history', progressKey: 'vocabVault_historyProgress',
+      prefix: 'history', label: 'History', progressKey: 'vocabVault_historyProgress',
       dataFile: 'data/history.json', dataKey: 'articles',
       returnTo: 'history', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'History articles are still loading — try again in a moment.'
@@ -2814,7 +2953,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initMoneyMode() {
     createReadingMode({
-      prefix: 'money', progressKey: 'vocabVault_moneyProgress',
+      prefix: 'money', label: 'Money', progressKey: 'vocabVault_moneyProgress',
       dataFile: 'data/money.json', dataKey: 'money',
       returnTo: 'money', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'Money articles are still loading — try again in a moment.'
@@ -2823,7 +2962,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initAnimalsMode() {
     createReadingMode({
-      prefix: 'animals', progressKey: 'vocabVault_animalsProgress',
+      prefix: 'animals', label: 'Animals', progressKey: 'vocabVault_animalsProgress',
       dataFile: 'data/animals.json', dataKey: 'animals',
       returnTo: 'animals', itemNoun: 'article', subtitleField: 'habitat',
       loadingMessage: 'Animal articles are still loading — try again in a moment.'
@@ -2832,7 +2971,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initInsectsMode() {
     createReadingMode({
-      prefix: 'insects', progressKey: 'vocabVault_insectsProgress',
+      prefix: 'insects', label: 'Insects', progressKey: 'vocabVault_insectsProgress',
       dataFile: 'data/insects.json', dataKey: 'insects',
       returnTo: 'insects', itemNoun: 'article', subtitleField: 'habitat',
       loadingMessage: 'Insect articles are still loading — try again in a moment.'
@@ -2841,7 +2980,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initSpaceMode() {
     createReadingMode({
-      prefix: 'space', progressKey: 'vocabVault_spaceProgress',
+      prefix: 'space', label: 'Space', progressKey: 'vocabVault_spaceProgress',
       dataFile: 'data/space.json', dataKey: 'space',
       returnTo: 'space', itemNoun: 'article', subtitleField: 'region',
       loadingMessage: 'Space articles are still loading — try again in a moment.'
@@ -2850,7 +2989,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initTechMode() {
     createReadingMode({
-      prefix: 'tech', progressKey: 'vocabVault_technologyProgress',
+      prefix: 'tech', label: 'Inventions', progressKey: 'vocabVault_technologyProgress',
       dataFile: 'data/technology.json', dataKey: 'technology',
       returnTo: 'tech', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'Inventions are still loading — try again in a moment.'
@@ -2859,7 +2998,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initForcesMode() {
     createReadingMode({
-      prefix: 'forces', progressKey: 'vocabVault_forcesProgress',
+      prefix: 'forces', label: 'Forces of Nature', progressKey: 'vocabVault_forcesProgress',
       dataFile: 'data/forces.json', dataKey: 'forces',
       returnTo: 'forces', itemNoun: 'article', subtitleField: 'element',
       loadingMessage: 'Forces of nature are still loading — try again in a moment.'
@@ -2868,7 +3007,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initStreetSmartsMode() {
     createReadingMode({
-      prefix: 'street', progressKey: 'vocabVault_streetSmartsProgress',
+      prefix: 'street', label: 'Street Smarts', progressKey: 'vocabVault_streetSmartsProgress',
       dataFile: 'data/street-smarts.json', dataKey: 'streetSmarts',
       returnTo: 'street', itemNoun: 'article', subtitleField: 'topic',
       loadingMessage: 'Street Smarts articles are still loading — try again in a moment.'
@@ -2877,7 +3016,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   function initFableMode() {
     createReadingMode({
-      prefix: 'fable', progressKey: 'vocabVault_fableProgress',
+      prefix: 'fable', label: 'Fables', progressKey: 'vocabVault_fableProgress',
       dataFile: 'data/fables.json', dataKey: 'fables',
       returnTo: 'fable', itemNoun: 'fable', moralField: 'moral',
       loadingMessage: 'Fables are still loading — try again in a moment.'
@@ -3888,6 +4027,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   }
 
   function showDetectiveEnd() {
+    markActivityToday();
     showDetectiveScreen('end');
     var score = detectiveState.score;
     var len   = detectiveState.sessionLength;
@@ -4180,6 +4320,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   }
 
   function showScrambleEnd() {
+    markActivityToday();
     showScrambleScreen('end');
     var score = scrambleState.sessionScore;
     var len   = scrambleState.sessionLength;
@@ -4422,6 +4563,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   }
 
   function showBlitzEnd() {
+    markActivityToday();
     stopBlitzTimer();
     showBlitzScreen('end');
     var tier  = getBlitzTier(blitzState.got, blitzState.nearly, blitzState.missed);
@@ -4802,6 +4944,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   }
 
   function showSnapEnd() {
+    markActivityToday();
     stopSnapTimer();
     showSnapScreen('end');
     var score = snapState.score;
@@ -5153,6 +5296,7 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
   }
 
   function showWildEnd() {
+    markActivityToday();
     showWildScreen('end');
     var score  = wildState.score;
     var len    = wildState.sessionLength;
@@ -6055,9 +6199,15 @@ import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   (function restoreLaunchGroupState() {
     var saved = loadLaunchGroupState();
+    // Reading Tools and Games — the child-primary groups — default OPEN;
+    // Filters and Word Explorer stay opt-in. An explicit saved choice
+    // (true or false) always wins over the default.
+    var defaultOpen = { 'reading-body': true, 'games-body': true };
     document.querySelectorAll('.launch-group-toggle').forEach(function (toggle) {
       var key = toggle.getAttribute('aria-controls');
-      if (saved[key] === true) {
+      var open = saved[key] === true ||
+                 (saved[key] === undefined && defaultOpen[key] === true);
+      if (open) {
         toggle.setAttribute('aria-expanded', 'true');
         var body = document.getElementById(key);
         if (body) body.classList.remove('collapsed');
