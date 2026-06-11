@@ -1947,7 +1947,9 @@ import {
     quizProgressWrap.setAttribute('aria-valuemax', quizState.questions.length);
     showQuizScreen(quizQuestionScreen);
     renderQuestion(0);
-    quizExitBtn.focus();
+    // Focus stays on the question screen (set by renderQuestion) — focusing
+    // the Exit button here made an eager Enter right after starting (or a
+    // double-Enter from the Start button) silently quit the quiz.
   }
 
   function startQuest(worldIdx, questIdx) {
