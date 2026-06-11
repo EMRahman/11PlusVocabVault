@@ -1518,12 +1518,22 @@ footer {
    =========================== */
 .quiz-answers-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
   padding: 0.5rem 1.75rem 1.25rem;
 }
 
+/* Two columns only where there is comfortably room for them. */
+@media (min-width: 900px) {
+  .quiz-answers-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .quiz-answer-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
   border-radius: var(--radius-card);
@@ -1537,9 +1547,33 @@ footer {
   color: var(--color-text);
   text-align: left;
   line-height: 1.4;
-  min-height: 64px;
+  min-height: 56px;
   transition: border-color var(--transition), background var(--transition),
               color var(--transition), transform var(--transition);
+}
+
+.quiz-answer-num {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-answer-btn.correct .quiz-answer-num {
+  background: #A7F3D0;
+  color: #065F46;
+}
+
+.quiz-answer-btn.wrong .quiz-answer-num {
+  background: #FECACA;
+  color: #7F1D1D;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1591,6 +1625,58 @@ footer {
 .quiz-feedback.visible { opacity: 1; }
 .quiz-feedback.feedback-correct { color: #065F46; }
 .quiz-feedback.feedback-wrong   { color: #991B1B; }
+
+/* Main quiz only: feedback stacks a praise/answer line over a learning detail,
+   and the bottom padding moves to the action bar below it. (Detective/
+   Scramble/Wild reuse .quiz-feedback and keep the single-line layout.) */
+#quiz-feedback {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Learning line under a wrong answer: restates what the word means. */
+.quiz-feedback-detail {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.quiz-feedback-detail:empty { display: none; }
+
+/* ===========================
+   Next Button / Action Bar
+   =========================== */
+.quiz-action-bar {
+  padding: 0 1.75rem 1.5rem;
+  min-height: 3.4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-next-btn {
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  background: #6C63FF;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.quiz-next-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.quiz-next-btn:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
 
 /* ===========================
    End Screen
@@ -1726,6 +1812,14 @@ footer {
   }
 
   .quiz-feedback {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  #quiz-feedback {
+    padding-bottom: 0.5rem;
+  }
+
+  .quiz-action-bar {
     padding: 0 1.25rem 1.25rem;
   }
 }

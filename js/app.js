@@ -32,6 +32,7 @@ import {
   hasUsableThemedRelation,
   getQuestionTypesForWord as getQuestionTypesForWordPure,
 } from './quiz.js';
+import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -1084,7 +1085,8 @@ import {
     isQuestMode  : false,
     customPool   : null,
     returnTo     : null,
-    onComplete   : null
+    onComplete   : null,
+    answered     : false
   };
 
   var questState = {
@@ -1198,6 +1200,9 @@ import {
   var quizQuestionText   = document.getElementById('quiz-question-text');
   var quizAnswersGrid    = document.getElementById('quiz-answers-grid');
   var quizFeedback       = document.getElementById('quiz-feedback');
+  var quizFeedbackText   = document.getElementById('quiz-feedback-text');
+  var quizFeedbackDetail = document.getElementById('quiz-feedback-detail');
+  var quizNextBtn        = document.getElementById('quiz-next-btn');
 
   var quizEndScreen      = document.getElementById('quiz-end-screen');
   var quizEndEmoji       = document.getElementById('quiz-end-emoji');
@@ -1208,7 +1213,6 @@ import {
   var quizReviewList     = document.getElementById('quiz-review-list');
   var quizPlayAgainBtn   = document.getElementById('quiz-play-again-btn');
   var quizBackBtn        = document.getElementById('quiz-back-btn');
-  var quizAdvanceTimeout = null;
 
   // ── Persistence ────────────────────────────────────────────────────────────
   function getQuizBestKey() {
@@ -1280,7 +1284,6 @@ import {
   }
 
   function openQuizOverlay() {
-    clearQuizAdvanceTimeout();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -1297,7 +1300,6 @@ import {
   }
 
   function closeQuizOverlay() {
-    clearQuizAdvanceTimeout();
     quizOverlay.classList.add('hidden');
     quizOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -1384,13 +1386,6 @@ import {
       if (questState.worlds[i].id === themeId) return questState.worlds[i];
     }
     return questState.worlds[0];
-  }
-
-  function clearQuizAdvanceTimeout() {
-    if (quizAdvanceTimeout !== null) {
-      clearTimeout(quizAdvanceTimeout);
-      quizAdvanceTimeout = null;
-    }
   }
 
   function getQuizModeLabel() {
@@ -1614,20 +1609,33 @@ import {
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
 
-    // Answer buttons
+    // Answer buttons — numbered so the 1-4 keys (and spoken guidance) map to a
+    // visible badge on each choice.
     quizAnswersGrid.innerHTML = '';
     q.choices.forEach(function (choice, i) {
       var btn = document.createElement('button');
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
       btn.setAttribute('aria-pressed', 'false');
-      btn.textContent  = choice;
+      var num = document.createElement('span');
+      num.className = 'quiz-answer-num';
+      num.setAttribute('aria-hidden', 'true');
+      num.textContent = String(i + 1);
+      var label = document.createElement('span');
+      label.className = 'quiz-answer-label';
+      label.textContent = choice;
+      btn.appendChild(num);
+      btn.appendChild(label);
       quizAnswersGrid.appendChild(btn);
     });
 
-    // Clear feedback
+    // Clear feedback; the child answers at their own pace, so hide Next until
+    // an answer is in.
+    quizState.answered = false;
     quizFeedback.className = 'quiz-feedback';
-    quizFeedback.textContent = '';
+    quizFeedbackText.textContent = '';
+    quizFeedbackDetail.textContent = '';
+    quizNextBtn.classList.add('hidden');
 
     // Move focus away from the answer grid after each re-render so the
     // previously chosen answer position does not look preselected.
@@ -1638,7 +1646,7 @@ import {
   }
 
   // ── Answer handling ────────────────────────────────────────────────────────
-  var CORRECT_PHRASES = ['✓ Brilliant!', '✓ Spot on!', '✓ Nice work!', '✓ Excellent!'];
+  // Praise/wrong-feedback phrasing → moved to js/game-feedback.js (pure + tested).
 
   function handleAnswer(chosenIndex) {
     var q = quizState.questions[quizState.currentIndex];
@@ -1676,20 +1684,26 @@ import {
     quizFeedback.className = 'quiz-feedback visible ' +
       (isCorrect ? 'feedback-correct' : 'feedback-wrong');
     if (isCorrect) {
-      quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
+      quizFeedbackText.textContent = pickPraise(quizState.streak);
+      quizFeedbackDetail.textContent = '';
     } else {
-      quizFeedback.textContent = '✗ The answer was: ' + q.choices[q.correctIndex];
+      var wrong = buildWrongFeedback(q.type, q.questionWord, q.choices[q.correctIndex]);
+      quizFeedbackText.textContent = wrong.headline;
+      quizFeedbackDetail.textContent = wrong.detail;
     }
 
-    // Advance after pause
-    clearQuizAdvanceTimeout();
-    quizAdvanceTimeout = setTimeout(function () {
-      quizAdvanceTimeout = null;
-      advanceQuiz();
-    }, 1400);
+    // The child advances at their own pace: Next button, Enter/Space/→, the
+    // 1-4 keys answered, or a tap anywhere on the question screen.
+    quizState.answered = true;
+    var isLast = quizState.currentIndex >= quizState.questions.length - 1;
+    quizNextBtn.textContent = isLast ? 'See results →' : 'Next →';
+    quizNextBtn.classList.remove('hidden');
+    quizNextBtn.focus({ preventScroll: true });
   }
 
   function advanceQuiz() {
+    if (!quizState.answered) return;
+    quizState.answered = false;
     quizState.currentIndex++;
     if (quizState.currentIndex >= quizState.questions.length) {
       showEndScreen();
@@ -1704,11 +1718,7 @@ import {
     var score = quizState.score;
     var total = quizState.questions.length;
 
-    var tier;
-    if (score === total)       tier = { emoji: '🏆', title: 'Perfect score!' };
-    else if (score >= total * 0.7) tier = { emoji: '⭐', title: 'Star performance!' };
-    else if (score >= total * 0.4) tier = { emoji: '👍', title: 'Good effort!' };
-    else                           tier = { emoji: '💪', title: 'Keep practising!' };
+    var tier = getScoreTier(score, total);
 
     quizEndEmoji.textContent = tier.emoji;
     quizEndTitle.textContent = tier.title;
@@ -1768,7 +1778,6 @@ import {
 
   // ── Start quiz ─────────────────────────────────────────────────────────────
   function startQuiz() {
-    clearQuizAdvanceTimeout();
     quizState.currentIndex = 0;
     quizState.score        = 0;
     quizState.streak       = 0;
@@ -1880,13 +1889,51 @@ import {
       handleAnswer(parseInt(btn.dataset.idx, 10));
     });
 
-    // Escape closes quiz overlay (separate guard from word-detail modal)
+    quizNextBtn.addEventListener('click', advanceQuiz);
+
+    // After answering, a tap anywhere on the question screen also advances.
+    // Buttons are excluded: Next/Exit keep their own behaviour, and the
+    // answering click itself bubbles here from a .quiz-answer-btn after
+    // handleAnswer has already set quizState.answered.
+    quizQuestionScreen.addEventListener('click', function (e) {
+      if (!quizState.answered) return;
+      if (closestByClass(e.target, 'quiz-next-btn')) return;
+      if (closestByClass(e.target, 'quiz-exit-btn')) return;
+      if (closestByClass(e.target, 'quiz-answer-btn')) return;
+      advanceQuiz();
+    });
+
+    // Escape closes quiz overlay (separate guard from word-detail modal);
+    // 1-4 answer the current question; Enter/Space/→ advance once answered.
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !quizOverlay.classList.contains('hidden')) {
         closeQuizOverlay();
       }
       if (e.key === 'Escape' && !questOverlay.classList.contains('hidden')) {
         closeQuestOverlay();
+      }
+
+      if (quizOverlay.classList.contains('hidden')) return;
+      if (quizQuestionScreen.classList.contains('hidden')) return;
+      var tag = e.target && e.target.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+
+      if (!quizState.answered && e.key >= '1' && e.key <= '4') {
+        var btns = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
+        var idx = parseInt(e.key, 10) - 1;
+        if (btns[idx] && !btns[idx].disabled) handleAnswer(idx);
+        return;
+      }
+
+      if (quizState.answered) {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          advanceQuiz();
+        } else if ((e.key === 'Enter' || e.key === ' ') && tag !== 'BUTTON') {
+          // Focused buttons (Next, Exit) handle Enter/Space natively.
+          e.preventDefault();
+          advanceQuiz();
+        }
       }
     });
   }

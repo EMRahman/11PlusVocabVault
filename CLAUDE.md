@@ -79,6 +79,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `selection.js` | ~79 | Pure selection algorithms (`pickDailyWords`, `buildWeakestPool`, `hashString`, `seededRandom`). | imported |
 | `quiz.js` | ~85 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
+| `game-feedback.js` | ~65 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier` end-screen tiers). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |
 | `mood-map.js`, `word-portrait.js`, `word-roots-garden.js`, `animal-constellation.js` | 260–790 each | Standalone visualisations. | **plain `<script>` (globals)** |
