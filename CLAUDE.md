@@ -71,7 +71,7 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 
 | File | Lines | Role | Loaded by |
 |------|------:|------|-----------|
-| `app.js` | ~5.9k | **Orchestrator.** One big module-scoped closure holding 20 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, street smarts, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
+| `app.js` | ~6.4k | **Orchestrator.** One big module-scoped closure holding 20 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, street smarts, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
 | `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
@@ -234,7 +234,7 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
 
 ## Recent direction
 
-`app.js` has been progressively de-bloated (7158 → ~5933 lines): comic scripts
+`app.js` has been progressively de-bloated (7158 → ~6393 lines): comic scripts
 moved to `data/comics.json`; History/Animals/Insects/Fable/Space/Tech/Money unified into
 `createReadingMode`; daily-news/weakest-words logic extracted to tested
 `selection.js`. Recent additions: Money reading mode (16 articles), Space and Tech

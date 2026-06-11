@@ -1,4 +1,4 @@
-# 11+ Vocab Builder
+# 11+ Vocab Vault
 
 **Live app: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)**
 
@@ -7,8 +7,9 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 ## Features
 
 ### Word browsing
-- **351 curated words** — chosen specifically to elevate 11+ creative writing
+- **497 curated words** — chosen specifically to elevate 11+ creative writing
 - **Word detail cards** — click any word to see its definition, part of speech, example sentence, synonyms, antonyms, and usefulness rating
+- **Multiple meanings** — polysemous words show all their senses; tap through each one
 - **Phonetic pronunciation** — shown in every word card and detail view
 - **Audio pronunciation** — tap the speaker button to hear the word read aloud (British English)
 - **Research links** — one-click links to Google definition and in-context example sentences
@@ -22,6 +23,7 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 ### Progress tracking (saved in browser)
 - **View counts** — each word card records how many times you've opened it
 - **Mastery levels** — words progress from New → Learning → Mastered based on quiz performance, stored in `localStorage`
+- **Home dashboard** — mastered/learning counts, progress bar, and a cross-game daily activity streak
 
 ### Quiz mode
 - Launch with the **Quiz me!** button
@@ -46,6 +48,41 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 - The day's words are highlighted in the article for tap-to-define reading
 - A **morning quiz** on the day's words builds a daily **streak**
 
+### Reading modes
+Seven thematic reading libraries, each with a scoped follow-up quiz:
+
+| Mode | Articles |
+|------|----------|
+| **History** | 40 articles on world history |
+| **Money** | 16 articles on how money works |
+| **Animals** | 10 wildlife articles |
+| **Insects** | 10 articles on the insect world |
+| **Space** | 10 space exploration articles |
+| **Technology** | 10 technology articles |
+| **Street Smarts** | 28 articles on real-world skills (scams, psychology, media literacy, game theory, tech) |
+
+Featured vocabulary words are highlighted for tap-to-define reading. Each library shows collection progress ("You've read X of Y") and article read-time estimates.
+
+### Fables
+- **45 fables** from around the world with featured vocabulary highlighted
+- Each fable ends with the moral and a scoped quiz
+
+### Proverbs
+- **105 proverbs** across **35 cultural collections**, each shown in its original script alongside the English translation
+- Tap any featured word for an instant definition
+
+### Comics
+- **10 illustrated vocabulary comics** — short visual stories where the words appear in context
+
+### Games
+- **Word Universe** — an interactive 3D word cloud; click any word to explore it
+- **Constellation Quest** — a 3D constellation-building quiz game
+- **Detective Quest** — solve vocabulary-based mystery cases
+- **Word Scramble** — unscramble jumbled vocabulary words against the clock
+- **Flash-Blitz** — rapid-fire flashcard speed round
+- **Synonym Snap** — match synonyms under time pressure
+- **Word-in-the-Wild** — identify a word from a real-world context clue
+
 ### Responsive & accessible
 - Works on desktop, tablet, and mobile
 - Keyboard navigable, ARIA-labelled throughout
@@ -55,7 +92,7 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 - Vanilla HTML, CSS, and JavaScript — no frameworks, no bundler, no build step
 - Client-side code is organised as native ES modules (`<script type="module">`,
   `import`/`export`), served directly
-- Word data loaded from `data/words.json` at runtime
+- Word data and all reading content loaded from `data/*.json` at runtime
 - Progress and mastery data persisted in `localStorage`
 - Unit / characterization tests run on Node's built-in test runner (no dependencies)
 - Hosted on GitHub Pages
@@ -64,7 +101,7 @@ A lightweight, static web app that helps students aged 8–11 prepare for 11+ en
 
 **Use it now** — no sign-up, no install: [https://emrahman.github.io/11PlusVocabVault/](https://emrahman.github.io/11PlusVocabVault/)
 
-Or run it locally with any static file server (required because word data is loaded via `fetch`):
+Or run it locally with any static file server (required because content is loaded via `fetch`):
 
 ```bash
 git clone https://github.com/EMRahman/11PlusVocabVault.git
@@ -74,7 +111,7 @@ npx serve .        # or: python3 -m http.server 8080
 
 Then open `http://localhost:3000` (or whichever port the server reports).
 
-> A static server is required: the app loads `data/words.json` via `fetch` and
+> A static server is required: the app loads data files via `fetch` and
 > uses native ES modules, neither of which work from a `file://` URL.
 
 ## Development
@@ -92,21 +129,43 @@ node --test
 ## Project Structure
 
 ```
-├── index.html        # App shell and markup
+├── index.html             # App shell and all mode markup (~2k lines)
 ├── css/
-│   └── style.css     # All styling
+│   └── style.css          # All styling (~5k lines)
+├── build-info.js          # Generated banner (date/time); regenerated by CI
 ├── js/
-│   ├── app.js        # Main application module (orchestrator + most modes)
-│   ├── dom-utils.js  # Pure DOM / array / text helpers
-│   ├── data.js       # Word-corpus Map index (O(1) lookup)
-│   ├── store.js      # Shared mutable progress state (singletons)
-│   ├── storage.js    # localStorage persistence + mastery logic
-│   └── …             # Visualisation modules (word-universe.js, etc.)
+│   ├── app.js             # Main orchestrator + all mode init functions
+│   ├── data.js            # O(1) word lookup index (setWords / findWordByName)
+│   ├── store.js           # Shared mutable state singletons
+│   ├── storage.js         # localStorage persistence + mastery thresholds
+│   ├── dom-utils.js       # Pure helpers (shuffle, pickDistractors, …)
+│   ├── selection.js       # Pure selection algorithms (daily words, weakest pool)
+│   ├── quiz.js            # Pure question-eligibility logic
+│   ├── meanings.js        # Multi-sense word helpers (getMeanings, primaryMeaning)
+│   ├── game-feedback.js   # Quiz feedback helpers (praise, scoring, tiers)
+│   ├── celebrate.js       # Confetti / toast celebration layer
+│   ├── progress-stats.js  # Home-dashboard stats and streak logic
+│   ├── word-universe.js   # Three.js 3D word cloud
+│   ├── word-quest-3d.js   # Constellation Quest 3D game
+│   └── …                  # Standalone visualisations (mood-map, word-portrait, …)
 ├── data/
-│   ├── words.json    # Word dataset
-│   └── stories.json  # Story Mode story library
-├── test/             # node --test characterization tests
-└── SPEC.md           # Original product specification
+│   ├── words.json         # Word dataset (497 words)
+│   ├── stories.json       # Story Mode library (35 stories)
+│   ├── history.json       # History reading mode (40 articles)
+│   ├── money.json         # Money reading mode (16 articles)
+│   ├── animals.json       # Animals reading mode (10 articles)
+│   ├── insects.json       # Insects reading mode (10 articles)
+│   ├── space.json         # Space reading mode (10 articles)
+│   ├── technology.json    # Technology reading mode (10 articles)
+│   ├── street-smarts.json # Street Smarts reading mode (28 articles)
+│   ├── fables.json        # Fables (45 fables)
+│   ├── proverbs.json      # Proverbs (105 proverbs, 35 cultural collections)
+│   ├── comics.json        # Comics (10 illustrated stories)
+│   ├── word-positions.json         # Word Universe layout data
+│   ├── word-explorer.json          # Mood map / etymology data
+│   └── animal-constellations.json  # Constellation Quest data
+├── test/                  # node --test characterization tests
+└── SPEC.md                # Original product specification
 ```
 
 ## Word Data Format
@@ -123,7 +182,9 @@ Each entry in `data/words.json` follows this schema:
 | `synonyms`         | array of strings  | 2–3 similar words                                |
 | `antonyms`         | array of strings  | 2–3 opposite words                               |
 | `usefulness_rating`| integer (1–5)     | How versatile the word is in exam writing        |
+| `themed_quest`     | object            | Pipeline-baked Story Quest payload (`theme`, `word`, pre-blanked `sentence`; optional `synonym`/`antonym`) |
+| `meanings`         | array (optional)  | Extra senses for polysemous words — each `{ word_type, definition, sentence_usage, synonyms[], antonyms[] }`; `meanings[0]` mirrors the flat fields exactly |
 
 ## Adding Words
 
-Add entries to the `words` array in `data/words.json` following the schema above.
+Add entries to the `words` array in `data/words.json` following the schema above. The integrity test enforces non-empty fields, a rating of 1–5, and unique word names. `meanings[]` is optional — omit it for a single-sense word.
