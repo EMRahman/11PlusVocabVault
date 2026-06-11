@@ -5084,11 +5084,14 @@ import {
   var comicCloseBtn        = document.getElementById('comic-close-btn');
   var comicViewerCloseBtn  = document.getElementById('comic-viewer-close-btn');
   var comicBackBtn         = document.getElementById('comic-back-btn');
+  var comicPrevBtn         = document.getElementById('comic-prev-btn');
+  var comicNextBtn         = document.getElementById('comic-next-btn');
   var comicScrollContent   = document.getElementById('comic-scroll-content');
   var comicScrollFill      = document.getElementById('comic-scroll-fill');
   var comicStoryList       = document.getElementById('comic-story-list');
   var comicPanelsContainer = document.getElementById('comic-panels-container');
   var comicGlossaryEl      = document.getElementById('comic-glossary');
+  var currentComicIdx      = -1;
 
   // ── SVG character generators ───────────────────────────────────────────────
 
@@ -5824,14 +5827,21 @@ import {
     comicCloseBtn.focus();
   }
 
+  function updateComicNavBtns() {
+    comicPrevBtn.disabled = (currentComicIdx <= 0);
+    comicNextBtn.disabled = (currentComicIdx < 0 || currentComicIdx >= COMIC_STORIES.length - 1);
+  }
+
   function showComic(idx) {
     var story = COMIC_STORIES[idx];
+    currentComicIdx = idx;
     renderComicPanels(story.panels, story.words);
     comicLibraryScroll = comicLibraryScreen.scrollTop;
     comicLibraryScreen.classList.add('hidden');
     comicViewingScreen.classList.remove('hidden');
     comicScrollContent.scrollTop = 0;
     comicScrollFill.style.height = '0%';
+    updateComicNavBtns();
     comicBackBtn.focus();
   }
 
@@ -5875,6 +5885,12 @@ import {
     comicBackBtn.addEventListener('click', function () {
       showComicLibrary();
       comicLibraryScreen.scrollTop = comicLibraryScroll;
+    });
+    comicPrevBtn.addEventListener('click', function () {
+      if (currentComicIdx > 0) showComic(currentComicIdx - 1);
+    });
+    comicNextBtn.addEventListener('click', function () {
+      if (currentComicIdx < COMIC_STORIES.length - 1) showComic(currentComicIdx + 1);
     });
     comicScrollContent.addEventListener('scroll', function () {
       var max = comicScrollContent.scrollHeight - comicScrollContent.clientHeight;
