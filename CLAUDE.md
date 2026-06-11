@@ -134,11 +134,20 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   authoritative list of active modes). Modes load their content via `fetch()`
   and re-render if their overlay is already open.
 - **Reading modes share a factory.** History/Money/Animals/Insects/Space/Tech/Fable are all built by
-  `createReadingMode(config)` in app.js (config = prefix, progressKey, dataFile,
-  dataKey, returnTo, itemNoun, optional `subtitleField`/`moralField`,
-  loadingMessage). DOM ids follow `<prefix>-...`. Proverbs is **not** folded in
-  (culture picker + 3 screens + native-script cards). To add a reading mode: add
-  `index.html` markup with `<prefix>-*` ids, then one `createReadingMode({...})`.
+  `createReadingMode(config)` in app.js (config = prefix, **label** (dashboard
+  name), progressKey, dataFile, dataKey, returnTo, itemNoun, optional
+  `subtitleField`/`moralField`, loadingMessage). DOM ids follow `<prefix>-...`.
+  Proverbs is **not** folded in (culture picker + 3 screens + native-script
+  cards). To add a reading mode: add `index.html` markup with `<prefix>-*` ids,
+  then one `createReadingMode({...})`. The factory also gives every mode: a
+  library "You've read X of Y" progress header + read-state card styling +
+  `~N min` read-time tags (`renderCollectionProgressHeader`,
+  `estimateReadMinutes`), an end-of-article recap (flip-chips for the article's
+  words + "Next: …" pull, built by `buildArticleRecap` and inserted before the
+  quiz button, OUTSIDE the reading body so TTS never reads it), and home-
+  dashboard registration. The bespoke Story mode mirrors all of this; the
+  tap-a-word gloss (`showGloss`) shows pronunciation + example sentence
+  everywhere.
 - **Quiz return routing.** A scoped quiz carries `returnTo`; `closeQuizOverlay()`
   sends the user back via the **`readingReturnHandlers` registry** (factory modes
   register themselves) with explicit branches for `story`/`news`/`proverbs`.

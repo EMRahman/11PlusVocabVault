@@ -1285,6 +1285,21 @@ footer {
   outline-offset: 3px;
 }
 
+/* Collection-progress badge on a reading-mode launch button ("12/28" or ✓). */
+.launch-btn-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.launch-btn-badge--done {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
 /* ===========================
    Quiz Overlay & Panel Shell
    =========================== */
@@ -2159,6 +2174,128 @@ footer {
   color: #065F46;
 }
 
+.story-card-tag.story-card-time {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+/* Already-read items step back so unread ones pop. */
+.story-card--read {
+  background: #FAFAFC;
+}
+
+.story-card--read .story-card-title::after {
+  content: ' ✓';
+  color: #16A34A;
+}
+
+/* "You've read X of Y" header above each library list. */
+.collection-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.2rem 0.9rem;
+}
+
+.collection-progress-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.collection-progress-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  overflow: hidden;
+}
+
+.collection-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #8B83FF 100%);
+  transition: width 0.5s ease;
+}
+
+/* End-of-article recap: flip-chips + next-article pull (before the quiz btn). */
+.article-recap {
+  border-top: 2px dashed var(--color-border);
+  padding-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.article-recap-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.article-recap-hint {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.recap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recap-chip {
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+
+.recap-chip.flipped {
+  background: var(--color-card);
+  border-style: dashed;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.recap-chip:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.recap-next-btn {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  border: 2px solid #16A34A;
+  background: #D1FAE5;
+  color: #065F46;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.recap-next-btn:hover {
+  background: #16A34A;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.recap-next-btn:focus-visible {
+  outline: 3px solid #065F46;
+  outline-offset: 2px;
+}
+
 /* Story / news reading view */
 .story-reading-inner {
   display: flex;
@@ -2414,6 +2551,23 @@ footer {
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--color-text);
+}
+
+.vocab-gloss-pron {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.vocab-gloss-sentence {
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--color-border);
 }
 
 /* Daily News setup screen */

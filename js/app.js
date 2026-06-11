@@ -41,6 +41,8 @@ import {
   effectiveStreak as effectiveStreakPure,
   bumpDailyStreak,
   buildCtaSuggestions,
+  formatCollectionProgress,
+  estimateReadMinutes,
 } from './progress-stats.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
@@ -164,6 +166,28 @@ import {
       row.appendChild(chip);
     });
     row.classList.toggle('hidden', ctas.length === 0);
+
+    // Per-collection "12/28" badges on the launch buttons (✓ when finished).
+    // aria-hidden: the count is decorative here — the full progress lives in
+    // each mode's library header.
+    homeCollections.forEach(function (c) {
+      if (!c.launchBtn) return;
+      var s = c.summarize();
+      var badge = c.launchBtn.querySelector('.launch-btn-badge');
+      if (!s.total || !s.read) {
+        if (badge) badge.remove();
+        return;
+      }
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'launch-btn-badge';
+        badge.setAttribute('aria-hidden', 'true');
+        c.launchBtn.appendChild(badge);
+      }
+      var done = s.read >= s.total;
+      badge.textContent = done ? '✓' : s.read + '/' + s.total;
+      badge.classList.toggle('launch-btn-badge--done', done);
+    });
   }
 
   // ── Audio pronunciation ────────────────────────────────────────────────────
@@ -2260,7 +2284,19 @@ import {
     def.textContent = wordObj.definition;
     g.appendChild(word);
     g.appendChild(type);
+    if (wordObj.pronunciation) {
+      var pron = document.createElement('div');
+      pron.className = 'vocab-gloss-pron';
+      pron.textContent = 'Say it: ' + wordObj.pronunciation;
+      g.appendChild(pron);
+    }
     g.appendChild(def);
+    if (wordObj.sentence_usage) {
+      var sentence = document.createElement('div');
+      sentence.className = 'vocab-gloss-sentence';
+      sentence.textContent = '“' + wordObj.sentence_usage + '”';
+      g.appendChild(sentence);
+    }
 
     g.classList.remove('hidden');
     var rect = spanEl.getBoundingClientRect();
@@ -2284,6 +2320,97 @@ import {
 
   function glossIsOpen() {
     return glossEl && !glossEl.classList.contains('hidden');
+  }
+
+  // ── Shared reading-mode UI (collection progress header, article recap) ──────
+  // Used by all createReadingMode factories and the bespoke Story mode.
+
+  // Create-or-update a "You've read X of Y" header with a mini progress bar,
+  // inserted just before the library list.
+  function renderCollectionProgressHeader(listEl, idPrefix, summary) {
+    var headerId = idPrefix + '-collection-progress';
+    var header = document.getElementById(headerId);
+    if (!header) {
+      header = document.createElement('div');
+      header.id = headerId;
+      header.className = 'collection-progress';
+      var label = document.createElement('span');
+      label.className = 'collection-progress-label';
+      var track = document.createElement('span');
+      track.className = 'collection-progress-track';
+      track.setAttribute('aria-hidden', 'true');
+      var fill = document.createElement('span');
+      fill.className = 'collection-progress-fill';
+      track.appendChild(fill);
+      header.appendChild(label);
+      header.appendChild(track);
+      listEl.parentNode.insertBefore(header, listEl);
+    }
+    header.querySelector('.collection-progress-label').textContent =
+      formatCollectionProgress(summary.read, summary.total);
+    header.querySelector('.collection-progress-fill').style.width =
+      (summary.total > 0 ? Math.round((summary.read / summary.total) * 100) : 0) + '%';
+    header.classList.toggle('hidden', summary.total === 0);
+  }
+
+  // End-of-article recap: flip-chips for the words the child just met, then a
+  // pull toward the next item. Rebuilt on every openItem (prev/next reuse the
+  // screen) and inserted OUTSIDE the reading body so the TTS tokenisation
+  // never reads it. The quiz button stays last — the recap funnels into it.
+  function buildArticleRecap(quizBtn, recapId, words, nextItem, openNextFn) {
+    var existing = document.getElementById(recapId);
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    if (!words.length && !nextItem) return;
+
+    var recap = document.createElement('div');
+    recap.id = recapId;
+    recap.className = 'article-recap';
+
+    if (words.length) {
+      var heading = document.createElement('h3');
+      heading.className = 'article-recap-title';
+      heading.textContent = 'Words you met';
+      recap.appendChild(heading);
+
+      var hint = document.createElement('p');
+      hint.className = 'article-recap-hint';
+      hint.textContent = 'Tap a word to flip it over — how many do you remember?';
+      recap.appendChild(hint);
+
+      var chips = document.createElement('div');
+      chips.className = 'recap-chips';
+      words.forEach(function (w) {
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'recap-chip';
+        chip.textContent = w.word;
+        chip.setAttribute('aria-label', w.word + ' — tap to reveal its meaning');
+        chip.addEventListener('click', function () {
+          var flipped = chip.classList.toggle('flipped');
+          if (flipped) {
+            chip.textContent = w.definition;
+            chip.setAttribute('aria-label', w.word + ' means: ' + w.definition);
+            speakWord(w.word);
+          } else {
+            chip.textContent = w.word;
+            chip.setAttribute('aria-label', w.word + ' — tap to reveal its meaning');
+          }
+        });
+        chips.appendChild(chip);
+      });
+      recap.appendChild(chips);
+    }
+
+    if (nextItem) {
+      var nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'recap-next-btn';
+      nextBtn.textContent = 'Next: ' + nextItem.emoji + ' ' + nextItem.title + ' →';
+      nextBtn.addEventListener('click', function () { openNextFn(nextItem); });
+      recap.appendChild(nextBtn);
+    }
+
+    quizBtn.parentNode.insertBefore(recap, quizBtn);
   }
 
   function initGloss() {
@@ -2403,6 +2530,7 @@ import {
       storyList.appendChild(empty);
       return;
     }
+    renderCollectionProgressHeader(storyList, 'story', summarizeCollection(stories, storyProgress));
     stories.forEach(function (story) {
       var card = document.createElement('button');
       card.className = 'story-card';
@@ -2424,7 +2552,13 @@ import {
       wordsTag.textContent = storyWordObjects(story).length + ' words';
       meta.appendChild(wordsTag);
 
+      var timeTag = document.createElement('span');
+      timeTag.className = 'story-card-tag story-card-time';
+      timeTag.textContent = '~' + estimateReadMinutes(story.paragraphs) + ' min';
+      meta.appendChild(timeTag);
+
       var prog = storyProgress[story.id];
+      if (prog && prog.read) card.classList.add('story-card--read');
       if (prog && typeof prog.bestScore === 'number') {
         var scoreTag = document.createElement('span');
         scoreTag.className = 'story-card-tag story-card-score';
@@ -2483,6 +2617,14 @@ import {
       storyReadingImageFigure.classList.add('hidden');
     }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
+    var storyIdx = stories.indexOf(story);
+    buildArticleRecap(
+      storyQuizBtn,
+      'story-article-recap',
+      storyWordObjects(story),
+      (storyIdx >= 0 && storyIdx < stories.length - 1) ? stories[storyIdx + 1] : null,
+      function (next) { ttsStop(); openStory(next); }
+    );
     storyLibraryScroll = storyLibraryScreen.scrollTop;
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
@@ -2702,6 +2844,7 @@ import {
         listEl.appendChild(empty);
         return;
       }
+      renderCollectionProgressHeader(listEl, prefix, summarizeCollection(items, progress));
       items.forEach(function (item) {
         var card = document.createElement('button');
         card.className = 'story-card';
@@ -2730,7 +2873,13 @@ import {
         wordsTag.textContent = wordObjects(item).length + ' words';
         meta.appendChild(wordsTag);
 
+        var timeTag = document.createElement('span');
+        timeTag.className = 'story-card-tag story-card-time';
+        timeTag.textContent = '~' + estimateReadMinutes(item.paragraphs) + ' min';
+        meta.appendChild(timeTag);
+
         var prog = progress[item.id];
+        if (prog && prog.read) card.classList.add('story-card--read');
         if (prog && typeof prog.bestScore === 'number') {
           var scoreTag = document.createElement('span');
           scoreTag.className = 'story-card-tag story-card-score';
@@ -2790,6 +2939,15 @@ import {
       }
 
       renderReadingBody(readingBody, item.paragraphs, wordObjects(item), ttsBar);
+
+      var idx = items.indexOf(item);
+      buildArticleRecap(
+        quizBtn,
+        prefix + '-article-recap',
+        wordObjects(item),
+        (idx >= 0 && idx < items.length - 1) ? items[idx + 1] : null,
+        function (next) { ttsStop(); openItem(next); }
+      );
 
       if (moralEl) {
         if (item[config.moralField]) {

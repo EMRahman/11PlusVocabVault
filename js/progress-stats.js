@@ -127,9 +127,13 @@ export function buildCtaSuggestions(opts) {
   return out.slice(0, 2);
 }
 
+// Library-header display string for a collection summary.
+export function formatCollectionProgress(read, total) {
+  return "You've read " + read + ' of ' + total;
+}
+
 // Estimated reading time for an article from its paragraphs, at a child-
-// friendly ~130 words per minute, never below one minute. (Used by Phase 4
-// reading surfaces; lives here with the other collection maths.)
+// friendly ~130 words per minute, never below one minute.
 export function estimateReadMinutes(paragraphs) {
   var wordCount = 0;
   (paragraphs || []).forEach(function (p) {

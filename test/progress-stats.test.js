@@ -10,6 +10,7 @@ import {
   effectiveStreak,
   bumpDailyStreak,
   buildCtaSuggestions,
+  formatCollectionProgress,
   estimateReadMinutes,
 } from '../js/progress-stats.js';
 
@@ -131,6 +132,12 @@ test('buildCtaSuggestions: no quiz below 3 ready; start chip when nothing begun'
   assert.equal(fresh[0].id, 'fable');
 
   assert.deepEqual(buildCtaSuggestions({ collections: [], readyCount: 0 }), []);
+});
+
+// ── formatCollectionProgress ──────────────────────────────────────────────────
+test('formatCollectionProgress renders the library header string', () => {
+  assert.equal(formatCollectionProgress(12, 28), "You've read 12 of 28");
+  assert.equal(formatCollectionProgress(0, 10), "You've read 0 of 10");
 });
 
 // ── estimateReadMinutes ───────────────────────────────────────────────────────
