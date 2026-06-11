@@ -23,6 +23,27 @@
   </header>
 
   <main>
+    <section class="home-dashboard hidden" id="home-dashboard" aria-label="Your progress">
+      <div class="dash-top-row">
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span class="dash-num dash-num--mastered" id="dash-mastered-count">0</span>
+            <span class="dash-stat-label">mastered</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-num dash-num--learning" id="dash-learning-count">0</span>
+            <span class="dash-stat-label">learning</span>
+          </div>
+        </div>
+        <div class="dash-streak" id="dash-streak"></div>
+      </div>
+      <div class="dash-progress-track" id="dash-progress-track" role="progressbar" aria-label="Words mastered" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="dash-progress-fill" id="dash-progress-fill"></div>
+      </div>
+      <p class="dash-progress-label" id="dash-progress-label"></p>
+      <div class="dash-cta-row hidden" id="dash-cta-row"></div>
+    </section>
+
     <section class="controls">
       <div class="controls-launch">
         <div class="launch-group launch-group--filters">
@@ -382,7 +403,13 @@
         <p class="quiz-question-text" id="quiz-question-text"></p>
       </div>
       <div class="quiz-answers-grid" id="quiz-answers-grid" role="group" aria-label="Answer choices"></div>
-      <div class="quiz-feedback" id="quiz-feedback" aria-live="assertive" aria-atomic="true"></div>
+      <div class="quiz-feedback" id="quiz-feedback" aria-live="assertive" aria-atomic="true">
+        <span class="quiz-feedback-text" id="quiz-feedback-text"></span>
+        <span class="quiz-feedback-detail" id="quiz-feedback-detail"></span>
+      </div>
+      <div class="quiz-action-bar">
+        <button class="quiz-next-btn hidden" id="quiz-next-btn" type="button">Next →</button>
+      </div>
     </div>
 
     <!-- End screen -->
@@ -1771,6 +1798,7 @@
         <span class="quiz-end-emoji" id="blitz-end-emoji" aria-hidden="true"></span>
         <h2 class="quiz-end-title" id="blitz-end-title"></h2>
         <p class="quiz-end-score" id="blitz-end-score"></p>
+        <p class="quiz-end-best" id="blitz-end-best"></p>
         <div class="quiz-review hidden" id="blitz-misses-review">
           <h3 class="quiz-review-title">Words to revisit</h3>
           <ul class="quiz-review-list" id="blitz-misses-list"></ul>

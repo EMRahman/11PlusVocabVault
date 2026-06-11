@@ -32,6 +32,18 @@ import {
   hasUsableThemedRelation,
   getQuestionTypesForWord as getQuestionTypesForWordPure,
 } from './quiz.js';
+import { pickPraise, buildWrongFeedback, getScoreTier, getBlitzTier, getBlitzScore } from './game-feedback.js';
+import { celebrateBurst, celebrateToast } from './celebrate.js';
+import {
+  computeMasteryCounts,
+  wordsReadyToMaster,
+  summarizeCollection,
+  effectiveStreak as effectiveStreakPure,
+  bumpDailyStreak,
+  buildCtaSuggestions,
+  formatCollectionProgress,
+  estimateReadMinutes,
+} from './progress-stats.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -46,9 +58,137 @@ import {
   // mastery state + load/save/getMasteryStatus/recordAnswer
   // → moved to js/store.js + js/storage.js (imported above).
 
+  // recordAnswer + a toast/burst the moment a word's status flips to mastered.
+  // All in-app mastery recording goes through this wrapper (hoisted function
+  // declaration, so the window bridge below can reference it).
+  function recordAnswerCelebrated(wordName, isCorrect) {
+    var result = recordAnswer(wordName, isCorrect);
+    if (result && result.becameMastered) {
+      celebrateToast('🌟', wordName + ' mastered!', 'You really know this word now');
+      celebrateBurst(null, { count: 18 });
+    }
+    return result;
+  }
+
   // Bridge so the Constellation Quest game module (its own file) can feed the
   // shared mastery system when the player captures words.
-  window.vaultRecordAnswer = recordAnswer;
+  window.vaultRecordAnswer = recordAnswerCelebrated;
+
+  // ── Home dashboard (progress at a glance + cross-game daily streak) ─────────
+  // Reading modes register here so the dashboard can offer "Continue <mode>"
+  // chips and (Phase 4) per-collection badges. The activity streak is separate
+  // from the Daily News streak: it means "finished any game today".
+  var ACTIVITY_STREAK_KEY = 'vocabVault_activityStreak';
+  var activityData = { streak: 0, lastDate: null };
+  var homeCollections = [];
+
+  function loadActivityStreak() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(ACTIVITY_STREAK_KEY));
+      if (parsed && typeof parsed.streak === 'number') {
+        activityData = { streak: parsed.streak, lastDate: parsed.lastDate || null };
+      }
+    } catch (e) {}
+  }
+
+  // Called from every game's end screen; only persists once per day.
+  function markActivityToday() {
+    var r = bumpDailyStreak(activityData, todayKey(), yesterdayKey());
+    if (!r.bumped) return;
+    activityData = { streak: r.streak, lastDate: r.lastDate };
+    try { localStorage.setItem(ACTIVITY_STREAK_KEY, JSON.stringify(activityData)); } catch (e) {}
+    renderHomeDashboard();
+  }
+
+  function registerHomeCollection(entry) {
+    homeCollections.push(entry);
+  }
+
+  function findHomeCollection(id) {
+    for (var i = 0; i < homeCollections.length; i++) {
+      if (homeCollections[i].id === id) return homeCollections[i];
+    }
+    return null;
+  }
+
+  function renderHomeDashboard() {
+    var dash = document.getElementById('home-dashboard');
+    if (!dash || !allWords.length) return;
+    dash.classList.remove('hidden');
+
+    var counts = computeMasteryCounts(allWords, getMasteryStatus);
+    document.getElementById('dash-mastered-count').textContent = counts.mastered;
+    document.getElementById('dash-learning-count').textContent = counts.learning;
+    document.getElementById('dash-progress-fill').style.width = counts.pct + '%';
+    document.getElementById('dash-progress-label').textContent =
+      counts.mastered + ' of ' + counts.total + ' words mastered';
+    var track = document.getElementById('dash-progress-track');
+    track.setAttribute('aria-valuemax', counts.total);
+    track.setAttribute('aria-valuenow', counts.mastered);
+
+    var streak = effectiveStreakPure(activityData, todayKey(), yesterdayKey());
+    document.getElementById('dash-streak').textContent = streak > 0
+      ? '🔥 ' + streak + '-day streak'
+      : 'Finish any game today to start a streak!';
+
+    var readyCount = wordsReadyToMaster(allWords, mastery).length;
+    var collections = homeCollections.map(function (c) {
+      var s = c.summarize();
+      return {
+        id: c.id,
+        label: c.label,
+        read: s.read,
+        total: s.total,
+        nextTitle: s.next ? s.next.title : null
+      };
+    });
+    var ctas = buildCtaSuggestions({ collections: collections, readyCount: readyCount });
+
+    var row = document.getElementById('dash-cta-row');
+    row.innerHTML = '';
+    ctas.forEach(function (cta) {
+      var chip = document.createElement('button');
+      chip.className = 'dash-cta-chip';
+      chip.type = 'button';
+      chip.textContent = cta.label;
+      if (cta.kind === 'quiz') {
+        chip.addEventListener('click', function () {
+          // Recompute on click — mastery may have moved since render.
+          var ready = shuffle(wordsReadyToMaster(allWords, mastery)).slice(0, 8);
+          if (ready.length) startScopedQuiz(ready, {});
+        });
+      } else {
+        chip.addEventListener('click', function () {
+          var entry = findHomeCollection(cta.id);
+          if (entry) entry.openNext();
+        });
+      }
+      row.appendChild(chip);
+    });
+    row.classList.toggle('hidden', ctas.length === 0);
+
+    // Per-collection "12/28" badges on the launch buttons (✓ when finished).
+    // aria-hidden: the count is decorative here — the full progress lives in
+    // each mode's library header.
+    homeCollections.forEach(function (c) {
+      if (!c.launchBtn) return;
+      var s = c.summarize();
+      var badge = c.launchBtn.querySelector('.launch-btn-badge');
+      if (!s.total || !s.read) {
+        if (badge) badge.remove();
+        return;
+      }
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'launch-btn-badge';
+        badge.setAttribute('aria-hidden', 'true');
+        c.launchBtn.appendChild(badge);
+      }
+      var done = s.read >= s.total;
+      badge.textContent = done ? '✓' : s.read + '/' + s.total;
+      badge.classList.toggle('launch-btn-badge--done', done);
+    });
+  }
 
   // ── Audio pronunciation ────────────────────────────────────────────────────
   function speakWord(word) {
@@ -519,6 +659,7 @@ import {
   function init() {
     loadViewCounts();
     loadMastery();
+    loadActivityStreak();
     initTapToJump();
     loadWordData();
   }
@@ -591,6 +732,7 @@ import {
         wireWordUniverse(allWords);
         wireConstellationQuest(allWords);
         wireExplorerExtras(allWords);
+        renderHomeDashboard();
         var allScopeBtn = document.getElementById('quiz-scope-all-btn');
         if (allScopeBtn) {
           allScopeBtn.textContent = 'All ' + allWords.length + ' words';
@@ -832,6 +974,10 @@ import {
     updateFilterSummary();
 
     renderCards(results);
+
+    // Every overlay-close path funnels through here, so the dashboard's
+    // mastery numbers stay fresh after any game or reading session.
+    renderHomeDashboard();
   }
 
   // ── Modal ──────────────────────────────────────────────────────────────────
@@ -1084,7 +1230,8 @@ import {
     isQuestMode  : false,
     customPool   : null,
     returnTo     : null,
-    onComplete   : null
+    onComplete   : null,
+    answered     : false
   };
 
   var questState = {
@@ -1198,6 +1345,9 @@ import {
   var quizQuestionText   = document.getElementById('quiz-question-text');
   var quizAnswersGrid    = document.getElementById('quiz-answers-grid');
   var quizFeedback       = document.getElementById('quiz-feedback');
+  var quizFeedbackText   = document.getElementById('quiz-feedback-text');
+  var quizFeedbackDetail = document.getElementById('quiz-feedback-detail');
+  var quizNextBtn        = document.getElementById('quiz-next-btn');
 
   var quizEndScreen      = document.getElementById('quiz-end-screen');
   var quizEndEmoji       = document.getElementById('quiz-end-emoji');
@@ -1208,7 +1358,6 @@ import {
   var quizReviewList     = document.getElementById('quiz-review-list');
   var quizPlayAgainBtn   = document.getElementById('quiz-play-again-btn');
   var quizBackBtn        = document.getElementById('quiz-back-btn');
-  var quizAdvanceTimeout = null;
 
   // ── Persistence ────────────────────────────────────────────────────────────
   function getQuizBestKey() {
@@ -1280,7 +1429,6 @@ import {
   }
 
   function openQuizOverlay() {
-    clearQuizAdvanceTimeout();
     quizOverlay.classList.remove('hidden');
     quizOverlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -1297,7 +1445,6 @@ import {
   }
 
   function closeQuizOverlay() {
-    clearQuizAdvanceTimeout();
     quizOverlay.classList.add('hidden');
     quizOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
@@ -1384,13 +1531,6 @@ import {
       if (questState.worlds[i].id === themeId) return questState.worlds[i];
     }
     return questState.worlds[0];
-  }
-
-  function clearQuizAdvanceTimeout() {
-    if (quizAdvanceTimeout !== null) {
-      clearTimeout(quizAdvanceTimeout);
-      quizAdvanceTimeout = null;
-    }
   }
 
   function getQuizModeLabel() {
@@ -1614,20 +1754,33 @@ import {
     coreEl.textContent = payloadText;
     quizQuestionText.appendChild(coreEl);
 
-    // Answer buttons
+    // Answer buttons — numbered so the 1-4 keys (and spoken guidance) map to a
+    // visible badge on each choice.
     quizAnswersGrid.innerHTML = '';
     q.choices.forEach(function (choice, i) {
       var btn = document.createElement('button');
       btn.className    = 'quiz-answer-btn';
       btn.dataset.idx  = i;
       btn.setAttribute('aria-pressed', 'false');
-      btn.textContent  = choice;
+      var num = document.createElement('span');
+      num.className = 'quiz-answer-num';
+      num.setAttribute('aria-hidden', 'true');
+      num.textContent = String(i + 1);
+      var label = document.createElement('span');
+      label.className = 'quiz-answer-label';
+      label.textContent = choice;
+      btn.appendChild(num);
+      btn.appendChild(label);
       quizAnswersGrid.appendChild(btn);
     });
 
-    // Clear feedback
+    // Clear feedback; the child answers at their own pace, so hide Next until
+    // an answer is in.
+    quizState.answered = false;
     quizFeedback.className = 'quiz-feedback';
-    quizFeedback.textContent = '';
+    quizFeedbackText.textContent = '';
+    quizFeedbackDetail.textContent = '';
+    quizNextBtn.classList.add('hidden');
 
     // Move focus away from the answer grid after each re-render so the
     // previously chosen answer position does not look preselected.
@@ -1638,7 +1791,7 @@ import {
   }
 
   // ── Answer handling ────────────────────────────────────────────────────────
-  var CORRECT_PHRASES = ['✓ Brilliant!', '✓ Spot on!', '✓ Nice work!', '✓ Excellent!'];
+  // Praise/wrong-feedback phrasing → moved to js/game-feedback.js (pure + tested).
 
   function handleAnswer(chosenIndex) {
     var q = quizState.questions[quizState.currentIndex];
@@ -1657,7 +1810,7 @@ import {
     }
 
     // Persist mastery for this word
-    recordAnswer(q.questionWord.word, isCorrect);
+    recordAnswerCelebrated(q.questionWord.word, isCorrect);
 
     // Update score / streak
     if (isCorrect) {
@@ -1676,20 +1829,26 @@ import {
     quizFeedback.className = 'quiz-feedback visible ' +
       (isCorrect ? 'feedback-correct' : 'feedback-wrong');
     if (isCorrect) {
-      quizFeedback.textContent = CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)];
+      quizFeedbackText.textContent = pickPraise(quizState.streak);
+      quizFeedbackDetail.textContent = '';
     } else {
-      quizFeedback.textContent = '✗ The answer was: ' + q.choices[q.correctIndex];
+      var wrong = buildWrongFeedback(q.type, q.questionWord, q.choices[q.correctIndex]);
+      quizFeedbackText.textContent = wrong.headline;
+      quizFeedbackDetail.textContent = wrong.detail;
     }
 
-    // Advance after pause
-    clearQuizAdvanceTimeout();
-    quizAdvanceTimeout = setTimeout(function () {
-      quizAdvanceTimeout = null;
-      advanceQuiz();
-    }, 1400);
+    // The child advances at their own pace: Next button, Enter/Space/→, the
+    // 1-4 keys answered, or a tap anywhere on the question screen.
+    quizState.answered = true;
+    var isLast = quizState.currentIndex >= quizState.questions.length - 1;
+    quizNextBtn.textContent = isLast ? 'See results →' : 'Next →';
+    quizNextBtn.classList.remove('hidden');
+    quizNextBtn.focus({ preventScroll: true });
   }
 
   function advanceQuiz() {
+    if (!quizState.answered) return;
+    quizState.answered = false;
     quizState.currentIndex++;
     if (quizState.currentIndex >= quizState.questions.length) {
       showEndScreen();
@@ -1700,19 +1859,18 @@ import {
 
   // ── End screen ─────────────────────────────────────────────────────────────
   function showEndScreen() {
+    markActivityToday();
     quizProgressFill.style.width = '100%';
     var score = quizState.score;
     var total = quizState.questions.length;
 
-    var tier;
-    if (score === total)       tier = { emoji: '🏆', title: 'Perfect score!' };
-    else if (score >= total * 0.7) tier = { emoji: '⭐', title: 'Star performance!' };
-    else if (score >= total * 0.4) tier = { emoji: '👍', title: 'Good effort!' };
-    else                           tier = { emoji: '💪', title: 'Keep practising!' };
+    var tier = getScoreTier(score, total);
 
     quizEndEmoji.textContent = tier.emoji;
     quizEndTitle.textContent = tier.title;
     quizEndScore.textContent = score + ' / ' + total + ' correct';
+
+    var shouldBurst = total > 0 && score === total;
 
     if (quizState.customPool) {
       // Scoped quizzes keep their own progress, so they bypass the generic
@@ -1726,6 +1884,7 @@ import {
       quizEndBest.textContent = isNewBest
         ? 'New personal best! 🎉'
         : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
+      shouldBurst = shouldBurst || isNewBest;
       // applyQuestRewards appends to the line above, so it must run after it.
       if (quizState.isQuestMode) {
         applyQuestRewards(score, total);
@@ -1734,7 +1893,19 @@ import {
 
     renderQuizReview();
     showQuizScreen(quizEndScreen);
+    revealEndScreen(quizEndScreen);
+    if (shouldBurst) celebrateBurst(quizEndEmoji);
     quizPlayAgainBtn.focus();
+  }
+
+  // Re-trigger the staggered tier-reveal animation each time an end screen is
+  // shown (CSS no-ops it under prefers-reduced-motion).
+  function revealEndScreen(screenEl) {
+    var inner = screenEl.querySelector('.quiz-end-inner');
+    if (!inner) return;
+    inner.classList.remove('quiz-end-reveal');
+    void inner.offsetWidth; // restart the CSS animations
+    inner.classList.add('quiz-end-reveal');
   }
 
   function renderQuizReview() {
@@ -1768,7 +1939,6 @@ import {
 
   // ── Start quiz ─────────────────────────────────────────────────────────────
   function startQuiz() {
-    clearQuizAdvanceTimeout();
     quizState.currentIndex = 0;
     quizState.score        = 0;
     quizState.streak       = 0;
@@ -1777,7 +1947,9 @@ import {
     quizProgressWrap.setAttribute('aria-valuemax', quizState.questions.length);
     showQuizScreen(quizQuestionScreen);
     renderQuestion(0);
-    quizExitBtn.focus();
+    // Focus stays on the question screen (set by renderQuestion) — focusing
+    // the Exit button here made an eager Enter right after starting (or a
+    // double-Enter from the Start button) silently quit the quiz.
   }
 
   function startQuest(worldIdx, questIdx) {
@@ -1811,6 +1983,8 @@ import {
       var qid = questState.activeQuestId;
       if (questState.progress.completed.indexOf(qid) === -1) {
         questState.progress.completed.push(qid);
+        celebrateToast('🗺️', 'Quest complete!', '+' + gainedXp + ' XP · +' + bonusCoins + ' coins');
+        celebrateBurst();
       }
     }
     saveQuestProgress();
@@ -1880,13 +2054,51 @@ import {
       handleAnswer(parseInt(btn.dataset.idx, 10));
     });
 
-    // Escape closes quiz overlay (separate guard from word-detail modal)
+    quizNextBtn.addEventListener('click', advanceQuiz);
+
+    // After answering, a tap anywhere on the question screen also advances.
+    // Buttons are excluded: Next/Exit keep their own behaviour, and the
+    // answering click itself bubbles here from a .quiz-answer-btn after
+    // handleAnswer has already set quizState.answered.
+    quizQuestionScreen.addEventListener('click', function (e) {
+      if (!quizState.answered) return;
+      if (closestByClass(e.target, 'quiz-next-btn')) return;
+      if (closestByClass(e.target, 'quiz-exit-btn')) return;
+      if (closestByClass(e.target, 'quiz-answer-btn')) return;
+      advanceQuiz();
+    });
+
+    // Escape closes quiz overlay (separate guard from word-detail modal);
+    // 1-4 answer the current question; Enter/Space/→ advance once answered.
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !quizOverlay.classList.contains('hidden')) {
         closeQuizOverlay();
       }
       if (e.key === 'Escape' && !questOverlay.classList.contains('hidden')) {
         closeQuestOverlay();
+      }
+
+      if (quizOverlay.classList.contains('hidden')) return;
+      if (quizQuestionScreen.classList.contains('hidden')) return;
+      var tag = e.target && e.target.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+
+      if (!quizState.answered && e.key >= '1' && e.key <= '4') {
+        var btns = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
+        var idx = parseInt(e.key, 10) - 1;
+        if (btns[idx] && !btns[idx].disabled) handleAnswer(idx);
+        return;
+      }
+
+      if (quizState.answered) {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          advanceQuiz();
+        } else if ((e.key === 'Enter' || e.key === ' ') && tag !== 'BUTTON') {
+          // Focused buttons (Next, Exit) handle Enter/Space natively.
+          e.preventDefault();
+          advanceQuiz();
+        }
       }
     });
   }
@@ -2074,7 +2286,19 @@ import {
     def.textContent = wordObj.definition;
     g.appendChild(word);
     g.appendChild(type);
+    if (wordObj.pronunciation) {
+      var pron = document.createElement('div');
+      pron.className = 'vocab-gloss-pron';
+      pron.textContent = 'Say it: ' + wordObj.pronunciation;
+      g.appendChild(pron);
+    }
     g.appendChild(def);
+    if (wordObj.sentence_usage) {
+      var sentence = document.createElement('div');
+      sentence.className = 'vocab-gloss-sentence';
+      sentence.textContent = '“' + wordObj.sentence_usage + '”';
+      g.appendChild(sentence);
+    }
 
     g.classList.remove('hidden');
     var rect = spanEl.getBoundingClientRect();
@@ -2098,6 +2322,97 @@ import {
 
   function glossIsOpen() {
     return glossEl && !glossEl.classList.contains('hidden');
+  }
+
+  // ── Shared reading-mode UI (collection progress header, article recap) ──────
+  // Used by all createReadingMode factories and the bespoke Story mode.
+
+  // Create-or-update a "You've read X of Y" header with a mini progress bar,
+  // inserted just before the library list.
+  function renderCollectionProgressHeader(listEl, idPrefix, summary) {
+    var headerId = idPrefix + '-collection-progress';
+    var header = document.getElementById(headerId);
+    if (!header) {
+      header = document.createElement('div');
+      header.id = headerId;
+      header.className = 'collection-progress';
+      var label = document.createElement('span');
+      label.className = 'collection-progress-label';
+      var track = document.createElement('span');
+      track.className = 'collection-progress-track';
+      track.setAttribute('aria-hidden', 'true');
+      var fill = document.createElement('span');
+      fill.className = 'collection-progress-fill';
+      track.appendChild(fill);
+      header.appendChild(label);
+      header.appendChild(track);
+      listEl.parentNode.insertBefore(header, listEl);
+    }
+    header.querySelector('.collection-progress-label').textContent =
+      formatCollectionProgress(summary.read, summary.total);
+    header.querySelector('.collection-progress-fill').style.width =
+      (summary.total > 0 ? Math.round((summary.read / summary.total) * 100) : 0) + '%';
+    header.classList.toggle('hidden', summary.total === 0);
+  }
+
+  // End-of-article recap: flip-chips for the words the child just met, then a
+  // pull toward the next item. Rebuilt on every openItem (prev/next reuse the
+  // screen) and inserted OUTSIDE the reading body so the TTS tokenisation
+  // never reads it. The quiz button stays last — the recap funnels into it.
+  function buildArticleRecap(quizBtn, recapId, words, nextItem, openNextFn) {
+    var existing = document.getElementById(recapId);
+    if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    if (!words.length && !nextItem) return;
+
+    var recap = document.createElement('div');
+    recap.id = recapId;
+    recap.className = 'article-recap';
+
+    if (words.length) {
+      var heading = document.createElement('h3');
+      heading.className = 'article-recap-title';
+      heading.textContent = 'Words you met';
+      recap.appendChild(heading);
+
+      var hint = document.createElement('p');
+      hint.className = 'article-recap-hint';
+      hint.textContent = 'Tap a word to flip it over — how many do you remember?';
+      recap.appendChild(hint);
+
+      var chips = document.createElement('div');
+      chips.className = 'recap-chips';
+      words.forEach(function (w) {
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'recap-chip';
+        chip.textContent = w.word;
+        chip.setAttribute('aria-label', w.word + ' — tap to reveal its meaning');
+        chip.addEventListener('click', function () {
+          var flipped = chip.classList.toggle('flipped');
+          if (flipped) {
+            chip.textContent = w.definition;
+            chip.setAttribute('aria-label', w.word + ' means: ' + w.definition);
+            speakWord(w.word);
+          } else {
+            chip.textContent = w.word;
+            chip.setAttribute('aria-label', w.word + ' — tap to reveal its meaning');
+          }
+        });
+        chips.appendChild(chip);
+      });
+      recap.appendChild(chips);
+    }
+
+    if (nextItem) {
+      var nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'recap-next-btn';
+      nextBtn.textContent = 'Next: ' + nextItem.emoji + ' ' + nextItem.title + ' →';
+      nextBtn.addEventListener('click', function () { openNextFn(nextItem); });
+      recap.appendChild(nextBtn);
+    }
+
+    quizBtn.parentNode.insertBefore(recap, quizBtn);
   }
 
   function initGloss() {
@@ -2217,6 +2532,7 @@ import {
       storyList.appendChild(empty);
       return;
     }
+    renderCollectionProgressHeader(storyList, 'story', summarizeCollection(stories, storyProgress));
     stories.forEach(function (story) {
       var card = document.createElement('button');
       card.className = 'story-card';
@@ -2238,7 +2554,13 @@ import {
       wordsTag.textContent = storyWordObjects(story).length + ' words';
       meta.appendChild(wordsTag);
 
+      var timeTag = document.createElement('span');
+      timeTag.className = 'story-card-tag story-card-time';
+      timeTag.textContent = '~' + estimateReadMinutes(story.paragraphs) + ' min';
+      meta.appendChild(timeTag);
+
       var prog = storyProgress[story.id];
+      if (prog && prog.read) card.classList.add('story-card--read');
       if (prog && typeof prog.bestScore === 'number') {
         var scoreTag = document.createElement('span');
         scoreTag.className = 'story-card-tag story-card-score';
@@ -2297,6 +2619,14 @@ import {
       storyReadingImageFigure.classList.add('hidden');
     }
     renderReadingBody(storyReadingBody, story.paragraphs, storyWordObjects(story), storyTTSBar);
+    var storyIdx = stories.indexOf(story);
+    buildArticleRecap(
+      storyQuizBtn,
+      'story-article-recap',
+      storyWordObjects(story),
+      (storyIdx >= 0 && storyIdx < stories.length - 1) ? stories[storyIdx + 1] : null,
+      function (next) { ttsStop(); openStory(next); }
+    );
     storyLibraryScroll = storyLibraryScreen.scrollTop;
     showStoryScreen(storyReadingScreen);
     resetReadingScroll(storyScrollContent, storyScrollFill, storyReadingScreen);
@@ -2320,6 +2650,7 @@ import {
     storyOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentStory = null;
+    renderHomeDashboard(); // reading progress changed while the overlay was open
     storyLaunchBtn.focus();
   }
 
@@ -2348,6 +2679,19 @@ import {
 
   function initStoryMode() {
     loadStoryProgress();
+
+    // Bespoke twin of the factory's dashboard registration.
+    registerHomeCollection({
+      id: 'story',
+      label: 'Stories',
+      launchBtn: storyLaunchBtn,
+      summarize: function () { return summarizeCollection(stories, storyProgress); },
+      openNext: function () {
+        var s = summarizeCollection(stories, storyProgress);
+        openStoryOverlay();
+        if (s.next) openStory(s.next);
+      }
+    });
 
     storyLaunchBtn.addEventListener('click', openStoryOverlay);
     storyCloseBtn.addEventListener('click', closeStoryOverlay);
@@ -2419,6 +2763,7 @@ import {
             !storyLibraryScreen.classList.contains('hidden')) {
           renderStoryLibrary();
         }
+        renderHomeDashboard(); // collection totals just became known
       })
       .catch(function () { stories = []; });
   }
@@ -2502,6 +2847,7 @@ import {
         listEl.appendChild(empty);
         return;
       }
+      renderCollectionProgressHeader(listEl, prefix, summarizeCollection(items, progress));
       items.forEach(function (item) {
         var card = document.createElement('button');
         card.className = 'story-card';
@@ -2530,7 +2876,13 @@ import {
         wordsTag.textContent = wordObjects(item).length + ' words';
         meta.appendChild(wordsTag);
 
+        var timeTag = document.createElement('span');
+        timeTag.className = 'story-card-tag story-card-time';
+        timeTag.textContent = '~' + estimateReadMinutes(item.paragraphs) + ' min';
+        meta.appendChild(timeTag);
+
         var prog = progress[item.id];
+        if (prog && prog.read) card.classList.add('story-card--read');
         if (prog && typeof prog.bestScore === 'number') {
           var scoreTag = document.createElement('span');
           scoreTag.className = 'story-card-tag story-card-score';
@@ -2591,6 +2943,15 @@ import {
 
       renderReadingBody(readingBody, item.paragraphs, wordObjects(item), ttsBar);
 
+      var idx = items.indexOf(item);
+      buildArticleRecap(
+        quizBtn,
+        prefix + '-article-recap',
+        wordObjects(item),
+        (idx >= 0 && idx < items.length - 1) ? items[idx + 1] : null,
+        function (next) { ttsStop(); openItem(next); }
+      );
+
       if (moralEl) {
         if (item[config.moralField]) {
           moralEl.textContent = 'Moral: ' + item[config.moralField];
@@ -2624,6 +2985,9 @@ import {
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       current = null;
+      // Reading progress changed while the overlay was open — refresh the
+      // home dashboard (badges, CTAs). Quiz paths refresh via applyFilters.
+      renderHomeDashboard();
       launchBtn.focus();
     }
 
@@ -2651,6 +3015,21 @@ import {
 
     loadProgress();
     readingReturnHandlers[config.returnTo] = reopenReading;
+
+    // Home-dashboard registration: summaries recompute from the live
+    // items/progress closures, and openNext jumps straight to the first
+    // unread item ("Continue History: …" chip).
+    registerHomeCollection({
+      id: prefix,
+      label: config.label,
+      launchBtn: launchBtn,
+      summarize: function () { return summarizeCollection(items, progress); },
+      openNext: function () {
+        var s = summarizeCollection(items, progress);
+        openOverlay();
+        if (s.next) openItem(s.next);
+      }
+    });
 
     launchBtn.addEventListener('click', openOverlay);
     closeBtn.addEventListener('click', closeOverlay);
@@ -2722,13 +3101,14 @@ import {
             !libraryScreen.classList.contains('hidden')) {
           renderLibrary();
         }
+        renderHomeDashboard(); // collection totals just became known
       })
       .catch(function () { items = []; });
   }
 
   function initHistoryMode() {
     createReadingMode({
-      prefix: 'history', progressKey: 'vocabVault_historyProgress',
+      prefix: 'history', label: 'History', progressKey: 'vocabVault_historyProgress',
       dataFile: 'data/history.json', dataKey: 'articles',
       returnTo: 'history', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'History articles are still loading — try again in a moment.'
@@ -2737,7 +3117,7 @@ import {
 
   function initMoneyMode() {
     createReadingMode({
-      prefix: 'money', progressKey: 'vocabVault_moneyProgress',
+      prefix: 'money', label: 'Money', progressKey: 'vocabVault_moneyProgress',
       dataFile: 'data/money.json', dataKey: 'money',
       returnTo: 'money', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'Money articles are still loading — try again in a moment.'
@@ -2746,7 +3126,7 @@ import {
 
   function initAnimalsMode() {
     createReadingMode({
-      prefix: 'animals', progressKey: 'vocabVault_animalsProgress',
+      prefix: 'animals', label: 'Animals', progressKey: 'vocabVault_animalsProgress',
       dataFile: 'data/animals.json', dataKey: 'animals',
       returnTo: 'animals', itemNoun: 'article', subtitleField: 'habitat',
       loadingMessage: 'Animal articles are still loading — try again in a moment.'
@@ -2755,7 +3135,7 @@ import {
 
   function initInsectsMode() {
     createReadingMode({
-      prefix: 'insects', progressKey: 'vocabVault_insectsProgress',
+      prefix: 'insects', label: 'Insects', progressKey: 'vocabVault_insectsProgress',
       dataFile: 'data/insects.json', dataKey: 'insects',
       returnTo: 'insects', itemNoun: 'article', subtitleField: 'habitat',
       loadingMessage: 'Insect articles are still loading — try again in a moment.'
@@ -2764,7 +3144,7 @@ import {
 
   function initSpaceMode() {
     createReadingMode({
-      prefix: 'space', progressKey: 'vocabVault_spaceProgress',
+      prefix: 'space', label: 'Space', progressKey: 'vocabVault_spaceProgress',
       dataFile: 'data/space.json', dataKey: 'space',
       returnTo: 'space', itemNoun: 'article', subtitleField: 'region',
       loadingMessage: 'Space articles are still loading — try again in a moment.'
@@ -2773,7 +3153,7 @@ import {
 
   function initTechMode() {
     createReadingMode({
-      prefix: 'tech', progressKey: 'vocabVault_technologyProgress',
+      prefix: 'tech', label: 'Inventions', progressKey: 'vocabVault_technologyProgress',
       dataFile: 'data/technology.json', dataKey: 'technology',
       returnTo: 'tech', itemNoun: 'article', subtitleField: 'era',
       loadingMessage: 'Inventions are still loading — try again in a moment.'
@@ -2782,7 +3162,7 @@ import {
 
   function initForcesMode() {
     createReadingMode({
-      prefix: 'forces', progressKey: 'vocabVault_forcesProgress',
+      prefix: 'forces', label: 'Forces of Nature', progressKey: 'vocabVault_forcesProgress',
       dataFile: 'data/forces.json', dataKey: 'forces',
       returnTo: 'forces', itemNoun: 'article', subtitleField: 'element',
       loadingMessage: 'Forces of nature are still loading — try again in a moment.'
@@ -2791,7 +3171,7 @@ import {
 
   function initStreetSmartsMode() {
     createReadingMode({
-      prefix: 'street', progressKey: 'vocabVault_streetSmartsProgress',
+      prefix: 'street', label: 'Street Smarts', progressKey: 'vocabVault_streetSmartsProgress',
       dataFile: 'data/street-smarts.json', dataKey: 'streetSmarts',
       returnTo: 'street', itemNoun: 'article', subtitleField: 'topic',
       loadingMessage: 'Street Smarts articles are still loading — try again in a moment.'
@@ -2800,7 +3180,7 @@ import {
 
   function initFableMode() {
     createReadingMode({
-      prefix: 'fable', progressKey: 'vocabVault_fableProgress',
+      prefix: 'fable', label: 'Fables', progressKey: 'vocabVault_fableProgress',
       dataFile: 'data/fables.json', dataKey: 'fables',
       returnTo: 'fable', itemNoun: 'fable', moralField: 'moral',
       loadingMessage: 'Fables are still loading — try again in a moment.'
@@ -3811,6 +4191,7 @@ import {
   }
 
   function showDetectiveEnd() {
+    markActivityToday();
     showDetectiveScreen('end');
     var score = detectiveState.score;
     var len   = detectiveState.sessionLength;
@@ -3826,6 +4207,8 @@ import {
     document.getElementById('detective-end-title').textContent  = pct >= 0.8 ? 'Master Detective!' : pct >= 0.5 ? 'Sharp Investigator!' : 'Keep Sleuthing!';
     document.getElementById('detective-end-score').textContent  = score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('detective-end-best').textContent   = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('detective-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('detective-end-emoji'));
   }
 
   // ── Scramble Mode ────────────────────────────────────────────────────────────
@@ -4101,6 +4484,7 @@ import {
   }
 
   function showScrambleEnd() {
+    markActivityToday();
     showScrambleScreen('end');
     var score = scrambleState.sessionScore;
     var len   = scrambleState.sessionLength;
@@ -4116,9 +4500,13 @@ import {
     document.getElementById('scramble-end-title').textContent = pct >= 0.8 ? 'Spelling Wizard!' : pct >= 0.5 ? 'Word Wrangler!' : 'Getting Warmed Up!';
     document.getElementById('scramble-end-score').textContent = score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('scramble-end-best').textContent  = isNew ? '⭐ New personal best!' : 'Personal best: ' + (best || 0) + ' pts';
+    revealEndScreen(document.getElementById('scramble-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('scramble-end-emoji'));
   }
 
   // ── Flash Blitz Mode ─────────────────────────────────────────────────────────
+
+  var BLITZ_BESTS_KEY = 'vocabVault_blitzBests';
 
   var blitzState = {
     words         : [],
@@ -4215,6 +4603,7 @@ import {
     blitzState.index    = 0;
     blitzState.flipped  = false;
     blitzState.scope    = scope;
+    blitzState.sessionSize = rawSize;
     blitzState.timerSecs = timerSec;
     blitzState.got      = 0;
     blitzState.nearly   = 0;
@@ -4321,11 +4710,11 @@ import {
     var wordObj = blitzState.words[blitzState.index];
     if (rating === 'got') {
       blitzState.got++;
-      recordAnswer(wordObj.word, true);
+      recordAnswerCelebrated(wordObj.word, true);
     } else if (rating === 'missed') {
       blitzState.missed++;
       blitzState.missedWords.push(wordObj);
-      recordAnswer(wordObj.word, false);
+      recordAnswerCelebrated(wordObj.word, false);
     } else {
       blitzState.nearly++;
     }
@@ -4338,15 +4727,31 @@ import {
   }
 
   function showBlitzEnd() {
+    markActivityToday();
     stopBlitzTimer();
     showBlitzScreen('end');
-    var total = blitzState.words.length;
-    var got   = blitzState.got;
-    var pct   = got / total;
-    document.getElementById('blitz-end-emoji').textContent = pct >= 0.8 ? '⚡' : pct >= 0.5 ? '🃏' : '📚';
-    document.getElementById('blitz-end-title').textContent = pct >= 0.8 ? 'Lightning Round!' : pct >= 0.5 ? 'Solid Session!' : 'Keep Flipping!';
+    var tier  = getBlitzTier(blitzState.got, blitzState.nearly, blitzState.missed);
+    var score = getBlitzScore(blitzState.got, blitzState.nearly);
+    document.getElementById('blitz-end-emoji').textContent = tier.emoji;
+    document.getElementById('blitz-end-title').textContent = tier.title;
     document.getElementById('blitz-end-score').textContent =
-      '✅ Got: ' + blitzState.got + '  🤔 Nearly: ' + blitzState.nearly + '  ❌ Missed: ' + blitzState.missed;
+      '✅ Got: ' + blitzState.got + '  🤔 Nearly: ' + blitzState.nearly + '  ❌ Missed: ' + blitzState.missed +
+      '  ·  ' + score + ' pts';
+
+    // Per-options personal best (mirrors vocabVault_snapBests).
+    var bests = {};
+    try { bests = JSON.parse(localStorage.getItem(BLITZ_BESTS_KEY)) || {}; } catch (e) { bests = {}; }
+    var bestKey = [blitzState.sessionSize, blitzState.scope, blitzState.timerSecs].join(':');
+    var best = bests[bestKey] || 0;
+    var isNew = score > best;
+    if (isNew) {
+      bests[bestKey] = score;
+      try { localStorage.setItem(BLITZ_BESTS_KEY, JSON.stringify(bests)); } catch (e) {}
+    }
+    document.getElementById('blitz-end-best').textContent =
+      isNew ? '⭐ New personal best!' : (best > 0 ? 'Personal best: ' + best + ' pts' : '');
+    revealEndScreen(document.getElementById('blitz-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('blitz-end-emoji'));
 
     var reviewEl = document.getElementById('blitz-misses-review');
     var listEl   = document.getElementById('blitz-misses-list');
@@ -4703,6 +5108,7 @@ import {
   }
 
   function showSnapEnd() {
+    markActivityToday();
     stopSnapTimer();
     showSnapScreen('end');
     var score = snapState.score;
@@ -4721,6 +5127,8 @@ import {
     document.getElementById('snap-end-score').textContent =
       score + ' pts · Best streak: 🔥 ' + snapState.bestStreak;
     document.getElementById('snap-end-best').textContent = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('snap-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('snap-end-emoji'));
 
     var reviewEl = document.getElementById('snap-misses-review');
     var listEl   = document.getElementById('snap-misses-list');
@@ -5034,7 +5442,7 @@ import {
       fb.className = 'quiz-feedback visible feedback-wrong';
     }
 
-    recordAnswer(wordObj.word, isCorrect);
+    recordAnswerCelebrated(wordObj.word, isCorrect);
 
     var revealEl = document.getElementById('wild-definition-reveal');
     revealEl.textContent = 'Definition: ' + wordObj.definition;
@@ -5052,6 +5460,7 @@ import {
   }
 
   function showWildEnd() {
+    markActivityToday();
     showWildScreen('end');
     var score  = wildState.score;
     var len    = wildState.sessionLength;
@@ -5071,6 +5480,8 @@ import {
       score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('wild-end-best').textContent =
       isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('wild-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('wild-end-emoji'));
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -5952,9 +6363,15 @@ import {
 
   (function restoreLaunchGroupState() {
     var saved = loadLaunchGroupState();
+    // Reading Tools and Games — the child-primary groups — default OPEN;
+    // Filters and Word Explorer stay opt-in. An explicit saved choice
+    // (true or false) always wins over the default.
+    var defaultOpen = { 'reading-body': true, 'games-body': true };
     document.querySelectorAll('.launch-group-toggle').forEach(function (toggle) {
       var key = toggle.getAttribute('aria-controls');
-      if (saved[key] === true) {
+      var open = saved[key] === true ||
+                 (saved[key] === undefined && defaultOpen[key] === true);
+      if (open) {
         toggle.setAttribute('aria-expanded', 'true');
         var body = document.getElementById(key);
         if (body) body.classList.remove('collapsed');

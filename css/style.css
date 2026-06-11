@@ -113,6 +113,136 @@ main {
 }
 
 /* ===========================
+   Home Dashboard (progress at a glance)
+   =========================== */
+.home-dashboard {
+  background: #FFFFFF;
+  background: var(--color-card);
+  border-radius: 14px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.12);
+  box-shadow: 0 4px 16px var(--color-shadow);
+  padding: 1.1rem 1.4rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.home-dashboard.hidden { display: none; }
+
+.dash-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+
+.dash-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+}
+
+.dash-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+/* Display numerals only — labels stay Nunito to keep the identity clean. */
+.dash-num {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.dash-num--mastered { color: #16A34A; }
+.dash-num--learning { color: #B45309; }
+
+.dash-stat-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.dash-streak {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #B45309;
+}
+
+.dash-progress-track {
+  height: 12px;
+  border-radius: 999px;
+  background: #EEF0FF;
+  background: var(--color-primary-light);
+  overflow: hidden;
+}
+
+.dash-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6C63FF 0%, #8B83FF 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, #8B83FF 100%);
+  transition: width 0.6s ease;
+}
+
+.dash-progress-label {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.dash-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+
+.dash-cta-row.hidden { display: none; }
+
+.dash-cta-chip {
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 2px solid #6C63FF;
+  border: 2px solid var(--color-primary);
+  background: #EEF0FF;
+  background: var(--color-primary-light);
+  color: #4B44CC;
+  color: var(--color-primary-dark);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-align: left;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.dash-cta-chip:hover {
+  background: #6C63FF;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.dash-cta-chip:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .home-dashboard { padding: 0.9rem 1rem 1rem; }
+  .dash-num { font-size: 1.6rem; }
+  .dash-cta-chip { font-size: 0.82rem; }
+}
+
+/* ===========================
    Controls (Search + Filter)
    =========================== */
 .controls {
@@ -1155,6 +1285,21 @@ footer {
   outline-offset: 3px;
 }
 
+/* Collection-progress badge on a reading-mode launch button ("12/28" or ✓). */
+.launch-btn-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+}
+
+.launch-btn-badge--done {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
 /* ===========================
    Quiz Overlay & Panel Shell
    =========================== */
@@ -1518,12 +1663,22 @@ footer {
    =========================== */
 .quiz-answers-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
   padding: 0.5rem 1.75rem 1.25rem;
 }
 
+/* Two columns only where there is comfortably room for them. */
+@media (min-width: 900px) {
+  .quiz-answers-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .quiz-answer-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   padding: 0.85rem 1rem;
   border-radius: 14px;
   border-radius: var(--radius-card);
@@ -1537,9 +1692,33 @@ footer {
   color: var(--color-text);
   text-align: left;
   line-height: 1.4;
-  min-height: 64px;
+  min-height: 56px;
   transition: border-color var(--transition), background var(--transition),
               color var(--transition), transform var(--transition);
+}
+
+.quiz-answer-num {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-answer-btn.correct .quiz-answer-num {
+  background: #A7F3D0;
+  color: #065F46;
+}
+
+.quiz-answer-btn.wrong .quiz-answer-num {
+  background: #FECACA;
+  color: #7F1D1D;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1592,6 +1771,58 @@ footer {
 .quiz-feedback.feedback-correct { color: #065F46; }
 .quiz-feedback.feedback-wrong   { color: #991B1B; }
 
+/* Main quiz only: feedback stacks a praise/answer line over a learning detail,
+   and the bottom padding moves to the action bar below it. (Detective/
+   Scramble/Wild reuse .quiz-feedback and keep the single-line layout.) */
+#quiz-feedback {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Learning line under a wrong answer: restates what the word means. */
+.quiz-feedback-detail {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+.quiz-feedback-detail:empty { display: none; }
+
+/* ===========================
+   Next Button / Action Bar
+   =========================== */
+.quiz-action-bar {
+  padding: 0 1.75rem 1.5rem;
+  min-height: 3.4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-next-btn {
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  background: #6C63FF;
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.quiz-next-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.quiz-next-btn:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
 /* ===========================
    End Screen
    =========================== */
@@ -1610,11 +1841,12 @@ footer {
 }
 
 .quiz-end-title {
-  font-size: clamp(1.4rem, 5vw, 1.8rem);
-  font-weight: 800;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.6rem, 5.5vw, 2.1rem);
+  font-weight: 400;
   color: #1A1A2E;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
 }
 
 .quiz-end-score {
@@ -1726,6 +1958,14 @@ footer {
   }
 
   .quiz-feedback {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  #quiz-feedback {
+    padding-bottom: 0.5rem;
+  }
+
+  .quiz-action-bar {
     padding: 0 1.25rem 1.25rem;
   }
 }
@@ -1932,6 +2172,128 @@ footer {
 .story-card-tag.story-card-score {
   background: #D1FAE5;
   color: #065F46;
+}
+
+.story-card-tag.story-card-time {
+  background: #FEF3C7;
+  color: #92400E;
+}
+
+/* Already-read items step back so unread ones pop. */
+.story-card--read {
+  background: #FAFAFC;
+}
+
+.story-card--read .story-card-title::after {
+  content: ' ✓';
+  color: #16A34A;
+}
+
+/* "You've read X of Y" header above each library list. */
+.collection-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.2rem 0.9rem;
+}
+
+.collection-progress-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.collection-progress-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  overflow: hidden;
+}
+
+.collection-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #8B83FF 100%);
+  transition: width 0.5s ease;
+}
+
+/* End-of-article recap: flip-chips + next-article pull (before the quiz btn). */
+.article-recap {
+  border-top: 2px dashed var(--color-border);
+  padding-top: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.article-recap-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.article-recap-hint {
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.recap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recap-chip {
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+}
+
+.recap-chip.flipped {
+  background: var(--color-card);
+  border-style: dashed;
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.recap-chip:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.recap-next-btn {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  border: 2px solid #16A34A;
+  background: #D1FAE5;
+  color: #065F46;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.recap-next-btn:hover {
+  background: #16A34A;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.recap-next-btn:focus-visible {
+  outline: 3px solid #065F46;
+  outline-offset: 2px;
 }
 
 /* Story / news reading view */
@@ -2189,6 +2551,23 @@ footer {
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--color-text);
+}
+
+.vocab-gloss-pron {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+.vocab-gloss-sentence {
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--color-border);
 }
 
 /* Daily News setup screen */
@@ -5120,4 +5499,127 @@ footer {
 
 @media (max-width: 480px) {
   .wild-game-inner { padding: 0.85rem 1rem 1.25rem; }
+}
+
+/* ===========================
+   Celebration Layer
+   (confetti bursts, toasts, end-screen tier reveal — js/celebrate.js)
+   =========================== */
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+.confetti-particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  animation: confettiFall 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.confetti-circle { border-radius: 50%; }
+.confetti-strip  { width: 5px; height: 14px; border-radius: 2px; }
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(var(--scale, 1)) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 200px)))
+               scale(var(--scale, 1)) rotate(var(--rot, 360deg));
+  }
+}
+
+.celebrate-toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3100;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.2rem;
+  background: #FFFFFF;
+  background: var(--color-card);
+  border: 2px solid #6C63FF;
+  border: 2px solid var(--color-primary);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.25);
+  pointer-events: none;
+  animation: toastIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.celebrate-toast--out { animation: toastOut 0.4s ease forwards; }
+
+/* Reduced motion: appear/disappear with opacity only. */
+.celebrate-toast--still { animation: none; }
+.celebrate-toast--still.celebrate-toast--out {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.celebrate-toast-emoji { font-size: 1.6rem; line-height: 1; }
+
+.celebrate-toast-body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.celebrate-toast-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1A1A2E;
+  color: var(--color-text);
+}
+
+.celebrate-toast-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6B7280;
+  color: var(--color-text-secondary);
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+}
+
+/* Staggered reveal on every game's end screen (re-triggered per show). */
+.quiz-end-reveal .quiz-end-emoji { animation: endEmojiPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.quiz-end-reveal .quiz-end-title { animation: endRise 0.4s ease 0.15s both; }
+.quiz-end-reveal .quiz-end-score { animation: endRise 0.4s ease 0.28s both; }
+.quiz-end-reveal .quiz-end-best  { animation: endRise 0.4s ease 0.4s both; }
+
+@keyframes endEmojiPop {
+  0%   { opacity: 0; transform: scale(0.3); }
+  70%  { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes endRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-particle { animation: none; opacity: 0; }
+  .celebrate-toast { animation: none; }
+  .quiz-end-reveal .quiz-end-emoji,
+  .quiz-end-reveal .quiz-end-title,
+  .quiz-end-reveal .quiz-end-score,
+  .quiz-end-reveal .quiz-end-best { animation: none; }
 }

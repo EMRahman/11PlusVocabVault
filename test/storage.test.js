@@ -60,6 +60,37 @@ test('recordAnswer drives a word to mastered after enough correct answers', () =
   assert.equal(getMasteryStatus('W'), 'mastered'); // 3 correct, margin 3
 });
 
+test('recordAnswer reports the mastery transition it caused', () => {
+  // new → learning on the first answer.
+  let r = recordAnswer('T', true);
+  assert.deepEqual(r, { status: 'learning', previousStatus: 'new', becameMastered: false });
+  r = recordAnswer('T', true);
+  assert.equal(r.becameMastered, false);
+  // Third correct (margin 3): learning → mastered fires exactly once.
+  r = recordAnswer('T', true);
+  assert.deepEqual(r, { status: 'mastered', previousStatus: 'learning', becameMastered: true });
+  // Already mastered: no repeat celebration.
+  r = recordAnswer('T', true);
+  assert.deepEqual(r, { status: 'mastered', previousStatus: 'mastered', becameMastered: false });
+});
+
+test('recordAnswer never reports becameMastered on a wrong answer', () => {
+  // 3 correct + 1 incorrect = margin 2: still mastered, but the transition
+  // happened on the third correct, not the miss.
+  recordAnswer('M', true);
+  recordAnswer('M', true);
+  const third = recordAnswer('M', true);
+  assert.equal(third.becameMastered, true);
+  const miss = recordAnswer('M', false);
+  assert.equal(miss.status, 'mastered'); // margin still 2
+  assert.equal(miss.becameMastered, false);
+  // A second miss drops it back to learning; re-mastering celebrates again.
+  const miss2 = recordAnswer('M', false);
+  assert.equal(miss2.status, 'learning');
+  const regain = recordAnswer('M', true); // 4 correct, 2 incorrect → margin 2
+  assert.deepEqual(regain, { status: 'mastered', previousStatus: 'learning', becameMastered: true });
+});
+
 test('mastery persists across save/load, and load mutates the binding in place', () => {
   recordAnswer('Persisted', true);  // saveMastery writes to the stub
   const ref = mastery;

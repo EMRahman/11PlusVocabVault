@@ -79,6 +79,9 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `selection.js` | ~79 | Pure selection algorithms (`pickDailyWords`, `buildWeakestPool`, `hashString`, `seededRandom`). | imported |
 | `quiz.js` | ~85 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
+| `game-feedback.js` | ~90 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier`/`getBlitzTier`/`getBlitzScore` end-screen tiers & scoring). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
+| `celebrate.js` | ~150 | Visual celebration layer: pure `buildParticleSpecs` + DOM `celebrateBurst` (CSS-keyframe confetti) and `celebrateToast`. All DOM access is inside function bodies (Node-import safe); both respect `prefers-reduced-motion`. **No sound, no mascot — by owner decision.** | imported |
+| `progress-stats.js` | ~135 | Pure home-dashboard stats: `computeMasteryCounts`, `wordsReadyToMaster`, `summarizeCollection`, `effectiveStreak`/`bumpDailyStreak` (cross-game daily streak), `buildCtaSuggestions`, `estimateReadMinutes`. | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |
 | `mood-map.js`, `word-portrait.js`, `word-roots-garden.js`, `animal-constellation.js` | 260–790 each | Standalone visualisations. | **plain `<script>` (globals)** |
@@ -131,11 +134,20 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   authoritative list of active modes). Modes load their content via `fetch()`
   and re-render if their overlay is already open.
 - **Reading modes share a factory.** History/Money/Animals/Insects/Space/Tech/Fable are all built by
-  `createReadingMode(config)` in app.js (config = prefix, progressKey, dataFile,
-  dataKey, returnTo, itemNoun, optional `subtitleField`/`moralField`,
-  loadingMessage). DOM ids follow `<prefix>-...`. Proverbs is **not** folded in
-  (culture picker + 3 screens + native-script cards). To add a reading mode: add
-  `index.html` markup with `<prefix>-*` ids, then one `createReadingMode({...})`.
+  `createReadingMode(config)` in app.js (config = prefix, **label** (dashboard
+  name), progressKey, dataFile, dataKey, returnTo, itemNoun, optional
+  `subtitleField`/`moralField`, loadingMessage). DOM ids follow `<prefix>-...`.
+  Proverbs is **not** folded in (culture picker + 3 screens + native-script
+  cards). To add a reading mode: add `index.html` markup with `<prefix>-*` ids,
+  then one `createReadingMode({...})`. The factory also gives every mode: a
+  library "You've read X of Y" progress header + read-state card styling +
+  `~N min` read-time tags (`renderCollectionProgressHeader`,
+  `estimateReadMinutes`), an end-of-article recap (flip-chips for the article's
+  words + "Next: …" pull, built by `buildArticleRecap` and inserted before the
+  quiz button, OUTSIDE the reading body so TTS never reads it), and home-
+  dashboard registration. The bespoke Story mode mirrors all of this; the
+  tap-a-word gloss (`showGloss`) shows pronunciation + example sentence
+  everywhere.
 - **Quiz return routing.** A scoped quiz carries `returnTo`; `closeQuizOverlay()`
   sends the user back via the **`readingReturnHandlers` registry** (factory modes
   register themselves) with explicit branches for `story`/`news`/`proverbs`.
@@ -147,8 +159,26 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   scripts — see Gotchas.)
 - **Persistence:** all progress is in `localStorage` under `vocabVault_*` and
   `11plus-tts-*` keys (quizBest(s), questProgress, story/history/animals/insects/
-  fable/proverbsProgress, dailyNews, detective/scramble/snapBests, tts-voice/pitch).
-  Changing a key silently wipes users' saved progress — don't rename casually.
+  fable/proverbsProgress, dailyNews, detective/scramble/snap/blitzBests,
+  tts-voice/pitch). Changing a key silently wipes users' saved progress — don't
+  rename casually.
+- **Mastery celebration:** `storage.js` `recordAnswer` returns
+  `{ status, previousStatus, becameMastered }`. app.js wraps it as
+  `recordAnswerCelebrated` (toast + confetti burst on the →mastered edge) and
+  exposes **that wrapper** as `window.vaultRecordAnswer` for the 3D games. New
+  mastery-recording call sites should use the wrapper, not raw `recordAnswer`.
+- **Home dashboard.** `#home-dashboard` (markup in index.html, rendered by
+  `renderHomeDashboard()` in app.js) shows mastered/learning counts, a progress
+  bar, the cross-game daily streak (`vocabVault_activityStreak`, bumped via
+  `markActivityToday()` from every game's end-screen fn — "finished any game
+  today"; separate from the Daily News streak), and up to two CTA chips
+  (`buildCtaSuggestions`). Reading modes register in the `homeCollections`
+  registry (`registerHomeCollection` — the factory does this automatically;
+  stories registers bespoke; proverbs/news/comics are not registered). It
+  re-renders via `applyFilters()` (every overlay close) and on each mode's
+  data fetch. **Launch-group defaults:** Reading Tools and Games start OPEN
+  unless the user explicitly collapsed them (`launchGroupOpen` semantics:
+  explicit true/false wins, `reading-body`/`games-body` default open).
 
 ## Common tasks
 

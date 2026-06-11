@@ -56,7 +56,11 @@ export function getMasteryStatus(wordName) {
   return 'learning';
 }
 
+// Records one answer and reports the mastery transition it caused, so callers
+// can celebrate the moment a word becomes mastered. Existing callers that
+// ignore the return value are unaffected.
 export function recordAnswer(wordName, isCorrect) {
+  var previousStatus = getMasteryStatus(wordName);
   var m = mastery[wordName] || { correct: 0, incorrect: 0, lastWrong: 0 };
   if (isCorrect) {
     m.correct++;
@@ -66,4 +70,10 @@ export function recordAnswer(wordName, isCorrect) {
   }
   mastery[wordName] = m;
   saveMastery();
+  var status = getMasteryStatus(wordName);
+  return {
+    status: status,
+    previousStatus: previousStatus,
+    becameMastered: status === 'mastered' && previousStatus !== 'mastered'
+  };
 }
