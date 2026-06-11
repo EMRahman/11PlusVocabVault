@@ -2648,6 +2648,7 @@ import {
     storyOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     currentStory = null;
+    renderHomeDashboard(); // reading progress changed while the overlay was open
     storyLaunchBtn.focus();
   }
 
@@ -2982,6 +2983,9 @@ import {
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       current = null;
+      // Reading progress changed while the overlay was open — refresh the
+      // home dashboard (badges, CTAs). Quiz paths refresh via applyFilters.
+      renderHomeDashboard();
       launchBtn.focus();
     }
 
