@@ -32,7 +32,8 @@ import {
   hasUsableThemedRelation,
   getQuestionTypesForWord as getQuestionTypesForWordPure,
 } from './quiz.js';
-import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js';
+import { pickPraise, buildWrongFeedback, getScoreTier, getBlitzTier, getBlitzScore } from './game-feedback.js';
+import { celebrateBurst, celebrateToast } from './celebrate.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
@@ -47,9 +48,21 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
   // mastery state + load/save/getMasteryStatus/recordAnswer
   // → moved to js/store.js + js/storage.js (imported above).
 
+  // recordAnswer + a toast/burst the moment a word's status flips to mastered.
+  // All in-app mastery recording goes through this wrapper (hoisted function
+  // declaration, so the window bridge below can reference it).
+  function recordAnswerCelebrated(wordName, isCorrect) {
+    var result = recordAnswer(wordName, isCorrect);
+    if (result && result.becameMastered) {
+      celebrateToast('🌟', wordName + ' mastered!', 'You really know this word now');
+      celebrateBurst(null, { count: 18 });
+    }
+    return result;
+  }
+
   // Bridge so the Constellation Quest game module (its own file) can feed the
   // shared mastery system when the player captures words.
-  window.vaultRecordAnswer = recordAnswer;
+  window.vaultRecordAnswer = recordAnswerCelebrated;
 
   // ── Audio pronunciation ────────────────────────────────────────────────────
   function speakWord(word) {
@@ -1665,7 +1678,7 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     }
 
     // Persist mastery for this word
-    recordAnswer(q.questionWord.word, isCorrect);
+    recordAnswerCelebrated(q.questionWord.word, isCorrect);
 
     // Update score / streak
     if (isCorrect) {
@@ -1724,6 +1737,8 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     quizEndTitle.textContent = tier.title;
     quizEndScore.textContent = score + ' / ' + total + ' correct';
 
+    var shouldBurst = total > 0 && score === total;
+
     if (quizState.customPool) {
       // Scoped quizzes keep their own progress, so they bypass the generic
       // per-options personal best to avoid colliding keys.
@@ -1736,6 +1751,7 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
       quizEndBest.textContent = isNewBest
         ? 'New personal best! 🎉'
         : (previousBest > 0 ? 'Personal best for these options: ' + previousBest + ' / ' + total : '');
+      shouldBurst = shouldBurst || isNewBest;
       // applyQuestRewards appends to the line above, so it must run after it.
       if (quizState.isQuestMode) {
         applyQuestRewards(score, total);
@@ -1744,7 +1760,19 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
 
     renderQuizReview();
     showQuizScreen(quizEndScreen);
+    revealEndScreen(quizEndScreen);
+    if (shouldBurst) celebrateBurst(quizEndEmoji);
     quizPlayAgainBtn.focus();
+  }
+
+  // Re-trigger the staggered tier-reveal animation each time an end screen is
+  // shown (CSS no-ops it under prefers-reduced-motion).
+  function revealEndScreen(screenEl) {
+    var inner = screenEl.querySelector('.quiz-end-inner');
+    if (!inner) return;
+    inner.classList.remove('quiz-end-reveal');
+    void inner.offsetWidth; // restart the CSS animations
+    inner.classList.add('quiz-end-reveal');
   }
 
   function renderQuizReview() {
@@ -1820,6 +1848,8 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
       var qid = questState.activeQuestId;
       if (questState.progress.completed.indexOf(qid) === -1) {
         questState.progress.completed.push(qid);
+        celebrateToast('🗺️', 'Quest complete!', '+' + gainedXp + ' XP · +' + bonusCoins + ' coins');
+        celebrateBurst();
       }
     }
     saveQuestProgress();
@@ -3873,6 +3903,8 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     document.getElementById('detective-end-title').textContent  = pct >= 0.8 ? 'Master Detective!' : pct >= 0.5 ? 'Sharp Investigator!' : 'Keep Sleuthing!';
     document.getElementById('detective-end-score').textContent  = score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('detective-end-best').textContent   = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('detective-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('detective-end-emoji'));
   }
 
   // ── Scramble Mode ────────────────────────────────────────────────────────────
@@ -4163,9 +4195,13 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     document.getElementById('scramble-end-title').textContent = pct >= 0.8 ? 'Spelling Wizard!' : pct >= 0.5 ? 'Word Wrangler!' : 'Getting Warmed Up!';
     document.getElementById('scramble-end-score').textContent = score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('scramble-end-best').textContent  = isNew ? '⭐ New personal best!' : 'Personal best: ' + (best || 0) + ' pts';
+    revealEndScreen(document.getElementById('scramble-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('scramble-end-emoji'));
   }
 
   // ── Flash Blitz Mode ─────────────────────────────────────────────────────────
+
+  var BLITZ_BESTS_KEY = 'vocabVault_blitzBests';
 
   var blitzState = {
     words         : [],
@@ -4262,6 +4298,7 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     blitzState.index    = 0;
     blitzState.flipped  = false;
     blitzState.scope    = scope;
+    blitzState.sessionSize = rawSize;
     blitzState.timerSecs = timerSec;
     blitzState.got      = 0;
     blitzState.nearly   = 0;
@@ -4368,11 +4405,11 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     var wordObj = blitzState.words[blitzState.index];
     if (rating === 'got') {
       blitzState.got++;
-      recordAnswer(wordObj.word, true);
+      recordAnswerCelebrated(wordObj.word, true);
     } else if (rating === 'missed') {
       blitzState.missed++;
       blitzState.missedWords.push(wordObj);
-      recordAnswer(wordObj.word, false);
+      recordAnswerCelebrated(wordObj.word, false);
     } else {
       blitzState.nearly++;
     }
@@ -4387,13 +4424,28 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
   function showBlitzEnd() {
     stopBlitzTimer();
     showBlitzScreen('end');
-    var total = blitzState.words.length;
-    var got   = blitzState.got;
-    var pct   = got / total;
-    document.getElementById('blitz-end-emoji').textContent = pct >= 0.8 ? '⚡' : pct >= 0.5 ? '🃏' : '📚';
-    document.getElementById('blitz-end-title').textContent = pct >= 0.8 ? 'Lightning Round!' : pct >= 0.5 ? 'Solid Session!' : 'Keep Flipping!';
+    var tier  = getBlitzTier(blitzState.got, blitzState.nearly, blitzState.missed);
+    var score = getBlitzScore(blitzState.got, blitzState.nearly);
+    document.getElementById('blitz-end-emoji').textContent = tier.emoji;
+    document.getElementById('blitz-end-title').textContent = tier.title;
     document.getElementById('blitz-end-score').textContent =
-      '✅ Got: ' + blitzState.got + '  🤔 Nearly: ' + blitzState.nearly + '  ❌ Missed: ' + blitzState.missed;
+      '✅ Got: ' + blitzState.got + '  🤔 Nearly: ' + blitzState.nearly + '  ❌ Missed: ' + blitzState.missed +
+      '  ·  ' + score + ' pts';
+
+    // Per-options personal best (mirrors vocabVault_snapBests).
+    var bests = {};
+    try { bests = JSON.parse(localStorage.getItem(BLITZ_BESTS_KEY)) || {}; } catch (e) { bests = {}; }
+    var bestKey = [blitzState.sessionSize, blitzState.scope, blitzState.timerSecs].join(':');
+    var best = bests[bestKey] || 0;
+    var isNew = score > best;
+    if (isNew) {
+      bests[bestKey] = score;
+      try { localStorage.setItem(BLITZ_BESTS_KEY, JSON.stringify(bests)); } catch (e) {}
+    }
+    document.getElementById('blitz-end-best').textContent =
+      isNew ? '⭐ New personal best!' : (best > 0 ? 'Personal best: ' + best + ' pts' : '');
+    revealEndScreen(document.getElementById('blitz-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('blitz-end-emoji'));
 
     var reviewEl = document.getElementById('blitz-misses-review');
     var listEl   = document.getElementById('blitz-misses-list');
@@ -4768,6 +4820,8 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
     document.getElementById('snap-end-score').textContent =
       score + ' pts · Best streak: 🔥 ' + snapState.bestStreak;
     document.getElementById('snap-end-best').textContent = isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('snap-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('snap-end-emoji'));
 
     var reviewEl = document.getElementById('snap-misses-review');
     var listEl   = document.getElementById('snap-misses-list');
@@ -5081,7 +5135,7 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
       fb.className = 'quiz-feedback visible feedback-wrong';
     }
 
-    recordAnswer(wordObj.word, isCorrect);
+    recordAnswerCelebrated(wordObj.word, isCorrect);
 
     var revealEl = document.getElementById('wild-definition-reveal');
     revealEl.textContent = 'Definition: ' + wordObj.definition;
@@ -5118,6 +5172,8 @@ import { pickPraise, buildWrongFeedback, getScoreTier } from './game-feedback.js
       score + ' pts out of ' + maxPts + ' possible';
     document.getElementById('wild-end-best').textContent =
       isNew ? '⭐ New personal best!' : 'Personal best: ' + best + ' pts';
+    revealEndScreen(document.getElementById('wild-end-screen'));
+    if (isNew && score > 0) celebrateBurst(document.getElementById('wild-end-emoji'));
   }
 
   // ═══════════════════════════════════════════════════════════════════════════

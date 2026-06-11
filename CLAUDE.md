@@ -79,7 +79,8 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `selection.js` | ~79 | Pure selection algorithms (`pickDailyWords`, `buildWeakestPool`, `hashString`, `seededRandom`). | imported |
 | `quiz.js` | ~85 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
-| `game-feedback.js` | ~65 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier` end-screen tiers). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
+| `game-feedback.js` | ~90 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier`/`getBlitzTier`/`getBlitzScore` end-screen tiers & scoring). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
+| `celebrate.js` | ~150 | Visual celebration layer: pure `buildParticleSpecs` + DOM `celebrateBurst` (CSS-keyframe confetti) and `celebrateToast`. All DOM access is inside function bodies (Node-import safe); both respect `prefers-reduced-motion`. **No sound, no mascot — by owner decision.** | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |
 | `mood-map.js`, `word-portrait.js`, `word-roots-garden.js`, `animal-constellation.js` | 260–790 each | Standalone visualisations. | **plain `<script>` (globals)** |
@@ -148,8 +149,14 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   scripts — see Gotchas.)
 - **Persistence:** all progress is in `localStorage` under `vocabVault_*` and
   `11plus-tts-*` keys (quizBest(s), questProgress, story/history/animals/insects/
-  fable/proverbsProgress, dailyNews, detective/scramble/snapBests, tts-voice/pitch).
-  Changing a key silently wipes users' saved progress — don't rename casually.
+  fable/proverbsProgress, dailyNews, detective/scramble/snap/blitzBests,
+  tts-voice/pitch). Changing a key silently wipes users' saved progress — don't
+  rename casually.
+- **Mastery celebration:** `storage.js` `recordAnswer` returns
+  `{ status, previousStatus, becameMastered }`. app.js wraps it as
+  `recordAnswerCelebrated` (toast + confetti burst on the →mastered edge) and
+  exposes **that wrapper** as `window.vaultRecordAnswer` for the 3D games. New
+  mastery-recording call sites should use the wrapper, not raw `recordAnswer`.
 
 ## Common tasks
 

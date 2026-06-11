@@ -9,6 +9,8 @@ import {
   pickPraise,
   buildWrongFeedback,
   getScoreTier,
+  getBlitzTier,
+  getBlitzScore,
 } from '../js/game-feedback.js';
 
 // A deterministic rng that returns the given values in order.
@@ -84,4 +86,26 @@ test('getScoreTier boundary behaviour matches the original >= comparisons', () =
   // 3.5 questions can't exist, but 3/5 (0.6) stays good, 4/5 (0.8) is star.
   assert.equal(getScoreTier(3, 5).tierId, 'good');
   assert.equal(getScoreTier(4, 5).tierId, 'star');
+});
+
+// ── getBlitzTier / getBlitzScore ──────────────────────────────────────────────
+test('getBlitzTier keeps the original Flash Blitz thresholds (golden values)', () => {
+  // Tier is driven by "Got" share alone — Nearly does not count, as before.
+  assert.deepEqual(getBlitzTier(8, 0, 2),  { emoji: '⚡', title: 'Lightning Round!', tierId: 'lightning' });
+  assert.deepEqual(getBlitzTier(5, 3, 2),  { emoji: '🃏', title: 'Solid Session!',   tierId: 'solid' });
+  assert.deepEqual(getBlitzTier(2, 4, 4),  { emoji: '📚', title: 'Keep Flipping!',   tierId: 'practise' });
+  // Boundaries: exactly 80% and exactly 50% round up a tier (>= comparisons).
+  assert.equal(getBlitzTier(4, 1, 0).tierId, 'lightning'); // 4/5 = 0.8
+  assert.equal(getBlitzTier(5, 0, 5).tierId, 'solid');     // 5/10 = 0.5
+  // Nearly-heavy sessions stay honest: 0 got of 10 is practise.
+  assert.equal(getBlitzTier(0, 10, 0).tierId, 'practise');
+  // Empty session does not divide by zero.
+  assert.equal(getBlitzTier(0, 0, 0).tierId, 'practise');
+});
+
+test('getBlitzScore: 10 pts per Got, 5 per Nearly, none for Missed', () => {
+  assert.equal(getBlitzScore(0, 0), 0);
+  assert.equal(getBlitzScore(10, 0), 100);
+  assert.equal(getBlitzScore(7, 2), 80);
+  assert.equal(getBlitzScore(0, 4), 20);
 });

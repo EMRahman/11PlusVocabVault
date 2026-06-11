@@ -61,3 +61,20 @@ export function getScoreTier(score, total) {
   if (score >= total * 0.4)       return { emoji: '👍', title: 'Good effort!',      tierId: 'good' };
   return                                 { emoji: '💪', title: 'Keep practising!',  tierId: 'practise' };
 }
+
+// Flash Blitz end-screen tier. Thresholds and labels are characterized from
+// the original inline logic (pct of "Got" cards: ≥80% / ≥50% / below).
+// "Nearly" counts toward the score but not the tier, matching the original.
+export function getBlitzTier(got, nearly, missed) {
+  var total = got + nearly + missed;
+  var pct = total > 0 ? got / total : 0;
+  if (pct >= 0.8) return { emoji: '⚡', title: 'Lightning Round!', tierId: 'lightning' };
+  if (pct >= 0.5) return { emoji: '🃏', title: 'Solid Session!',   tierId: 'solid' };
+  return                 { emoji: '📚', title: 'Keep Flipping!',   tierId: 'practise' };
+}
+
+// Flash Blitz score: full marks for "Got", half for "Nearly", none for
+// "Missed" — gives the mode a comparable personal best like the other games.
+export function getBlitzScore(got, nearly) {
+  return got * 10 + nearly * 5;
+}
