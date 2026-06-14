@@ -74,14 +74,14 @@ QUIZ_UI_RECOMMENDATIONS.md # Design/UX guidance
 | `app.js` | ~6.4k | **Orchestrator.** One big module-scoped closure holding 20 `init*` modes (browse/filter, quiz, story, history, money, animals, insects, space, inventions/technology, forces of nature, street smarts, fable, proverbs, daily news, comic, detective, scramble, flash-blitz, synonym-snap, word-in-the-wild) + TTS + reading view. | `<script type="module">` (entry) |
 | `data.js` | ~25 | O(1) word lookup index (`setWords`/`findWordByName`). | imported by app.js |
 | `store.js` | ~14 | Shared mutable state singletons: `viewCounts`, `mastery`. | imported |
-| `storage.js` | ~69 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
+| `storage.js` | ~79 | localStorage persistence + mastery thresholds (`getMasteryStatus`, `recordAnswer`). | imported |
 | `dom-utils.js` | ~87 | Pure helpers (`shuffle`, `pickDistractors`, `getSentenceBlank`, `wordVariants`). | imported |
 | `selection.js` | ~79 | Pure selection algorithms (`pickDailyWords`, `buildWeakestPool`, `hashString`, `seededRandom`). | imported |
-| `quiz.js` | ~85 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
+| `quiz.js` | ~80 | Pure question-eligibility logic (`getQuestionTypesForWord`, `getQuestSentenceBlank`, `getThemedRelation`, `hasUsableThemedRelation`, `caseInsensitiveSet`); decides which quiz/quest question types a word qualifies for. Choice/distractor assembly stays in app.js (needs RNG). | imported |
 | `meanings.js` | ~45 | Pure sense helpers (`getMeanings`, `primaryMeaning`, `additionalMeanings`, `hasMultipleMeanings`); falls back to the flat fields for single-sense words. | imported |
-| `game-feedback.js` | ~90 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier`/`getBlitzTier`/`getBlitzScore` end-screen tiers & scoring). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
+| `game-feedback.js` | ~80 | Pure quiz-feedback helpers (`pickPraise` streak-aware praise, `buildWrongFeedback` correct-answer + definition detail, `getScoreTier`/`getBlitzTier`/`getBlitzScore` end-screen tiers & scoring). The quiz advances **manually** (Next button, keys 1-4 to answer, Enter/Space/→ or tap to advance) — there is no auto-advance timer. | imported |
 | `celebrate.js` | ~150 | Visual celebration layer: pure `buildParticleSpecs` + DOM `celebrateBurst` (CSS-keyframe confetti) and `celebrateToast`. All DOM access is inside function bodies (Node-import safe); both respect `prefers-reduced-motion`. **No sound, no mascot — by owner decision.** | imported |
-| `progress-stats.js` | ~135 | Pure home-dashboard stats: `computeMasteryCounts`, `wordsReadyToMaster`, `summarizeCollection`, `effectiveStreak`/`bumpDailyStreak` (cross-game daily streak), `buildCtaSuggestions`, `estimateReadMinutes`. | imported |
+| `progress-stats.js` | ~143 | Pure home-dashboard stats: `computeMasteryCounts`, `wordsReadyToMaster`, `summarizeCollection`, `effectiveStreak`/`bumpDailyStreak` (cross-game daily streak), `buildCtaSuggestions`, `estimateReadMinutes`. | imported |
 | `word-universe.js` | ~490 | Three.js 3D word cloud visualisation. | `<script type="module">` (own tag) |
 | `word-quest-3d.js` | ~860 | Constellation Quest 3D game. | `<script type="module">` (own tag) |
 | `mood-map.js`, `word-portrait.js`, `word-roots-garden.js`, `animal-constellation.js` | 260–790 each | Standalone visualisations. | **plain `<script>` (globals)** |
@@ -133,10 +133,12 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
   Every mode has an `init<Mode>()` wired in **`loadWordData()`'s `.then`** (the
   authoritative list of active modes). Modes load their content via `fetch()`
   and re-render if their overlay is already open.
-- **Reading modes share a factory.** History/Money/Animals/Insects/Space/Tech/Fable are all built by
-  `createReadingMode(config)` in app.js (config = prefix, **label** (dashboard
-  name), progressKey, dataFile, dataKey, returnTo, itemNoun, optional
-  `subtitleField`/`moralField`, loadingMessage). DOM ids follow `<prefix>-...`.
+- **Reading modes share a factory.** All nine reading modes —
+  History/Money/Animals/Insects/Space/Tech (label *Inventions*)/Forces of
+  Nature/Street Smarts/Fables — are built by `createReadingMode(config)` in
+  app.js (config = prefix, **label** (dashboard name), progressKey, dataFile,
+  dataKey, returnTo, itemNoun, optional `subtitleField`/`moralField`,
+  loadingMessage). DOM ids follow `<prefix>-...`.
   Proverbs is **not** folded in (culture picker + 3 screens + native-script
   cards). To add a reading mode: add `index.html` markup with `<prefix>-*` ids,
   then one `createReadingMode({...})`. The factory also gives every mode: a
@@ -235,10 +237,12 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
 ## Recent direction
 
 `app.js` has been progressively de-bloated (7158 → ~6393 lines): comic scripts
-moved to `data/comics.json`; History/Animals/Insects/Fable/Space/Tech/Money unified into
-`createReadingMode`; daily-news/weakest-words logic extracted to tested
-`selection.js`. Recent additions: Money reading mode (16 articles), Space and Tech
-reading modes with Wikimedia Commons images, and a Street Smarts reading mode
+moved to `data/comics.json`; all nine reading modes
+(History/Animals/Insects/Fable/Space/Tech/Money/Forces of Nature/Street Smarts)
+unified into `createReadingMode`; daily-news/weakest-words logic extracted to
+tested `selection.js`. Recent additions: Money reading mode (16 articles), Space,
+Tech and Forces of Nature reading modes with Wikimedia Commons images, and a
+Street Smarts reading mode
 (28 life-skills articles: money, scams/online safety, psychology, power &
 influence, truth & trust, game theory, tech) reusing only existing vocabulary.
 Street Smarts articles all carry `image` fields (the factory still hides the
@@ -254,7 +258,9 @@ them with tests.
 
 Words can now carry multiple senses via an optional `meanings[]` array (helper:
 `js/meanings.js`; pipeline: `scripts/build-meanings-prompts.js` +
-`merge-meanings.js`). The learn/browse surfaces show all senses; quizzes/games and
-visualisations still read the primary (flat) sense. Next step is the deferred
-Phase D from `MULTIPLE_MEANINGS_PLAN.md` — making quizzes test a *specific* sense
-with distractor-safety — and running the Haiku pass to populate real extra senses.
+`merge-meanings.js`). The Haiku pass has run on a first batch — ~66 of the ~497
+words in `words.json` now carry real extra senses. The learn/browse surfaces show
+all senses; quizzes/games and visualisations still read the primary (flat) sense.
+Next step is the deferred Phase D from `MULTIPLE_MEANINGS_PLAN.md` — making
+quizzes test a *specific* sense with distractor-safety — and extending the Haiku
+pass to the remaining single-sense words.
