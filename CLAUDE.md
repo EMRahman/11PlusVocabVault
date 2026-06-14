@@ -238,7 +238,7 @@ every content-collection key are enforced by `test/data-integrity.test.js` —
 
 `app.js` has been progressively de-bloated (7158 → ~6393 lines): comic scripts
 moved to `data/comics.json`; all nine reading modes
-(History/Animals/Insects/Fable/Space/Tech/Money/Forces of Nature/Street Smarts)
+(History/Animals/Insects/Fables/Space/Tech/Money/Forces of Nature/Street Smarts)
 unified into `createReadingMode`; daily-news/weakest-words logic extracted to
 tested `selection.js`. Recent additions: Money reading mode (16 articles), Space,
 Tech and Forces of Nature reading modes with Wikimedia Commons images, and a
