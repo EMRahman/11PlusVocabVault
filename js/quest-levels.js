@@ -99,43 +99,47 @@ export function clustersWithWordsRemaining(clusters, captured) {
   return n;
 }
 
-// Rebuild the { clusterId: capturedCount } map from a captured snapshot — used to
-// restore `clusterProgress` (label display) when resuming a saved journey.
+// Rebuild the { clusterIndex: capturedCount } map from a captured snapshot — used
+// to restore `clusterProgress` (label display) when resuming a saved journey.
+// Keyed by ARRAY INDEX to match word-quest-3d.js's index-based state lookups.
 export function countCapturedPerCluster(clusters, captured) {
   captured = captured || {};
   var out = {};
-  clusters.forEach(function (cl) {
+  clusters.forEach(function (cl, c) {
     var n = 0;
     for (var i = 0; i < cl.words.length; i++) {
       if (captured[cl.words[i]]) n++;
     }
-    out[cl.id] = n;
+    out[c] = n;
   });
   return out;
 }
 
-// Rebuild beacon states { clusterId: 'locked'|'unlocked'|'cleared' } from the set
-// of clusters cleared this level, mirroring the live unlock rule (clearing a
-// cluster unlocks its neighbours). `unlockedId` guarantees at least one playable
-// cluster is open (the nearest uncleared cluster to the origin). Used on resume.
-export function deriveBeaconStates(clusters, clearedIds, unlockedId) {
+// Rebuild beacon states { clusterIndex: 'locked'|'unlocked'|'cleared' } from the
+// set of clusters cleared this level, mirroring the live unlock rule (clearing a
+// cluster unlocks its neighbours). Keyed by ARRAY INDEX to match word-quest-3d.js
+// (`clearedIds` and `unlockedIndex` are indices; `beaconState` is read by index);
+// neighbour values are cluster IDs and are mapped to indices. `unlockedIndex`
+// guarantees at least one playable cluster is open. Used on resume.
+export function deriveBeaconStates(clusters, clearedIds, unlockedIndex) {
   var clearedSet = new Set(clearedIds || []);
-  var byId = {};
-  clusters.forEach(function (cl) { byId[cl.id] = cl; });
+  var idToIdx = {};
+  clusters.forEach(function (cl, c) { idToIdx[cl.id] = c; });
   var states = {};
-  clusters.forEach(function (cl) {
-    states[cl.id] = clearedSet.has(cl.id) ? 'cleared' : 'locked';
+  clusters.forEach(function (cl, c) {
+    states[c] = clearedSet.has(c) ? 'cleared' : 'locked';
   });
   // A cleared cluster unlocks its still-locked neighbours.
-  clearedSet.forEach(function (id) {
-    var cl = byId[id];
+  clearedSet.forEach(function (c) {
+    var cl = clusters[c];
     if (!cl) return;
     (cl.neighbors || []).forEach(function (nid) {
-      if (states[nid] === 'locked') states[nid] = 'unlocked';
+      var nc = idToIdx[nid];
+      if (nc !== undefined && states[nc] === 'locked') states[nc] = 'unlocked';
     });
   });
-  if (unlockedId !== null && unlockedId !== undefined && states[unlockedId] === 'locked') {
-    states[unlockedId] = 'unlocked';
+  if (unlockedIndex !== null && unlockedIndex !== undefined && states[unlockedIndex] === 'locked') {
+    states[unlockedIndex] = 'unlocked';
   }
   return states;
 }

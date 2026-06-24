@@ -136,3 +136,21 @@ test('deriveBeaconStates falls back to unlocking the given start cluster', () =>
   const states = deriveBeaconStates(CLUSTERS, [], 1);
   assert.deepEqual(states, { 0: 'locked', 1: 'unlocked' });
 });
+
+// Regression guard: word-quest-3d.js tracks beacon/progress state by ARRAY INDEX
+// while cluster `.id` is a separate field and `.neighbors` hold ids. These two
+// fixtures deliberately make id != index so a relapse to id-keyed output fails.
+const REINDEXED = [
+  { id: 10, name: 'A', words: ['A', 'B'], neighbors: [20] }, // array index 0; neighbour id 20 = index 1
+  { id: 20, name: 'X', words: ['X'], neighbors: [10] },      // array index 1
+];
+
+test('countCapturedPerCluster keys by array index even when id != index', () => {
+  assert.deepEqual(countCapturedPerCluster(REINDEXED, { A: true }), { 0: 1, 1: 0 });
+});
+
+test('deriveBeaconStates keys by index and maps neighbour ids to indices', () => {
+  const states = deriveBeaconStates(REINDEXED, [0], 0); // cleared array index 0
+  assert.deepEqual(states, { 0: 'cleared', 1: 'unlocked' },
+    'index 0 cleared; its neighbour (id 20 → index 1) unlocks, not states[20]');
+});
