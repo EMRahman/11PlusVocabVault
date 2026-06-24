@@ -11,6 +11,13 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {
+  selectClusterBatch,
+  clusterRemaining,
+  isCorpusExhausted,
+  countCapturedPerCluster,
+  deriveBeaconStates,
+} from './quest-levels.js';
 
 const POS_URL = 'data/word-positions.json';
 const SCENE_RADIUS = 80;
@@ -69,7 +76,10 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   const launchBtn = document.getElementById('quest3d-launch-btn');
   const closeBtn = document.getElementById('quest3d-close');
   const beginBtn = document.getElementById('quest3d-begin');
+  const continueSetupBtn = document.getElementById('quest3d-continue-setup');
+  const startOverBtn = document.getElementById('quest3d-startover');
   const replayBtn = document.getElementById('quest3d-replay');
+  const continueBtn = document.getElementById('quest3d-continue');
   const retreatBtn = document.getElementById('quest3d-retreat');
   const statusEl = document.getElementById('quest3d-status');
 
@@ -82,6 +92,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   const scoreEl = document.getElementById('quest3d-score');
   const clearedEl = document.getElementById('quest3d-cleared');
   const totalEl = document.getElementById('quest3d-total');
+  const levelEl = document.getElementById('quest3d-level');
   const clusterNameEl = document.getElementById('quest3d-cluster-name');
   const progressTextEl = document.getElementById('quest3d-progress-text');
   const progressFillEl = document.getElementById('quest3d-progress-fill');
@@ -103,11 +114,14 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   let active = false;
 
   const state = {
-    best: { bestScore: 0, bestClustersCleared: 0, lastRun: null },
-    capturedWords: {},       // word -> true
-    clusterProgress: {},     // id -> count captured
+    best: { bestScore: 0, bestClustersCleared: 0, bestLevel: 1, lastRun: null },
+    progress: null,          // resumable mid-journey snapshot (null = none saved)
+    level: 1,                // current galaxy level; each level serves new words
+    clearedThisLevel: [],    // cluster ids cleared in the CURRENT level
+    capturedWords: {},       // word -> true (carried across levels within a journey)
+    clusterProgress: {},     // id -> cumulative count captured
     beaconState: {},         // id -> 'locked' | 'unlocked' | 'cleared'
-    score: 0,
+    score: 0,                // cumulative across the whole journey
     streak: 0,
     clearedCount: 0,
     activeClusterId: null,
@@ -136,7 +150,10 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
         const d = JSON.parse(raw);
         state.best.bestScore = d.bestScore || 0;
         state.best.bestClustersCleared = d.bestClustersCleared || 0;
+        state.best.bestLevel = d.bestLevel || 1;
         state.best.lastRun = d.lastRun || null;
+        // Pre-v2 saves had no `progress` → null → behaves exactly as before.
+        state.progress = d.progress || null;
       }
     } catch (e) { /* ignore */ }
   }
@@ -144,11 +161,31 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   function persist() {
     try {
       localStorage.setItem(SAVE_KEY, JSON.stringify({
+        version: 2,
         bestScore: state.best.bestScore,
         bestClustersCleared: state.best.bestClustersCleared,
+        bestLevel: state.best.bestLevel,
         lastRun: state.best.lastRun,
+        progress: state.progress,
       }));
     } catch (e) { /* ignore */ }
+  }
+
+  // A resumable snapshot of the journey so a child can close the tab mid-level
+  // and pick up where she left off. Mid-cluster question state is intentionally
+  // not saved — resuming re-offers the cluster's still-uncaptured batch.
+  function snapshotProgress() {
+    return {
+      level: state.level,
+      score: state.score,
+      capturedWords: state.capturedWords,
+      clearedThisLevel: state.clearedThisLevel.slice(),
+    };
+  }
+  function persistProgress() { state.progress = snapshotProgress(); persist(); }
+  function clearSavedProgress() { state.progress = null; persist(); }
+  function hasResumableJourney() {
+    return !!(state.progress && (state.progress.level > 1 || Object.keys(state.progress.capturedWords || {}).length > 0));
   }
 
   function setStatus(msg) {
@@ -431,53 +468,15 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
 
   // ── Capture flow ─────────────────────────────────────────────────────────────
 
-  // BFS from the cluster's hub word up to 2 hops within the cluster, then
-  // falls back to closest 3D neighbours so we always return WORDS_PER_CLUSTER
-  // uncaptured words (or fewer if the cluster is nearly exhausted).
+  // Thin wrapper over the pure selectClusterBatch (js/quest-levels.js): returns up
+  // to WORDS_PER_CLUSTER uncaptured words for the cluster (hub-first, synonym-graph
+  // BFS, then 3D-proximity fallback). Because it skips already-captured words, each
+  // new level naturally serves fresh vocabulary from the same cluster map.
   function pickNearbyWords(clusterId) {
-    const cl = clusters[clusterId];
-    const hub = cl.name;
-    const clusterWordSet = new Set(cl.words);
-    const visited = new Set();
-    const selected = [];
-
-    function tryAdd(w) {
-      if (selected.length >= WORDS_PER_CLUSTER) return;
-      if (visited.has(w) || state.capturedWords[w]) return;
-      visited.add(w);
-      selected.push(w);
-    }
-
-    // Layer 0 — hub word itself
-    visited.add(hub);
-    if (!state.capturedWords[hub] && clusterWordSet.has(hub)) selected.push(hub);
-
-    // Layer 1 — direct graph neighbours of hub that live in this cluster
-    const hop1 = shuffle((neighborMap[hub] || []).filter(function (w) { return clusterWordSet.has(w); }));
-    hop1.forEach(tryAdd);
-
-    // Layer 2 — neighbours of layer-1 words, still within cluster
-    if (selected.length < WORDS_PER_CLUSTER) {
-      hop1.forEach(function (w1) {
-        shuffle((neighborMap[w1] || []).filter(function (w) { return clusterWordSet.has(w); })).forEach(tryAdd);
-      });
-    }
-
-    // Fallback — pick by 3D proximity to hub when graph edges are sparse
-    if (selected.length < WORDS_PER_CLUSTER && positions[hub]) {
-      const hubPos = positions[hub];
-      const byDist = cl.words
-        .filter(function (w) { return !visited.has(w) && !state.capturedWords[w] && positions[w]; })
-        .sort(function (a, b) {
-          const pa = positions[a], pb = positions[b];
-          const da = (pa[0]-hubPos[0])**2 + (pa[1]-hubPos[1])**2 + (pa[2]-hubPos[2])**2;
-          const db = (pb[0]-hubPos[0])**2 + (pb[1]-hubPos[1])**2 + (pb[2]-hubPos[2])**2;
-          return da - db;
-        });
-      byDist.forEach(tryAdd);
-    }
-
-    return selected;
+    return selectClusterBatch(
+      clusters[clusterId], neighborMap, positions,
+      state.capturedWords, WORDS_PER_CLUSTER, shuffle
+    );
   }
 
   function startCapture(clusterId) {
@@ -593,6 +592,8 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     const id = wordCluster.get(word);
     state.clusterProgress[id] = (state.clusterProgress[id] || 0) + 1;
     applyNodeColors();
+    // Save after each capture so closing the tab keeps mid-level progress.
+    persistProgress();
   }
 
   function addScore(pts) {
@@ -604,6 +605,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     if (state.beaconState[clusterId] === 'cleared') { backToFlight(); return; }
     state.beaconState[clusterId] = 'cleared';
     state.clearedCount++;
+    if (state.clearedThisLevel.indexOf(clusterId) === -1) state.clearedThisLevel.push(clusterId);
     const size = state.activeClusterWordList.length || WORDS_PER_CLUSTER;
     let bonus = 300 + size * 50;
     let perfect = state.wrongInCluster === 0;
@@ -613,13 +615,35 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     updateBeaconVisuals();
     applyNodeColors();
     persistBest();
+    persistProgress();
     captureCard.classList.add('hidden');
     state.activeClusterId = null;
     state.activeClusterWordList = [];
-    three.controls.enabled = true;
+    if (three) three.controls.enabled = true;
     setStatus('✨ ' + clusters[clusterId].name + ' cleared! +' + bonus + (perfect ? ' (perfect!)' : ''));
     if (state.clearedCount >= clusters.length) {
-      showEnd(true);
+      completeLevel();
+    }
+  }
+
+  // All clusters cleared this level. If every word in the galaxy is now captured
+  // the journey is finished (grand finale); otherwise offer the next level, which
+  // replays the same map serving the next batch of uncaptured words.
+  function completeLevel() {
+    persistBest();
+    if (isCorpusExhausted(clusters, state.capturedWords)) {
+      clearSavedProgress();
+      showEnd('galaxy');
+    } else {
+      // Park the saved snapshot at the NEXT level so a close→reopen resumes there.
+      state.progress = {
+        level: state.level + 1,
+        score: state.score,
+        capturedWords: state.capturedWords,
+        clearedThisLevel: [],
+      };
+      persist();
+      showEnd('level');
     }
   }
 
@@ -648,6 +672,7 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     if (scoreEl) scoreEl.textContent = state.score;
     if (clearedEl) clearedEl.textContent = state.clearedCount;
     if (totalEl) totalEl.textContent = clusters ? clusters.length : 0;
+    if (levelEl) levelEl.textContent = state.level;
   }
 
   function showScreen(name) {
@@ -658,34 +683,82 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     if (map[name]) map[name].classList.remove('hidden');
   }
 
-  function nearestClusterToOrigin() {
-    let best = 0, bestD = Infinity;
+  // Nearest cluster to the origin that is NOT in `clearedSet`, so a level always
+  // opens with at least one playable (non-cleared) beacon. Returns -1 only when
+  // every cluster is cleared (caller treats that as level/galaxy complete).
+  function nearestUnclearedToOrigin(clearedSet) {
+    let best = -1, bestD = Infinity;
     clusters.forEach(function (cl, c) {
+      if (clearedSet.has(c)) return;
       const d = cl.centroid[0] * cl.centroid[0] + cl.centroid[1] * cl.centroid[1] + cl.centroid[2] * cl.centroid[2];
       if (d < bestD) { bestD = d; best = c; }
     });
     return best;
   }
 
-  function resetRun() {
-    state.capturedWords = {};
-    state.clusterProgress = {};
-    state.beaconState = {};
-    clusters.forEach(function (cl, c) { state.beaconState[c] = 'locked'; });
-    state.beaconState[nearestClusterToOrigin()] = 'unlocked';
-    state.score = 0;
-    state.streak = 0;
-    state.clearedCount = 0;
+  function resetTransient() {
     state.activeClusterId = null;
+    state.activeClusterWordList = [];
     state.questionQueue = [];
     state.questionType = 0;
     state.flying = false;
     state.pendingClusterId = null;
   }
 
+  // Rebuild beacons + per-cluster progress for the current level from
+  // `capturedWords`. Clusters with no words left (drained by earlier levels) are
+  // auto-cleared so the player is never flown to an empty constellation; clusters
+  // in `clearedList` (cleared earlier this level, e.g. when resuming) count too.
+  // The nearest uncleared cluster to the origin is then unlocked.
+  function rebuildLevelBeacons(clearedList) {
+    state.clusterProgress = countCapturedPerCluster(clusters, state.capturedWords);
+    const clearedSet = new Set(clearedList || []);
+    clusters.forEach(function (cl, c) {
+      if (clusterRemaining(cl, state.capturedWords) === 0) clearedSet.add(c);
+    });
+    state.clearedThisLevel = Array.from(clearedSet);
+    state.clearedCount = state.clearedThisLevel.length;
+    const start = nearestUnclearedToOrigin(clearedSet);
+    state.beaconState = deriveBeaconStates(clusters, state.clearedThisLevel, start);
+  }
+
+  // Wipe everything and start a brand-new journey at Level 1.
+  function startNewJourney() {
+    state.capturedWords = {};
+    state.level = 1;
+    state.score = 0;
+    state.streak = 0;
+    resetTransient();
+    rebuildLevelBeacons([]);
+    clearSavedProgress();
+  }
+
+  // Keep captured words, bump the level — the same map serves the next batch of
+  // not-yet-captured words.
+  function advanceLevel() {
+    state.level += 1;
+    state.streak = 0;
+    resetTransient();
+    rebuildLevelBeacons([]);
+    persistProgress();
+  }
+
+  // Restore an in-progress journey from the saved snapshot.
+  function resumeJourney() {
+    const p = state.progress || {};
+    state.capturedWords = p.capturedWords || {};
+    state.level = p.level || 1;
+    state.score = p.score || 0;
+    state.streak = 0;
+    resetTransient();
+    rebuildLevelBeacons(p.clearedThisLevel || []);
+    persistProgress();
+  }
+
   function persistBest() {
     state.best.bestScore = Math.max(state.best.bestScore, state.score);
     state.best.bestClustersCleared = Math.max(state.best.bestClustersCleared, state.clearedCount);
+    state.best.bestLevel = Math.max(state.best.bestLevel || 1, state.level);
     state.best.lastRun = { clearedIds: Object.keys(state.beaconState).filter(function (c) { return state.beaconState[c] === 'cleared'; }).map(Number), score: state.score };
     persist();
   }
@@ -693,19 +766,38 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   function updateBestLine() {
     if (!bestLine) return;
     if (state.best.bestScore > 0) {
-      bestLine.textContent = 'Best: ' + state.best.bestScore + ' pts · ' + state.best.bestClustersCleared + ' constellations cleared';
+      bestLine.textContent = 'Best: ' + state.best.bestScore + ' pts · reached Level ' + (state.best.bestLevel || 1);
     } else {
       bestLine.textContent = '';
     }
   }
 
-  function showEnd(won) {
+  // kind: 'level' (a level cleared, more words remain) | 'galaxy' (every word
+  // captured — grand finale).
+  function showEnd(kind) {
     persistBest();
     captureCard.classList.add('hidden');
-    if (endEmojiEl) endEmojiEl.textContent = won ? '🏆' : '🚀';
-    if (endTitleEl) endTitleEl.textContent = won ? 'Galaxy complete!' : 'Journey paused';
-    if (endScoreEl) endScoreEl.textContent = state.score + ' points · ' + state.clearedCount + '/' + clusters.length + ' constellations';
-    if (endBestEl) endBestEl.textContent = 'Best: ' + state.best.bestScore + ' pts';
+    const isGalaxy = kind === 'galaxy';
+    if (endEmojiEl) endEmojiEl.textContent = isGalaxy ? '🏆' : '🌟';
+    if (endTitleEl) endTitleEl.textContent = isGalaxy ? 'Whole galaxy explored!' : 'Level ' + state.level + ' complete!';
+    if (endScoreEl) {
+      endScoreEl.textContent = isGalaxy
+        ? state.score + ' points · every word captured!'
+        : state.score + ' points · Level ' + state.level + ' cleared';
+    }
+    if (endBestEl) endBestEl.textContent = 'Best: ' + state.best.bestScore + ' pts · Level ' + (state.best.bestLevel || 1);
+    if (continueBtn) {
+      if (isGalaxy) {
+        continueBtn.classList.add('hidden');
+      } else {
+        continueBtn.classList.remove('hidden');
+        continueBtn.textContent = 'Continue to Level ' + (state.level + 1) + ' ✨';
+      }
+    }
+    if (replayBtn) {
+      replayBtn.textContent = isGalaxy ? 'New journey 🚀' : 'Start a fresh journey 🚀';
+      replayBtn.classList.toggle('quest3d-begin--secondary', !isGalaxy);
+    }
     showScreen('end');
     stopLoop();
   }
@@ -789,8 +881,19 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
   }
 
   // ── Game start / open / close ────────────────────────────────────────────────
-  function beginGame() {
-    resetRun();
+  // kind: 'new' (fresh Level 1) | 'continue' (next level, keep words) |
+  // 'resume' (restore the saved snapshot).
+  function launchJourney(kind) {
+    if (kind === 'continue') advanceLevel();
+    else if (kind === 'resume') resumeJourney();
+    else startNewJourney();
+    // A freshly-entered level could already be complete (every cluster drained →
+    // corpus exhausted); send straight to the finale rather than an empty flight.
+    if (clusters && state.clearedCount >= clusters.length) { completeLevel(); return; }
+    enterFlight();
+  }
+
+  function enterFlight() {
     showScreen('flight');
     if (!three) {
       three = buildScene();
@@ -803,7 +906,9 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     updateBeaconVisuals();
     applyNodeColors();
     updateHud();
-    setStatus('Tap the glowing beacon to begin your journey.');
+    setStatus(state.level > 1
+      ? 'Level ' + state.level + ' — new words await. Tap a glowing beacon.'
+      : 'Tap the glowing beacon to begin your journey.');
     requestAnimationFrame(function () {
       fitCanvas();
       startLoop();
@@ -822,7 +927,20 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     active = true;
     if (totalEl) totalEl.textContent = clusters.length;
     updateBestLine();
+    updateSetupButtons();
     showScreen('setup');
+  }
+
+  // Show "Continue your journey" + "Start over" when a saved journey exists,
+  // otherwise the plain "Begin journey".
+  function updateSetupButtons() {
+    const resumable = hasResumableJourney();
+    if (continueSetupBtn) {
+      continueSetupBtn.classList.toggle('hidden', !resumable);
+      if (resumable) continueSetupBtn.textContent = 'Continue your journey (Level ' + (state.progress.level || 1) + ') ▶';
+    }
+    if (startOverBtn) startOverBtn.classList.toggle('hidden', !resumable);
+    if (beginBtn) beginBtn.classList.toggle('hidden', resumable);
   }
 
   function close() {
@@ -835,8 +953,11 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
 
   launchBtn.addEventListener('click', open);
   if (closeBtn) closeBtn.addEventListener('click', close);
-  if (beginBtn) beginBtn.addEventListener('click', beginGame);
-  if (replayBtn) replayBtn.addEventListener('click', beginGame);
+  if (beginBtn) beginBtn.addEventListener('click', function () { launchJourney('new'); });
+  if (startOverBtn) startOverBtn.addEventListener('click', function () { launchJourney('new'); });
+  if (continueSetupBtn) continueSetupBtn.addEventListener('click', function () { launchJourney('resume'); });
+  if (replayBtn) replayBtn.addEventListener('click', function () { launchJourney('new'); });
+  if (continueBtn) continueBtn.addEventListener('click', function () { launchJourney('continue'); });
   if (retreatBtn) retreatBtn.addEventListener('click', retreat);
   window.addEventListener('resize', function () { if (active) fitCanvas(); });
   document.addEventListener('visibilitychange', function () {

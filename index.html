@@ -1962,7 +1962,8 @@
         <div class="universe-controls">
           <span class="quest3d-hud" aria-live="polite">
             <span class="quest3d-hud-item" title="Score">⭐ <strong id="quest3d-score">0</strong></span>
-            <span class="quest3d-hud-item" title="Constellations cleared">🌌 <strong id="quest3d-cleared">0</strong>/<span id="quest3d-total">0</span></span>
+            <span class="quest3d-hud-item" title="Constellations cleared this level">🌌 <strong id="quest3d-cleared">0</strong>/<span id="quest3d-total">0</span></span>
+            <span class="quest3d-hud-item" title="Galaxy level">🌠 Level <strong id="quest3d-level">1</strong></span>
           </span>
           <button id="quest3d-close" class="universe-btn universe-close" type="button" aria-label="Exit Constellation Quest" title="Exit game">✕</button>
         </div>
@@ -1974,9 +1975,11 @@
           <div class="quest3d-setup-inner">
             <div class="quest3d-setup-emoji" aria-hidden="true">🚀</div>
             <h3 class="quest3d-setup-title">Constellation Quest</h3>
-            <p class="quest3d-setup-text">Fly between star clusters and capture every word by answering its question. Clear a constellation to unlock its neighbours — light up the whole galaxy!</p>
+            <p class="quest3d-setup-text">Fly between star clusters and capture every word by answering its question. Clear a constellation to unlock its neighbours — light up the whole galaxy, then journey on to new words in the next level!</p>
             <p id="quest3d-best" class="quest3d-setup-best" role="status" aria-live="polite"></p>
+            <button id="quest3d-continue-setup" class="quest3d-begin hidden" type="button">Continue your journey ▶</button>
             <button id="quest3d-begin" class="quest3d-begin" type="button">Begin journey 🚀</button>
+            <button id="quest3d-startover" class="quest3d-begin quest3d-begin--secondary hidden" type="button">Start a fresh journey 🚀</button>
           </div>
         </section>
 
@@ -2010,7 +2013,8 @@
             <p id="quest3d-end-score" class="quiz-end-score"></p>
             <p id="quest3d-end-best" class="quiz-end-best"></p>
             <div class="quiz-end-actions">
-              <button id="quest3d-replay" class="quest3d-begin" type="button">Play again 🚀</button>
+              <button id="quest3d-continue" class="quest3d-begin" type="button">Continue ✨</button>
+              <button id="quest3d-replay" class="quest3d-begin quest3d-begin--secondary" type="button">Start a fresh journey 🚀</button>
             </div>
           </div>
         </section>
