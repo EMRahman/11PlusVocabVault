@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      actions: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,10 +41,16 @@ jobs:
 
       # main requires changes via PR (repo ruleset), so this opens a PR from a
       # throwaway branch instead of pushing straight to main, then enables
-      # auto-merge. The branch commit has no [skip ci] so the PR's "test" check
-      # actually runs and can satisfy the required-status-check rule; [skip ci]
-      # is added only to the final merge commit (--subject) so landing on main
-      # doesn't re-trigger this workflow or re-run tests there.
+      # auto-merge. Two non-obvious bits:
+      #  1. GITHUB_TOKEN-authored events (this PR's own "opened") don't start new
+      #     workflow runs except workflow_dispatch/repository_dispatch, so
+      #     test.yml's pull_request trigger would silently never fire here — we
+      #     dispatch it explicitly against the branch so a real "test" check
+      #     lands on the PR before merge is attempted.
+      #  2. The branch commit has no [skip ci] (dispatch needs test.yml to exist
+      #     as a real, checkable run); [skip ci] is added only to the final merge
+      #     commit (--subject) so landing on main doesn't re-trigger this
+      #     workflow or test.yml's push trigger.
       - name: Open PR and enable auto-merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,6 +67,7 @@ jobs:
           git add build-info.js index.html
           git commit -m "chore: update build info"
           git push -u origin "$BRANCH"
+          gh workflow run test.yml --ref "$BRANCH"
 
           gh pr create --base main --head "$BRANCH" \
             --title "chore: update build info" \
