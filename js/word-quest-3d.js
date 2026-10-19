@@ -11,6 +11,7 @@
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { shuffle, pickDistractors } from './dom-utils.js';
 import {
   selectClusterBatch,
   clusterRemaining,
@@ -41,30 +42,6 @@ const DIM_COLOR = new THREE.Color('#1c2138');
 function ratingScale(r) {
   const n = Number(r) || 3;
   return 0.65 + (n - 1) * 0.12;
-}
-
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const t = a[i]; a[i] = a[j]; a[j] = t;
-  }
-  return a;
-}
-
-// Mirrors app.js pickDistractors: prefer same part of speech, top up with any.
-function pickDistractors(correctWord, pool, count) {
-  const candidates = pool.filter(function (w) { return w.word !== correctWord.word; });
-  const sameType = correctWord.word_type
-    ? candidates.filter(function (w) { return w.word_type === correctWord.word_type; })
-    : [];
-  const picks = [];
-  shuffle(sameType).forEach(function (w) { if (picks.length < count) picks.push(w); });
-  if (picks.length < count) {
-    const others = candidates.filter(function (w) { return picks.indexOf(w) === -1; });
-    shuffle(others).forEach(function (w) { if (picks.length < count) picks.push(w); });
-  }
-  return picks;
 }
 
 function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
@@ -379,10 +356,26 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  function selectClusterBeacon(id) {
+    if (!three || state.flying || state.activeClusterId !== null) return;
+    if (id === undefined || id === null) return;
+    const st = state.beaconState[id];
+    if (st === 'locked') {
+      setStatus('🔒 Clear an adjacent constellation first.');
+      return;
+    }
+    flyToCluster(id);
+  }
+
   function recycleLabels(needed) {
     while (three.labelEls.length < needed) {
+      const idx = three.labelEls.length;
       const el = document.createElement('div');
       el.className = 'quest3d-label';
+      el.addEventListener('click', function (ev) {
+        ev.stopPropagation();
+        selectClusterBeacon(idx);
+      });
       labelLayer.appendChild(el);
       three.labelEls.push(el);
     }
@@ -616,6 +609,9 @@ window.initConstellationQuest = function (allWords, openWordDetail) {
     applyNodeColors();
     persistBest();
     persistProgress();
+    if (typeof window.vaultMarkActivityToday === 'function') {
+      window.vaultMarkActivityToday();
+    }
     captureCard.classList.add('hidden');
     state.activeClusterId = null;
     state.activeClusterWordList = [];

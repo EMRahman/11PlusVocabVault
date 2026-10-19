@@ -11,6 +11,7 @@ import {
   pickDistractors,
   getSentenceBlank,
   wordVariants,
+  highlightVariants,
 } from './dom-utils.js';
 
 import { setWords, findWordByName } from './data.js';
@@ -71,8 +72,9 @@ import {
   }
 
   // Bridge so the Constellation Quest game module (its own file) can feed the
-  // shared mastery system when the player captures words.
+  // shared mastery system and daily streak when the player captures words.
   window.vaultRecordAnswer = recordAnswerCelebrated;
+  window.vaultMarkActivityToday = markActivityToday;
 
   // ── Home dashboard (progress at a glance + cross-game daily streak) ─────────
   // Reading modes register here so the dashboard can offer "Continue <mode>"
@@ -1244,7 +1246,8 @@ import {
           { id: 'forest-3', title: 'The Hidden Path',        words: ['Faltered','Flourish','Gnarled','Huddled','Illicit','Insight','Lurched','Mandate','Mantra','Matrix'] },
           { id: 'forest-4', title: 'Shadows and Firelight',  words: ['Meandered','Neglect','Nimble','Overjoyed','Palm','Placid','Precious','Preservation','Prickly','Quaint'] },
           { id: 'forest-5', title: "The Fox's Secret",       words: ['Quivered','Reckless','Rehabilitate','Rustling','Secrete','Sector','Serene','Simultaneous','Sinuous','Skeletal'] },
-          { id: 'forest-6', title: 'Heart of the Wood',      words: ['Solemn','Specimen','Stealthy','Tangled','Towering','Tranquil','Transparent','Uncanny','Vigilant','Wilderness'] }
+          { id: 'forest-6', title: 'Heart of the Wood',      words: ['Solemn','Specimen','Stealthy','Tangled','Towering','Tranquil','Transparent','Uncanny','Vigilant','Wilderness'] },
+          { id: 'forest-7', title: 'Canopy of Secrets',      words: ['Agnostic','Decrepit','Furtive','Hastily','Lethargic','Lucid','Oblivious','Surplus','Tangible','Versatile'] }
         ]
       },
       {
@@ -1253,7 +1256,11 @@ import {
           { id: 'castle-1', title: 'The Iron Gate',      words: ['Allege','Apex','Artefact','Budge','Bustling','Collision','Compensate','Concealed','Consumerism','Conviction'] },
           { id: 'castle-2', title: 'The Great Hall',     words: ['Daunt','Domestic','Drastic','Dreary','Extravagant','Fraught','Hierarchy','Hypothesis','Indescribable','Jovial'] },
           { id: 'castle-3', title: 'The Dungeon Below',  words: ['Knackered','Labyrinthine','Lawful','Opulent','Perception','Perplexed','Provision','Sentiment','Serpentine','Stifling'] },
-          { id: 'castle-4', title: 'The Royal Banquet',  words: ['Technician','Thunderous','Twilight','Uneasy','Vibrant','Volatile','Weary','Yearned'] }
+          { id: 'castle-4', title: 'The Royal Banquet',  words: ['Technician','Thunderous','Twilight','Uneasy','Vibrant','Volatile','Weary','Yearned'] },
+          { id: 'castle-5', title: 'The Royal Treasury', words: ['Acrimonious','Adamant','Affluent','Benevolent','Bond','Collateral','Conservative','Counterfeit','Credit','Creditor'] },
+          { id: 'castle-6', title: 'Chamber of Coin',    words: ['Currency','Debt','Debtor','Default','Economy','Eloquent','Embellish','Equitable','Garrulous','Impartial'] },
+          { id: 'castle-7', title: 'The Crown Council',  words: ['Implore','Indignant','Inflation','Instalment','Interest','Lender','Magnanimous','Magnificence','Mint','Mortgage'] },
+          { id: 'castle-8', title: 'The Sovereign Vault',words: ['Obstinate','Querulous','Recession','Repay','Revenue','Solemnly','Sovereign','Transaction'] }
         ]
       },
       {
@@ -1262,7 +1269,9 @@ import {
           { id: 'dragon-1', title: 'The Dragon Awakens', words: ['Amateur','Anticipation','Avatar','Barricade','Bewildered','Ceaseless','Census','Crimson','Delusion','Drifted'] },
           { id: 'dragon-2', title: 'Fire and Fury',      words: ['Duly','Enraged','Excerpt','Exquisite','Fragile','Haste','Illegible','Lapse','Mischievous','Misinterpret'] },
           { id: 'dragon-3', title: "The Dragon's Hoard", words: ['Noxious','Ominous','Passive','Persistent','Proud','Puny','Putrid','Reluctant','Scurried','Shrouded'] },
-          { id: 'dragon-4', title: 'Taming the Beast',   words: ['Smother','Smouldering','Stubborn','Thrifty','Thrilled','Turbulent','Vague','Valiant','Wandered'] }
+          { id: 'dragon-4', title: 'Taming the Beast',   words: ['Smother','Smouldering','Stubborn','Thrifty','Thrilled','Turbulent','Vague','Valiant','Wandered'] },
+          { id: 'dragon-5', title: 'Caverns of Gold',    words: ['Abhorrent','Accumulate','Astute','Bullion','Durable','Eradicate','Exacerbate','Hoard','Innovative'] },
+          { id: 'dragon-6', title: 'Peak of the Wyrm',   words: ['Loathe','Malevolent','Nefarious','Pernicious','Residual','Scarcity','Speculate','Zenith'] }
         ]
       },
       {
@@ -1273,7 +1282,9 @@ import {
           { id: 'fairies-3', title: 'Silver Wings',              words: ['Finite','Forsake','Glistening','Graceful','Illuminated','Impatient','Imprison','Incandescent','Incompatible'] },
           { id: 'fairies-4', title: 'The Lost Glade',            words: ['Inedible','Inflection','Lavish','Livelihood','Luminous','Majestic','Mysterious','Obsession','Opportune'] },
           { id: 'fairies-5', title: 'Enchanted Bloom',           words: ['Petrified','Piercing','Ragged','Rational','Rectify','Rickety','Rite','Scarlet','Spectacular'] },
-          { id: 'fairies-6', title: "The Fairy Queen's Trial",   words: ['Tender','Tumultuous','Ubiquitous','Vast','Vivid','Whirling','Withered','Wretched','Zealous'] }
+          { id: 'fairies-6', title: "The Fairy Queen's Trial",   words: ['Tender','Tumultuous','Ubiquitous','Vast','Vivid','Whirling','Withered','Wretched','Zealous'] },
+          { id: 'fairies-7', title: 'Starlight Hollow',          words: ['Anonymous','Bliss','Candid','Capricious','Coax','Cohesive','Credible'] },
+          { id: 'fairies-8', title: 'Dewdrop Sanctuary',         words: ['Decentralised','Idyllic','Intangible','Mercurial','Plausible','Pristine','Transfer'] }
         ]
       },
       {
@@ -1282,7 +1293,9 @@ import {
           { id: 'army-1', title: 'The Call to Arms',  words: ['Belligerent','Bellowed','Bias','Calamity','Cautious','Cemetery','Clandestine','Consensus','Contentious','Context'] },
           { id: 'army-2', title: 'Into the Fray',     words: ['Courageous','Eager','Earthly','Elated','Evasive','Flickered','Fractious','Furnish','Glorious','Grim','Hieroglyph'] },
           { id: 'army-3', title: 'The Siege',         words: ['Hospitality','Hostile','Immortal','Inflammatory','Memorial','Muttered','Obedient','Panorama','Peculiar','Poised'] },
-          { id: 'army-4', title: 'Victory at Dawn',   words: ['Ravenous','Reassuring','Rigour','Spatial','Spirited','Sprightly','Successive','Timid','Vault','Whimsical'] }
+          { id: 'army-4', title: 'Victory at Dawn',   words: ['Ravenous','Reassuring','Rigour','Spatial','Spirited','Sprightly','Successive','Timid','Vault','Whimsical'] },
+          { id: 'army-5', title: 'The Shield Wall',   words: ['Adversary','Audacious','Concise','Decisive','Impede','Methodical','Pacify'] },
+          { id: 'army-6', title: 'Banners of Truce',  words: ['Pledge','Quell','Steadfast','Tenacious','Thwart','Truculent','Verify'] }
         ]
       },
       {
@@ -1294,7 +1307,10 @@ import {
           { id: 'sea-4', title: 'Lost at Sea',         words: ['Miserable','Misty','Murky','Nocturnal','Nostalgic','Notorious','Perilous','Precarious','Prominent','Radiant'] },
           { id: 'sea-5', title: 'Island of Wonders',   words: ['Resilient','Resolute','Rippling','Savage','Scout','Shimmering','Shrieked','Shrivel','Splendid','Staggered'] },
           { id: 'sea-6', title: 'The Final Voyage',    words: ['Stout','Stupendous','Substitute','Sulky','Supple','Surged','Swift','Teeming','Temperate','Tempestuous'] },
-          { id: 'sea-7', title: "Harbour's End",       words: ['Tense','Trepidation','Tribute','Unruly','Vigorous','Virtuous','Voracious','Warily','Wistful'] }
+          { id: 'sea-7', title: "Harbour's End",       words: ['Tense','Trepidation','Tribute','Unruly','Vigorous','Virtuous','Voracious','Warily','Wistful'] },
+          { id: 'sea-8', title: 'Merchant Winds',      words: ['Asset','Bankrupt','Barter','Commodity','Despondent','Dividend','Dwindle','Equilibrium','Fluctuate'] },
+          { id: 'sea-9', title: 'Treasure Fleet',      words: ['Insolvent','Investor','Liability','Lucrative','Merchant','Negotiate','Nonchalant','Portable','Pragmatic'] },
+          { id: 'sea-10', title: 'Golden Horizon',     words: ['Predicament','Procure','Profit','Prolific','Prosperity','Prudent','Solvent','Tenuous'] }
         ]
       },
       {
@@ -1304,7 +1320,10 @@ import {
           { id: 'wizard-2', title: 'Halls of Knowledge',        words: ['Exemplify','Expertise','Figurehead','Frantic','Glimmer','Hack','Immense','Impressive','Inconsistent','Ingenious'] },
           { id: 'wizard-3', title: 'The Forbidden Tower',       words: ['Inscription','Legacy','Lingered','Obscure','Ornate','Plagiarise','Plateau','Progressive','Proximity','Realm'] },
           { id: 'wizard-4', title: 'Masters and Apprentices',   words: ['Rebuke','Regime','Resolution','Robust','Saga','Scrutinise','Sociable','Sparse','Stimulate','Subjective'] },
-          { id: 'wizard-5', title: 'The Final Enchantment',     words: ['Subtle','Sufficient','Suspicious','Tolerant','Tremulous','Triumphant','Unidentified','Variant','Verge','Vicious'] }
+          { id: 'wizard-5', title: 'The Final Enchantment',     words: ['Subtle','Sufficient','Suspicious','Tolerant','Tremulous','Triumphant','Unidentified','Variant','Verge','Vicious'] },
+          { id: 'wizard-6', title: 'Library of Runes',          words: ['Admonish','Affable','Alleviate','Analytical','Construct','Cryptocurrency','Decipher','Digital','Electronic'] },
+          { id: 'wizard-7', title: 'Alchemy & Code',            words: ['Eminent','Empirical','Encrypt','Fastidious','Frugal','Interactive','Ledger','Loan','Meticulous'] },
+          { id: 'wizard-8', title: 'The Grand Astral Hall',     words: ['Objective','Obsolete','Refute','Revelation','Sceptical','Simulation','Venerable','Virtual','Vivacious'] }
         ]
       }
     ],
@@ -1743,7 +1762,7 @@ import {
     if (theme) {
       payloadText = q.sentenceBlank;
       quizQuestionLabel.textContent =
-        theme.emoji + ' ' + theme.theme + ' Quest: Complete the themed sentence';
+        theme.emoji + ' ' + (theme.name || theme.theme) + ' Quest: Complete the themed sentence';
     } else {
       quizQuestionLabel.textContent = 'Quiz' + labelTask;
     }
@@ -2130,7 +2149,7 @@ import {
   function buildHighlightMatcher(featuredWords) {
     var map = {};
     featuredWords.forEach(function (wObj) {
-      wordVariants(wObj.word).forEach(function (v) {
+      highlightVariants(wObj.word).forEach(function (v) {
         if (!map[v]) map[v] = wObj;
       });
     });
@@ -4082,8 +4101,6 @@ import {
     nextCard.style.cursor = 'pointer';
     nextCard.onclick = function () {
       if (detectiveState.answered) return;
-      detectiveState.score = Math.max(0, detectiveState.score - 100);
-      document.getElementById('detective-score-display').textContent = 'Score: ' + detectiveState.score;
       nextCard.classList.remove('detective-clue-next');
       nextCard.classList.add('detective-clue-revealed');
       nextCard.onclick = null;
@@ -4120,6 +4137,7 @@ import {
 
     if (correct) {
       detectiveState.answered = true;
+      recordAnswerCelebrated(detectiveState.correctChoice.word, detectiveState.wrongChoices.length === 0);
       var pts = DETECTIVE_POINTS[detectiveState.clueStep - 1] || 100;
 
       var buttons = document.querySelectorAll('#detective-choices .quiz-answer-btn');
@@ -4172,6 +4190,7 @@ import {
         }, 700);
       } else {
         detectiveState.answered = true;
+        recordAnswerCelebrated(detectiveState.correctChoice.word, false);
         buttons.forEach(function (btn, i) {
           btn.disabled = true;
           if (detectiveState.choices[i] === detectiveState.correctChoice) btn.classList.add('correct');
@@ -4384,6 +4403,7 @@ import {
     var target  = scrambleState.currentWord.word;
 
     if (spelled.toLowerCase() === target.toLowerCase()) {
+      recordAnswerCelebrated(target, scrambleState.wrongAttempts === 0);
       answerRow.classList.add('scramble-correct');
       placed.forEach(function (el) { el.disabled = true; });
       var pts = Math.max(0, scrambleState.wordScore);
@@ -4427,15 +4447,26 @@ import {
     var wordObj = scrambleState.currentWord;
     var word = wordObj.word;
     var answerRow = document.getElementById('scramble-answer-row');
+    var sourceRow = document.getElementById('scramble-source-row');
+
+    // Return any user-placed (non-hintLocked) tiles to sourceRow first so the
+    // hinted letter is locked into its true prefix slot (scrambleState.hintCount).
     var placed = Array.prototype.slice.call(answerRow.children);
-    var placedCount = placed.length;
+    placed.forEach(function (el) {
+      var idx = parseInt(el.dataset.tileIndex, 10);
+      if (!scrambleTiles[idx].hintLocked) {
+        el.dataset.loc = 'source';
+        el.classList.remove('answer-tile');
+        sourceRow.appendChild(el);
+        scrambleTiles[idx].placed = false;
+      }
+    });
 
     var nextLetterIdx = scrambleState.hintCount;
     if (nextLetterIdx >= word.length) return;
 
     var correctLetter = word[nextLetterIdx];
     var sourceTile = null;
-    var sourceRow = document.getElementById('scramble-source-row');
     var srcChildren = Array.prototype.slice.call(sourceRow.children);
     for (var i = 0; i < srcChildren.length; i++) {
       var el = srcChildren[i];
@@ -4466,6 +4497,7 @@ import {
   }
 
   function scrambleSkip() {
+    recordAnswerCelebrated(scrambleState.currentWord.word, false);
     var fb = document.getElementById('scramble-feedback');
     fb.textContent = 'Skipped! The word was "' + scrambleState.currentWord.word + '"';
     fb.className = 'quiz-feedback visible feedback-wrong';
@@ -5069,6 +5101,7 @@ import {
     var correct = (userYes === null) ? false : (userYes === pair.isYes);
     var pts     = 0;
     var flashEl = document.getElementById('snap-flash-msg');
+    recordAnswerCelebrated(pair.wordA, correct);
 
     if (userYes === null) {
       snapState.streak = 0;

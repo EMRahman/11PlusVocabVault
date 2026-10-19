@@ -4450,10 +4450,12 @@ footer {
   border-radius: 999px;
   padding: 2px 9px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
   will-change: transform;
 }
-.quest3d-label--locked { opacity: 0.55; color: #8b93b8; }
+.quest3d-label--locked { opacity: 0.55; color: #8b93b8; cursor: not-allowed; }
 .quest3d-label--unlocked {
   color: #0b0c1d;
   background: #c7d2fe;

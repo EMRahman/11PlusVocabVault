@@ -8,6 +8,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { getSentenceBlank, highlightVariants } from '../js/dom-utils.js';
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 const readJSON = (name) => JSON.parse(readFileSync(join(DATA_DIR, name), 'utf8'));
@@ -331,3 +332,57 @@ test('every science/tech article is renderable and only references real vocabula
     });
   }
 });
+
+test('every word in words.json produces a non-null getSentenceBlank cloze', () => {
+  const { words } = readJSON('words.json');
+  for (const w of words) {
+    const blanked = getSentenceBlank(w);
+    assert.ok(
+      typeof blanked === 'string' && blanked.includes('_____'),
+      `${w.word}: getSentenceBlank returned ${JSON.stringify(blanked)} for sentence_usage "${w.sentence_usage}"`,
+    );
+  }
+});
+
+test('word-positions.json and word-explorer.json cover the full words.json corpus', () => {
+  const { words } = readJSON('words.json');
+  const posData = readJSON('word-positions.json');
+  const explorerData = readJSON('word-explorer.json');
+  const posWords = new Set(Object.keys(posData.positions || {}));
+  const moodWords = new Set(Object.keys(explorerData.mood || {}));
+  for (const w of words) {
+    assert.ok(posWords.has(w.word), `${w.word}: missing from word-positions.json`);
+    assert.ok(moodWords.has(w.word), `${w.word}: missing from word-explorer.json mood map`);
+  }
+});
+
+test('every featured word in every reading collection highlights in its passage', () => {
+  const readingCollections = [
+    { file: 'stories.json', key: 'stories' },
+    { file: 'history.json', key: 'articles' },
+    { file: 'money.json', key: 'money' },
+    { file: 'animals.json', key: 'animals' },
+    { file: 'insects.json', key: 'insects' },
+    { file: 'space.json', key: 'space' },
+    { file: 'technology.json', key: 'technology' },
+    { file: 'forces.json', key: 'forces' },
+    { file: 'street-smarts.json', key: 'streetSmarts' },
+    { file: 'fables.json', key: 'fables' },
+    { file: 'proverbs.json', key: 'collections' },
+  ];
+  for (const { file, key } of readingCollections) {
+    const items = readJSON(file)[key];
+    for (const item of items) {
+      const text = (item.paragraphs || []).join(' ');
+      for (const word of item.words || []) {
+        const variants = highlightVariants(word).map((v) => v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        const re = new RegExp('\\b(' + variants.join('|') + ')\\b', 'i');
+        assert.ok(
+          re.test(text),
+          `${file} "${item.id || item.title}": featured word "${word}" does not match any highlightVariants token in paragraphs`,
+        );
+      }
+    }
+  }
+});
+

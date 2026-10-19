@@ -64,12 +64,29 @@
     return a;
   }
 
-  // Mirrors app.js / Constellation Quest: prefer same part of speech, top up
-  // with anything else from the corpus.
+  // Mirrors app.js / Constellation Quest: prefer same part of speech, exclude
+  // direct synonyms/antonyms when enough candidates exist, top up from corpus.
   function pickDistractors(correct, pool, count) {
-    var candidates = pool.filter(function (w) {
-      return (w.word || '').toLowerCase() !== (correct.word || '').toLowerCase();
+    var src = correct.corpus || correct;
+    var related = {};
+    if (Array.isArray(src.synonyms)) {
+      src.synonyms.forEach(function (s) { if (s) related[String(s).toLowerCase()] = true; });
+    }
+    if (Array.isArray(src.antonyms)) {
+      src.antonyms.forEach(function (a) { if (a) related[String(a).toLowerCase()] = true; });
+    }
+    var correctLower = (correct.word || '').toLowerCase();
+    var allCandidates = pool.filter(function (w) {
+      return (w.word || '').toLowerCase() !== correctLower;
     });
+    var safeCandidates = allCandidates.filter(function (w) {
+      var wLower = (w.word || '').toLowerCase();
+      if (related[wLower]) return false;
+      if (Array.isArray(w.synonyms) && w.synonyms.some(function (s) { return String(s).toLowerCase() === correctLower; })) return false;
+      if (Array.isArray(w.antonyms) && w.antonyms.some(function (a) { return String(a).toLowerCase() === correctLower; })) return false;
+      return true;
+    });
+    var candidates = safeCandidates.length >= count ? safeCandidates : allCandidates;
     var sameType = correct.word_type
       ? candidates.filter(function (w) { return w.word_type === correct.word_type; })
       : [];
@@ -618,6 +635,9 @@
         quizNext.onclick = function () { quizCtx.idx++; renderQuestion(); };
       } else {
         if (isAnimalDiscovered(quizCtx.star)) {
+          if (typeof window.vaultMarkActivityToday === 'function') {
+            window.vaultMarkActivityToday();
+          }
           quizNext.textContent = '✨ Discovered — back to the sky';
           // celebratory note about the pattern this animal belongs to
           setStatus('✨ ' + quizCtx.star.animal.name + ' discovered! ' + quizCtx.seg.emoji + ' ' + quizCtx.seg.name + ' — ' + quizCtx.seg.pattern);
