@@ -193,10 +193,18 @@ import {
   }
 
   // ── Audio pronunciation ────────────────────────────────────────────────────
+  function ttsCancelIfActive() {
+    if (!('speechSynthesis' in window)) return;
+    var synth = window.speechSynthesis;
+    if (synth.speaking || synth.pending || synth.paused) {
+      synth.cancel();
+    }
+  }
+
   function speakWord(word) {
     if (!('speechSynthesis' in window)) return;
     try {
-      window.speechSynthesis.cancel();
+      ttsCancelIfActive();
       var utter = new SpeechSynthesisUtterance(word);
       utter.lang = 'en-GB';
       utter.rate = 0.9;
@@ -209,7 +217,7 @@ import {
   function speakWordAndDefinition(wordObj) {
     if (!('speechSynthesis' in window)) return;
     try {
-      window.speechSynthesis.cancel();
+      ttsCancelIfActive();
       var utter = new SpeechSynthesisUtterance(wordObj.word + '. ' + wordObj.definition);
       utter.lang = 'en-GB';
       utter.rate = 0.85;
@@ -228,7 +236,7 @@ import {
 
   function speakModalWord(wordObj) {
     if (!('speechSynthesis' in window)) return;
-    ttsStop();
+    ttsStop(true);
 
     var word     = wordObj.word;
     var def      = wordObj.definition;
@@ -428,7 +436,7 @@ import {
     var offset = (typeof startChar === 'number' && startChar > 0) ? startChar : 0;
     var textToSpeak = offset > 0 ? ttsWordData.fullText.slice(offset) : ttsWordData.fullText;
     ttsDetachActiveUtter();
-    window.speechSynthesis.cancel();
+    ttsCancelIfActive();
     ttsClearActive();
     var utter = new SpeechSynthesisUtterance(textToSpeak);
     utter.lang = 'en-GB';
@@ -505,9 +513,9 @@ import {
     ttsPlaying = true;
   }
 
-  function ttsStop() {
+  function ttsStop(skipCancel) {
     ttsDetachActiveUtter();
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (!skipCancel) ttsCancelIfActive();
     ttsPlaying = false;
     ttsClearActive();
     if (ttsCurrentBar) {
@@ -528,7 +536,7 @@ import {
         ttsVoice = voices.find(function (v) { return v.name === name; }) || null;
         try { localStorage.setItem(TTS_VOICE_KEY, name); } catch (e) {}
         allVoiceSelectEls.forEach(function (sel) { if (sel !== voiceSelectEl) sel.value = name; });
-        if (ttsCurrentBar) { ttsStop(); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
+        if (ttsCurrentBar) { ttsStop(true); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
       });
     }
 
@@ -542,13 +550,13 @@ import {
           document.querySelectorAll('.tts-pitch-btn').forEach(function (b) {
             b.classList.toggle('tts-speed-active', b.dataset.pitch === btn.dataset.pitch);
           });
-          if (ttsCurrentBar) { ttsStop(); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
+          if (ttsCurrentBar) { ttsStop(true); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
         });
       });
     }
 
     readBtnEl.addEventListener('click', function () {
-      ttsStop();
+      ttsStop(true);
       ttsCurrentBar = bar;
       ttsBarShowActive(bar, true);
       ttsStart();
@@ -570,7 +578,7 @@ import {
           b.classList.toggle('tts-speed-active', b.dataset.rate === btn.dataset.rate);
         });
         if (ttsCurrentBar === bar) {
-          ttsStop();
+          ttsStop(true);
           ttsCurrentBar = bar;
           ttsBarShowActive(bar, true);
           ttsStart();
@@ -2440,7 +2448,7 @@ import {
       if (span) {
         var wObj = findWordByName(span.dataset.glossWord);
         if (wObj) {
-          ttsStop();
+          ttsStop(true);
           speakWordAndDefinition(wObj);
           showGloss(span, wObj);
         }
@@ -2457,7 +2465,7 @@ import {
       e.preventDefault();
       var wObj = findWordByName(span.dataset.glossWord);
       if (wObj) {
-        ttsStop();
+        ttsStop(true);
         speakWordAndDefinition(wObj);
         showGloss(span, wObj);
       }
