@@ -74,8 +74,8 @@
     panel.innerHTML = '';
     if (!etymology) {
       panel.appendChild(notMappedMessage(
-        'We haven\'t mapped the roots of "' + word.word + '" yet.',
-        'Try one of the 30 starter words listed in the dropdown above, or run scripts/build-explorer-prompts.js to expand the dataset.'
+        'We\'re still uncovering the ancient roots of "' + word.word + '"!',
+        'Try choosing one of the ★ roots-mapped starter words in the dropdown above to explore Latin, Greek, and Old French word origins.'
       ));
       return;
     }
@@ -118,8 +118,8 @@
     panel.innerHTML = '';
     if (!popularity) {
       panel.appendChild(notMappedMessage(
-        'We haven\'t charted the history of "' + word.word + '" yet.',
-        'The 30 starter words have history charts. Add more by running the prompt batches.'
+        'We\'re still charting the time-travel history of "' + word.word + '"!',
+        'Pick one of the ★ starter words in the dropdown above to see how its popularity rose and fell over the last 220 years.'
       ));
       return;
     }

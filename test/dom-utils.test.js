@@ -8,6 +8,7 @@ import {
   pickDistractors,
   getSentenceBlank,
   wordVariants,
+  highlightVariants,
 } from '../js/dom-utils.js';
 
 // Run `fn` with Math.random stubbed to a constant, then restore it.
@@ -56,6 +57,25 @@ test('pickDistractors cannot exceed the available pool', () => {
   assert.ok(!picks.some((w) => w.word === 'A'));
 });
 
+test('pickDistractors excludes direct synonyms and reverse-synonyms when enough non-synonyms exist', () => {
+  const target = { word: 'Elated', word_type: 'Adjective', synonyms: ['Overjoyed'], antonyms: ['Miserable'] };
+  const pool = [
+    target,
+    { word: 'Overjoyed', word_type: 'Adjective', synonyms: ['Elated'] },
+    { word: 'Thrilled', word_type: 'Adjective', synonyms: ['Elated'] },
+    { word: 'Miserable', word_type: 'Adjective', synonyms: ['Wretched'] },
+    { word: 'Placid', word_type: 'Adjective', synonyms: ['Calm'] },
+    { word: 'Brisk', word_type: 'Adjective', synonyms: ['Quick'] },
+    { word: 'Solemn', word_type: 'Adjective', synonyms: ['Serious'] },
+  ];
+  const picks = pickDistractors(target, pool, 3);
+  assert.equal(picks.length, 3);
+  const pickedNames = picks.map((w) => w.word);
+  assert.ok(!pickedNames.includes('Overjoyed'), 'excludes direct synonym');
+  assert.ok(!pickedNames.includes('Thrilled'), 'excludes reverse synonym');
+  assert.ok(!pickedNames.includes('Miserable'), 'excludes direct antonym');
+});
+
 test('getSentenceBlank blanks the whole word, case-insensitively', () => {
   assert.equal(
     getSentenceBlank({ word: 'happy', sentence_usage: 'She was very happy today.' }),
@@ -64,6 +84,17 @@ test('getSentenceBlank blanks the whole word, case-insensitively', () => {
   assert.equal(
     getSentenceBlank({ word: 'Happy', sentence_usage: 'I am happy.' }),
     'I am _____.',
+  );
+});
+
+test('getSentenceBlank blanks inflected forms when the exact headword is absent', () => {
+  assert.equal(
+    getSentenceBlank({ word: 'Circumstance', sentence_usage: 'Under these circumstances, we should wait.' }),
+    'Under these _____, we should wait.',
+  );
+  assert.equal(
+    getSentenceBlank({ word: 'Divert', sentence_usage: 'Police diverted traffic after the accident.' }),
+    'Police _____ traffic after the accident.',
   );
 });
 
@@ -86,3 +117,12 @@ test('wordVariants produces the documented inflection set (characterisation)', (
   );
   assert.deepEqual(wordVariants('make'), ['make', 'makes', 'makees', 'maked', 'making']);
 });
+
+test('highlightVariants includes adverbs, doubled consonants, and irregular forms', () => {
+  assert.ok(highlightVariants('Voracious').includes('voraciously'));
+  assert.ok(highlightVariants('Compel').includes('compelled'));
+  assert.ok(highlightVariants('Resilient').includes('resilience'));
+  assert.ok(highlightVariants('Bellowed').includes('bellows'));
+  assert.ok(highlightVariants('Forsake').includes('forsook'));
+});
+

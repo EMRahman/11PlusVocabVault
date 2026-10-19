@@ -3,7 +3,7 @@
     {
       "word": "Abhorrent",
       "pronunciation": "ab-HOR-uhnt",
-      "definition": "Causing complete disgust or horror.",
+      "definition": "Causing strong hatred or disgust; completely unacceptable",
       "sentence_usage": "The damp cellar gave off an abhorrent smell that drove every visitor straight back outside.",
       "synonyms": [
         "Repulsive",
@@ -1177,7 +1177,7 @@
         "Hushed"
       ],
       "usefulness_rating": 4,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "army-battle",
         "definition": "The army captain shouted so loudly his voice echoed across the Army Battle Fields.",
@@ -1966,7 +1966,7 @@
         "Slid"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "When someone climbs a steep tree trunk using hands and feet awkwardly and with effort.",
@@ -2996,7 +2996,7 @@
         "Colourless"
       ],
       "usefulness_rating": 3,
-      "word_type": "Noun",
+      "word_type": "Adjective",
       "themed_quest": {
         "theme": "dragon",
         "definition": "The dragon's scales glowed with a deep, rich red light from within its fiery heart.",
@@ -3010,7 +3010,38 @@
           "cloze": "The _____ snow fell softly on Dragon Mountain, making the peak look peaceful.",
           "answer": "White"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "A deep, rich red colour.",
+          "sentence_usage": "Crimson leaves spun through the courtyard like sparks from a fire.",
+          "synonyms": [
+            "Scarlet",
+            "Ruby",
+            "Red"
+          ],
+          "antonyms": [
+            "Pale",
+            "White",
+            "Colourless"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A rich, deep shade of red colour",
+          "sentence_usage": "The artist mixed a touch of crimson into the paint for the sunset.",
+          "synonyms": [
+            "ruby",
+            "vermilion",
+            "carmine"
+          ],
+          "antonyms": [
+            "paleness",
+            "whiteness"
+          ]
+        }
+      ]
     },
     {
       "word": "Crisp",
@@ -3878,7 +3909,7 @@
         "Raced"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "dragon",
         "definition": "The mysterious smoke rose slowly and gently upward through the entire mountain air.",
@@ -4258,7 +4289,7 @@
         "Grey"
       ],
       "usefulness_rating": 3,
-      "word_type": "Noun",
+      "word_type": "Adjective",
       "themed_quest": {
         "theme": "forest",
         "definition": "The deep rich green colour filled the woodland, from canopy down to ferns.",
@@ -4275,7 +4306,7 @@
       },
       "meanings": [
         {
-          "word_type": "Noun",
+          "word_type": "Adjective",
           "definition": "A rich, deep green colour.",
           "sentence_usage": "Emerald light filtered through the leaves and painted the path below.",
           "synonyms": [
@@ -4291,14 +4322,17 @@
         },
         {
           "word_type": "Noun",
-          "definition": "A bright green precious stone used to make jewellery.",
-          "sentence_usage": "The crown held one enormous, glittering green emerald.",
+          "definition": "A precious bright-green gemstone, or a rich green colour",
+          "sentence_usage": "The royal crown was set with a gleaming emerald.",
           "synonyms": [
-            "Gem",
-            "Jewel",
-            "Gemstone"
+            "gemstone",
+            "jewel",
+            "green"
           ],
-          "antonyms": []
+          "antonyms": [
+            "paleness",
+            "whiteness"
+          ]
         }
       ]
     },
@@ -4882,7 +4916,7 @@
         "Persisted"
       ],
       "usefulness_rating": 4,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "The warrior hesitated momentarily, losing strength briefly before recovering courage.",
@@ -5069,7 +5103,7 @@
         "Shone firmly"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "army-battle",
         "definition": "The torchlight wavered unsteadily, moving back and forth without staying still.",
@@ -6263,7 +6297,7 @@
         "Scattered"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "The small animals crowded closely together for warmth in the cold.",
@@ -6451,7 +6485,7 @@
         "Dimmed"
       ],
       "usefulness_rating": 4,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "fairies",
         "definition": "The magic wands created glowing light that filled the dark chamber.",
@@ -7614,7 +7648,7 @@
         "Departed"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "wizard-school",
         "definition": "Stayed in one place for longer than you normally would, moving slowly and thoughtfully.",
@@ -7774,7 +7808,7 @@
         "Steadied"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "Moved suddenly, clumsily, and unpredictably, often losing balance or stumbling awkwardly.",
@@ -8086,7 +8120,7 @@
         "Streamed"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "The forest trail twisted and turned with many gentle, winding bends.",
@@ -8406,7 +8440,7 @@
         "Announced"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "army-battle",
         "definition": "Spoke in a quiet, low voice that was hard to hear.",
@@ -10271,7 +10305,7 @@
         "Settled"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "forest",
         "definition": "To shake with tiny, rapid movements that show fear or intense cold or emotion.",
@@ -11277,7 +11311,7 @@
         "White"
       ],
       "usefulness_rating": 3,
-      "word_type": "Noun",
+      "word_type": "Adjective",
       "themed_quest": {
         "theme": "fairies",
         "definition": "A bright red colour that glows beautifully in the fairy moonlight.",
@@ -11291,7 +11325,38 @@
           "cloze": "The _____ morning light faded the bright colours of the fairies' wings.",
           "answer": "Pale"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "A bright red colour.",
+          "sentence_usage": "Scarlet petals floated across the pond like tiny boats of fire.",
+          "synonyms": [
+            "Crimson",
+            "Red",
+            "Ruby"
+          ],
+          "antonyms": [
+            "Pale",
+            "Colourless",
+            "White"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A rich, deep shade of red colour",
+          "sentence_usage": "The artist mixed a touch of scarlet into the paint for the sunset.",
+          "synonyms": [
+            "ruby",
+            "vermilion",
+            "carmine"
+          ],
+          "antonyms": [
+            "paleness",
+            "whiteness"
+          ]
+        }
+      ]
     },
     {
       "word": "Sceptical",
@@ -11432,7 +11497,7 @@
         "Paused"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "dragon",
         "definition": "The dragon moved very quickly with short, fast, hurried steps across the cave.",
@@ -11714,7 +11779,7 @@
         "Muttered"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "sea-journey",
         "definition": "The sailor cried out in a loud, high, frightened voice when spotting land.",
@@ -12390,7 +12455,7 @@
         "Strode"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "sea-journey",
         "definition": "The sailor on the rolling ship walked unsteadily, nearly falling left and right with each wave.",
@@ -12564,7 +12629,39 @@
           "cloze": "The old _____ mast snapped under the weight of the storm.",
           "answer": "Weak"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Strong, thick, and solid.",
+          "sentence_usage": "A stout rope held the boat steady against the tug of the tide.",
+          "synonyms": [
+            "Strong",
+            "Solid",
+            "Sturdy"
+          ],
+          "antonyms": [
+            "Thin",
+            "Weak",
+            "Flimsy"
+          ]
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Brave, resolute, and refusing to give in during danger.",
+          "sentence_usage": "The defenders put up a stout resistance at the castle gate.",
+          "synonyms": [
+            "Valiant",
+            "Resolute",
+            "Gallant"
+          ],
+          "antonyms": [
+            "Cowardly",
+            "Timid",
+            "Faint-hearted"
+          ]
+        }
+      ]
     },
     {
       "word": "Stubborn",
@@ -12898,7 +12995,7 @@
         "Paused"
       ],
       "usefulness_rating": 4,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "sea-journey",
         "definition": "The ocean waves suddenly rushed forward with tremendous power, covering everything in water.",
@@ -13224,6 +13321,20 @@
             "Sensitive"
           ],
           "antonyms": []
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To offer or present something formally, such as a payment or a bid.",
+          "sentence_usage": "The merchant offered to tender the exact payment in silver coins.",
+          "synonyms": [
+            "Offer",
+            "Present",
+            "Proffer"
+          ],
+          "antonyms": [
+            "Withhold",
+            "Withdraw"
+          ]
         }
       ]
     },
@@ -14625,7 +14736,7 @@
         "Remained"
       ],
       "usefulness_rating": 3,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "dragon",
         "definition": "The dragon moved slowly from cave to cave without any clear purpose or plan.",
@@ -14913,7 +15024,7 @@
         "Ignored"
       ],
       "usefulness_rating": 4,
-      "word_type": "Adjective",
+      "word_type": "Verb",
       "themed_quest": {
         "theme": "castle",
         "definition": "The knight wanted so deeply to see his family again in the castle.",
@@ -15092,7 +15203,7 @@
     {
       "word": "Meticulous",
       "pronunciation": "muh-TIK-yoo-lus",
-      "definition": "Paying very careful attention to every small detail to make sure everything is exactly right.",
+      "definition": "Very careful and paying great attention to every tiny detail",
       "sentence_usage": "The meticulous student checked every line of her essay three times before handing it in.",
       "synonyms": [
         "Thorough",
@@ -15915,7 +16026,38 @@
           "cloze": "Before coins, the villagers relied on clumsy _____ instead of any agreed money.",
           "answer": "Barter"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "The system of money that a country uses, such as coins and notes.",
+          "sentence_usage": "When travelling abroad she swapped her pounds for the local currency.",
+          "synonyms": [
+            "Money",
+            "Cash",
+            "Legal tender"
+          ],
+          "antonyms": [
+            "Barter",
+            "Goods",
+            "Worthlessness"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "How widely accepted, shared, or talked about an idea is.",
+          "sentence_usage": "The rumour gained currency in the playground until the headteacher explained the truth.",
+          "synonyms": [
+            "Acceptance",
+            "Circulation",
+            "Popularity"
+          ],
+          "antonyms": [
+            "Obscurity",
+            "Rejection"
+          ]
+        }
+      ]
     },
     {
       "word": "Commodity",
@@ -16107,7 +16249,50 @@
           "cloze": "Forgers tried to _____ the old worn coins rather than make any new ones.",
           "answer": "Melt"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To make coins officially by stamping metal.",
+          "sentence_usage": "The royal workshop was allowed to mint new gold coins for the whole kingdom.",
+          "synonyms": [
+            "Coin",
+            "Stamp",
+            "Produce"
+          ],
+          "antonyms": [
+            "Destroy",
+            "Melt",
+            "Withdraw"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A fresh-smelling green herb used in cooking, tea, and sweets.",
+          "sentence_usage": "Grandad picked fresh mint leaves from the garden to steep in hot water.",
+          "synonyms": [
+            "Peppermint",
+            "Spearmint",
+            "Herb"
+          ],
+          "antonyms": []
+        },
+        {
+          "word_type": "Adjective",
+          "definition": "Brand new and in perfect, unspoilt condition.",
+          "sentence_usage": "The collector gasped when she saw that the hundred-year-old stamp was still in mint condition.",
+          "synonyms": [
+            "Pristine",
+            "Flawless",
+            "Unblemished"
+          ],
+          "antonyms": [
+            "Damaged",
+            "Worn",
+            "Tatty"
+          ]
+        }
+      ]
     },
     {
       "word": "Bullion",
@@ -16907,7 +17092,52 @@
           "cloze": "As a kindness the abbot gave a _____ on the loan, asking back less than was borrowed.",
           "answer": "Discount"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "An extra charge paid for borrowing money, on top of the amount borrowed.",
+          "sentence_usage": "The bank lent him a pound but charged interest, so he repaid a little more.",
+          "synonyms": [
+            "Charge",
+            "Fee",
+            "Premium"
+          ],
+          "antonyms": [
+            "Refund",
+            "Discount",
+            "Principal"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "Curiosity and enthusiasm for learning about a subject or activity.",
+          "sentence_usage": "Maya showed a keen interest in astronomy after spotting Saturn through a telescope.",
+          "synonyms": [
+            "Curiosity",
+            "Enthusiasm",
+            "Fascination"
+          ],
+          "antonyms": [
+            "Boredom",
+            "Indifference"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To catch someone's attention and make them want to know more.",
+          "sentence_usage": "The mysterious map in the attic immediately began to interest the two cousins.",
+          "synonyms": [
+            "Intrigue",
+            "Fascinate",
+            "Attract"
+          ],
+          "antonyms": [
+            "Bore",
+            "Repel"
+          ]
+        }
+      ]
     },
     {
       "word": "Collateral",
@@ -17067,7 +17297,38 @@
           "cloze": "The honourable knight would never _____; he sold his lands to repay every coin.",
           "answer": "Repay"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To fail to pay back money that you owe as promised.",
+          "sentence_usage": "If a country cannot repay its loans, it may default on its debt.",
+          "synonyms": [
+            "Fail to pay",
+            "Welsh",
+            "Renege"
+          ],
+          "antonyms": [
+            "Repay",
+            "Settle",
+            "Honour"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "What happens or is chosen automatically if you do not change it.",
+          "sentence_usage": "By default, the tablet saves every drawing into the main folder.",
+          "synonyms": [
+            "Preset",
+            "Standard",
+            "Fallback"
+          ],
+          "antonyms": [
+            "Customisation",
+            "Exception"
+          ]
+        }
+      ]
     },
     {
       "word": "Bond",
@@ -17099,7 +17360,38 @@
           "cloze": "Rather than a written promise, the trader demanded a heavy _____ he could carry away.",
           "answer": "Debt"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "A paper promise from a government or company to repay borrowed money with interest.",
+          "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
+          "synonyms": [
+            "IOU",
+            "Loan note",
+            "Certificate"
+          ],
+          "antonyms": [
+            "Debt",
+            "Share",
+            "Loan"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A close, lasting feeling of friendship, trust, or loyalty between people.",
+          "sentence_usage": "Surviving the storm together formed an unbreakable bond between the two explorers.",
+          "synonyms": [
+            "Connection",
+            "Tie",
+            "Friendship"
+          ],
+          "antonyms": [
+            "Estrangement",
+            "Division"
+          ]
+        }
+      ]
     },
     {
       "word": "Liability",
@@ -17163,7 +17455,39 @@
           "cloze": "The leaking, debt-ridden boat was a _____ rather than anything worth owning.",
           "answer": "Liability"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Noun",
+          "definition": "Something valuable that a person or business owns, such as money, land or goods.",
+          "sentence_usage": "The company's most valuable asset was the busy harbour it owned.",
+          "synonyms": [
+            "Possession",
+            "Resource",
+            "Holding"
+          ],
+          "antonyms": [
+            "Liability",
+            "Debt",
+            "Burden"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A useful skill, quality, or person that helps a team succeed.",
+          "sentence_usage": "Her calm patience under pressure was a huge asset to the rescue team.",
+          "synonyms": [
+            "Strength",
+            "Advantage",
+            "Benefit"
+          ],
+          "antonyms": [
+            "Drawback",
+            "Weakness",
+            "Handicap"
+          ]
+        }
+      ]
     },
     {
       "word": "Sovereign",
@@ -17195,7 +17519,38 @@
           "cloze": "The debt belonged to one merchant alone; it was a _____ matter, not the crown's.",
           "answer": "Private"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Adjective",
+          "definition": "Belonging to or controlled by an independent country and its government.",
+          "sentence_usage": "The sovereign nation printed its own money and set its own taxes.",
+          "synonyms": [
+            "National",
+            "State",
+            "Governmental"
+          ],
+          "antonyms": [
+            "Private",
+            "Personal",
+            "Foreign"
+          ]
+        },
+        {
+          "word_type": "Noun",
+          "definition": "A supreme ruler, especially a king or queen, or an old British gold coin worth one pound.",
+          "sentence_usage": "The young sovereign promised to rule the kingdom with fairness and mercy.",
+          "synonyms": [
+            "Monarch",
+            "Ruler",
+            "Emperor"
+          ],
+          "antonyms": [
+            "Subject",
+            "Commoner"
+          ]
+        }
+      ]
     },
     {
       "word": "Speculate",
@@ -17227,7 +17582,39 @@
           "cloze": "The cautious villager preferred to _____ his coins safely in a chest beneath his bed.",
           "answer": "Save"
         }
-      }
+      },
+      "meanings": [
+        {
+          "word_type": "Verb",
+          "definition": "To buy something risky in the hope its value will rise and bring profit.",
+          "sentence_usage": "He chose to speculate by buying land he hoped would soon be worth more.",
+          "synonyms": [
+            "Gamble",
+            "Invest",
+            "Venture"
+          ],
+          "antonyms": [
+            "Save",
+            "Hoard",
+            "Secure"
+          ]
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To form a theory or guess about a mystery without firm evidence.",
+          "sentence_usage": "Historians still speculate about why the ancient settlement was suddenly abandoned.",
+          "synonyms": [
+            "Conjecture",
+            "Theorise",
+            "Surmise"
+          ],
+          "antonyms": [
+            "Prove",
+            "Verify",
+            "Know"
+          ]
+        }
+      ]
     },
     {
       "word": "Dividend",
