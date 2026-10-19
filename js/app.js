@@ -4403,7 +4403,7 @@ import {
     var target  = scrambleState.currentWord.word;
 
     if (spelled.toLowerCase() === target.toLowerCase()) {
-      recordAnswerCelebrated(target, scrambleState.wrongAttempts === 0);
+      recordAnswerCelebrated(target, scrambleState.wrongAttempts === 0 && scrambleState.hintsUsed === 0);
       answerRow.classList.add('scramble-correct');
       placed.forEach(function (el) { el.disabled = true; });
       var pts = Math.max(0, scrambleState.wordScore);

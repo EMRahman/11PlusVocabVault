@@ -12602,7 +12602,7 @@
     {
       "word": "Stout",
       "pronunciation": "STOWT",
-      "definition": "Thick, strong, and sturdy; or brave and determined",
+      "definition": "Strong, thick, and solid.",
       "sentence_usage": "A stout rope held the boat steady against the tug of the tide.",
       "synonyms": [
         "Strong",
@@ -12633,7 +12633,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Thick, strong, and sturdy; or brave and determined",
+          "definition": "Strong, thick, and solid.",
           "sentence_usage": "A stout rope held the boat steady against the tug of the tide.",
           "synonyms": [
             "Strong",
@@ -12648,17 +12648,17 @@
         },
         {
           "word_type": "Adjective",
-          "definition": "Brave, resolute, and refusing to give in during danger",
+          "definition": "Brave, resolute, and refusing to give in during danger.",
           "sentence_usage": "The defenders put up a stout resistance at the castle gate.",
           "synonyms": [
-            "valiant",
-            "resolute",
-            "gallant"
+            "Valiant",
+            "Resolute",
+            "Gallant"
           ],
           "antonyms": [
-            "cowardly",
-            "timid",
-            "faint-hearted"
+            "Cowardly",
+            "Timid",
+            "Faint-hearted"
           ]
         }
       ]
@@ -13267,7 +13267,7 @@
     {
       "word": "Tender",
       "pronunciation": "TEN-der",
-      "definition": "Gentle, loving, and kind; or soft and easy to cut or chew",
+      "definition": "Gentle, soft, and caring.",
       "sentence_usage": "With tender hands, she bandaged the robin's tiny wing.",
       "synonyms": [
         "Gentle",
@@ -13298,7 +13298,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "Gentle, loving, and kind; or soft and easy to cut or chew",
+          "definition": "Gentle, soft, and caring.",
           "sentence_usage": "With tender hands, she bandaged the robin's tiny wing.",
           "synonyms": [
             "Gentle",
@@ -13312,17 +13312,28 @@
           ]
         },
         {
-          "word_type": "Verb",
-          "definition": "To offer formally, such as presenting payment or an official bid",
-          "sentence_usage": "Coins and banknotes are legal tender that shops accept as payment.",
+          "word_type": "Adjective",
+          "definition": "Sore or painful when touched.",
+          "sentence_usage": "The bruise on his knee was still tender days after the fall.",
           "synonyms": [
-            "offer",
-            "present",
-            "proffer"
+            "Sore",
+            "Painful",
+            "Sensitive"
+          ],
+          "antonyms": []
+        },
+        {
+          "word_type": "Verb",
+          "definition": "To offer or present something formally, such as a payment or a bid.",
+          "sentence_usage": "The merchant offered to tender the exact payment in silver coins.",
+          "synonyms": [
+            "Offer",
+            "Present",
+            "Proffer"
           ],
           "antonyms": [
-            "withhold",
-            "withdraw"
+            "Withhold",
+            "Withdraw"
           ]
         }
       ]
@@ -15988,7 +15999,7 @@
     {
       "word": "Currency",
       "pronunciation": "KUH-ruhn-see",
-      "definition": "The system of money used in a particular country, such as pounds, dollars, or yen",
+      "definition": "The system of money that a country uses, such as coins and notes.",
       "sentence_usage": "When travelling abroad she swapped her pounds for the local currency.",
       "synonyms": [
         "Money",
@@ -16019,7 +16030,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "The system of money used in a particular country, such as pounds, dollars, or yen",
+          "definition": "The system of money that a country uses, such as coins and notes.",
           "sentence_usage": "When travelling abroad she swapped her pounds for the local currency.",
           "synonyms": [
             "Money",
@@ -16034,16 +16045,16 @@
         },
         {
           "word_type": "Noun",
-          "definition": "How widely accepted, shared, or talked about an idea is",
+          "definition": "How widely accepted, shared, or talked about an idea is.",
           "sentence_usage": "The rumour gained currency in the playground until the headteacher explained the truth.",
           "synonyms": [
-            "acceptance",
-            "circulation",
-            "popularity"
+            "Acceptance",
+            "Circulation",
+            "Popularity"
           ],
           "antonyms": [
-            "obscurity",
-            "rejection"
+            "Obscurity",
+            "Rejection"
           ]
         }
       ]
@@ -16211,7 +16222,7 @@
     {
       "word": "Mint",
       "pronunciation": "MINT",
-      "definition": "To make a coin by stamping metal; or a place where a country's coins are officially made",
+      "definition": "To make coins officially by stamping metal.",
       "sentence_usage": "The royal workshop was allowed to mint new gold coins for the whole kingdom.",
       "synonyms": [
         "Coin",
@@ -16242,7 +16253,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To make a coin by stamping metal; or a place where a country's coins are officially made",
+          "definition": "To make coins officially by stamping metal.",
           "sentence_usage": "The royal workshop was allowed to mint new gold coins for the whole kingdom.",
           "synonyms": [
             "Coin",
@@ -16257,28 +16268,28 @@
         },
         {
           "word_type": "Noun",
-          "definition": "A fresh-smelling green herb used in cooking, tea, and sweets",
+          "definition": "A fresh-smelling green herb used in cooking, tea, and sweets.",
           "sentence_usage": "Grandad picked fresh mint leaves from the garden to steep in hot water.",
           "synonyms": [
-            "peppermint",
-            "spearmint",
-            "herb"
+            "Peppermint",
+            "Spearmint",
+            "Herb"
           ],
           "antonyms": []
         },
         {
           "word_type": "Adjective",
-          "definition": "Brand new and in perfect, unspoilt condition",
+          "definition": "Brand new and in perfect, unspoilt condition.",
           "sentence_usage": "The collector gasped when she saw that the hundred-year-old stamp was still in mint condition.",
           "synonyms": [
-            "pristine",
-            "flawless",
-            "unblemished"
+            "Pristine",
+            "Flawless",
+            "Unblemished"
           ],
           "antonyms": [
-            "damaged",
-            "worn",
-            "tatty"
+            "Damaged",
+            "Worn",
+            "Tatty"
           ]
         }
       ]
@@ -17054,7 +17065,7 @@
     {
       "word": "Interest",
       "pronunciation": "IN-truhst",
-      "definition": "A feeling of wanting to know or learn about something, or the money a bank pays on savings (or charges on a loan)",
+      "definition": "An extra charge paid for borrowing money, on top of the amount borrowed.",
       "sentence_usage": "The bank lent him a pound but charged interest, so he repaid a little more.",
       "synonyms": [
         "Charge",
@@ -17085,7 +17096,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A feeling of wanting to know or learn about something, or the money a bank pays on savings (or charges on a loan)",
+          "definition": "An extra charge paid for borrowing money, on top of the amount borrowed.",
           "sentence_usage": "The bank lent him a pound but charged interest, so he repaid a little more.",
           "synonyms": [
             "Charge",
@@ -17100,30 +17111,30 @@
         },
         {
           "word_type": "Noun",
-          "definition": "Curiosity and enthusiasm for learning about a subject or activity",
+          "definition": "Curiosity and enthusiasm for learning about a subject or activity.",
           "sentence_usage": "Maya showed a keen interest in astronomy after spotting Saturn through a telescope.",
           "synonyms": [
-            "curiosity",
-            "enthusiasm",
-            "fascination"
+            "Curiosity",
+            "Enthusiasm",
+            "Fascination"
           ],
           "antonyms": [
-            "boredom",
-            "indifference"
+            "Boredom",
+            "Indifference"
           ]
         },
         {
           "word_type": "Verb",
-          "definition": "To catch someone's attention and make them want to know more",
+          "definition": "To catch someone's attention and make them want to know more.",
           "sentence_usage": "The mysterious map in the attic immediately began to interest the two cousins.",
           "synonyms": [
-            "intrigue",
-            "fascinate",
-            "attract"
+            "Intrigue",
+            "Fascinate",
+            "Attract"
           ],
           "antonyms": [
-            "bore",
-            "repel"
+            "Bore",
+            "Repel"
           ]
         }
       ]
@@ -17259,7 +17270,7 @@
     {
       "word": "Default",
       "pronunciation": "di-FAWLT",
-      "definition": "To fail to pay back money that you owe when it is due",
+      "definition": "To fail to pay back money that you owe as promised.",
       "sentence_usage": "If a country cannot repay its loans, it may default on its debt.",
       "synonyms": [
         "Fail to pay",
@@ -17290,7 +17301,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To fail to pay back money that you owe when it is due",
+          "definition": "To fail to pay back money that you owe as promised.",
           "sentence_usage": "If a country cannot repay its loans, it may default on its debt.",
           "synonyms": [
             "Fail to pay",
@@ -17305,16 +17316,16 @@
         },
         {
           "word_type": "Noun",
-          "definition": "What happens or is chosen automatically if you do not change it",
+          "definition": "What happens or is chosen automatically if you do not change it.",
           "sentence_usage": "By default, the tablet saves every drawing into the main folder.",
           "synonyms": [
-            "preset",
-            "standard",
-            "fallback"
+            "Preset",
+            "Standard",
+            "Fallback"
           ],
           "antonyms": [
-            "customisation",
-            "exception"
+            "Customisation",
+            "Exception"
           ]
         }
       ]
@@ -17322,7 +17333,7 @@
     {
       "word": "Bond",
       "pronunciation": "BOND",
-      "definition": "A certificate issued by a government or company promising to repay borrowed money with interest; or a strong connection between people",
+      "definition": "A paper promise from a government or company to repay borrowed money with interest.",
       "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
       "synonyms": [
         "IOU",
@@ -17353,7 +17364,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "A certificate issued by a government or company promising to repay borrowed money with interest; or a strong connection between people",
+          "definition": "A paper promise from a government or company to repay borrowed money with interest.",
           "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
           "synonyms": [
             "IOU",
@@ -17368,16 +17379,16 @@
         },
         {
           "word_type": "Noun",
-          "definition": "A close, lasting feeling of friendship, trust, or loyalty between people",
+          "definition": "A close, lasting feeling of friendship, trust, or loyalty between people.",
           "sentence_usage": "Surviving the storm together formed an unbreakable bond between the two explorers.",
           "synonyms": [
-            "connection",
-            "tie",
-            "friendship"
+            "Connection",
+            "Tie",
+            "Friendship"
           ],
           "antonyms": [
-            "estrangement",
-            "division"
+            "Estrangement",
+            "Division"
           ]
         }
       ]
@@ -17417,7 +17428,7 @@
     {
       "word": "Asset",
       "pronunciation": "AS-et",
-      "definition": "Something valuable that a person or business owns, such as property, savings, or equipment",
+      "definition": "Something valuable that a person or business owns, such as money, land or goods.",
       "sentence_usage": "The company's most valuable asset was the busy harbour it owned.",
       "synonyms": [
         "Possession",
@@ -17448,7 +17459,7 @@
       "meanings": [
         {
           "word_type": "Noun",
-          "definition": "Something valuable that a person or business owns, such as property, savings, or equipment",
+          "definition": "Something valuable that a person or business owns, such as money, land or goods.",
           "sentence_usage": "The company's most valuable asset was the busy harbour it owned.",
           "synonyms": [
             "Possession",
@@ -17463,17 +17474,17 @@
         },
         {
           "word_type": "Noun",
-          "definition": "A useful skill, quality, or person that helps a team succeed",
+          "definition": "A useful skill, quality, or person that helps a team succeed.",
           "sentence_usage": "Her calm patience under pressure was a huge asset to the rescue team.",
           "synonyms": [
-            "strength",
-            "advantage",
-            "benefit"
+            "Strength",
+            "Advantage",
+            "Benefit"
           ],
           "antonyms": [
-            "drawback",
-            "weakness",
-            "handicap"
+            "Drawback",
+            "Weakness",
+            "Handicap"
           ]
         }
       ]
@@ -17481,7 +17492,7 @@
     {
       "word": "Sovereign",
       "pronunciation": "SOV-rin",
-      "definition": "A supreme ruler, especially a king or queen; or an old British gold coin worth one pound",
+      "definition": "Belonging to or controlled by an independent country and its government.",
       "sentence_usage": "The sovereign nation printed its own money and set its own taxes.",
       "synonyms": [
         "National",
@@ -17512,7 +17523,7 @@
       "meanings": [
         {
           "word_type": "Adjective",
-          "definition": "A supreme ruler, especially a king or queen; or an old British gold coin worth one pound",
+          "definition": "Belonging to or controlled by an independent country and its government.",
           "sentence_usage": "The sovereign nation printed its own money and set its own taxes.",
           "synonyms": [
             "National",
@@ -17527,30 +17538,16 @@
         },
         {
           "word_type": "Noun",
-          "definition": "A supreme ruler, especially a king or queen",
+          "definition": "A supreme ruler, especially a king or queen, or an old British gold coin worth one pound.",
           "sentence_usage": "The young sovereign promised to rule the kingdom with fairness and mercy.",
           "synonyms": [
-            "monarch",
-            "ruler",
-            "emperor"
+            "Monarch",
+            "Ruler",
+            "Emperor"
           ],
           "antonyms": [
-            "subject",
-            "commoner"
-          ]
-        },
-        {
-          "word_type": "Adjective",
-          "definition": "Having the highest, independent power to govern itself",
-          "sentence_usage": "After years of struggle, the island became an independent, sovereign nation.",
-          "synonyms": [
-            "independent",
-            "autonomous",
-            "self-governing"
-          ],
-          "antonyms": [
-            "dependent",
-            "subordinate"
+            "Subject",
+            "Commoner"
           ]
         }
       ]
@@ -17558,7 +17555,7 @@
     {
       "word": "Speculate",
       "pronunciation": "SPEK-yuh-late",
-      "definition": "To buy something risky hoping its price will rise quickly; or to guess about something without having all the facts",
+      "definition": "To buy something risky in the hope its value will rise and bring profit.",
       "sentence_usage": "He chose to speculate by buying land he hoped would soon be worth more.",
       "synonyms": [
         "Gamble",
@@ -17589,7 +17586,7 @@
       "meanings": [
         {
           "word_type": "Verb",
-          "definition": "To buy something risky hoping its price will rise quickly; or to guess about something without having all the facts",
+          "definition": "To buy something risky in the hope its value will rise and bring profit.",
           "sentence_usage": "He chose to speculate by buying land he hoped would soon be worth more.",
           "synonyms": [
             "Gamble",
@@ -17604,17 +17601,17 @@
         },
         {
           "word_type": "Verb",
-          "definition": "To form a theory or guess about a mystery without firm evidence",
+          "definition": "To form a theory or guess about a mystery without firm evidence.",
           "sentence_usage": "Historians still speculate about why the ancient settlement was suddenly abandoned.",
           "synonyms": [
-            "conjecture",
-            "theorise",
-            "surmise"
+            "Conjecture",
+            "Theorise",
+            "Surmise"
           ],
           "antonyms": [
-            "prove",
-            "verify",
-            "know"
+            "Prove",
+            "Verify",
+            "Know"
           ]
         }
       ]
