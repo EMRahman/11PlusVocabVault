@@ -239,7 +239,7 @@ import {
   function speakOneShotText(text, rate, allowVoiceRetry) {
     if (!('speechSynthesis' in window) || !text) return;
     try {
-      ttsDetachActiveUtter();
+      ttsStop(true);
       ttsPrepareSynth();
       var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
@@ -545,6 +545,11 @@ import {
     if (ttsCurrentBar) {
       ttsBarShowIdle(ttsCurrentBar);
       ttsCurrentBar = null;
+    }
+    if (ttsWordData && ttsWordData.onDone) {
+      var cb = ttsWordData.onDone;
+      ttsWordData.onDone = null;
+      cb();
     }
   }
 
