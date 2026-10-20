@@ -6,6 +6,7 @@ import {
   isNaturalVoice,
   isSiriCompactVoice,
   isNoveltyVoice,
+  isVoiceSpecificError,
   voiceScore,
   voiceDisplayName,
   sortEnglishVoices,
@@ -34,17 +35,33 @@ test('tts-voices: ranks Daniel (default en-GB) above iOS Siri compact (Arthur/Ma
   assert.equal(isNoveltyVoice(IOS_IPHONE_VOICES[0]), true);
 });
 
-test('tts-voices: defaults to browser default (voice: null) on iPhone first visit and clears legacy poisoned Arthur storage', () => {
+test('tts-voices: defaults to browser default (voice: null) on iPhone first visit and clears legacy poisoned Arthur storage while preserving safe pre-upgrade choices', () => {
   const sorted = sortEnglishVoices(IOS_IPHONE_VOICES);
   const firstVisit = selectInitialVoice(sorted, null, false);
   assert.equal(firstVisit.voice, null);
   assert.equal(firstVisit.targetValue, '');
   assert.equal(firstVisit.shouldClearLegacyStorage, false);
 
-  const healed = selectInitialVoice(sorted, 'Arthur', false);
-  assert.equal(healed.voice, null);
-  assert.equal(healed.targetValue, '');
-  assert.equal(healed.shouldClearLegacyStorage, true);
+  const healedArthur = selectInitialVoice(sorted, 'Arthur', false);
+  assert.equal(healedArthur.voice, null);
+  assert.equal(healedArthur.targetValue, '');
+  assert.equal(healedArthur.shouldClearLegacyStorage, true);
+
+  const healedAlbert = selectInitialVoice(sorted, 'Albert', false);
+  assert.equal(healedAlbert.voice, null);
+  assert.equal(healedAlbert.targetValue, '');
+  assert.equal(healedAlbert.shouldClearLegacyStorage, true);
+
+  // Pre-upgrade safe explicit choices (e.g. Daniel or Samantha) are preserved even without the new user marker
+  const preservedDaniel = selectInitialVoice(sorted, 'Daniel', false);
+  assert.equal(preservedDaniel.voice.name, 'Daniel');
+  assert.equal(preservedDaniel.targetValue, 'Daniel');
+  assert.equal(preservedDaniel.shouldClearLegacyStorage, false);
+
+  const preservedDefault = selectInitialVoice(sorted, '', false);
+  assert.equal(preservedDefault.voice, null);
+  assert.equal(preservedDefault.targetValue, '');
+  assert.equal(preservedDefault.shouldClearLegacyStorage, false);
 });
 
 test('tts-voices: auto-selects genuine Natural/Neural/Online voices on desktop first visit', () => {
@@ -81,4 +98,18 @@ test('tts-voices: handles underscore locale strings (en_GB / en_US) on older iOS
   const underscoreVoices = IOS_IPHONE_VOICES.map(v => ({ ...v, lang: v.lang.replace('-', '_') }));
   const sorted = sortEnglishVoices(underscoreVoices);
   assert.equal(sorted[0].name, 'Daniel');
+});
+
+test('tts-voices: isVoiceSpecificError matches only voice/synthesis availability errors', () => {
+  assert.equal(isVoiceSpecificError('voice-unavailable'), true);
+  assert.equal(isVoiceSpecificError('language-unavailable'), true);
+  assert.equal(isVoiceSpecificError('synthesis-unavailable'), true);
+  assert.equal(isVoiceSpecificError('synthesis-failed'), true);
+  assert.equal(isVoiceSpecificError('not-allowed'), false);
+  assert.equal(isVoiceSpecificError('audio-busy'), false);
+  assert.equal(isVoiceSpecificError('audio-hardware'), false);
+  assert.equal(isVoiceSpecificError('text-too-long'), false);
+  assert.equal(isVoiceSpecificError('canceled'), false);
+  assert.equal(isVoiceSpecificError('interrupted'), false);
+  assert.equal(isVoiceSpecificError(undefined), false);
 });

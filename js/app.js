@@ -48,6 +48,7 @@ import {
 import {
   TTS_VOICE_KEY,
   TTS_VOICE_USER_KEY,
+  isVoiceSpecificError,
   voiceDisplayName,
   sortEnglishVoices,
   selectInitialVoice,
@@ -253,8 +254,7 @@ import {
         if (utter !== ttsActiveUtter) return;
         ttsActiveUtter = null;
         var err = evt && evt.error;
-        if (err === 'canceled' || err === 'interrupted') return;
-        if (activeVoice && allowVoiceRetry !== false) {
+        if (activeVoice && allowVoiceRetry !== false && isVoiceSpecificError(err)) {
           ttsResetBrokenVoice();
           speakOneShotText(text, rate, false);
         }
@@ -482,7 +482,7 @@ import {
       if (utter !== ttsActiveUtter) return;
       ttsActiveUtter = null;
       var err = evt && evt.error;
-      if (activeVoice && allowVoiceRetry !== false && err !== 'canceled' && err !== 'interrupted') {
+      if (activeVoice && allowVoiceRetry !== false && isVoiceSpecificError(err)) {
         ttsResetBrokenVoice();
         ttsStart(offset, false);
         return;
