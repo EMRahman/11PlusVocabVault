@@ -45,13 +45,20 @@ import {
   formatCollectionProgress,
   estimateReadMinutes,
 } from './progress-stats.js';
+import {
+  TTS_VOICE_KEY,
+  TTS_VOICE_USER_KEY,
+  isVoiceSpecificError,
+  voiceDisplayName,
+  sortEnglishVoices,
+  selectInitialVoice,
+} from './tts-voices.js';
 
   // ── State ──────────────────────────────────────────────────────────────────
   var allWords = [];
   var lastFocusedCard = null;
 
   // ── TTS preference keys (persisted in localStorage; used by the TTS code) ───
-  var TTS_VOICE_KEY   = '11plus-tts-voice';
   var TTS_PITCH_KEY   = '11plus-tts-pitch';
   // viewCounts state + load/save/increment → moved to js/store.js + js/storage.js.
 
@@ -201,30 +208,69 @@ import {
     }
   }
 
-  function speakWord(word) {
+  function ttsPrepareSynth() {
     if (!('speechSynthesis' in window)) return;
+    var synth = window.speechSynthesis;
+    ttsCancelIfActive();
+    if (synth.paused) {
+      synth.resume();
+    }
+  }
+
+  function ttsResolveVoice() {
+    if (!ttsVoice || !('speechSynthesis' in window)) return null;
+    var voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length) {
+      var fresh = voices.find(function (v) { return v.name === ttsVoice.name; });
+      if (fresh) return fresh;
+    }
+    return ttsVoice;
+  }
+
+  function ttsResetBrokenVoice() {
+    ttsVoice = null;
     try {
-      ttsCancelIfActive();
-      var utter = new SpeechSynthesisUtterance(word);
+      localStorage.removeItem(TTS_VOICE_KEY);
+      localStorage.removeItem(TTS_VOICE_USER_KEY);
+    } catch (e) {}
+    allVoiceSelectEls.forEach(function (sel) { sel.value = ''; });
+  }
+
+  function speakOneShotText(text, rate, allowVoiceRetry) {
+    if (!('speechSynthesis' in window) || !text) return;
+    try {
+      ttsStop(true);
+      ttsPrepareSynth();
+      var utter = new SpeechSynthesisUtterance(text);
       utter.lang = 'en-GB';
-      utter.rate = 0.9;
+      utter.rate = rate;
       utter.pitch = ttsPitch;
-      if (ttsVoice) utter.voice = ttsVoice;
+      var activeVoice = allowVoiceRetry !== false ? ttsResolveVoice() : null;
+      if (activeVoice) utter.voice = activeVoice;
+      utter.onend = function () {
+        if (utter === ttsActiveUtter) ttsActiveUtter = null;
+      };
+      utter.onerror = function (evt) {
+        if (utter !== ttsActiveUtter) return;
+        ttsActiveUtter = null;
+        var err = evt && evt.error;
+        if (activeVoice && allowVoiceRetry !== false && isVoiceSpecificError(err)) {
+          ttsResetBrokenVoice();
+          speakOneShotText(text, rate, false);
+        }
+      };
+      ttsActiveUtter = utter;
       window.speechSynthesis.speak(utter);
     } catch (e) {}
   }
 
+  function speakWord(word) {
+    speakOneShotText(word, 0.9, true);
+  }
+
   function speakWordAndDefinition(wordObj) {
-    if (!('speechSynthesis' in window)) return;
-    try {
-      ttsCancelIfActive();
-      var utter = new SpeechSynthesisUtterance(wordObj.word + '. ' + wordObj.definition);
-      utter.lang = 'en-GB';
-      utter.rate = 0.85;
-      utter.pitch = ttsPitch;
-      if (ttsVoice) utter.voice = ttsVoice;
-      window.speechSynthesis.speak(utter);
-    } catch (e) {}
+    if (!wordObj) return;
+    speakOneShotText(wordObj.word + '. ' + wordObj.definition, 0.85, true);
   }
 
   function restoreModalText(wordObj) {
@@ -317,46 +363,22 @@ import {
   function loadVoices() {
     if (!('speechSynthesis' in window)) return;
     var voices = window.speechSynthesis.getVoices();
-    var enVoices = voices.filter(function (v) { return /^en/i.test(v.lang); });
+    var enVoices = sortEnglishVoices(voices);
     if (enVoices.length === 0) return;
 
-    // Lower score = higher quality. Neural/Natural/Online voices are markedly
-    // better than standard browser voices on Windows (Microsoft) and Mac (Siri).
-    function voiceScore(v) {
-      var isNatural = /natural|neural|online/i.test(v.name);
-      var isGB = /^en-GB/i.test(v.lang);
-      var isUS = /^en-US/i.test(v.lang);
-      if (isNatural && isGB) return 0;
-      if (isNatural && isUS) return 1;
-      if (isNatural)         return 2;
-      if (isGB)              return 3;
-      if (isUS)              return 4;
-      return 5;
+    var savedName = null;
+    var isUserSelected = false;
+    try {
+      savedName = localStorage.getItem(TTS_VOICE_KEY);
+      isUserSelected = localStorage.getItem(TTS_VOICE_USER_KEY) === '1';
+    } catch (e) {}
+
+    var selection = selectInitialVoice(enVoices, savedName, isUserSelected);
+    if (selection.shouldClearLegacyStorage) {
+      try { localStorage.removeItem(TTS_VOICE_KEY); } catch (e) {}
     }
-
-    function voiceDisplayName(v) {
-      var isNatural = /natural|neural|online/i.test(v.name);
-      var n = v.name
-        .replace(/^Microsoft\s+/i, '')
-        .replace(/\s+Online\s*\(Natural\)/i, '')
-        .replace(/\s+Online\b/i, '')
-        .replace(/\s+Neural\b/i, '')
-        .replace(/\s+-\s+English[^)]*$/i, '');
-      return (isNatural ? '★ ' : '') + n + ' (' + v.lang + ')';
-    }
-
-    enVoices.sort(function (a, b) {
-      var diff = voiceScore(a) - voiceScore(b);
-      return diff !== 0 ? diff : a.name.localeCompare(b.name);
-    });
-
-    // null = never set (first visit); '' = user explicitly chose Default
-    var savedName    = localStorage.getItem(TTS_VOICE_KEY);
-    var isFirstVisit = savedName === null;
-    var bestVoice    = enVoices[0];
 
     allVoiceSelectEls.forEach(function (sel) {
-      var target = isFirstVisit ? bestVoice.name : (savedName || '');
       sel.innerHTML = '<option value="">Default (browser)</option>';
       enVoices.forEach(function (v) {
         var opt = document.createElement('option');
@@ -364,16 +386,11 @@ import {
         opt.textContent = voiceDisplayName(v);
         sel.appendChild(opt);
       });
-      sel.value = target;
-      if (!sel.value) sel.value = isFirstVisit ? bestVoice.name : '';
+      sel.value = selection.targetValue;
+      if (!sel.value) sel.value = '';
     });
 
-    var targetName = isFirstVisit ? bestVoice.name : (savedName || '');
-    ttsVoice = enVoices.find(function (v) { return v.name === targetName; }) || (isFirstVisit ? bestVoice : null);
-
-    if (isFirstVisit && ttsVoice) {
-      try { localStorage.setItem(TTS_VOICE_KEY, ttsVoice.name); } catch (e) {}
-    }
+    ttsVoice = selection.voice;
   }
 
   function ttsSetActiveSentence(sIdx) {
@@ -431,18 +448,19 @@ import {
     ttsActiveUtter = null;
   }
 
-  function ttsStart(startChar) {
+  function ttsStart(startChar, allowVoiceRetry) {
     if (!ttsWordData || !ttsWordData.fullText || !('speechSynthesis' in window)) return;
     var offset = (typeof startChar === 'number' && startChar > 0) ? startChar : 0;
     var textToSpeak = offset > 0 ? ttsWordData.fullText.slice(offset) : ttsWordData.fullText;
     ttsDetachActiveUtter();
-    ttsCancelIfActive();
+    ttsPrepareSynth();
     ttsClearActive();
     var utter = new SpeechSynthesisUtterance(textToSpeak);
     utter.lang = 'en-GB';
     utter.rate = ttsRate;
     utter.pitch = ttsPitch;
-    if (ttsVoice) utter.voice = ttsVoice;
+    var activeVoice = allowVoiceRetry !== false ? ttsResolveVoice() : null;
+    if (activeVoice) utter.voice = activeVoice;
     utter.onboundary = function (evt) {
       if (evt.name !== 'word') return;
       var ci = evt.charIndex + offset;
@@ -460,9 +478,15 @@ import {
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
       if (ttsWordData && ttsWordData.onDone) { var cb = ttsWordData.onDone; ttsWordData.onDone = null; cb(); }
     };
-    utter.onerror = function () {
+    utter.onerror = function (evt) {
       if (utter !== ttsActiveUtter) return;
       ttsActiveUtter = null;
+      var err = evt && evt.error;
+      if (activeVoice && allowVoiceRetry !== false && isVoiceSpecificError(err)) {
+        ttsResetBrokenVoice();
+        ttsStart(offset, false);
+        return;
+      }
       ttsClearActive();
       ttsPlaying = false;
       if (ttsCurrentBar) ttsBarShowIdle(ttsCurrentBar);
@@ -522,6 +546,11 @@ import {
       ttsBarShowIdle(ttsCurrentBar);
       ttsCurrentBar = null;
     }
+    if (ttsWordData && ttsWordData.onDone) {
+      var cb = ttsWordData.onDone;
+      ttsWordData.onDone = null;
+      cb();
+    }
   }
 
   function initTTSBar(readBtnEl, controlsEl, playPauseBtnEl, stopBtnEl, speedBtnList, voiceSelectEl, pitchBtnList) {
@@ -534,7 +563,10 @@ import {
         var name = voiceSelectEl.value;
         var voices = window.speechSynthesis.getVoices();
         ttsVoice = voices.find(function (v) { return v.name === name; }) || null;
-        try { localStorage.setItem(TTS_VOICE_KEY, name); } catch (e) {}
+        try {
+          localStorage.setItem(TTS_VOICE_KEY, name);
+          localStorage.setItem(TTS_VOICE_USER_KEY, '1');
+        } catch (e) {}
         allVoiceSelectEls.forEach(function (sel) { if (sel !== voiceSelectEl) sel.value = name; });
         if (ttsCurrentBar) { ttsStop(true); ttsCurrentBar = bar; ttsBarShowActive(bar, true); ttsStart(); }
       });
@@ -6381,6 +6413,7 @@ import {
       });
     }
     if ('speechSynthesis' in window) {
+      loadVoices();
       window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
     }
   }());
