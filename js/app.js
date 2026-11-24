@@ -1617,7 +1617,7 @@ import {
   // ── Question generation ────────────────────────────────────────────────────
   // shuffle, pickDistractors, getSentenceBlank → moved to js/dom-utils.js.
 
-  // Theme-aware sentences generated per word (see TOKEN_COST_ESTIMATE.md).
+  // Theme-aware sentences generated per word (see docs/TOKEN_COST_ESTIMATE.md).
   // Question-eligibility helpers (getThemedQuest, getQuestSentenceBlank,
   // getThemedRelation, hasUsableThemedRelation, caseInsensitiveSet, and the pure
   // getQuestionTypesForWord) → moved to js/quiz.js (pure + unit-tested). This
