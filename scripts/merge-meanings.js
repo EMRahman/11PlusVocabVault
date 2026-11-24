@@ -11,7 +11,7 @@
 // primary is re-mirrored from the flat fields, and a word with no valid extra is
 // left WITHOUT a meanings[] array (it is optional — js/meanings.js falls back to
 // the flat fields). Validators mirror scripts/merge-themed.js. See
-// MULTIPLE_MEANINGS_PLAN.md §6/§7.
+// docs/MULTIPLE_MEANINGS_PLAN.md §6/§7.
 //
 // Run: node scripts/merge-meanings.js
 

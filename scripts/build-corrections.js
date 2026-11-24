@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-// Retry pass for TOKEN_COST_ESTIMATE.md generation. Re-validates every Haiku
+// Retry pass for docs/TOKEN_COST_ESTIMATE.md generation. Re-validates every Haiku
 // output already in scripts/batches/*.out.json and writes correction batch
 // files listing only the (word, quiz type) pairs that still need regenerating.
 //

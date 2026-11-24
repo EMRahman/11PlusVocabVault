@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-// Implements the "assigned theme x 5 quiz types" scope from TOKEN_COST_ESTIMATE.md.
+// Implements the "assigned theme x 5 quiz types" scope from docs/TOKEN_COST_ESTIMATE.md.
 // Assigns every word its Story Quest theme, then splits the dataset into batch
 // files for themed-sentence generation by the Haiku model.
 

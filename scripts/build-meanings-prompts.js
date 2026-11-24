@@ -7,7 +7,7 @@
 //
 // Model tier: Haiku (claude-haiku-4-5). Enumerating a common word's main senses is
 // factual and well-bounded — the same "bulk price wins" tier the explorer
-// etymology pass uses. See MULTIPLE_MEANINGS_PLAN.md §6.
+// etymology pass uses. See docs/MULTIPLE_MEANINGS_PLAN.md §6.
 //
 // We already hold a curated *primary* sense per word, so we only generate the
 // delta: up to 2 OTHER senses an 11+ child should know. merge-meanings.js keeps
