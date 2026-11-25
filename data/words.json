@@ -1922,7 +1922,7 @@
       "word": "Circumstance",
       "pronunciation": "SER-kum-stans",
       "definition": "A condition or fact connected with an event.",
-      "sentence_usage": "Under these circumstances, we should wait.",
+      "sentence_usage": "Even a small circumstance like a missing key can change the course of a day.",
       "synonyms": [
         "Situation",
         "Condition",
@@ -3713,7 +3713,7 @@
       "word": "Divert",
       "pronunciation": "dy-VERT",
       "definition": "To change direction away from the usual course.",
-      "sentence_usage": "Police diverted traffic after the accident.",
+      "sentence_usage": "Police had to divert traffic after the accident.",
       "synonyms": [
         "Redirect",
         "Reroute",
@@ -3744,7 +3744,7 @@
         {
           "word_type": "Verb",
           "definition": "To change direction away from the usual course.",
-          "sentence_usage": "Police diverted traffic after the accident.",
+          "sentence_usage": "Police had to divert traffic after the accident.",
           "synonyms": [
             "Redirect",
             "Reroute",
@@ -4372,7 +4372,7 @@
       "word": "Encapsulate",
       "pronunciation": "en-KAP-syoo-layt",
       "definition": "To express or capture the main idea of something in a brief form.",
-      "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
+      "sentence_usage": "We chose three words to encapsulate the spirit of our campaign.",
       "synonyms": [
         "Summarize",
         "Enclose",
@@ -4403,7 +4403,7 @@
         {
           "word_type": "Verb",
           "definition": "To express or capture the main idea of something in a brief form.",
-          "sentence_usage": "The slogan encapsulates the spirit of the campaign.",
+          "sentence_usage": "We chose three words to encapsulate the spirit of our campaign.",
           "synonyms": [
             "Summarize",
             "Enclose",
@@ -4744,7 +4744,7 @@
       "word": "Exemplify",
       "pronunciation": "ig-ZEM-plih-fy",
       "definition": "To be a typical example of something.",
-      "sentence_usage": "Her patience exemplifies good leadership.",
+      "sentence_usage": "Her patience and kindness exemplify good leadership.",
       "synonyms": [
         "Demonstrate",
         "Illustrate",
@@ -6129,7 +6129,7 @@
       "word": "Hieroglyph",
       "pronunciation": "HY-er-oh-glif",
       "definition": "A picture-based symbol used in ancient Egyptian writing.",
-      "sentence_usage": "The wall was covered with carved hieroglyphs.",
+      "sentence_usage": "On the tomb wall, we spotted a hieroglyph shaped like a bird.",
       "synonyms": [
         "Symbol",
         "Glyph",
@@ -7016,7 +7016,7 @@
       "word": "Inflection",
       "pronunciation": "in-FLEK-shun",
       "definition": "A change in the tone or pitch of the voice.",
-      "sentence_usage": "She used different inflections to show whether she was asking a question or making a statement.",
+      "sentence_usage": "The upward inflection in her voice made the last word sound like a question.",
       "synonyms": [
         "Intonation",
         "Modulation",
@@ -7047,7 +7047,7 @@
         {
           "word_type": "Noun",
           "definition": "A change in the tone or pitch of the voice.",
-          "sentence_usage": "She used different inflections to show whether she was asking a question or making a statement.",
+          "sentence_usage": "The upward inflection in her voice made the last word sound like a question.",
           "synonyms": [
             "Intonation",
             "Modulation",
@@ -8332,7 +8332,7 @@
       "word": "Misinterpret",
       "pronunciation": "mis-in-TER-prit",
       "definition": "To understand or explain something incorrectly.",
-      "sentence_usage": "She misinterpreted his silence as rudeness when he was simply thinking.",
+      "sentence_usage": "It was easy to misinterpret his silence as rudeness when he was simply thinking.",
       "synonyms": [
         "Misconstrue",
         "Misunderstand",
@@ -14286,7 +14286,7 @@
       "word": "Vault",
       "pronunciation": "VAWLT",
       "definition": "To jump over something, especially by pushing off with your hands or a pole.",
-      "sentence_usage": "The athlete vaulted over the bar with ease.",
+      "sentence_usage": "The athlete used a long pole to vault over the bar.",
       "synonyms": [
         "Leap",
         "Spring",
@@ -14317,7 +14317,7 @@
         {
           "word_type": "Verb",
           "definition": "To jump over something, especially by pushing off with your hands or a pole.",
-          "sentence_usage": "The athlete vaulted over the bar with ease.",
+          "sentence_usage": "The athlete used a long pole to vault over the bar.",
           "synonyms": [
             "Leap",
             "Spring",
@@ -17002,7 +17002,7 @@
       "word": "Creditor",
       "pronunciation": "KRED-i-ter",
       "definition": "A person, bank or country that is owed money by someone else.",
-      "sentence_usage": "When the shop closed, its creditors lined up to ask for their money back.",
+      "sentence_usage": "When the shop closed, each creditor wrote to ask for their money back.",
       "synonyms": [
         "Lender",
         "Financier",
@@ -17334,7 +17334,7 @@
       "word": "Bond",
       "pronunciation": "BOND",
       "definition": "A paper promise from a government or company to repay borrowed money with interest.",
-      "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
+      "sentence_usage": "Grandad bought a government bond that would pay him interest for five years.",
       "synonyms": [
         "IOU",
         "Loan note",
@@ -17365,7 +17365,7 @@
         {
           "word_type": "Noun",
           "definition": "A paper promise from a government or company to repay borrowed money with interest.",
-          "sentence_usage": "The government sold bonds to raise the money it needed to build new roads.",
+          "sentence_usage": "Grandad bought a government bond that would pay him interest for five years.",
           "synonyms": [
             "IOU",
             "Loan note",
@@ -17684,7 +17684,7 @@
       "word": "Pledge",
       "pronunciation": "PLEJ",
       "definition": "To promise firmly to do something, such as to pay or give money.",
-      "sentence_usage": "The merchants pledged to give gold towards building the new bridge.",
+      "sentence_usage": "The merchants agreed to pledge gold towards building the new bridge.",
       "synonyms": [
         "Promise",
         "Vow",
@@ -17812,7 +17812,7 @@
       "word": "Instalment",
       "pronunciation": "in-STAWL-muhnt",
       "definition": "One of several smaller payments made over time to pay off a larger sum.",
-      "sentence_usage": "She paid for the bicycle in monthly instalments instead of all at once.",
+      "sentence_usage": "She paid the final instalment on her bicycle and at last it was hers.",
       "synonyms": [
         "Payment",
         "Part-payment",

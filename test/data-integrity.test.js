@@ -341,6 +341,11 @@ test('every word in words.json produces a non-null getSentenceBlank cloze', () =
       typeof blanked === 'string' && blanked.includes('_____'),
       `${w.word}: getSentenceBlank returned ${JSON.stringify(blanked)} for sentence_usage "${w.sentence_usage}"`,
     );
+    assert.equal(
+      blanked.replace('_____', w.word).toLowerCase(),
+      w.sentence_usage.toLowerCase(),
+      `${w.word}: the quiz answer must restore the original word form`,
+    );
   }
 });
 

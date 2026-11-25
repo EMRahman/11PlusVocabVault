@@ -1857,6 +1857,7 @@ import {
     var buttons = quizAnswersGrid.querySelectorAll('.quiz-answer-btn');
     var isCorrect = chosenIndex === q.correctIndex;
     var chosenText = q.choices[chosenIndex];
+    var correctAnswer = q.choices[q.correctIndex];
 
     // Disable all buttons immediately
     forEachNode(buttons, function (b) { b.disabled = true; });
@@ -1880,6 +1881,7 @@ import {
       quizState.misses.push({
         word: q.questionWord.word,
         definition: q.questionWord.definition,
+        correctAnswer: correctAnswer,
         chosen: chosenText
       });
     }
@@ -1891,7 +1893,7 @@ import {
       quizFeedbackText.textContent = pickPraise(quizState.streak);
       quizFeedbackDetail.textContent = '';
     } else {
-      var wrong = buildWrongFeedback(q.type, q.questionWord, q.choices[q.correctIndex]);
+      var wrong = buildWrongFeedback(q.type, q.questionWord, correctAnswer);
       quizFeedbackText.textContent = wrong.headline;
       quizFeedbackDetail.textContent = wrong.detail;
     }
@@ -1980,15 +1982,21 @@ import {
 
       var word = document.createElement('strong');
       word.textContent = miss.word;
+      item.appendChild(word);
 
-      var definition = document.createElement('span');
-      definition.textContent = miss.definition;
+      if (miss.definition !== miss.correctAnswer) {
+        var definition = document.createElement('span');
+        definition.textContent = miss.definition;
+        item.appendChild(definition);
+      }
+
+      var correct = document.createElement('span');
+      correct.textContent = 'Correct answer: ' + miss.correctAnswer;
+      item.appendChild(correct);
 
       var chosen = document.createElement('small');
       chosen.textContent = 'You chose: ' + miss.chosen;
 
-      item.appendChild(word);
-      item.appendChild(definition);
       item.appendChild(chosen);
       quizReviewList.appendChild(item);
     });
